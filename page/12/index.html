@@ -1,0 +1,3236 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Geekwolf,DevOps,Docker,k8s,MySQL,PaaS" />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Geekwolf's Blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="DevOps | Docker | K8S | MySQL | 运维">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Geekwolf&#39;s Blog">
+<meta property="og:url" content="http://www.simlinux.com/page/12/index.html">
+<meta property="og:site_name" content="Geekwolf&#39;s Blog">
+<meta property="og:description" content="DevOps | Docker | K8S | MySQL | 运维">
+<meta property="og:locale" content="zh-Hans">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Geekwolf&#39;s Blog">
+<meta name="twitter:description" content="DevOps | Docker | K8S | MySQL | 运维">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.simlinux.com/page/12/"/>
+
+
+
+
+
+  <title>Geekwolf's Blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="//s13.cnzz.com/z_stat.php?id=1264375041&web_id=1264375041" language="JavaScript"></script>
+  </div>
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left 
+   page-home 
+ ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Geekwolf's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Quick notes</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />
+            
+            站点地图
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+  <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2012/09/02/e5-90-af-e5-8a-a8mysql-e7-9a-84innodb-monitor-e5-8a-9f-e8-83-bd.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Geekwolf">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/wolf.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Geekwolf's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2012/09/02/e5-90-af-e5-8a-a8mysql-e7-9a-84innodb-monitor-e5-8a-9f-e8-83-bd.html" itemprop="url">启动mysql的innodb monitor功能</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2012-09-02T04:12:12+08:00">
+                2012-09-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/MySQL数据库/" itemprop="url" rel="index">
+                    <span itemprop="name">MySQL数据库</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2012/09/02/e5-90-af-e5-8a-a8mysql-e7-9a-84innodb-monitor-e5-8a-9f-e8-83-bd.html" class="leancloud_visitors" data-flag-title="启动mysql的innodb monitor功能">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  2
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>在使用Innodb做为存储引擎的数据库系统中，可以使用innodb_monitor 来监控数据库的性能，</p>
+<p>启动innodb_monitor的方法为 </p>
+<p>Create table innodb_monitor (i int) engine=innodb ；</p>
+<p>通过建立这个表就启动了innodb_monitor，监控的结果并不会记录到这个表中，而是记录到了mysql的err日志中，如果我们想监控更我的关 于innodb的锁信息还可更进一步的建立表</p>
+<p>create table innodb_lock_monitor (i int) engine=innodb 这样在日志中会加入更多的锁信息，</p>
+<p>如果要关闭监控只要简单的删除这两个表就可以了.Drop table innodb_monitor; drop table innodb_lock_monitor;</p>
+<p>&#160;</p>
+<p>&#160;&#160;&#160;&#160;&#160; InnoDB引擎提供了一个monitor，可以通过monitor一窥其内部的一些统计信息，也可以说是了解InnoDB引擎的一个很好的窗口。</p>
+<p>我们最熟悉的，应当就是show innodb status命令，可以直接在客户端输出很多的信息。</p>
+<p>其实InnoDB monitor一共有四种模式，show innodb status只是其一种模式的直接展现，并且只能交互式开启，无法自动循环捕获信息。另外还有一种适合四种模式的开启方式，则是通过创建一张特殊的 innodb表来开启，开启后会按照固定的时间间隔循环，输出信息到log-error参数指定的错误日志文件中，通过drop对应的表，可以停止 monitor。</p>
+<p>四种monitor分别是:</p>
+<ul>
+<li>innodb_monitor：create table innodb_monitor(x int) engine=innodb;<em>   innodb_lock_monitor：create table innodb_lock_monitor(x int) engine=innodb;</em>   innodb_table_monitor：create table innodb_table_monitor(x int) engine=innodb;*   innodb_tablespace_monitor：create table innodb_tablespace_monitor(x int) engine=innodb;  </li>
+</ul>
+<p>根据我在5.1.36版本中实际观察到的结果，innodb_monitor/innodb_lock_monitor开启后的执行周期是<strong>16s</strong>（<a href="http://dev.mysql.com/doc/refman/5.1/en/innodb-monitors.html" target="_blank" rel="external">参考手册</a>上说是15s），而innodb_table_monitor/innodb_tablespace_monitor的执行周期是<strong>64s</strong>。开启monitor后因为是持续周期性的运行的，在不需要的时候一定要记得drop相关表来停止monitor。如果在开启monitor的中间服务器有重启，monitor不会自动重启，并且在下次启动monitor之前，必须先执行停止操作。</p>
+<p>其中innodb_monitor/innodb_lock_monitor两种监视器的输出结果基本类似，后者会有更多关于锁的信息，而前一 个实际上就是show innodb status。innodb_table_monitor则会将系统中所有innodb的表的一些结构和内部信息输出，而 innodb_tablespace_monitor则输出的是tablespace的信息，注意该monitor输出的只是共享表空间的信息，如果使用 innodb_file_per_table为每个表使用独立的表空间，则这些表空间的信息是不会包含在输出中的。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2012/08/27/mysql-sending-data-e7-8a-b6-e6-80-81-e6-97-b6-e9-97-b4-e8-8a-b1-e8-b4-b9-e5-a4-aa-e5-a4-a7.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Geekwolf">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/wolf.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Geekwolf's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2012/08/27/mysql-sending-data-e7-8a-b6-e6-80-81-e6-97-b6-e9-97-b4-e8-8a-b1-e8-b4-b9-e5-a4-aa-e5-a4-a7.html" itemprop="url">mysql sending data状态时间花费太大</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2012-08-27T06:07:24+08:00">
+                2012-08-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/MySQL数据库/" itemprop="url" rel="index">
+                    <span itemprop="name">MySQL数据库</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2012/08/27/mysql-sending-data-e7-8a-b6-e6-80-81-e6-97-b6-e9-97-b4-e8-8a-b1-e8-b4-b9-e5-a4-aa-e5-a4-a7.html" class="leancloud_visitors" data-flag-title="mysql sending data状态时间花费太大">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>select * from searchzh where modified_date &gt; ‘2009-09-02 14:45:22’;</p>
+<p>一条mysql查询语句的性能：sending data 耗时10分钟。。。。</p>
+<p>+——————————–+———–+<br>| Status&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; | Duration&#160; |<br>+——————————–+———–+<br>| (initialization)&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; | 0.000006&#160; |<br>| checking query cache for query | 0.000025&#160; |<br>| checking permissions&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; | 0.000008&#160; |<br>| Opening tables&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; | 0.000148&#160; |<br>| System lock&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; | 0.000008&#160; |<br>| Table lock&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; | 0.000008&#160; |<br>| init&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; | 0.000007&#160; |<br>| checking permissions&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; | 0.000045&#160; |<br>| optimizing&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; | 0.000016&#160; |<br>| statistics&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; | 0.00027&#160;&#160; |<br>| preparing&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; | 0.000034&#160; |<br>| executing&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; | 0.000005&#160; |<br>| Sending data&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; | 614.25387 |<br>| end&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; | 0.000046&#160; |<br>| query end&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; | 0.000012&#160; |<br>| freeing items&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; | 0.000017&#160; |<br>| closing tables&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; | 0.000008&#160; |<br>| logging slow query&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; | 0.000054&#160; |<br>+——————————–+———–+<br>18 rows in set (0.01 sec)</p>
+<p><strong>产生的原因：</strong></p>
+<p>searchzh视图相关的表，update，insert，delete操作频繁。在mysql的表锁定机制中，select语句的优先级比update低。所以此select语句一直在锁队列中等待，后来的update操作会插队到select语句前面。导致| Sending data&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; | 614.25387 |</p>
+<p><strong>解决方法有多种，最简单的</strong>：</p>
+<p> select HIGH_PRIORITY * from searchzh where modified_date &gt; ‘2009-09-02 14:45:22’;</p>
+<p>指定该select语句具有高优先级。</p>
+<p>=======================================</p>
+<p>mysql15:21:30&gt; SHOW STATUS LIKE ‘Table%’;<br>+———————–+———–+<br>| Variable_name&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; | Value&#160;&#160;&#160;&#160; |<br>+———————–+———–+<br>| Table_locks_immediate | 120977304 |<br>| Table_locks_waited&#160;&#160;&#160; | 577&#160;&#160;&#160;&#160;&#160;&#160; |<br>+———————–+———–+</p>
+<p>表锁争用现象比较严重。</p>
+<p>在频繁更新和查询的情景下，使用innodb也许更好。</p>
+<p>转载</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2012/08/24/snmpd-e6-9c-8d-e5-8a-a1-e6-97-a0-e6-b3-95-e6-9b-b4-e6-94-b9-e9-bb-98-e8-ae-a4-e7-ab-af-e5-8f-a3.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Geekwolf">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/wolf.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Geekwolf's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2012/08/24/snmpd-e6-9c-8d-e5-8a-a1-e6-97-a0-e6-b3-95-e6-9b-b4-e6-94-b9-e9-bb-98-e8-ae-a4-e7-ab-af-e5-8f-a3.html" itemprop="url">snmpd服务无法更改默认端口</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2012-08-24T01:58:30+08:00">
+                2012-08-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux运维/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux运维</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2012/08/24/snmpd-e6-9c-8d-e5-8a-a1-e6-97-a0-e6-b3-95-e6-9b-b4-e6-94-b9-e9-bb-98-e8-ae-a4-e7-ab-af-e5-8f-a3.html" class="leancloud_visitors" data-flag-title="snmpd服务无法更改默认端口">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><strong>问题描述：</strong></p>
+<p>修改/etc/rc.d/init.d/snmpd的启动脚本</p>
+<p>修改行：</p>
+<p>OPTIONS=&quot;-Lsd -Lf /dev/null -p /var/run/snmpd.pid -a&quot;</p>
+<p>修改为</p>
+<p>OPTIONS=&quot;udp:9999 -Lsd -Lf /dev/null -p /var/run/snmpd.pid -a&quot;</p>
+<p>service snmpd start 时无法启动该服务，终端没有报错提示</p>
+<p><strong>问题解决：</strong></p>
+<p>tail&#160; -10 /var/log/messages </p>
+<p>Aug 24 09:36:24 localhost snmpd[12063]: Error opening specified endpoint &quot;udp:9999&quot;<br>Aug 24 09:36:24 localhost snmpd[12063]: Server Exiting with code 1<br>Aug 24 09:36:24 localhost setroubleshoot: SELinux is preventing the snmpd (snmpd_t) from binding to port 9999. For complete SELinux messages. run sealert -l ec7e5602-a40f-4831-97d0-ca9e84618549</p>
+<p>&#160;</p>
+<p>so,暂且不考虑selinux，命令关掉selinux</p>
+<p>setenforce&#160; 0</p>
+<p>sestatus </p>
+<p>SELinux status:&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; enabled<br>SELinuxfs mount:&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; /selinux<br>Current mode:&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; permissive<br>Mode from config file:&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; disabled<br>Policy version:&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; 21<br>Policy from config file:&#160;&#160;&#160;&#160;&#160;&#160;&#160; targeted</p>
+<p>&#160;</p>
+<p>稍后会继续详细介绍selinux，安全却很少人探索的东东！</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2012/08/23/e7-bc-96-e8-af-91python-e6-8b-93-e5-b1-95pycurl-e6-8a-9berror-command-gcc-failed-with-exit-status-1.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Geekwolf">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/wolf.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Geekwolf's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2012/08/23/e7-bc-96-e8-af-91python-e6-8b-93-e5-b1-95pycurl-e6-8a-9berror-command-gcc-failed-with-exit-status-1.html" itemprop="url">编译python拓展pycurl抛error: command 'gcc' failed with exit status 1</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2012-08-23T02:24:14+08:00">
+                2012-08-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux运维/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux运维</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2012/08/23/e7-bc-96-e8-af-91python-e6-8b-93-e5-b1-95pycurl-e6-8a-9berror-command-gcc-failed-with-exit-status-1.html" class="leancloud_visitors" data-flag-title="编译python拓展pycurl抛error: command 'gcc' failed with exit status 1">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  8
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><strong>问题描述：</strong></p>
+<p>[root@localhost pycurl-7.19.0]# python setup.py install –curl-config=/usr/bin/curl-config<br>Using /usr/bin/curl-config (libcurl 7.15.5)<br>running install<br>running build<br>running build_py<br>running build_ext<br>building ‘pycurl’ extension<br>gcc -pthread -fno-strict-aliasing -g -O2 -DNDEBUG -g -fwrapv -O3 -Wall -Wstrict-prototypes -fPIC -DHAVE_CURL_OPENSSL=1 -DHAVE_CURL_SSL=1 -I/usr/local/include/python2.7 -c src/pycurl.c -o build/temp.linux-x86<em>64-2.7/src/pycurl.o    
+</em><strong>src/pycurl.c:61:4: error: #error &quot;Need libcurl version 7.19.0 or greater to compile pycurl.&quot;       
+</strong>_src/pycurl.c:1134: error: expected declaration specifiers or ‘…’ before ‘curlsocktype’<br>src/pycurl.c:1135: warning: ‘struct curl_sockaddr’ declared inside parameter list<br>src/pycurl.c:1135: warning: its scope is only this definition or declaration, which is probably not what you want<br>src/pycurl.c: In function ‘opensocket_callback’:<br>src/pycurl.c:1148: error: dereferencing pointer to incomplete type<br>src/pycurl.c:1148: error: dereferencing pointer to incomplete type<br>src/pycurl.c:1148: error: dereferencing pointer to incomplete type<br>src/pycurl.c: In function ‘do_curl_setopt’:<br>src/pycurl.c:1624: error: ‘CURLOPT_SSH_PUBLIC_KEYFILE’ undeclared (first use in this function)<br>src/pycurl.c:1624: error: (Each undeclared identifier is reported only once<br>src/pycurl.c:1624: error: for each function it appears in.)<br>src/pycurl.c:1625: error: ‘CURLOPT_SSH_PRIVATE_KEYFILE’ undeclared (first use in this function)<br>src/pycurl.c:1626: error: ‘CURLOPT_COPYPOSTFIELDS’ undeclared (first use in this function)<br>src/pycurl.c:1627: error: ‘CURLOPT_SSH_HOST_PUBLIC_KEY_MD5’ undeclared (first use in this function)<br>src/pycurl.c:1629: error: ‘CURLOPT_ISSUERCERT’ undeclared (first use in this function)<br>src/pycurl.c:2020: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘<strong>attribute</strong>’ before ‘opensocket_cb’<br>src/pycurl.c:2020: error: ‘opensocket_cb’ undeclared (first use in this function)<br>src/pycurl.c:2071: error: ‘CURLOPT_OPENSOCKETFUNCTION’ undeclared (first use in this function)<br>src/pycurl.c:2076: error: ‘CURLOPT_OPENSOCKETDATA’ undeclared (first use in this function)<br>src/pycurl.c: In function ‘do_curl_getinfo’:<br>src/pycurl.c:2175: error: ‘CURLINFO_REDIRECT_URL’ undeclared (first use in this function)<br>src/pycurl.c:2176: error: ‘CURLINFO_PRIMARY_IP’ undeclared (first use in this function)<br>src/pycurl.c:2194: error: ‘CURLINFO_APPCONNECT_TIME’ undeclared (first use in this function)<br>src/pycurl.c: In function ‘do_multi_setopt’:<br>src/pycurl.c:2461: error: ‘CURLMOPT_PIPELINING’ undeclared (first use in this function)<br>src/pycurl.c:2464: error: ‘CURLMOPT_MAXCONNECTS’ undeclared (first use in this function)<br>src/pycurl.c:2479: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘<strong>attribute</strong>’ before ‘t_cb’<br>src/pycurl.c:2479: error: ‘t_cb’ undeclared (first use in this function)<br>src/pycurl.c:2489: error: ‘CURLMOPT_TIMERFUNCTION’ undeclared (first use in this function)<br>src/pycurl.c:2491: error: ‘CURLMOPT_TIMERDATA’ undeclared (first use in this function)<br>src/pycurl.c: In function ‘do_multi_socket_action’:<br>src/pycurl.c:2576: warning: implicit declaration of function ‘curl_multi_socket_action’<br>src/pycurl.c: In function ‘initpycurl’:<br>src/pycurl.c:3555: error: ‘CURLE_SSL_CACERT_BADFILE’ undeclared (first use in this function)<br>src/pycurl.c:3556: error: ‘CURLE_REMOTE_FILE_NOT_FOUND’ undeclared (first use in this function)<br>src/pycurl.c:3557: error: ‘CURLE_SSH’ undeclared (first use in this function)<br>src/pycurl.c:3558: error: ‘CURLE_SSL_SHUTDOWN_FAILED’ undeclared (first use in this function)<br>src/pycurl.c:3707: error: ‘CURLOPT_OPENSOCKETFUNCTION’ undeclared (first use in this function)<br>src/pycurl.c:3719: error: ‘CURLOPT_SSL_SESSIONID_CACHE’ undeclared (first use in this function)<br>src/pycurl.c:3720: error: ‘CURLOPT_SSH_AUTH_TYPES’ undeclared (first use in this function)<br>src/pycurl.c:3721: error: ‘CURLOPT_SSH_PUBLIC_KEYFILE’ undeclared (first use in this function)<br>src/pycurl.c:3722: error: ‘CURLOPT_SSH_PRIVATE_KEYFILE’ undeclared (first use in this function)<br>src/pycurl.c:3723: error: ‘CURLOPT_FTP_SSL_CCC’ undeclared (first use in this function)<br>src/pycurl.c:3724: error: ‘CURLOPT_TIMEOUT_MS’ undeclared (first use in this function)<br>src/pycurl.c:3725: error: ‘CURLOPT_CONNECTTIMEOUT_MS’ undeclared (first use in this function)<br>src/pycurl.c:3726: error: ‘CURLOPT_HTTP_TRANSFER_DECODING’ undeclared (first use in this function)<br>src/pycurl.c:3727: error: ‘CURLOPT_HTTP_CONTENT_DECODING’ undeclared (first use in this function)<br>src/pycurl.c:3728: error: ‘CURLOPT_NEW_FILE_PERMS’ undeclared (first use in this function)<br>src/pycurl.c:3729: error: ‘CURLOPT_NEW_DIRECTORY_PERMS’ undeclared (first use in this function)<br>src/pycurl.c:3730: error: ‘CURLOPT_POST301’ undeclared (first use in this function)<br>src/pycurl.c:3731: error: ‘CURLOPT_PROXY_TRANSFER_MODE’ undeclared (first use in this function)<br>src/pycurl.c:3732: error: ‘CURLOPT_COPYPOSTFIELDS’ undeclared (first use in this function)<br>src/pycurl.c:3733: error: ‘CURLOPT_SSH_HOST_PUBLIC_KEY_MD5’ undeclared (first use in this function)<br>src/pycurl.c:3736: error: ‘CURLOPT_ISSUERCERT’ undeclared (first use in this function)<br>src/pycurl.c:3737: error: ‘CURLOPT_ADDRESS_SCOPE’ undeclared (first use in this function)<br>src/pycurl.c:3739: error: ‘CURLMOPT_TIMERFUNCTION’ undeclared (first use in this function)<br>src/pycurl.c:3741: error: ‘CURLMOPT_PIPELINING’ undeclared (first use in this function)<br>src/pycurl.c:3742: error: ‘CURLMOPT_MAXCONNECTS’ undeclared (first use in this function)<br>src/pycurl.c:3773: error: ‘CURLSSH_AUTH_ANY’ undeclared (first use in this function)<br>src/pycurl.c:3774: error: ‘CURLSSH_AUTH_NONE’ undeclared (first use in this function)<br>src/pycurl.c:3775: error: ‘CURLSSH_AUTH_PUBLICKEY’ undeclared (first use in this function)<br>src/pycurl.c:3776: error: ‘CURLSSH_AUTH_PASSWORD’ undeclared (first use in this function)<br>src/pycurl.c:3777: error: ‘CURLSSH_AUTH_HOST’ undeclared (first use in this function)<br>src/pycurl.c:3778: error: ‘CURLSSH_AUTH_KEYBOARD’ undeclared (first use in this function)<br>src/pycurl.c:3779: error: ‘CURLSSH_AUTH_DEFAULT’ undeclared (first use in this function)<br>src/pycurl.c:3788: error: ‘CURLINFO_APPCONNECT_TIME’ undeclared (first use in this function)<br>src/pycurl.c:3804: error: ‘CURLINFO_REDIRECT_URL’ undeclared (first use in this function)<br>src/pycurl.c:3805: error: ‘CURLINFO_PRIMARY_IP’ undeclared (first use in this function)<br>src/pycurl.c:3825: error: ‘CURL_CSELECT_IN’ undeclared (first use in this function)<br>src/pycurl.c:3826: error: ‘CURL_CSELECT_OUT’ undeclared (first use in this function)<br>src/pycurl.c:3827: error: ‘CURL_CSELECT_ERR’ undeclared (first use in this function)<br>error: command ‘gcc’ failed with exit status 1</p>
+<p>&#160;</p>
+<p><strong>问题解决：</strong></p>
+<p>其中有一句<br>src/pycurl.c:61:4: error: #error &quot;Need libcurl version 7.19.0 or greater to compile pycurl.&quot;</p>
+<p>提示说libcurl 版本太低…<br>root@localhost pycurl-7.19.0]# curl –version<br>curl 7.15.5 (x86_64-redhat-linux-gnu) libcurl/7.15.5 OpenSSL/0.9.8b zlib/1.2.3 libidn/0.6.5<br>Protocols: tftp ftp telnet dict ldap http file https ftps<br>Features: GSS-Negotiate IDN IPv6 Largefile NTLM SSL libz<br>果然7.15.5小于 7.19<br>wget <a href="http://curl.haxx.se/download/curl-7.21.4.tar.gz" target="_blank" rel="external">http://curl.haxx.se/download/curl-7.21.4.tar.gz</a><br>.configure ＆＆make &amp;&amp; make install</p>
+<p>&#160;</p>
+<p>下面继续问题<br>[root@localhost pycurl-7.19.0]# python<br>Python 2.4.3 (#1, Sep&#160; 3 2009, 15:37:37)<br>[GCC 4.1.2 20080704 (Red Hat 4.1.2-46)] on linux2<br>Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;license&quot; for more information.<br>&gt;&gt;&gt; import pycurl<br>Traceback (most recent call last):<br>&#160; File &quot;&lt;stdin&gt;&quot;, line 1, in ?<br>ImportError: libcurl.so.4: cannot open shared object file: No such file or directory<br>&gt;&gt;&gt;     </p>
+<p>这问题因为机器是64的.所以找不到.<br>解决方法：    </p>
+<p>[root@localhost pycurl-7.19.0]# find /usr -name &quot;libcurl.so*&quot;<br>/usr/local/src/curl-7.21.4/lib/.libs/libcurl.so<br>/usr/local/src/curl-7.21.4/lib/.libs/libcurl.so.4<br>/usr/local/src/curl-7.21.4/lib/.libs/libcurl.so.4.2.0<br>/usr/local/lib/libcurl.so<br>/usr/local/lib/libcurl.so.4<br>/usr/local/lib/libcurl.so.4.2.0<br>/usr/lib/libcurl.so.3.0.0<br>/usr/lib/libcurl.so.3<br>/usr/lib/libcurl.so<br>/usr/lib64/libcurl.so.3.0.0<br>/usr/lib64/libcurl.so.3<br>/usr/lib64/libcurl.so<br>[root@localhost pycurl-7.19.0]# ln -s&#160; /usr/local/lib/libcurl.so.4.2.0 /usr/lib64/libcurl.so.4<br>[root@localhost pycurl-7.19.0]# python<br>Python 2.4.3 (#1, Sep&#160; 3 2009, 15:37:37)<br>[GCC 4.1.2 20080704 (Red Hat 4.1.2-46)] on linux2<br>Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;license&quot; for more information.<br>&gt;&gt;&gt; import pycurl<br>&gt;&gt;&gt;<br>[root@localhost pycurl-7.19.0]# ls /usr/local/lib/libcurl.so.4 -l<br>lrwxrwxrwx 1 root root 16 Apr 11 22:50 /usr/local/lib/libcurl.so.4 -&gt; libcurl.so.4.2.0    </p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2012/08/19/aix-e5-ad-a6-e4-b9-a0-e7-ac-94-e8-ae-b0-e4-b9-8b-e5-ad-98-e5-82-a8-e7-ae-a1-e7-90-86-lv-pv-vg-pp.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Geekwolf">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/wolf.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Geekwolf's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2012/08/19/aix-e5-ad-a6-e4-b9-a0-e7-ac-94-e8-ae-b0-e4-b9-8b-e5-ad-98-e5-82-a8-e7-ae-a1-e7-90-86-lv-pv-vg-pp.html" itemprop="url">AIX 学习笔记之 存储管理 LV PV VG PP</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2012-08-19T04:15:06+08:00">
+                2012-08-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux运维/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux运维</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2012/08/19/aix-e5-ad-a6-e4-b9-a0-e7-ac-94-e8-ae-b0-e4-b9-8b-e5-ad-98-e5-82-a8-e7-ae-a1-e7-90-86-lv-pv-vg-pp.html" class="leancloud_visitors" data-flag-title="AIX 学习笔记之 存储管理 LV PV VG PP">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  7
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>1.基本概念：<br>PV 物理卷：普通的直接访问的存储设备，有固定的和可移动的之分，代表性的就是硬盘。<br>vg 卷组：AIX中最大的存储单位，一个卷组由一组物理硬盘组成，也就是由一个或多个物理卷组成。<br>pp 物理分区：是把物理卷划分成连续的大小相等的存储单位，一个卷组中的物理分区大小都相等。<br>lp 逻辑分区：适映射物理分区的逻辑单位，一个逻辑分区可以对应一个也可以对应多个物理分区。<br>lv 逻辑卷：是指卷组中由多个逻辑分区组成的集合，逻辑卷中的逻辑分区是连续的，但是对应的物理分   区是不连续的，可以在一个磁盘上，也可以在不同的磁盘上。<br>fs 文件系统：是指在AIX系统中面向用户的存储空间。一个逻辑卷只能创建一个文件系统，也就是说一个    文件系统对应一个逻辑卷，如果删除逻辑卷也将删除文件系统。</p>
+<p>2.存储结构：<br>逻辑卷lv 不能被直接访问，是生设备（裸设备），逻辑卷上建文件系统，文件系统可以被用户访问，市熟设备。文件系统里建目录，目录下建文件。</p>
+<p>物理卷，卷组，物理分区，逻辑卷，逻辑分区，逻辑卷是面向操作系统的概念<br>文件系统，目录，文件是面向用户的概念。</p>
+<p>3.LVM的配置数据<br>卷组描述区(VGDA):描述卷组中的所有物理卷和逻辑卷的对应关系<br>卷组状态区(VGSA)：记录卷组中物理卷和物理分区的状态信息，在卷组激活时，确定哪些物理分区可用<br>逻辑卷控制块(LVCB)：位于每个逻辑卷开头，包含逻辑卷的信息，占用数百个字节</p>
+<p>LVM管理命令就是对VGDA内容的更新，当一块硬盘变成PV时，这个硬盘开始保留一部分空间存放VGDA信息，当把它加入卷组中时，开始将卷组信息写入VGDA区域，当把它从卷组删除时，也同时清除VGDA数据，这个数据还存在于AIX系统的ODM库中，当导入一个卷组时，把VGDA信息写入ODM，导出时删除。</p>
+<p>4.磁盘Quorum<br>卷组的每一个物理卷至少包含着一份VGDA和VGSA。当一个卷组只有一块硬盘时，这块硬盘存有两份VGDA和VGSA,当这个卷组由两块硬盘时，其中一块存有两份，另一块存有一份，当卷组由三块以上硬盘时，每块硬盘存有一份。 如果磁盘Quorum存在，则必须保证卷组有51%以上的VGDA/VGSA可以正常访问。淡然也可以关闭磁盘Quorum。</p>
+<p>5.逻辑存储管理的限制<br>VG数：每个系统最多255个VG<br>PV数：对于普通卷组，每个VG最多32个PV,对于大VG，每个卷组最多128个PV<br>PP数：每个PV最多有1016个PP<br>LV数：对于普通VG，每个卷组最多255个LV,对于大VG，每个VG最多512个LV<br>LP数：每个LV最多有32512个LP<br>PP和LP的大小：1M到1024M 必须是2的幂次方<br>LP映射PP的数量：一个LP可以映射1-3个PP</p>
+<p>6.物理区域的分布<br>外边缘(Outer-Edge)：存放很少访问的数据<br>外中间(Outer-Middle)：创建逻辑卷时默认的位置<br>中间(Center):磁盘搜索时间最短，速度最快。<br>内中间(Inner-Middle)：比中间稍慢一些<br>内边缘(Inner-Edge)存放很少访问的数据</p>
+<p>7.向系统添加一块硬盘<br>方法一：<br>添加硬盘后起动机器，自动运行cfgmgr,直接查看结果，如果没有识别再手工配置。</p>
+<p>#cfgmgr -v</p>
+<p>#lspv</p>
+<p>#chdev -l hdisk2 -a pv=yes</p>
+<p>方法二：<br>系统不能重起时，县查看原有硬盘，然后安装新硬盘，检查新设备，配置新设备</p>
+<p>#lspv</p>
+<p>#cfgmgr -v</p>
+<p>#lspv</p>
+<p>#chdev -l hdisk2 -a pv=yes</p>
+<p>#mkdev -c disk -s scsi -t 670mb -p scsi3 -w 6,0 -a pv=yes</p>
+<p>#smit makdsk</p>
+<p>8.修改物理卷属性</p>
+<p>#chpv -a n hdisk1    禁止hdisk1在分配新的PP</p>
+<p>#chpv -a y hdisk1    允许</p>
+<p>#chpv -v r hdisk1    关闭hdisk1的可用性，无法通过逻辑形式读写和访问该物理卷</p>
+<p>#chpv -v a hdisk1    允许</p>
+<p>#chpv -c hdisk1      清除hdisk1上的引导记录</p>
+<p>#smit chpv</p>
+<p>9.显示物理卷信息</p>
+<p>#lsdev -Cc disk 显示系统一定义和已配置的物理卷</p>
+<p>#lspv            以不带任何参数的形式显示系统中所有物理卷信息 </p>
+<p>#lspv hdisk0     显示一个物理卷hdisk0的属性</p>
+<p>#lspv -l hdisk0 显示物理卷hdisk0上分布的逻辑卷。</p>
+<p>#lspv -p hdisk0 显示物理卷上每个逻辑卷物理分区的分布情况，同时显示逻辑卷类型和文件mount点。</p>
+<p>#lspv -M hdisk0 显示物理分区和逻辑分区的对应情况。</p>
+<p>10迁移物理卷上的内容：</p>
+<p>a.确定系统中有哪些磁盘可用</p>
+<p>#lsdev -Cc dev</p>
+<p>#lspv</p>
+<p>#extendvg rootvg hdisk5</p>
+<p>b.检查卷组中包含哪些磁盘，确认源磁盘和目标磁盘在同一个卷组中，</p>
+<p>#lsvg -p rootvg</p>
+<p>c.确定目的盘上有足够的空间存放源盘的内容</p>
+<p>#lspv hdisk0 |grep “USED PPs”</p>
+<p>#lspv hdisk5 |grep “USED PPs”</p>
+<p>d.如果是rootvg 上的磁盘，检查引导逻辑卷是否在源磁盘上</p>
+<p>#lspv -l hdisk0 |grep hd5</p>
+<p>#megratepv -l hd5 hdisk0 hdisk5</p>
+<p>e.重设系统引导记录</p>
+<p>#bosboot -a -d /dev/hdisk5</p>
+<p>#bosboot -m normal hdisk5</p>
+<p>#mkboot -c -d /dev/hdisk0</p>
+<p>f.迁移</p>
+<p>#smit migratevg</p>
+<p>#migratevg hdisk0 hdisk5</p>
+<p>#migratevg -l lv01 hdisk0 hdisk5</p>
+<p>g.删除原盘数据</p>
+<p>#reducevg rootvg hdisk0</p>
+<p>#rmdev -dl hdisk0</p>
+<p>11.卷组管理</p>
+<p>#mkvg -y datavg -d 6 -s 8 hdisk7 hdisk8</p>
+<p>#smit mkvg      创建卷组是保证/etc/vg下有2M空间</p>
+<p>#lsvg           查看系统所有VG</p>
+<p>#lsvg -o        查看激活状态的VG</p>
+<p>#lsvg rootvg    查看rootvg属性</p>
+<p>#lsvg -l rootvg 查看rootvg里的LV</p>
+<p>#lsvg -p rootvg 查看rootvg中包含的物理卷</p>
+<p>#chvg -ay datavg 使卷组启动时自动激活</p>
+<p>#chvg -an datavg 使卷组启动时不能自动激活</p>
+<p>#chvg -u datavg 给卷组解锁</p>
+<p>#extendvg datavg hdisk5</p>
+<p>#reducevg datavg hdisk5</p>
+<p>#varyonvg datavg</p>
+<p>#varyoffvg datavg</p>
+<p>#exportvg datavg</p>
+<p>#importvg -y datavg hdisk5</p>
+<p>#syncvg -p hdisk03 hdisk05   同步物理卷</p>
+<p>#syncvg -v vg05 vg06         同步卷组vg05和vg06上的拷贝</p>
+<p>#redefinevg -d hdisk0 rootvg   在ODM库中重定义卷组信息，</p>
+<p>#swapoff paging_spce_name 使页面空间处于非活动状态</p>
+<p>#mirrorvg -c 3 datavg   做3份拷贝的卷组镜像</p>
+<p>#mirrorvg -S -c 3 datavg    后台同步</p>
+<p>镜像环境中替换磁盘</p>
+<p>#unmirrorvg datavg hdiak7   删除hdisk7上的镜像</p>
+<p>#reduncevg datavg hdisk7    在卷组中删除hdisk7</p>
+<p>#rmdev -dl hdisk7           在系统中删除hdisk7</p>
+<p>#extendvg datavg hdisk7     将新盘加入datavg</p>
+<p>#mirrorvg datavg            给卷组datavg做镜像</p>
+<p>#unmirrorvg                 取消卷组镜像</p>
+<p>12.逻辑卷管理</p>
+<p>#getlvcb -TA hd2   查看逻辑卷控制块信息</p>
+<p>#lsvg -l rootvg 查看rootvg上的逻辑卷信息</p>
+<p>#lslv mylv        查看一个lv的详细属性</p>
+<p>#lslv -l lv_01   显示一个逻辑卷所跨越的物理卷，以及PP在物理卷上的分布情况</p>
+<p>#lslv -p hdisk1 显示物理卷上的逻辑卷分配图</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2012/08/15/rsync-rsync-ssh-rsync-lsyncd-e5-a4-9a-e7-a7-8d-e5-90-8c-e6-ad-a5-e6-96-b9-e6-a1-88-e4-b8-8e-e6-af-94-e8-be-83.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Geekwolf">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/wolf.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Geekwolf's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2012/08/15/rsync-rsync-ssh-rsync-lsyncd-e5-a4-9a-e7-a7-8d-e5-90-8c-e6-ad-a5-e6-96-b9-e6-a1-88-e4-b8-8e-e6-af-94-e8-be-83.html" itemprop="url">rsync , rsync + ssh, rsync + lsyncd 多种同步方案与比较</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2012-08-15T09:33:55+08:00">
+                2012-08-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux运维/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux运维</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2012/08/15/rsync-rsync-ssh-rsync-lsyncd-e5-a4-9a-e7-a7-8d-e5-90-8c-e6-ad-a5-e6-96-b9-e6-a1-88-e4-b8-8e-e6-af-94-e8-be-83.html" class="leancloud_visitors" data-flag-title="rsync , rsync + ssh, rsync + lsyncd 多种同步方案与比较">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  4
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>1. 利用 ssh+rsync<br> 只需要在服务器端打开 ssh 服务, 并启动 xinetd 中 rsync 服务则可使用<br> a. 增量同步<br>&#160; rsync -av /src-dir/.&#160; <a href="mailto:user@ipadress:/dest-dir/" target="_blank" rel="external">user@ipadress:/dest-dir/</a>.<br> b. 镜像同步<br>&#160; rsync -av –delete /src-dir/.&#160; <a href="mailto:user@ipadress:/dest-dir/" target="_blank" rel="external">user@ipadress:/dest-dir/</a>.<br> 特点: 配置简单, 不需要配置 rsyncd.conf 配置文件, 但需要在同步过程中进行用户认证<br> 注: 利用 expact + gzipexe 可以创建自动同步加密脚本<br> 使用: 可手动同步或每天晚上定制时间任务同步<br> 缺点:无法实现实时同步, 不可以成为双机热备份方案么 </p>
+<p>2. 启用 rsync 服务<br> 需要配置 /etc/rsyncd.conf 配置文件, 需要启动 xinetd 中 rsync 服务, 可以不通过 sshd 协调<br> a. 配置文件 (参考&#160; man 5 rsyncd.conf , 目录共享管理参考 smb.conf)</p>
+<p>rsyncd.conf 参考<br>motd file = true&#160;&#160;&#160;&#160; # 时间记录<br>pid file = /var/run/rsyncd.pid<br>port = 873<br>address = 0.0.0.0<br>log file = /var/log/rsyncd.log&#160; # rsync 独立日志, 记录每个文件更新信息<br>syslog facility = syslog&#160;&#160; # 增加同步启动与结束信息到 /var/log/messages 仲<br>uid = nobody&#160;&#160;&#160;&#160;&#160; # 注: 定义同步时 rsync 进程用户 id<br>gid = nobody<br>use chroot = no</p>
+<p>[share]<br>path=/tmp/test<br>read only=false</p>
+<p>rsyncd.conf 配置安全信息:<br>charset 用于设定字符集, 可用字符集参考 smb.conf 标准<br>max connections 并发连接数量<br>read only&#160; 读写控制<br>write only 读写控制<br>list&#160; 是否允许客户端利用&#160; rsync –list-only rsync://192.168.1.11:873 查询共享目录信息<br> 注: rsync –list-only rsync://192.168.1.11:873/share/. 能够列出文件信息, 与 list 参数无关<br>exclude 同步过程中忽略某个文件或目录 ex: = new/ old/ kdump.conf (注:只需要相对路径)<br>exclude from = /etc/rsyncd.list 以文件记录同步过程忽略信息<br>incoming chmod 文件目录权限定义<br>outgoing chmod 文件目录权限定义<br>auth users 配合 secrets file 使用, 定义用户认证(明文) = user1 user2 user3<br>secrets file = filepath 验证文件 语法 user:password (必须包含上述user123) 文件 root 600 属性<br>hosts allow 主机 IP 定义<br>hosts deny 主机 IP 定义<br>log format 默认格式 %o %h [%a] %m (%u) %f %l 参考 rsyncd.conf </p>
+<p> 常见同步语法<br> rsync –list-only rsync://192.168.1.11:873/share/. 能够列出文件信息<br> rsync –list-only rsync://192.168.1.11:873 查询共享目录信息<br> rsync –exclude-from=file.txt rsync://192.168.1.11:873/share/.&#160; /tmp/test/. 不同步指定信息</p>
+<p> 优点: 避免显示主机文件信息绝对路径, 多种安全设定, 不需要利用ssh 进行用户验证, 支持匿名同步<br> 缺点: 无法主动推送文件</p>
+<p>3. rsync+lsyncd 数据同步</p>
+<p>&#160;&#160;&#160;&#160;&#160;&#160; [rsync server ]&#160; &lt;——&#160;&#160;&#160;&#160; [ lsyncd ]&#160;&#160;&#160; —&gt;&#160; [ rsync server ]</p>
+<p>rsync 客户端需要编译 lsyncd 软件,安装 rsync 工具<br>rsync 服务器需要配置并启动 rsync 进程, 如上例子, 匿名共享 share 目录</p>
+<p>下载最新版<br><a href="http://lsyncd.googlecode.com/files/lsyncd-2.0.5.tar.gz" target="_blank" rel="external">http://lsyncd.googlecode.com/files/lsyncd-2.0.5.tar.gz</a><br>依赖: lua &gt;= 5.1.3, rhel6 补丁<br><a href="ftp://ftp.pbone.net/mirror/ftp.scientificlinux.org/linux/scientific/6rolling/i386/os/Packages/lua-devel-5.1.4-4.1.el6.i686.rpm" target="_blank" rel="external">ftp://ftp.pbone.net/mirror/ftp.scientificlinux.org/linux/scientific/6rolling/i386/os/Packages/lua-devel-5.1.4-4.1.el6.i686.rpm</a></p>
+<p>语法需调用 LUA 格式</p>
+<p>创建配置文件 share.lua</p>
+<p>settings = {&#160;<br>.. 略<br> nodaemon&#160;&#160; = true,&#160;&#160;&#160; # false 成为前台进程, 方便测试<br> statusInterval = 3,&#160;&#160;&#160; # lsyncd.status 状态更新时间间隔<br> …略<br>}</p>
+<p>sync{<br> ..&#160; 略<br>}</p>
+<p>bash = {&#160;&#160;&#160;&#160;<br> … 略<br>}</p>
+<p>settings 为主配置, sync 为同步配置, bash 为同步方案</p>
+<p>启动方法<br>lsyncd&#160; share.lua</p>
+<p>初次启动则会自动同步文件内容, 后发生文件修改, 增加, 删除都会进行自动同步<br>如果需要对多台电脑进行同步, 可以利用 lsyncd&#160; backup.lua 等脚本多次进行进程启动</p>
+<p> 方案优点:<br>&#160; 1. 自动对目录中文件向 rsync 服务器进行推送<br>&#160; 2. 能够支持多台 rsync 服务器<br>&#160; 3. 避免人工参与修改<br> 缺点:<br>&#160; 同步时间非实时, 约莫具有30秒延时<br>&#160; 不建议采用大文件进行同步</p>
+<p>&#160;</p>
+<p>转自TerrySang</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2012/08/15/show-processlist-e7-bb-93-e6-9e-9c-e4-b8-adstatus-e7-8a-b6-e6-80-81-e6-80-bb-e7-bb-93.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Geekwolf">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/wolf.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Geekwolf's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2012/08/15/show-processlist-e7-bb-93-e6-9e-9c-e4-b8-adstatus-e7-8a-b6-e6-80-81-e6-80-bb-e7-bb-93.html" itemprop="url">show processlist结果中status状态总结</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2012-08-15T05:42:58+08:00">
+                2012-08-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux运维/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux运维</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2012/08/15/show-processlist-e7-bb-93-e6-9e-9c-e4-b8-adstatus-e7-8a-b6-e6-80-81-e6-80-bb-e7-bb-93.html" class="leancloud_visitors" data-flag-title="show processlist结果中status状态总结">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  21
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>&#160;</p>
+<p>在Show processlist输出中的Status项: 5.1手册中没有的或者翻译有问题的，都附带5.5原文说明：</p>
+<h5 id="After-create"><a href="#After-create" class="headerlink" title="After create"></a>After create</h5><p>This occurs when the thread creates a table (including internal temporary tables), at the end of the function that creates the table. This state is used even if the table could not be created due to some error.</p>
+<p>这个状态当线程创建一个表（包括内部临时表）时，在这个建表功能结束时出现。即使某些错误导致建表失败，也会使用这个状态。</p>
+<h5 id="Analyzing"><a href="#Analyzing" class="headerlink" title="Analyzing"></a>Analyzing</h5><p>The thread is calculating a MyISAM table key distributions (for example, for ANALYZE TABLE).</p>
+<p>当计算MyISAM表索引分布时。（比如进行ANALYZE TABLE时）</p>
+<h5 id="checking-permissions"><a href="#checking-permissions" class="headerlink" title="checking permissions"></a>checking permissions</h5><p>The thread is checking whether the server has the required privileges to execute the statement.</p>
+<p>这个线程检查服务器是否有具有执行该语句的所需权限。</p>
+<h5 id="Checking-table"><a href="#Checking-table" class="headerlink" title="Checking table"></a>Checking table</h5><p>The thread is performing a table check operation.</p>
+<p>线程正在执行表检查操作。</p>
+<h5 id="cleaning-up"><a href="#cleaning-up" class="headerlink" title="cleaning up"></a>cleaning up</h5><p>The thread has processed one command and is preparing to free memory and reset certain state variables.</p>
+<p>线程处理一个命令，并正准备释放内存和重置某些状态变量。</p>
+<h5 id="closing-tables"><a href="#closing-tables" class="headerlink" title="closing tables"></a>closing tables</h5><p>The thread is flushing the changed table data to disk and closing the used tables. This should be a fast operation. If not, verify that you do not have a full disk and that the disk is not in very heavy use.</p>
+<p>线程正在将变更的表中的数据刷新到磁盘上并正在关闭使用过的表。这应该是一个快速的操作。如果不快，则应该检查硬盘空间是否已满或者硬盘IO是否达到瓶颈。</p>
+<h5 id="converting-HEAP-to-MyISAM"><a href="#converting-HEAP-to-MyISAM" class="headerlink" title="converting HEAP to MyISAM"></a>converting HEAP to MyISAM</h5><p>The thread is converting an internal temporary table from a MEMORY table to an on-disk MyISAM table.</p>
+<p>线程将一个内部临时表转换为磁盘上的MyISAM表。</p>
+<h5 id="copy-to-tmp-table"><a href="#copy-to-tmp-table" class="headerlink" title="copy to tmp table"></a>copy to tmp table</h5><p>The thread is processing an ALTER TABLE statement. This state occurs after the table with the new structure has been created but before rows are copied into it.</p>
+<p>线程正在处理一个ALTER TABLE语句。这个状态发生在新的表结构已经创建之后，但是在数据被复制进入之前。</p>
+<h5 id="Copying-to-group-table"><a href="#Copying-to-group-table" class="headerlink" title="Copying to group table"></a>Copying to group table</h5><p>If a statement has different ORDER BY and GROUP BY criteria, the rows are sorted by group and copied to a temporary table.</p>
+<p>如果一个语句有不同的ORDER BY和GROUP BY条件，数据会被复制到一个临时表中并且按组排序。</p>
+<h5 id="Copying-to-tmp-table"><a href="#Copying-to-tmp-table" class="headerlink" title="Copying to tmp table"></a>Copying to tmp table</h5><p>The server is copying to a temporary table in memory.</p>
+<p>线程将数据写入内存中的临时表。</p>
+<h5 id="Copying-to-tmp-table-on-disk"><a href="#Copying-to-tmp-table-on-disk" class="headerlink" title="Copying to tmp table on disk"></a>Copying to tmp table on disk</h5><p>The server is copying to a temporary table on disk. The temporary result set has become too large (see Section 8.4.3.3, “How MySQL Uses Internal Temporary Tables”). Consequently, the thread is changing the temporary table from in-memory to diskbased format to save memory.</p>
+<p>线程正在将数据写入磁盘中的临时表。临时表的结果集过大（大于tmp_table_size）。所以，线程将临时表由基于内存模式改为基于磁盘模式，以节省内存。</p>
+<h5 id="Creating-index"><a href="#Creating-index" class="headerlink" title="Creating index"></a>Creating index</h5><p>The thread is processing ALTER TABLE … ENABLE KEYS for a MyISAM table.</p>
+<p>线程正在对一个MyISAM表执行ALTER TABLE … ENABLE KEYS语句。</p>
+<h5 id="Creating-sort-index"><a href="#Creating-sort-index" class="headerlink" title="Creating sort index"></a>Creating sort index</h5><p>The thread is processing a SELECT that is resolved using an internal temporary table.</p>
+<p>线程正在使用内部临时表处理一个SELECT 操作。</p>
+<h5 id="creating-table"><a href="#creating-table" class="headerlink" title="creating table"></a>creating table</h5><p>The thread is creating a table. This includes creation of temporary tables.</p>
+<p>线程正在创建一个表，包括创建临时表。</p>
+<h5 id="Creating-tmp-table"><a href="#Creating-tmp-table" class="headerlink" title="Creating tmp table"></a>Creating tmp table</h5><p>The thread is creating a temporary table in memory or on disk. If the table is created in memory but later is converted to an ondisk table, the state during that operation will be Copying to tmp table on disk.</p>
+<p>线程正在创建一个临时表在内存或者磁盘上。如果这个表创建在内存上但是之后被转换到磁盘上，这个状态在运行Copying to tmp table on disk 的时候保持。</p>
+<h5 id="deleting-from-main-table"><a href="#deleting-from-main-table" class="headerlink" title="deleting from main table"></a>deleting from main table</h5><p>The server is executing the first part of a multiple-table delete. It is deleting only from the first table, and saving columns and offsets to be used for deleting from the other (reference) tables.</p>
+<p>线程正在执行多表删除的第一部分，只从第一个表中删除。并且保存列和偏移量用来从其他（参考）表删除。</p>
+<h5 id="deleting-from-reference-tables"><a href="#deleting-from-reference-tables" class="headerlink" title="deleting from reference tables"></a>deleting from reference tables</h5><p>The server is executing the second part of a multiple-table delete and deleting the matched rows from the other tables.</p>
+<p>线程正在执行多表删除的第二部分，并从其他表中删除匹配的行。</p>
+<h5 id="discard-or-import-tablespace"><a href="#discard-or-import-tablespace" class="headerlink" title="discard_or_import_tablespace"></a>discard_or_import_tablespace</h5><p>The thread is processing an ALTER TABLE … DISCARD TABLESPACE or ALTER TABLE … IMPORT TABLESPACE statement.</p>
+<p>线程正在执行ALTER TABLE … DISCARD TABLESPACE 或 ALTER TABLE … IMPORT TABLESPACE语句。</p>
+<h5 id="end"><a href="#end" class="headerlink" title="end"></a>end</h5><p>This occurs at the end but before the cleanup of ALTER TABLE, CREATE VIEW, DELETE, INSERT, SELECT, or UPDATE statements.</p>
+<p>这个状态出现在结束时，但是在对ALTER TABLE, CREATE VIEW, DELETE, INSERT, SELECT, 或者 UPDATE 语句进行清理之前。</p>
+<h5 id="executing"><a href="#executing" class="headerlink" title="executing"></a>executing</h5><p>The thread has begun executing a statement.</p>
+<p>该线程已开始执行一条语句。</p>
+<h5 id="Execution-of-init-command"><a href="#Execution-of-init-command" class="headerlink" title="Execution of init_command"></a>Execution of init_command</h5><p>The thread is executing statements in the value of the init_command system variable.</p>
+<p>线程正在执行处于init_command系统变量的值中的语句。</p>
+<h5 id="freeing-items"><a href="#freeing-items" class="headerlink" title="freeing items"></a>freeing items</h5><p>The thread has executed a command. Some freeing of items done during this state involves the query cache. This state is usually followed by cleaning up.</p>
+<p>线程已经执行了命令。在这个状态中涉及的查询缓存可以得到一些释放。这个状态通常后面跟随cleaning up状态。</p>
+<h5 id="Flushing-tables"><a href="#Flushing-tables" class="headerlink" title="Flushing tables"></a>Flushing tables</h5><p>The thread is executing FLUSH TABLES and is waiting for all threads to close their tables.</p>
+<p>线程正在执行FLUSH TABLES 并且等待所有线程关闭他们的表。</p>
+<h5 id="FULLTEXT-initialization"><a href="#FULLTEXT-initialization" class="headerlink" title="FULLTEXT initialization"></a>FULLTEXT initialization</h5><p>The server is preparing to perform a natural-language full-text search.</p>
+<p>服务器正在准备进行自然语言全文检索。</p>
+<h5 id="init"><a href="#init" class="headerlink" title="init"></a>init</h5><p>This occurs before the initialization of ALTER TABLE, DELETE, INSERT, SELECT, or UPDATE statements. Actions taken by the server in this state include flushing the binary log, the InnoDB log, and some query cache cleanup operations.</p>
+<p>For the end state, the following operations could be happening:</p>
+<p>• Removing query cache entries after data in a table is changed</p>
+<p>• Writing an event to the binary log</p>
+<p>• Freeing memory buffers, including for blobs</p>
+<p>这个状态出现在线程初始化ALTER TABLE, DELETE, INSERT, SELECT, 或 UPDATE语句之前。服务器在这种状态下进行的操作，包括：刷新全日志、Innodb日志，和一些查询缓存清理操作。</p>
+<p>对于end状态，可能会发生下列操作：</p>
+<p>在表中的数据变更之后移除查询缓存。</p>
+<p>将事务写入全日志。</p>
+<p>释放内存缓冲区，包括大的二进制数据块。</p>
+<h5 id="Killed"><a href="#Killed" class="headerlink" title="Killed"></a>Killed</h5><p>Someone has sent a KILL statement to the thread and it should abort next time it checks the kill flag. The flag is checked in each major loop in MySQL, but in some cases it might still take a short time for the thread to die. If the thread is locked by some other thread, the kill takes effect as soon as the other thread releases its lock.</p>
+<p>程序对线程发送了KILL语句，并且它应该放弃下一次对KILL标记的检查。这个标记在每一个MySQL的主要循环中被检查，但在某些情况下，它可能需要令线程在很短的时间内死亡。如果这个线程被其他线程锁住了，这个KILL操作会在其他线程释放锁的瞬时执行。</p>
+<h5 id="Locked"><a href="#Locked" class="headerlink" title="Locked"></a>Locked</h5><p>The query is locked by another query.</p>
+<p>As of MySQL 5.5.3, this state was removed because it was equivalent to the Table lock state and no longer appears in SHOW PROCESSLIST output.</p>
+<p>这个查询被其他查询锁住了。</p>
+<p>在MySQL 5.5.3版本，这个状态被移除了。因为它相当于表锁状态，并且不再出现在SHOW PROCESSLIST输出中。</p>
+<h5 id="logging-slow-query"><a href="#logging-slow-query" class="headerlink" title="logging slow query"></a>logging slow query</h5><p>The thread is writing a statement to the slow-query log.</p>
+<p>这个线程正在将语句写入慢查询日志。</p>
+<h5 id="NULL"><a href="#NULL" class="headerlink" title="NULL"></a>NULL</h5><p>This state is used for the SHOW PROCESSLIST state.</p>
+<p>没有操作的状态。</p>
+<h5 id="login"><a href="#login" class="headerlink" title="login"></a>login</h5><p>The initial state for a connection thread until the client has been authenticated successfully.</p>
+<p>线程连接的初始状态。直到客户端已经成功验证。</p>
+<h5 id="manage-keys"><a href="#manage-keys" class="headerlink" title="manage keys"></a>manage keys</h5><p>The server is enabling or disabling a table index.</p>
+<p>服务器启用或禁用表索引。</p>
+<h5 id="Opening-tables-Opening-table"><a href="#Opening-tables-Opening-table" class="headerlink" title="Opening tables, Opening table"></a>Opening tables, Opening table</h5><p>The thread is trying to open a table. This is should be very fast procedure, unless something prevents opening. For example, an ALTER TABLE or a LOCK TABLE statement can prevent opening a table until the statement is finished. It is also worth checking that your table_open_cache value is large enough.</p>
+<p>线程正试图打开一张表。这应该是非常快的过程，除非打开受到阻止。一个ALTER TABLE 或LOCK TABLE语句能够阻止打开一张表直到语句运行结束。有必要检查table_open_cache的值是否足够大。</p>
+<h5 id="optimizing"><a href="#optimizing" class="headerlink" title="optimizing"></a>optimizing</h5><p>The server is performing initial optimizations for a query.</p>
+<p>服务器执行查询的初步优化。</p>
+<h5 id="preparing"><a href="#preparing" class="headerlink" title="preparing"></a>preparing</h5><p>This state occurs during query optimization.</p>
+<p>在查询优化过程中出现这个状态。</p>
+<h5 id="Purging-old-relay-logs"><a href="#Purging-old-relay-logs" class="headerlink" title="Purging old relay logs"></a>Purging old relay logs</h5><p>The thread is removing unneeded relay log files.</p>
+<p>线程正在移除不必要的中继日志文件。</p>
+<h5 id="query-end"><a href="#query-end" class="headerlink" title="query end"></a>query end</h5><p>This state occurs after processing a query but before the freeing items state.</p>
+<p>这个状态出现在处理一个查询之后，但是在freeing items状态之前。</p>
+<h5 id="Reading-from-net"><a href="#Reading-from-net" class="headerlink" title="Reading from net"></a>Reading from net</h5><p>The server is reading a packet from the network.</p>
+<p>服务器正在从网络阅读数据包。</p>
+<h5 id="Removing-duplicates"><a href="#Removing-duplicates" class="headerlink" title="Removing duplicates"></a>Removing duplicates</h5><p>The query was using SELECT DISTINCT in such a way that MySQL could not optimize away the distinct operation at an early stage. Because of this, MySQL requires an extra stage to remove all duplicated rows before sending the result to the client.</p>
+<p>查询正在使用SELECT DISTINCT，这种情况下MySQL不能在早期阶段优化掉一些distinct操作。因此，MySQL需要一个额外的阶段，在将结果发送到客户端之前删除所有重复的行。</p>
+<h5 id="removing-tmp-table"><a href="#removing-tmp-table" class="headerlink" title="removing tmp table"></a>removing tmp table</h5><p>The thread is removing an internal temporary table after processing a SELECT statement. This state is not used if no temporary table was created.</p>
+<p>线程正在移除一个内置临时表，在执行一条SELECT语句之后。 如果没有临时表产生，那么这个状态不被使用。</p>
+<h5 id="rename"><a href="#rename" class="headerlink" title="rename"></a>rename</h5><p>The thread is renaming a table.</p>
+<p>线程正在重命名一张表。</p>
+<h5 id="rename-result-table"><a href="#rename-result-table" class="headerlink" title="rename result table"></a>rename result table</h5><p>The thread is processing an ALTER TABLE statement, has created the new table, and is renaming it to replace the original table.</p>
+<p>线程正在处理ALTER TABLE语句，创建新的表，并且重命名它来代替原有的表。</p>
+<h5 id="Reopen-tables"><a href="#Reopen-tables" class="headerlink" title="Reopen tables"></a>Reopen tables</h5><p>The thread got a lock for the table, but noticed after getting the lock that the underlying table structure changed. It has freed the lock, closed the table, and is trying to reopen it.</p>
+<p>线程获得了表锁，但是在取得表锁之后才发现该表的底层结构已经发生了变化。线程释放这个锁，关闭表，并试图重新打开该表。</p>
+<h5 id="Repair-by-sorting"><a href="#Repair-by-sorting" class="headerlink" title="Repair by sorting"></a>Repair by sorting</h5><p>The repair code is using a sort to create indexes.</p>
+<p>修复代码正在使用一个分类来创建索引。</p>
+<h5 id="Repair-done"><a href="#Repair-done" class="headerlink" title="Repair done"></a>Repair done</h5><p>The thread has completed a multi-threaded repair for a MyISAM table.</p>
+<p>线程完成一个多线程的MyISAM表的修复。</p>
+<h5 id="Repair-with-keycache"><a href="#Repair-with-keycache" class="headerlink" title="Repair with keycache"></a>Repair with keycache</h5><p>The repair code is using creating keys one by one through the key cache. This is much slower than Repair by sorting.</p>
+<p>修复代码正在通过索引缓存一个接一个地使用创建索引。这比通过分类修复要慢很多。</p>
+<h5 id="Rolling-back"><a href="#Rolling-back" class="headerlink" title="Rolling back"></a>Rolling back</h5><p>The thread is rolling back a transaction.</p>
+<p>线程正在回滚一个事务</p>
+<h5 id="Saving-state"><a href="#Saving-state" class="headerlink" title="Saving state"></a>Saving state</h5><p>For MyISAM table operations such as repair or analysis, the thread is saving the new table state to the .MYI file header. State includes information such as number of rows, the AUTO_INCREMENT counter, and key distributions.</p>
+<p>对于MyISAM表的类似repair或analysis操作，线程在.MYI文件的头部保存一个新表的状态。状态信息包括行数、自增数、索引分布等等。</p>
+<h5 id="Searching-rows-for-update"><a href="#Searching-rows-for-update" class="headerlink" title="Searching rows for update"></a>Searching rows for update</h5><p>The thread is doing a first phase to find all matching rows before updating them. This has to be done if the UPDATE is changing the index that is used to find the involved rows.</p>
+<p>线程正在进行第一阶段，在更新前寻找所有匹配的行。如果update正在更改用于查找相关行的索引，则必须这么做。</p>
+<h5 id="Sending-data"><a href="#Sending-data" class="headerlink" title="Sending data"></a>Sending data</h5><p>The thread is reading and processing rows for a SELECT statement, and sending data to the client. Because operations occurring during this this state tend to perform large amounts of disk access (reads), it is often the longest-running state over the lifetime of a given query.</p>
+<p>线程正在读取和处理一条SELECT语句的行，并且将数据发送至客户端。由于在此期间会执行大量的磁盘访问（读操作），这个状态在一个指定查询的生命周期中经常是耗时最长的。</p>
+<h5 id="setup"><a href="#setup" class="headerlink" title="setup"></a>setup</h5><p>The thread is beginning an ALTER TABLE operation.</p>
+<p>线程正开始进行一个ALTER TABLE操作。</p>
+<h5 id="Sorting-for-group"><a href="#Sorting-for-group" class="headerlink" title="Sorting for group"></a>Sorting for group</h5><p>The thread is doing a sort to satisfy a GROUP BY.</p>
+<p>线程正在执行一个由GROUP BY指定的排序。</p>
+<h5 id="Sorting-for-order"><a href="#Sorting-for-order" class="headerlink" title="Sorting for order"></a>Sorting for order</h5><p>The thread is doing a sort to satisfy a ORDER BY.</p>
+<p>线程正在执行一个由ORDER BY指定的排序。</p>
+<h5 id="Sorting-index"><a href="#Sorting-index" class="headerlink" title="Sorting index"></a>Sorting index</h5><p>The thread is sorting index pages for more efficient access during a MyISAM table optimization operation.</p>
+<p>线程正在对索引页进行排序，为了对MyISAM表进行操作时获得更优的性能。</p>
+<h5 id="Sorting-result"><a href="#Sorting-result" class="headerlink" title="Sorting result"></a>Sorting result</h5><p>For a SELECT statement, this is similar to Creating sort index, but for nontemporary tables.</p>
+<p>对于一个SELECT语句，这与创建排序索引相似，但是是对非临时表。</p>
+<h5 id="statistics"><a href="#statistics" class="headerlink" title="statistics"></a>statistics</h5><p>The server is calculating statistics to develop a query execution plan. If a thread is in this state for a long time, the server is probably disk-bound performing other work.</p>
+<p>服务器计算统计去规划一个查询。如果一个线程长时间处于这个状态，这个服务器的磁盘可能在执行其他工作。</p>
+<h5 id="System-lock"><a href="#System-lock" class="headerlink" title="System lock"></a>System lock</h5><p>The thread is going to request or is waiting for an internal or external system lock for the table. If this state is being caused by requests for external locks and you are not using multiple mysqld servers that are accessing the same MyISAM tables, you can disable external system locks with the –skip-external-locking option. However, external locking is disabled by default, so it is likely that this option will have no effect. For SHOW PROFILE, this state means the thread is requesting the lock</p>
+<p>(not waiting for it).</p>
+<p>这个线程正在请求或者等待一个内部的或外部的系统表锁。如果这个状态是由于外部锁的请求产生的，并且你没有使用多个正在访问相同的表的mysqld服务器，那么你可以使用–skip-external-locking选项禁用外部系统锁。然而，外部系统锁默认情况下禁用，因此这个选项可能不会产生效果。对于SHOW PROFILE，这个状态意味着线程正在请求锁。（而非等待）</p>
+<h5 id="Table-lock"><a href="#Table-lock" class="headerlink" title="Table lock"></a>Table lock</h5><p>The next thread state after System lock. The thread has acquired an external lock and is going to request an internal table lock.</p>
+<p>This state was replaced in MySQL 5.5.6 with Waiting for table level lock.</p>
+<p>系统锁定后的下一个线程状态。线程已获得外部锁并且将请求内部表锁。</p>
+<p>这个状态在MySQL 5.5.6版本中被Waiting for table level lock取代。</p>
+<h5 id="Updating"><a href="#Updating" class="headerlink" title="Updating"></a>Updating</h5><p>The thread is searching for rows to update and is updating them.</p>
+<p>线程寻找更新匹配的行并进行更新。</p>
+<h5 id="updating-main-table"><a href="#updating-main-table" class="headerlink" title="updating main table"></a>updating main table</h5><p>The server is executing the first part of a multiple-table update. It is updating only the first table, and saving columns and offsets to be used for updating the other (reference) tables.</p>
+<p>线程正在执行多表更新的第一部分，只从第一个表中更新。并且保存列和偏移量用来从其他（参考）表更新。</p>
+<h5 id="updating-reference-tables"><a href="#updating-reference-tables" class="headerlink" title="updating reference tables"></a>updating reference tables</h5><p>The server is executing the second part of a multiple-table update and updating the matched rows from the other tables.</p>
+<p>线程正在执行多表更新的第二部分，并从其他表中更新匹配的行。</p>
+<h5 id="User-lock"><a href="#User-lock" class="headerlink" title="User lock"></a>User lock</h5><p>The thread is going to request or is waiting for an advisory lock requested with a GET_LOCK() call. For SHOW PROFILE, this state means the thread is requesting the lock (not waiting for it).</p>
+<p>线程正在请求或等待一个GET_LOCK()调用所要求的咨询锁。对于SHOW PROFILE，这个状态意味这线程正在请求锁。（而非等待）</p>
+<h5 id="User-sleep"><a href="#User-sleep" class="headerlink" title="User sleep"></a>User sleep</h5><p>The thread has invoked a SLEEP() call.</p>
+<p>线程调用了一个SLEEP()。</p>
+<h5 id="Waiting-for-all-running-commits-to-finish"><a href="#Waiting-for-all-running-commits-to-finish" class="headerlink" title="Waiting for all running commits to finish"></a>Waiting for all running commits to finish</h5><p>A statement that causes an explicit or implicit commit is waiting for release of a read lock. This state was removed in MySQL 5.5.8; Waiting for commit lock is used instead.</p>
+<p>一个显式或隐式语句在提交时等待释放读锁。这个状态在MySQL 5.5.8版本中被移除，以Waiting for commit lock代替。</p>
+<h5 id="Waiting-for-commit-lock"><a href="#Waiting-for-commit-lock" class="headerlink" title="Waiting for commit lock"></a>Waiting for commit lock</h5><p>A statement that causes an explicit or implicit commit is waiting for release of a read lock or FLUSH TABLES WITH READ LOCK) is waiting for a commit lock. This state was added in MySQL 5.5.8.</p>
+<p>同上，这个状态于MySQL 5.5.8版本加入。</p>
+<h5 id="Waiting-for-global-read-lock"><a href="#Waiting-for-global-read-lock" class="headerlink" title="Waiting for global read lock"></a>Waiting for global read lock</h5><p>FLUSH TABLES WITH READ LOCK) is waiting for a global read lock.</p>
+<p>等待全局读锁。</p>
+<h5 id="Waiting-for-release-of-readlock"><a href="#Waiting-for-release-of-readlock" class="headerlink" title="Waiting for release of readlock"></a>Waiting for release of readlock</h5><p>The thread is waiting for a global read lock obtained by another thread (with FLUSH TABLES WITH READ LOCK) to be released.This state was removed in MySQL 5.5.8; Waiting for global read lock or Waiting for commit lock are used instead.</p>
+<p>等待释放读锁。</p>
+<h5 id="Waiting-for-tables-Waiting-for-table-Waiting-for-table-flush"><a href="#Waiting-for-tables-Waiting-for-table-Waiting-for-table-flush" class="headerlink" title="Waiting for tables, Waiting for table, Waiting for table flush"></a>Waiting for tables, Waiting for table, Waiting for table flush</h5><p>The thread got a notification that the underlying structure for a table has changed and it needs to reopen the table to get the new structure. However, to reopen the table, it must wait until all other threads have closed the table in question.</p>
+<p>This notification takes place if another thread has used FLUSH TABLES or one of the following statements on the table in question: FLUSH TABLES _tbl<em>name</em>, ALTER TABLE, RENAME TABLE, REPAIR TABLE, ANALYZE TABLE, or OPTIMIZE TABLE.</p>
+<p>In MySQL 5.5.6, Waiting for table was replaced with Waiting for table flush.</p>
+<p>线程获得一个通知，底层表结构已经发生变化，它需要重新打开表来获取新的结构。然而，重新打开表，它必须等到所有其他线程关闭这个有问题的表。</p>
+<p>这个通知产生通常因为另一个线程对问题表执行了FLUSH TABLES或者以下语句之一：FLUSH TABLES _tbl<em>name</em>, ALTER TABLE, RENAME TABLE, REPAIR TABLE, ANALYZE TABLE, or OPTIMIZE TABLE.</p>
+<h5 id="Waiting-for-lock-type-lock"><a href="#Waiting-for-lock-type-lock" class="headerlink" title="Waiting for _lock_type _lock"></a>Waiting for _lock_type _lock</h5><p>The server is waiting to acquire a lock, where _lock_type _indicates the type of lock:</p>
+<p>• Waiting for event metadata lock (added in MySQL 5.5.8)</p>
+<p>• Waiting for global metadata lock (replaced by Waiting for global read lock in MySQL 5.5.8)</p>
+<p>• Waiting for global read lock (added in MySQL 5.5.8)</p>
+<p>• Waiting for schema metadata lock</p>
+<p>• Waiting for stored function metadata lock</p>
+<p>• Waiting for stored procedure metadata lock</p>
+<p>• Waiting for table level lock</p>
+<p>• Waiting for table metadata lock</p>
+<p>• Waiting for trigger metadata lock (added in MySQL 5.5.8)</p>
+<p>等待各个种类的表锁。</p>
+<h5 id="Waiting-on-cond"><a href="#Waiting-on-cond" class="headerlink" title="Waiting on cond"></a>Waiting on cond</h5><p>A generic state in which the thread is waiting for a condition to become true. No specific state information is available.</p>
+<p>一个普通的状态，线程正在等待一个条件为真。没有特定的状态信息可用。</p>
+<h5 id="Waiting-to-get-readlock"><a href="#Waiting-to-get-readlock" class="headerlink" title="Waiting to get readlock"></a>Waiting to get readlock</h5><p>The thread has issued a FLUSH TABLES WITH READ LOCK statement to obtain a global read lock and is waiting to obtain the lock. This state was removed in MySQL 5.5.8; Waiting for global read lock is used instead.</p>
+<p>线程发出了一个FLUSH TABLES WITH READ LOCK语句来获取一个全局读锁，并且等待获得这个锁。这个状态在MySQL 5.5.8被移除，使用Waiting for global read lock 来代替。</p>
+<h5 id="Writing-to-net"><a href="#Writing-to-net" class="headerlink" title="Writing to net"></a>Writing to net</h5><p>The server is writing a packet to the network.</p>
+<p>服务器正在写一个网络数据包。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2012/08/11/weblogic-11g-e9-87-8d-e7-bd-ae-e7-94-a8-e6-88-b7-e5-af-86-e7-a0-81-e8-bf-87-e7-a8-8b.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Geekwolf">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/wolf.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Geekwolf's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2012/08/11/weblogic-11g-e9-87-8d-e7-bd-ae-e7-94-a8-e6-88-b7-e5-af-86-e7-a0-81-e8-bf-87-e7-a8-8b.html" itemprop="url">WebLogic 11g重置用户密码过程</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2012-08-11T08:09:25+08:00">
+                2012-08-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux运维/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux运维</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2012/08/11/weblogic-11g-e9-87-8d-e7-bd-ae-e7-94-a8-e6-88-b7-e5-af-86-e7-a0-81-e8-bf-87-e7-a8-8b.html" class="leancloud_visitors" data-flag-title="WebLogic 11g重置用户密码过程">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  2
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>&#160;&#160;&#160;&#160; 刚接手了weblogic环境，对它并不熟悉，又加上之前被辞的人品极为差劲的所谓项目经理没有任何文档，苦不堪言！只好自己寻求解决之道！</p>
+<p>首先为了保证数据的安全，要先备份原来的配置文件</p>
+<p>$DOMAIN_HOME=/wls/Oracle/Middleware/user_projects/domains/base_domain/</p>
+<p>1.为了保证操作安全，备份$DOMAIN_HOME/security/DefaultAuthenticatorInit.ldift </p>
+<p>2. 进入$DOMAIN_HOME/security目录，执行下列命令： </p>
+<p>/wls/Oracle/Middleware/user_projects/domains/base_domain/security</p>
+<p>java&#160; -classpath /wls/Oracle/Middleware/wlserver_10.3/server/lib/weblogic.jar&#160; weblogic.security.utils.AdminAccount&#160; weblogic&#160; weblogic&#160; .</p>
+<p><u>特别注意命令结尾是空格和一个点号！</u></p>
+<p>此命令将生成新的DefaultAuthenticatorInit.ldift文件覆盖原来的</p>
+<p><u></u></p>
+<p>3. 进入管理服务器的AdminServer目录，如：$DOMAIN_HOME/servers/AdminServer。将其中的data目录重命名，如：data_old。或者备份到别的地方</p>
+<p>&#160;</p>
+<p>4. 修改管理服务器的boot.properties文件; </p>
+<p>如：$DOMAIN_HOME/servers/AdminServer/security /boot.properties，修改其中的用户名与密码（用明文，第一次启动服务器时明文将被加密），要和上面命令<br>中的用户名密码一致。<br>例：修改后：<br>username=weblogic<br>password=weblogic</p>
+<p>&#160;</p>
+<p>5. 重新启动服务器后，就可以使用用户weblogic登录管理控制台了</p>
+<p>第一次启动后，$DOMAIN_HOME/servers/AdminServer/security/boot.properties中的用户名密码被加密为： </p>
+<p>password={AES}eCAESwlBym9A6ZI6HMOSf1ACl85BwDDouZ2+FaamP1s=<br>username={AES}YVuNv07/Yi3EjhDUoUjWl/S1jUDamfLpm9/iXAb3gto=</p>
+<p>&#160;</p>
+<p>WebLogic管理控制台访问地址：</p>
+<p><a href="http://192.168.1.10:7001/console/login/LoginForm.jsp" title="http://192.168.1.108:7001/console/login/LoginForm.jsp" target="_blank" rel="external">http://192.168.1.10:7001/console/login/LoginForm.jsp</a></p>
+<p>&#160;</p>
+<p>有时间会继续补充WebLogic的知识，虽说过程并不难，但能提炼到遇到新生的问题，高效的解决才是最重要的；所以我会坚持将遇到的问题详细记录！</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2012/08/09/rsyncinotify-e6-95-b0-e6-8d-ae-e5-90-8c-e6-ad-a5-e5-8f-8a-e5-b8-b8-e8-a7-81-e7-9a-84-e9-97-ae-e9-a2-98.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Geekwolf">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/wolf.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Geekwolf's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2012/08/09/rsyncinotify-e6-95-b0-e6-8d-ae-e5-90-8c-e6-ad-a5-e5-8f-8a-e5-b8-b8-e8-a7-81-e7-9a-84-e9-97-ae-e9-a2-98.html" itemprop="url">Rsync+inotify数据同步及常见的问题</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2012-08-09T05:03:59+08:00">
+                2012-08-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux运维/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux运维</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2012/08/09/rsyncinotify-e6-95-b0-e6-8d-ae-e5-90-8c-e6-ad-a5-e5-8f-8a-e5-b8-b8-e8-a7-81-e7-9a-84-e9-97-ae-e9-a2-98.html" class="leancloud_visitors" data-flag-title="Rsync+inotify数据同步及常见的问题">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  6
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>今天在两台服务器同步备份在用户权限上纠结了很多，主要关于这个问题网上的配置方法不一，源自rsync版本不一致。</p>
+<p><a href="http://blog.lixiphp.com/wp-content/uploads/2011/10/rsync.jpg" target="_blank" rel="external"><img src="http://blog.lixiphp.com/wp-content/uploads/2011/10/rsync_thumb.jpg" alt="rsync同步备份服务器配置" title="rsync同步备份服务器配置"></a></p>
+<h6 id="Rsync-版本"><a href="#Rsync-版本" class="headerlink" title="Rsync 版本"></a>Rsync 版本</h6><p>[root@mail video]# rsync –version<br>rsync&#160; version 3.0.6&#160; protocol version 30<br>Copyright (C) 1996-2009 by Andrew Tridgell, Wayne Davison, and others.<br>Web site: rsync.samba.org<br>Capabilities:<br>&#160;&#160;&#160; 64-bit files, 64-bit inums, 64-bit timestamps, 64-bit long ints,<br>&#160;&#160;&#160; socketpairs, hardlinks, symlinks, IPv6, batchfiles, inplace,<br>&#160;&#160;&#160; append, ACLs, xattrs, iconv, no symtimes</p>
+<p>rsync comes with ABSOLUTELY NO WARRANTY.&#160; This is free software, and you<br>are welcome to redistribute it under certain conditions.&#160; See the GNU<br>General Public Licence for details.</p>
+<h6 id="服务器同步任务需求"><a href="#服务器同步任务需求" class="headerlink" title="服务器同步任务需求"></a>服务器同步任务需求</h6><ul>
+<li>服务器A与服务器B同步备份，这里只说明服务器A同步到服务器B，服务器B还原到服务器A。<em>   考虑安全因素，使用普通用户进行同步。</em>   使用cronjob，定时同步。  </li>
+</ul>
+<h6 id="错误提示"><a href="#错误提示" class="headerlink" title="错误提示"></a>错误提示</h6><p>错误发生在rsync 3.0.6版本，64位 CentOS5.5 系统。</p>
+<p>首页这篇文章主要解决的错误是以下：</p>
+<blockquote>
+<p>@ERROR: auth failed on module <em>*</em><br>rsync error: error starting client-server protocol (code 5) at main.c(1503) [receiver=3.0.6]  </p>
+</blockquote>
+<p><em>*</em> 是你/etc/rsyncd.conf 中配置的模块，我这里用</p>
+<blockquote>
+<p>password file must not be other-accessible<br>continuing without password file<br>Password:<br>@ERROR: auth failed on module <em>*</em><br>rsync error: error starting client-server protocol (code 5) at main.c(1503) [receiver=3.0.6]  </p>
+</blockquote>
+<h6 id="Rsync-配置"><a href="#Rsync-配置" class="headerlink" title="Rsync 配置"></a>Rsync 配置</h6><p>#vi /etc/rsyncd.conf</p>
+<blockquote>
+<p>uid = nobody<br>gid = nobody<br>max connections = 4<br>read only = true       </p>
+<p>#hosts allow = 202.207.177.180<br>hosts allow = *<br>transfer logging = true<br>log format = %h %o %f %l %b<br>log file = /var/log/rsyncd.log<br>slp refresh = 300<br>log file = /var/log/rsyncd.log<br>pid file = /var/run/rsyncd.pid<br>lock file = /var/run/rsyncd.lock</p>
+<p>[web]<br>path = /home/admin/public_html<br>comment = Mirror to Hk server<br>read only = true<br>list = false<br>auth users = lixiphp</p>
+<p>[test]<br>path = /home/admin/domains/test<br>read only = false<br>auth users = lixiphp<br>secrets file = /etc/rsyncd.secrets  </p>
+</blockquote>
+<h6 id="配置普通用户密码"><a href="#配置普通用户密码" class="headerlink" title="配置普通用户密码"></a>配置普通用户密码</h6><blockquote>
+<p>[root@mail video]# vi /etc/rsyncd.secrets  </p>
+</blockquote>
+<p>格式为： username:password</p>
+<blockquote>
+<p>rsync_user:rsyncofpass  </p>
+</blockquote>
+<p>设置权限为只读：</p>
+<blockquote>
+<p>chmod 600 /etc/rsyncd.secrets  </p>
+</blockquote>
+<h6 id="首次启动rsync"><a href="#首次启动rsync" class="headerlink" title="首次启动rsync"></a>首次启动rsync</h6><blockquote>
+<p>rsync –daemon –config=/etc/rsyncd.conf  </p>
+</blockquote>
+<p>如果提示</p>
+<blockquote>
+<p>failed to create pid file /var/run/rsyncd.pid: File exists  </p>
+</blockquote>
+<p>使用指令</p>
+<blockquote>
+<p>rm -rf /var/run/rsyncd.pid  </p>
+</blockquote>
+<h6 id="重启已经在运行的rsync"><a href="#重启已经在运行的rsync" class="headerlink" title="重启已经在运行的rsync"></a>重启已经在运行的rsync</h6><blockquote>
+<p>[root@mail video]# ps -ef | grep rsync<br>root&#160;&#160;&#160;&#160; 27284&#160;&#160;&#160;&#160; 1&#160; 0 10:26 ?&#160;&#160;&#160;&#160;&#160;&#160;&#160; 00:00:00 rsync –daemon –config=/etc/rsyncd.conf<br>root&#160;&#160;&#160;&#160; 30516 29986&#160; 0 18:35 pts/3&#160;&#160;&#160; 00:00:00 grep rsync<br>[root@mail video]# kill -9 27284<br>[root@mail video]# rsync –daemon –config=/etc/rsyncd.conf  </p>
+</blockquote>
+<p>这样服务器A配置成功！</p>
+<h5 id="服务器B配置"><a href="#服务器B配置" class="headerlink" title="服务器B配置"></a>服务器B配置</h5><p>一般错误都会发生在服务器B，注意这部分的讲解！</p>
+<p>通过CentOS yum install rsync，安装rsync服务。</p>
+<p>在rsync安装之后，运行以下指令同步备份：</p>
+<blockquote>
+<p>rsync -vzrtopg –progress –delete –password-file=/home/admin/admin_backups/password.rsync rsync://lixiphp@203.171.237.245/test&#160; /home/admin/admin_backups/test  </p>
+</blockquote>
+<p>地址rsync://lixiphp@203.171.237.245/test，lixiphp为服务器A用户，203.171.237.245服务器A IP地址或者域名 test为服务器A配置模块</p>
+<p>密码存放在/home/admin/admin_backups/password.rsync，这里存放位置，可自由安排。</p>
+<p>password.rsync内容格式为： password</p>
+<blockquote>
+<p>rsyncofpass  </p>
+</blockquote>
+<p>设置权限为只读：</p>
+<blockquote>
+<p>chmod 600 /home/admin/admin_backups/password.rsync  </p>
+</blockquote>
+<h6 id="解决错误"><a href="#解决错误" class="headerlink" title="解决错误"></a>解决错误</h6><p><strong>用户密码错误</strong></p>
+<blockquote>
+<p>@ERROR: auth failed on module test<br>rsync error: error starting client-server protocol (code 5) at main.c(1503) [receiver=3.0.6]  </p>
+</blockquote>
+<p>检查服务器A存储密码文件和服务器B密码文件。</p>
+<ul>
+<li>服务器A密码文件 /etc/rsyncd.secrets 格式为： username:password*   服务器B密码文件 password.rsync 格式为：password  </li>
+</ul>
+<p><strong>文件权限错误</strong></p>
+<blockquote>
+<p>password file must not be other-accessible<br>continuing without password file<br>Password:<br>@ERROR: auth failed on module <em>*</em><br>rsync error: error starting client-server protocol (code 5) at main.c(1503) [receiver=3.0.6]  </p>
+</blockquote>
+<p>检查服务器A存储密码文件和服务器B密码文件。</p>
+<ul>
+<li>服务器A密码文件 /etc/rsyncd.secrets 权限为600： chmod 600 /etc/rsyncd.secrets*   服务器B密码文件 password.rsync 权限为600：chmod 600 password.rsync  </li>
+</ul>
+<h6 id="定时任务"><a href="#定时任务" class="headerlink" title="定时任务"></a>定时任务</h6><blockquote>
+<p>[root@hk admin_backups]# vi backup.sh  </p>
+</blockquote>
+<p>内容如下：</p>
+<blockquote>
+<p>#/bin/sh<br>rsync -vzrtopg –progress –delete –password-rsyncfile=/home/admin/admin_backups/password.rsync ://lixiphp@203.171.237.245/test&#160; /home/admin/admin_backups/test  </p>
+</blockquote>
+<p>添加定时任务：</p>
+<blockquote>
+<p>[root@hk admin_backups]# crontab –e  </p>
+</blockquote>
+<p>添加以下内容：</p>
+<blockquote>
+<p><em>/1 </em> <em> </em> * /home/admin/admin_backups/backup.sh &gt; /dev/null 2&gt;&amp;1  </p>
+</blockquote>
+<p>每个一分钟从服务器A同步到服务器B！</p>
+<h6 id="服务器B向下备份到服务器A"><a href="#服务器B向下备份到服务器A" class="headerlink" title="服务器B向下备份到服务器A"></a>服务器B向下备份到服务器A</h6><blockquote>
+<p>rsync -vzrtopg –progress –delete –password-file=/home/admin/admin_backups/password.rsync&#160; /home/admin/admin_backups/test rsync://lixiphp@203.171.237.245/test  </p>
+</blockquote>
+<p>请确保服务器A同步用户lixiphp，对模块test所在目录有读、写、执行的权限</p>
+<p>&#160;</p>
+<p><strong>补充：rsync+inotify 实时同步</strong></p>
+<p>A服务器实时同步到B服务器做法：</p>
+<p>B服务器部署rsync服务端，B服务器配置rsync客户端和编译安装inotify</p>
+<p>实时同步原理：</p>
+<p>inotify监测和同步脚本：</p>
+<blockquote>
+<p>#!/bin/bash<br>host=192.168.1.1</p>
+<p>src=/wwwroot/www/jythonscript/<br>dst=jythonscript<br>user=rsync<br>/usr/local/bin/inotifywait -mrq –timefmt ‘%d/%m/%y %H:%M’ –format ‘%T %w%f%e’ -e modify,delete,create,attrib&#160; $src<br>| while read files<br>&#160;&#160;&#160;&#160;&#160;&#160; do<br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; /usr/local/bin/rsync -vzrtopg –delete –progress&#160; $src&#160; $user@$host::$dst&#160;&#160;&#160;&#160; –password-file=/etc/rsyncd.password<br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; echo &quot;${files} was rsynced&quot; &gt;&gt;/tmp/rsync.log 2&gt;&amp;1<br>&#160;&#160;&#160;&#160;&#160;&#160; done  </p>
+</blockquote>
+<p>&#160;</p>
+<p>inotifywait监测文件是否发生变化，如果有变化就执行rsync，同步相应的文件！</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2012/08/07/cmake-e7-bc-96-e8-af-91mysql-e5-87-ba-e9-94-99could-not-find-curses-missing-curses-library-curses-include-path.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Geekwolf">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/wolf.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Geekwolf's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2012/08/07/cmake-e7-bc-96-e8-af-91mysql-e5-87-ba-e9-94-99could-not-find-curses-missing-curses-library-curses-include-path.html" itemprop="url">Cmake编译mysql出错Could NOT find Curses  (missing:  CURSES_LIBRARY CURSES_INCLUDE_PATH)</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2012-08-07T01:52:06+08:00">
+                2012-08-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux运维/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux运维</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2012/08/07/cmake-e7-bc-96-e8-af-91mysql-e5-87-ba-e9-94-99could-not-find-curses-missing-curses-library-curses-include-path.html" class="leancloud_visitors" data-flag-title="Cmake编译mysql出错Could NOT find Curses  (missing:  CURSES_LIBRARY CURSES_INCLUDE_PATH)">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><strong>问题描述:</strong></p>
+<p>&#160;&#160;&#160;&#160;&#160;&#160;&#160; 利用Cmake 编译mysql-5.5.8版本时，出现</p>
+<p>– Could NOT find Curses&#160; (missing:&#160; CURSES_LIBRARY CURSES_INCLUDE_PATH)<br>CMake Error at cmake/readline.cmake:82 (MESSAGE):<br>&#160; Curses library not found.&#160; Please install appropriate package,</p>
+<p>错误</p>
+<p>&#160;</p>
+<p><a href="http://www.simlinux.com/old/wp-content/uploads/2012/08/image1.png"><img src="http://www.simlinux.com/old/wp-content/uploads/2012/08/image_thumb1.png" alt="image" title="image"></a></p>
+<p>&#160;</p>
+<p><strong>解决方法：</strong></p>
+<p>显示缺少libcurse library,建议安装libncurses5-dev包</p>
+<p>yum –y install libncures5-*</p>
+<p>如果存在，find /&#160; -name libncurses*</p>
+<p>cmake . -DCURSES_LIBRARY=/usr/lib/libncurses.so -DCURSES_INCLUDE_PATH=/usr/include即可解决</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+  </section>
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/11/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><span class="page-number current">12</span><a class="page-number" href="/page/13/">13</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><a class="extend next" rel="next" href="/page/13/"><i class="fa fa-angle-right"></i></a>
+  </nav>
+
+
+
+          </div>
+          
+
+
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/wolf.jpeg"
+               alt="Geekwolf" />
+          <p class="site-author-name" itemprop="name">Geekwolf</p>
+           
+              <p class="site-description motion-element" itemprop="description">DevOps | Docker | K8S | MySQL | 运维</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">167</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">105</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/geekwolf" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                    
+                      GitHub
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/geekwolf" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                    
+                      Weibo
+                    
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2012 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Geekwolf</span>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  
+    <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('-1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("qms5kJ0y2CItrIVFivKxxPsR-gzGzoHsz", "Cn3w20futtphxpaDSP5tHjzy");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

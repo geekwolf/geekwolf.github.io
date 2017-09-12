@@ -1,0 +1,3673 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Geekwolf,DevOps,Docker,k8s,MySQL,PaaS" />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Geekwolf's Blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="DevOps | Docker | K8S | MySQL | 运维">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Geekwolf&#39;s Blog">
+<meta property="og:url" content="http://www.simlinux.com/index.html">
+<meta property="og:site_name" content="Geekwolf&#39;s Blog">
+<meta property="og:description" content="DevOps | Docker | K8S | MySQL | 运维">
+<meta property="og:locale" content="zh-Hans">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Geekwolf&#39;s Blog">
+<meta name="twitter:description" content="DevOps | Docker | K8S | MySQL | 运维">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.simlinux.com/"/>
+
+
+
+
+
+  <title>Geekwolf's Blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="//s13.cnzz.com/z_stat.php?id=1264375041&web_id=1264375041" language="JavaScript"></script>
+  </div>
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left 
+   page-home 
+ ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Geekwolf's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Quick notes</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />
+            
+            站点地图
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+  <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2017/09/08/k8s-etcd-deploy-test.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Geekwolf">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/wolf.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Geekwolf's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/09/08/k8s-etcd-deploy-test.html" itemprop="url">k8s部署之分布式KV存储Etcd</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-08T19:16:09+08:00">
+                2017-09-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/docker/" itemprop="url" rel="index">
+                    <span itemprop="name">docker</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2017/09/08/k8s-etcd-deploy-test.html" class="leancloud_visitors" data-flag-title="k8s部署之分布式KV存储Etcd">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  13
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="Etcd是什么"><a href="#Etcd是什么" class="headerlink" title="Etcd是什么"></a>Etcd是什么</h4><blockquote>
+<p>Etcd是一个分布式、使用Raft算法维护一致性的kv存储系统，与其类似产品有Zookeeper(老牌经典)、Consul等，Etcd相对ZK，更加轻量、易运维。具体三者之间的对比可参考 <a href="https://luyiisme.github.io/2017/04/22/spring-cloud-service-discovery-products/" target="_blank" rel="external">https://luyiisme.github.io/2017/04/22/spring-cloud-service-discovery-products/</a></p>
+</blockquote>
+<h4 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h4><p>和zk、consul等类似，使用场景多用于:</p>
+<ul>
+<li>服务发现</li>
+<li>消息发布与订阅</li>
+<li>负载均衡</li>
+<li>分布式锁</li>
+<li>分布式队列</li>
+</ul>
+<h4 id="读写性能"><a href="#读写性能" class="headerlink" title="读写性能"></a>读写性能</h4><p>压测数据参考官方：<br><a href="https://coreos.com/etcd/docs/latest/op-guide/performance.html" target="_blank" rel="external">https://coreos.com/etcd/docs/latest/op-guide/performance.html</a></p>
+<h4 id="本地集群部署"><a href="#本地集群部署" class="headerlink" title="本地集群部署"></a>本地集群部署</h4><ul>
+<li>操作系统:Debian8 x64</li>
+<li>Etcd v3.2.7</li>
+</ul>
+<p>A. 安装<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">wget https://github.com/coreos/etcd/releases/download/v3.2.7/etcd-v3.2.7-linux-arm64.tar.gz</div><div class="line">tar xf etcd-v3.2.7-linux-arm64.tar.gz</div><div class="line">cd etcd-v3.2.7-linux-amd64</div><div class="line">cp etc* /usr/local/bin/</div><div class="line"></div><div class="line">etcd: Etcd服务端文件</div><div class="line">etcdctl: 供用户使用的命令客户端</div></pre></td></tr></table></figure></p>
+<p>B. 启动服务<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line">root@a4c8d490:/home/geekwolf# etcd</div><div class="line">2017-09-07 15:42:23.957656 I | etcdmain: etcd Version: 3.2.7</div><div class="line">2017-09-07 15:42:23.957699 I | etcdmain: Git SHA: bb66589</div><div class="line">2017-09-07 15:42:23.957718 I | etcdmain: Go Version: go1.8.3</div><div class="line">2017-09-07 15:42:23.957723 I | etcdmain: Go OS/Arch: linux/amd64</div><div class="line">2017-09-07 15:42:23.957729 I | etcdmain: setting maximum number of CPUs to 8, total number of available CPUs is 8</div><div class="line">2017-09-07 15:42:23.957739 W | etcdmain: no data-dir provided, using default data-dir ./default.etcd</div><div class="line">2017-09-07 15:42:23.957764 N | etcdmain: the server is already initialized as member before, starting as etcd member...</div><div class="line">2017-09-07 15:42:23.957995 I | embed: listening for peers on http://localhost:2380</div><div class="line">2017-09-07 15:42:23.958107 I | embed: listening for client requests on localhost:2379</div><div class="line">2017-09-07 15:42:23.964607 I | etcdserver: name = default</div><div class="line">2017-09-07 15:42:23.964633 I | etcdserver: data dir = default.etcd</div><div class="line">2017-09-07 15:42:23.964652 I | etcdserver: member dir = default.etcd/member</div><div class="line">2017-09-07 15:42:23.964657 I | etcdserver: heartbeat = 100ms</div><div class="line">2017-09-07 15:42:23.964663 I | etcdserver: election = 1000ms</div><div class="line">2017-09-07 15:42:23.964668 I | etcdserver: snapshot count = 100000</div><div class="line">2017-09-07 15:42:23.964680 I | etcdserver: advertise client URLs = http://localhost:2379</div><div class="line">2017-09-07 15:42:23.973007 I | etcdserver: restarting member 8e9e05c52164694d in cluster cdf818194e3a8c32 at commit index 14</div><div class="line">2017-09-07 15:42:23.973041 I | raft: 8e9e05c52164694d became follower at term 2</div><div class="line">2017-09-07 15:42:23.973065 I | raft: newRaft 8e9e05c52164694d [peers: [], term: 2, commit: 14, applied: 0, lastindex: 14, lastterm: 2]</div><div class="line">2017-09-07 15:42:23.984367 W | auth: simple token is not cryptographically signed</div><div class="line">2017-09-07 15:42:23.993237 I | etcdserver: starting server... [version: 3.2.7, cluster version: to_be_decided]</div><div class="line">2017-09-07 15:42:23.993659 I | etcdserver/membership: added member 8e9e05c52164694d [http://localhost:2380] to cluster cdf818194e3a8c32</div><div class="line">2017-09-07 15:42:23.993754 N | etcdserver/membership: set the initial cluster version to 3.2</div><div class="line">2017-09-07 15:42:23.993796 I | etcdserver/api: enabled capabilities for version 3.2</div><div class="line">2017-09-07 15:42:24.473288 I | raft: 8e9e05c52164694d is starting a new election at term 2</div><div class="line">2017-09-07 15:42:24.473451 I | raft: 8e9e05c52164694d became candidate at term 3</div><div class="line">2017-09-07 15:42:24.473519 I | raft: 8e9e05c52164694d received MsgVoteResp from 8e9e05c52164694d at term 3</div><div class="line">2017-09-07 15:42:24.473568 I | raft: 8e9e05c52164694d became leader at term 3</div><div class="line">2017-09-07 15:42:24.473605 I | raft: raft.node: 8e9e05c52164694d elected leader 8e9e05c52164694d at term 3</div><div class="line">2017-09-07 15:42:24.478746 I | etcdserver: published &#123;Name:default ClientURLs:[http://localhost:2379]&#125; to cluster cdf818194e3a8c32</div><div class="line">2017-09-07 15:42:24.478824 I | embed: ready to serve client requests</div><div class="line">2017-09-07 15:42:24.479116 N | embed: serving insecure client requests on 127.0.0.1:2379, this is strongly discouraged!</div></pre></td></tr></table></figure></p>
+<p>由上面的输出可知：</p>
+<ul>
+<li>etcd服务之间通信端口是2380，暴露给客户端端口为2379</li>
+<li>默认将数据存放到当前路径default.etcd/目录下</li>
+<li>该节点的名称默认为default</li>
+<li>集群和节点都会生成唯一的uuid</li>
+<li>启动服务时，会根据raft算法，选举leader</li>
+</ul>
+<p>C. 测试<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">查看api版本（默认api版本是v2）</div><div class="line">root@a4c8d490:~/k8s/etcd-v3.2.7-linux-amd64# etcdctl  --version</div><div class="line">etcdctl version: 3.2.7</div><div class="line">API version: 2</div><div class="line"></div><div class="line">使用API V3方法：</div><div class="line">Etcd服务端和客户端添加变量 export ETCDCTL_API=3,重新启动etcd服务即可</div><div class="line">以下操作在api v3版本:</div><div class="line">写入key: etcdctl put foo bar</div><div class="line">读取key: etcdctl get foo</div><div class="line">多key范围读取: etcdctl get foo foo9(会将foo..foo8的key读取,不包括foo9)</div><div class="line">读取过往版本key的值(Etcd键值对的修改都会增加全局修订版本号,--rev为版本号):</div><div class="line"> etcdctl get --rev=4 foo foo9</div><div class="line">删除key: etcdctl del foo</div><div class="line">范围删除(foo-&amp;gt;foo9):etcdctl del foo foo9</div><div class="line">观察key变化:etcdctl watch foo</div><div class="line">观察范围key变化: etcdctl watch foo foo9</div><div class="line">从rev=2版本开始观察key变化: etcdctl watch --rev=2 foo</div><div class="line">压缩版本5之前的修订版本(压缩后5之前的版本不可能访问): etcdctl compact 5</div><div class="line">授予key有效期:</div><div class="line">创建租约: </div><div class="line">$ etcdctl lease grant 10</div><div class="line">lease 694d5e5b63a74f31 granted with TTL(10s)</div><div class="line">附加key foo到租约694d5e5b63a74f31，该租约过期后，会删除附加的所有key</div><div class="line">撤销租约(撤销后，附加改租约的所有key被删除): etcdctl lease revoke 32695410dcc0ca06</div><div class="line">维持租约(执行后，会一直维持该租约): etcdctl lease keep-alive 32695410dcc0ca0</div><div class="line"></div><div class="line">其他参数可参考 etcdctl --help</div><div class="line">通过HTTP操作：</div><div class="line">Etcd v2: https://coreos.com/etcd/docs/latest/v2/api.html</div><div class="line">Etcd v3: https://coreos.com/etcd/docs/latest/dev-guide/api_grpc_gateway.html</div></pre></td></tr></table></figure></p>
+<h4 id="多节点集群部署"><a href="#多节点集群部署" class="headerlink" title="多节点集群部署"></a>多节点集群部署</h4><h5 id="静态模式部署"><a href="#静态模式部署" class="headerlink" title="静态模式部署"></a>静态模式部署</h5><h6 id="环境说明-三节点集群"><a href="#环境说明-三节点集群" class="headerlink" title="环境说明(三节点集群)"></a>环境说明(三节点集群)</h6><table>
+<thead>
+<tr>
+<th style="text-align:left">节点</th>
+<th style="text-align:left">地址</th>
+<th style="text-align:left">主机</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">etcd1</td>
+<td style="text-align:left">192.168.234.133</td>
+<td style="text-align:left">etcd1.simlinux.com</td>
+</tr>
+<tr>
+<td style="text-align:left">etcd2</td>
+<td style="text-align:left">192.168.234.133</td>
+<td style="text-align:left">etcd2.simlinux.com</td>
+</tr>
+<tr>
+<td style="text-align:left">etcd3</td>
+<td style="text-align:left">192.168.234.133</td>
+<td style="text-align:left">etcd3.simlinux.com</td>
+</tr>
+</tbody>
+</table>
+<h6 id="初始化环境"><a href="#初始化环境" class="headerlink" title="初始化环境"></a>初始化环境</h6><p>三个节点分别设置主机名:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">hostnamectl --static  set-hostname etcd1.simlinux.com</div><div class="line">hostnamectl --static  set-hostname etcd2.simlinux.com</div><div class="line">hostnamectl --static  set-hostname etcd3.simlinux.com</div></pre></td></tr></table></figure></p>
+<p>三个节点hosts文件添加:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">vim /etc/hosts</div><div class="line">192.168.234.133 etcd1.simlinux.com </div><div class="line">192.168.234.133 etcd2.simlinux.com </div><div class="line">192.168.234.133 etcd3.simlinux.com</div></pre></td></tr></table></figure></p>
+<p><strong>生成etcd证书(用于etcd间、客户端与etcd通信)</strong></p>
+<blockquote>
+<p>由上篇<a href="http://www.simlinux.com/archives/1953.html">k8s部署之使用CFSSL创建证书</a>的CA来生成</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">cat  etcd.json </div><div class="line">&#123;</div><div class="line">    &quot;CN&quot;: &quot;etcd&quot;,</div><div class="line">    &quot;hosts&quot;: [</div><div class="line">        &quot;127.0.0.1&quot;,</div><div class="line">        &quot;192.168.234.133&quot;,</div><div class="line">        &quot;192.168.234.134&quot;,</div><div class="line">        &quot;192.168.234.135&quot;</div><div class="line">    ],</div><div class="line">    &quot;key&quot;: &#123;</div><div class="line">        &quot;algo&quot;: &quot;ecdsa&quot;,</div><div class="line">        &quot;size&quot;: 256</div><div class="line">    &#125;,</div><div class="line">    &quot;names&quot;: [</div><div class="line">        &#123;</div><div class="line">            &quot;C&quot;: &quot;CN&quot;,</div><div class="line">            &quot;L&quot;: &quot;ShangHai&quot;,</div><div class="line">            &quot;ST&quot;: &quot;ShangHai&quot;,</div><div class="line">            &quot;O&quot;: &quot;K8s&quot;,</div><div class="line">            &quot;OU&quot;: &quot;System&quot;</div><div class="line">        &#125;</div><div class="line">    ]</div><div class="line">&#125;</div><div class="line">cfssl gencert -ca=ca.pem -ca-key=ca-key.pem -config=ca-config.json -profile=peer etcd.json | cfssljson -bare etcd</div><div class="line">将CA和etcd证书拷贝到etcd所有节点:</div><div class="line">cp ca.pem  etcd-key.pem  etcd.pem /etc/etcd/ssl/</div></pre></td></tr></table></figure>
+<h6 id="安装etcd节点-所有节点"><a href="#安装etcd节点-所有节点" class="headerlink" title="安装etcd节点(所有节点)"></a>安装etcd节点(所有节点)</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">wget https://github.com/coreos/etcd/releases/download/v3.2.7/etcd-v3.2.7-linux-amd64.tar.gz</div><div class="line">tar xf etcd-v3.2.7-linux-amd64.tar.gz</div><div class="line">cd etcd-v3.2.7-linux-amd64</div><div class="line">chmod +x etcd*</div><div class="line">cp etcd* /bin</div></pre></td></tr></table></figure>
+<h6 id="etcd配置"><a href="#etcd配置" class="headerlink" title="etcd配置"></a>etcd配置</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line">服务管理(所有节点相同):</div><div class="line">vim /usr/lib/systemd/system/etcd.service</div><div class="line">[Unit]</div><div class="line">Description=Etcd Server</div><div class="line">After=network.target</div><div class="line">After=network-online.target</div><div class="line">Wants=network-online.target</div><div class="line">Documentation=https://github.com/coreos</div><div class="line">[Service]</div><div class="line">Type=notify</div><div class="line">WorkingDirectory=/data/k8s/etcd/</div><div class="line">EnvironmentFile=/etc/etcd/etcd.conf</div><div class="line">ExecStart=/bin/etcd </div><div class="line">  --name=$&#123;NAME&#125; </div><div class="line">  --cert-file=/etc/etcd/ssl/etcd.pem </div><div class="line">  --key-file=/etc/etcd/ssl/etcd-key.pem </div><div class="line">  --peer-cert-file=/etc/etcd/ssl/etcd.pem </div><div class="line">  --peer-key-file=/etc/etcd/ssl/etcd-key.pem </div><div class="line">  --trusted-ca-file=/etc/etcd/ssl/ca.pem </div><div class="line">  --peer-trusted-ca-file=/etc/etcd/ssl/ca.pem </div><div class="line">  --initial-advertise-peer-urls=$&#123;INITIAL_ADVERTISE_PEER_URLS&#125; </div><div class="line">  --listen-peer-urls=$&#123;LISTEN_PEER_URLS&#125; </div><div class="line">  --listen-client-urls=$&#123;LISTEN_CLIENT_URLS&#125; </div><div class="line">  --advertise-client-urls=$&#123;ADVERTISE_CLIENT_URLS&#125; </div><div class="line">  --initial-cluster-token=$&#123;INITIAL_CLUSTER_TOKEN&#125; </div><div class="line">  --initial-cluster=$&#123;INITIAL_CLUSTER&#125; </div><div class="line">  --initial-cluster-state=new </div><div class="line">  --data-dir=$&#123;DATA_DIR&#125;</div><div class="line">Restart=on-failure</div><div class="line">RestartSec=5</div><div class="line">LimitNOFILE=65536</div><div class="line">[Install]</div><div class="line">WantedBy=multi-user.target</div></pre></td></tr></table></figure>
+<p>配置文件:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">vim /etc/etcd/etcd.conf</div><div class="line">#节点名称</div><div class="line">NAME=&quot;etcd1&quot;</div><div class="line">#etcd数据存放目录</div><div class="line">DATA_DIR=&quot;/data/k8s/etcd&quot;</div><div class="line">#etcd节点间通信监听地址</div><div class="line">LISTEN_PEER_URLS=&quot;https://192.168.234.133:2380&quot;</div><div class="line">#对外提供服务的地址</div><div class="line">LISTEN_CLIENT_URLS=&quot;https://192.168.234.133:2379,https://127.0.0.1:2379&quot;</div><div class="line">#通知其他etcd节点本实例地址</div><div class="line">INITIAL_ADVERTISE_PEER_URLS=&quot;https://192.168.234.133:2380&quot;</div><div class="line">#初始化集群内节点地址</div><div class="line">INITIAL_CLUSTER=&quot;etcd1=https://192.168.234.133:2380,etcd2=https://192.168.234.134:2380,etcd3=https://192.168.234.135:2380&quot;</div><div class="line">#初始化状态.new表示新建,已经存在的集群使用existing</div><div class="line">INITIAL_CLUSTER_STATE=&quot;new&quot;</div><div class="line">#创建集群的token,每个集群唯一</div><div class="line">INITIAL_CLUSTER_TOKEN=&quot;k8s-etcd-cluster&quot;</div><div class="line">#告知其他集群本节点客户端监听地址</div><div class="line">ADVERTISE_CLIENT_URLS=&quot;https://192.168.234.133:2379&quot;</div><div class="line">ETCDCTL_API=3</div><div class="line">其中NAME/LISTEN_PEER_URLS/LISTEN_CLIENT_URLS/INITIAL_ADVERTISE_PEER_URLS/ADVERTISE_CLIENT_URLS替换成相应节点名称和地址</div></pre></td></tr></table></figure></p>
+<h6 id="服务管理"><a href="#服务管理" class="headerlink" title="服务管理"></a>服务管理</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">systemctl start etcd.service</div><div class="line">systemctl stop etcd.service</div><div class="line">systemctl status etcd.service(查看服务状态及日志)</div></pre></td></tr></table></figure>
+<h6 id="测试验证"><a href="#测试验证" class="headerlink" title="测试验证"></a>测试验证</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div></pre></td><td class="code"><pre><div class="line">[root@etcd1 ~]# export etcd1=192.168.234.133</div><div class="line">[root@etcd1 ~]# export etcd2=192.168.234.134</div><div class="line">[root@etcd1 ~]# export etcd3=192.168.234.135</div><div class="line">[root@etcd1 ~]# export ENDPOINTS=$etcd1:2379,$etcd2:2379,$etcd3:2379</div><div class="line">查看集群成员:</div><div class="line">[root@etcd1 etcd]#  etcdctl --write-out=table --endpoints=$ENDPOINTS --cacert=/etc/etcd/ssl/ca.pem  --cert=/etc/etcd/ssl/etcd.pem --key=/etc/etcd/ssl/etcd-key.pem member list</div><div class="line">+------------------+---------+-------+------------------------------+------------------------------+</div><div class="line">|        ID        | STATUS  | NAME  |          PEER ADDRS          |         CLIENT ADDRS         |</div><div class="line">+------------------+---------+-------+------------------------------+------------------------------+</div><div class="line">| 1a4a83ef243ff1c9 | started | etcd2 | https://192.168.234.134:2380 | https://192.168.234.134:2379 |</div><div class="line">| 68243ef8797bd1ce | started | etcd1 | https://192.168.234.133:2380 | https://192.168.234.133:2379 |</div><div class="line">| fa30209a63d949b0 | started | etcd3 | https://192.168.234.135:2380 | https://192.168.234.135:2379 |</div><div class="line">+------------------+---------+-------+------------------------------+------------------------------+</div><div class="line">查看集群状态:</div><div class="line">[root@etcd1 ~]# etcdctl --write-out=table --endpoints=$ENDPOINTS --cacert=/etc/etcd/ssl/ca.pem  --cert=/etc/etcd/ssl/etcd.pem --key=/etc/etcd/ssl/etcd-key.pem endpoint status</div><div class="line">+----------------------+------------------+---------+---------+-----------+-----------+------------+</div><div class="line">|       ENDPOINT       |        ID        | VERSION | DB SIZE | IS LEADER | RAFT TERM | RAFT INDEX |</div><div class="line">+----------------------+------------------+---------+---------+-----------+-----------+------------+</div><div class="line">| 192.168.234.133:2379 | 68243ef8797bd1ce |   3.2.7 |   25 kB |     false |        10 |          9 |</div><div class="line">| 192.168.234.134:2379 | 1a4a83ef243ff1c9 |   3.2.7 |   25 kB |     false |        10 |          9 |</div><div class="line">| 192.168.234.135:2379 | fa30209a63d949b0 |   3.2.7 |   25 kB |      true |        10 |          9 |</div><div class="line">+----------------------+------------------+---------+---------+-----------+-----------+------------+</div><div class="line">[root@etcd1 ~]# etcdctl --write-out=table --endpoints=$ENDPOINTS --cacert=/etc/etcd/ssl/ca.pem  --cert=/etc/etcd/ssl/etcd.pem --key=/etc/etcd/ssl/etcd-key.pem endpoint health</div><div class="line">192.168.234.135:2379 is healthy: successfully committed proposal: took = 1.374345ms</div><div class="line">192.168.234.134:2379 is healthy: successfully committed proposal: took = 2.217525ms</div><div class="line">192.168.234.133:2379 is healthy: successfully committed proposal: took = 1.996245ms</div><div class="line">保存快照:</div><div class="line">[root@etcd1 ~]# etcdctl --write-out=table --endpoints=$ENDPOINTS --cacert=/etc/etcd/ssl/ca.pem  --cert=/etc/etcd/ssl/etcd.pem --key=/etc/etcd/ssl/etcd-key.pem snapshot save my.db</div><div class="line">Snapshot saved at my.db</div><div class="line">查看快照状态:</div><div class="line">[root@etcd1 ~]# etcdctl --write-out=table --endpoints=$ENDPOINTS --cacert=/etc/etcd/ssl/ca.pem  --cert=/etc/etcd/ssl/etcd.pem --key=/etc/etcd/ssl/etcd-key.pem snapshot status my.db</div><div class="line">+----------+----------+------------+------------+</div><div class="line">|   HASH   | REVISION | TOTAL KEYS | TOTAL SIZE |</div><div class="line">+----------+----------+------------+------------+</div><div class="line">| 9a496339 |        3 |          8 |      25 kB |</div><div class="line">+----------+----------+------------+------------+</div><div class="line">恢复数据(要先删除原来数据目录,所有节点操作)：</div><div class="line">[root@etcd1 ~]# etcdctl  --endpoints=$ENDPOINTS --cacert=/etc/etcd/ssl/ca.pem  --cert=/etc/etcd/ssl/etcd.pem --key=/etc/etcd/ssl/etcd-key.pem snapshot restore my.db  --data-dir=/data/k8s/etcd/</div><div class="line">2017-09-09 02:28:52.439616 I | etcdserver/membership: added member 8e9e05c52164694d [http://localhost:2380] to cluster cdf818194e3a8c32</div><div class="line">删除节点:</div><div class="line">[root@etcd1 ~]# etcdctl --write-out=table --endpoints=$ENDPOINTS --cacert=/etc/etcd/ssl/ca.pem  --cert=/etc/etcd/ssl/etcd.pem --key=/etc/etcd/ssl/etcd-key.pem member remove 68243ef8797bd1ce</div><div class="line">更新节点:</div><div class="line">[root@etcd1 ~]# etcdctl --write-out=table --endpoints=$ENDPOINTS --cacert=/etc/etcd/ssl/ca.pem  --cert=/etc/etcd/ssl/etcd.pem --key=/etc/etcd/ssl/etcd-key.pem member update 68243ef8797bd1ce https://192.168.234.133:1111(INITIAL_ADVERTISE_PEER_URLS)</div><div class="line">添加节点(删除etcd3，添加etcd4):</div><div class="line">export etcd4=192.168.234.136</div><div class="line">[root@etcd1 ~]#  etcdctl --endpoints=$&#123;etcd1&#125;:2379,$&#123;etcd2&#125;:2379 --cacert=/etc/etcd/ssl/ca.pem  --cert=/etc/etcd/ssl/etcd.pem --key=/etc/etcd/ssl/etcd-key.pem  member add etcd4 --peer-urls=http://192.168.234.136:2380</div></pre></td></tr></table></figure>
+<blockquote>
+<p>Etcd:从应用场景到实现原理的全方位解读 <a href="http://www.infoq.com/cn/articles/etcd-interpretation-application-scenario-implement-principle" target="_blank" rel="external">http://www.infoq.com/cn/articles/etcd-interpretation-application-scenario-implement-principle</a><br>  Eetcd集群管理 <a href="https://coreos.com/etcd/docs/latest/demo.html" target="_blank" rel="external">https://coreos.com/etcd/docs/latest/demo.html</a></p>
+</blockquote>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2017/09/08/trashed.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Geekwolf">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/wolf.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Geekwolf's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/09/08/trashed.html" itemprop="url">__trashed</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-08T19:04:51+08:00">
+                2017-09-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/架构之路/" itemprop="url" rel="index">
+                    <span itemprop="name">架构之路</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2017/09/08/trashed.html" class="leancloud_visitors" data-flag-title="__trashed">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  13
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="Etcd是什么"><a href="#Etcd是什么" class="headerlink" title="Etcd是什么"></a><strong>Etcd是什么</strong></h4><blockquote>
+<p>Etcd是一个分布式、使用Raft算法维护一致性的kv存储系统，与其类似产品有Zookeeper(老牌经典)、Consul等，Etcd相对ZK，更加轻量、易运维。具体三者之间的对比可参考 <a href="https://luyiisme.github.io/2017/04/22/spring-cloud-service-discovery-products/" target="_blank" rel="external">https://luyiisme.github.io/2017/04/22/spring-cloud-service-discovery-products/</a></p>
+</blockquote>
+<h4 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a><strong>使用场景</strong></h4><p>和zk、consul等类似，使用场景多用于:</p>
+<ul>
+<li>服务发现</li>
+<li>消息发布与订阅</li>
+<li>负载均衡</li>
+<li>分布式锁</li>
+<li>分布式队列</li>
+</ul>
+<h4 id="读写性能"><a href="#读写性能" class="headerlink" title="读写性能"></a><strong>读写性能</strong></h4><p>压测数据参考官方： <a href="https://coreos.com/etcd/docs/latest/op-guide/performance.html" target="_blank" rel="external">https://coreos.com/etcd/docs/latest/op-guide/performance.html</a></p>
+<h4 id="本地集群部署"><a href="#本地集群部署" class="headerlink" title="本地集群部署"></a><strong>本地集群部署</strong></h4><ul>
+<li>操作系统:Debian8 x64</li>
+<li>Etcd v3.2.7</li>
+</ul>
+<ol>
+<li><p>安装</p>
+<p><span class="hljs-label">wget</span> <a href="https://github.com/coreos/etcd/releases/download/" target="_blank" rel="external">https://github.com/coreos/etcd/releases/download/</a><span class="hljs-literal">v3</span>.<span class="hljs-number">2</span>.<span class="hljs-number">7</span>/etcd-<span class="hljs-literal">v3</span>.<span class="hljs-number">2</span>.<span class="hljs-number">7</span>-linux-arm64.tar.gz<br><span class="hljs-label">tar</span> xf etcd-<span class="hljs-literal">v3</span>.<span class="hljs-number">2</span>.<span class="hljs-number">7</span>-linux-arm64.tar.gz<br><span class="hljs-label">cd</span> etcd-<span class="hljs-literal">v3</span>.<span class="hljs-number">2</span>.<span class="hljs-number">7</span>-linux-amd64<br><span class="hljs-label">cp</span> etc* /usr/local/<span class="hljs-keyword">bin/<br></span><span class="hljs-label"><br>etcd:</span> Etcd服务端文件<br><span class="hljs-label">etcdctl</span>: 供用户使用的命令客户端`</p>
+</li>
+<li><p>启动服务</p>
+<pre data-source-line="41">`root@a4c8d490:/home/geekwolf<span class="hljs-preprocessor"># etcd</span>
+ <span class="hljs-number">2017</span>-<span class="hljs-number">09</span>-<span class="hljs-number">07</span> <span class="hljs-number">15</span>:<span class="hljs-number">42</span>:<span class="hljs-number">23.957656</span> I | etcdmain: etcd Version: <span class="hljs-number">3.2</span><span class="hljs-number">.7</span>
+ <span class="hljs-number">2017</span>-<span class="hljs-number">09</span>-<span class="hljs-number">07</span> <span class="hljs-number">15</span>:<span class="hljs-number">42</span>:<span class="hljs-number">23.957699</span> I | etcdmain: Git SHA: bb66589
+ <span class="hljs-number">2017</span>-<span class="hljs-number">09</span>-<span class="hljs-number">07</span> <span class="hljs-number">15</span>:<span class="hljs-number">42</span>:<span class="hljs-number">23.957718</span> I | etcdmain: Go Version: go1<span class="hljs-number">.8</span><span class="hljs-number">.3</span>
+ <span class="hljs-number">2017</span>-<span class="hljs-number">09</span>-<span class="hljs-number">07</span> <span class="hljs-number">15</span>:<span class="hljs-number">42</span>:<span class="hljs-number">23.957723</span> I | etcdmain: Go OS/Arch: linux/amd64
+ <span class="hljs-number">2017</span>-<span class="hljs-number">09</span>-<span class="hljs-number">07</span> <span class="hljs-number">15</span>:<span class="hljs-number">42</span>:<span class="hljs-number">23.957729</span> I | etcdmain: setting maximum number of CPUs to <span class="hljs-number">8</span>, total number of available CPUs is <span class="hljs-number">8</span>
+ <span class="hljs-number">2017</span>-<span class="hljs-number">09</span>-<span class="hljs-number">07</span> <span class="hljs-number">15</span>:<span class="hljs-number">42</span>:<span class="hljs-number">23.957739</span> W | etcdmain: no data-dir provided, <span class="hljs-keyword">using</span> <span class="hljs-keyword">default</span> data-dir ./<span class="hljs-keyword">default</span>.etcd
+ <span class="hljs-number">2017</span>-<span class="hljs-number">09</span>-<span class="hljs-number">07</span> <span class="hljs-number">15</span>:<span class="hljs-number">42</span>:<span class="hljs-number">23.957764</span> N | etcdmain: the server is already initialized as member before, starting as etcd member...
+ <span class="hljs-number">2017</span>-<span class="hljs-number">09</span>-<span class="hljs-number">07</span> <span class="hljs-number">15</span>:<span class="hljs-number">42</span>:<span class="hljs-number">23.957995</span> I | embed: listening <span class="hljs-keyword">for</span> peers on http:<span class="hljs-comment">//localhost:2380</span>
+ <span class="hljs-number">2017</span>-<span class="hljs-number">09</span>-<span class="hljs-number">07</span> <span class="hljs-number">15</span>:<span class="hljs-number">42</span>:<span class="hljs-number">23.958107</span> I | embed: listening <span class="hljs-keyword">for</span> client requests on localhost:<span class="hljs-number">2379</span>
+ <span class="hljs-number">2017</span>-<span class="hljs-number">09</span>-<span class="hljs-number">07</span> <span class="hljs-number">15</span>:<span class="hljs-number">42</span>:<span class="hljs-number">23.964607</span> I | etcdserver: name = <span class="hljs-keyword">default</span>
+ <span class="hljs-number">2017</span>-<span class="hljs-number">09</span>-<span class="hljs-number">07</span> <span class="hljs-number">15</span>:<span class="hljs-number">42</span>:<span class="hljs-number">23.964633</span> I | etcdserver: data dir = <span class="hljs-keyword">default</span>.etcd
+ <span class="hljs-number">2017</span>-<span class="hljs-number">09</span>-<span class="hljs-number">07</span> <span class="hljs-number">15</span>:<span class="hljs-number">42</span>:<span class="hljs-number">23.964652</span> I | etcdserver: member dir = <span class="hljs-keyword">default</span>.etcd/member
+ <span class="hljs-number">2017</span>-<span class="hljs-number">09</span>-<span class="hljs-number">07</span> <span class="hljs-number">15</span>:<span class="hljs-number">42</span>:<span class="hljs-number">23.964657</span> I | etcdserver: heartbeat = <span class="hljs-number">100</span>ms
+ <span class="hljs-number">2017</span>-<span class="hljs-number">09</span>-<span class="hljs-number">07</span> <span class="hljs-number">15</span>:<span class="hljs-number">42</span>:<span class="hljs-number">23.964663</span> I | etcdserver: election = <span class="hljs-number">1000</span>ms
+ <span class="hljs-number">2017</span>-<span class="hljs-number">09</span>-<span class="hljs-number">07</span> <span class="hljs-number">15</span>:<span class="hljs-number">42</span>:<span class="hljs-number">23.964668</span> I | etcdserver: snapshot count = <span class="hljs-number">100000</span>
+ <span class="hljs-number">2017</span>-<span class="hljs-number">09</span>-<span class="hljs-number">07</span> <span class="hljs-number">15</span>:<span class="hljs-number">42</span>:<span class="hljs-number">23.964680</span> I | etcdserver: advertise client URLs = http:<span class="hljs-comment">//localhost:2379</span>
+ <span class="hljs-number">2017</span>-<span class="hljs-number">09</span>-<span class="hljs-number">07</span> <span class="hljs-number">15</span>:<span class="hljs-number">42</span>:<span class="hljs-number">23.973007</span> I | etcdserver: restarting member <span class="hljs-number">8e9</span>e05c52164694d in cluster cdf818194e3a8c32 at commit index <span class="hljs-number">14</span>
+ <span class="hljs-number">2017</span>-<span class="hljs-number">09</span>-<span class="hljs-number">07</span> <span class="hljs-number">15</span>:<span class="hljs-number">42</span>:<span class="hljs-number">23.973041</span> I | raft: <span class="hljs-number">8e9</span>e05c52164694d became follower at term <span class="hljs-number">2</span>
+ <span class="hljs-number">2017</span>-<span class="hljs-number">09</span>-<span class="hljs-number">07</span> <span class="hljs-number">15</span>:<span class="hljs-number">42</span>:<span class="hljs-number">23.973065</span> I | raft: newRaft <span class="hljs-number">8e9</span>e05c52164694d [peers: [], term: <span class="hljs-number">2</span>, commit: <span class="hljs-number">14</span>, applied: <span class="hljs-number">0</span>, lastindex: <span class="hljs-number">14</span>, lastterm: <span class="hljs-number">2</span>]
+ <span class="hljs-number">2017</span>-<span class="hljs-number">09</span>-<span class="hljs-number">07</span> <span class="hljs-number">15</span>:<span class="hljs-number">42</span>:<span class="hljs-number">23.984367</span> W | auth: simple token is not cryptographically <span class="hljs-keyword">signed</span>
+ <span class="hljs-number">2017</span>-<span class="hljs-number">09</span>-<span class="hljs-number">07</span> <span class="hljs-number">15</span>:<span class="hljs-number">42</span>:<span class="hljs-number">23.993237</span> I | etcdserver: starting server... [version: <span class="hljs-number">3.2</span><span class="hljs-number">.7</span>, cluster version: to_be_decided]
+ <span class="hljs-number">2017</span>-<span class="hljs-number">09</span>-<span class="hljs-number">07</span> <span class="hljs-number">15</span>:<span class="hljs-number">42</span>:<span class="hljs-number">23.993659</span> I | etcdserver/membership: added member <span class="hljs-number">8e9</span>e05c52164694d [http:<span class="hljs-comment">//localhost:2380] to cluster cdf818194e3a8c32</span>
+ <span class="hljs-number">2017</span>-<span class="hljs-number">09</span>-<span class="hljs-number">07</span> <span class="hljs-number">15</span>:<span class="hljs-number">42</span>:<span class="hljs-number">23.993754</span> N | etcdserver/membership: <span class="hljs-built_in">set</span> the initial cluster version to <span class="hljs-number">3.2</span>
+ <span class="hljs-number">2017</span>-<span class="hljs-number">09</span>-<span class="hljs-number">07</span> <span class="hljs-number">15</span>:<span class="hljs-number">42</span>:<span class="hljs-number">23.993796</span> I | etcdserver/api: enabled capabilities <span class="hljs-keyword">for</span> version <span class="hljs-number">3.2</span>
+ <span class="hljs-number">2017</span>-<span class="hljs-number">09</span>-<span class="hljs-number">07</span> <span class="hljs-number">15</span>:<span class="hljs-number">42</span>:<span class="hljs-number">24.473288</span> I | raft: <span class="hljs-number">8e9</span>e05c52164694d is starting a <span class="hljs-keyword">new</span> election at term <span class="hljs-number">2</span>
+ <span class="hljs-number">2017</span>-<span class="hljs-number">09</span>-<span class="hljs-number">07</span> <span class="hljs-number">15</span>:<span class="hljs-number">42</span>:<span class="hljs-number">24.473451</span> I | raft: <span class="hljs-number">8e9</span>e05c52164694d became candidate at term <span class="hljs-number">3</span>
+ <span class="hljs-number">2017</span>-<span class="hljs-number">09</span>-<span class="hljs-number">07</span> <span class="hljs-number">15</span>:<span class="hljs-number">42</span>:<span class="hljs-number">24.473519</span> I | raft: <span class="hljs-number">8e9</span>e05c52164694d received MsgVoteResp from <span class="hljs-number">8e9</span>e05c52164694d at term <span class="hljs-number">3</span>
+ <span class="hljs-number">2017</span>-<span class="hljs-number">09</span>-<span class="hljs-number">07</span> <span class="hljs-number">15</span>:<span class="hljs-number">42</span>:<span class="hljs-number">24.473568</span> I | raft: <span class="hljs-number">8e9</span>e05c52164694d became leader at term <span class="hljs-number">3</span>
+ <span class="hljs-number">2017</span>-<span class="hljs-number">09</span>-<span class="hljs-number">07</span> <span class="hljs-number">15</span>:<span class="hljs-number">42</span>:<span class="hljs-number">24.473605</span> I | raft: raft.node: <span class="hljs-number">8e9</span>e05c52164694d elected leader <span class="hljs-number">8e9</span>e05c52164694d at term <span class="hljs-number">3</span>
+ <span class="hljs-number">2017</span>-<span class="hljs-number">09</span>-<span class="hljs-number">07</span> <span class="hljs-number">15</span>:<span class="hljs-number">42</span>:<span class="hljs-number">24.478746</span> I | etcdserver: published {Name:<span class="hljs-keyword">default</span> ClientURLs:[http:<span class="hljs-comment">//localhost:2379]} to cluster cdf818194e3a8c32</span>
+ <span class="hljs-number">2017</span>-<span class="hljs-number">09</span>-<span class="hljs-number">07</span> <span class="hljs-number">15</span>:<span class="hljs-number">42</span>:<span class="hljs-number">24.478824</span> I | embed: ready to serve client requests
+ <span class="hljs-number">2017</span>-<span class="hljs-number">09</span>-<span class="hljs-number">07</span> <span class="hljs-number">15</span>:<span class="hljs-number">42</span>:<span class="hljs-number">24.479116</span> N | embed: serving insecure client requests on <span class="hljs-number">127.0</span><span class="hljs-number">.0</span><span class="hljs-number">.1</span>:<span class="hljs-number">2379</span>, <span class="hljs-keyword">this</span> is strongly discouraged!`</pre>
+
+<p>由上面的输出可知：</p>
+</li>
+</ol>
+<ul>
+<li>etcd服务之间通信端口是2380，暴露给客户端端口为2379</li>
+<li>默认将数据存放到当前路径default.etcd/目录下</li>
+<li>该节点的名称默认为default</li>
+<li>集群和节点都会生成唯一的uuid</li>
+<li>启动服务时，会根据raft算法，选举leader</li>
+</ul>
+<ol>
+<li><p>测试</p>
+<pre data-source-line="88">`查看api版本（默认api版本是v2）
+root<span class="hljs-variable">@a4c8d490</span><span class="hljs-symbol">:~/k8s/etcd-v3</span>.<span class="hljs-number">2.7</span>-linux-amd64<span class="hljs-comment"># etcdctl  --version</span>
+etcdctl <span class="hljs-symbol">version:</span> <span class="hljs-number">3.2</span>.<span class="hljs-number">7</span>
+<span class="hljs-constant">API </span><span class="hljs-symbol">version:</span> <span class="hljs-number">2</span>
+
+使用<span class="hljs-constant">API V3方</span>法：
+<span class="hljs-constant">Etcd服</span>务端和客户端添加变量 export <span class="hljs-constant">ETCDCTL_API=</span><span class="hljs-number">3</span>,重新启动etcd服务即可
+以下操作在api v3版本<span class="hljs-symbol">:</span>
+写入<span class="hljs-symbol">key:</span> etcdctl put foo bar
+读取<span class="hljs-symbol">key:</span> etcdctl get foo
+多key范围读取<span class="hljs-symbol">:</span> etcdctl get foo foo9(会将foo..foo8的key读取,不包括foo9)
+读取过往版本key的值(<span class="hljs-constant">Etcd键</span>值对的修改都会增加全局修订版本号,--rev为版本号)<span class="hljs-symbol">:</span>
+ etcdctl get --rev=<span class="hljs-number">4</span> foo foo9
+删除<span class="hljs-symbol">key:</span> etcdctl del foo
+范围删除(foo-&gt;foo9)<span class="hljs-symbol">:etcdctl</span> del foo foo9
+观察key变化<span class="hljs-symbol">:etcdctl</span> watch foo
+观察范围key变化<span class="hljs-symbol">:</span> etcdctl watch foo foo9
+从rev=<span class="hljs-number">2</span>版本开始观察key变化<span class="hljs-symbol">:</span> etcdctl watch --rev=<span class="hljs-number">2</span> foo
+压缩版本<span class="hljs-number">5</span>之前的修订版本(压缩后<span class="hljs-number">5</span>之前的版本不可能访问)<span class="hljs-symbol">:</span> etcdctl compact <span class="hljs-number">5</span>
+授予key有效期<span class="hljs-symbol">:</span>
+创建租约<span class="hljs-symbol">:</span> 
+<span class="hljs-variable">$ </span>etcdctl lease grant <span class="hljs-number">10</span>
+lease <span class="hljs-number">694</span>d5e5b63a74f31 granted with <span class="hljs-constant">TTL(</span><span class="hljs-number">10</span>s)
+附加key foo到租约<span class="hljs-number">694</span>d5e5b63a74f31，该租约过期后，会删除附加的所有key
+撤销租约(撤销后，附加改租约的所有key被删除)<span class="hljs-symbol">:</span> etcdctl lease revoke <span class="hljs-number">32695410</span>dcc0ca06
+维持租约(执行后，会一直维持该租约)<span class="hljs-symbol">:</span> etcdctl lease keep-alive <span class="hljs-number">32695410</span>dcc0ca<span class="hljs-number">0</span>
+
+其他参数可参考 etcdctl --help
+通过<span class="hljs-constant">HTTP操</span>作：
+<span class="hljs-constant">Etcd </span><span class="hljs-symbol">v2:</span> <span class="hljs-symbol">https:</span>/<span class="hljs-regexp">/coreos.com/etcd</span><span class="hljs-regexp">/docs/latest</span><span class="hljs-regexp">/v2/api</span>.html
+<span class="hljs-constant">Etcd </span><span class="hljs-symbol">v3:</span> <span class="hljs-symbol">https:</span>/<span class="hljs-regexp">/coreos.com/etcd</span><span class="hljs-regexp">/docs/latest</span><span class="hljs-regexp">/dev-guide/api</span>_grpc_gateway.html`</pre>
+
+<h4 id="多节点集群部署"><a href="#多节点集群部署" class="headerlink" title="多节点集群部署"></a><strong>多节点集群部署</strong></h4><h5 id="静态模式部署"><a href="#静态模式部署" class="headerlink" title="静态模式部署"></a><strong>静态模式部署</strong></h5><h6 id="环境说明-三节点集群"><a href="#环境说明-三节点集群" class="headerlink" title="环境说明(三节点集群)"></a><strong>环境说明(三节点集群)</strong></h6><table data-source-line="125"><br><thead><br><tr><br><th>节点</th><br><th>地址</th><br><th>主机</th><br></tr><br></thead><br><tbody><br><tr><br><td>etcd1</td><br><td>192.168.234.133</td><br><td><a href="http://etcd1.simlinux.com" target="_blank" rel="external">etcd1.simlinux.com</a></td><br></tr><br><tr><br><td>etcd2</td><br><td>192.168.234.133</td><br><td><a href="http://etcd2.simlinux.com" target="_blank" rel="external">etcd2.simlinux.com</a></td><br></tr><br><tr><br><td>etcd3</td><br><td>192.168.234.133</td><br><td><a href="http://etcd3.simlinux.com" target="_blank" rel="external">etcd3.simlinux.com</a></td><br></tr><br></tbody><br></table>
+
+<h6 id="初始化环境"><a href="#初始化环境" class="headerlink" title="初始化环境"></a><strong>初始化环境</strong></h6><p>三个节点分别设置主机名:</p>
+<pre data-source-line="136">`hostnamectl --static  set-hostname etcd1<span class="hljs-class">.simlinux</span><span class="hljs-class">.com</span>
+hostnamectl --static  set-hostname etcd2<span class="hljs-class">.simlinux</span><span class="hljs-class">.com</span>
+hostnamectl --static  set-hostname etcd3<span class="hljs-class">.simlinux</span><span class="hljs-class">.com</span>`</pre>
+
+<p>三个节点hosts文件添加:</p>
+<pre data-source-line="144">`vim /etc/hosts
+<span class="hljs-number">192.168</span><span class="hljs-number">.234</span><span class="hljs-number">.133</span> etcd1.simlinux.com 
+<span class="hljs-number">192.168</span><span class="hljs-number">.234</span><span class="hljs-number">.133</span> etcd2.simlinux.com 
+<span class="hljs-number">192.168</span><span class="hljs-number">.234</span><span class="hljs-number">.133</span> etcd3.simlinux.com`</pre>
+
+<p><strong>生成etcd证书(用于etcd间、客户端与etcd通信)</strong></p>
+<p>由上篇<a href="http://www.simlinux.com/archives/1953.html">k8s部署之使用CFSSL创建证书</a>的CA来生成</p>
+<pre data-source-line="155">`<span class="hljs-keyword">cat</span>  etcd.json 
+
+{
+    <span class="hljs-string">"CN"</span>: <span class="hljs-string">"etcd"</span>,
+    <span class="hljs-string">"hosts"</span>: [
+        <span class="hljs-string">"127.0.0.1"</span>,
+        <span class="hljs-string">"192.168.234.133"</span>,
+        <span class="hljs-string">"192.168.234.134"</span>,
+        <span class="hljs-string">"192.168.234.135"</span>
+    ],
+    <span class="hljs-string">"key"</span>: {
+        <span class="hljs-string">"algo"</span>: <span class="hljs-string">"ecdsa"</span>,
+        <span class="hljs-string">"size"</span>: 256
+    },
+    <span class="hljs-string">"names"</span>: [
+        {
+            <span class="hljs-string">"C"</span>: <span class="hljs-string">"CN"</span>,
+            <span class="hljs-string">"L"</span>: <span class="hljs-string">"ShangHai"</span>,
+            <span class="hljs-string">"ST"</span>: <span class="hljs-string">"ShangHai"</span>,
+            <span class="hljs-string">"O"</span>: <span class="hljs-string">"K8s"</span>,
+            <span class="hljs-string">"OU"</span>: <span class="hljs-string">"System"</span>
+        }
+    ]
+}
+
+cfssl gencert -<span class="hljs-keyword">ca</span>=<span class="hljs-keyword">ca</span>.pem -<span class="hljs-keyword">ca</span>-key=<span class="hljs-keyword">ca</span>-key.pem -config=<span class="hljs-keyword">ca</span>-config.json -profile=peer etcd.json | cfssljson -bare etcd
+
+将<span class="hljs-keyword">CA</span>和etcd证书拷贝到etcd所有节点:
+cp <span class="hljs-keyword">ca</span>.pem  etcd-key.pem  etcd.pem /etc/etcd/ssl/`</pre>
+
+<h6 id="安装etcd节点-所有节点"><a href="#安装etcd节点-所有节点" class="headerlink" title="安装etcd节点(所有节点)"></a><strong>安装etcd节点(所有节点)</strong></h6><pre data-source-line="190">`wget https:<span class="hljs-comment">//github.com/coreos/etcd/releases/download/v3.2.7/etcd-v3.2.7-linux-amd64.tar.gz</span>
+tar xf etcd-v3<span class="hljs-number">.2</span><span class="hljs-number">.7</span>-linux-amd64.tar.gz
+cd etcd-v3<span class="hljs-number">.2</span><span class="hljs-number">.7</span>-linux-amd64
+chmod +x etcd*
+cp etcd* /bin`</pre>
+
+<h6 id="etcd配置"><a href="#etcd配置" class="headerlink" title="etcd配置"></a><strong>etcd配置</strong></h6><p>服务管理(所有节点相同): vim /usr/lib/systemd/system/etcd.service</p>
+<pre data-source-line="203">`[Unit]
+Description=Etcd Server
+After=network.target
+After=network-online.target
+Wants=network-online.target
+Documentation=https://github.com/coreos
+
+[Service]
+Type=notify
+WorkingDirectory=/data/k8s/etcd/
+EnvironmentFile=/etc/etcd/etcd.conf
+ExecStart=/bin/etcd \
+  -<span class="ruby">-name=<span class="hljs-variable">${</span><span class="hljs-constant">NAME</span>} \
+</span>  -<span class="ruby">-cert-file=<span class="hljs-regexp">/etc/etcd</span><span class="hljs-regexp">/ssl/etcd</span>.pem \
+</span>  -<span class="ruby">-key-file=<span class="hljs-regexp">/etc/etcd</span><span class="hljs-regexp">/ssl/etcd</span>-key.pem \
+</span>  -<span class="ruby">-peer-cert-file=<span class="hljs-regexp">/etc/etcd</span><span class="hljs-regexp">/ssl/etcd</span>.pem \
+</span>  -<span class="ruby">-peer-key-file=<span class="hljs-regexp">/etc/etcd</span><span class="hljs-regexp">/ssl/etcd</span>-key.pem \
+</span>  -<span class="ruby">-trusted-ca-file=<span class="hljs-regexp">/etc/etcd</span><span class="hljs-regexp">/ssl/ca</span>.pem \
+</span>  -<span class="ruby">-peer-trusted-ca-file=<span class="hljs-regexp">/etc/etcd</span><span class="hljs-regexp">/ssl/ca</span>.pem \
+</span>  -<span class="ruby">-initial-advertise-peer-urls=<span class="hljs-variable">${</span><span class="hljs-constant">INITIAL_ADVERTISE_PEER_URLS</span>} \
+</span>  -<span class="ruby">-listen-peer-urls=<span class="hljs-variable">${</span><span class="hljs-constant">LISTEN_PEER_URLS</span>} \
+</span>  -<span class="ruby">-listen-client-urls=<span class="hljs-variable">${</span><span class="hljs-constant">LISTEN_CLIENT_URLS</span>} \
+</span>  -<span class="ruby">-advertise-client-urls=<span class="hljs-variable">${</span><span class="hljs-constant">ADVERTISE_CLIENT_URLS</span>} \
+</span>  -<span class="ruby">-initial-cluster-token=<span class="hljs-variable">${</span><span class="hljs-constant">INITIAL_CLUSTER_TOKEN</span>} \
+</span>  -<span class="ruby">-initial-cluster=<span class="hljs-variable">${</span><span class="hljs-constant">INITIAL_CLUSTER</span>} \
+</span>  -<span class="ruby">-initial-cluster-state=new \
+</span>  -<span class="ruby">-data-dir=<span class="hljs-variable">${</span><span class="hljs-constant">DATA_DIR</span>}
+</span>Restart=on-failure
+RestartSec=5
+LimitNOFILE=65536
+
+[Install]
+WantedBy=multi-user.target`</pre>
+
+<p>配置文件: vim /etc/etcd/etcd.conf</p>
+<pre data-source-line="242">`<span class="hljs-preprocessor">#节点名称</span>
+NAME=<span class="hljs-string">"etcd1"</span>
+<span class="hljs-preprocessor">#etcd数据存放目录</span>
+DATA_DIR=<span class="hljs-string">"/data/k8s/etcd"</span>
+<span class="hljs-preprocessor">#etcd节点间通信监听地址</span>
+LISTEN_PEER_URLS=<span class="hljs-string">"https://192.168.234.133:2380"</span>
+<span class="hljs-preprocessor">#对外提供服务的地址</span>
+LISTEN_CLIENT_URLS=<span class="hljs-string">"https://192.168.234.133:2379,https://127.0.0.1:2379"</span>
+<span class="hljs-preprocessor">#通知其他etcd节点本实例地址</span>
+INITIAL_ADVERTISE_PEER_URLS=<span class="hljs-string">"https://192.168.234.133:2380"</span>
+<span class="hljs-preprocessor">#初始化集群内节点地址</span>
+INITIAL_CLUSTER=<span class="hljs-string">"etcd1=https://192.168.234.133:2380,etcd2=https://192.168.234.134:2380,etcd3=https://192.168.234.135:2380"</span>
+<span class="hljs-preprocessor">#初始化状态.new表示新建,已经存在的集群使用existing</span>
+INITIAL_CLUSTER_STATE=<span class="hljs-string">"new"</span>
+<span class="hljs-preprocessor">#创建集群的token,每个集群唯一</span>
+INITIAL_CLUSTER_TOKEN=<span class="hljs-string">"k8s-etcd-cluster"</span>
+<span class="hljs-preprocessor">#告知其他集群本节点客户端监听地址</span>
+ADVERTISE_CLIENT_URLS=<span class="hljs-string">"https://192.168.234.133:2379"</span>
+ETCDCTL_API=<span class="hljs-number">3</span>
+
+其中NAME/LISTEN_PEER_URLS/LISTEN_CLIENT_URLS/INITIAL_ADVERTISE_PEER_URLS/ADVERTISE_CLIENT_URLS替换成相应节点名称和地址`</pre>
+
+<h6 id="服务管理"><a href="#服务管理" class="headerlink" title="服务管理"></a><strong>服务管理</strong></h6><p>systemctl start etcd.service systemctl stop etcd.service systemctl status etcd.service(查看服务状态及日志)</p>
+<h6 id="测试验证"><a href="#测试验证" class="headerlink" title="测试验证"></a><strong>测试验证</strong></h6><p><pre data-source-line="274">`[root@etcd1 ~]<span class="hljs-preprocessor"># export etcd1=<span class="hljs-number">192.168</span><span class="hljs-number">.234</span><span class="hljs-number">.133</span></span><br>[root@etcd1 ~]<span class="hljs-preprocessor"># export etcd2=<span class="hljs-number">192.168</span><span class="hljs-number">.234</span><span class="hljs-number">.134</span></span><br>[root@etcd1 ~]<span class="hljs-preprocessor"># export etcd3=<span class="hljs-number">192.168</span><span class="hljs-number">.234</span><span class="hljs-number">.135</span></span><br>[root@etcd1 ~]<span class="hljs-preprocessor"># export ENDPOINTS=$etcd1:<span class="hljs-number">2379</span>,$etcd2:<span class="hljs-number">2379</span>,$etcd3:<span class="hljs-number">2379</span></span></pre></p>
+<p>查看集群成员:<br>[root@etcd1 etcd]<span class="hljs-preprocessor">#  etcdctl –write-out=table –endpoints=$ENDPOINTS –cacert=/etc/etcd/ssl/ca.pem  –cert=/etc/etcd/ssl/etcd.pem –key=/etc/etcd/ssl/etcd-key.pem member list</span><br>+——————+———+——-+——————————+——————————+<br>|        ID        | STATUS  | NAME  |          PEER ADDRS          |         CLIENT ADDRS         |<br>+——————+———+——-+——————————+——————————+<br>| <span class="hljs-number">1</span>a4a83ef243ff1c9 | started | etcd2 | https:<span class="hljs-comment">//192.168.234.134:2380 | <a href="https://192.168.234.134:2379" target="_blank" rel="external">https://192.168.234.134:2379</a> |</span><br>| <span class="hljs-number">68243</span>ef8797bd1ce | started | etcd1 | https:<span class="hljs-comment">//192.168.234.133:2380 | <a href="https://192.168.234.133:2379" target="_blank" rel="external">https://192.168.234.133:2379</a> |</span><br>| fa30209a63d949b0 | started | etcd3 | https:<span class="hljs-comment">//192.168.234.135:2380 | <a href="https://192.168.234.135:2379" target="_blank" rel="external">https://192.168.234.135:2379</a> |</span><br>+——————+———+——-+——————————+——————————+</p>
+<p>查看集群状态:</p>
+<p>[root@etcd1 ~]<span class="hljs-preprocessor"># etcdctl –write-out=table –endpoints=$ENDPOINTS –cacert=/etc/etcd/ssl/ca.pem  –cert=/etc/etcd/ssl/etcd.pem –key=/etc/etcd/ssl/etcd-key.pem endpoint status</span><br>+———————-+——————+———+———+———–+———–+————+<br>|       ENDPOINT       |        ID        | VERSION | DB SIZE | IS LEADER | RAFT TERM | RAFT INDEX |<br>+———————-+——————+———+———+———–+———–+————+<br>| <span class="hljs-number">192.168</span><span class="hljs-number">.234</span><span class="hljs-number">.133</span>:<span class="hljs-number">2379</span> | <span class="hljs-number">68243</span>ef8797bd1ce |   <span class="hljs-number">3.2</span><span class="hljs-number">.7</span> |   <span class="hljs-number">25</span> kB |     <span class="hljs-literal">false</span> |        <span class="hljs-number">10</span> |          <span class="hljs-number">9</span> |<br>| <span class="hljs-number">192.168</span><span class="hljs-number">.234</span><span class="hljs-number">.134</span>:<span class="hljs-number">2379</span> | <span class="hljs-number">1</span>a4a83ef243ff1c9 |   <span class="hljs-number">3.2</span><span class="hljs-number">.7</span> |   <span class="hljs-number">25</span> kB |     <span class="hljs-literal">false</span> |        <span class="hljs-number">10</span> |          <span class="hljs-number">9</span> |<br>| <span class="hljs-number">192.168</span><span class="hljs-number">.234</span><span class="hljs-number">.135</span>:<span class="hljs-number">2379</span> | fa30209a63d949b0 |   <span class="hljs-number">3.2</span><span class="hljs-number">.7</span> |   <span class="hljs-number">25</span> kB |      <span class="hljs-literal">true</span> |        <span class="hljs-number">10</span> |          <span class="hljs-number">9</span> |<br>+———————-+——————+———+———+———–+———–+————+</p>
+<p>[root@etcd1 ~]<span class="hljs-preprocessor"># etcdctl –write-out=table –endpoints=$ENDPOINTS –cacert=/etc/etcd/ssl/ca.pem  –cert=/etc/etcd/ssl/etcd.pem –key=/etc/etcd/ssl/etcd-key.pem endpoint health</span><br><span class="hljs-number">192.168</span><span class="hljs-number">.234</span><span class="hljs-number">.135</span>:<span class="hljs-number">2379</span> is healthy: successfully committed proposal: took = <span class="hljs-number">1.374345</span>ms<br><span class="hljs-number">192.168</span><span class="hljs-number">.234</span><span class="hljs-number">.134</span>:<span class="hljs-number">2379</span> is healthy: successfully committed proposal: took = <span class="hljs-number">2.217525</span>ms<br><span class="hljs-number">192.168</span><span class="hljs-number">.234</span><span class="hljs-number">.133</span>:<span class="hljs-number">2379</span> is healthy: successfully committed proposal: took = <span class="hljs-number">1.996245</span>ms</p>
+<p>保存快照:<br>[root@etcd1 ~]<span class="hljs-preprocessor"># etcdctl –write-out=table –endpoints=$ENDPOINTS –cacert=/etc/etcd/ssl/ca.pem  –cert=/etc/etcd/ssl/etcd.pem –key=/etc/etcd/ssl/etcd-key.pem snapshot save my.db</span><br>Snapshot saved at my.db</p>
+<p>查看快照状态:<br>[root@etcd1 ~]<span class="hljs-preprocessor"># etcdctl –write-out=table –endpoints=$ENDPOINTS –cacert=/etc/etcd/ssl/ca.pem  –cert=/etc/etcd/ssl/etcd.pem –key=/etc/etcd/ssl/etcd-key.pem snapshot status my.db</span><br>+———-+———-+————+————+<br>|   HASH   | REVISION | TOTAL KEYS | TOTAL SIZE |<br>+———-+———-+————+————+<br>| <span class="hljs-number">9</span>a496339 |        <span class="hljs-number">3</span> |          <span class="hljs-number">8</span> |      <span class="hljs-number">25</span> kB |<br>+———-+———-+————+————+</p>
+<p>恢复数据(要先删除原来数据目录,所有节点操作)：<br>[root@etcd1 ~]<span class="hljs-preprocessor"># etcdctl  –endpoints=$ENDPOINTS –cacert=/etc/etcd/ssl/ca.pem  –cert=/etc/etcd/ssl/etcd.pem –key=/etc/etcd/ssl/etcd-key.pem snapshot restore my.db  –data-dir=/data/k8s/etcd/</span><br><span class="hljs-number">2017</span>-<span class="hljs-number">09</span>-<span class="hljs-number">09</span> <span class="hljs-number">02</span>:<span class="hljs-number">28</span>:<span class="hljs-number">52.439616</span> I | etcdserver/membership: added member <span class="hljs-number">8e9</span>e05c52164694d [http:<span class="hljs-comment">//localhost:2380] to cluster cdf818194e3a8c32</span></p>
+<p>删除节点:<br>[root@etcd1 ~]<span class="hljs-preprocessor"># etcdctl –write-out=table –endpoints=$ENDPOINTS –cacert=/etc/etcd/ssl/ca.pem  –cert=/etc/etcd/ssl/etcd.pem –key=/etc/etcd/ssl/etcd-key.pem member remove <span class="hljs-number">68243</span>ef8797bd1ce</span></p>
+<p>更新节点:<br>[root@etcd1 ~]<span class="hljs-preprocessor"># etcdctl –write-out=table –endpoints=$ENDPOINTS –cacert=/etc/etcd/ssl/ca.pem  –cert=/etc/etcd/ssl/etcd.pem –key=/etc/etcd/ssl/etcd-key.pem member update <span class="hljs-number">68243</span>ef8797bd1ce https:<span class="hljs-comment">//192.168.234.133:1111(INITIAL_ADVERTISE_PEER_URLS)</span></span></p>
+<p>添加节点(删除etcd3，添加etcd4):<br><span class="hljs-keyword">export</span> etcd4=<span class="hljs-number">192.168</span><span class="hljs-number">.234</span><span class="hljs-number">.136</span><br>[root@etcd1 ~]<span class="hljs-preprocessor">#  etcdctl –endpoints=${etcd1}:<span class="hljs-number">2379</span>,${etcd2}:<span class="hljs-number">2379</span> –cacert=/etc/etcd/ssl/ca.pem  –cert=/etc/etcd/ssl/etcd.pem –key=/etc/etcd/ssl/etcd-key.pem    member add etcd4 –peer-urls=http:<span class="hljs-comment">//192.168.234.136:2380</span></span></p>
+</li>
+</ol>
+<blockquote>
+<p>Etcd：从应用场景到实现原理的全方位解读 <a href="http://www.infoq.com/cn/articles/etcd-interpretation-application-scenario-implement-principle" target="_blank" rel="external">http://www.infoq.com/cn/articles/etcd-interpretation-application-scenario-implement-principle</a> Eetcd集群管理 <a href="https://coreos.com/etcd/docs/latest/demo.html" target="_blank" rel="external">https://coreos.com/etcd/docs/latest/demo.html</a></p>
+</blockquote>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2017/09/07/k8s-cfssl-install-cert.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Geekwolf">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/wolf.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Geekwolf's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/09/07/k8s-cfssl-install-cert.html" itemprop="url">k8s部署之使用CFSSL创建证书</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-07T19:39:05+08:00">
+                2017-09-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/docker/" itemprop="url" rel="index">
+                    <span itemprop="name">docker</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2017/09/07/k8s-cfssl-install-cert.html" class="leancloud_visitors" data-flag-title="k8s部署之使用CFSSL创建证书">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  3
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="安装CFSSL"><a href="#安装CFSSL" class="headerlink" title="安装CFSSL"></a>安装CFSSL</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">curl -s -L -o /bin/cfssl https://pkg.cfssl.org/R1.2/cfssl_linux-amd64</div><div class="line">curl -s -L -o /bin/cfssljson https://pkg.cfssl.org/R1.2/cfssljson_linux-amd64</div><div class="line">curl -s -L -o /bin/cfssl-certinfo https://pkg.cfssl.org/R1.2/cfssl-certinfo_linux-amd64</div><div class="line">chmod +x /bin/cfssl*</div></pre></td></tr></table></figure>
+<h4 id="容器相关证书类型"><a href="#容器相关证书类型" class="headerlink" title="容器相关证书类型"></a>容器相关证书类型</h4><blockquote>
+<p>client certificate： 用于服务端认证客户端,例如etcdctl、etcd proxy、fleetctl、docker客户端<br>server certificate:  服务端使用，客户端以此验证服务端身份,例如docker服务端、kube-apiserver<br>peer certificate: 双向证书，用于etcd集群成员间通信</p>
+</blockquote>
+<h4 id="创建CA证书"><a href="#创建CA证书" class="headerlink" title="创建CA证书"></a>创建CA证书</h4><h5 id="生成默认CA配置"><a href="#生成默认CA配置" class="headerlink" title="生成默认CA配置"></a>生成默认CA配置</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">mkdir /opt/ssl</div><div class="line">cd /opt/ssl</div><div class="line">cfssl print-defaults config &gt; ca-config.json</div><div class="line">cfssl print-defaults csr &gt; ca-csr.json</div></pre></td></tr></table></figure>
+<p><strong>修改ca-config.json,分别配置针对三种不同证书类型的profile,其中有效期43800h为5年</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line">    &#123;</div><div class="line">    &quot;signing&quot;: &#123;</div><div class="line">        &quot;default&quot;: &#123;</div><div class="line">            &quot;expiry&quot;: &quot;43800h&quot;</div><div class="line">        &#125;,</div><div class="line">        &quot;profiles&quot;: &#123;</div><div class="line">            &quot;server&quot;: &#123;</div><div class="line">                &quot;expiry&quot;: &quot;43800h&quot;,</div><div class="line">                &quot;usages&quot;: [</div><div class="line">                    &quot;signing&quot;,</div><div class="line">                    &quot;key encipherment&quot;,</div><div class="line">                    &quot;server auth&quot;</div><div class="line">                ]</div><div class="line">            &#125;,</div><div class="line">            &quot;client&quot;: &#123;</div><div class="line">                &quot;expiry&quot;: &quot;43800h&quot;,</div><div class="line">                &quot;usages&quot;: [</div><div class="line">                    &quot;signing&quot;,</div><div class="line">                    &quot;key encipherment&quot;,</div><div class="line">                    &quot;client auth&quot;</div><div class="line">                ]</div><div class="line">            &#125;,</div><div class="line">            &quot;peer&quot;: &#123;</div><div class="line">                &quot;expiry&quot;: &quot;43800h&quot;,</div><div class="line">                &quot;usages&quot;: [</div><div class="line">                    &quot;signing&quot;,</div><div class="line">                    &quot;key encipherment&quot;,</div><div class="line">                    &quot;server auth&quot;,</div><div class="line">                    &quot;client auth&quot;</div><div class="line">                ]</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><strong>修改ca-csr.config</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">    &#123;</div><div class="line">    &quot;CN&quot;: &quot;Self Signed Ca&quot;,</div><div class="line">    &quot;key&quot;: &#123;</div><div class="line">        &quot;algo&quot;: &quot;rsa&quot;,</div><div class="line">        &quot;size&quot;: 2048</div><div class="line">    &#125;,</div><div class="line">    &quot;names&quot;: [</div><div class="line">        &#123;</div><div class="line">            &quot;C&quot;: &quot;CN&quot;,</div><div class="line">            &quot;L&quot;: &quot;SH&quot;,</div><div class="line">            &quot;O&quot;: &quot;Netease&quot;,</div><div class="line">            &quot;ST&quot;: &quot;SH&quot;,            </div><div class="line">            &quot;OU&quot;: &quot;OT&quot;</div><div class="line">        &#125;    ]</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><strong>生成CA证书和私钥</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cfssl gencert -initca ca-csr.json | cfssljson -bare ca -</div><div class="line">生成ca.pem、ca.csr、ca-key.pem(CA私钥,需妥善保管)</div></pre></td></tr></table></figure></p>
+<h5 id="签发Server-Certificate"><a href="#签发Server-Certificate" class="headerlink" title="签发Server Certificate"></a>签发Server Certificate</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">cfssl print-defaults csr &amp;gt; server.json</div><div class="line">vim server.json</div><div class="line">&#123;</div><div class="line">    &quot;CN&quot;: &quot;Server&quot;,</div><div class="line">    &quot;hosts&quot;: [</div><div class="line">        &quot;192.168.1.1&quot;</div><div class="line">       ],</div><div class="line">    &quot;key&quot;: &#123;</div><div class="line">        &quot;algo&quot;: &quot;ecdsa&quot;,</div><div class="line">        &quot;size&quot;: 256</div><div class="line">    &#125;,</div><div class="line">    &quot;names&quot;: [</div><div class="line">        &#123;</div><div class="line">            &quot;C&quot;: &quot;CN&quot;,</div><div class="line">            &quot;L&quot;: &quot;SH&quot;,</div><div class="line">            &quot;ST&quot;: &quot;SH&quot;</div><div class="line">        &#125;</div><div class="line">    ]</div><div class="line">&#125;</div><div class="line">生成服务端证书和私钥</div><div class="line">cfssl gencert -ca=ca.pem -ca-key=ca-key.pem -config=ca-config.json -profile=server server.json | cfssljson -bare server</div></pre></td></tr></table></figure>
+<h5 id="签发Client-Certificate"><a href="#签发Client-Certificate" class="headerlink" title="签发Client Certificate"></a>签发Client Certificate</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">cfssl print-defaults csr &amp;gt; client.json</div><div class="line">vim client.json</div><div class="line">&#123;</div><div class="line">    &quot;CN&quot;: &quot;Client&quot;,</div><div class="line">    &quot;hosts&quot;: [],</div><div class="line">    &quot;key&quot;: &#123;</div><div class="line">        &quot;algo&quot;: &quot;ecdsa&quot;,</div><div class="line">        &quot;size&quot;: 256</div><div class="line">    &#125;,</div><div class="line">    &quot;names&quot;: [</div><div class="line">        &#123;</div><div class="line">            &quot;C&quot;: &quot;CN&quot;,</div><div class="line">            &quot;L&quot;: &quot;SH&quot;,</div><div class="line">            &quot;ST&quot;: &quot;SH&quot;</div><div class="line">        &#125;</div><div class="line">    ]</div><div class="line">&#125;</div><div class="line">生成客户端证书和私钥</div><div class="line">cfssl gencert -ca=ca.pem -ca-key=ca-key.pem -config=ca-config.json -profile=client client.json | cfssljson -bare client</div></pre></td></tr></table></figure>
+<h5 id="签发peer-certificate"><a href="#签发peer-certificate" class="headerlink" title="签发peer certificate"></a>签发peer certificate</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">cfssl print-defaults csr &amp;gt; member1.json</div><div class="line">vim member1.json</div><div class="line">&#123;</div><div class="line">    &quot;CN&quot;: &quot;member1&quot;,</div><div class="line">    &quot;hosts&quot;: [</div><div class="line">        &quot;192.168.1.1&quot;</div><div class="line">    ],</div><div class="line">    &quot;key&quot;: &#123;</div><div class="line">        &quot;algo&quot;: &quot;ecdsa&quot;,</div><div class="line">        &quot;size&quot;: 256</div><div class="line">    &#125;,</div><div class="line">    &quot;names&quot;: [</div><div class="line">        &#123;</div><div class="line">            &quot;C&quot;: &quot;CN&quot;,</div><div class="line">            &quot;L&quot;: &quot;SH&quot;,</div><div class="line">            &quot;ST&quot;: &quot;SH&quot;</div><div class="line">        &#125;</div><div class="line">    ]</div><div class="line">&#125;</div><div class="line">为节点member1生成证书和私钥:</div><div class="line">cfssl gencert -ca=ca.pem -ca-key=ca-key.pem -config=ca-config.json -profile=peer member1.json | cfssljson -bare member1</div><div class="line">针对etcd服务,每个etcd节点上按照上述方法生成相应的证书和私钥</div></pre></td></tr></table></figure>
+<h5 id="最后校验证书"><a href="#最后校验证书" class="headerlink" title="最后校验证书"></a>最后校验证书</h5><p>校验生成的证书是否和配置相符<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">openssl x509 -in ca.pem -text -noout</div><div class="line">openssl x509 -in server.pem -text -noout</div><div class="line">openssl x509 -in client.pem -text -noout</div></pre></td></tr></table></figure></p>
+<h4 id="k8s集群所需证书"><a href="#k8s集群所需证书" class="headerlink" title="k8s集群所需证书"></a>k8s集群所需证书</h4><p><img src="http://www.simlinux.com/wp-content/uploads/2017/09/cert.jpg" alt=""></p>
+<h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><blockquote>
+<p><a href="https://coreos.com/os/docs/latest/generate-self-signed-certificates.html" target="_blank" rel="external">https://coreos.com/os/docs/latest/generate-self-signed-certificates.html</a></p>
+</blockquote>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2017/09/06/django-e6-a8-a1-e6-9d-bf-e6-97-a0-e6-b3-95-e4-bd-bf-e7-94-a8perms-e5-8f-98-e9-87-8f-e9-97-ae-e9-a2-98.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Geekwolf">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/wolf.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Geekwolf's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/09/06/django-e6-a8-a1-e6-9d-bf-e6-97-a0-e6-b3-95-e4-bd-bf-e7-94-a8perms-e5-8f-98-e9-87-8f-e9-97-ae-e9-a2-98.html" itemprop="url">Django模板无法使用perms变量问题</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-06T16:33:00+08:00">
+                2017-09-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Python/" itemprop="url" rel="index">
+                    <span itemprop="name">Python</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2017/09/06/django-e6-a8-a1-e6-9d-bf-e6-97-a0-e6-b3-95-e4-bd-bf-e7-94-a8perms-e5-8f-98-e9-87-8f-e9-97-ae-e9-a2-98.html" class="leancloud_visitors" data-flag-title="Django模板无法使用perms变量问题">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  2
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>首先,在使用Django内置权限管理系统时,settings.py文件要添加</p>
+<pre><code>INSTALLED_APPS添加:
+&apos;django.contrib.auth&apos;,
+
+MIDDLEWARE添加:
+&apos;django.contrib.auth.middleware.AuthenticationMiddleware&apos;,
+
+&apos;django.contrib.auth.context_processors.auth&apos;,
+TEMPLATES = [
+    {
+        &apos;BACKEND&apos;: &apos;django.template.backends.django.DjangoTemplates&apos;,
+        &apos;DIRS&apos;: [os.path.join(BASE_DIR, &apos;templates&apos;)],
+        &apos;APP_DIRS&apos;: True,
+        &apos;OPTIONS&apos;: {
+            &apos;context_processors&apos;: [
+                &apos;django.template.context_processors.debug&apos;,
+                &apos;django.template.context_processors.i18n&apos;,
+                &apos;django.template.context_processors.media&apos;,
+                &apos;django.template.context_processors.static&apos;,
+                &apos;django.template.context_processors.tz&apos;,
+                &apos;django.contrib.messages.context_processors.messages&apos;,
+                &apos;django.template.context_processors.request&apos;,
+                &apos;django.contrib.auth.context_processors.auth&apos;,
+            ],
+        },
+    },
+]
+`&lt;/pre&gt;
+
+如何在模板进行权限检查呢？
+根据官网说明 https://docs.djangoproject.com/en/1.11/topics/auth/default/#permissions ,已登录用户权限保存在模板{{ perms }}变量中,是权限模板代理django.contrib.auth.context_processors.PermWrapper的一个实例，
+具体可以查看django/contrib/auth/context_processors.py源码
+
+测试用例:
+
+![](http://www.simlinux.com/wp-content/uploads/2017/09/codeexample.jpg)
+
+测试过程中,发现{{ perms }}变量压根不存在,没有任何输出;好吧,只能取Debug Django的源码了
+
+&lt;pre&gt;`def auth(request):
+    &quot;&quot;&quot;
+    Returns context variables required by apps that use Django&apos;s authentication
+    system.
+
+    If there is no &apos;user&apos; attribute in the request, uses AnonymousUser (from
+    django.contrib.auth).
+    &quot;&quot;&quot;
+    if hasattr(request, &apos;user&apos;):
+        user = request.user
+    else:
+        from django.contrib.auth.models import AnonymousUser
+        user = AnonymousUser()
+    print(user, PermWrapper(user), &apos;-----------------------&apos;)
+    return {
+        &apos;user&apos;: user,
+        &apos;perms&apos;: PermWrapper(user),
+    }
+
+`&lt;/pre&gt;
+
+测试访问接口,发现有的接口有打印权限信息,有的没有，似乎恍然醒悟
+
+&lt;pre&gt;`可以打印权限信息的接口返回:
+ return render(request, &apos;fms/fms_add.html&apos;, {&apos;request&apos;: request, &apos;form&apos;: form, &apos;error&apos;: error})
+不能打印权限新的接口返回:
+ return render_to_response( &apos;fms/fms.html&apos;, data)
+`&lt;/pre&gt;
+
+render和render_to_response区别
+render是比render_to_reponse更便捷渲染模板的方法,会自动使用RequestContext,而后者需要手动添加:
+
+&lt;pre&gt;`return render_to_response(request, &apos;fms/fms_add.html&apos;, {&apos;request&apos;: request, &apos;form&apos;: form, &apos;error&apos;: error},context_instance=RequestContext(request))
+</code></pre><p>其中RequestContext是django.template.Context的子类.接受request和context_processors,从而将上下文填充渲染到模板<br>问题已经很明确，由于使用了render_to_response方法,没有手动添加context_instance=RequestContext(request)导致模板不能使用变量</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2017/08/05/e4-bc-81-e4-b8-9a-e7-ba-a7docker-e7-a7-81-e6-9c-89-e4-bb-93-e5-ba-93-e9-83-a8-e7-bd-b2https.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Geekwolf">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/wolf.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Geekwolf's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/08/05/e4-bc-81-e4-b8-9a-e7-ba-a7docker-e7-a7-81-e6-9c-89-e4-bb-93-e5-ba-93-e9-83-a8-e7-bd-b2https.html" itemprop="url">企业级Docker私有仓库部署(https)</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-05T09:52:42+08:00">
+                2017-08-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/docker/" itemprop="url" rel="index">
+                    <span itemprop="name">docker</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2017/08/05/e4-bc-81-e4-b8-9a-e7-ba-a7docker-e7-a7-81-e6-9c-89-e4-bb-93-e5-ba-93-e9-83-a8-e7-bd-b2https.html" class="leancloud_visitors" data-flag-title="企业级Docker私有仓库部署(https)">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="部署环境"><a href="#部署环境" class="headerlink" title="部署环境"></a>部署环境</h4><ul>
+<li>Centos7.3 x64</li>
+<li>docker-ce-17.06.0</li>
+<li>docker-compose-1.15.0</li>
+<li>Python-2.7.5(系统默认)</li>
+</ul>
+<h4 id="部署目标"><a href="#部署目标" class="headerlink" title="部署目标"></a>部署目标</h4><ul>
+<li>使用HTTPS协议</li>
+<li>支持Clair(在Harbor1.2版本会支持)</li>
+</ul>
+<h5 id="支持HTTPS"><a href="#支持HTTPS" class="headerlink" title="支持HTTPS"></a>支持HTTPS</h5><p>生产环境最好由权威CA机构签发证书(免费的推荐StartSSL,可参考<a href="https://www.wosign.com/Support/Nginx.html),这里为了测试方便使用自签发的证书" target="_blank" rel="external">https://www.wosign.com/Support/Nginx.html),这里为了测试方便使用自签发的证书</a></p>
+<ul>
+<li><p>创建CA证书</p>
+<pre><code>openssl req  -newkey rsa:4096 -nodes -sha256 -keyout ca.key -x509 -days 365 -out ca.crt
+</code></pre><p> `</p>
+</li>
+<li><p>生成CSR公钥</p>
+<pre>`  openssl req  -newkey rsa:4096 -nodes -sha256 -keyout hub.wow.key  -out hub.wow.csr
+`</pre>
+</li>
+<li><p>颁发证书<br>*</p>
+<pre>`  openssl x509 -req -days 365 -in hub.wow.csr -CA ca.crt -CAkey ca.key -CAcreateserial -out hub.wow.crt
+
+`</pre>
+</li>
+<li><p>部署证书</p>
+<pre>`cp hub.wow.crt hub.wow.key   /data/harbor/keys/
+vim /data/harbor/harbor.cfg
+  hostname = hub.wow
+  ui_url_protocol = https
+  ssl_cert = /data/harbor/keys/hub.wow.crt
+  ssl_cert_key = /data/harbor/keys/hub.wow.key
+
+    cd /data/harbor
+    ./prepare  重新生成配置文件
+    docker-compose down
+    docker-compose up
+`</pre>
+</li>
+<li><p>通过HTTPS访问私有仓库</p>
+<p><pre>`WebUI: <a href="https://how.wow" target="_blank" rel="external">https://how.wow</a><br>Docker Client:</pre></p>
+<p>[root@hub ~]# docker login -u admin -p Harbor12345 hub.wow<br>Login Succeeded</p>
+</li>
+</ul>
+<p><strong>问题</strong> ：<br>docker login时提示x509: certificate signed by unknown authority<br>解决方法: 自签名的证书不被系统信任,需要cp ca.crt /etc/docker/certs.d/hub.wow/,  无需重启docker</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2017/08/04/e4-bc-81-e4-b8-9a-e7-ba-a7docker-e7-a7-81-e6-9c-89-e4-bb-93-e5-ba-93-e4-b9-8bharbor-e9-83-a8-e7-bd-b2http.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Geekwolf">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/wolf.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Geekwolf's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/08/04/e4-bc-81-e4-b8-9a-e7-ba-a7docker-e7-a7-81-e6-9c-89-e4-bb-93-e5-ba-93-e4-b9-8bharbor-e9-83-a8-e7-bd-b2http.html" itemprop="url">企业级Docker私有仓库之Harbor部署(http)</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-04T12:20:14+08:00">
+                2017-08-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/docker/" itemprop="url" rel="index">
+                    <span itemprop="name">docker</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2017/08/04/e4-bc-81-e4-b8-9a-e7-ba-a7docker-e7-a7-81-e6-9c-89-e4-bb-93-e5-ba-93-e4-b9-8bharbor-e9-83-a8-e7-bd-b2http.html" class="leancloud_visitors" data-flag-title="企业级Docker私有仓库之Harbor部署(http)">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  2
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="部署环境"><a href="#部署环境" class="headerlink" title="部署环境"></a>部署环境</h4><ul>
+<li>Centos7.3 x64</li>
+<li>docker-ce-17.06.0</li>
+<li>docker-compose-1.15.0</li>
+<li>Python-2.7.5(系统默认)</li>
+</ul>
+<h4 id="Docker及Docker-compose安装"><a href="#Docker及Docker-compose安装" class="headerlink" title="Docker及Docker-compose安装"></a>Docker及Docker-compose安装</h4><pre><code> yum install -y yum-utils device-mapper-persistent-data lvm2
+ yum-config-manager \
+    --add-repo \
+    https://download.docker.com/linux/centos/docker-ce.repo
+ yum-config-manager --enable docker-ce-edge
+ yum makecache fast
+ systemctl start docker 
+ systemctl enable docker
+
+curl -L https://github.com/docker/compose/releases/download/1.15.0/docker-compose-`uname -s`-`uname -m` &amp;gt; /usr/local/bin/docker-compose
+chmod +x /usr/local/bin/docker-compose
+`&lt;/pre&gt;
+
+#### Habor部署配置
+
+&lt;pre&gt;`wget https://github.com/vmware/harbor/releases/download/v1.1.2/harbor-offline-installer-v1.1.2.tgz
+tar xf harbor-offline-installer-v1.1.2.tgz
+cd harbor/
+
+vim harbor.cfg
+hostname = hub.wow
+其他默认(http协议)
+
+./install.sh
+安装成功后，可以通过http://hub.wow/访问
+`&lt;/pre&gt;
+
+![](http://www.simlinux.com/wp-content/uploads/2017/08/harborui.jpg)
+
+#### Docker客户端使用
+
+由于Harbor默认使用的http协议,故需要在Docker client上的Dockerd服务增加--insecure-registry hub.wow
+Centos7修改方式为:
+
+&lt;pre&gt;`vim /lib/systemd/system/docker.service
+ExecStart=/usr/bin/dockerd  --insecure-registry hub.wow
+
+systemctl daemon-reload
+systemctl reload docker
+`&lt;/pre&gt;
+
+&lt;pre&gt;`[root@localhost harbor]# docker login -u admin -p Harbor12345 hub.wow
+官方仓库下载busybox镜像
+[root@localhost harbor]# docker pull busybox 
+[root@localhost harbor]# docker images
+REPOSITORY                  TAG                 IMAGE ID            CREATED             SIZE
+busybox                     latest              efe10ee6727f        2 weeks ago         1.13MB
+本地基于busybox:latest创建标记hub.wow/busybox:latest
+[root@localhost harbor]# docker tag busybox:latest hub.wow/project_name/busybox:latest
+推送本地镜像busybox:latest 到hub.wow私有仓库
+[root@localhost harbor]# docker push hub.wow/project_name/busybox:latest
+</code></pre><h4 id="Harbor服务管理"><a href="#Harbor服务管理" class="headerlink" title="Harbor服务管理"></a>Harbor服务管理</h4><p>cd harbor/<br> docker-compose -f ./docker-compose.yml  [ up|down|ps|stop|start ]</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2017/08/04/e4-bc-81-e4-b8-9a-e7-ba-a7docker-e7-a7-81-e6-9c-89-e4-bb-93-e5-ba-93-e4-b9-8bharbor.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Geekwolf">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/wolf.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Geekwolf's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/08/04/e4-bc-81-e4-b8-9a-e7-ba-a7docker-e7-a7-81-e6-9c-89-e4-bb-93-e5-ba-93-e4-b9-8bharbor.html" itemprop="url">企业级Docker私有仓库之Harbor</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-04T12:11:59+08:00">
+                2017-08-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/docker/" itemprop="url" rel="index">
+                    <span itemprop="name">docker</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2017/08/04/e4-bc-81-e4-b8-9a-e7-ba-a7docker-e7-a7-81-e6-9c-89-e4-bb-93-e5-ba-93-e4-b9-8bharbor.html" class="leancloud_visitors" data-flag-title="企业级Docker私有仓库之Harbor">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  4
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="Harbor特性"><a href="#Harbor特性" class="headerlink" title="Harbor特性"></a><strong>Harbor特性</strong></h4><ul>
+<li>基于角色的访问控制: 用户与Docker镜像仓库通过“项目”进行组织管理，一个用户可以对多个镜像仓库在同一命名空间（project）里有不同的权限</li>
+<li>基于策略的镜像复制: 镜像可以在不同的Registry实例之间复制,尤其适合LB，HA，多数据中心，混合云和多云的场景</li>
+<li>支持LDAP/AD</li>
+<li>镜像可以被删除，空间可以被回收</li>
+<li>Notary服务(Docker官方,详细参考<a href="https://github.com/docker/notary/blob/master/docs/service_architecture.md)：" target="_blank" rel="external">https://github.com/docker/notary/blob/master/docs/service_architecture.md)：</a> 确认镜像来源是否合法及内容完整性等</li>
+<li>友好的Web管理界面</li>
+<li>支持审计：所有的容器操作都会被跟踪记录</li>
+<li>支持RESTful API</li>
+<li>在Harbor1.2中支持Clair</li>
+</ul>
+<h4 id="Harbor主要组件"><a href="#Harbor主要组件" class="headerlink" title="Harbor主要组件"></a><strong>Harbor主要组件</strong></h4><p>Harbor系统由七个容器组成：Proxy(Nginx)、Jobservice、UI、Adminserver、Registry、Database(MySQL)、Log</p>
+<ul>
+<li>Proxy(Nginx): 提供反向代理、用户的不同请求由Proxy分发到后端UI、Registry等</li>
+<li>Jobservice(harbor-jobservice): 负责处理不同Harbor实例间镜像的复制</li>
+<li>UI(harbor-ui): 该容器包含了Harbor的UI、认证及API服务*   Adminserver(harbor-adminserver): 管理系统配置，并提供相应的WEB页面和api共用户操作</li>
+<li>Registry： Docker官方的Registry镜像，主要提供镜像的存储和分发功能</li>
+<li>Log(harbor-log): 负责搜集其他容器日志</li>
+<li>Database(harbor-db): 提供数据持久化服务,使用的MySQL</li>
+</ul>
+<h4 id="Harbor通信架构"><a href="#Harbor通信架构" class="headerlink" title="Harbor通信架构"></a>Harbor通信架构</h4><p><img src="http://www.simlinux.com/wp-content/uploads/2017/08/harbor.jpg" alt=""></p>
+<p>详细可以通过官网了解: <a href="https://github.com/vmware/harbor/wiki/Architecture-Overview-of-Harbor" target="_blank" rel="external">https://github.com/vmware/harbor/wiki/Architecture-Overview-of-Harbor</a></p>
+<h4 id="环境要求"><a href="#环境要求" class="headerlink" title="环境要求"></a>环境要求</h4><ul>
+<li>Docker1.10.0+</li>
+<li>Docker-compose1.6.0+</li>
+<li>Python2.7+</li>
+</ul>
+<h4 id="配置参数"><a href="#配置参数" class="headerlink" title="配置参数"></a>配置参数</h4><p>配置文件harbor.cfg中的参数有两类:<br>1. 必选参数(更新harbor.cfg,重新安装harbor后生效)<br>2. 可选参数(一般安装时默认设置,安装后通过WebUI配置，且优先级高，会忽略harbor.cfg中的配置),HarborV1.1.2新增AdminServer服务用于管理配置<br> <strong>注</strong>：在注册或者创建harbor用户前，必须正确设置auth&#95;mode;系统中除了默认的admin用户外，其他用户的auth_mode不能更改</p>
+<h5 id="必选参数"><a href="#必选参数" class="headerlink" title="必选参数"></a>必选参数</h5><pre><code>hostname: 设置除localhost/127.0.0.1外的IP或者域名.用于访问WebUI和registry服务
+ui_url_protocol： (http/https,默认http),用于访问WebUI和token/notification服务的协议，如果Notary启用，则需要设置成https
+db_password： MySQL数据库密码
+max_job_workers： 默认3，在job服务里面最大并发复制进程数(将镜像的所有tag同步到远端实例)
+customize_crt： on or off,默认on,将会创建私钥和根证书用于生成和校验token
+ssl_cert： 证书路径,开启https时生效
+ssl_cert_key： 秘钥路径，开启https时生效
+secretkey_path： 用于在复制过程过程中加解密远程实例密码的秘钥路径
+`&lt;/pre&gt;
+
+##### 可选参数
+
+&lt;pre&gt;`邮箱设置：用于发送重置密码邮件给用户
+email_server = smtp.mydomain.com
+email_server_port = 25
+email_identity =
+email_username = sample_admin@mydomain.com
+email_password = abc    
+email_from = admin sample_admin@mydomain.com
+email_ssl = false
+harbor_admin_password: 第一次登录Harbor WebUI的初始管理员密码admin/Harbor12345
+auth_mode: 用户登录认证方式，默认db_auth;也可通过ldap_auth(在升级harbor时要确保和旧的harbor认证方式一致)
+ldap_url: LDAP URL，如ldaps://ldap.mydomain.com，当auth_mode设置成ldap_auth时生效
+ldap_searchdn: LDAP搜索域如uid=admin,ou=people,dc=mydomain,dc=com
+ldap_search_pwd: 指定ldap_searchdn密码
+ldap_basedn: LDAP根域如ou=people,dc=mydomain,dc=com
+ldap_filter: 搜索过滤如objectClass=person
+ldap_uid: 通过指定属性匹配用户，如uid、cn、email和其他属性
+ldap_scope: 搜索用户范围1-LDAP_SCOPE_BASE, 2-LDAP_SCOPE_ONELEVEL, 3-LDAP_SCOPE_SUBTREE,默认3
+self_registration： on or off，关闭时，新用户只能通过该admin用户在Harbor后台添加；启用时，用户可以自己注册;当auth_mode是ldap_auth时，注册功能是关闭的
+token_expiration： token service生成的token有效期,默认30分钟(单位:分)
+project_creation_restriction： 创建项目限制；默认所有用户都可以创建项目,设置为adminonly时，只有admin用户可以创建
+verify_remote_cert: on or off,默认on;Harbor和远端registry实例通信时是否校验SSL/TLS证书；通常远端实例自己签发或者不信任的证书时，设置off
+</code></pre><h4 id="配置Harbor后端存储"><a href="#配置Harbor后端存储" class="headerlink" title="配置Harbor后端存储"></a>配置Harbor后端存储</h4><p>默认Harbor会将镜像存储在本地文件系统，也支持S3、Openstack Swift、Ceph等，可以通过修改common/templates/registry/config.yml文件进行配置,可参考 <a href="https://docs.docker.com/registry/configuration/" target="_blank" rel="external">https://docs.docker.com/registry/configuration/</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2017/04/19/e4-bd-bf-e7-94-a8zabbix-lld-e5-ae-9e-e7-8e-b0-e8-bf-9b-e7-a8-8b-e6-95-b0-e7-9b-91-e6-8e-a7.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Geekwolf">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/wolf.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Geekwolf's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/04/19/e4-bd-bf-e7-94-a8zabbix-lld-e5-ae-9e-e7-8e-b0-e8-bf-9b-e7-a8-8b-e6-95-b0-e7-9b-91-e6-8e-a7.html" itemprop="url">使用Zabbix LLD实现进程数监控</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-19T14:52:09+08:00">
+                2017-04-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/系统监控/" itemprop="url" rel="index">
+                    <span itemprop="name">系统监控</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2017/04/19/e4-bd-bf-e7-94-a8zabbix-lld-e5-ae-9e-e7-8e-b0-e8-bf-9b-e7-a8-8b-e6-95-b0-e7-9b-91-e6-8e-a7.html" class="leancloud_visitors" data-flag-title="使用Zabbix LLD实现进程数监控">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  4
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="目的"><a href="#目的" class="headerlink" title="目的"></a><strong>目的</strong></h3><ul>
+<li>针对特定进程数量做监控报警</li>
+</ul>
+<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a><strong>思路</strong></h3><ol>
+<li>通过Zabbix LLD自动发现：每台机器都跑了什么服务、每个服务应该跑多少进程</li>
+<li>Zabbix Agent 30s将当前机器跑了哪些服务、每个服务进程数上报Zabbix Server</li>
+<li>开发给定配置文件proccessInfo.txt:  IP 服务名称 进程数量,此配置作为监控依据</li>
+<li>proccessInfo.txt配置文件需在每次变更配置时，自动生成最新</li>
+</ol>
+<h3 id="配置流程"><a href="#配置流程" class="headerlink" title="配置流程"></a><strong>配置流程</strong></h3><ol>
+<li>LLD自动发现脚本</li>
+<li>数据采集脚本</li>
+<li>Agent添加Key</li>
+<li>Zabbix Server添加模板组</li>
+<li>创建自动发现规则(监控项、报警触发器)</li>
+<li>添加当前进程数监控项(通过Zabbix Trapper方式，由Agent端)</li>
+<li>定义报警内容</li>
+</ol>
+<h3 id="具体步骤"><a href="#具体步骤" class="headerlink" title="具体步骤"></a><strong>具体步骤</strong></h3><h4 id="LLD自动发现脚本"><a href="#LLD自动发现脚本" class="headerlink" title="LLD自动发现脚本"></a><strong>LLD自动发现脚本</strong></h4><pre><code>LLD自动发现,将进程名称及进程总数上报Zabbix Server：
+/usr/bin/python services.py services_list
+
+{
+    &quot;data&quot;: [
+        {
+            &quot;{#SERVICENAME}&quot;: &quot;192.168.1.2-p_q1_server&quot;, 
+            &quot;{#TRIGGER_VALUE}&quot;: 3
+        }, 
+        {
+            &quot;{#SERVICENAME}&quot;: &quot;192.168.1.2-p_world_d2_server&quot;, 
+            &quot;{#TRIGGER_VALUE}&quot;: 1
+        }, 
+        {
+            &quot;{#SERVICENAME}&quot;: &quot;192.168.1.2-p_gate_server&quot;, 
+            &quot;{#TRIGGER_VALUE}&quot;: 2
+        }, 
+        {
+            &quot;{#SERVICENAME}&quot;: &quot;192.168.1.2-p_world_d1_server&quot;, 
+            &quot;{#TRIGGER_VALUE}&quot;: 1
+        }
+    ]
+}
+
+数据采集上报： /usr/bin/python services.py {HOST.HOST}
+`&lt;/pre&gt;
+
+&lt;pre&gt;`# -*- coding: utf-8 -*-
+
+import json
+import commands
+import subprocess
+import re
+import sys
+
+class services_monitor:
+
+        def __init__(self):
+
+            self.zabbix_server_ip = &apos;192.168.1.1&apos;
+            self.info_path = &apos;/home/proccessInfo.txt&apos;
+            self.data_path = &apos;/tmp/.process_number_monitor.log&apos;
+
+        def ip(self):
+            ipstr = &apos;([0-9]{1,3}\.){3}[0-9]{1,3}&apos;
+            ipconfig_process = subprocess.Popen(&quot;ifconfig&quot;, stdout=subprocess.PIPE)
+            output = ipconfig_process.stdout.read()
+            ip_pattern = re.compile(&apos;(inet addr:%s)&apos; % ipstr)
+            pattern = re.compile(ipstr)
+            iplist = []
+            for ipaddr in re.finditer(ip_pattern, str(output)):
+                ip = pattern.search(ipaddr.group())
+                if ip.group() != &quot;127.0.0.1&quot;:
+                    iplist.append(ip.group())
+            ip = &apos;|&apos;.join(iplist)
+            return ip
+
+        def check_proc(self,proc_name):
+
+            cmd = &apos;ps -ef |grep  %s|grep -v grep|wc -l&apos; % proc_name
+            proccess_info = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE)
+
+            # list=proccess_info.stdout.read().strip().split(&apos;\n&apos;)
+            procss_num = proccess_info.communicate()[0]
+            return procss_num
+
+        def get_info(self,ip):
+
+            service = []
+            status, result = commands.getstatusoutput(&quot;grep -E &apos;%s&apos; %s&quot; % (str(ip),self.info_path))
+            result = result.split(&apos;\n&apos;)
+            for i in result:
+                i = list(i.split(&apos; &apos;))
+                service.append({&quot;{#SERVICENAME}&quot;: i[0].strip() + &quot;-&quot; + i[1].strip(), &quot;{#TRIGGER_VALUE}&quot;:int(i[2].strip())})
+            data = json.dumps({&apos;data&apos;: service}, sort_keys=True, indent=4)
+            return data
+
+        def collect_data(self,data):
+            data = json.loads(data)[&quot;data&quot;]
+            commands.getstatusoutput(&apos;cat /dev/null &amp;gt;%s&apos; % self.data_path)
+            f = open(self.data_path,&apos;a&apos;)
+            for i  in data:
+                name = i[&apos;{#SERVICENAME}&apos;].split(&apos;-&apos;)
+                ip = name[0]
+                proc_name =  name[1]
+                f.write(&apos;%s\tproc_num[%s]\t%s&apos; %(ip,i[&apos;{#SERVICENAME}&apos;],self.check_proc(proc_name)))
+            f.close()
+
+        def send_data(self,data_path):
+            status,output = commands.getstatusoutput(&apos;/bin/bash -c &quot;zabbix_sender -z  %s  -i  %s &amp;amp;&amp;gt;/dev/null&quot;&apos; % (self.zabbix_server_ip,self.data_path))
+            print status,output
+
+if __name__ == &apos;__main__&apos;:
+
+    services = services_monitor()
+    ip = services.ip()
+    data = services.get_info(ip)
+    try:
+        argv = sys.argv[1]
+        if argv == &quot;services_list&quot;:
+            print data
+        else:
+            services.collect_data(data)
+            services.send_data(services.data_path)
+    except IndexError:
+        print data
+
+`&lt;/pre&gt;
+
+#### **Agent添加Key**
+
+&lt;pre&gt;`vim /usr/local/etc/zabbix_agentd.conf
+UserParameter=dzpt.service.process.discovery,/usr/bin/python /home/opt/scripts/services.py services_list
+UserParameter=dzpt.service.process.exec[*],/usr/bin/python /home/opt/scripts/services.py  $1
+</code></pre><h4 id="创建自动发现规则-监控项Trapper方式、报警触发器"><a href="#创建自动发现规则-监控项Trapper方式、报警触发器" class="headerlink" title="创建自动发现规则(监控项Trapper方式、报警触发器)"></a><strong>创建自动发现规则(监控项Trapper方式、报警触发器)</strong></h4><p><img src="http://www.simlinux.com/wp-content/uploads/2017/04/rules.jpg" alt=""></p>
+<p><img src="http://www.simlinux.com/wp-content/uploads/2017/04/roles-items.jpg" alt=""></p>
+<p><img src="http://www.simlinux.com/wp-content/uploads/2017/04/roles-triggers.jpg" alt=""></p>
+<h4 id="添加当前进程数监控项"><a href="#添加当前进程数监控项" class="headerlink" title="添加当前进程数监控项"></a><strong>添加当前进程数监控项</strong></h4><p><img src="http://www.simlinux.com/wp-content/uploads/2017/04/process-stat.jpg" alt=""></p>
+<h4 id="定义报警内容"><a href="#定义报警内容" class="headerlink" title="定义报警内容"></a><strong>定义报警内容</strong></h4><p>Action中定义(此处略)</p>
+<h4 id="将定义好的模板链接到主机或者其他模板即可"><a href="#将定义好的模板链接到主机或者其他模板即可" class="headerlink" title="将定义好的模板链接到主机或者其他模板即可"></a><strong>将定义好的模板链接到主机或者其他模板即可</strong></h4><h3 id="最后"><a href="#最后" class="headerlink" title="最后"></a><strong>最后</strong></h3><p>使用Zabbix LLD之后，可以设定多久更新一次监控项及监控阀值；当配置文件变更时，无需人为调整阀值和监控项</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2017/04/13/e6-9e-b6-e6-9e-84-e5-ad-a6-e4-b9-a0-e4-b9-8b-e8-b7-af-e9-ab-98-e5-8f-af-e7-94-a8-e9-ab-98-e5-b9-b6-e5-8f-91-e7-b3-bb-e7-bb-9f-e8-ae-be-e8-ae-a1-e5-8e-9f-e5-88-99.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Geekwolf">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/wolf.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Geekwolf's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/04/13/e6-9e-b6-e6-9e-84-e5-ad-a6-e4-b9-a0-e4-b9-8b-e8-b7-af-e9-ab-98-e5-8f-af-e7-94-a8-e9-ab-98-e5-b9-b6-e5-8f-91-e7-b3-bb-e7-bb-9f-e8-ae-be-e8-ae-a1-e5-8e-9f-e5-88-99.html" itemprop="url">架构学习之路-高可用高并发系统设计原则</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-13T19:00:05+08:00">
+                2017-04-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/架构之路/" itemprop="url" rel="index">
+                    <span itemprop="name">架构之路</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2017/04/13/e6-9e-b6-e6-9e-84-e5-ad-a6-e4-b9-a0-e4-b9-8b-e8-b7-af-e9-ab-98-e5-8f-af-e7-94-a8-e9-ab-98-e5-b9-b6-e5-8f-91-e7-b3-bb-e7-bb-9f-e8-ae-be-e8-ae-a1-e5-8e-9f-e5-88-99.html" class="leancloud_visitors" data-flag-title="架构学习之路-高可用高并发系统设计原则">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  5
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>本系列博客主要是学习开涛《亿级流量网站架构核心技术》一书学习笔记及自己的感悟：</p>
+</blockquote>
+<h4 id="架构设计三大定律"><a href="#架构设计三大定律" class="headerlink" title="架构设计三大定律"></a>架构设计三大定律</h4><blockquote>
+<p>墨菲定律</p>
+<ul>
+<li>任何事没有表面看起来那么简单</li>
+<li>所有的事都会比预计的时间长</li>
+<li>可能出错的事情总会出错</li>
+<li><p>担心某种事情发生，那么它就更有可能发生</p>
+<p>康威定律</p>
+</li>
+</ul>
+</blockquote>
+<ul>
+<li>系统架构师公司组织架构的反映</li>
+<li>按照业务闭环进行系统拆分/组织架构划分，实现闭环、高内聚、低耦合，减少沟通成本</li>
+<li>如果沟通出现问题，应该考虑进行系统和组织架构的调整</li>
+<li>适合时机进行系统拆分，不要一开始就吧系统、服务拆分拆的非常细，虽然闭环，但是每个人维护的系统多，维护成本高</li>
+<li>微服务架构的理论基础 - 康威定律 <a href="https://yq.aliyun.com/articles/8611" target="_blank" rel="external">https://yq.aliyun.com/articles/8611</a></li>
+<li>每个架构师都应该研究下康威定律 <a href="http://36kr.com/p/5042735.html" target="_blank" rel="external">http://36kr.com/p/5042735.html</a></li>
+</ul>
+<blockquote>
+<p>二八定律</p>
+</blockquote>
+<ul>
+<li>80%的结果取决于20%的原因</li>
+</ul>
+<h4 id="系统设计遵循的原则"><a href="#系统设计遵循的原则" class="headerlink" title="系统设计遵循的原则"></a>系统设计遵循的原则</h4><h5 id="1-高并发原则"><a href="#1-高并发原则" class="headerlink" title="1. 高并发原则"></a>1. 高并发原则</h5><blockquote>
+<p>无状态</p>
+</blockquote>
+<ul>
+<li>无状态应用，便于水平扩展</li>
+<li>有状态配置可通过配置中心实现无状态</li>
+<li>实践: Disconf、Yaconf、Zookpeer、Consul、Confd、Diamond、Xdiamond等</li>
+</ul>
+<blockquote>
+<p>拆分</p>
+</blockquote>
+<ul>
+<li>系统维度：按照系统功能、业务拆分，如购物车，结算，订单等</li>
+<li>功能维度：对系统功能在做细粒度拆分</li>
+<li>读写维度：根据读写比例特征拆分；读多，可考虑多级缓存；写多，可考虑分库分表</li>
+<li>AOP维度： 根据访问特征，按照AOP进行拆分，比如商品详情页可分为CDN、页面渲染系统，CDN就是一个AOP系统</li>
+<li>模块维度：对整体代码结构划分Web、Service、DAO</li>
+</ul>
+<blockquote>
+<p>服务化</p>
+</blockquote>
+<ul>
+<li>服务化演进: 进程内服务-单机远程服务-集群手动注册服务-自动注册和发现服务-服务的分组、隔离、路由-服务治理</li>
+<li>考虑服务分组、隔离、限流、黑白名单、超时、重试机制、路由、故障补偿等</li>
+<li>实践：利用Nginx、HaProxy、LVS等实现负载均衡，ZooKeeper、Consul等实现自动注册和发现服</li>
+</ul>
+<blockquote>
+<p>消息队列</p>
+</blockquote>
+<ul>
+<li>目的: 服务解耦(一对多消费)、异步处理、流量削峰缓冲等</li>
+<li>大流量缓冲： 牺牲强一致性，保证最终一致性(案例：库存扣减，现在Redis中做扣减，记录扣减日志，通过后台进程将扣减日志应用到DB)</li>
+<li>数据校对: 解决异步消息机制下消息丢失问题</li>
+</ul>
+<blockquote>
+<p>数据异构</p>
+</blockquote>
+<ul>
+<li>数据异构: 通过消息队列机制接收数据变更，原子化存储</li>
+<li>数据闭环: 屏蔽多从数据来源，将数据异构存储，形成闭环</li>
+</ul>
+<blockquote>
+<p>缓存银弹</p>
+</blockquote>
+<ul>
+<li><p>用户层:</p>
+<pre><code>*   DNS缓存
+</code></pre><ul>
+<li>浏览器DNS缓存</li>
+<li>操作系统DNS缓存</li>
+<li>本地DNS服务商缓存</li>
+<li>DNS服务器缓存</li>
+<li>客户端缓存</li>
+<li>浏览器缓存(Expires、Cache-Control、Last-Modified、Etag)*   App客户缓存(js/css/image…)</li>
+</ul>
+</li>
+<li><p>代理层：</p>
+<pre><code>*   CDN缓存(一般基于ATS、Varnish、Nginx、Squid等构建,边缘节点-二级节点-中心节点-源站)
+</code></pre></li>
+<li><p>接入层：</p>
+<pre><code>*   Nginx为例：
+
+    *   Proxy_cache： 代理缓存,可以存储到/dev/shm或者SSD
+*   FastCGI Cache
+*   Nginx+Lua+Redis: 业务数据缓存
+</code></pre><ul>
+<li><p>PHP为例：</p>
+<pre><code>*   Opcache： 缓存PHP的Opcodes
+</code></pre></li>
+</ul>
+</li>
+<li><p>应用层：</p>
+<pre><code>*   页面静态化
+</code></pre><ul>
+<li>业务数据缓存(Redis/Memcached/本地文件等)</li>
+<li>消息队列</li>
+</ul>
+</li>
+<li><p>数据层：</p>
+<pre><code>*   NoSQL： Redis、Memcache、SSDB等
+</code></pre><ul>
+<li>MySQL： Innodb/MyISAM等Query Cache、Key Cache、Innodb Buffer Size等</li>
+</ul>
+</li>
+<li><p>系统层：</p>
+<pre><code>*   CPU : L1/L2/L3 Cache/NUMA
+</code></pre><ul>
+<li>内存</li>
+<li>磁盘：磁盘本身缓存、dirty_ratio/dirty_background_ratio、阵列卡本身缓存</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>并发化</p>
+</blockquote>
+<h5 id="2-高可用原则"><a href="#2-高可用原则" class="headerlink" title="2. 高可用原则"></a>2. 高可用原则</h5><blockquote>
+<p>降级</p>
+</blockquote>
+<ul>
+<li>降级开关集中化管理：将开关配置信息推送到各个应用</li>
+<li>可降级的多级读服务：如服务调用降级为只读本地缓存</li>
+<li>开关前置化：如Nginx+lua(OpenResty)配置降级策略，引流流量；可基于此做灰度策略</li>
+<li>业务降级：高并发下，保证核心功能，次要功能可由同步改为异步策略或屏蔽功能</li>
+</ul>
+<blockquote>
+<p>限流</p>
+</blockquote>
+<ul>
+<li>目的: 防止恶意请求攻击或超出系统峰值</li>
+<li><p>实践：</p>
+<pre><code>*   恶意请求流量只访问到Cache
+</code></pre><ul>
+<li>穿透后端应用的流量使用Nginx的limit处理</li>
+<li>恶意IP使用Nginx Deny策略或者iptables拒绝</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>切流量</p>
+</blockquote>
+<ul>
+<li>目的：屏蔽故障机器</li>
+<li><p>实践:</p>
+<pre><code>*   DNS: 更改域名解析入口，如DNSPOD可以添加备用IP，正常IP故障时，会自主切换到备用地址;生效实践较慢
+</code></pre><ul>
+<li>HttpDNS: 为了绕过运营商LocalDNS实现的精准流量调度</li>
+<li>LVS/HaProxy/Nginx: 摘除故障节点</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>可回滚</p>
+</blockquote>
+<ul>
+<li>发布版本失败时可随时快速回退到上一个稳定版本</li>
+</ul>
+<h5 id="3-业务设计原则"><a href="#3-业务设计原则" class="headerlink" title="3. 业务设计原则"></a>3. 业务设计原则</h5><ul>
+<li>防重设计</li>
+<li>幂等设计</li>
+<li>流程定义</li>
+<li>状态与状态机</li>
+<li>后台系统操作可反馈</li>
+<li>后台系统审批化</li>
+<li>文档注释</li>
+<li>备份</li>
+</ul>
+<h5 id="4-总结"><a href="#4-总结" class="headerlink" title="4. 总结"></a>4. 总结</h5><p>先行规划和设计时有必要的，要对现有问题有方案，对未来有预案;欠下的技术债，迟早都是要还的。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2017/03/24/cpu-e5-b7-a5-e4-bd-9c-e6-a8-a1-e5-bc-8f-e5-8f-8a-e8-b0-83-e9-a2-91.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Geekwolf">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/wolf.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Geekwolf's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/03/24/cpu-e5-b7-a5-e4-bd-9c-e6-a8-a1-e5-bc-8f-e5-8f-8a-e8-b0-83-e9-a2-91.html" itemprop="url">CPU工作模式及调频</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-24T12:42:18+08:00">
+                2017-03-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux运维/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux运维</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2017/03/24/cpu-e5-b7-a5-e4-bd-9c-e6-a8-a1-e5-bc-8f-e5-8f-8a-e8-b0-83-e9-a2-91.html" class="leancloud_visitors" data-flag-title="CPU工作模式及调频">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  2
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h5 id="安装i7z及cpufrequtils"><a href="#安装i7z及cpufrequtils" class="headerlink" title="安装i7z及cpufrequtils"></a>安装i7z及cpufrequtils</h5><pre><code> apt-get install i7z cpufrequtils
+`&lt;/pre&gt;
+
+##### 常见的CPU工作模式
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+  &lt;th&gt;调速器&lt;/th&gt;
+  &lt;th align=&quot;left&quot;&gt;描述&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+  &lt;td&gt;ondemand&lt;/td&gt;
+  &lt;td align=&quot;left&quot;&gt;按需快速动态调整CPU频率， 一有cpu计算量的任务，就会立即达到最大频率运行，等执行完毕就立即回到最低频率（阙值为 95%&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+  &lt;td&gt;performance&lt;/td&gt;
+  &lt;td align=&quot;left&quot;&gt;运行于最大频率&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+  &lt;td&gt;conservative&lt;/td&gt;
+  &lt;td align=&quot;left&quot;&gt;按需快速动态调整CPU频率， 一有cpu计算量的任务，就会立即达到最大频率运行，等执行完毕就立即回到最低频率（阙值为 75%）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+  &lt;td&gt;powersave&lt;/td&gt;
+  &lt;td align=&quot;left&quot;&gt;运行于最小频率&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+  &lt;td&gt;userspace&lt;/td&gt;
+  &lt;td align=&quot;left&quot;&gt;运行于用户指定的频率&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+##### 查看当前CPU工作模式
+
+&lt;pre&gt;`查看CPU当前的工作模式
+cat /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
+
+查看支持的CPU工作模式
+cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_available_governors
+
+`&lt;/pre&gt;
+
+由于在Debian 8下默认使用intel_pstate驱动,只支持performance和powersave模式,不同频率驱动程序支持的模式不同
+具体可以参考：CPU frequency scaling  http://t.cn/R6cQXvp
+
+##### 调整最高性能模式
+
+&lt;pre&gt;`echo &apos;performance&apos; |tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
+`&lt;/pre&gt;
+
+##### CPU调频
+
+&lt;pre&gt;`Usage: cpufreq-set [options] Options:
+-c CPU, --cpu CPU       #指定CPU核心号，请注意上图的analyzing CPU数字。
+-d FREQ, --min FREQ     #手工指定最小主频速度。（在userspace策略）
+-u FREQ, --max FREQ     #手工指定最大主频速度。（在userspace策略）
+-g GOV, --governor GOV  #设置工作策略
+-f FREQ, --freq FREQ    #设定特定的工作频率（CPU默认档次）
+#请参考上图的available frequency steps
+-h, --help            #输出这个帮助信息
+
+cpufreq-set  -d 2.4Ghz -u 2.4Ghz
+</code></pre><h5 id="实时查看频率"><a href="#实时查看频率" class="headerlink" title="实时查看频率"></a>实时查看频率</h5><p>通过i7z命令可实时查看当前CPU的工作频率</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+  </section>
+
+  
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+  </nav>
+
+
+
+          </div>
+          
+
+
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/wolf.jpeg"
+               alt="Geekwolf" />
+          <p class="site-author-name" itemprop="name">Geekwolf</p>
+           
+              <p class="site-description motion-element" itemprop="description">DevOps | Docker | K8S | MySQL | 运维</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">167</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">105</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/geekwolf" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                    
+                      GitHub
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/geekwolf" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                    
+                      Weibo
+                    
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2012 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Geekwolf</span>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  
+    <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('-1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("qms5kJ0y2CItrIVFivKxxPsR-gzGzoHsz", "Cn3w20futtphxpaDSP5tHjzy");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

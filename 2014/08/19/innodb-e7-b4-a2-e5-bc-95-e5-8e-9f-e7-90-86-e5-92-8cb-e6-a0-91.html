@@ -1,0 +1,1773 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Geekwolf,DevOps,Docker,k8s,MySQL,PaaS" />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Geekwolf's Blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="一、innodb存储引擎索引概述innodb存储引擎支持两种常见的索引：B+树索引和哈希索引。 innodb支持哈希索引是自适应的，innodb会根据表的使用情况自动生成哈希索引B+树索引就是传统意义上的索引，是关系型数据库中最常用最有效的索引。B+树是从最早的平衡二叉树演变而来，但是B+树不是一个二叉树。B+中的B不代表二叉(Binary),而是代表平衡(Balance) 注意：B+树索引并不能">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Innodb索引原理和B+树">
+<meta property="og:url" content="http://www.simlinux.com/2014/08/19/innodb-e7-b4-a2-e5-bc-95-e5-8e-9f-e7-90-86-e5-92-8cb-e6-a0-91.html">
+<meta property="og:site_name" content="Geekwolf&#39;s Blog">
+<meta property="og:description" content="一、innodb存储引擎索引概述innodb存储引擎支持两种常见的索引：B+树索引和哈希索引。 innodb支持哈希索引是自适应的，innodb会根据表的使用情况自动生成哈希索引B+树索引就是传统意义上的索引，是关系型数据库中最常用最有效的索引。B+树是从最早的平衡二叉树演变而来，但是B+树不是一个二叉树。B+中的B不代表二叉(Binary),而是代表平衡(Balance) 注意：B+树索引并不能">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://www.simlinux.com/wp-content/uploads/2014/08/1.png">
+<meta property="og:image" content="http://www.simlinux.com/wp-content/uploads/2014/08/2.png">
+<meta property="og:image" content="http://simlinux.com/images/mysql/3.png">
+<meta property="og:image" content="http://simlinux.com/images/mysql/4.png">
+<meta property="og:image" content="http://simlinux.com/images/mysql/5.png">
+<meta property="og:image" content="http://simlinux.com/images/mysql/6.png">
+<meta property="og:image" content="http://simlinux.com/images/mysql/7.png">
+<meta property="og:image" content="http://simlinux.com/images/mysql/8.png">
+<meta property="og:image" content="http://simlinux.com/images/mysql/9.png">
+<meta property="og:updated_time" content="2017-09-12T01:12:15.138Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Innodb索引原理和B+树">
+<meta name="twitter:description" content="一、innodb存储引擎索引概述innodb存储引擎支持两种常见的索引：B+树索引和哈希索引。 innodb支持哈希索引是自适应的，innodb会根据表的使用情况自动生成哈希索引B+树索引就是传统意义上的索引，是关系型数据库中最常用最有效的索引。B+树是从最早的平衡二叉树演变而来，但是B+树不是一个二叉树。B+中的B不代表二叉(Binary),而是代表平衡(Balance) 注意：B+树索引并不能">
+<meta name="twitter:image" content="http://www.simlinux.com/wp-content/uploads/2014/08/1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.simlinux.com/2014/08/19/innodb-e7-b4-a2-e5-bc-95-e5-8e-9f-e7-90-86-e5-92-8cb-e6-a0-91.html"/>
+
+
+
+
+
+  <title>Innodb索引原理和B+树 | Geekwolf's Blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="//s13.cnzz.com/z_stat.php?id=1264375041&web_id=1264375041" language="JavaScript"></script>
+  </div>
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Geekwolf's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Quick notes</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />
+            
+            站点地图
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2014/08/19/innodb-e7-b4-a2-e5-bc-95-e5-8e-9f-e7-90-86-e5-92-8cb-e6-a0-91.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Geekwolf">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/wolf.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Geekwolf's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Innodb索引原理和B+树</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-08-19T20:40:14+08:00">
+                2014-08-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/MySQL数据库/" itemprop="url" rel="index">
+                    <span itemprop="name">MySQL数据库</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2014/08/19/innodb-e7-b4-a2-e5-bc-95-e5-8e-9f-e7-90-86-e5-92-8cb-e6-a0-91.html" class="leancloud_visitors" data-flag-title="Innodb索引原理和B+树">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  21
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <h4 id="一、innodb存储引擎索引概述"><a href="#一、innodb存储引擎索引概述" class="headerlink" title="一、innodb存储引擎索引概述"></a><span id="t1" style="font-weight: inherit; font-style: inherit;">一、innodb存储引擎索引概述</span></h4><pre><code>innodb存储引擎支持两种常见的索引：B+树索引和哈希索引。
+</code></pre><p>innodb支持哈希索引是自适应的，innodb会根据表的使用情况自动生成哈希索引<br>B+树索引就是传统意义上的索引，是关系型数据库中最常用最有效的索引。B+树是从最早的平衡二叉树演变而来，但是B+树不是一个二叉树。B+中的B不代表二叉(Binary),而是代表平衡(Balance)</p>
+<p><strong>注意</strong>：B+树索引并不能找到一个键值对应的具体行。b+树索引只能查到被查找数据行所在的页，然后数据库通过把页读入内存，再在内存中查找，最后得到结果</p>
+<h4 id="二、理解B-树算法"><a href="#二、理解B-树算法" class="headerlink" title="二、理解B+树算法"></a><span id="t2" style="font-weight: inherit; font-style: inherit;">二、理解B+树算法</span></h4><pre><code>B+树是为磁盘及其他存储辅助设备而设计一种平衡查找树（不是二叉树）。B+树中，所有记录的节点按大小顺序存放在同一层的叶节点中，各叶节点用指针进行连接。
+</code></pre><p>下面演示一个B+数结构，高度为2，每页可放4条记录，扇出(fan out)为5。从下图1可以看出，所有记录都在页节点中，并且为顺序存放，我们从最左边的叶节点开始遍历，可以得到所有键值的顺序排序：5、10、15、20、25、30、50、55、60、65、75、80、85、90</p>
+<p><a href="http://www.simlinux.com/wp-content/uploads/2014/08/1.png"><img src="http://www.simlinux.com/wp-content/uploads/2014/08/1.png" alt="1"></a></p>
+<p><span id="t3" style="color: #222222;">（1） B+树的插入操作</span><span style="color: #222222;"> B+树的插入必须保证插入后叶节点的记录依然排序。同时要考虑插入B+树的三种情况，每种情况都可能导致不同的插入算法。如下表所示：</span></p>
+<p><a href="http://www.simlinux.com/wp-content/uploads/2014/08/2.png"><img src="http://www.simlinux.com/wp-content/uploads/2014/08/2.png" alt="2"></a></p>
+<p>   我们实例分析B+树的插入，在图1的B+树中，我们需要插入28这个值。因为Leaf Page和Index page都没有满，我们直接将记录插入叶节点就可以了。如下图2所示：</p>
+<p><img src="http://simlinux.com/images/mysql/3.png" alt=""><br>图2 插入键值28<br>下面我们再插入70这个值，这时Leaf Page已经满了，但是Index Page还没有满，符合上面的第二种情况。这时插入Leaf Page的情况为 50、55、60、65、70.我们根据中间的值60拆分叶节点，可得到下图3所示（双项链表指针依然存在，没有画出） <img src="http://simlinux.com/images/mysql/4.png" alt=""><br>图3 插入键值70<br>最后我们再插入95，这个Leaf Page和Index Page都满了，符合上面第三种情况。需要做2次拆分，如下图4所示：<br><img src="http://simlinux.com/images/mysql/5.png" alt=""><br>图4 插入键值95<br>可以看到，不管怎么变化，B+树总会保持平衡。但是为了保持平衡，对于新插入的键值可能需要做大量的拆分页操作。B+树主要用于磁盘，拆分意味着磁盘的操作，应该在可能的情况下尽量减少页的拆分。因此，B+树提供了旋转功能。旋转发生在Leaf Page已经满了，但是左右兄弟节点没有满的情况下。这时B+树并不是急着做页的拆分，而是旋转。旋转结果如图5所示，可以看到旋转操作使B+树减少了一次页的拆分操作，高度仍然为2.<br><img src="http://simlinux.com/images/mysql/6.png" alt="">                 图5 B+树的旋转操作</p>
+<p><span id="t4" style="font-weight: inherit; font-style: inherit;">(2) B+树的删除操作</span> B+树使用填充因子来控制数的删除变化。填充因子可以设置的最小值为50%。B+树的删除操作同样保证删除后叶节点的记录依然排序。 根据填充因子的变化，B+树删除依然需要考虑三种情况，如下表所示：<br><img src="http://simlinux.com/images/mysql/7.png" alt=""></p>
+<p>根据图4的B+树，我们进行删除操作，首先删除键值为70的这条记录，该记录符合上表第一种情况，删除后如下图6所示： <img src="http://simlinux.com/images/mysql/8.png" alt="">                 图6 删除键值70</p>
+<p>接着我们删除键值为25的记录，这也是属于上表第一种情况，不同的是该值还是index page中的值。因此在删除Leaf Page中的25后，还需要将25的右兄弟节点28更新到Index Page中，如下图7所示（图中有两个笔误，红色为修正值）：<br><img src="http://simlinux.com/images/mysql/9.png" alt="">                 图7 删除键值28<br>最后我们删除键值为60的记录。删除Leaf page键值为60的记录后，其填充因子小于50%。需要做合并操作。同样在删除Index page中相关记录后需要做Index Page的合并操作。</p>
+<h4 id="三、B-树索引介绍"><a href="#三、B-树索引介绍" class="headerlink" title="三、B+树索引介绍"></a><span id="t5" style="font-weight: inherit; font-style: inherit;">三、B+树索引介绍</span></h4><p>B+树索引的本质是B+树在数据库中的实现。但是B+树索引有一个特点是高扇出性，因此在数据库中，B+树的高度一般在2到3层。也就是说查找某一键值的记录，最多只需要2到3次IO开销。按磁盘每秒100次IO来计算，查询时间只需0.0.2到0.03秒。</p>
+<p>数据库中B+树索引分为聚集索引（clustered index）和非聚集索引（secondary index）.这两种索引的共同点是内部都是B+树，高度都是平衡的，叶节点存放着所有数据。不同点是叶节点是否存放着一整行数据。</p>
+<p><span id="t6" style="font-weight: inherit; font-style: inherit;">(1) 聚集索引</span><br>Innodb存储引擎表是索引组织表，即表中数据按主键顺序存放。而聚集索引就是按每张表的主键构造一颗B+树。并且叶节点存放整张表的行记录数据。每张表只能有一个聚集索引（一个主键）。<br>聚集索引的另一个好处是它对于主键的排序查找和范围的速度非常快。叶节点的数据就是我们要找的数据。</p>
+<pre><code>主键排序查找：例如我们要找出最新的10条团购订单，由于B+树是双项链表，我们可以迅速找到最后一个页，并取出10条记录，我们用Explain进行分析：
+12:41:32 tuangou&amp;gt; explain select * from groupon_so order by id desc limit 10\G
+id: 1
+select_type: SIMPLE
+    table: groupon_so
+     type: index
+     possible_keys: NULL
+      key: PRIMARY
+  key_len: 8
+      ref: NULL
+     rows: 10
+    Extra: 
+
+1 row in set (0.00 sec)
+
+主键范围查找：如果要通过主键查找某一范围内的数据，通过叶节点的上层中间节点就能得到页的范围，之后直接读取数据页即可：
+12:50:19 tuangou&amp;gt; explain select * from groupon_so where id&amp;gt;10000000 and id&amp;lt;12000000\G
+       id: 1
+select_type: SIMPLE
+    table: groupon_so
+     type: range
+     possible_keys: PRIMARY
+      key: PRIMARY
+  key_len: 8
+      ref: NULL
+     rows: 4301486
+    Extra: Using where
+1 row in set (0.00 sec)
+`&lt;/pre&gt;
+
+&lt;span id=&quot;t7&quot; style=&quot;font-weight: inherit; font-style: inherit;&quot;&gt;(2) 辅助索引&lt;/span&gt;
+辅助索引（也称非聚集索引）。叶级别不包含行的全部数据，叶级别除了包含行的键值以外，每个索引行还包含了一个书签（bookmark），该书签告诉innodb存储引擎，哪里可以找到与索引对应的数据。
+辅助索引的存在并不影响数据再聚集索引中的组织，因此一个表可以有多个辅助索引。当通过辅助索引查找数据时，innodb会遍历辅助索引并通过叶级别的指针获得指向主键索引的主键。然后再通过主键索引找到一行完整的数据。
+
+&lt;span id=&quot;t8&quot; style=&quot;font-weight: inherit; font-style: inherit;&quot;&gt;(3) B+树索引的管理&lt;/span&gt;
+索引的创建和删除可以用两种方式。一种是alter table,另一种是create/drop index
+
+&lt;pre style=&quot;color: #93a1a1;&quot;&gt;`alter table 创建和删除索引的语法为：
+ALTER [ONLINE | OFFLINE] [IGNORE] TABLE tbl_name
+| ADD {INDEX|KEY} [index_name]
+    [index_type] (index_col_name,…) [index_option] …
+
+ALTER [ONLINE | OFFLINE] [IGNORE] TABLE tbl_name
+| DROP PRIMARY KEY
+| DROP {INDEX|KEY} index_name
+
+create/drop index的语法为：
+CREATE [ONLINE|OFFLINE] [UNIQUE|FULLTEXT|SPATIAL] INDEX index_name
+[index_type]
+ON tbl_name (index_col_name,…)
+
+DROP [ONLINE|OFFLINE] INDEX index_name ON tbl_name
+`&lt;/pre&gt;
+
+MySQL索引注意的问题：对于MySQL索引的添加和删除操作，MySQL先是创建一张加好索引的临时表，然后把数据导入临时表，再删除原表，把临时表重命名为原表。
+Innodb存储引擎从Innodb Plugin版本开始，支持一种快速创建索引的方法（只限于辅助索引，主键索引仍需要建临时表）。首先对表加S锁，在创建的过程中不需要重建表，但是由于上了S锁，在创建索引的过程中只能进行查询操作，不能更新数据。
+
+#### &lt;span id=&quot;t9&quot; style=&quot;font-weight: inherit; font-style: inherit;&quot;&gt;四、B+树索引的使用&lt;/span&gt;
+
+(1).什么时候使用B+索引
+
+当查询表中很少一部分数据时，B+索引才有意义。对于性别，地区类型字段，他们取值范围很小，即低选择性。这时加B+索引是没有必要的。相反，某个字段取值范围很广，如姓名，几乎没有重复，即高选择性，则使用B+索引是比较合适的。因此。当访问高选择性字段并取出很少一部分数据时，该字段加B+索引是非常有效的。但是当取出的数据行占表中大部分数据时，数据库就不会使用B+索引了。
+
+举例说明下，看下面这个团购订单表groupon_so的部分索引：
+
+&lt;pre style=&quot;color: #93a1a1;&quot;&gt;`    14:08:34 tuangou&amp;gt; show index from groupon_so\G
+*************************** 1\. row ***************************
+Table: groupon_so
+Non_unique: 0
+ Key_name: PRIMARY
+ Seq_in_index: 1
+ Column_name: id
+ Collation: A
+ Cardinality: 10088342
+ Sub_part: NULL
+   Packed: NULL
+     Null: 
+Index_type: BTREE
+  Comment: 
+Index_comment: 
+*************************** 2\. row ***************************
+Table: groupon_so
+Non_unique: 1
+Key_name: idx_groupon_so_order_id
+Seq_in_index: 1
+Column_name: order_id
+Collation: A
+Cardinality: 10088342
+Sub_part: NULL
+   Packed: NULL
+     Null: 
+Index_type: BTREE
+  Comment: 
+Index_comment: 
+*************************** 3\. row ***************************
+Table: groupon_so
+Non_unique: 1
+ Key_name: idx_groupon_so_order_code
+ Seq_in_index: 1
+ Column_name: order_code
+ Collation: A
+ Cardinality: 10088342
+ Sub_part: NULL
+   Packed: NULL
+   Null: 
+Index_type: BTREE
+   Comment: 
+Index_comment: 
+*************************** 4\. row ***************************
+    Table: groupon_so
+    Non_unique: 1
+ Key_name: idx_groupon_so_end_user_id
+ Seq_in_index: 1
+ Column_name: end_user_id
+ Collation: A
+ Cardinality: 10088342
+ Sub_part: NULL
+   Packed: NULL
+   Null: YES
+Index_type: BTREE
+   Comment: 
+Index_comment: 
+*************************** 5\. row ***************************
+Table: groupon_so
+Non_unique: 1
+Key_name: idx_groupon_so_groupon_id
+Seq_in_index: 1
+Column_name: groupon_id
+Collation: A
+Cardinality: 148357
+Sub_part: NULL
+Packed: NULL
+  Null: 
+Index_type: BTREE
+   Comment: 
+Index_comment:
+
+其中有一个索引 idx_groupon_so_order_id,这个索引里面字段订单号的值都是不重复的，是高选择性的字段。
+我们查找order_id为 99165590 的这条记录，执行计划如下：
+
+14:31:50 tuangou&amp;gt; explain select * from groupon_so where order_id=99165590\G
+*************************** 1\. row ***************************
+       id: 1
+    select_type: SIMPLE
+    table: groupon_so
+     type: ref
+possible_keys: idx_groupon_so_order_id
+      key: idx_groupon_so_order_id
+  key_len: 8
+      ref: const
+     rows: 1
+    Extra: 
+1 row in set (0.00 sec)
+可以看到使用了idx_groupon_so_order_id这个索引，符合高选择性，取少部分数据这个特性。
+
+但是如果执行下面这条语句：
+14:32:33 tuangou&amp;gt; explain select * from groupon_so where order_id&amp;gt;99165590\G
+*************************** 1\. row ***************************
+       id: 1
+    select_type: SIMPLE
+    table: groupon_so
+    type: ALL
+possible_keys: idx_groupon_so_order_id
+    key: NULL
+key_len: NULL
+    ref: NULL
+   rows: 10092839
+  Extra: Using where
+1 row in set (0.00 sec)
+
+可以看到possible_keys依然是idx_groupon_so_order_code，但是索引优化使用的索引keys显示的是NULL，因为虽然这个字段是高选择性的，但是我们取出了表中的大部分数据，索引没有用到索引。
+
+14:34:11 tuangou&amp;gt; select @a:=count(id) from groupon_so where order_id&amp;gt;99165590;
++—————+
+| @a:=count(id) |
++—————+
+|       8684424 |
++—————+
+1 row in set (2.48 sec)
+
+14:34:26 tuangou&amp;gt; select @a:=count(id) from groupon_so;
++—————+
+| @a:=count(id) |
++—————+
+|       9858135 |
++—————+
+1 row in set (1.86 sec)
+
+14:37:25 tuangou&amp;gt; select 8684424/9858135;
++—————–+
+| 8684424/9858135 |
++—————–+
+|          0.8809 |
++—————–+
+1 row in set (0.00 sec)
+可以看到我们取出了表中88%的数据，索引没有用到索引。
+`&lt;/pre&gt;
+
+&lt;span id=&quot;t11&quot; style=&quot;font-weight: inherit; font-style: inherit;&quot;&gt;(2)顺序读、随机读与预读取&lt;/span&gt;
+顺序读是指顺序的读取磁盘上的块，随机读是指访问的块是不连续的，需要磁盘的磁头不断移动。随机读的性能是远远低于顺序读的。
+在数据库中，顺序读根据索引的叶节点就能顺序的读取所需的行数据，这个顺序读只是逻辑的顺序读，在磁盘上可能还是随机读。随机读是指访问辅助索引叶节点不能完全得到结果，需要根据辅助索引页节点中的主键去寻找实际数据行。对于一些取表里很大部分数据的查询，正式因为读取是随机读，而随机读的性能会远低于顺序读。所以优化器才会选择全部扫描顺序读，而不使用索引。
+innodb存储引擎有两个预读取方法，随机预读取和线性预读取。随机预读取是指当一个区（共64个连续页）中有13个页在缓冲区中并被频繁访问时，innodb存储引擎会将这个区中剩余的页预读到缓冲区。线性预读取基于缓冲池中页的访问方式，而不是数量。如果一个区中有24个页被顺序访问了，则innodb会读取下一个区的所有页到缓冲区。但是innodb预读取经过测试后性能比较差，经过TPCC测试发现禁用预读取比启用预读取提高了10%的性能。在新版本innodb中，mysql禁用了随机预读取，仅保留了线性预读取，并且加入了innodb_read_ahead_threshold参数，当连续访问页超过该值时才启用预读取，默认值为56。
+
+&lt;pre style=&quot;color: #93a1a1;&quot;&gt;`15:02:16 tuangou&amp;gt; show variables like ‘innodb_read_ahead_threshold%’;
++—————————–+——-+
+| Variable_name               | Value |
++—————————–+——-+
+| innodb_read_ahead_threshold | 56    |
++—————————–+——-+
+1 row in set (0.00 sec)
+`&lt;/pre&gt;
+
+3)&lt;span id=&quot;t12&quot; style=&quot;font-weight: inherit; font-style: inherit;&quot;&gt;辅助索引的优化&lt;/span&gt;
+通过前面可知，辅助索引的页节点包含主键，但是辅助索引的叶节点并不包含完整的行数据信息，因此，innodb存储引擎总是会从辅助索引的叶节点判断是否能得到数据。让我们看一个例子：
+
+&lt;pre style=&quot;color: #93a1a1;&quot;&gt;`mysql&amp;gt; create table t ( a int not null, b varchar(20), primary key(a),key(b));
+Query OK, 0 rows affected (0.18 sec)
+
+mysql&amp;gt; insert into t select  1,’kangaroo’;
+Query OK, 1 row affected (0.00 sec)
+Records: 1  Duplicates: 0  Warnings: 0
+
+mysql&amp;gt; insert into t select  2,’dolphin’;
+Query OK, 1 row affected (0.01 sec)
+Records: 1  Duplicates: 0  Warnings: 0
+
+mysql&amp;gt; insert into t select  3,’dragon’;
+Query OK, 1 row affected (0.01 sec)
+Records: 1  Duplicates: 0  Warnings: 0
+
+mysql&amp;gt; insert into t select  4,’anteloge’;
+Query OK, 1 row affected (0.01 sec)
+Records: 1  Duplicates: 0  Warnings: 0
+
+如果执行select * from t很多人认为应该是如下结果：
+mysql&amp;gt; select * from t order by a\G;
+*************************** 1\. row ***************************
+a: 1
+b: kangaroo
+*************************** 2\. row ***************************
+a: 2
+b: dolphin
+*************************** 3\. row ***************************
+a: 3
+b: dragon
+*************************** 4\. row ***************************
+a: 4
+b: anteloge
+
+4 rows in set (0.00 sec)
+
+但是实际执行结果确是：
+mysql&amp;gt; select * from t\G;
+*************************** 1\. row ***************************
+a: 4
+b: anteloge
+*************************** 2\. row **************************
+a: 2
+b: dolphin
+*************************** 3\. row ***************************
+a: 3
+b: dragon
+*************************** 4\. row ***************************
+a: 1
+b: kangaroo
+4 rows in set (0.00 sec)
+
+因为辅助索引包含了主键a的值，因此访问b列上的辅助索引就可以得到a的值，这样就可以得到表中所有的数据。我们看这条语句的执行计划：
+mysql&amp;gt; explain select * from t\G;
+*************************** 1\. row ***************************
+id: 1
+select_type: SIMPLE
+table: t
+type: index
+possible_keys: NULL         
+      key: b
+  key_len: 23
+      ref: NULL
+     rows: 4
+    Extra: Using index
+1 row in set (0.00 sec)
+
+可以看到优化器最终走的索引b,如果想对a列进行排序，则需要进行order by操作：
+mysql&amp;gt; explain select * from t order by a\G;
+*************************** 1\. row ***************************
+id: 1
+select_type: SIMPLE
+    table: t
+     type: index
+possible_keys: NULL
+      key: PRIMARY
+  key_len: 4
+      ref: NULL
+     rows: 4
+    Extra: NULL
+1 row in set (0.00 sec)
+
+mysql&amp;gt; select * from t order by a\G;
+*************************** 1\. row ***************************
+a: 1
+b: kangaroo
+*************************** 2\. row ***************************
+a: 2
+b: dolphin
+*************************** 3\. row ***************************
+a: 3
+b: dragon
+*************************** 4\. row ***************************
+a: 4
+b: anteloge
+
+或者使用主键强制得到结果：
+mysql&amp;gt; select * from t force index(PRIMARY)\G;
+*************************** 1\. row ***************************
+a: 1
+b: kangaroo
+*************************** 2\. row ***************************
+a: 2
+b: dolphin
+*************************** 3\. row ***************************
+a: 3
+b: dragon
+*************************** 4\. row ***************************
+a: 4
+b: anteloge
+
+4 rows in set (0.00 sec)
+`&lt;/pre&gt;
+
+&lt;span id=&quot;t13&quot; style=&quot;font-weight: inherit; font-style: inherit;&quot;&gt;(4)联合索引&lt;/span&gt;
+联合索引是指对表上的多个列做索引，联合索引的创建方法和之前的一样，如下：
+
+&lt;pre style=&quot;color: #93a1a1;&quot;&gt;`mysql&amp;gt; alter table t add key idx_a_b(a,b);
+Query OK, 0 rows affected (0.17 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+`&lt;/pre&gt;
+
+联合索引还是一个B+树，不同的是联合索引键值的数量不是1，而是大于等于2.
+下面我们讨论一个两个整形列组成的联合索引，假定两个键值的名称分别为a和b，如下图8所示，每个节点上有两个键值，(1,1),(1,2),(2,1),(2,4),(3,1),(3,2), 数据按(a,b)顺序进行排列
+
+![](http://www.ruzuojun.com/wp-content/uploads/2013/09/8.png)
+
+              图8 多个键值的B+树
+
+因此，对于查询select * from t where a=xxx and b=xxx,显然可以使用(a,b)这个联合索引。对于单个a列查询 select * from t where a=xxx也是可以使用(a,b)这个索引。但是对于b列的查询select * from t where b=xxx是用不到这颗B+树索引。可以看到叶节点上b的值为1、2、1、4、1、2.显然不是排序的，因此b列的查询使用不到(a,b)索引。
+
+联合索引的第二个好处，可以对第二键值进行排序。例如很多情况下我们需要查询某个用户的购物情况，并按照时间排序，取出最近3次的购买记录，这时使用联合索引可以避免多一次的排序操作。因为索引本身在叶节点中已经排序了。看下面示例:
+
+&lt;pre style=&quot;color: #93a1a1;&quot;&gt;`mysql&amp;gt; create table buy_log(userid int unsigned not null, buy_date date);
+Query OK, 0 rows affected (0.09 sec)
+
+mysql&amp;gt; insert into buy_log values(1,’2013-01-01′);
+Query OK, 1 row affected (0.01 sec)
+
+mysql&amp;gt; insert into buy_log values(2,’2013-01-01′);
+Query OK, 1 row affected (0.01 sec)
+
+mysql&amp;gt; insert into buy_log values(3,’2013-01-01′);
+Query OK, 1 row affected (0.01 sec)
+
+mysql&amp;gt; insert into buy_log values(1,’2013-02-01′);
+Query OK, 1 row affected (0.01 sec)
+
+mysql&amp;gt; insert into buy_log values(3,’2013-02-01′);
+Query OK, 1 row affected (0.00 sec)
+
+mysql&amp;gt; insert into buy_log values(1,’2013-03-01′);
+Query OK, 1 row affected (0.01 sec)
+
+mysql&amp;gt; insert into buy_log values(1,’2013-04-01′);
+Query OK, 1 row affected (0.01 sec)
+
+mysql&amp;gt; alter table buy_log add key(userid);
+Query OK, 0 rows affected (0.07 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql&amp;gt; alter table buy_log add key(userid,buy_date);
+Query OK, 0 rows affected (0.11 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+上面我们建立了测试表和数据，建立了2个索引来比较。两个索引都包含了userid字段。如果只对于userid查询，优化器的选择是：
+
+mysql&amp;gt; explain select * from buy_log where userid=2\G;
+*************************** 1\. row ***************************
+id: 1
+select_type: SIMPLE
+table: buy_log
+     type: ref
+possible_keys: userid,userid_2
+      key: userid
+  key_len: 4
+      ref: const
+     rows: 1
+    Extra: NULL
+1 row in set (0.00 sec)
+可以看到possible_keys里面两个索引都可以使用，分别是单个的userid索引和userid,buy_date的联合索引。但是优化器最终选择的是userid，因为该叶节点包含单个键值，因此一个页存放的记录应该更多。
+
+接下来看以下的查询，假定要取出userid=1最近的3次购买记录，分别使用单个索引和联合索引的区别：
+mysql&amp;gt; explain select * from buy_log where userid=1 order by buy_date desc limit 3\G;
+*************************** 1\. row ***************************
+id: 1
+select_type: SIMPLE
+    table: buy_log
+     type: ref
+possible_keys: userid,userid_2
+      key: userid_2
+  key_len: 4
+      ref: const
+     rows: 4
+    Extra: Using where; Using index
+1 row in set (0.00 sec)
+
+同样对于上述SQL，两个索引都可使用，但是查询优化器使用了userid和buy_date组成的联合索引userid_2.因为这个联合索引中buy_date已经排序好了，可以减少一次排序操作。
+
+如果我们强制使用user_id单个索引，可以看到如下情况：
+mysql&amp;gt; explain select * from buy_log force index(userid) where userid=1 order by buy_date desc limit 3\G;
+*************************** 1\. row ***************************
+id: 1
+select_type: SIMPLE
+table: buy_log
+     type: ref
+possible_keys: userid
+      key: userid
+  key_len: 4
+      ref: const
+     rows: 4
+    Extra: Using where; Using filesort
+1 row in set (0.00 sec)
+在Extra这里可以看到Using filesort，Using filesort指排序，但不一定是在文件中完成。
+</code></pre><blockquote>
+<p>本文出自<a href="http://www.ruzuojun.com/" target="_blank" rel="external">http://www.ruzuojun.com</a></p>
+<p>参考资料《MySQL技术内幕Innodb存储引擎》<br>&nbsp;</p>
+</blockquote>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创分享，您的支持将鼓励我继续创作</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.png" alt="Geekwolf WeChat Pay"/>
+        <p>微信打赏</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.png" alt="Geekwolf Alipay"/>
+        <p>支付宝打赏</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    Geekwolf
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://www.simlinux.com/2014/08/19/innodb-e7-b4-a2-e5-bc-95-e5-8e-9f-e7-90-86-e5-92-8cb-e6-a0-91.html" title="Innodb索引原理和B+树">http://www.simlinux.com/2014/08/19/innodb-e7-b4-a2-e5-bc-95-e5-8e-9f-e7-90-86-e5-92-8cb-e6-a0-91.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2014/08/19/mysql-e5-88-86-e5-8c-ba-e7-ae-a1-e7-90-86-2.html" rel="next" title="Mysql分区管理">
+                <i class="fa fa-chevron-left"></i> Mysql分区管理
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2014/08/19/mysql-e4-ba-8b-e4-bb-b6-e8-b0-83-e5-ba-a6-e5-99-a8event-scheduler.html" rel="prev" title="Mysql事件调度器(Event Scheduler)">
+                Mysql事件调度器(Event Scheduler) <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zMDc3Mi83MzI0"></div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/wolf.jpeg"
+               alt="Geekwolf" />
+          <p class="site-author-name" itemprop="name">Geekwolf</p>
+           
+              <p class="site-description motion-element" itemprop="description">DevOps | Docker | K8S | MySQL | 运维</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">167</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">105</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/geekwolf" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                    
+                      GitHub
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/geekwolf" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                    
+                      Weibo
+                    
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#一、innodb存储引擎索引概述"><span class="nav-number">1.</span> <span class="nav-text">一、innodb存储引擎索引概述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二、理解B-树算法"><span class="nav-number">2.</span> <span class="nav-text">二、理解B+树算法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#三、B-树索引介绍"><span class="nav-number">3.</span> <span class="nav-text">三、B+树索引介绍</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2012 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Geekwolf</span>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('-1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("qms5kJ0y2CItrIVFivKxxPsR-gzGzoHsz", "Cn3w20futtphxpaDSP5tHjzy");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

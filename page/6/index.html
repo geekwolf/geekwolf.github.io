@@ -1,0 +1,3946 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Geekwolf,DevOps,Docker,k8s,MySQL,PaaS" />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Geekwolf's Blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="DevOps | Docker | K8S | MySQL | 运维">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Geekwolf&#39;s Blog">
+<meta property="og:url" content="http://www.simlinux.com/page/6/index.html">
+<meta property="og:site_name" content="Geekwolf&#39;s Blog">
+<meta property="og:description" content="DevOps | Docker | K8S | MySQL | 运维">
+<meta property="og:locale" content="zh-Hans">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Geekwolf&#39;s Blog">
+<meta name="twitter:description" content="DevOps | Docker | K8S | MySQL | 运维">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.simlinux.com/page/6/"/>
+
+
+
+
+
+  <title>Geekwolf's Blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="//s13.cnzz.com/z_stat.php?id=1264375041&web_id=1264375041" language="JavaScript"></script>
+  </div>
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left 
+   page-home 
+ ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Geekwolf's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Quick notes</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />
+            
+            站点地图
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+  <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2014/08/20/mysql-e6-94-af-e6-8c-81-e7-9a-84-e6-95-b0-e6-8d-ae-e7-b1-bb-e5-9e-8b.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Geekwolf">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/wolf.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Geekwolf's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2014/08/20/mysql-e6-94-af-e6-8c-81-e7-9a-84-e6-95-b0-e6-8d-ae-e7-b1-bb-e5-9e-8b.html" itemprop="url">Mysql支持的数据类型</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-08-20T10:11:37+08:00">
+                2014-08-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/MySQL数据库/" itemprop="url" rel="index">
+                    <span itemprop="name">MySQL数据库</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2014/08/20/mysql-e6-94-af-e6-8c-81-e7-9a-84-e6-95-b0-e6-8d-ae-e7-b1-bb-e5-9e-8b.html" class="leancloud_visitors" data-flag-title="Mysql支持的数据类型">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  7
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h5 id="一、数值类型"><a href="#一、数值类型" class="headerlink" title="一、数值类型"></a>一、数值类型</h5><p><a href="http://www.simlinux.com/wp-content/uploads/2014/08/numbers.png"><img src="http://www.simlinux.com/wp-content/uploads/2014/08/numbers.png" alt="numbers"></a></p>
+<p><strong>注意事项：</strong><br><strong>1. int类型里面默认的数据宽度是11，即int(11)</strong><br><span style="color: #222222;"> 关于zerofill，在数字位数不够的空间用字符0填充</span><br><span style="color: #222222;"> 例如：</span></p>
+<p><a href="http://www.simlinux.com/wp-content/uploads/2014/08/n2.png"><img src="http://www.simlinux.com/wp-content/uploads/2014/08/n2.png" alt="n2"></a></p>
+<p><strong>2.整数类型有AUTO_INCREMENT的属性</strong><br>AUTO_INCREMENT的值一般从1开始，每行增加1，插入NULL到一个AUTO_INCREMENT列时，Mysql插入一个比该列中当前最大值大1的值<br>一个表中最多只能有一个AUTO_INCREMENT列<br>使用AUTO_INCREMENT的条件：<br>该列应该定义为NOT NULL，并且为PRIMARY KEY 或者UNIQUE键</p>
+<p> 例如：</p>
+<pre><code>CREATE TABLE AI(ID INT AUTO_INCREMENT NOT NULL PRIMARY KEY);
+CREATE TABLE AI(ID INT AUTO_INCREMENT NOT NULL ,PRIMARY KEY(ID));
+CREATE TABLE AI(ID INT AUTO_INCREMENT NOT NULL ,UNIQUE(ID));
+`&lt;/pre&gt;
+
+**3.BIT位数据类型查询方式**
+bit位数据类型列不能直接查询得出结果，使用bin()显示为二进制格式，或者hex()显示为十六进制格式函数进行读取
+
+ 例如：
+
+[![n3](http://www.simlinux.com/wp-content/uploads/2014/08/n3.png)](http://www.simlinux.com/wp-content/uploads/2014/08/n3.png)
+
+&amp;nbsp;
+
+##### 二、日期和时间类型
+
+[![time](http://www.simlinux.com/wp-content/uploads/2014/08/time.png)](http://www.simlinux.com/wp-content/uploads/2014/08/time.png)
+
+**注意事项:**
+**1.经常插入或者跟新日期为当前系统时间通常用TIMESTAMP来表示**
+但是MySQL规定TIMESTAMP类型字段只能有一列的默认值为current_timestamp,第二个TIMESTAMP字段的默认值为0，即0000-00-00 00：00：00；时间与时区相关
+
+**2\. DATETIME是DATE和TIME的结合**
+
+&lt;pre style=&quot;color: #93a1a1;&quot;&gt;`mysql&amp;gt; create table t(d date,t time,dt datetime);
+Query OK, 0 rows affected (0.11 sec)
+mysql&amp;gt; desc t;
++-------+----------+------+-----+---------+-------+
+| Field | Type | Null | Key | Default | Extra |
++-------+----------+------+-----+---------+-------+
+| d | date | YES | | NULL | |
+| t | time | YES | | NULL | |
+| dt | datetime | YES | | NULL | |
++-------+----------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+mysql&amp;gt; select now();
++---------------------+
+| now() |
++---------------------+
+| 2014-04-08 11:38:24 |
++---------------------+
+1 row in set (0.01 sec)
+mysql&amp;gt; insert into t values(now(),now(),now());
+Query OK, 1 row affected, 1 warning (0.00 sec)
+mysql&amp;gt; show warnings;
++-------+------+----------------------------------------+
+| Level | Code | Message |
++-------+------+----------------------------------------+
+| Note | 1265 | Data truncated for column &apos;d&apos; at row 1 |
++-------+------+----------------------------------------+
+1 row in set (0.00 sec)
+mysql&amp;gt; select * from t;
++------------+----------+---------------------+
+| d | t | dt |
++------------+----------+---------------------+
+| 2014-04-08 | 11:38:40 | 2014-04-08 11:38:40 |
++------------+----------+---------------------+
+1 row in set (0.00 sec)
+`&lt;/pre&gt;
+
+**3.TIMESTAMP 和DATETIME的区别**
+A.TIMESTAMP支持的范围较小
+B.表中第一个TIMESTAMP列自动设置为系统时间；如果列中插入NULL或者不明确的赋值都会自动设置该列的值为当前的日期和时间；超过TIMESTAMP的取值范围时，直接由0000-00-00 00：00：00填补
+C.TIMESTAMP的插入和查询都受当地时区的影响，更能反应实际日期；DATETIME则只能反映出插入时当地的失去，其他时区的人查看数据必然会有误差
+
+**4.YEAR**
+有4位格式（允许的值是1901~2155、0000，默认值）的年，有2位格式（允许的值70-69，即1970~2069,Mysql5.5.27以后版本不再支持）的年
+
+##### 三、字符串类型
+
+[![char](http://www.simlinux.com/wp-content/uploads/2014/08/char.png)](http://www.simlinux.com/wp-content/uploads/2014/08/char.png)
+
+**注意事项：**
+**1.varchar和char的不同之处在于存储方式不同**
+&lt;span style=&quot;color: #222222;&quot;&gt; A. char列的长度固定为创建表时声明的长度，长度可以为0~255；varchar列中的值为可变长字符串，长度可以为0~65535&lt;/span&gt;
+
+[![charst](http://www.simlinux.com/wp-content/uploads/2014/08/charst.png)](http://www.simlinux.com/wp-content/uploads/2014/08/charst.png)
+
+ B.查询时char列删除了尾部的空格，而varchar则保留了这些空格
+例如：
+
+&lt;pre style=&quot;color: #93a1a1;&quot;&gt;`mysql&amp;gt; CREATE TABLE vc (v VARCHAR(4), c CHAR(4));
+Query OK, 0 rows affected (0.10 sec)
+mysql&amp;gt; INSERT INTO vc VALUES (&apos;ab &apos;, &apos;ab &apos;);
+Query OK, 1 row affected (0.00 sec)
+mysql&amp;gt; SELECT CONCAT(&apos;(&apos;, v, &apos;)&apos;), CONCAT(&apos;(&apos;, c, &apos;)&apos;) FROM vc;
++---------------------+---------------------+
+| CONCAT(&apos;(&apos;, v, &apos;)&apos;) | CONCAT(&apos;(&apos;, c, &apos;)&apos;) |
++---------------------+---------------------+
+| (ab ) | (ab) |
++---------------------+---------------------+
+1 row in set (0.00 sec)
+mysql&amp;gt; select length(v),length(c) from vc;
++-----------+-----------+
+| length(v) | length(c) |
++-----------+-----------+
+| 4 | 2 |
++-----------+-----------+
+1 row in set (0.00 sec)
+mysql&amp;gt; select concat(v,&apos;+&apos;),concat(c,&apos;+&apos;) from vc;
++---------------+---------------+
+| concat(v,&apos;+&apos;) | concat(c,&apos;+&apos;) |
++---------------+---------------+
+| ab + | ab+ |
++---------------+---------------+
+1 row in set (0.00 sec)
+`&lt;/pre&gt;
+
+**2.BINARY和VARBINARY类型：**类似CHAR和VARCHAR类型，不同的是它们包含二进制字符串而不包含非二进制字符串；CHAR(M)、VARCHAR(M)中的M表示字符长度，BINARY(M)和VARBINARY(M)中M表示字节的长度
+
+**3.ENUM类型(枚举类型)**
+对于1~255个成员的枚举需要1个字节存储，对于255~65535个成员，需要2个字节存储，最多允许65535个成员
+例如:
+
+[![enum](http://www.simlinux.com/wp-content/uploads/2014/08/enum.png)](http://www.simlinux.com/wp-content/uploads/2014/08/enum.png)
+
+ ENUM类型是忽略大小写的，在存储”M” “f”时将它们都转换成大写，插入不存在的ENUM指定的范围内的值时，并没有警告，而是插入了enum(’M’,‘F’)的第一个值“M”，只允许从集合中选取单个值，不能一次取多个
+
+**4.SET类型**
+SET是一个字符串对象，包含0~64个成员，与ENUM的区别在于可以一次选取多个成员
+1~8成员的集合，占1个字节
+9~16成员的集合，占2个字节
+17~24成员的集合，占用3个字节
+25~32成员的集合，占用4个字节
+33~64成员的集合，占用8个字节
+例如：
+
+&lt;pre style=&quot;color: #93a1a1;&quot;&gt;`mysql&amp;gt; create table t (col set(&apos;a&apos;,&apos;b&apos;,&apos;c&apos;,&apos;d&apos;));
+Query OK, 0 rows affected (0.22 sec)
+mysql&amp;gt; desc t;
++-------+----------------------+------+-----+---------+-------+
+| Field | Type | Null | Key | Default | Extra |
++-------+----------------------+------+-----+---------+-------+
+| col | set(&apos;a&apos;,&apos;b&apos;,&apos;c&apos;,&apos;d&apos;) | YES | | NULL | |
++-------+----------------------+------+-----+---------+-------+
+1 row in set (0.00 sec)
+mysql&amp;gt; insert into t values(&apos;a,b&apos;),(&apos;a,d,a&apos;),(&apos;a,b&apos;),(&apos;a,c&apos;),(&apos;a&apos;);
+Query OK, 5 rows affected (0.00 sec)
+Records: 5 Duplicates: 0 Warnings: 0
+mysql&amp;gt; select * from t;
++------+
+| col |
++------+
+| a,b |
+| a,d |
+| a,b |
+| a,c |
+| a |
++------+
+5 rows in set (0.00 sec)
+</code></pre><p>对于(‘a,d,a’)这样包含重复成员的集合将取一次，写入后的结果为“a,d”<br><strong>参考文档：</strong><a href="http://dev.mysql.com/doc/refman/5.5/en/data-types.html" target="_blank" rel="external">http://dev.mysql.com/doc/refman/5.5/en/data-types.html</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2014/08/20/sql-e5-9f-ba-e7-a1-80-e6-93-8d-e4-bd-9c-e6-80-bb-e7-bb-93.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Geekwolf">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/wolf.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Geekwolf's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2014/08/20/sql-e5-9f-ba-e7-a1-80-e6-93-8d-e4-bd-9c-e6-80-bb-e7-bb-93.html" itemprop="url">Sql基础操作总结</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-08-20T10:02:44+08:00">
+                2014-08-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/MySQL数据库/" itemprop="url" rel="index">
+                    <span itemprop="name">MySQL数据库</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2014/08/20/sql-e5-9f-ba-e7-a1-80-e6-93-8d-e4-bd-9c-e6-80-bb-e7-bb-93.html" class="leancloud_visitors" data-flag-title="Sql基础操作总结">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  5
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>本文主要根据自己的学习过程总结的文章，可能并不全面，牛人请绕过~<br>show create table user \G; 查看创建user表的sql<br><strong>修改表结构：</strong></p>
+<pre><code>alter  table tablename modify[culumn] column_definition [first|after col_name]
+例子：
+修改emp的字段数据类型
+alter table  emp modify ename varchar(20);
+表首增加字段
+alter table emp add column id int(10) first;
+删除字段
+alter table emp drop [column]  id;
+字段改名 
+alter table tablename change [column] old_name column_definition [first/after col_name]
+更改表名
+alter table emp rename [to] test;
+`&lt;/pre&gt;
+
+**注释：** modify只能修改字段数据类型，不能修改字段名称，first/after 表示修改字段的顺序
+
+**插入操作:**
+
+&lt;pre style=&quot;color: #93a1a1;&quot;&gt;`insert into table emp(f1,f2,f3) values(v1,v2,v3);
+insert into table  emp values(v1,v2,v3);
+一次插入多条记录
+insert into table emp(f1,f2,f3)
+values
+(r1_v1,r2_v1,r3_v1),
+(r1_v2,r2_v2,r3_v3);
+`&lt;/pre&gt;
+
+**查询：**
+1.查询不重复记录 distinct
+
+&lt;pre style=&quot;color: #93a1a1;&quot;&gt;`select distinct deptno from emp;
+`&lt;/pre&gt;
+
+2.条件查询 where
+where字段比较 &amp;gt;、&amp;lt;、&amp;gt;=、&amp;lt;=、!= 等，多条件用or、and等 3.排序和限制 order by 排序关键字（默认是升序排列）：
+DESC 表示按照字段进行降序排列
+ASC 表所升序排列
+limit n显示前N条记录 4.聚合操作
+
+&lt;pre style=&quot;color: #93a1a1;&quot;&gt;`语法： select [fidled1,field2,...,fieldn] fun_name
+from  tablename
+[where where_contition]
+[group by  field1,field2,...fieldn]
+[with rollup]
+[having where_contition]
+
+fun_name :表示做聚合操作的函数，比如：sum、count（*）、max、min
+group by  :表示要进行分类聚合的字段
+with follup ：可选，表示是否对分类聚合后的结果进行在汇总
+having  ：表示在对分类后的结果在进行条件的过滤
+`&lt;/pre&gt;
+
+having和where的区别:
+having是对聚合后的结果进行条件的过滤，而where是在聚合前就对记录进行过滤，如果逻辑允许，我们尽可能用where先过滤记录，这样因为结果集减小，将对聚合的效率大大提高，最后在根据逻辑看是否用having进行再过滤
+
+&lt;pre style=&quot;color: #93a1a1;&quot;&gt;`例如：
+ 统计各个部门的人数：
+ select deptno,count(1) from emp group by deptno;
+ 统计各个部门的人数，又要统计总人数:
+ select deptno,count(1) from emp group by deptno with rollup;
+ 统计人数大于1的部门：
+ select deptno,count(1) from emp group by deptno having count(1)&amp;gt;1;
+ 统计公司所有员工的薪水总额、最高和最低薪水
+ select sum(sal),max(sal),min(sal) from emp;
+`&lt;/pre&gt;
+
+3.表连接
+表连接分为：内连接和外连接；内连接：仅选出两张表中互相匹配的记录；外连接：选出其他不匹配的记录
+
+&lt;pre style=&quot;color: #93a1a1;&quot;&gt;`例如：
+ 查询雇员的名字和所在部门名称（雇员和部门分属于两个表）
+ select ename,deptname from emp,dept where emp.deptno=dept.deptno;
+   外连接分为： 
+   左连接：包含所有的左边表中的记录甚至是右边表中没有和它匹配的记录
+   右连接：包含所有的右边表中的记录甚至是左边表中没有和它匹配的记录
+
+例如：查询emp中所有用户和所在部门名称
+select ename,deptname from dept right join emp on dept.deptno=emp.deptno;
+或可用左连接代替
+select ename,deptname from emp left join dept on emp.deptno=dept.deptno;
+`&lt;/pre&gt;
+表连接的好文章： [http://coolshell.cn/articles/3463.html](http://coolshell.cn/articles/3463.html)
+MySQL的联结（Join）语法：
+[http://www.blogjava.net/chenpengyi/archive/2005/10/17/15747.html](http://www.blogjava.net/chenpengyi/archive/2005/10/17/15747.html)
+
+4.子查询 用于子查询的关键字包括in、not in、=、!=、exits、not exits等
+例如：
+&lt;pre style=&quot;color: #93a1a1;&quot;&gt;`从emp表中查询出所有部门在dept表中的所有记录
+select * from emp where deptno in(select deptno from dept);
+可以使用表连接替换：
+select emp.*  from emp,dept where emp.deptno=dept.deptno;
+
+查询记录数唯一，可用=代替in
+select * from emp where deptno = (select deptno from dept limit 1);
+`&lt;/pre&gt;
+5.记录联合（union、union all） 场景：将两个表的数据按照一定的查询条件查询出来后，在合并显示 union和union all的区别在于union all把结果集直接合并在一起，而union是将union all后的结果进行了去重DISTINCT后的结果
+
+[![unionall](http://www.simlinux.com/wp-content/uploads/2014/08/unionall1.png)](http://www.simlinux.com/wp-content/uploads/2014/08/unionall1.png)
+
+**查看帮助：**
+
+&lt;pre style=&quot;color: #93a1a1;&quot;&gt;`显示可供查询的分类
+mysql&amp;gt;? contents
+
+针对某个分类查看帮助
+mysql&amp;gt;? data types
+
+查看int数据类型介绍
+mysql&amp;gt;? int
+
+查看关键字的语法
+mysql&amp;gt;? show
+mysql&amp;gt;? create table
+</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2014/08/19/mysql-e4-ba-8b-e4-bb-b6-e8-b0-83-e5-ba-a6-e5-99-a8event-scheduler.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Geekwolf">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/wolf.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Geekwolf's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2014/08/19/mysql-e4-ba-8b-e4-bb-b6-e8-b0-83-e5-ba-a6-e5-99-a8event-scheduler.html" itemprop="url">Mysql事件调度器(Event Scheduler)</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-08-19T20:59:37+08:00">
+                2014-08-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/MySQL数据库/" itemprop="url" rel="index">
+                    <span itemprop="name">MySQL数据库</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2014/08/19/mysql-e4-ba-8b-e4-bb-b6-e8-b0-83-e5-ba-a6-e5-99-a8event-scheduler.html" class="leancloud_visitors" data-flag-title="Mysql事件调度器(Event Scheduler)">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  7
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <pre><code>Mysql中的事件调度器Event Scheduler类似于linux下的crontab计划任务的功能,它是由一个特殊的时间调度线程执行的
+</code></pre><h4 id="一、查看当前是否开启了event-scheduler三种方法"><a href="#一、查看当前是否开启了event-scheduler三种方法" class="headerlink" title="一、查看当前是否开启了event scheduler三种方法"></a><span id="t1" style="font-weight: inherit; font-style: inherit;">一、查看当前是否开启了event scheduler三种方法</span></h4><p>1) SHOW VARIABLES LIKE ‘event_scheduler’;<br>2) SELECT @@event_scheduler;<br>3) SHOW PROCESSLIST;(是否有State为：Waiting for next activation的进程，User为event_scheduler)</p>
+<h4 id="二、启动关闭event-scheduler方法"><a href="#二、启动关闭event-scheduler方法" class="headerlink" title="二、启动关闭event scheduler方法"></a><span id="t2" style="font-weight: inherit; font-style: inherit;">二、启动关闭event scheduler方法</span></h4><p>时间调度器是否开启由全局变量event_scheduler决定，它有三个可以设定的值： – OFF : 事件调度器是关闭的，调度线程并没有运行，并且在SHOW PROCESSLIST中不显示，默认值是OFF – ON ：事件调度器是开启的，调度线程并没有运行，并且执行所有的调度事件，通过SHOW PROCESSLIST可以查看Waiting for next activation的进程 – DISABLED : 设定这个值表示Event Scheduler是被禁止的，无法在Mysql运行状态下改变其值</p>
+<p><strong>注：</strong>在Mysql启动时如果在my.cnf设置了event_scheduler=ON（OFF or 1 or 0）时，就不能在运行时修改撑DISABLED，如果设置event_scheduler=DISABLED时，就不能在运行时修改其值为ON （ OFF or 1 or 0）</p>
+<pre><code>mysql&amp;gt; SELECT @@event_scheduler;
++-------------------+
+| @@event_scheduler |
++-------------------+
+| DISABLED |
++-------------------+
+1 row in set (0.00 sec)
+mysql&amp;gt; SET @@global.event_scheduler = 1; 
+ERROR 1290 (HY000): The MySQL server is running with the --event-scheduler=DISABLED or --skip-grant-tables option so it cannot execute this statement
+
+在mysql运行时开启Event（4种方法均可）：
+SET GLOBAL event_scheduler = ON;
+SET @@global.event_scheduler = ON;
+SET GLOBAL event_scheduler = 1;
+SET @@global.event_scheduler = 1;
+
+在mysql运行时关闭Event（4种方法均可）：
+SET GLOBAL event_scheduler = OFF;
+SET @@global.event_scheduler = OFF;
+SET GLOBAL event_scheduler = 0;
+SET @@global.event_scheduler = 0;
+`&lt;/pre&gt;
+
+#### &lt;span id=&quot;t3&quot; style=&quot;font-weight: inherit; font-style: inherit;&quot;&gt;三、创建Event&lt;/span&gt;
+
+&lt;pre style=&quot;color: #93a1a1;&quot;&gt;`语法：
+CREATE
+    [DEFINER = { user | CURRENT_USER }]
+    EVENT
+    [IF NOT EXISTS]
+    event_name
+    ON SCHEDULE schedule
+    [ON COMPLETION [NOT] PRESERVE]
+    [ENABLE | DISABLE | DISABLE ON SLAVE]
+    [COMMENT &apos;comment&apos;]
+    DO event_body;
+
+schedule:
+    AT timestamp [+ INTERVAL interval] ...
+  | EVERY interval
+    [STARTS timestamp [+ INTERVAL interval] ...]
+    [ENDS timestamp [+ INTERVAL interval] ...]
+interval:
+    quantity {YEAR | QUARTER | MONTH | DAY | HOUR | MINUTE |
+             WEEK | SECOND | YEAR_MONTH | DAY_HOUR | DAY_MINUTE |
+             DAY_SECOND | HOUR_MINUTE | HOUR_SECOND | MINUTE_SECOND}
+`&lt;/pre&gt;
+
+**说明：**
+
+  DEFINER默认是CREATE EVENT的用户,可以理解为DEFINER=CURRENT_USER,指该event的用户，服务器在执行该事件时，使用该用户来检查权限；如果设置语法:‘user_name’@‘host_name’，如果当前CREATE EVENT用户没有supser权限，则无法将该event指派给其他用户；如果有super权限，则可以指定任意存在的用户，若不存在，时间执行时报错
+IF NOT EXISTS ： 如果在同一个schema创建一个已经存在的event_name时不会做任何操作，也不会出错，但会出现warings：该event已经存在；如果不增加此关键词已经存在的话提示ERROR： 1537 (HY000): Event ‘countsum’ already exists
+ON SCHEDULE ：用于设置什么时间执行，执行的频率及执行多久的问题
+AT timestamp ：表示在给定的datetime或者timestamp的时间执行一次
++ INTERVAL interval：表示从AT timestamp多久之后执行
+EVERY interval ：有规律的重复执行
+[ENABLE | DISABLE]可是设置该事件创建后状态是否开启或关闭，默认为ENABLE
+[COMMENT ‘comment’]可以给该事件加上注释。
+
+&lt;pre style=&quot;color: #93a1a1;&quot;&gt;`event创建时间的3周2天后：
+AT  CURRENT_TIMESTAMP + INTERVAL 3 WEEK + INTERVAL 2 DAY
+
+2分钟10秒： 
++ INTERVAL &apos;2:10&apos; MINUTE_SECOND
+
+每6周：
+EVERY 6 WEEK
+
+从现在开始30分钟后每12小时执行一次到从现在到4周后结束执行：
+EVERY 12 HOUR STARTS CURRENT_TIMESTAMP + INTERVAL 30 MINUTE ENDS CURRENT_TIMESTAMP + INTERVAL 4 WEEK 
+`&lt;/pre&gt;
+
+**实例：**
+前提：创建EVENT的用户需要只少对应schema的EVENT权限
+最基本的create event只需要三个部分：
+1\. create event关键字以及一个event名称
+2\. on schedule子句
+3\. do子句
+
+&lt;pre style=&quot;color: #93a1a1;&quot;&gt;`1\. 在创建事件myevent1小时后执行，执行一条更新
+
+CREATE EVENT myevent
+    ON SCHEDULE AT CURRENT_TIMESTAMP + INTERVAL 1 HOUR
+DO
+  UPDATE myschema.mytable SET mycol = mycol + 1;
+
+2.2014年3月20日12点整清空test表：
+
+CREATE EVENT e_test
+    ON SCHEDULE AT TIMESTAMP &apos;2014-03-20 12:00:00&apos;
+    DO TRUNCATE TABLE test.aaa;
+
+3.5天后开启每天定时清空test表：
+
+CREATE EVENT e_test
+    ON SCHEDULE EVERY 1 DAY
+    STARTS CURRENT_TIMESTAMP + INTERVAL 5 DAY
+    DO TRUNCATE TABLE test.aaa;
+
+4.每天定时清空test表，5天后停止执行
+
+CREATE EVENT e_test
+    ON SCHEDULE EVERY 1 DAY
+    ENDS CURRENT_TIMESTAMP + INTERVAL 5 DAY
+    DO TRUNCATE TABLE test.aaa;
+
+5.5天后开启每天定时清空test表，一个月后停止执行：
+
+CREATE EVENT e_test
+    ON SCHEDULE EVERY 1 DAY
+    STARTS CURRENT_TIMESTAMP + INTERVAL 5 DAY
+    ENDS CURRENT_TIMESTAMP + INTERVAL 1 MONTH
+    DO TRUNCATE TABLE test.aaa;
+
+6.每天定时清空test表(只执行一次，任务完成后就终止该事件)：
+
+CREATE EVENT e_test
+    ON SCHEDULE EVERY 1 DAY
+    ON COMPLETION NOT PRESERVE
+    DO TRUNCATE TABLE test.aaa;
+
+[ON COMPLETION [NOT] PRESERVE]可以设置这个事件是执行一次还是持久执行，默认为NOT PRESERVE。
+`&lt;/pre&gt;
+
+#### &lt;span id=&quot;t4&quot; style=&quot;font-weight: inherit; font-style: inherit;&quot;&gt;四、修改Event&lt;/span&gt;
+
+&lt;pre style=&quot;color: #93a1a1;&quot;&gt;`ALTER
+   [DEFINER = { user | CURRENT_USER }]
+   EVENT event_name
+   [ON SCHEDULE schedule]
+   [ON COMPLETION [NOT] PRESERVE]
+   [RENAME TO new_event_name]
+   [ENABLE | DISABLE | DISABLE ON SLAVE]
+   [COMMENT &apos;comment&apos;]
+   [DO event_body]
+`&lt;/pre&gt;
+
+**说明：**
+对于任何一个拥有定义在database里面事件的event权限的用户都可以修改event，并且成功需改后，那个用户就会成为此event的definer
+
+&lt;pre style=&quot;color: #93a1a1;&quot;&gt;`实例：
+CREATE EVENT myevent
+    ON SCHEDULE
+      EVERY 6 HOUR
+    COMMENT &apos;A sample comment.&apos;
+    DO
+      UPDATE myschema.mytable SET mycol = mycol + 1;
+
+将上面的event从开始之后每6个小时执行一次改为从开始4个小时后每12小时执行一次
+
+只修改schedule
+ALTER EVENT myevent
+    ON SCHEDULE
+      EVERY 12 HOUR
+    STARTS CURRENT_TIMESTAMP + INTERVAL 4 HOUR;
+同时修改schedule和body
+ALTER EVENT myevent
+    ON SCHEDULE
+      AT CURRENT_TIMESTAMP + INTERVAL 1 DAY
+    DO
+      TRUNCATE TABLE myschema.mytable;
+`&lt;/pre&gt;
+
+关闭、启动、别名、移动、删除event：
+
+&lt;pre style=&quot;color: #93a1a1;&quot;&gt;`临时关闭某个event
+ALTER EVENT myevent DISABLE;
+
+开启某个event
+ALTER EVENT myevent ENABLE;
+
+别名某个event
+ALTER EVENT olddb.myevent
+RENAME TO newdb.myevent;
+
+将myevent从olddb库移动到newdb库
+ALTER EVENT olddb.myevent
+RENAME TO newdb.myevent;
+
+删除event
+DROP EVENT [IF EXISTS] event_name
+</code></pre><h4 id="五、查询Event信息"><a href="#五、查询Event信息" class="headerlink" title="五、查询Event信息"></a><span id="t5" style="font-weight: inherit; font-style: inherit;">五、查询Event信息</span></h4><p>Event信息相关表：<br>information_schema.events<br>mysql.event</p>
+<p>查看事件的创建信息<br>show create event countsum \G</p>
+<p>查看sem库的events信息<br>USE sem；<br>SHOW EVENTS \G</p>
+<p>SHOW EVENTS FROM sem;</p>
+<p><strong>参考资料</strong>:<a href="https://dev.mysql.com/doc/refman/5.5/en/events.html" target="_blank" rel="external">https://dev.mysql.com/doc/refman/5.5/en/events.html</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2014/08/19/innodb-e7-b4-a2-e5-bc-95-e5-8e-9f-e7-90-86-e5-92-8cb-e6-a0-91.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Geekwolf">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/wolf.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Geekwolf's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2014/08/19/innodb-e7-b4-a2-e5-bc-95-e5-8e-9f-e7-90-86-e5-92-8cb-e6-a0-91.html" itemprop="url">Innodb索引原理和B+树</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-08-19T20:40:14+08:00">
+                2014-08-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/MySQL数据库/" itemprop="url" rel="index">
+                    <span itemprop="name">MySQL数据库</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2014/08/19/innodb-e7-b4-a2-e5-bc-95-e5-8e-9f-e7-90-86-e5-92-8cb-e6-a0-91.html" class="leancloud_visitors" data-flag-title="Innodb索引原理和B+树">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  21
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="一、innodb存储引擎索引概述"><a href="#一、innodb存储引擎索引概述" class="headerlink" title="一、innodb存储引擎索引概述"></a><span id="t1" style="font-weight: inherit; font-style: inherit;">一、innodb存储引擎索引概述</span></h4><pre><code>innodb存储引擎支持两种常见的索引：B+树索引和哈希索引。
+</code></pre><p>innodb支持哈希索引是自适应的，innodb会根据表的使用情况自动生成哈希索引<br>B+树索引就是传统意义上的索引，是关系型数据库中最常用最有效的索引。B+树是从最早的平衡二叉树演变而来，但是B+树不是一个二叉树。B+中的B不代表二叉(Binary),而是代表平衡(Balance)</p>
+<p><strong>注意</strong>：B+树索引并不能找到一个键值对应的具体行。b+树索引只能查到被查找数据行所在的页，然后数据库通过把页读入内存，再在内存中查找，最后得到结果</p>
+<h4 id="二、理解B-树算法"><a href="#二、理解B-树算法" class="headerlink" title="二、理解B+树算法"></a><span id="t2" style="font-weight: inherit; font-style: inherit;">二、理解B+树算法</span></h4><pre><code>B+树是为磁盘及其他存储辅助设备而设计一种平衡查找树（不是二叉树）。B+树中，所有记录的节点按大小顺序存放在同一层的叶节点中，各叶节点用指针进行连接。
+</code></pre><p>下面演示一个B+数结构，高度为2，每页可放4条记录，扇出(fan out)为5。从下图1可以看出，所有记录都在页节点中，并且为顺序存放，我们从最左边的叶节点开始遍历，可以得到所有键值的顺序排序：5、10、15、20、25、30、50、55、60、65、75、80、85、90</p>
+<p><a href="http://www.simlinux.com/wp-content/uploads/2014/08/1.png"><img src="http://www.simlinux.com/wp-content/uploads/2014/08/1.png" alt="1"></a></p>
+<p><span id="t3" style="color: #222222;">（1） B+树的插入操作</span><span style="color: #222222;"> B+树的插入必须保证插入后叶节点的记录依然排序。同时要考虑插入B+树的三种情况，每种情况都可能导致不同的插入算法。如下表所示：</span></p>
+<p><a href="http://www.simlinux.com/wp-content/uploads/2014/08/2.png"><img src="http://www.simlinux.com/wp-content/uploads/2014/08/2.png" alt="2"></a></p>
+<p>   我们实例分析B+树的插入，在图1的B+树中，我们需要插入28这个值。因为Leaf Page和Index page都没有满，我们直接将记录插入叶节点就可以了。如下图2所示：</p>
+<p><img src="http://simlinux.com/images/mysql/3.png" alt=""><br>图2 插入键值28<br>下面我们再插入70这个值，这时Leaf Page已经满了，但是Index Page还没有满，符合上面的第二种情况。这时插入Leaf Page的情况为 50、55、60、65、70.我们根据中间的值60拆分叶节点，可得到下图3所示（双项链表指针依然存在，没有画出） <img src="http://simlinux.com/images/mysql/4.png" alt=""><br>图3 插入键值70<br>最后我们再插入95，这个Leaf Page和Index Page都满了，符合上面第三种情况。需要做2次拆分，如下图4所示：<br><img src="http://simlinux.com/images/mysql/5.png" alt=""><br>图4 插入键值95<br>可以看到，不管怎么变化，B+树总会保持平衡。但是为了保持平衡，对于新插入的键值可能需要做大量的拆分页操作。B+树主要用于磁盘，拆分意味着磁盘的操作，应该在可能的情况下尽量减少页的拆分。因此，B+树提供了旋转功能。旋转发生在Leaf Page已经满了，但是左右兄弟节点没有满的情况下。这时B+树并不是急着做页的拆分，而是旋转。旋转结果如图5所示，可以看到旋转操作使B+树减少了一次页的拆分操作，高度仍然为2.<br><img src="http://simlinux.com/images/mysql/6.png" alt="">                 图5 B+树的旋转操作</p>
+<p><span id="t4" style="font-weight: inherit; font-style: inherit;">(2) B+树的删除操作</span> B+树使用填充因子来控制数的删除变化。填充因子可以设置的最小值为50%。B+树的删除操作同样保证删除后叶节点的记录依然排序。 根据填充因子的变化，B+树删除依然需要考虑三种情况，如下表所示：<br><img src="http://simlinux.com/images/mysql/7.png" alt=""></p>
+<p>根据图4的B+树，我们进行删除操作，首先删除键值为70的这条记录，该记录符合上表第一种情况，删除后如下图6所示： <img src="http://simlinux.com/images/mysql/8.png" alt="">                 图6 删除键值70</p>
+<p>接着我们删除键值为25的记录，这也是属于上表第一种情况，不同的是该值还是index page中的值。因此在删除Leaf Page中的25后，还需要将25的右兄弟节点28更新到Index Page中，如下图7所示（图中有两个笔误，红色为修正值）：<br><img src="http://simlinux.com/images/mysql/9.png" alt="">                 图7 删除键值28<br>最后我们删除键值为60的记录。删除Leaf page键值为60的记录后，其填充因子小于50%。需要做合并操作。同样在删除Index page中相关记录后需要做Index Page的合并操作。</p>
+<h4 id="三、B-树索引介绍"><a href="#三、B-树索引介绍" class="headerlink" title="三、B+树索引介绍"></a><span id="t5" style="font-weight: inherit; font-style: inherit;">三、B+树索引介绍</span></h4><p>B+树索引的本质是B+树在数据库中的实现。但是B+树索引有一个特点是高扇出性，因此在数据库中，B+树的高度一般在2到3层。也就是说查找某一键值的记录，最多只需要2到3次IO开销。按磁盘每秒100次IO来计算，查询时间只需0.0.2到0.03秒。</p>
+<p>数据库中B+树索引分为聚集索引（clustered index）和非聚集索引（secondary index）.这两种索引的共同点是内部都是B+树，高度都是平衡的，叶节点存放着所有数据。不同点是叶节点是否存放着一整行数据。</p>
+<p><span id="t6" style="font-weight: inherit; font-style: inherit;">(1) 聚集索引</span><br>Innodb存储引擎表是索引组织表，即表中数据按主键顺序存放。而聚集索引就是按每张表的主键构造一颗B+树。并且叶节点存放整张表的行记录数据。每张表只能有一个聚集索引（一个主键）。<br>聚集索引的另一个好处是它对于主键的排序查找和范围的速度非常快。叶节点的数据就是我们要找的数据。</p>
+<pre><code>主键排序查找：例如我们要找出最新的10条团购订单，由于B+树是双项链表，我们可以迅速找到最后一个页，并取出10条记录，我们用Explain进行分析：
+12:41:32 tuangou&amp;gt; explain select * from groupon_so order by id desc limit 10\G
+id: 1
+select_type: SIMPLE
+    table: groupon_so
+     type: index
+     possible_keys: NULL
+      key: PRIMARY
+  key_len: 8
+      ref: NULL
+     rows: 10
+    Extra: 
+
+1 row in set (0.00 sec)
+
+主键范围查找：如果要通过主键查找某一范围内的数据，通过叶节点的上层中间节点就能得到页的范围，之后直接读取数据页即可：
+12:50:19 tuangou&amp;gt; explain select * from groupon_so where id&amp;gt;10000000 and id&amp;lt;12000000\G
+       id: 1
+select_type: SIMPLE
+    table: groupon_so
+     type: range
+     possible_keys: PRIMARY
+      key: PRIMARY
+  key_len: 8
+      ref: NULL
+     rows: 4301486
+    Extra: Using where
+1 row in set (0.00 sec)
+`&lt;/pre&gt;
+
+&lt;span id=&quot;t7&quot; style=&quot;font-weight: inherit; font-style: inherit;&quot;&gt;(2) 辅助索引&lt;/span&gt;
+辅助索引（也称非聚集索引）。叶级别不包含行的全部数据，叶级别除了包含行的键值以外，每个索引行还包含了一个书签（bookmark），该书签告诉innodb存储引擎，哪里可以找到与索引对应的数据。
+辅助索引的存在并不影响数据再聚集索引中的组织，因此一个表可以有多个辅助索引。当通过辅助索引查找数据时，innodb会遍历辅助索引并通过叶级别的指针获得指向主键索引的主键。然后再通过主键索引找到一行完整的数据。
+
+&lt;span id=&quot;t8&quot; style=&quot;font-weight: inherit; font-style: inherit;&quot;&gt;(3) B+树索引的管理&lt;/span&gt;
+索引的创建和删除可以用两种方式。一种是alter table,另一种是create/drop index
+
+&lt;pre style=&quot;color: #93a1a1;&quot;&gt;`alter table 创建和删除索引的语法为：
+ALTER [ONLINE | OFFLINE] [IGNORE] TABLE tbl_name
+| ADD {INDEX|KEY} [index_name]
+    [index_type] (index_col_name,…) [index_option] …
+
+ALTER [ONLINE | OFFLINE] [IGNORE] TABLE tbl_name
+| DROP PRIMARY KEY
+| DROP {INDEX|KEY} index_name
+
+create/drop index的语法为：
+CREATE [ONLINE|OFFLINE] [UNIQUE|FULLTEXT|SPATIAL] INDEX index_name
+[index_type]
+ON tbl_name (index_col_name,…)
+
+DROP [ONLINE|OFFLINE] INDEX index_name ON tbl_name
+`&lt;/pre&gt;
+
+MySQL索引注意的问题：对于MySQL索引的添加和删除操作，MySQL先是创建一张加好索引的临时表，然后把数据导入临时表，再删除原表，把临时表重命名为原表。
+Innodb存储引擎从Innodb Plugin版本开始，支持一种快速创建索引的方法（只限于辅助索引，主键索引仍需要建临时表）。首先对表加S锁，在创建的过程中不需要重建表，但是由于上了S锁，在创建索引的过程中只能进行查询操作，不能更新数据。
+
+#### &lt;span id=&quot;t9&quot; style=&quot;font-weight: inherit; font-style: inherit;&quot;&gt;四、B+树索引的使用&lt;/span&gt;
+
+(1).什么时候使用B+索引
+
+当查询表中很少一部分数据时，B+索引才有意义。对于性别，地区类型字段，他们取值范围很小，即低选择性。这时加B+索引是没有必要的。相反，某个字段取值范围很广，如姓名，几乎没有重复，即高选择性，则使用B+索引是比较合适的。因此。当访问高选择性字段并取出很少一部分数据时，该字段加B+索引是非常有效的。但是当取出的数据行占表中大部分数据时，数据库就不会使用B+索引了。
+
+举例说明下，看下面这个团购订单表groupon_so的部分索引：
+
+&lt;pre style=&quot;color: #93a1a1;&quot;&gt;`    14:08:34 tuangou&amp;gt; show index from groupon_so\G
+*************************** 1\. row ***************************
+Table: groupon_so
+Non_unique: 0
+ Key_name: PRIMARY
+ Seq_in_index: 1
+ Column_name: id
+ Collation: A
+ Cardinality: 10088342
+ Sub_part: NULL
+   Packed: NULL
+     Null: 
+Index_type: BTREE
+  Comment: 
+Index_comment: 
+*************************** 2\. row ***************************
+Table: groupon_so
+Non_unique: 1
+Key_name: idx_groupon_so_order_id
+Seq_in_index: 1
+Column_name: order_id
+Collation: A
+Cardinality: 10088342
+Sub_part: NULL
+   Packed: NULL
+     Null: 
+Index_type: BTREE
+  Comment: 
+Index_comment: 
+*************************** 3\. row ***************************
+Table: groupon_so
+Non_unique: 1
+ Key_name: idx_groupon_so_order_code
+ Seq_in_index: 1
+ Column_name: order_code
+ Collation: A
+ Cardinality: 10088342
+ Sub_part: NULL
+   Packed: NULL
+   Null: 
+Index_type: BTREE
+   Comment: 
+Index_comment: 
+*************************** 4\. row ***************************
+    Table: groupon_so
+    Non_unique: 1
+ Key_name: idx_groupon_so_end_user_id
+ Seq_in_index: 1
+ Column_name: end_user_id
+ Collation: A
+ Cardinality: 10088342
+ Sub_part: NULL
+   Packed: NULL
+   Null: YES
+Index_type: BTREE
+   Comment: 
+Index_comment: 
+*************************** 5\. row ***************************
+Table: groupon_so
+Non_unique: 1
+Key_name: idx_groupon_so_groupon_id
+Seq_in_index: 1
+Column_name: groupon_id
+Collation: A
+Cardinality: 148357
+Sub_part: NULL
+Packed: NULL
+  Null: 
+Index_type: BTREE
+   Comment: 
+Index_comment:
+
+其中有一个索引 idx_groupon_so_order_id,这个索引里面字段订单号的值都是不重复的，是高选择性的字段。
+我们查找order_id为 99165590 的这条记录，执行计划如下：
+
+14:31:50 tuangou&amp;gt; explain select * from groupon_so where order_id=99165590\G
+*************************** 1\. row ***************************
+       id: 1
+    select_type: SIMPLE
+    table: groupon_so
+     type: ref
+possible_keys: idx_groupon_so_order_id
+      key: idx_groupon_so_order_id
+  key_len: 8
+      ref: const
+     rows: 1
+    Extra: 
+1 row in set (0.00 sec)
+可以看到使用了idx_groupon_so_order_id这个索引，符合高选择性，取少部分数据这个特性。
+
+但是如果执行下面这条语句：
+14:32:33 tuangou&amp;gt; explain select * from groupon_so where order_id&amp;gt;99165590\G
+*************************** 1\. row ***************************
+       id: 1
+    select_type: SIMPLE
+    table: groupon_so
+    type: ALL
+possible_keys: idx_groupon_so_order_id
+    key: NULL
+key_len: NULL
+    ref: NULL
+   rows: 10092839
+  Extra: Using where
+1 row in set (0.00 sec)
+
+可以看到possible_keys依然是idx_groupon_so_order_code，但是索引优化使用的索引keys显示的是NULL，因为虽然这个字段是高选择性的，但是我们取出了表中的大部分数据，索引没有用到索引。
+
+14:34:11 tuangou&amp;gt; select @a:=count(id) from groupon_so where order_id&amp;gt;99165590;
++—————+
+| @a:=count(id) |
++—————+
+|       8684424 |
++—————+
+1 row in set (2.48 sec)
+
+14:34:26 tuangou&amp;gt; select @a:=count(id) from groupon_so;
++—————+
+| @a:=count(id) |
++—————+
+|       9858135 |
++—————+
+1 row in set (1.86 sec)
+
+14:37:25 tuangou&amp;gt; select 8684424/9858135;
++—————–+
+| 8684424/9858135 |
++—————–+
+|          0.8809 |
++—————–+
+1 row in set (0.00 sec)
+可以看到我们取出了表中88%的数据，索引没有用到索引。
+`&lt;/pre&gt;
+
+&lt;span id=&quot;t11&quot; style=&quot;font-weight: inherit; font-style: inherit;&quot;&gt;(2)顺序读、随机读与预读取&lt;/span&gt;
+顺序读是指顺序的读取磁盘上的块，随机读是指访问的块是不连续的，需要磁盘的磁头不断移动。随机读的性能是远远低于顺序读的。
+在数据库中，顺序读根据索引的叶节点就能顺序的读取所需的行数据，这个顺序读只是逻辑的顺序读，在磁盘上可能还是随机读。随机读是指访问辅助索引叶节点不能完全得到结果，需要根据辅助索引页节点中的主键去寻找实际数据行。对于一些取表里很大部分数据的查询，正式因为读取是随机读，而随机读的性能会远低于顺序读。所以优化器才会选择全部扫描顺序读，而不使用索引。
+innodb存储引擎有两个预读取方法，随机预读取和线性预读取。随机预读取是指当一个区（共64个连续页）中有13个页在缓冲区中并被频繁访问时，innodb存储引擎会将这个区中剩余的页预读到缓冲区。线性预读取基于缓冲池中页的访问方式，而不是数量。如果一个区中有24个页被顺序访问了，则innodb会读取下一个区的所有页到缓冲区。但是innodb预读取经过测试后性能比较差，经过TPCC测试发现禁用预读取比启用预读取提高了10%的性能。在新版本innodb中，mysql禁用了随机预读取，仅保留了线性预读取，并且加入了innodb_read_ahead_threshold参数，当连续访问页超过该值时才启用预读取，默认值为56。
+
+&lt;pre style=&quot;color: #93a1a1;&quot;&gt;`15:02:16 tuangou&amp;gt; show variables like ‘innodb_read_ahead_threshold%’;
++—————————–+——-+
+| Variable_name               | Value |
++—————————–+——-+
+| innodb_read_ahead_threshold | 56    |
++—————————–+——-+
+1 row in set (0.00 sec)
+`&lt;/pre&gt;
+
+3)&lt;span id=&quot;t12&quot; style=&quot;font-weight: inherit; font-style: inherit;&quot;&gt;辅助索引的优化&lt;/span&gt;
+通过前面可知，辅助索引的页节点包含主键，但是辅助索引的叶节点并不包含完整的行数据信息，因此，innodb存储引擎总是会从辅助索引的叶节点判断是否能得到数据。让我们看一个例子：
+
+&lt;pre style=&quot;color: #93a1a1;&quot;&gt;`mysql&amp;gt; create table t ( a int not null, b varchar(20), primary key(a),key(b));
+Query OK, 0 rows affected (0.18 sec)
+
+mysql&amp;gt; insert into t select  1,’kangaroo’;
+Query OK, 1 row affected (0.00 sec)
+Records: 1  Duplicates: 0  Warnings: 0
+
+mysql&amp;gt; insert into t select  2,’dolphin’;
+Query OK, 1 row affected (0.01 sec)
+Records: 1  Duplicates: 0  Warnings: 0
+
+mysql&amp;gt; insert into t select  3,’dragon’;
+Query OK, 1 row affected (0.01 sec)
+Records: 1  Duplicates: 0  Warnings: 0
+
+mysql&amp;gt; insert into t select  4,’anteloge’;
+Query OK, 1 row affected (0.01 sec)
+Records: 1  Duplicates: 0  Warnings: 0
+
+如果执行select * from t很多人认为应该是如下结果：
+mysql&amp;gt; select * from t order by a\G;
+*************************** 1\. row ***************************
+a: 1
+b: kangaroo
+*************************** 2\. row ***************************
+a: 2
+b: dolphin
+*************************** 3\. row ***************************
+a: 3
+b: dragon
+*************************** 4\. row ***************************
+a: 4
+b: anteloge
+
+4 rows in set (0.00 sec)
+
+但是实际执行结果确是：
+mysql&amp;gt; select * from t\G;
+*************************** 1\. row ***************************
+a: 4
+b: anteloge
+*************************** 2\. row **************************
+a: 2
+b: dolphin
+*************************** 3\. row ***************************
+a: 3
+b: dragon
+*************************** 4\. row ***************************
+a: 1
+b: kangaroo
+4 rows in set (0.00 sec)
+
+因为辅助索引包含了主键a的值，因此访问b列上的辅助索引就可以得到a的值，这样就可以得到表中所有的数据。我们看这条语句的执行计划：
+mysql&amp;gt; explain select * from t\G;
+*************************** 1\. row ***************************
+id: 1
+select_type: SIMPLE
+table: t
+type: index
+possible_keys: NULL         
+      key: b
+  key_len: 23
+      ref: NULL
+     rows: 4
+    Extra: Using index
+1 row in set (0.00 sec)
+
+可以看到优化器最终走的索引b,如果想对a列进行排序，则需要进行order by操作：
+mysql&amp;gt; explain select * from t order by a\G;
+*************************** 1\. row ***************************
+id: 1
+select_type: SIMPLE
+    table: t
+     type: index
+possible_keys: NULL
+      key: PRIMARY
+  key_len: 4
+      ref: NULL
+     rows: 4
+    Extra: NULL
+1 row in set (0.00 sec)
+
+mysql&amp;gt; select * from t order by a\G;
+*************************** 1\. row ***************************
+a: 1
+b: kangaroo
+*************************** 2\. row ***************************
+a: 2
+b: dolphin
+*************************** 3\. row ***************************
+a: 3
+b: dragon
+*************************** 4\. row ***************************
+a: 4
+b: anteloge
+
+或者使用主键强制得到结果：
+mysql&amp;gt; select * from t force index(PRIMARY)\G;
+*************************** 1\. row ***************************
+a: 1
+b: kangaroo
+*************************** 2\. row ***************************
+a: 2
+b: dolphin
+*************************** 3\. row ***************************
+a: 3
+b: dragon
+*************************** 4\. row ***************************
+a: 4
+b: anteloge
+
+4 rows in set (0.00 sec)
+`&lt;/pre&gt;
+
+&lt;span id=&quot;t13&quot; style=&quot;font-weight: inherit; font-style: inherit;&quot;&gt;(4)联合索引&lt;/span&gt;
+联合索引是指对表上的多个列做索引，联合索引的创建方法和之前的一样，如下：
+
+&lt;pre style=&quot;color: #93a1a1;&quot;&gt;`mysql&amp;gt; alter table t add key idx_a_b(a,b);
+Query OK, 0 rows affected (0.17 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+`&lt;/pre&gt;
+
+联合索引还是一个B+树，不同的是联合索引键值的数量不是1，而是大于等于2.
+下面我们讨论一个两个整形列组成的联合索引，假定两个键值的名称分别为a和b，如下图8所示，每个节点上有两个键值，(1,1),(1,2),(2,1),(2,4),(3,1),(3,2), 数据按(a,b)顺序进行排列
+
+![](http://www.ruzuojun.com/wp-content/uploads/2013/09/8.png)
+
+              图8 多个键值的B+树
+
+因此，对于查询select * from t where a=xxx and b=xxx,显然可以使用(a,b)这个联合索引。对于单个a列查询 select * from t where a=xxx也是可以使用(a,b)这个索引。但是对于b列的查询select * from t where b=xxx是用不到这颗B+树索引。可以看到叶节点上b的值为1、2、1、4、1、2.显然不是排序的，因此b列的查询使用不到(a,b)索引。
+
+联合索引的第二个好处，可以对第二键值进行排序。例如很多情况下我们需要查询某个用户的购物情况，并按照时间排序，取出最近3次的购买记录，这时使用联合索引可以避免多一次的排序操作。因为索引本身在叶节点中已经排序了。看下面示例:
+
+&lt;pre style=&quot;color: #93a1a1;&quot;&gt;`mysql&amp;gt; create table buy_log(userid int unsigned not null, buy_date date);
+Query OK, 0 rows affected (0.09 sec)
+
+mysql&amp;gt; insert into buy_log values(1,’2013-01-01′);
+Query OK, 1 row affected (0.01 sec)
+
+mysql&amp;gt; insert into buy_log values(2,’2013-01-01′);
+Query OK, 1 row affected (0.01 sec)
+
+mysql&amp;gt; insert into buy_log values(3,’2013-01-01′);
+Query OK, 1 row affected (0.01 sec)
+
+mysql&amp;gt; insert into buy_log values(1,’2013-02-01′);
+Query OK, 1 row affected (0.01 sec)
+
+mysql&amp;gt; insert into buy_log values(3,’2013-02-01′);
+Query OK, 1 row affected (0.00 sec)
+
+mysql&amp;gt; insert into buy_log values(1,’2013-03-01′);
+Query OK, 1 row affected (0.01 sec)
+
+mysql&amp;gt; insert into buy_log values(1,’2013-04-01′);
+Query OK, 1 row affected (0.01 sec)
+
+mysql&amp;gt; alter table buy_log add key(userid);
+Query OK, 0 rows affected (0.07 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql&amp;gt; alter table buy_log add key(userid,buy_date);
+Query OK, 0 rows affected (0.11 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+上面我们建立了测试表和数据，建立了2个索引来比较。两个索引都包含了userid字段。如果只对于userid查询，优化器的选择是：
+
+mysql&amp;gt; explain select * from buy_log where userid=2\G;
+*************************** 1\. row ***************************
+id: 1
+select_type: SIMPLE
+table: buy_log
+     type: ref
+possible_keys: userid,userid_2
+      key: userid
+  key_len: 4
+      ref: const
+     rows: 1
+    Extra: NULL
+1 row in set (0.00 sec)
+可以看到possible_keys里面两个索引都可以使用，分别是单个的userid索引和userid,buy_date的联合索引。但是优化器最终选择的是userid，因为该叶节点包含单个键值，因此一个页存放的记录应该更多。
+
+接下来看以下的查询，假定要取出userid=1最近的3次购买记录，分别使用单个索引和联合索引的区别：
+mysql&amp;gt; explain select * from buy_log where userid=1 order by buy_date desc limit 3\G;
+*************************** 1\. row ***************************
+id: 1
+select_type: SIMPLE
+    table: buy_log
+     type: ref
+possible_keys: userid,userid_2
+      key: userid_2
+  key_len: 4
+      ref: const
+     rows: 4
+    Extra: Using where; Using index
+1 row in set (0.00 sec)
+
+同样对于上述SQL，两个索引都可使用，但是查询优化器使用了userid和buy_date组成的联合索引userid_2.因为这个联合索引中buy_date已经排序好了，可以减少一次排序操作。
+
+如果我们强制使用user_id单个索引，可以看到如下情况：
+mysql&amp;gt; explain select * from buy_log force index(userid) where userid=1 order by buy_date desc limit 3\G;
+*************************** 1\. row ***************************
+id: 1
+select_type: SIMPLE
+table: buy_log
+     type: ref
+possible_keys: userid
+      key: userid
+  key_len: 4
+      ref: const
+     rows: 4
+    Extra: Using where; Using filesort
+1 row in set (0.00 sec)
+在Extra这里可以看到Using filesort，Using filesort指排序，但不一定是在文件中完成。
+</code></pre><blockquote>
+<p>本文出自<a href="http://www.ruzuojun.com/" target="_blank" rel="external">http://www.ruzuojun.com</a></p>
+<p>参考资料《MySQL技术内幕Innodb存储引擎》<br>&nbsp;</p>
+</blockquote>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2014/08/19/mysql-e5-88-86-e5-8c-ba-e7-ae-a1-e7-90-86-2.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Geekwolf">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/wolf.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Geekwolf's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2014/08/19/mysql-e5-88-86-e5-8c-ba-e7-ae-a1-e7-90-86-2.html" itemprop="url">Mysql分区管理</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-08-19T20:23:43+08:00">
+                2014-08-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/MySQL数据库/" itemprop="url" rel="index">
+                    <span itemprop="name">MySQL数据库</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2014/08/19/mysql-e5-88-86-e5-8c-ba-e7-ae-a1-e7-90-86-2.html" class="leancloud_visitors" data-flag-title="Mysql分区管理">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  15
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="初探"><a href="#初探" class="headerlink" title="初探"></a>初探</h4><p>很长时间没写博客了，这两天一直在学习Mysql分区，总结下:<br>Mysql支持水平分区，并不支持垂直分区;<br><strong>水平分区</strong>：指将同一表中不同行的记录分配到不同的物理文件中；<br><strong>垂直分区</strong>：指将同一表中不同列的记录分配到不同的物理文件中；<br>其中CSV、FEDORATED、MERGE等引擎不支持分区，MYISAM、InnoDB、NDB等引擎支持分区</p>
+<h4 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h4><p>将一个表或索引分解为多个更小、更可管理的部分，从逻辑上讲，只有一个表或者索引，但是物理上这个表或者索引可能由数十个物理分区组成；没个分区都是独立的对象，可以独自处理，也可以作为一个更大对象的一部分进行处理（如果分区表很大，亦可以将分区分配到不同的磁盘上去）；在执行查询的时候，优化器会根据分区定义过滤哪些没有我们需要数据的分区，这样查询就无须全表扫描所有分区，只查找包含需要数据的分区即可</p>
+<h4 id="适用场景"><a href="#适用场景" class="headerlink" title="适用场景"></a>适用场景</h4><p>1、表非常大以至于无法全部都放到内存，或者只在表的最后部分有热点数据，其他均为历史数据 2、分区表数据更容易维护（可独立对分区进行优化、检查、修复及批量删除大数据可以采用drop分区的形式等） 3、分区表的数据可以分布在不同的物理设备上，从而高效地利用多个硬件设备 4、分区表可以避免某些特殊的瓶颈（ps: InnoDB的单个索引的互斥访问、ext3文件系统的inode锁竞争等） 5、可以备份和恢复独立的分区，非常适用于大数据集的场景</p>
+<h4 id="分区表限制"><a href="#分区表限制" class="headerlink" title="分区表限制"></a>分区表限制</h4><ol>
+<li>单表最多支持1024个分区</li>
+<li>MySQL5.1只能对数据表的整型列进行分区，或者数据列可以通过分区函数转化成整型列;MySQL5.5的RANGE LIST类型可以直接使用列进行分区</li>
+<li>如果分区字段中有主键或唯一索引的列，那么所有的主键列和唯一索引列都必须包含进来</li>
+<li>分区表无法使用外键约束</li>
+<li>分区必须使用相同的Engine</li>
+<li>对于MyISAM分区表，不能在使用LOAD INDEX INTO CACHE操作</li>
+<li>对于MyISAM分区表，使用时会打开更多的文件描述符（单个分区是一个独立的文件）</li>
+</ol>
+<h4 id="分区策略"><a href="#分区策略" class="headerlink" title="分区策略"></a>分区策略</h4><ol>
+<li>全量扫描数据，不需要任何索引：通过where条件大概定位哪个分区，必须将查询所需要扫描的分区个数限制在很小的数量</li>
+<li>建立分区索引，分离热点：如将明显的热点数据分离到一个分区，使其尽量缓存到内存中，这样就能充分使用索引和缓存<br><strong>注意</strong>：以上策略均以查询得到过滤，丢掉额外的分区，分区本身不产生额外的代价为准则】</li>
+</ol>
+<h5 id="分区表使用过程的坑坑"><a href="#分区表使用过程的坑坑" class="headerlink" title="分区表使用过程的坑坑"></a>分区表使用过程的坑坑</h5><p>1.NULL值会使分区过滤无效:<br>分表的表达式的值可以是NULL，第一个分区为特殊分区存放NULL或者非法值<br>如： PARTITION BY RANGE YEAR(order_date)进行分区，那么order_date为NULL或者非法值，记录存放在第一个分区:<br>WHERE order_date BETWEEN ‘2014-01-01’ AND ‘2014-01-31’查询时会检查两个分区：<br>第一个分区及1月份分区，避免第一分区数据过大时造成查询代价过高，可以使用：建立第一分区专门存放order_date为NULL和非法值记录 PARTITION p_nulls VALUES LESS THAN(0)<br>MySQL5.5以后可以才用一下语法解决问题： PARTITION BY RANGE COLUMNS(order_date)</p>
+<p>2.分区列和索引列不匹配<br>此种情况下查询无法进行分区过滤，分区失效除非查询中包含了可以过滤分区的条件</p>
+<p>3.RANGE类型分区随着分区数量增加会对MYSQL额外增加查询分区定义列表（符合条件行在哪个分区）的压力，尽量限制适当的分区数量;key和hash类型分区不存在此问题</p>
+<p>4.重组分区或者类似alter语句可能会造成很大的开销<br>新建或者删除分区操作很快，重组分区或者类似ALTER语句操作会先创建一个临时的分区，将数据复制其中，然后在删除原分区</p>
+<h4 id="分区表类型"><a href="#分区表类型" class="headerlink" title="分区表类型"></a>分区表类型</h4><p>1.RANGE分区：行数据基于属于一个给定连续区间的列值被放入分区<br>MySQL5.5开始支持RANGE COLUMNS的分区（引入Columns分区解决了MySQL 5.5版本之前RANGE分区和LIST分区只支持整数分区，从而导致需要额外的函数计算得到整数或者通过额外的转换表来转换为整数再分区的问题。Columns分区可以细分为RANGE Columns分区和LIST Columns分区，RANGE Columns分区和LIST Columns分区都支持整数、日期时间、字符串三大数据类型）</p>
+<p>2.LIST分区：类似于按RANGE分区，区别在于LIST分区是基于列值匹配一个离散值集合中的某个值来进行选择。<br>MySQL5.5开始支持RANGE COLUMNS的分区</p>
+<p>3.HASH分区：根据用户自定义的表达式的返回值来进行分区，返回值不能为负数 4.KEY分区：根据MySQLS数据库提供的哈希函数来进行分区 【注：无论创建何种类型的分区，如果表中存在主键或唯一索引时，分区列必须是唯一索引的一个组成部分】</p>
+<h4 id="分区表相关操作"><a href="#分区表相关操作" class="headerlink" title="分区表相关操作"></a>分区表相关操作</h4><h4 id="分区相关查询"><a href="#分区相关查询" class="headerlink" title="分区相关查询"></a>分区相关查询</h4><pre class="lang:pgsql decode:true">查看当前数据库是否支持分区
+mysql&gt; show variables like '%partition%';
++---------------------------------------+-------+
+| Variable_name | Value |
++---------------------------------------+-------+
+| have_partitioning | YES |
+| innodb_adaptive_hash_index_partitions | 1 |
++---------------------------------------+-------+
+2 rows in set
+
+查看创建分区表的CREATE语句
+
+mysql&gt;show create table operation_log;
+
+查看表是否为分区表(Create_options)
+mysql&gt;show table status(当前库所有表状态)
+mysql&gt;show table status from lockrank like '%operation_log%';(lockrank库operation_log表状态)
+*************************** 1\. row ***************************
+Table: operation_log
+Create Table: CREATE TABLE `operation_log` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `cid` mediumint(7) unsigned NOT NULL,
+  `accountid` mediumint(8) NOT NULL DEFAULT '0' ,
+  `flag` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `addtime` int(11) unsigned NOT NULL,
+  `device` tinyint(1) unsigned NOT NULL DEFAULT '1' ,
+  PRIMARY KEY (`id`,`addtime`),
+  KEY `idx_accountid_addtime` (`accountid`,`addtime`),
+  KEY `idx_accountid_flag` (`accountid`,`flag`),
+) ENGINE=InnoDB AUTO_INCREMENT=50951039 DEFAULT CHARSET=utf8 COMMENT='操作记录'
+/*!50100 PARTITION BY RANGE (addtime)
+(PARTITION `2013-05` VALUES LESS THAN (1370016000) ENGINE = InnoDB,
+ PARTITION `2013-06` VALUES LESS THAN (1372608000) ENGINE = InnoDB,
+ PARTITION `2013-07` VALUES LESS THAN (1375286400) ENGINE = InnoDB,
+ PARTITION `2013-08` VALUES LESS THAN (1377964800) ENGINE = InnoDB,
+ PARTITION `2013-09` VALUES LESS THAN (1380556800) ENGINE = InnoDB,
+ PARTITION `2013-10` VALUES LESS THAN (1383235200) ENGINE = InnoDB,
+ PARTITION `2013-11` VALUES LESS THAN (1385827200) ENGINE = InnoDB,
+ PARTITION `2013-12` VALUES LESS THAN (1388505600) ENGINE = InnoDB,
+ PARTITION `2014-01` VALUES LESS THAN (1391184000) ENGINE = InnoDB,
+ PARTITION `2014-02` VALUES LESS THAN (1393603200) ENGINE = InnoDB,
+ PARTITION `2014-03` VALUES LESS THAN (1396281600) ENGINE = InnoDB,
+ PARTITION `2014-04` VALUES LESS THAN (1398873600) ENGINE = InnoDB,
+ PARTITION `2014-05` VALUES LESS THAN (1401552000) ENGINE = InnoDB,
+ PARTITION `2014-06` VALUES LESS THAN (1404144000) ENGINE = InnoDB,
+ PARTITION `2014-07` VALUES LESS THAN (1406822400) ENGINE = InnoDB,
+ PARTITION `2014-08` VALUES LESS THAN (1409500800) ENGINE = InnoDB,
+ PARTITION `2014-09` VALUES LESS THAN MAXVALUE ENGINE = InnoDB) */
+1 row in set (0.00 sec)
+
+查看select如何使用分区
+mysql&gt; explain partitions select id,accountid,cid,flag from operation_log where addtime="1369362524" \G ;
+ *************************** 1\. row ***************************
+   id: 1
+  select_type: SIMPLE
+table: operation_log
+   partitions: 2013-05
+ type: ALL
+possible_keys: NULL
+  key: NULL
+  key_len: NULL
+  ref: NULL
+ rows: 4384356
+Extra: Using where
+1 row in set (0.00 sec)
+``
+分区表元数据统计表：INFORMATION_SCHEMA.PARTITIONS
+查看分区表operation_log的分区信息
+mysql&gt; SELECT partition_name part, partition_expression expr, partition_description descr, table_rows FROM INFORMATION_SCHEMA.partitions WHERE TABLE_SCHEMA = schema() AND TABLE_NAME='operation_log';
++---------+---------+------------+------------+
+| part| expr| descr | table_rows |
++---------+---------+------------+------------+
+| 2013-05 | addtime | 1370016000 | 5999642 |
+| 2013-06 | addtime | 1372608000 | 4579263 |
+| 2013-07 | addtime | 1375286400 | 3223772 |
+| 2013-08 | addtime | 1377964800 | 1995058 |
+| 2013-09 | addtime | 1380556800 | 2497406 |
+| 2013-10 | addtime | 1383235200 | 4106974 |
+| 2013-11 | addtime | 1385827200 | 6209559 |
+| 2013-12 | addtime | 1388505600 | 6415349 |
+| 2014-01 | addtime | 1391184000 | 3953594 |
+| 2014-02 | addtime | 1393603200 | 0 |
+| 2014-03 | addtime | 1396281600 | 0 |
+| 2014-04 | addtime | 1398873600 | 0 |
+| 2014-05 | addtime | 1401552000 | 0 |
+| 2014-06 | addtime | 1404144000 | 0 |
+| 2014-07 | addtime | 1406822400 | 0 |
+| 2014-08 | addtime | 1409500800 | 0 |
+| 2014-09 | addtime | MAXVALUE | 0 |
++---------+---------+------------+------------+
+17 rows in set (1.48 sec)</pre>
+
+<h5 id="创建分区操作"><a href="#创建分区操作" class="headerlink" title="创建分区操作"></a>创建分区操作</h5><pre class="lang:mysql decode:true">RANGE分区：
+mysql&gt; CREATE TABLE `operation_log` (
+ -&gt;  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+ -&gt; `cid` mediumint(7) unsigned NOT NULL,
+ -&gt; `accountid` mediumint(8) NOT NULL DEFAULT '0' ,
+ -&gt;  `flag` tinyint(1) unsigned NOT NULL DEFAULT '0',
+ -&gt;  `addtime` int(11) unsigned NOT NULL,
+ -&gt; `device` tinyint(1) unsigned NOT NULL DEFAULT '1' ,
+ -&gt;  PRIMARY KEY (`id`,`addtime`),
+ -&gt; KEY `idx_accountid_addtime` (`accountid`,`addtime`),
+ -&gt;  KEY `idx_accountid_flag` (`accountid`,`flag`),
+ -&gt;) ENGINE=InnoDB AUTO_INCREMENT=50951039 DEFAULT CHARSET=utf8 COMMENT='操作记录'
+ -&gt;/*!50100 PARTITION BY RANGE (addtime)
+ -&gt;(PARTITION `2013-05` VALUES LESS THAN (1370016000) ENGINE = InnoDB,
+ -&gt; PARTITION `2013-06` VALUES LESS THAN (1372608000) ENGINE = InnoDB,
+ -&gt; PARTITION `2013-07` VALUES LESS THAN (1375286400) ENGINE = InnoDB,
+ -&gt; PARTITION `2013-08` VALUES LESS THAN (1377964800) ENGINE = InnoDB,
+ -&gt; PARTITION `2013-09` VALUES LESS THAN MAXVALUE ENGINE = InnoDB) */；
+1 row in set (0.00 sec)
+（ LESS THAN MAXVALUE考虑到可能的最大值）
+
+list分区
+//这种方式失败
+mysql&gt; CREATE TABLE IF NOT EXISTS `list_part` (
+ -&gt;   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '用户ID',
+ -&gt;   `province_id` int(2) NOT NULL DEFAULT 0 COMMENT '省',
+ -&gt;   `name` varchar(50) NOT NULL DEFAULT '' COMMENT '名称',
+ -&gt;   `sex` int(1) NOT NULL DEFAULT '0' COMMENT '0为男，1为女',
+ -&gt;   PRIMARY KEY (`id`)
+ -&gt; ) ENGINE=INNODB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1
+ -&gt; PARTITION BY LIST (province_id) (
+ -&gt; PARTITION p0 VALUES IN (1,2,3,4,5,6,7,8),
+ -&gt; PARTITION p1 VALUES IN (9,10,11,12,16,21),
+ -&gt; PARTITION p2 VALUES IN (13,14,15,19),
+ -&gt; PARTITION p3 VALUES IN (17,18,20,22,23,24)
+ -&gt; );
+ERROR 1503 (HY000): A PRIMARY KEY must include all columns in the table's partitioning function
+
+//这种方式成功
+mysql&gt; CREATE TABLE IF NOT EXISTS `list_part` (
+ -&gt;   `id` int(11) NOT NULL  COMMENT '用户ID',
+ -&gt;   `province_id` int(2) NOT NULL DEFAULT 0 COMMENT '省',
+ -&gt;   `name` varchar(50) NOT NULL DEFAULT '' COMMENT '名称',
+ -&gt;   `sex` int(1) NOT NULL DEFAULT '0' COMMENT '0为男，1为女'
+ -&gt; ) ENGINE=INNODB  DEFAULT CHARSET=utf8
+ -&gt; PARTITION BY LIST (province_id) (
+ -&gt; PARTITION p0 VALUES IN (1,2,3,4,5,6,7,8),
+ -&gt; PARTITION p1 VALUES IN (9,10,11,12,16,21),
+ -&gt; PARTITION p2 VALUES IN (13,14,15,19),
+ -&gt; PARTITION p3 VALUES IN (17,18,20,22,23,24)
+ -&gt; );
+Query OK, 0 rows affected (0.33 sec)
+上面的这个创建list分区时，如果有主銉的话，分区时主键必须在其中，不然就会报错。如果我不用主键，分区就创建成功了，一般情况下，一个张表肯定会有一个主键，这算是一个分区的局限性
+
+hash分区
+mysql&gt; CREATE TABLE IF NOT EXISTS `hash_part` (
+ -&gt;   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '评论ID',
+ -&gt;   `comment` varchar(1000) NOT NULL DEFAULT '' COMMENT '评论',
+ -&gt;   `ip` varchar(25) NOT NULL DEFAULT '' COMMENT '来源IP',
+ -&gt;   PRIMARY KEY (`id`)
+ -&gt; ) ENGINE=INNODB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1
+ -&gt; PARTITION BY HASH(id)
+ -&gt; PARTITIONS 3;
+Query OK, 0 rows affected (0.06 sec)
+
+key分区 
+mysql&gt; CREATE TABLE IF NOT EXISTS `key_part` (
+ -&gt;   `news_id` int(11) NOT NULL  COMMENT '新闻ID',
+ -&gt;   `content` varchar(1000) NOT NULL DEFAULT '' COMMENT '新闻内容',
+ -&gt;   `u_id` varchar(25) NOT NULL DEFAULT '' COMMENT '来源IP',
+ -&gt;   `create_time` DATE NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '时间'
+ -&gt; ) ENGINE=INNODB  DEFAULT CHARSET=utf8
+ -&gt; PARTITION BY LINEAR HASH(YEAR(create_time))
+ -&gt; PARTITIONS 3;
+Query OK, 0 rows affected (0.07 sec)</pre>
+
+<h5 id="增加子分区操作"><a href="#增加子分区操作" class="headerlink" title="增加子分区操作"></a><strong>增加子分区操作</strong></h5><pre><code>子分区是分区表中每个分区的再次分割，子分区既可以使用HASH希分区，也可以使用KEY分区。这 也被称为复合分区（composite partitioning）
+</code></pre><pre class="lang:mysql decode:true ">1\. 如果一个分区中创建了子分区，其他分区也要有子分区
+2\. 如果创建了了分区，每个分区中的子分区数必有相同
+3\. 同一分区内的子分区，名字不相同，不同分区内的子分区名子可以相同（5.1.50不适用）
+
+ mysql&gt; CREATE TABLE IF NOT EXISTS `sub_part` (
+ -&gt;   `news_id` int(11) NOT NULL  COMMENT '新闻ID',
+ -&gt;   `content` varchar(1000) NOT NULL DEFAULT '' COMMENT '新闻内容',
+ -&gt;   `u_id` int(11) NOT NULL DEFAULT 0s COMMENT '来源IP',
+ -&gt;   `create_time` DATE NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '时间'
+ -&gt; ) ENGINE=INNODB  DEFAULT CHARSET=utf8
+ -&gt; PARTITION BY RANGE(YEAR(create_time))
+ -&gt; SUBPARTITION BY HASH(TO_DAYS(create_time))(
+ -&gt; PARTITION p0 VALUES LESS THAN (1990)(SUBPARTITION s0,SUBPARTITION s1,SUBPARTITION s2),
+ -&gt; PARTITION p1 VALUES LESS THAN (2000)(SUBPARTITION s3,SUBPARTITION s4,SUBPARTITION good),
+ -&gt; PARTITION p2 VALUES LESS THAN MAXVALUE(SUBPARTITION tank0,SUBPARTITION tank1,SUBPARTITION tank3)
+ -&gt; );
+Query OK, 0 rows affected (0.07 sec)</pre>
+
+<h5 id="分区管理"><a href="#分区管理" class="headerlink" title="分区管理"></a><strong>分区管理</strong></h5><pre class="lang:mysql decode:true ">增加分区操作（针对设置MAXVALUE）
+ range添加分区
+mysql&gt;alter table operation_log add  partition(partition `2013-10` values less than (1383235200));  ---&gt;适用于没有设置MAXVALUE的分区添加
+   ERROR 1481 (HY000):MAXVALUE can only be used in last partition definition
+mysql&gt;alter table operation_log REORGANIZE partition `2013-09` into (partition `2013-09` values less than (1380556800),partition `2013-10` values less than (1383235200),partition `2013-11` values less than maxvalue);
+
+ list添加分区
+mysql&gt; alter table list_part add partition(partition p4 values in (25,26,28));
+Query OK, 0 rows affected (0.01 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+ hash重新分区
+mysql&gt; alter table list_part add partition(partition p4 values in (25,26,28));
+Query OK, 0 rows affected (0.01 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+ key重新分区
+mysql&gt; alter table key_part add partition partitions 4;
+Query OK, 1 row affected (0.06 sec)//有数据也会被重新分配
+Records: 1  Duplicates: 0  Warnings: 0
+
+子分区添加新分区，虽然我没有指定子分区，但是系统会给子分区命名的
+mysql&gt; alter table sub1_part add partition(partition p3 values less than MAXVALUE);
+Query OK, 0 rows affected (0.02 sec)
+Records: 0  Duplicates: 0  Warnings: 0</pre>
+
+<h5 id="删除分区操作"><a href="#删除分区操作" class="headerlink" title="删除分区操作"></a><strong>删除分区操作</strong></h5><pre class="lang:php decode:true ">alter table user drop partition `2013-05`;</pre>
+
+<h4 id="分区表其他操作"><a href="#分区表其他操作" class="headerlink" title="分区表其他操作"></a>分区表其他操作</h4><p><pre class="lang:mysql decode:true ">重建分区(官方：与先drop所有记录然后reinsert是一样的效果；用于整理表碎片)<br>alter table operation_log rebuild partition <code>2014-01</code>;<br>重建多个分区<br>alter table operation_log rebuild partition <code>2014-01</code>,<code>2014-02</code>;<br>过程如下：</pre></p>
+<p>pro<br>优化分区（如果删除了一个分区的大量记录或者对一个分区的varchar blob text数据类型的字段做了许多更新，此时可以对分区进行优化以回收未使用的空间和整理分区数据文件）<br>alter table operation_log  optimize  partition <code>2014-01</code>;</p>
+<p>优化的操作相当于check partition,analyze partition 和repair patition</p>
+<p>分析分区<br>alter table operation_log  analyze partition  <code>2014-01</code>;</p>
+<p>修复分区<br>alter table operation_log repair partition   <code>2014-01</code>;</p>
+<p>检查分区<br>alter table operation_log check  partition   <code>2014-01</code>;<br><strong>注释：</strong></p>
+<ol>
+<li>mysqlcheck、myisamchk并不支持分区表，analyze,check,optimize,rebuild,repair,truncate不支持子分区操作</li>
+<li>在MySQL5.6中，可以使用清空一个分区数据：alter table operation_log truncate partition <code>2014-01</code>;</li>
+<li>清空该分区表所有分区数据：alter table operation_log truncate partition all;</li>
+</ol>
+<p><strong>参考文档：</strong></p>
+<p><a href="http://blog.51yip.com/mysql/1013.html" target="_blank" rel="external">http://blog.51yip.com/mysql/1013.html</a><br><a href="https://dev.mysql.com/doc/refman/5.6/en/partitioning-maintenance.html" target="_blank" rel="external">https://dev.mysql.com/doc/refman/5.6/en/partitioning-maintenance.html</a><br><a href="http://dev.mysql.com/doc/refman/5.6/en/index.html" target="_blank" rel="external">http://dev.mysql.com/doc/refman/5.6/en/index.html</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2014/08/19/infobright-e6-95-b0-e6-8d-ae-e4-bb-93-e5-ba-93-e5-ae-89-e8-a3-85-e5-8f-8a-e5-8f-82-e6-95-b0-e4-bc-98-e5-8c-96.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Geekwolf">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/wolf.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Geekwolf's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2014/08/19/infobright-e6-95-b0-e6-8d-ae-e4-bb-93-e5-ba-93-e5-ae-89-e8-a3-85-e5-8f-8a-e5-8f-82-e6-95-b0-e4-bc-98-e5-8c-96.html" itemprop="url">Infobright数据仓库安装及参数优化</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-08-19T19:43:30+08:00">
+                2014-08-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/MySQL数据库/" itemprop="url" rel="index">
+                    <span itemprop="name">MySQL数据库</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2014/08/19/infobright-e6-95-b0-e6-8d-ae-e4-bb-93-e5-ba-93-e5-ae-89-e8-a3-85-e5-8f-8a-e5-8f-82-e6-95-b0-e4-bc-98-e5-8c-96.html" class="leancloud_visitors" data-flag-title="Infobright数据仓库安装及参数优化">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  2
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><strong>一、认知Infobright数据仓库</strong></p>
+<ol>
+<li>Infobright是开源的DATA Warehouse，可以作为Mysql的存储引擎（BRIGHTHOUSE）使用，select查询与Mysql无区别</li>
+<li>适用于基于Mysql架构下的OLAP，区分为ICE（社区版免费）和IEE（企业版商业授权）</li>
+<li>千万级的查询性能比MyISAM、InnoDB等快5-60倍，且数据量很大时，查询性能基本在同一个数量级，适合聚合查询（SUM,COUNT，AVG，GROUP BY）</li>
+<li>列式存储，无需建索引和分区，高压缩比40:1（官方数字）</li>
+<li>ICE和IEE版本的区别和限制<br><a href="https://www.infobright.org/index.php/Learn-More/ICE_IEE_Comparison/" target="_blank" rel="external">https://www.infobright.org/index.php/Learn-More/ICE_IEE_Comparison/</a></li>
+</ol>
+<p><strong>二、Infobright基本安装初始化</strong></p>
+<p><pre class="lang:php decode:true"> wget <a href="http://www.infobright.org/downloads/ice/infobright-4.0.7-0-x86_64-ice.rpm" target="_blank" rel="external">http://www.infobright.org/downloads/ice/infobright-4.0.7-0-x86_64-ice.rpm</a><br> rpm -ivh infobright-4.0.7-0-x86_64-ice.rpm –prefix=/usr/local/</pre></p>
+<p> A.初始化数据库：<br> /usr/local/infobright/scripts/mysql_install_db –datadir=/data/data/ –basedir=/usr/local/infobright-4.0.7-x86_64/ –force<br>   安装之后会生成<br>  /etc/my-ib.cnf.inactive （主配置文件，下面两个暂不讨论）</p>
+<p><pre class="lang:php decode:true">/etc/my-ib-master.cnf<br>  /etc/my-ib-slave.cnf<br>  /etc/rc.d/init.d/mysqld-ib（启动脚本）<br>  mv  /etc/my-ib.cnf.inactive /etc/my-ib.cnf<br>  修改/etc/rc.d/init.d/mysqld-ib /etc/my-ib.cnf  的datadir basedir参数到指定位置<br>  修改权限chown mysql.mysql /etc/my-ib*  /data/data /ibcache/cachedata</pre></p>
+<p> B.修改warehouse引擎配置文件<br>  /data/data/brighthouse.ini<br> C.参数优化<br>   CacheFolder = /ibcache/cachedata/<br>   ServerMainHeapSize = 28000<br>   ServerCompressedHeapSize = 4000<br>   LoaderMainHeapSize = 800<br>   ControlMessages = 3<br>   KNFolder = BH_RSI_Repository<br>   AllowMySQLQueryPath = 0<br><strong>注释：</strong></p>
+<p>CacheFolder 临时数据目录，用于缓存处理查询的中间结果集，与Datadir相异为宜，可用空间大于20G<br>ServerMainHeapSize IB主线程内存，一般设置为物理内存一半；若可能尽量增加<br>ServerCompressedHeapSize 服务进程的压缩堆栈空间，存放压缩数据<br>LoaderMainHeapSize Bhloader数据导入缓冲区，随目标表的列数增加而调整，loader进程的堆栈空间，一般最大不超过800M<br>ControlMessages 控制盒查询日志的信息量级别（1-3之间）<br>KNFolder 知识网络目录，默认在datadir目录下<br>AllowMySQLQueryPath 是否支持Mysql原生的SQL查询，支持修改为1，否则0<br>启动infobright：service mysqld-ib start</p>
+<p><strong>ICE版本导入数据方式：
+</strong>BRIGHTHOUSE<br>load data infile ‘/data/data.txt’ into table t fields terminated by ‘ ’;</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2014/03/12/linux-e7-b3-bb-e7-bb-9f-e7-9b-91-e6-8e-a7-e5-ae-9e-e7-94-a8-e5-b7-a5-e5-85-b7glances.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Geekwolf">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/wolf.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Geekwolf's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2014/03/12/linux-e7-b3-bb-e7-bb-9f-e7-9b-91-e6-8e-a7-e5-ae-9e-e7-94-a8-e5-b7-a5-e5-85-b7glances.html" itemprop="url">Linux系统监控实用工具Glances</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-03-12T15:02:50+08:00">
+                2014-03-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/系统监控/" itemprop="url" rel="index">
+                    <span itemprop="name">系统监控</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2014/03/12/linux-e7-b3-bb-e7-bb-9f-e7-9b-91-e6-8e-a7-e5-ae-9e-e7-94-a8-e5-b7-a5-e5-85-b7glances.html" class="leancloud_visitors" data-flag-title="Linux系统监控实用工具Glances">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="Linux系统监控实用工具Glances"><a href="#Linux系统监控实用工具Glances" class="headerlink" title="Linux系统监控实用工具Glances"></a>Linux系统监控实用工具Glances</h4><ul>
+<li><h5 id="Glances安装"><a href="#Glances安装" class="headerlink" title="Glances安装"></a>Glances安装</h5><p><a href="http://nicolargo.github.io/glances/" target="_blank" rel="external">Glances</a>安装要求:python &gt;= 2.6 和 psutil &gt;= 0.4.1</p>
+<pre># pip install psutil
+# pip install pysensors
+# pip install hddtemp
+# git clone https://github.com/nicolargo/glances.git
+# cd glances
+# python setup.py install</pre>
+</li>
+<li><h5 id="Glances的使用"><a href="#Glances的使用" class="headerlink" title="Glances的使用"></a>Glances的使用</h5><p><pre># glances -h<br>Glances version 1.7a with PsUtil 0.7.1<br>Usage: glances [opt]<br>with opt:<br>-b        Display network rate in Byte per second<br>-B @IP|host    Bind server to the given IP or host NAME<br>-c @IP|host    Connect to a Glances server<br>-C file        Path to the configuration file<br>-d        Disable disk I/O module<br>-e        Enable the sensors module (Linux-only)<br>-f file        Set the output folder (HTML) or file (CSV)<br>-h        Display the syntax and exit<br>-m        Disable mount module<br>-n        Disable network module<br>-o output    Define additional output (available: HTML or CSV)<br>-p PORT        Define the client or server TCP port (default: 61209)<br>-P password    Client/server password<br>-r        Do not list processes (significant CPU use reduction)<br>-s        Run Glances in server mode<br>-t sec        Set the refresh time in seconds (default: 3)<br>-v        Display the version and exit<br>-y        Enable the hddtemp module (needs running hddtemp daemon)<br>-z        Do not use the bold color attribute<br>-1        Start Glances in per CPU mode</pre><br><div><a href="http://www.simlinux.com/old/wp-content/uploads/2014/03/glances.png"><img src="http://www.simlinux.com/old/wp-content/uploads/2014/03/glances-300x156.png" alt="glances"></a></div><br>&nbsp;</p>
+</li>
+</ul>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2014/03/04/e8-ae-be-e7-bd-aesnmp-e8-be-93-e5-87-ba-e5-88-b0message-e7-9a-84-e6-97-a5-e5-bf-97-e7-ba-a7-e5-88-ab.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Geekwolf">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/wolf.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Geekwolf's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2014/03/04/e8-ae-be-e7-bd-aesnmp-e8-be-93-e5-87-ba-e5-88-b0message-e7-9a-84-e6-97-a5-e5-bf-97-e7-ba-a7-e5-88-ab.html" itemprop="url">设置snmp输出到message的日志级别</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-03-04T09:37:10+08:00">
+                2014-03-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux运维/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux运维</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2014/03/04/e8-ae-be-e7-bd-aesnmp-e8-be-93-e5-87-ba-e5-88-b0message-e7-9a-84-e6-97-a5-e5-bf-97-e7-ba-a7-e5-88-ab.html" class="leancloud_visitors" data-flag-title="设置snmp输出到message的日志级别">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><strong>修改snmp服务的启动脚本</strong><br>vim /etc/rc.d/init.d/snmpd<br>将<br>OPTIONS=”-LS0-6d -Lf /dev/null -p /var/run/snmpd.pid “<br>改成<br>OPTIONS=”-Ls3d -Lf /dev/null -p /var/run/snmpd.pid”<br>services snmpd restart</p>
+<p><strong>snmpd日志等级的定义:</strong><br>0 或 ! —- LOG_EMERG<br>1 或 a —- LOG_ALERT<br>2 或 c —- LOG_CRIT<br>3 或 e —- LOG_ERR<br>4 或 w —- LOG_WARNING<br>5 或 n —- LOG_NOTICE<br>6 或 i —- LOG_INFO<br>7 或 d —- LOG_DEBUG</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2013/12/26/linux-e4-b8-8b-e4-bd-bf-e7-94-a8minicom-e9-85-8d-e7-bd-ae-e4-ba-a4-e6-8d-a2-e6-9c-ba-2.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Geekwolf">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/wolf.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Geekwolf's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2013/12/26/linux-e4-b8-8b-e4-bd-bf-e7-94-a8minicom-e9-85-8d-e7-bd-ae-e4-ba-a4-e6-8d-a2-e6-9c-ba-2.html" itemprop="url">linux下使用minicom配置交换机</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2013-12-26T14:14:50+08:00">
+                2013-12-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux运维/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux运维</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2013/12/26/linux-e4-b8-8b-e4-bd-bf-e7-94-a8minicom-e9-85-8d-e7-bd-ae-e4-ba-a4-e6-8d-a2-e6-9c-ba-2.html" class="leancloud_visitors" data-flag-title="linux下使用minicom配置交换机">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><strong>前提</strong>：正确将com线连接好<br>1.安装minicom<br>安装epel源，yum -y install minicom</p>
+<p>2.配置minicom<br>[root@localhost ~]#  minicom -s<br><a href="http://www.simlinux.com/old/wp-content/uploads/2013/12/c.png"><img src="http://www.simlinux.com/old/wp-content/uploads/2013/12/c.png" alt="c"></a></p>
+<p><a href="http://www.simlinux.com/old/wp-content/uploads/2013/12/D.png"><img src="http://www.simlinux.com/old/wp-content/uploads/2013/12/D.png" alt="D"></a></p>
+<p>&nbsp;</p>
+<p>配置好后回车，这里选择Save setup as dfl  然后Exit 即将连接com</p>
+<p><a href="http://www.simlinux.com/old/wp-content/uploads/2013/12/e.png"><img src="http://www.simlinux.com/old/wp-content/uploads/2013/12/e.png" alt="e"></a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2013/12/17/centos6-4-e4-b8-8b-e9-83-a8-e7-bd-b2openvpn-e6-9c-8d-e5-8a-a1-e5-8f-8a-e4-bd-bf-e7-94-a8-e6-96-b9-e6-b3-95.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Geekwolf">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/wolf.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Geekwolf's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2013/12/17/centos6-4-e4-b8-8b-e9-83-a8-e7-bd-b2openvpn-e6-9c-8d-e5-8a-a1-e5-8f-8a-e4-bd-bf-e7-94-a8-e6-96-b9-e6-b3-95.html" itemprop="url">CentOS6.4下部署OpenVpn服务及使用方法</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2013-12-17T14:05:03+08:00">
+                2013-12-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/系统安全/" itemprop="url" rel="index">
+                    <span itemprop="name">系统安全</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2013/12/17/centos6-4-e4-b8-8b-e9-83-a8-e7-bd-b2openvpn-e6-9c-8d-e5-8a-a1-e5-8f-8a-e4-bd-bf-e7-94-a8-e6-96-b9-e6-b3-95.html" class="leancloud_visitors" data-flag-title="CentOS6.4下部署OpenVpn服务及使用方法">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  5
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <div><strong><span style="font-family: 'Microsoft Yahei';">环境说明：</span></strong></div><br><div><span style="font-family: 'Microsoft Yahei';">vpn服务器：<strong>eth0</strong>:120.3.243.54（外网IP）  <strong>eth1：</strong>192.168.5.253（私网IP）</span></div><br><div><span style="font-family: 'Microsoft Yahei';">客户端地址：201.1.36.111 </span></div><br><div><span style="font-family: 'Microsoft Yahei';">软件版本：服务端OpenVPN 2.3.2  </span></div><br><div><span style="font-family: 'Microsoft Yahei';">实现：访问公司内网及授权vpn地址访问的网段，其他地址均走客户端本地上网</span></div><br><div><strong><span style="font-family: 'Microsoft Yahei';">安装步骤：</span></strong></div><br><div><span style="font-family: 'Microsoft Yahei';">设置EPEL源</span></div><br><div><span style="font-family: 'Microsoft Yahei';">rpm -Uvh <a href="http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm" target="_blank" rel="external">http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm</a></span></div><br><div><span style="font-family: 'Microsoft Yahei';">rpm –import /etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-6</span></div><br><div><span style="font-family: 'Microsoft Yahei';"> </span></div><br><div><span style="font-family: 'Microsoft Yahei';"> </span></div><br><div><span style="font-family: 'Microsoft Yahei';">翻墙下载源码：</span></div><br><div><a href="http://swupdate.openvpn.org/community/releases/openvpn-2.3.2.tar.gz" target="_blank" rel="external"><span style="font-family: 'Microsoft Yahei';">http://swupdate.openvpn.org/community/releases/openvpn-2.3.2.tar.gz</span></a></div><br><div><span style="font-family: 'Microsoft Yahei';">./configure &amp;&amp; make &amp;&amp; make install</span></div><br><div><span style="font-family: 'Microsoft Yahei';"> </span></div><br><div><span style="font-family: 'Microsoft Yahei';">证书生成工具</span></div><br><div><br><br>yum -y install easy-rsa<br>配置OpenVpn：<br>mkdir /etc/openvpn/etc -p<br>cp -R /usr/share/easy-rsa/ /etc/openvpn/<br>源码目录：<br>cp sample/sample-config-files/server.conf /etc/openvpn/server.conf<br><br></div><br><div><span style="font-family: 'Microsoft Yahei';">生成证书</span></div><br><div><span style="font-family: 'Microsoft Yahei';">cd /etc/openvpn/easy-rsa/2.0</span></div><br><div><span style="font-family: 'Microsoft Yahei';">. vars</span></div><br><div><span style="font-family: 'Microsoft Yahei';">./clean-all</span></div><br><div><span style="font-family: 'Microsoft Yahei';">./build-ca</span></div><br><div><span style="font-family: 'Microsoft Yahei';"> </span></div><br><div><span style="font-family: 'Microsoft Yahei';">创建vpn server的key</span></div><br><div><span style="font-family: 'Microsoft Yahei';">./build-key-server server</span></div><br><div><span style="font-family: 'Microsoft Yahei';">创建用户秘钥</span></div><br><div><span style="font-family: 'Microsoft Yahei';">./build-key geekwolf</span></div><br><div><span style="font-family: 'Microsoft Yahei';">创建Diffie Hellman，用于增强安全性</span></div><br><div><span style="font-family: 'Microsoft Yahei';">./build-dh</span></div><br><div><span style="font-family: 'Microsoft Yahei';">默认情况所创建的文件会生成在/etc/openvpn/easy-rsa/2.0/keys目录下</span></div><br><div><span style="font-family: 'Microsoft Yahei';"> </span></div><br><div><strong><span style="font-family: 'Microsoft Yahei';">配置server.conf文件</span></strong></div><br><div><span style="font-family: 'Microsoft Yahei';"><strong>方法1:</strong>采用秘钥认证</span></div><br><div><span style="font-family: 'Microsoft Yahei';">local 120.3.243.54 </span></div><br><div><span style="font-family: 'Microsoft Yahei';">port 9001</span></div><br><div><span style="font-family: 'Microsoft Yahei';">proto tcp</span></div><br><div><span style="font-family: 'Microsoft Yahei';">dev tun</span></div><br><div><span style="font-family: 'Microsoft Yahei';">ca /etc/openvpn/easy-rsa/2.0/keys/ca.crt</span></div><br><div><span style="font-family: 'Microsoft Yahei';">cert /etc/openvpn/easy-rsa/2.0/keys/server.crt</span></div><br><div><span style="font-family: 'Microsoft Yahei';">key /etc/openvpn/easy-rsa/2.0/keys/server.key # This file should be kept secret</span></div><br><div><span style="font-family: 'Microsoft Yahei';">dh /etc/openvpn/easy-rsa/2.0/keys/dh1024.pem</span></div><br><div><span style="font-family: 'Microsoft Yahei';">server 10.8.0.0 255.255.255.0</span></div><br><div><span style="font-family: 'Microsoft Yahei';">ifconfig-pool-persist ipp.txt</span></div><br><div><span style="font-family: 'Microsoft Yahei';">push “route 192.168.0.0 255.255.0.0”</span></div><br><div><span style="font-family: 'Microsoft Yahei';">push “route 10</span><span style="font-family: 'Microsoft Yahei';">4</span><span style="font-family: 'Microsoft Yahei';">.</span><span style="font-family: 'Microsoft Yahei';">172.0.0 255.255.0.0”</span></div><br><div><span style="font-family: 'Microsoft Yahei';">keepalive 10 120</span></div><br><div><span style="font-family: 'Microsoft Yahei';">comp-lzo</span></div><br><div><span style="font-family: 'Microsoft Yahei';">persist-key</span></div><br><div><span style="font-family: 'Microsoft Yahei';">persist-tun</span></div><br><div><span style="font-family: 'Microsoft Yahei';">status openvpn-status.log</span></div><br><div><span style="font-family: 'Microsoft Yahei';">verb 3</span></div><br><div><span style="font-family: 'Microsoft Yahei';"> </span></div><br><div><span style="font-family: 'Microsoft Yahei';"><strong>方法2：</strong>采用用户密码认证</span></div><br><div><span style="font-family: 'Microsoft Yahei';">A.额外在上面配置文件后面添加[基于PAM身份认证]</span></div><br><div><span style="font-family: 'Microsoft Yahei';">plugin /usr/lib/openvpn/openvpn-auth-pam.so login</span></div><br><div><span style="font-family: 'Microsoft Yahei';">client-cert-not-required</span></div><br><div><span style="font-family: 'Microsoft Yahei';">username-as-common-name</span></div><br><div><span style="font-family: 'Microsoft Yahei';">服务端本地创建用户</span></div><br><div><span style="font-family: 'Microsoft Yahei';">useradd -s /sbin/nologin geekwolf</span></div><br><div><span style="font-family: 'Microsoft Yahei';">passwd geekwolf </span></div><br><div><span style="font-family: 'Microsoft Yahei';"> </span></div><br><div><span style="font-family: 'Microsoft Yahei';">B.额外在上面配置文件后面添加[基于脚本的身份认证]</span></div><br><div><span style="font-family: 'Microsoft Yahei';"> </span></div><br><div><span style="font-family: 'Microsoft Yahei';">auth-user-pass-verify /usr/local/openvpn/etc/checkpsw.sh via-env</span></div><br><div><span style="font-family: 'Microsoft Yahei';">client-cert-not-required</span></div><br><div><span style="font-family: 'Microsoft Yahei';">username-as-common-name</span></div><br><div><span style="font-family: 'Microsoft Yahei';"> </span></div><br><div><span style="font-family: 'Microsoft Yahei';">wget <a href="http://openvpn.se/files/other/checkpsw.sh" target="_blank" rel="external">http://openvpn.se/files/other/checkpsw.sh</a> -O /usr/local/openvpn/etc/checkpsw.sh</span></div><br><div><span style="font-family: 'Microsoft Yahei';">chmod +x checkpsw.sh</span></div><br><div><span style="font-family: 'Microsoft Yahei';">修改脚本PASSFILE和LOG_FILE参数文件位置</span></div><br><div><span style="font-family: 'Microsoft Yahei';">PASSFILE=/etc/openvpn/etc/psw-file</span></div><br><div><span style="font-family: 'Microsoft Yahei';">LOG_FILE=/etc/openvpn/etc/openvpn-password.log</span></div><br><div><span style="font-family: 'Microsoft Yahei';"> </span></div><br><div><span style="font-family: 'Microsoft Yahei';">用户名和密码文件格式：</span></div><br><div><span style="font-family: 'Microsoft Yahei';">/etc/openvpn/etc/psw-file(用户和密码之间用空格或者tab隔开)</span></div><br><div><span style="font-family: 'Microsoft Yahei';">geekwolf geekwolf</span></div><br><div><span style="font-family: 'Microsoft Yahei';"> </span></div><br><div><span style="font-family: 'Microsoft Yahei';"><strong>Windows 7 客户端配置</strong></span></div><br><div><span style="font-family: 'Microsoft Yahei';">下载 <span style="color: #5566dd;"><a href="http://swupdate.openvpn.org/community/releases/openvpn-install-2.3.2-I001-x86_64.exe" target="_blank" rel="external">http://swupdate.openvpn.org/community/releases/openvpn-install-2.3.2-I001-x86_64.exe</a>（或者</span></span>OpenVPN Client官网下载）</div><br><div><span style="font-family: 'Microsoft Yahei';">安装后桌面会生成<img src="file:///C:/Users/20130416/AppData/Local/YNote/Data/geekwolf%40163.com/2c01bb4baab24e9f990a595cf3f1325f/clipboard.png" alt="">，属性设置<img src="file:///C:/Users/20130416/AppData/Local/YNote/Data/geekwolf%40163.com/a8aa7d6809e64962a367e17f3847ff40/clipboard.png" alt=""></span></div><br><div><span style="font-family: 'Microsoft Yahei';"> </span></div><br><div><span style="font-family: 'Microsoft Yahei';">A.若采用秘钥方式认证</span></div><br><div><span style="font-family: 'Microsoft Yahei';">客户端做一下事情：</span></div><br><div><span style="font-family: 'Microsoft Yahei';"> 拷贝服务端ca.crt  用户秘钥geekwolf.crt geekwolf.key 到OpenVpn客户端安装根目录下下的config目录内</span></div><br><div><span style="font-family: 'Microsoft Yahei';"> 增加客户端配置文件client.ovpn：</span></div><br><div><span style="font-family: 'Microsoft Yahei';">client</span></div><br><div><span style="font-family: 'Microsoft Yahei';">dev tun</span></div><br><div><span style="font-family: 'Microsoft Yahei';">proto tcp</span></div><br><div><span style="font-family: 'Microsoft Yahei';">remote 120.3.243.54 9001</span></div><br><div><span style="font-family: 'Microsoft Yahei';">resolv-retry infinite</span></div><br><div><span style="font-family: 'Microsoft Yahei';">nobind</span></div><br><div><span style="font-family: 'Microsoft Yahei';">persist-key</span></div><br><div><span style="font-family: 'Microsoft Yahei';">persist-tun</span></div><br><div><span style="font-family: 'Microsoft Yahei';">ca ca.crt</span></div><br><div><span style="font-family: 'Microsoft Yahei';">cert geekwolf.crt</span></div><br><div><span style="font-family: 'Microsoft Yahei';">key geekwolf.key</span></div><br><div><span style="font-family: 'Microsoft Yahei';">comp-lzo</span></div><br><div><span style="font-family: 'Microsoft Yahei';">verb 3</span></div><br><div><span style="font-family: 'Microsoft Yahei';">最后以管理员身份运行OpenVPN GUI程序，即可连接使用vpn</span></div><br><div><span style="font-family: 'Microsoft Yahei';"> </span></div><br><div><span style="font-family: 'Microsoft Yahei';">A.若采用用户密码认证（pam认证）</span></div><br><div><span style="font-family: 'Microsoft Yahei';">注释掉用户cert和keys，配置文件增加密码询问auth-user-pass</span></div><br><div><span style="font-family: 'Microsoft Yahei';">既：</span></div><br><div><br><div><span style="font-family: 'Microsoft Yahei';">client</span></div><br><div><span style="font-family: 'Microsoft Yahei';">dev tun</span></div><br><div><span style="font-family: 'Microsoft Yahei';">proto tcp</span></div><br><div><span style="font-family: 'Microsoft Yahei';">remote 120.3.243.54 9001</span></div><br><div><span style="font-family: 'Microsoft Yahei';">resolv-retry infinite</span></div><br><div><span style="font-family: 'Microsoft Yahei';">nobind</span></div><br><div><span style="font-family: 'Microsoft Yahei';">persist-key</span></div><br><div><span style="font-family: 'Microsoft Yahei';">persist-tun</span></div><br><div><span style="font-family: 'Microsoft Yahei';">ca ca.crt</span></div><br><div><span style="font-family: 'Microsoft Yahei';">；cert geekwolf.crt</span></div><br><div><span style="font-family: 'Microsoft Yahei';">；key geekwolf.key</span></div><br><div><span style="font-family: 'Microsoft Yahei';">comp-lzo</span></div><br><div><span style="font-family: 'Microsoft Yahei';">verb 3 </span></div><br></div><br><div><span style="font-family: 'Microsoft Yahei';">auth-user-pass</span></div><br><div><span style="font-family: 'Microsoft Yahei';">（免输入账号密码方法：auth-user-pass passwd.txt）</span></div><br><div><span style="font-family: 'Microsoft Yahei';">passwd.txt 格式</span></div><br><div><span style="font-family: 'Microsoft Yahei';">账号</span></div><br><div><span style="font-family: 'Microsoft Yahei';">密码</span></div><br><div><span style="font-family: 'Microsoft Yahei';"> </span></div><br><div><strong><span style="font-family: 'Microsoft Yahei';">防火墙配置</span></strong></div><br><div><span style="font-family: 'Microsoft Yahei';">可参考源码下的配置：</span></div><br><div><span style="font-family: 'Microsoft Yahei';">sample/sample-config-files/firewall.sh</span></div><br><div><span style="font-family: 'Microsoft Yahei';">本测试的规则为：</span></div><br><div><span style="font-family: 'Microsoft Yahei';">-A INPUT -i tun+ -j ACCEPT</span></div><br><div><span style="font-family: 'Microsoft Yahei';">-A FORWARD -i tun+ -o eth1 -j ACCEPT</span></div><br><div><span style="font-family: 'Microsoft Yahei';">-A FORWARD -i eth1 -o tun+ -j ACCEPT</span></div><br><div><span style="font-family: 'Microsoft Yahei';">-A OUTPUT -o tun+ -j ACCEPT </span></div><br><div><span style="font-family: 'Microsoft Yahei';">-A POSTROUTING -s 10.8.0.0/24 -o eth1 -j MASQUERADE</span></div><br><div><span style="font-family: 'Microsoft Yahei';">-A POSTROUTING -d 104.172.0.0/255.255.255.0     -o eth0 -j MASQUERADE</span></div><br><div><span style="font-family: 'Microsoft Yahei';"> </span></div><br><div><span style="font-family: 'Microsoft Yahei';"> </span></div><br><div><span style="font-family: 'Microsoft Yahei';"><strong>通过以上配置实现了：</strong></span></div><br><div><span style="font-family: 'Microsoft Yahei';">访问公司内网192.168.0.0 走vpn的eth1出口，访问104.172.0.0等走vpn的eth0出口，访问其他地址均走客户端本地</span></div><br><div><span style="font-family: 'Microsoft Yahei';"> </span></div><br><div><strong> </strong></div><br><div><span style="font-family: 'Microsoft Yahei';"><strong>参考资料：</strong></span></div><br><div><header><br><div><span style="font-family: 'Microsoft Yahei';">深入OpenVPN的配置 </span></div><br><div><span style="font-family: 'Microsoft Yahei';"><a href="http://www.linuxfly.org/post/86/" target="_blank" rel="external">http://www.linuxfly.org/post/86/</a></span></div><br><div><span style="font-family: 'Microsoft Yahei';"> </span></div><br></header></div>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+  </section>
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/5/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><a class="extend next" rel="next" href="/page/7/"><i class="fa fa-angle-right"></i></a>
+  </nav>
+
+
+
+          </div>
+          
+
+
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/wolf.jpeg"
+               alt="Geekwolf" />
+          <p class="site-author-name" itemprop="name">Geekwolf</p>
+           
+              <p class="site-description motion-element" itemprop="description">DevOps | Docker | K8S | MySQL | 运维</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">167</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">105</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/geekwolf" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                    
+                      GitHub
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/geekwolf" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                    
+                      Weibo
+                    
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2012 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Geekwolf</span>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  
+    <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('-1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("qms5kJ0y2CItrIVFivKxxPsR-gzGzoHsz", "Cn3w20futtphxpaDSP5tHjzy");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

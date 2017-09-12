@@ -1,0 +1,2902 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Geekwolf,DevOps,Docker,k8s,MySQL,PaaS" />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Geekwolf's Blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="DevOps | Docker | K8S | MySQL | 运维">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Geekwolf&#39;s Blog">
+<meta property="og:url" content="http://www.simlinux.com/page/10/index.html">
+<meta property="og:site_name" content="Geekwolf&#39;s Blog">
+<meta property="og:description" content="DevOps | Docker | K8S | MySQL | 运维">
+<meta property="og:locale" content="zh-Hans">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Geekwolf&#39;s Blog">
+<meta name="twitter:description" content="DevOps | Docker | K8S | MySQL | 运维">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.simlinux.com/page/10/"/>
+
+
+
+
+
+  <title>Geekwolf's Blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="//s13.cnzz.com/z_stat.php?id=1264375041&web_id=1264375041" language="JavaScript"></script>
+  </div>
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left 
+   page-home 
+ ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Geekwolf's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Quick notes</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />
+            
+            站点地图
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+  <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2012/12/05/mysql-5-15-5-windows-remote-r00t-mysqljackpot-e9-aa-8c-e8-af-81-windows-e4-b8-8bmysql-e6-8f-90-e6-9d-83.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Geekwolf">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/wolf.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Geekwolf's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2012/12/05/mysql-5-15-5-windows-remote-r00t-mysqljackpot-e9-aa-8c-e8-af-81-windows-e4-b8-8bmysql-e6-8f-90-e6-9d-83.html" itemprop="url">MySQL 5.1/5.5 WiNDOWS REMOTE R00T (mysqljackpot) 验证--windows下mysql提权</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2012-12-05T05:14:23+08:00">
+                2012-12-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/系统安全/" itemprop="url" rel="index">
+                    <span itemprop="name">系统安全</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2012/12/05/mysql-5-15-5-windows-remote-r00t-mysqljackpot-e9-aa-8c-e8-af-81-windows-e4-b8-8bmysql-e6-8f-90-e6-9d-83.html" class="leancloud_visitors" data-flag-title="MySQL 5.1/5.5 WiNDOWS REMOTE R00T (mysqljackpot) 验证--windows下mysql提权">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>2月2日mysql爆出windows下5.1/5.5mysql账号可以提权至系统权限</p>
+<p>见<a href="http://www.exploit-db.com/exploits/23073/" target="_blank" rel="external">http://www.exploit-db.com/exploits/23073/</a></p>
+<p>下面将我的测试步骤记录下来：</p>
+<p>1、首先找到一台linux机器，我在上面已经安装了mysql，安装目录在/usr/local/mysql</p>
+<p>2、下载poc程序，解压缩，然后编译mysqljackpot.c</p>
+<p>gcc -o mysqljackpot mysqljackpot.c -I /usr/local/mysql/include -L /usr/local/mysql/lib/mysql/ -lmysqlclient</p>
+<p>3、由于需要反向shell，需要借助payload.dll，这个文件需要在windows下编译，首先得安装MinGW，在MinGW下进行编译（需要修改payload.c中的ip为我们的反向shell所在的机器ip）</p>
+<p>set PATH=%PATH%;c:MinGWbin<br>gcc -c payload.c<br>gcc -shared -o payload.dll payload.o -lws2_32</p>
+<p>4、在linux机器上执行程序，效果如下：</p>
+<p><img src="http://pic002.cnblogs.com/images/2012/418678/2012120317335096.jpg" alt=""></p>
+<p>由上图可见，在已知mysql密码的情况下即可获取对方机器的系统权限！</p>
+<p>&nbsp;</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2012/12/03/linux-e6-9c-8d-e5-8a-a1-e5-99-a8-e5-89-8d-e5-8f-b0-e5-b8-b8-e5-87-ba-e7-8e-b0-e7-9a-84-e9-94-99-e8-af-af-e6-8f-90-e7-a4-ba-e5-8f-8a-e5-90-ab-e6-84-8f.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Geekwolf">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/wolf.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Geekwolf's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2012/12/03/linux-e6-9c-8d-e5-8a-a1-e5-99-a8-e5-89-8d-e5-8f-b0-e5-b8-b8-e5-87-ba-e7-8e-b0-e7-9a-84-e9-94-99-e8-af-af-e6-8f-90-e7-a4-ba-e5-8f-8a-e5-90-ab-e6-84-8f.html" itemprop="url">Linux服务器前台常出现的错误提示及含意</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2012-12-03T05:31:31+08:00">
+                2012-12-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux运维/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux运维</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2012/12/03/linux-e6-9c-8d-e5-8a-a1-e5-99-a8-e5-89-8d-e5-8f-b0-e5-b8-b8-e5-87-ba-e7-8e-b0-e7-9a-84-e9-94-99-e8-af-af-e6-8f-90-e7-a4-ba-e5-8f-8a-e5-90-ab-e6-84-8f.html" class="leancloud_visitors" data-flag-title="Linux服务器前台常出现的错误提示及含意">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  5
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Linux服务器前台常出现的错误提示及含意：</p>
+<p>◆一般类的提示eth1：Toomuch<br><strong>workatinterrupt，IntrStatus=0x0001</strong></p>
+<p>这条提示的含意为.某网卡的中断请求过多.如果只是偶尔出现一次可忽略.但这条提示如果经常出现或是集中出现,那涉及到的可能性就比较多有可能需要进行处理了.。可能性比较多,如网卡性能;服务器性能;网络攻击..等等。<br>◆一般类的提示<br><strong>IPVS:incomingICMP:failedchecksumfrom61.172.0.X!</strong><br>服务器收到了一个校验和错误的ICMP数据包。这类的数据包有可能是非法产生的垃圾数据.但从目前来看服务器收到这样的数据非常多，一般都忽略。</p>
+<p>一般代理服务器在工作时会每秒钟转发几千个数据包.收到几个错误数据包不会影响正常的工作.这是问我最多的一类提示了。</p>
+<p>◆一般类的提示</p>
+<p><strong>NET:Nmessagessuppressed.</strong><br>服务器忽略了N个数据包.和上一条提示类似。服务器收到的数据包被认为是无用的垃圾数据数据。这类数据多是由攻击类的程序产生的。</p>
+<p>这条提示如果N比较小的时候可以忽略。但如果经常或是长时间出现3位数据以上的这类提示，就很有可能是服务器受到了垃圾数据类的带宽攻击了。</p>
+<p>◆一般类的提示</p>
+<p><strong>UDP:badchecksum.From221.200.X.X:50279to218.62.X.X:1155ulen24</strong></p>
+<p><strong>UDP:shortpacket:218.2.X.X:30723640/217to222.168.X.X:57596</strong></p>
+<p><strong>218.26.131.XsentaninvalidICMPtype3,code13errortoabroadcast:0.1.0.4oneth0</strong></p>
+<p>服务器收到了一个错误的数据包，分别为UDP校验和错误；过短的UDP数据包；一个错误的ICMP类型数据。这类信息一般情况下也是非法产生的。但一般问题不大可直接忽略。</p>
+<p>◆一般类的提示</p>
+<p><strong>kernel:conntrack_ftp:partial2272205426703+13</strong></p>
+<p><strong>FTP_NAT:partialpacket2635716056/20in2635716048/2635716075</strong></p>
+<p>服务器在维持一条FTP协议的连接时出错。这样的提示一般都可以直接忽略。网络通信严重问题!</p>
+<p>&lt;/TDBGCOLOR=#F2F2F2&gt;&lt;/TABLECELLSPACING=1CELLPADDING=0WIDTH=&quot;80%&quot;BGCOLOR=#CCCCCC&gt;&lt;/PALIGN=CENTER&gt;<br>  <pre>NETDEVWATCHDOG:eth1:transmittimedouteth1:linkdowneth1:linkup,10Mbps,half-duplex,lpa0x0000eth2:linkup,100Mbps,full-duplex,lpa0x41E1settingfull-duplexbasedonMII#24linkpartnercapabilityof45e1</pre></p>
+<p>这些提示是网络通信中出现严重问题时才会出现。故障基本和网络断线有关系。这几条提示分别代表的含意是某块网卡传送数据超时；网卡连接down；网卡连接up，连接速率为10/100Mbps，全/半双功。这里写到的最后三行的提示比较类似。出现这类提示时必须注意网络连接状况进行处理!!!</p>
+<p>◆网络通信严重问题!</p>
+<p><strong>NICLinkisUp100MbpsFullDuplex</strong></p>
+<p>情况和kernel:eth1:linkup,…相同.指某块网卡适应的连接速率。一般认为没有说明哪个网卡down，只是连续出现网卡适应速率也是通信有问题。如果是网线正常的断接可以忽略这类的信息。</p>
+<p>◆网络通信严重问题!</p>
+<p><strong>eth0:Transmittimedout,status0000,PHYstatus786d,resetting…eth0:Resetnotcompleteyet.Tryingharder.</strong></p>
+<p>第一条提示网卡关送数据失败.复位网卡.第二条提示网卡复位不成功….这些提示都属于严重的通信问题。</p>
+<p>◆<strong>报警程序的提示</strong></p>
+<p>0001##WMPCheckV001##2005-04-13_10:10:01Found.(ARPSpoofingsniffer)!IP:183MAC:50002##WMPCheckV001##2005-04-07_01:53:32Found.(MAC_incomplete)!IP:173mac_incomplete:1860003##WMPCheckV001##2005-04-17_16:25:11Found.(HIGH_synsent)!totl:4271SynSent:34900004##WMPCheckV001##20……</p>
+<p>这是由报警程序所引起的提示.详细的信息需要用报警程序的客户端进行实时接收.详细情况请查看&quot;告警模块和日志&quot;。</p>
+<p>◆基本无关</p>
+<p><strong>keyboard:unknownscancodee05e</strong></p>
+<p>键盘上接收到未定义的键值.如果经常出现.有可能是键盘有问题.linux对于比较特殊的键或是组合键,有时也会出这样的提示。要看一下服务器的键盘是不是被压住了.其它情况一般忽略。</p>
+<p>◆基本无关</p>
+<p><strong>usesobsolete(PF_INET,SOCK_PACKET)</strong></p>
+<p>系统内核调用了一部分功能模块,在第一次调入时会出现.一般情况与使用调试工具有关.可直接忽略。</p>
+<p>◆网络通信故障</p>
+<p><strong>Neighbourtableoverflow.</strong></p>
+<p>出现这个提示.一般都是因为局域网内有部分计算机被病毒感染.情况严重时会影响通信.必须处理内部网通信不正常的计算机。</p>
+<p>◆网络通信故障</p>
+<p><strong>eth1:Transmiterror,Txstatusregister82.Probablyaduplexmismatch.SeeDocumentation/networking/vortex.txtFlags;bus-master1,dirty9994190(14)current9994190(14)Transmitlist00000000vs.f7171580.0:@f7171200length800001e6status000101e61:@f7171240length8000008cstatus0001008c….</strong></p>
+<p>这个提示是3com网卡特有的.感觉如果出现量不大的话也不会影响很严重.目前看维一的解决办法是更换服务器上的网卡。实在感觉3com的网卡有些问题…</p>
+<p>◆服务器系统严重故障</p>
+<p><strong>CPU0:TemperatureabovethresholdCPU0:Runninginmodulatedclockmode</strong></p>
+<p>服务器CPU工作温度过高.必须排除硬件故障…</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2012/11/28/ssh-e7-ab-af-e5-8f-a3-e4-bb-8e22-e6-94-b9-e5-88-b0-e5-85-b6-e4-bb-96-e7-ab-af-e5-8f-a3-e5-90-8e-ef-bc-8crsync-e7-9a-84-e7-94-a8-e6-b3-95.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Geekwolf">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/wolf.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Geekwolf's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2012/11/28/ssh-e7-ab-af-e5-8f-a3-e4-bb-8e22-e6-94-b9-e5-88-b0-e5-85-b6-e4-bb-96-e7-ab-af-e5-8f-a3-e5-90-8e-ef-bc-8crsync-e7-9a-84-e7-94-a8-e6-b3-95.html" itemprop="url">ssh端口从22改到其他端口后，rsync的用法</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2012-11-28T09:36:28+08:00">
+                2012-11-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux运维/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux运维</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2012/11/28/ssh-e7-ab-af-e5-8f-a3-e4-bb-8e22-e6-94-b9-e5-88-b0-e5-85-b6-e4-bb-96-e7-ab-af-e5-8f-a3-e5-90-8e-ef-bc-8crsync-e7-9a-84-e7-94-a8-e6-b3-95.html" class="leancloud_visitors" data-flag-title="ssh端口从22改到其他端口后，rsync的用法">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>很多人都使用rsync的服务端+客户端的方式使用，为了方便期间使用rsync和ssh结合使用的方法同步文件：</p>
+<p>rsync -avH –progress –files-from=test.txt  ‘-e ssh -p  11122’     <a href="app:ds:source" target="_blank" rel="external">source</a> directory/  root@192.168.1.11:<a href="mailto:root@192.168.1.11:destination" target="_blank" rel="external">destination</a> <a href="app:ds:directory" target="_blank" rel="external">directory</a>/</p>
+<p>&nbsp;</p>
+<p>如果端口是默认的22，直接rsync操作即可</p>
+<p>&nbsp;</p>
+<p>rsync -avH –progress –include-from=test.txt   <a href="app:ds:source" target="_blank" rel="external">source</a> directory/</p>
+<p>root@192.168.1.11:<a href="mailto:root@192.168.1.11:destination" target="_blank" rel="external">destination</a> <a href="app:ds:directory" target="_blank" rel="external">directory</a>/</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2012/11/26/e7-bc-96-e8-af-91gevent-0-13-8-e5-87-ba-e7-8e-b0-ef-bc-9aerror-setup-script-exited-with-error-command-gcc-failed-with-exit-status-1.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Geekwolf">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/wolf.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Geekwolf's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2012/11/26/e7-bc-96-e8-af-91gevent-0-13-8-e5-87-ba-e7-8e-b0-ef-bc-9aerror-setup-script-exited-with-error-command-gcc-failed-with-exit-status-1.html" itemprop="url">编译gevent-0.13.8出现：error: Setup script exited with error: command 'gcc' failed with exit status 1</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2012-11-26T08:25:29+08:00">
+                2012-11-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux运维/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux运维</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2012/11/26/e7-bc-96-e8-af-91gevent-0-13-8-e5-87-ba-e7-8e-b0-ef-bc-9aerror-setup-script-exited-with-error-command-gcc-failed-with-exit-status-1.html" class="leancloud_visitors" data-flag-title="编译gevent-0.13.8出现：error: Setup script exited with error: command 'gcc' failed with exit status 1">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>编译gevent-0.13.8出现：error: Setup script exited with error: command ‘gcc’ failed with exit status 1</p>
+<p>解决方法： yum –y install python-devel&#160; libevent&#160; libevent-devel</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2012/11/21/linux-e4-b8-8arootkits-e6-a3-80-e6-b5-8b-e5-b7-a5-e5-85-b7rootkit-hunter-e5-92-8cchkrootkit.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Geekwolf">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/wolf.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Geekwolf's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2012/11/21/linux-e4-b8-8arootkits-e6-a3-80-e6-b5-8b-e5-b7-a5-e5-85-b7rootkit-hunter-e5-92-8cchkrootkit.html" itemprop="url">linux上rootkits检测工具:Rootkit Hunter和Chkrootkit</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2012-11-21T14:16:20+08:00">
+                2012-11-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/系统安全/" itemprop="url" rel="index">
+                    <span itemprop="name">系统安全</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2012/11/21/linux-e4-b8-8arootkits-e6-a3-80-e6-b5-8b-e5-b7-a5-e5-85-b7rootkit-hunter-e5-92-8cchkrootkit.html" class="leancloud_visitors" data-flag-title="linux上rootkits检测工具:Rootkit Hunter和Chkrootkit">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  3
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>转载：本文主要介绍linux上检测rootkit的两种工具: Rootkit Hunter和Chkrootkit.<br>Rootkit Hunter<br>中文名叫”Rootkit猎手”, 可以发现大约58个已知的rootkits和一些嗅探器和后门程序. 它通过执行一系列的测试脚本来确认你的机器是否已经感染rootkits. 比如检查rootkits使用的基本文件, 可执行二进制文件的错误文件权限, 检测内核模块等等. Rootkit Hunter由Michael Boelen开发, 是开源(GPL)软件.<br>安装Rootkit Hunter非常简单, 从网站下载软件包, 解压, 然后以root用户身份运行installer.sh脚本.<br>成功安装后, 你可以通过运行下面命令来检测你的机器是否已感染rootkit:</p>
+<h1 id="rkhunter-c"><a href="#rkhunter-c" class="headerlink" title="rkhunter -c"></a>rkhunter -c</h1><p>二进制可执行文件rkhunter被安装到/usr/local/bin目录, 你需要以root身份来运行该程序. 程序运行后, 它主要执行下面一系列的测试:<br>1. MD5校验测试, 检测任何文件是否改动.<br>2. 检测rootkits使用的二进制和系统工具文件.<br>3. 检测特洛伊木马程序的特征码.<br>4. 检测大多常用程序的文件异常属性.<br>5. 执行一些系统相关的测试 - 因为rootkit hunter可支持多个系统平台.<br>6. 扫描任何混杂模式下的接口和后门程序常用的端口.<br>7. 检测如/etc/rc.d/目录下的所有配置文件, 日志文件, 任何异常的隐藏文件等等. 例如, 在检测/dev/.udev和/etc/.pwd.lock文件时候, 我的系统被警告.<br>8. 对一些使用常用端口的应用程序进行版本测试. 如: Apache Web Server, Procmail等.<br>完成上面检测后, 你的屏幕会显示扫描结果: 可能被感染的文件, 不正确的MD5校验文件和已被感染的应用程序.<br>在我的机器上, 扫描用了175秒. 缺省情况下, rkhunter对系统进行已知的一些检测. 但是你也可以通过使用’–scan-knownbad-files’来执行未知的错误检测:</p>
+<h1 id="rkhunter-c-–scan-knownbad-files"><a href="#rkhunter-c-–scan-knownbad-files" class="headerlink" title="rkhunter -c –scan-knownbad-files"></a>rkhunter -c –scan-knownbad-files</h1><p>rkhunter是通过一个含有rootkit名字的数据库来检测系统的rootkits漏洞, 所以经常更新该数据库非常重要, 你可以通过下面命令来更新该数据库:</p>
+<h1 id="rkhunter-–update"><a href="#rkhunter-–update" class="headerlink" title="rkhunter –update"></a>rkhunter –update</h1><p>当然最好是通过cron job定期执行上面的命令, 你需要用root用户添加下面命令到crontab文件:<br>59 23 1 <em> </em> echo “Rkhunter update check in progress”;/usr/local/bin/rkhunter –update<br>上面一行告诉cron程序在每月第一天的下午11:59分执行rkhunter数据库更新工作, 而且你的root用户会收到一封结果通知邮件.<br>Chkrootkit<br>Chkrootkit由Nelson Murilo和Klaus Steding Jessen开发. 与Rootkit Hunter程序不同的是, chrootkit不需要installer安装程序, 你只需解开软件包后执行chrootkit即可, 然后将对一些二进制文件进行一系列的测试, 除了与Rootkit Hunter相同的测试外, Chkrootkit还对一些重要的二进制文件进行检测, 比如搜索入侵者已更改日志文件的特征信息等等. 而且, 如果你想列出已经测试的所有项目, 你可以运行带有’-l’参数的命令:</p>
+<h1 id="chkrootkit-l"><a href="#chkrootkit-l" class="headerlink" title="chkrootkit -l"></a>chkrootkit -l</h1><p>在测试过程中, 如果你想在屏幕上看到更多有用的信息, 执行下面命令:</p>
+<h1 id="chkrootkit-x"><a href="#chkrootkit-x" class="headerlink" title="chkrootkit -x"></a>chkrootkit -x</h1><p>chkrootkit将在专家模式(expert mode)运行.<br>在Linux上组合使用Rootkit Hunter和Chkrootkit工具是检测rootkis不错的办法.</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2012/11/21/inotify-rsync-e5-ae-9e-e7-8e-b0linux-e6-96-87-e4-bb-b6-e5-ae-9e-e6-97-b6-e5-90-8c-e6-ad-a5-ef-bc-8c-e4-bd-bf-e7-94-a8-e8-a7-a6-e5-8f-91-e5-90-8c-e6-ad-a5-e6-9c-ba-e5-88-b6.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Geekwolf">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/wolf.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Geekwolf's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2012/11/21/inotify-rsync-e5-ae-9e-e7-8e-b0linux-e6-96-87-e4-bb-b6-e5-ae-9e-e6-97-b6-e5-90-8c-e6-ad-a5-ef-bc-8c-e4-bd-bf-e7-94-a8-e8-a7-a6-e5-8f-91-e5-90-8c-e6-ad-a5-e6-9c-ba-e5-88-b6.html" itemprop="url">Inotify + Rsync实现Linux文件实时同步，使用触发同步机制</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2012-11-21T10:25:34+08:00">
+                2012-11-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux运维/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux运维</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2012/11/21/inotify-rsync-e5-ae-9e-e7-8e-b0linux-e6-96-87-e4-bb-b6-e5-ae-9e-e6-97-b6-e5-90-8c-e6-ad-a5-ef-bc-8c-e4-bd-bf-e7-94-a8-e8-a7-a6-e5-8f-91-e5-90-8c-e6-ad-a5-e6-9c-ba-e5-88-b6.html" class="leancloud_visitors" data-flag-title="Inotify + Rsync实现Linux文件实时同步，使用触发同步机制">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  9
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>公司一套系统的同步使用的donotify，不能实现子目录的实时同步，通过查资料，发现inotify可以实现子目录的实时同步，以下为笔记。<br>一、介绍<br>Inotify 是文件系统事件监控机制，作为 dnotify 的有效替代。dnotify 是较早内核支持的文件监控机制。Inotify 是一种强大的、细粒度的、异步的机制，它满足各种各样的文件监控需要，不仅限于安全和性能。<br>inotify 可以监视的文件系统事件包括：<br>IN_ACCESS，即文件被访问<br>IN_MODIFY，文件被 write<br>IN_ATTRIB，文件属性被修改，如 chmod、chown、touch 等<br>IN_CLOSE_WRITE，可写文件被 close<br>IN_CLOSE_NOWRITE，不可写文件被 close<br>IN_OPEN，文件被 open<br>IN_MOVED_FROM，文件被移走,如 mv<br>IN_MOVED_TO，文件被移来，如 mv、cp<br>IN_CREATE，创建新文件<br>IN_DELETE，文件被删除，如 rm<br>IN_DELETE_SELF，自删除，即一个可执行文件在执行时删除自己<br>IN_MOVE_SELF，自移动，即一个可执行文件在执行时移动自己<br>IN_UNMOUNT，宿主文件系统被 umount<br>IN_CLOSE，文件被关闭，等同于(IN_CLOSE_WRITE | IN_CLOSE_NOWRITE)<br>IN_MOVE，文件被移动，等同于(IN_MOVED_FROM | IN_MOVED_TO)<br>注：上面所说的文件也包括目录。</p>
+<p>&nbsp;<br>二、为能在shell下使用inotify特性，需要安装inotify-tools<br>1、inotify-tools：The general purpose of this package is to allow inotify’s features to be used from within shell scripts.<br>下载地址：[url]<a href="http://inotify-tools.sourceforge.net/[/url" target="_blank" rel="external">http://inotify-tools.sourceforge.net/[/url</a>]<br>编译安装<br>./configure<br>make<br>make install<br>完成后，注意查看manpage，man inotify 、 man inotifywait</p>
+<p>&nbsp;<br>inotifywait 仅执行阻塞，等待 inotify 事件。您可以监控任何一组文件和目录，或监控整个目录树（目录、子目录、子目录的子目录等等）。在 shell 脚本中使用 inotifywait。<br>inotifywatch 收集关于被监视的文件系统的统计数据，包括每个 inotify 事件发生多少次。<br>2、inotify的系统相关参数：<br>/proc interfaces<br>The following interfaces can be used to limit the amount of kernel memory consumed by inotify:<br>/proc/sys/fs/inotify/max_queued_events<br>The value in this file is used when an application calls inotify_init(2) to set an upper  limit  on  the number  of  events  that  can be queued to the corresponding inotify instance.  Events in excess of this limit are dropped, but an IN_Q_OVERFLOW event is always generated.<br>/proc/sys/fs/inotify/max_user_instances<br>This specifies an upper limit the number of inotify instances that can be created per real user ID.<br>/proc/sys/fs/inotify/max_user_watches<br>This specifies a limit the number of watches that can be associated with each inotify instance.</p>
+<p>&nbsp;<br>3、inotifywait 相关的参数（更多，查看manpage）：<br>inotifywait<br>This command simply blocks for inotify events, making it appropriate for use in shell scripts. It can watch any set of files and directories, and can recursively watch entire directory trees.<br>-m, –monitor<br>Instead  of  exiting  after receiving a single event, execute indefinitely.  The default behaviour is to exit after the first event occurs.<br>-r, –recursive<br>Watch all subdirectories of any directories passed as arguments.  Watches will be set up recursively  to an  unlimited  depth.   Symbolic  links  are  not<br>traversed.  Newly created subdirectories will also be watched.<br>-q, –quiet<br>If specified ce, the program will be less verbose.  Specifically, it will not state when it  has  completed establishing all inotify watches.<br>-e &lt;event&gt;, –event &lt;event&gt;<br>Listen for specific event(s) ly.  The events which can be listened for are listed in the  EVENTS  section.  This option can be specified more than ce.  If omitted, all events are listened for. use“，”separate multi events</p>
+<p>&nbsp;<br>三、使用<br>1.查看是否支持inotify，从kernel 2.6.13开始正式并入内核，RHEL5已经支持。<br>看看是否有 /proc/sys/fs/inotify/目录，以确定内核是否支持inotify<br>[root@RHEL5 Rsync]# ll /proc/sys/fs/inotify<br>total 0<br>-rw-r–r– 1 root root 0 Oct  9 09:36 max_queued_events<br>-rw-r–r– 1 root root 0 Oct  9 09:36 max_user_instances<br>-rw-r–r– 1 root root 0 Oct  9 09:36 max_user_watches<br>2.关于递归：<br>inotifywait<br>This command simply blocks for inotify events, making it appropriate for use in shell scripts. It can watch any set of files and directories, and can recursively watch entire directory trees.</p>
+<p>&nbsp;<br>3.使用：</p>
+<p>#!/bin/sh<br>src=/opt/webmail<br>des=/tmp<br>ip=192.168.7.192<br>/usr/local/bin/inotifywait -mrq –timefmt ‘%d/%m/%y %H:%M’ –format  ‘%T %w%f’<br>-e modify,delete,create,attrib<br>${src}<br>| while read  file<br>do<br>rsync -avz –delete –progress ${src} <a href="mailto:root@${ip}:${des" target="_blank" rel="external">root@${ip}:${des</a>} &amp;&amp;<br>echo “${file} was rsynced”<br>echo “—————————————————————————“<br>done<br>注：<br>当要排出同步某个目录时，为rsync添加–exculde=PATTERN参数，注意，路径是相对路径。详细查看man rsync<br>当要排除都某个目录的事件监控的处理时，为inotifywait添加–exclude或–excludei参数。详细查看man inotifywait<br>另：<br>/usr/local/bin/inotifywait -mrq –timefmt ‘%d/%m/%y %H:%M’ –format  ‘%T %w%f’<br>-e modify,delete,create,attrib<br>${src}<br>上面的命令返回的值类似于：<br>10/03/09 15:31 /wwwpic/1</p>
+<p>这3个返回值做为参数传给read，关于此处，有人是这样写的：<br>inotifywait -mrq -e create,move,delete,modify $SRC | while read D E F;do</p>
+<p>细化了返回值。</p>
+<p>&nbsp;</p>
+<p>&nbsp;<br>说明： 当文件系统发现指定目录下有如上的条件的时候就触发相应的指令，是一种主动告之的而非我用循环比较目录下的文件的异动，该程序在运行时，更改目录内的文件时系统内核会发送一个信号，这个信号会触发运行rsync命令，这时会同步源目录和目标目录。<br>–timefmt：指定输出时的输出格式<br>–format：  ‘%T %w%f’指定输出的格式，上面的输出类似于：12/10/08 06:34 /opt/webmail/dovecot-1.1.2/src/test/1</p>
+<p>&nbsp;<br>小脚本，同步到多台主机：</p>
+<p>使用rsync+inotify配置触发式(实时)远程同步</p>
+<p>使用rsync+inotify配置触发式(实时)远程同步</p>
+<p>2008-11-01 TsengYia#126.com</p>
+<p>################################################################<br>系统环境：RHEL5 [ 2.6.18-8.el5xen ]<br>软件环境：<br>rsync-2.6.8-3.1<br>nfs-utils-1.0.9-16.el5<br>portmap-4.0-65.2.2.1<br>inotify-tools-3.13.tar.gz<br>—— [url]<a href="http://downloads.sourceforge.net/inotify-tools/inotify-tools-3.13.tar.gz?modtime=1199213676&amp;big_mirror=0[/url" target="_blank" rel="external">http://downloads.sourceforge.net/inotify-tools/inotify-tools-3.13.tar.gz?modtime=1199213676&amp;big_mirror=0[/url</a>]</p>
+<p>目标功能：<br>源主机H1: 192.168.1.11/24<br>目标主机H2: 192.168.1.12/24</p>
+<p>将H1主机中的开发数据(/var/devel/目录)，上传同步至H2主机的/backup/devel/h1/目录。——当源数据有文件或目录更新时，即时启动rsync同步进程。[基于安全性考虑，建议只在内部网络中使用]</p>
+<p>################################################################<br>除inotify-tools(需要2.6.13以上内核的inotify功能支持)以外，其他软件均使用RHEL5系统自带的rpm包安装。</p>
+<p>一、配置目标主机H2(发布NFS可写共享)</p>
+<p>shell&gt; mkdir -p /backup/devel/h1/<br>shell&gt; vi /etc/exports<br>/backup/devel/h1    192.168.1.11(rw,no_root_squash)<br>shell&gt; service portmap start<br>shell&gt; service nfs start<br>shell&gt; chkconfig portmap<br>shell&gt; chkconfig nfs</p>
+<p>如有必要，可以结合防火墙规则控制访问权限<br>shell&gt; iptables -I INPUT -p tcp –dport 111 -j DROP<br>shell&gt; iptables -I INPUT -p tcp –dport 111 -s 192.168.1.11 -j ACCEPT<br>shell&gt; iptables -I INPUT -p udp –dport 111 -j DROP<br>shell&gt; iptables -I INPUT -p udp –dport 111 -s 192.168.1.11 -j ACCEPT<br>二、配置源主机H1(上传备份发起端)</p>
+<p>1、安装inotify-tools工具包<br>shell&gt; tar zxvf inotify-tools-3.13.tar.gz -C /usr/src/<br>shell&gt; cd /usr/src/inotify-tools-3.13<br>shell&gt; ./configure<br>shell&gt; make<br>shell&gt; make install<br>—— 可以使用man inotify、man inotifywait、man inotifywatch查看相关手册页。</p>
+<p>2、挂载H2发布的备份目录<br>shell&gt; service portmap start<br>shell&gt; chkconfig portmap<br>shell&gt; mkdir -p /media/h2nfsdir/<br>shell&gt; vi /etc/fstab<br>192.168.0.12:/backup/devel/h1    /media/h2nfsdir    nfs    defaults,noexec    0 0<br>shell&gt; mount /media/h2nfsdir</p>
+<p>3、编写触发同步脚本<br>shell&gt; vi /opt/h1-h2_inosync.sh</p>
+<p>#!/bin/sh<br>SRC=/var/devel/<br>DST=/media/h2nfsdir/<br>INWT=/usr/local/bin/inotifywait<br>RSYNC=/usr/bin/rsync<br>$INWT -mrq -e create,move,delete,modify $SRC | while read D E F ; do<br>$RSYNC -aHqz –delete $SRC $DST<br>done<br>shell&gt; chkmod +x /opt/h1-h2_inosync.sh</p>
+<p>4、每次开机自动运行监控脚本<br>shell&gt; echo “/opt/h1-h2_inosync.sh &amp;” &gt;&gt; /etc/rc.local<br>shell&gt; /opt/h1-h2_inosync.sh &amp;<br>三、测试实时同步<br>在源主机H1上，修改/var/devel/目录中的内容(如增、删、改文件，添加、移除目录等),<br>——同时在目标主机H2上，观察备份目录/backup/devel/h1/中内容的变化。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2012/11/20/linux-e4-b8-8b-e7-9a-84php-e6-9c-a8-e9-a9-ac-e6-9f-a5-e8-af-a2.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Geekwolf">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/wolf.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Geekwolf's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2012/11/20/linux-e4-b8-8b-e7-9a-84php-e6-9c-a8-e9-a9-ac-e6-9f-a5-e8-af-a2.html" itemprop="url">LINUX下的PHP木马查询</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2012-11-20T14:37:06+08:00">
+                2012-11-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/系统安全/" itemprop="url" rel="index">
+                    <span itemprop="name">系统安全</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2012/11/20/linux-e4-b8-8b-e7-9a-84php-e6-9c-a8-e9-a9-ac-e6-9f-a5-e8-af-a2.html" class="leancloud_visitors" data-flag-title="LINUX下的PHP木马查询">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="find-name-“-php”-xargs-egrep-“phpspy-c99sh-milw0rm-eval-gunerpress-eval-base64-decoolcode-spider-bc”-gt-tmp-php-txt"><a href="#find-name-“-php”-xargs-egrep-“phpspy-c99sh-milw0rm-eval-gunerpress-eval-base64-decoolcode-spider-bc”-gt-tmp-php-txt" class="headerlink" title="find ./ -name “*.php” |xargs egrep “phpspy|c99sh|milw0rm|eval(gunerpress|eval(base64_decoolcode|spider_bc”&gt; /tmp/php.txt"></a>find ./ -name “*.php” |xargs egrep “phpspy|c99sh|milw0rm|eval(gunerpress|eval(base64_decoolcode|spider_bc”&gt; /tmp/php.txt</h1><h1 id="grep-r-–include-php-‘-a-z-eval-POST’-gt-tmp-eval-txt"><a href="#grep-r-–include-php-‘-a-z-eval-POST’-gt-tmp-eval-txt" class="headerlink" title="grep -r –include=*.php  ‘[^a-z]eval($_POST’ . &gt; /tmp/eval.txt"></a>grep -r –include=*.php  ‘[^a-z]eval($_POST’ . &gt; /tmp/eval.txt</h1><div># grep -r –include=<em>.php  ‘file_put_contents(.</em>$_POST[.<em>]);’ . &gt; /tmp/file_put_contents.txt</em></div><br><div></div><br><div># find ./ -name “.php” -type f -print0 | xargs -0 egrep “(phpspy|c99sh|milw0rm|eval(gzuncompress(base64_decoolcode|eval(base64_decoolcode|spider_bc|gzinflate)” | awk -F: ‘{print $1}’ | sort | uniq</div><br><div>查找最近一天被修改的PHP文件</div><br><div>#   find -mtime -1 -type f -name <em>.php</em></div><br><div>修改网站的权限</div><br><div># find -type f -name .php -exec chmod 444 {} ;</div><br><div># find ./ -type d -exec chmod 555{} ;</div>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2012/11/17/nginx-rewrite-e5-8f-82-e6-95-b0-e5-92-8c-e4-be-8b-e5-ad-90.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Geekwolf">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/wolf.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Geekwolf's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2012/11/17/nginx-rewrite-e5-8f-82-e6-95-b0-e5-92-8c-e4-be-8b-e5-ad-90.html" itemprop="url">nginx rewrite 参数和例子</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2012-11-17T07:25:24+08:00">
+                2012-11-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux运维/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux运维</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2012/11/17/nginx-rewrite-e5-8f-82-e6-95-b0-e5-92-8c-e4-be-8b-e5-ad-90.html" class="leancloud_visitors" data-flag-title="nginx rewrite 参数和例子">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  8
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>推荐参考地址：<br>Mailing list ARChives 官方讨论区<br><a href="http://marc.info/?l=nginx" target="_blank" rel="external">http://marc.info/?l=nginx</a></p>
+<p>Nginx 常见应用技术指南[Nginx Tips]<br><a href="http://bbs.linuxtone.org/thread-1685-1-1.html" target="_blank" rel="external">http://bbs.linuxtone.org/thread-1685-1-1.html</a></p>
+<p><strong>本日志内容来自互联网和平日使用经验，整理一下方便日后参考。</strong></p>
+<p><strong>正则表达式匹配，其中：</strong></p>
+<div><br><br>1.  <em> ~ 为区分大小写匹配<br>2.  </em> ~<em> 为不区分大小写匹配<br>3.  </em> !~和!~<em>分别为区分大小写不匹配及不区分大小写不匹配<br></em></div><br><strong>文件及目录匹配，其中：</strong><br><div><br><br>1.   -f和!-f用来判断是否存在文件<br>2.  <em> -d和!-d用来判断是否存在目录<br>3.  </em> -e和!-e用来判断是否存在文件或目录<br>4.  <em> -x和!-x用来判断文件是否可执行<br></em></div><br><strong>flag标记有：</strong><br><div><br><br>1.   last 相当于Apache里的[L]标记，表示完成rewrite<br>2.  <em> break 终止匹配, 不再匹配后面的规则<br>3.  </em> redirect 返回302临时重定向 地址栏会显示跳转后的地址<br>4.  <em> permanent 返回301永久重定向 地址栏会显示跳转后的地址<br></em></div><br><strong>一些可用的全局变量有，可以用做条件判断(待补全)</strong><br><div><br><br>1.  $args<br>2.  $content_length<br>3.  $content_type<br>4.  $document_root<br>5.  $document_uri<br>6.  $host<br>7.  $http_user_agent<br>8.  $http_cookie<br>9.  $limit_rate<br>10.  $request_body_file<br>11.  $request_method<br>12.  $remote_addr<br>13.  $remote_port<br>14.  $remote_user<br>15.  $request_filename<br>16.  $request_uri<br>17.  $query_string<br>18.  $scheme<br>19.  $server_protocol<br>20.  $server_addr<br>21.  $server_name<br>22.  $server_port<br>23.  $uri<br></div><br><strong>结合QeePHP的例子</strong><br><div><br><br>1.  if (!-d $request_filename) {<br>2.  rewrite ^/([a-z-A-Z]+)/([a-z-A-Z]+)/?(.)$ /index.php?namespace=user&amp;amp;controller=$1&amp;amp;action=$2&amp;amp;$3 last;<br>3.  rewrite ^/([a-z-A-Z]+)/?$ /index.php?namespace=user&amp;amp;controller=$1 last;<br>4.  break;<br></div><br><strong>多目录转成参数</strong><br>abc.domian.com/sort/2 =&gt; abc.domian.com/index.php?act=sort&amp;name=abc&amp;id=2<br><div><br><br>1.  if ($host ~<em> (.</em>)/.domain/.com) {<br>2.  set $sub_name $1;<br>3.  rewrite ^/sort//(/d+)//?$ /index.php?act=sort&amp;cid=$sub_name&amp;id=$1 last;<br>4.  }<br></div><br><strong>目录对换</strong><br>/123456/xxxx -&gt; /xxxx?id=123456<br><div><br><br>1.  rewrite ^/(/d+)/(.+)/ /$2?id=$1 last;<br></div><br><strong>例如下面设定nginx在用户使用ie的使用重定向到/nginx-ie目录下：</strong><br><div><br><br>1.  if ($http_user_agent ~ MSIE) {<br>2.  rewrite ^(.<em>)$ /nginx-ie/$1 break;<br>3.  }<br></em></div><br><strong>目录自动加“/”</strong><br><div><br><br>1.  if (-d $request_filename){<br>2.  rewrite ^/(.)([^/])$ <a href="http://$host/$1$2/" target="_blank" rel="external">http://$host/$1$2/</a> permanent;<br>3.  }<br></div><br><strong>禁止htaccess</strong><br><div><br><br>1.  location ~//.ht {<br>2.  deny all;<br>3.  }<br></div><br><strong>禁止多个目录</strong><br><div><br><br>1.  location ~ ^/(cron|templates)/ {<br>2.  deny all;<br>3.  break;<br>4.  }<br></div><br><strong>禁止以/data开头的文件</strong><br>可以禁止/data/下多级目录下.log.txt等请求;<br><div><br><br>1.  location ~ ^/data {<br>2.  deny all;<br>3.  }<br></div><br><strong>禁止单个目录</strong><br>不能禁止.log.txt能请求<br><div><br><br>1.  location /searchword/cron/ {<br>2.  deny all;<br>3.  }<br></div><br><strong>禁止单个文件</strong><br><div><br><br>1.  location ~ /data/sql/data.sql {<br>2.  deny all;<br>3.  }<br></div><br><strong>给favicon.ico和robots.txt设置过期时间;</strong><br>这里为favicon.ico为99天,robots.txt为7天并不记录404错误日志<br><div><br><br>1.  location ~(favicon.ico) {<br>2.  log_not_found off;<br>3.  expires 99d;<br>4.  break;<br>5.  }<br>6.7.  location ~(robots.txt) {<br>8.  log_not_found off;<br>9.  expires 7d;<br>10.  break;<br>11.  }<br></div><br><strong>设定某个文件的过期时间;这里为600秒，并不记录访问日志</strong><br><div><br><br>1.  location ^~ /html/scripts/loadhead_1.js {<br>2.  access_log   off;<br>3.  root /opt/lampp/htdocs/web;<br>4.  expires 600;<br>5.  break;<br>6.  }<br></div><br><strong>文件反盗链并设置过期时间</strong><br>这里的return 412 为自定义的http状态码，默认为403，方便找出正确的盗链的请求<br>“rewrite ^/ <a href="http://leech.c1gstudio.com/leech.gif;”显示一张防盗链图片" target="_blank" rel="external">http://leech.c1gstudio.com/leech.gif;”显示一张防盗链图片</a><br>“access_log off;”不记录访问日志，减轻压力<br>“expires 3d”所有文件3天的浏览器缓存<br><div><br><br>1.  location ~<em> ^.+/.(jpg|jpeg|gif|png|swf|rar|zip|css|js)$ {<br>2.  valid_referers none blocked </em>.c1gstudio.com <em>.c1gstudio.net localhost 208.97.167.194;<br>3.  if ($invalid_referer) {<br>4.  rewrite ^/ <a href="http://leech.c1gstudio.com/leech.gif" target="_blank" rel="external">http://leech.c1gstudio.com/leech.gif</a>;<br>5.  return 412;<br>6.  break;<br>7.  }<br>8.  access_log   off;<br>9.  root /opt/lampp/htdocs/web;<br>10.  expires 3d;<br>11.  break;<br>12.  }<br></em></div><br><strong>只充许固定ip访问网站，并加上密码</strong><br><div><br><br>1.  root  /opt/htdocs/www;<br>2.  allow   208.97.167.194;<br>3.  allow   222.33.1.2;<br>4.  allow   231.152.49.4;<br>5.  deny    all;<br>6.  auth_basic “C1G_ADMIN”;<br>7.  auth_basic_user<em>file htpasswd;<br></em></div><br><strong>将多级目录下的文件转成一个文件，增强seo效果</strong><br>/job-123-456-789.html 指向/job/123/456/789.html<br><div><br><br>1.  rewrite ^/job-([0-9]+)-([0-9]+)-([0-9]+)/.html$ /job/$1/$2/jobshow$3.html last;<br></div><br><strong>将根目录下某个文件夹指向2级目录</strong><br>如/<strong>shanghai</strong>job/ 指向 /area/<strong>shanghai</strong>/<br>如果你将last改成permanent，那么浏览器地址栏显是/location/shanghai/<br><div><br><br>1.  rewrite ^/([0-9a-z]+)job/(.)$ /area/$1/$2 last;<br></div><br>上面例子有个问题是访问/shanghai 时将不会匹配<br><div><br><br>1.  rewrite ^/([0-9a-z]+)job$ /area/$1/ last;<br>2.  rewrite ^/([0-9a-z]+)job/(.<em>)$ /area/$1/$2 last;<br></em></div><br>这样/shanghai 也可以访问了，但页面中的相对链接无法使用，<br>如./list_1.html真实地址是/area/shanghia/list_1.html会变成/list_1.html,导至无法访问。<br><br>那我加上自动跳转也是不行咯<br>(-d $request_filename)它有个条件是必需为真实目录，而我的rewrite不是的，所以没有效果<br><div><br><br>1.  if (-d $request_filename){<br>2.  rewrite ^/(.)([^/])$ <a href="http://$host/$1$2/" target="_blank" rel="external">http://$host/$1$2/</a> permanent;<br>3.  }<br></div><br>知道原因后就好办了，让我手动跳转吧<br><div><br><br>1.  rewrite ^/([0-9a-z]+)job$ /$1job/ permanent;<br>2.  rewrite ^/([0-9a-z]+)job/(.<em>)$ /area/$1/$2 last;<br></em></div><br><strong>文件和目录不存在的时候重定向：</strong><br><div><br><br>1.  if (!-e $request_filename) {<br>2.  proxy_pass <a href="http://127.0.0.1" target="_blank" rel="external">http://127.0.0.1</a>;<br>3.  }<br></div><br><strong>域名跳转</strong><br><div><br><br>1.  server<br>2.  {<br>3.  listen       80;<br>4.  server_name  jump.c1gstudio.com;<br>5.  index index.html index.htm index.php;<br>6.  root  /opt/lampp/htdocs/www;<br>7.  rewrite ^/ <a href="http://www.c1gstudio.com/" target="_blank" rel="external">http://www.c1gstudio.com/</a>;<br>8.  access_log  off;<br>9.  }<br></div><br><strong>多域名转向</strong><br><div><br><br>1.  server_name  www.c1gstudio.com www.c1gstudio.net;<br>2.  index index.html index.htm index.php;<br>3.  root  /opt/lampp/htdocs;<br>4.  if ($host ~ “c1gstudio/.net”) {<br>5.  rewrite ^(.) <a href="http://www.c1gstudio.com$1" target="_blank" rel="external">http://www.c1gstudio.com$1</a> permanent;<br>6.  }<br></div><br><strong>三级域名跳转</strong><br><div><br><br>1.  if ($http_host ~<em> “^(.</em>)/.i/.c1gstudio/.com$”) {<br>2.  rewrite ^(.<em>) <a href="http://top.yingjiesheng.com$1" target="_blank" rel="external">http://top.yingjiesheng.com$1</a>;<br>3.  break;<br>4.  }<br></em></div><br><strong>域名镜向</strong><br><div><br><br>1.  server<br>2.  {<br>3.  listen       80;<br>4.  server_name  mirror.c1gstudio.com;<br>5.  index index.html index.htm index.php;<br>6.  root  /opt/lampp/htdocs/www;<br>7.  rewrite ^/(.) <a href="http://www.c1gstudio.com/$1" target="_blank" rel="external">http://www.c1gstudio.com/$1</a> last;<br>8.  access_log  off;<br>9.  }<br></div><br><strong>某个子目录作镜向</strong><br><div><br><br>1.  location ^~ /zhaopinhui {<br>2.  rewrite ^.+ <a href="http://zph.c1gstudio.com/" target="_blank" rel="external">http://zph.c1gstudio.com/</a> last;<br>3.  break;<br>4.  }<br></div><br><strong>discuz ucenter home (uchome) rewrite</strong><br><div><br><br>1.  rewrite ^/(space|network)-(.+)/.html$ /$1.php?rewrite=$2 last;<br>2.  rewrite ^/(space|network)/.html$ /$1.php last;<br>3.  rewrite ^/([0-9]+)$ /space.php?uid=$1 last;<br></div><br><strong>discuz 7 rewrite</strong><br><div><br><br>1.  rewrite ^(.<em>)/archiver/((fid|tid)-[/w/-]+/.html)$ $1/archiver/index.php?$2 last;<br>2.  rewrite ^(.</em>)/forum-([0-9]+)-([0-9]+)/.html$ $1/forumdisplay.php?fid=$2&amp;page=$3 last;<br>3.  rewrite ^(.<em>)/thread-([0-9]+)-([0-9]+)-([0-9]+)/.html$ $1/viewthread.php?tid=$2&amp;extra=page/%3D$4&amp;page=$3 last;<br>4.  rewrite ^(.</em>)/profile-(username|uid)-(.+)/.html$ $1/viewpro.php?$2=$3 last;<br>5.  rewrite ^(.<em>)/space-(username|uid)-(.+)/.html$ $1/space.php?$2=$3 last;<br>6.  rewrite ^(.</em>)/tag-(.+)/.html$ $1/tag.php?name=$2 last;<br></div><br><strong>给discuz某版块单独配置域名</strong><br><div><br><br>1.  server_name  bbs.c1gstudio.com news.c1gstudio.com;<br>2.3.  location = / {<br>4.  if ($http_host ~ news/.c1gstudio.com$) {<br>5.  rewrite ^.+ <a href="http://news.c1gstudio.com/forum-831-1.html" target="_blank" rel="external">http://news.c1gstudio.com/forum-831-1.html</a> last;<br>6.  break;<br>7.  }<br>8.  }<br></div><br><strong>discuz ucenter 头像 rewrite 优化</strong><br><div><br><br>1.  location ^~ /ucenter {<br>2.  location ~ .<em>/.php?$<br>3.  {<br>4.  #fastcgi_pass  unix:/tmp/php-cgi.sock;<br>5.  fastcgi_pass  127.0.0.1:9000;<br>6.  fastcgi_index index.php;<br>7.  include fcgi.conf;<br>8.  }<br>9.10.  location /ucenter/data/avatar {<br>11.  log_not_found off;<br>12.  access_log   off;<br>13.  location ~ /(.</em>)_big/.jpg$ {<br>14.  error_page 404 /ucenter/images/noavatar_big.gif;<br>15.  }<br>16.  location ~ /(.<em>)_middle/.jpg$ {<br>17.  error_page 404 /ucenter/images/noavatar_middle.gif;<br>18.  }<br>19.  location ~ /(.</em>)_small/.jpg$ {<br>20.  error_page 404 /ucenter/images/noavatar_small.gif;<br>21.  }<br>22.  expires 300;<br>23.  break;<br>24.  }<br>25.  }<br></div><br><strong>jspace rewrite</strong><br><div><br><br>1.  location ~ .<em>/.php?$<br>2.  {<br>3.  #fastcgi_pass  unix:/tmp/php-cgi.sock;<br>4.  fastcgi_pass  127.0.0.1:9000;<br>5.  fastcgi_index index.php;<br>6.  include fcgi.conf;<br>7.  }<br>8.9.  location ~</em> ^/index.php/<br>10.  {<br>11.  rewrite ^/index.php/(.*) /index.php?$1 break;<br>12.  fastcgi_pass  127.0.0.1:9000;<br>13.  fastcgi_index index.php;<br>14.  include fcgi.conf;<br>15.  }<br></div>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2012/11/17/cacti-e7-9b-91-e6-8e-a7-e5-b9-b3-e5-8f-b0-e8-bf-81-e7-a7-bb-e5-a4-87-e5-bf-98-e5-8f-8a-e8-bf-90-e8-a1-8ccacti-e7-9a-84php-e7-9b-b8-e5-85-b3-e5-87-bd-e6-95-b0.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Geekwolf">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/wolf.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Geekwolf's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2012/11/17/cacti-e7-9b-91-e6-8e-a7-e5-b9-b3-e5-8f-b0-e8-bf-81-e7-a7-bb-e5-a4-87-e5-bf-98-e5-8f-8a-e8-bf-90-e8-a1-8ccacti-e7-9a-84php-e7-9b-b8-e5-85-b3-e5-87-bd-e6-95-b0.html" itemprop="url">Cacti 监控平台迁移备忘及运行cacti的php相关函数</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2012-11-17T07:21:00+08:00">
+                2012-11-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/系统监控/" itemprop="url" rel="index">
+                    <span itemprop="name">系统监控</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2012/11/17/cacti-e7-9b-91-e6-8e-a7-e5-b9-b3-e5-8f-b0-e8-bf-81-e7-a7-bb-e5-a4-87-e5-bf-98-e5-8f-8a-e8-bf-90-e8-a1-8ccacti-e7-9a-84php-e7-9b-b8-e5-85-b3-e5-87-bd-e6-95-b0.html" class="leancloud_visitors" data-flag-title="Cacti 监控平台迁移备忘及运行cacti的php相关函数">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  2
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>公司用的 Cacti 监控平台已经有些时日了，一直运行很稳定，不过，昨天接到通知要迁移 Cacti 平台到别外的一台新服务器。以初以为直接把 Cacti 的 WEB 文件和数据库同步到新服务器就可以了，在实际操作的过程中发现并不是这样的。</p>
+<p>首先配置好新服务器的LNMP环境，并将原来的 Cacti 的WEB文件和 mysql 同步到新的服务器。考虑到服务器的安全因素，我的环境配置脚本默认是把 PHP 的以下函数禁用的：<br><code>disable_functions = system,exec,shell_exec,passthru,popen,dl</code><br>Cacti 在读取数据和画图的时候需要 exec() shell_exec() popen() 等函数，果然没有开启，可能会出现不能出图的情况。</p>
+<p>如果新的服务器上的文件目录和之前的不一致，需要在引入 sql 之前编辑修改一下路径。不然有可能出现 Cacti 不能正常调用一些脚本的情况。<br><code>vi cacti.sql
+:%s//old/cacti.tcis.me//new/cacti.tcis.me/g</code><br>用vi替换的时候注意一下“/”的转义。</p>
+<p>检查一下 Cacti 中的 settings paths 的选项是否和新的服务器上的实际环境一致</p>
+<p><a href="http://tcis.me/wp-content/uploads/2011/10/cacti_setting_paths.jpg" target="_blank" rel="external"><img src="http://tcis.me/wp-content/uploads/2011/10/cacti_setting_paths.jpg" alt="" title="cacti_setting_paths"></a></p>
+<p>然后把被监控的服务器上的设置改一下，把IP改为新的服务器的<br>`vi /etc/snmp/snmpd.conf</p>
+<h1 id="First-map-the-community-name-“public”-into-a-“security-name”"><a href="#First-map-the-community-name-“public”-into-a-“security-name”" class="headerlink" title="First, map the community name “public” into a “security name”"></a>First, map the community name “public” into a “security name”</h1><h1 id="sec-name-source-community"><a href="#sec-name-source-community" class="headerlink" title="sec.name  source          community"></a>sec.name  source          community</h1><p>com2sec notConfigUser  新的cacti监控服务器的IP  public<br>/etc/init.d/snmpd restart`<br>然后向 iptables 添加一条新的记录，让其允许和新的监控服务器通信</p>
+<p><code>iptables -I INPUT -s 新的cacti监控服务器的IP -p udp --dport 161 -j ACCEPT</code></p>
+<p>最后不要忘记在 crontab 中加定期执行 poller.php<br><code>crontab -e
+*/5 * * * * php /new/cacti.tcis.me/poller.php &amp;gt; /dev/null 2&amp;gt;&amp;amp;1</code><br>这个时候，新的 Cacti 监控就应该可以正常工作了。</p>
+<p>如果你之前安装有监控 Nginx  的脚本，不要忘记让 perl 支持 LWP::UserAgent ，否则 Nginx 的监控部分会出不来图。</p>
+<p>测试是否已经开启支持：<br><code>/new/cacti.tcis.me/get_nginx_clients_status.pl [http://tcis.me/nginx_status](http://tcis.me/nginx_status)</code><br>如提示 no (LWP::UserAgent not found) 就说明了 perl 的确是缺少该组件</p>
+<p>两种方法安装支持，第一种编译花的时间比较长，建议使用第二种：<br>`#方法一：</p>
+<p>#perl -MCPAN -e shell 一直回车，知道出现cpan&gt;  提示符开始。<br>cpan&gt; install LWP::UserAgent7……………………………………<br>……………………………………<br>cpan&gt; exit</p>
+<p>#方法二：（用时比较短）<br>yum installperl-libwww-perl`</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2012/11/09/e9-87-87-e7-94-a8-e5-af-86-e9-92-a5-e6-96-b9-e5-bc-8f-e8-ae-a4-e8-af-81-e7-99-bb-e5-bd-95linux-e7-b3-bb-e7-bb-9f.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Geekwolf">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/wolf.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Geekwolf's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2012/11/09/e9-87-87-e7-94-a8-e5-af-86-e9-92-a5-e6-96-b9-e5-bc-8f-e8-ae-a4-e8-af-81-e7-99-bb-e5-bd-95linux-e7-b3-bb-e7-bb-9f.html" itemprop="url">采用密钥方式认证登录linux系统</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2012-11-09T16:05:47+08:00">
+                2012-11-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux运维/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux运维</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2012/11/09/e9-87-87-e7-94-a8-e5-af-86-e9-92-a5-e6-96-b9-e5-bc-8f-e8-ae-a4-e8-af-81-e7-99-bb-e5-bd-95linux-e7-b3-bb-e7-bb-9f.html" class="leancloud_visitors" data-flag-title="采用密钥方式认证登录linux系统">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  3
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>由于使用密码方式认证，每天会有大量的尝试爆破攻击，很是厌烦！现在改用通过创建密钥对的方式认证；SSH优点是基于成熟的公钥加密体系，所以传输的数据会进行加密，保证数据在传输的时候，不被篡改及泄露，从而提高了系统的安全性。</p>
+<p>一般的linux操作系统中都有默认安装，或者安装时选择安装。</p>
+<p>#rpm –qa |grep ssh 可用此命令查看安装了那个版本</p>
+<p><img src="http://img1.51cto.com/attachment/201211/164139835.png" alt=""></p>
+<p>输入ps –ef|grep ssh 如果只有看到ssh-agent，那么说明ssh-server还没有启动，需要如下命令来启动#/etc/init.d/ssh start</p>
+<p>&nbsp;</p>
+<p>配置文件：/etc/ssh/sshd_config</p>
+<p><strong>修改禁止root用户直接登录</strong><br>将PermitRootLoginPermitRootLogin参数”yes”修改为”no”</p>
+<p><strong>设置基于密钥登录方式</strong><br>将#AuthorizedKeysFile .ssh/authorized_keys的#注释去掉，用于设置用户公钥文件存储位置，系统默认位置在用户目录下的.ssh/authorized_keys(其实就是生成的公钥文件)</p>
+<p><strong>取消密码验证方式</strong></p>
+<p>#PasswordAuthentication yes 的#去掉，并将”yes”改成”no”</p>
+<p>&nbsp;</p>
+<p>SSH登录方式有密码登录和密钥登录，这里详细介绍一下密钥登录。</p>
+<p>服务器每天有不计其数针对SSH的密码猜解，虽然加了密码错误三次后禁止IP的denyhosts模块设置，但是实际应用仍然不是很完美，索性将服务器认证方式换成密钥认证了，就是不能再用密码登录，除非有密钥。</p>
+<p>这里说两种密钥生成的方法，一种是命令行生成，一种是用工具来生成（如securecrt）</p>
+<p>1 命令行生成<br>假设我们为root用户生成KEY，在root下执行下面的命令：</p>
+<h1 id="ssh-keygen-t-rsa"><a href="#ssh-keygen-t-rsa" class="headerlink" title="ssh-keygen -t rsa"></a>ssh-keygen -t rsa</h1><p>Generating public/private rsa key pair.</p>
+<p>Enter file in which to save the key (/root/.ssh/id_rsa): //密钥保存的路径</p>
+<p>Created directory ‘/root/.ssh’. //注意:.ssh目录为隐藏目录</p>
+<p>Enter passphrase (empty for no passphrase): //输入密钥密码,可不设置，设了就是密钥加密码的登录方式</p>
+<p>Enter same passphrase again:</p>
+<p>Your identification has been saved in /home/forever/.ssh/id_rsa. //私钥密码保存径</p>
+<p>Your public key has been saved in /home/forever/.ssh/id_rsa.pub. //公钥密码保存路径</p>
+<p>The key fingerprint is:</p>
+<p>f1:80:a6:95:5d:43:1b:96:21:e2:f1:8c:7b:ca:95:e8 forever@bjf 密码指纹</p>
+<p>设置后在/root/.ssh/下会生成一个公钥文件跟一个私钥文件</p>
+<p>2 secureCRT生成</p>
+<p><img src="http://img1.51cto.com/attachment/201211/165300377.png" alt=""></p>
+<p>选择RSA密钥类型</p>
+<p><img src="http://img1.51cto.com/attachment/201211/164210411.png" alt=""></p>
+<p>通行短语即密钥密钥，可不填，注释就是备注下你是谁</p>
+<p><img src="http://img1.51cto.com/attachment/201211/164217974.png" alt=""></p>
+<p>选择OpenSSH密钥格式，点击完成即可生成私钥公钥文件</p>
+<p><img src="http://img1.51cto.com/attachment/201211/164225842.png" alt=""></p>
+<p>密钥生成后，需在服务端与客户端做设置</p>
+<p>服务端：</p>
+<p>把公钥文件的内容复制到/root/.ssh/authorized_keys</p>
+<p>或重命名mv id.rsa.pub authorized_keys都行</p>
+<p>客户端：</p>
+<p>然后把私有密钥文件下载到本机，用secureCRT连接会话，选择密钥登录，并选择其私有密钥文件，用root用户即可登录，若设置了密钥密码，就还需要输入密码才能登录。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+  </section>
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/9/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><span class="page-number current">10</span><a class="page-number" href="/page/11/">11</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><a class="extend next" rel="next" href="/page/11/"><i class="fa fa-angle-right"></i></a>
+  </nav>
+
+
+
+          </div>
+          
+
+
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/wolf.jpeg"
+               alt="Geekwolf" />
+          <p class="site-author-name" itemprop="name">Geekwolf</p>
+           
+              <p class="site-description motion-element" itemprop="description">DevOps | Docker | K8S | MySQL | 运维</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">167</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">105</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/geekwolf" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                    
+                      GitHub
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/geekwolf" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                    
+                      Weibo
+                    
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2012 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Geekwolf</span>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  
+    <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('-1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("qms5kJ0y2CItrIVFivKxxPsR-gzGzoHsz", "Cn3w20futtphxpaDSP5tHjzy");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

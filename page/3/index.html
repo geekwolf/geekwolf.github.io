@@ -1,0 +1,3053 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Geekwolf,DevOps,Docker,k8s,MySQL,PaaS" />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Geekwolf's Blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="DevOps | Docker | K8S | MySQL | 运维">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Geekwolf&#39;s Blog">
+<meta property="og:url" content="http://www.simlinux.com/page/3/index.html">
+<meta property="og:site_name" content="Geekwolf&#39;s Blog">
+<meta property="og:description" content="DevOps | Docker | K8S | MySQL | 运维">
+<meta property="og:locale" content="zh-Hans">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Geekwolf&#39;s Blog">
+<meta name="twitter:description" content="DevOps | Docker | K8S | MySQL | 运维">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.simlinux.com/page/3/"/>
+
+
+
+
+
+  <title>Geekwolf's Blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="//s13.cnzz.com/z_stat.php?id=1264375041&web_id=1264375041" language="JavaScript"></script>
+  </div>
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left 
+   page-home 
+ ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Geekwolf's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Quick notes</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />
+            
+            站点地图
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+  <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2016/01/06/node5-1-e4-bd-bf-e7-94-a8npm-e5-ae-89-e8-a3-85-e4-be-9d-e8-b5-96-e6-97-b6-e6-8f-90-e7-a4-ba-nodenanv8-requires-a-c11-compiler.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Geekwolf">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/wolf.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Geekwolf's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/01/06/node5-1-e4-bd-bf-e7-94-a8npm-e5-ae-89-e8-a3-85-e4-be-9d-e8-b5-96-e6-97-b6-e6-8f-90-e7-a4-ba-nodenanv8-requires-a-c11-compiler.html" itemprop="url">node5.1使用npm安装依赖时提示  node/NAN/v8 requires a C++11 compiler</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-01-06T16:26:05+08:00">
+                2016-01-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux运维/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux运维</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2016/01/06/node5-1-e4-bd-bf-e7-94-a8npm-e5-ae-89-e8-a3-85-e4-be-9d-e8-b5-96-e6-97-b6-e6-8f-90-e7-a4-ba-nodenanv8-requires-a-c11-compiler.html" class="leancloud_visitors" data-flag-title="node5.1使用npm安装依赖时提示  node/NAN/v8 requires a C++11 compiler">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  2
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><strong>问题</strong>：Centos6.5 x64环境node5.1使用npm安装依赖时提示 requires a C++11 compiler错误</p>
+<p><pre class="lang:php decode:true">[root@ front_end_v3]# cnpm install<br>npm WARN engine jest-cli@0.4.19: wanted: {“node”:”0.8.x || 0.10.x”} (current: {“node”:”5.1.0”,”npm”:”2.13.5”})<br>npm WARN peerDependencies The peer dependency file-loader@* included from url-loader will no<br>npm WARN peerDependencies longer be automatically installed to fulfill the peerDependency<br>npm WARN peerDependencies in npm 3+. Your application will need to depend on it explicitly.<br>npm WARN optional dep failed, continuing fsevents@1.0.6<br>npm WARN optional dep failed, continuing fsevents@1.0.6<br>npm WARN deprecated lodash@1.0.2: lodash@&lt;2.0.0 is no longer maintained. Upgrade to lodash@^3.0.0<br>npm WARN deprecated lodash@2.4.2: lodash@&lt;3.0.0 is no longer maintained. Upgrade to lodash@^3.0.0</pre></p>
+<p>&gt; contextify@0.1.15 install /wwwroot/front_end_v3/node_modules/jest-cli/node_modules/jsdom/node_modules/contextify<br>&gt; node-gyp rebuild</p>
+<p>make: Entering directory `/wwwroot/front_end_v3/node_modules/jest-cli/node_modules/jsdom/node_modules/contextify/build’<br>  CXX(target) Release/obj.target/contextify/src/contextify.o<br>In file included from ../src/contextify.cc:3:<br>../node_modules/nan/nan.h:41:3: error: #error This version of node/NAN/v8 requires a C++11 compiler<br>In file included from /root/.node-gyp/5.1.0/src/node.h:42,<br>                 from ../src/contextify.cc:1<br><strong>解决方法:</strong></p>
+<p>由于node4.0升级了v8引擎,编译时需要gcc4.8以上版本,Centos6自带的gcc为gcc-4.4.7,<span style="color: #333333;">不支持编译所需的C++11标准,所以只好升级gcc(devtoolsset-3 -&gt; gcc-4.9)（直接升级到最新）</span></p>
+<p><pre class="lang:php decode:true">rpm -ivh <a href="https://www.softwarecollections.org/en/scls/rhscl/devtoolset-3/epel-6-x86_64/download/rhscl-devtoolset-3-epel-6-x86_64.noarch.rpm" target="_blank" rel="external">https://www.softwarecollections.org/en/scls/rhscl/devtoolset-3/epel-6-x86_64/download/rhscl-devtoolset-3-epel-6-x86_64.noarch.rpm</a><br>yum install devtoolset-3-gcc-c++<br>临时使用最新版gcc：<br>scl enable devtoolset-3 bash<br>系统默认使用gcc-4.9<br>echo “source /opt/rh/devtoolset-3/enable” &gt;&gt;/etc/profile</pre><br>&nbsp;</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2015/12/14/e8-ae-b0-e4-b8-80-e6-ac-a1web-e6-9c-8d-e5-8a-a1-e5-99-a8lstat-e7-b3-bb-e7-bb-9f-e8-b0-83-e7-94-a8-e4-b8-a5-e9-87-8d-e6-95-85-e9-9a-9c-e5-88-86-e6-9e-90.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Geekwolf">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/wolf.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Geekwolf's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2015/12/14/e8-ae-b0-e4-b8-80-e6-ac-a1web-e6-9c-8d-e5-8a-a1-e5-99-a8lstat-e7-b3-bb-e7-bb-9f-e8-b0-83-e7-94-a8-e4-b8-a5-e9-87-8d-e6-95-85-e9-9a-9c-e5-88-86-e6-9e-90.html" itemprop="url"> 记一次Web服务器lstat系统调用严重故障分析</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-12-14T14:58:07+08:00">
+                2015-12-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux运维/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux运维</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2015/12/14/e8-ae-b0-e4-b8-80-e6-ac-a1web-e6-9c-8d-e5-8a-a1-e5-99-a8lstat-e7-b3-bb-e7-bb-9f-e8-b0-83-e7-94-a8-e4-b8-a5-e9-87-8d-e6-95-85-e9-9a-9c-e5-88-86-e6-9e-90.html" class="leancloud_visitors" data-flag-title=" 记一次Web服务器lstat系统调用严重故障分析">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  11
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;先看下系统环境<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Centos6.5 x64<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Tengine-2.1.0<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PHP-5.5.30<br>&nbsp;&nbsp;&nbsp;&nbsp;随着业务流量增加,根据监控发现系统%sys的CPU占用率一度超过40%~50%(业务高峰期更为严重),<br>由于系统跑的是PHP,Nginx服务没有其它额外服务,PHP又容易成为系统的瓶颈，故使用strace跟踪了php-fpm进程的调用,如图:</p>
+<h3 id="看现象"><a href="#看现象" class="headerlink" title="看现象"></a>看现象</h3><p>通过top命令查看实时状态,%sys内核态CPU占比非常高,负载较高</p>
+<p><img src="http://www.simlinux.com/wp-content/uploads/2015/12/te.jpg" alt=""></p>
+<p>通过strace跟踪php-fpm进程运行时的系统调用 strace -c -p $(pgrep -n php-fpm)<img src="http://www.simlinux.com/wp-content/uploads/2015/12/lstat.jpg" alt=""></p>
+<p>lstat调用到底干什么的呢？<a href="http://www.simlinux.com/wp-content/uploads/2015/12/manlstat.jpg"><img src="http://www.simlinux.com/wp-content/uploads/2015/12/manlstat.jpg" alt="manlstat"></a><br><a href="http://www.simlinux.com/wp-content/uploads/2015/12/manlstat.jpg"><img src="http://www.simlinux.com/wp-content/uploads/2015/12/manlstat-1024x400.jpg" alt="manlstat"></a><a href="http://www.simlinux.com/wp-content/uploads/2015/12/te.jpg"><img src="http://www.simlinux.com/wp-content/uploads/2015/12/te.jpg" alt="te"></a></p>
+<h3 id="分析问题"><a href="#分析问题" class="headerlink" title="分析问题"></a>分析问题</h3><p>根据上面的现象可以看到lstat调用占用绝大部份的内核态CPU时间，可以通过strace跟踪php-fpm详细的lstat调用规律<br>strace  -o strace.out -r -s 256 $(pgrep -n php-fpm)</p>
+<p><pre class="lang:php decode:true">     0.000051 getcwd(“/data/wwwroot/run/platv3/public”, 4096) = 43<br>     0.000037 lstat(“/data/wwwroot/run/platv3/public/../application/config/production/frontend_config.php”, 0x7fffbe160260) = -1 ENOENT (No such file or directory)<br>     0.000055 lstat(“/data/wwwroot/run/platv3/public/../application/config/production”, {st_mode=S_IFDIR|0775, st_size=4096, …}) = 0<br>     0.000058 lstat(“/data/wwwroot/run/platv3/public/../application/config”, {st_mode=S_IFDIR|0775, st_size=4096, …}) = 0<br>     0.000054 lstat(“/data/wwwroot/run/platv3/public/../application”, {st_mode=S_IFDIR|0775, st_size=4096, …}) = 0<br>     0.000052 lstat(“/data/wwwroot/run/platv3/public”, {st_mode=S_IFDIR|0775, st_size=4096, …}) = 0<br>     0.000050 lstat(“/data/wwwroot/run/platv3”, {st_mode=S_IFDIR|0755, st_size=4096, …}) = 0<br>     0.000058 lstat(“/data/wwwroot/run”, {st_mode=S_IFDIR|0755, st_size=4096, …}) = 0<br>     0.000046 lstat(“/data/wwwroot”, {st_mode=S_IFDIR|0755, st_size=4096, …}) = 0<br>     0.000043 lstat(“/data”, {st_mode=S_IFDIR|0755, st_size=4096, …}) = 0<br>     0.000045 lstat(“/data/wwwroot/run/platv3/application/config/production/frontend_config.php”, 0x7fffbe160270) = -1 ENOENT (No such file or directory)<br>     0.000050 readlink(“/data/wwwroot/run/platv3/application/config/production/frontend_config.php”, 0x7fffbe162410, 4095) = -1 ENOENT (No such file or directory)<br>     0.000077 lstat(“/data/wwwroot/run/platv3/application/config/production”, {st_mode=S_IFDIR|0775, st_size=4096, …}) = 0<br>     0.000059 lstat(“/data/wwwroot/run/platv3/application/config”, {st_mode=S_IFDIR|0775, st_size=4096, …}) = 0<br>     0.000052 lstat(“/data/wwwroot/run/platv3/application”, {st_mode=S_IFDIR|0775, st_size=4096, …}) = 0<br>     0.000050 lstat(“/data/wwwroot/run/platv3”, {st_mode=S_IFDIR|0755, st_size=4096, …}) = 0<br>     0.000047 lstat(“/data/wwwroot/run”, {st_mode=S_IFDIR|0755, st_size=4096, …}) = 0<br>     0.000070 lstat(“/data/wwwroot”, {st_mode=S_IFDIR|0755, st_size=4096, …}) = 0<br>     0.000046 lstat(“/data”, {st_mode=S_IFDIR|0755, st_size=4096, …}) = 0<br>     0.000046 lstat(“/data/wwwroot/run”, {st_mode=S_IFDIR|0755, st_size=4096, …}) = 0<br>     0.000047 lstat(“/data/wwwroot”, {st_mode=S_IFDIR|0755, st_size=4096, …}) = 0<br>     0.000044 lstat(“/data”, {st_mode=S_IFDIR|0755, st_size=4096, …}) = 0<br>     0.000045 access(“../application/config/production/frontend_config.php”, F_OK) = -1 ENOENT (No such file or directory)<br>     0.000051 getcwd(“/data/wwwroot/run/platv3/public”, 4096) = 43<br>     0.000038 getcwd(“/data/wwwroot/run/platv3/public”, 4096) = 43<br>     0.000036 lstat(“/data/wwwroot/run/platv3/public/../application/config/frontend_config.php”, {st_mode=S_IFREG|0775, st_size=1556, …}) = 0<br>     0.000069 lstat(“/data/wwwroot/run/platv3/public/../application/config”, {st_mode=S_IFDIR|0775, st_size=4096, …}) = 0<br>     0.000057 lstat(“/data/wwwroot/run/platv3/public/../application”, {st_mode=S_IFDIR|0775, st_size=4096, …}) = 0<br>     0.000053 lstat(“/data/wwwroot/run/platv3/public”, {st_mode=S_IFDIR|0775, st_size=4096, …}) = 0<br>     0.000052 lstat(“/data/wwwroot/run/platv3”, {st_mode=S_IFDIR|0755, st_size=4096, …}) = 0<br>     0.000049 lstat(“/data/wwwroot/run”, {st_mode=S_IFDIR|0755, st_size=4096, …}) = 0<br>     0.000075 lstat(“/data/wwwroot”, {st_mode=S_IFDIR|0755, st_size=4096, …}) = 0<br>     0.000045 lstat(“/data”, {st_mode=S_IFDIR|0755, st_size=4096, …}) = 0<br>     0.000046 lstat(“/data/wwwroot/run/platv3/application/config/frontend_config.php”, {stG|0775, st_size=9882, …}) = 0<br>     0.000056 lstat(“/data/wwwroot/run/platv3/application/libraries”, {st_mode=S_IFDIR|0775, st_size=4096, …}) = 0<br>     0.000052 lstat(“/data/wwwroot/run/platv3/application”, {st_mode=S_IFDIR|0775, st_size=4096, …}) = 0<br>     0.000049 lstat(“/data/wwwroot/run/platv3”, {st_mode=S_IFDIR|0755, st_size=4096, …}) = 0<br>     0.000048 lstat(“/data/wwwroot/run”, {st_mode=S_IFDIR|0755, st_size=4096, …}) = 0<br>     0.000045 lstat(“/data/wwwroot”, {st_mode=S_IFDIR|0755, st_size=4096, …}) = 0<br>     0.000043 lstat(“/data”, {st_mode=S_IFDIR|0755, st_size=4096, …}) = 0<br>     0.000046 lstat(“/data/wwwroot/run”, {st_mode=S_IFDIR|0755, st_size=4096, …}) = 0<br>     0.000046 lstat(“/data/wwwroot”, {st_mode=S_IFDIR|0755, st_size=4096, …}) = 0<br>     0.000043 lstat(“/data”, {st_mode=S_IFDIR|0755, st_size=4096, …}) = 0<br>     0.000111 access(“../application/libraries/X_Session.php”, F_OK) = 0<br>     0.000071 getcwd(“/data/wwwroot/run/platv3/public”, 4096) = 43<br>     0.000043 lstat(“/data/wwwroot/run/platv3/system/libraries/Session.php”, {st_mode=S_IFREG|0775, st_size=19266, …}) = 0<br>     0.000060 lstat(“/data/wwwroot/run/platv3/system/libraries”, {st_mode=S_IFDIR|0775, st_size=4096, …}) = 0<br>     0.000051 lstat(“/data/wwwroot/run/platv3/system”, {st_mode=S_IFDIR|0775, st_size=4096, …}) = 0<br>     0.000050 lstat(“/data/wwwroot/run/platv3”, {st_mode=S_IFDIR|0755, st_size=4096, …}) = 0<br>     0.000049 lstat(“/data/wwwroot/run”, {st_mode=S_IFDIR|0755, st_size=4096, …}) = 0<br>     0.000055 lstat(“/data/wwwroot”, {st_mode=S_IFDIR|0755, st_size=4096, …}) = 0<br>     0.000045 lstat(“/data”, {st_mode=S_IFDIR|0755, st_size=4096, …}) = 0<br>     0.000045 lstat(“/data/wwwroot/run/platv3/system/libraries/Session.php”, {st_mode=S_IFREG|0775, st_size=19266, …}) = 0<br>     0.000055 lstat(“/data/wwwroot/run/platv3/system/libraries”, {st_mode=S_IFDIR|0775, st_size=4096, …}) = 0<br>     0.000053 lstat(“/data/wwwroot/run/platv3/system”, {st_mode=S_IFDIR|0775, st_size=4096, …}) = 0<br>     0.000052 lstat(“/data/wwwroot/run/platv3”, {st_mode=S_IFDIR|0755, st_size=4096, …}) = 0<br>     0.000053 lstat(“/data/wwwroot/run”, {st_mode=S_IFDIR|0755, st_size=4096, …}) = 0<br>     0.000047 lstat(“/data/wwwroot”, {st_mode=S_IFDIR|0755, st_size=4096, …}) = 0<br>     0.000051 lstat(“/data”, {st_mode=S_IFDIR|0755, st_size=4096, …}) = 0<br>     0.000047 lstat(“/data/wwwroot/run/platv3/public”, {st_mode=S_IFDIR|0775, st_size=4096, …}) = 0<br>     0.000058 lstat(“/data/wwwroot/run/platv3”, {st_mode=S_IFDIR|0755, st_size=4096, …}) = 0<br>     0.000114 lstat(“/data/wwwroot/run”, {st_mode=S_IFDIR|0755, st_size=4096, …}) = 0<br>     0.000048 lstat(“/data/wwwroot”, {st_mode=S_IFDIR|0755, st_size=4096, …}) = 0<br>     0.000043 lstat(“/data”, {st_mode=S_IFDIR|0755, st_size=4096, …}) = 0<br>     0.000046 lstat(“/data/wwwroot/run/platv3/system/libraries/Session.php”, {st_mode=S_IFREG|0775, st_size=19266, …}) = 0<br>     0.000055 lstat(“/data/wwwroot/run/platv3/system/libraries”, {st_mode=S_IFDIR|0775, st_size=4096, …}) = 0<br>     0.000052 lstat(“/data/wwwroot/run/platv3/system”, {st_mode=S_IFDIR|0775, st_size=4096, …}) = 0<br>     0.000050 lstat(“/data/wwwroot/run/platv3”, {st_mode=S_IFDIR|0755, st_size=4096, …}) = 0<br>     0.000061 lstat(“/data/wwwroot/run”, {st_mode=S_IFDIR|0755, st_size=4096, …}) = 0<br>     0.000051 lstat(“/data/wwwroot”, {st_mode=S_IFDIR|0755, st_size=4096, …}) = 0<br>     0.000044 lstat(“/data”, {st_mode=S_IFDIR|0755, st_size=4096, …}) = 0<br>     0.000045 lstat(“/data/wwwroot/run/platv3/system/libraries/Session.php”, {st_mode=S_IFREG|0775, st_size=19266, …}) = 0<br>     0.000055 lstat(“/data/wwwroot/run/platv3/system/libraries”, {st_mode=S_IFDIR|0775, st_size=4096, …}) = 0<br>     0.000053 lstat(“/data/wwwroot/run/platv3/system”, {st_mode=S_IFDIR|0775, st_size=4096, …}) = 0<br>     0.000049 lstat(“/data/wwwroot/run/platv3”, {st_mode=S_IFDIR|0755, st_size=4096, …}) = 0<br>     0.000050 lstat(“/data/wwwroot/run”, {st_mode=S_IFDIR|0755, st_size=4096, …}) = 0<br>     0.000046 lstat(“/data/wwwroot”, {st_mode=S_IFDIR|0755, st_size=4096, …}) = 0<br>     0.000045 lstat(“/data”, {st_mode=S_IFDIR|0755, st_size=4096, …}) = 0<br>     0.000045 lstat(“/data/wwwroot/run”, {st_mode=S_IFDIR|0755, st_size=4096, …}) = 0<br>     0.000120 lstat(“/data/wwwroot”, {st_mode=S_IFDIR|0755, st_size=4096, …}) = 0<br>     0.000055 lstat(“/data”, {st_mode=S_IFDIR|0755, st_size=4096, …}) = 0</pre><br>&nbsp;&nbsp;&nbsp;&nbsp;由上面的信息不难看到程序在使用include,require,require_once,include_once,fopen,gzopen等开启了open_basedir之后,lstat调用会递归访问的文件目录查看文件位置限制，文件在open_basedir指定的目录以外时将拒绝打开,所有符号链接也会被解析无法避免此限制 ,这样就导致了lstat()调用比不开启open_basedir调用频率高很多;另外include,require,require_once,include_once在包含相对路径时,如果代码中存在大量的这样的语句,每次都从include_path中查找相应的文件,也会造成性能问题,所以通常用 realpath_cache_size 和realpath_cache_ttl来对文件的realpath进行缓存,但是开启了open_basedir之后,这个缓存是失效的;查看了官方的bug：<a href="https://bugs.php.net/bug.php?id=52312" target="_blank" rel="external">https://bugs.php.net/bug.php?id=52312</a> 有记录并没有修复,估计是考虑到安全问题</p>
+<h3 id="验证问题"><a href="#验证问题" class="headerlink" title="验证问题"></a>验证问题</h3><p>大概了解了问题原因之后,对症下药来做测试,按三种情况测试下性能：<br>1.开启open_basedir</p>
+<p><pre class="lang:php decode:true">; Disable PHP’s open_basedir directive so that the realpath cache won’t be<br>; disabled.<br>; Remember, turbo_realpath will set this option later to the<br>; realpath_cache_basedir value.<br>open_basedir = “/data/wwwroot/run/:/tmp/“</pre><br>2.使用realpath_turbo进行优化,开启open_basedir时,依然可以使用<span style="color: #333333;">realpath cache;</span><br>安装realpath_turbo扩展<a href="https://github.com/Whissi/realpath_turbo,修改php.ini" target="_blank" rel="external">https://github.com/Whissi/realpath_turbo,修改php.ini</a></p>
+<p><pre class="lang:php decode:true">; you have to load the extension first<br>extension=turbo_realpath.so</pre></p>
+<p>; realpath_turbo security mode<br>; Possible values:<br>;   0 - Ignore potential security issues<br>;   1 - Disable dangerous PHP functions (link,symlink)<br>realpath_cache_security = 1</p>
+<p>; Set realpath_cache_basedir to whatever you want to set open_basedir to<br>realpath_cache_basedir = “/data/wwwroot/run/:/tmp/“</p>
+<p>; Disable PHP’s open_basedir directive so that the realpath cache won’t be<br>; disabled.<br>; Remember, turbo_realpath will set this option later to the<br>; realpath_cache_basedir value.<br>open_basedir = “”</p>
+<p>realpath_cache_size = 20m<br>; Duration of time, in seconds for which to cache realpath information for a given<br>; file or directory. For systems with rarely changing files, consider increasing this<br>; value.<br>; <a href="http://php.net/realpath-cache-ttl" target="_blank" rel="external">http://php.net/realpath-cache-ttl</a><br>realpath_cache_ttl = 43200<br><strong>注意事项</strong>：使用realpath_turbo时,要关闭创建和操作符号链接的函数，否则会绕过 open_basedir安全限制,但依然不推荐在多虚拟主机环境使用<br>3.关闭open_basedir,增加realpath缓存</p>
+<p><pre class="lang:php decode:true">realpath_cache_size = 20m<br>; Duration of time, in seconds for which to cache realpath information for a given<br>; file or directory. For systems with rarely changing files, consider increasing this<br>; value.<br>; <a href="http://php.net/realpath-cache-ttl" target="_blank" rel="external">http://php.net/realpath-cache-ttl</a><br>realpath_cache_ttl = 43200</pre><br>写脚本分别采集三种环境下系统调用占CPU时间百分比(采集半小时)</p>
+<p><pre class="lang:python decode:true">#<em>_</em> coding:utf-8 <em>_</em><br>import time<br>import psutil<br>import os<br>end=1<br>f = open(‘openbasedir.log’,mode=’w’)<br>f.write(“%s\t\t%s\t\t\t%s\t\t%s\t\t%s” % (‘id’,’time’,’sys_percent’,’hi’,’si’) + “\n”)<br>while end &lt;= 1800:<br>    nowtime=time.strftime(“%Y-%m-%d %H:%M:%S”,time.localtime(time.time()))<br>    ps = psutil.cpu_times_percent(interval=1)<br>    data=”%s\t\t%s\t\t%s\t\t%s\t\t%s” % (end,nowtime,ps.system,ps.irq,ps.softirq)<br>    f.write(data+os.linesep)<br>    end +=1</pre><br>最终性能对比结果如图(横轴为采样id(s),纵轴为%sys占CPU时间比):</p>
+<p><a href="http://www.simlinux.com/wp-content/uploads/2015/12/tongji.jpg"><img src="http://www.simlinux.com/wp-content/uploads/2015/12/tongji.jpg" alt="tongji"></a></p>
+<h3 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h3><p>&nbsp;&nbsp;为了性能暂时关闭了open_basedir参数,开启realpath cache缓存,代码尽量少用include,require,include_once,require_once等</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2015/08/18/e4-bd-bf-e7-94-a8phantomjs-e7-bd-91-e9-a1-b5-e6-88-aa-e5-9b-be-e5-ad-97-e4-bd-93-e6-98-be-e7-a4-ba-e9-97-ae-e9-a2-98.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Geekwolf">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/wolf.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Geekwolf's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2015/08/18/e4-bd-bf-e7-94-a8phantomjs-e7-bd-91-e9-a1-b5-e6-88-aa-e5-9b-be-e5-ad-97-e4-bd-93-e6-98-be-e7-a4-ba-e9-97-ae-e9-a2-98.html" itemprop="url">使用PhantomJS网页截图字体显示问题</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-08-18T16:42:15+08:00">
+                2015-08-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux运维/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux运维</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2015/08/18/e4-bd-bf-e7-94-a8phantomjs-e7-bd-91-e9-a1-b5-e6-88-aa-e5-9b-be-e5-ad-97-e4-bd-93-e6-98-be-e7-a4-ba-e9-97-ae-e9-a2-98.html" class="leancloud_visitors" data-flag-title="使用PhantomJS网页截图字体显示问题">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><span style="color: #000000;">        PhantomJS(</span><a href="http://phantomjs.org/" target="_blank" rel="external">http://phantomjs.org</a><span style="color: #000000;">)是一个无界面的Webkit内核浏览器，内置JavaScript API,对DOM操作,CSS选择器,JSON,Canvas,SVG有非常快和原生的支持，可以用于页面自动化测试，网络监测，网页截图等,下载地址<a href="http://npm.taobao.org/mirrors/phantomjs" target="_blank" rel="external">http://npm.taobao.org/mirrors/phantomjs</a></span><br>在使用phantomjs截图过程中，发现没有文字信息，由于项目使用了微软雅黑，解决方法如下：</p>
+<p><pre class="lang:php decode:true ">  yum -y install bitmap-fonts bitmap-fonts-cjk mkfontscale fontconfig<br>  mkdir /usr/share/fonts/win/<br>  下载微软雅黑字体:<br>  wget <a href="https://nipao.googlecode.com/files/msyh.ttf" target="_blank" rel="external">https://nipao.googlecode.com/files/msyh.ttf</a> -O /usr/share/fonts/win/msyh.ttf<br>  建立字体索引，更新字体缓存:<br>  cd /usr/share/fonts/win/<br>  mkfontscale<br>  mkfontdir<br>  fc-cache</pre><br>&nbsp;</p>
+<p>&nbsp;</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2015/06/19/e5-9f-ba-e4-ba-8ejenkins-e5-8a-a8-e6-80-81-e5-8c-96-e5-8f-82-e6-95-b0-e5-8c-96-e6-9e-84-e5-bb-ba.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Geekwolf">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/wolf.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Geekwolf's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2015/06/19/e5-9f-ba-e4-ba-8ejenkins-e5-8a-a8-e6-80-81-e5-8c-96-e5-8f-82-e6-95-b0-e5-8c-96-e6-9e-84-e5-bb-ba.html" itemprop="url">基于jenkins动态化参数化构建</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-06-19T16:01:51+08:00">
+                2015-06-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux运维/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux运维</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2015/06/19/e5-9f-ba-e4-ba-8ejenkins-e5-8a-a8-e6-80-81-e5-8c-96-e5-8f-82-e6-95-b0-e5-8c-96-e6-9e-84-e5-bb-ba.html" class="leancloud_visitors" data-flag-title="基于jenkins动态化参数化构建">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <div style="color: #000000;">   由于上一篇是通过触发git操作来实现自动化构建和发布，回滚和发布不太可控，可以采用动态参数获取发布分支的方式方便发布和回滚</div><br><div style="color: #000000;"><strong>目标：</strong>选择合适版本发布到合适的服务器环境（目前分支策略是，提测时创建发布分支release-<code>date  +%Y%m%d-%H%M%S</code>）</div><br><div style="color: #000000;"></div><br><div style="color: #000000;"><strong>1.安装插件</strong><a href="https://wiki.jenkins-ci.org/display/JENKINS/Dynamic+Parameter+Plug-in" target="_blank" rel="external"><span style="font-family: 'Microsoft Yahei';">Dynamic Parameter Plug-in</span></a></div><br><div style="color: #000000;"></div><br><div style="color: #000000;"><strong>2.设置 参数化构建过程</strong></div><br><div style="color: #000000;"><a href="http://www.simlinux.com/wp-content/uploads/2015/06/11.png"><img src="http://www.simlinux.com/wp-content/uploads/2015/06/11.png" alt="1"></a><img src="http://www.simlinux.com/wp-content/uploads/2015/06/11.png" alt=""></div><br><div style="color: #000000;"></div><br><div style="color: #000000;"><br><div><strong>3.使用groovy脚本动态获取发布分支</strong></div><br><div></div><br><div><br><pre class="lang:php decode:true ">def ver_keys = [ ‘bash’, ‘-c’, ‘cd /gitrepos/project1; git pull&gt;/dev/null; git branch -a|grep remotes|grep release|cut -d “/“ -f3|sort -r |head -10 ‘ ]<br>ver_keys.execute().text.tokenize(‘\n’)</pre><br>其他方式参考：<a href="http://birdinroom.blog.51cto.com/7740375/1404930" target="_blank" rel="external">http://birdinroom.blog.51cto.com/7740375/1404930</a><br><br></div><br><div><strong>4.构建脚本</strong></div><br><strong>
+</strong><img src="http://www.simlinux.com/wp-content/uploads/2015/06/21.png" alt=""><br><pre class="lang:php decode:true">echo $release_version<br>echo $deploy_server<br>case $deploy_server in<br>test)<br>                 echo “This server is $deploy_server —–test enviroment”<br>             cd /gitrepos/project1/<br>             git checkout $release_version<br>             git pull origin $release_version<br>             rsync -avH –delete –progress  –exclude=robots.txt –exclude=.gitignore  –exclude=.git –exclude=.DS_Store –exclude=”<em>.tar”    /gitrepos/project1/  /gitrepos/project1/<br>                    ;;<br>            prod)<br>            echo “This server is $deploy_server  ——production enviroment”<br>            cd  /gitrepos/project1/<br>            git checkout $release_version<br>            git pull origin $release_version<br>            rsync -avH –delete –progress  –exclude=robots.txt –exclude=.gitignore  –exclude=.git –exclude=.DS_Store –exclude=”</em>.tar”  ‘-e ssh -p 22000’ /gitrepos/project1/  www@node1.simlinux.com:/gitrepos/project1/<br>        ;;<br>               <em>)<br>                    exit<br>                    ;;<br>esac<br></em></pre><br><em>*5.测试</em><br><br><img src="http://www.simlinux.com/wp-content/uploads/2015/06/31.png" alt=""><br><br><img src="http://www.simlinux.com/wp-content/uploads/2015/06/sdf.png" alt=""><br><br>&nbsp;<br><br></div>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2015/06/19/e5-9f-ba-e4-ba-8ejenkinsgitlabredmine-e6-9e-84-e5-bb-ba-e6-8c-81-e7-bb-ad-e9-9b-86-e6-88-90-e7-8e-af-e5-a2-83-ef-bc-88-e4-b8-80-ef-bc-89.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Geekwolf">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/wolf.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Geekwolf's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2015/06/19/e5-9f-ba-e4-ba-8ejenkinsgitlabredmine-e6-9e-84-e5-bb-ba-e6-8c-81-e7-bb-ad-e9-9b-86-e6-88-90-e7-8e-af-e5-a2-83-ef-bc-88-e4-b8-80-ef-bc-89.html" itemprop="url">基于jenkins+gitlab+redmine构建持续集成环境（一）</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-06-19T11:55:18+08:00">
+                2015-06-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux运维/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux运维</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2015/06/19/e5-9f-ba-e4-ba-8ejenkinsgitlabredmine-e6-9e-84-e5-bb-ba-e6-8c-81-e7-bb-ad-e9-9b-86-e6-88-90-e7-8e-af-e5-a2-83-ef-bc-88-e4-b8-80-ef-bc-89.html" class="leancloud_visitors" data-flag-title="基于jenkins+gitlab+redmine构建持续集成环境（一）">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><strong> 用途说明：
+</strong> jenkins：用于自动化测试构建发布<br>gitlab：作为代码托管服务<br>redmine：作为项目管理和bug管理，通过jenkins整合redmine实现自动化发布提醒<br>系列文章只针对jenkins自身使用做详细介绍，gitlab/redmine可使用bitnami stacks一键部署（<a href="https://bitnami.com/stack/gitlab、https://bitnami.com/stack/redmine）或者使用docker容器来部署环境（后期文章将对其详细介绍）" target="_blank" rel="external">https://bitnami.com/stack/gitlab、https://bitnami.com/stack/redmine）或者使用docker容器来部署环境（后期文章将对其详细介绍）</a><br><strong>测试环境：</strong>PHP项目（jenkins安装初始化略）</p>
+<p><strong>创建简单的集成项目</strong></p>
+<p>点击<strong>新建</strong> –<strong>Item名称：项目1</strong>– 勾选<strong>构建一个自由风格的软件项目</strong></p>
+<p><img src="http://www.simlinux.com/wp-content/uploads/2015/06/1.png" alt=""></p>
+<p><div style="color: #000000;"><strong>添加代码库</strong></div></p>
+<p><div style="color: #000000;"></div><br><img src="http://www.simlinux.com/wp-content/uploads/2015/06/2.png" alt=""></p>
+<p><div style="color: #000000;"><strong>触发构建策略</strong></div></p>
+<hr>
+<p><img src="http://www.simlinux.com/wp-content/uploads/2015/06/3.png" alt=""></p>
+<p><div style="color: #000000;"><strong>添加构建脚本</strong></div></p>
+<hr>
+<p><img src="http://www.simlinux.com/wp-content/uploads/2015/06/4.png" alt=""></p>
+<p><pre class="lang:php decode:true ">release.sh</pre></p>
+<p>#!/bin/bash<br>cd /gitrepos/project1<br>git checkout master<br>git pull origin master<br>rsync -avH  –delete –progress  –exclude=robots.txt –exclude=.gitignore –exclude=database.php  –exclude=.git –exclude=.DS_Store –exclude=”*.tar”  ‘-e ssh -p 11000’  cd /gitrepos/project1<br>www@project1.node1.simlinux.com:/data/wwwroot/project1/<br>&nbsp;</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2015/04/14/e8-a7-a3-e5-86-b3nf-conntrack-table-full-e9-97-ae-e9-a2-98-e6-96-b9-e6-b3-95.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Geekwolf">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/wolf.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Geekwolf's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2015/04/14/e8-a7-a3-e5-86-b3nf-conntrack-table-full-e9-97-ae-e9-a2-98-e6-96-b9-e6-b3-95.html" itemprop="url">解决nf_conntrack: table full问题方法</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-04-14T12:03:32+08:00">
+                2015-04-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux运维/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux运维</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2015/04/14/e8-a7-a3-e5-86-b3nf-conntrack-table-full-e9-97-ae-e9-a2-98-e6-96-b9-e6-b3-95.html" class="leancloud_visitors" data-flag-title="解决nf_conntrack: table full问题方法">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  2
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>在web服务器上经常会出现nf_conntrack: table full的问题，解决方法有三个：</p>
+<p><strong>1.优化nf_conntrack模块相关内核参数（可作为临时解决办法，治标不治本）</strong></p>
+<pre class="lang:php decode:true">#加大 ip_conntrack_max 值
+net.ipv4.ip_conntrack_max = 393216
+net.ipv4.netfilter.ip_conntrack_max = 393216
+#降低 ip_conntrack timeout时间
+net.ipv4.netfilter.ip_conntrack_tcp_timeout_established = 300
+net.ipv4.netfilter.ip_conntrack_tcp_timeout_time_wait = 120
+net.ipv4.netfilter.ip_conntrack_tcp_timeout_close_wait = 60
+net.ipv4.netfilter.ip_conntrack_tcp_timeout_fin_wait = 120</pre>
+
+<p><strong>2.移除nf_conntrack模块</strong></p>
+<pre class="lang:php decode:true">[root@git ~]# lsmod | egrep 'ip_tables|conntrack'
+nf_conntrack_ipv4       9506  2 
+nf_defrag_ipv4          1483  1 nf_conntrack_ipv4
+nf_conntrack           79758  3 xt_NOTRACK,nf_conntrack_ipv4,xt_state
+ip_tables              17831  2 iptable_raw,iptable_filter</pre>
+
+<p>A.<span style="color: #555555;">先将/etc/sysconfig/iptables 中包含state的语句移除，service  iptables restart </span></p>
+<p>B.移除模块</p>
+<pre class="lang:php decode:true  ">modprobe -r xt_NOTRACK nf_conntrack_netbios_ns nf_conntrack_ipv4 xt_state
+modprobe -r nf_conntrack</pre>
+
+<p><strong>3.使用raw表对特定端口访问不进行跟踪（推荐）</strong></p>
+<p><span style="color: #555555;">  4个表的优先级由高到低的顺序为:raw–&gt;mangle–&gt;nat–&gt;filter </span></p>
+<p><a href="http://www.simlinux.com/wp-content/uploads/2015/04/iptables.jpg"><img src="http://www.simlinux.com/wp-content/uploads/2015/04/iptables.jpg" alt=""><img src="http://www.simlinux.com/wp-content/uploads/2015/04/iptables.jpg" alt="iptables"></a><a href="http://www.simlinux.com/wp-content/uploads/2015/04/iptables.jpg"><img src="http://www.simlinux.com/wp-content/uploads/2015/04/iptables.jpg" alt="iptables"></a></p>
+<pre class="lang:php decode:true ">iptables -A INPUT -m state --state RELATED,ESTABLISHED, UNTRACKED -j ACCEPT
+iptables -t raw -A PREROUTING -p tcp -m multiport --dports 80,443 -j NOTRACK
+iptables -t raw -A PREROUTING -p tcp -m multiport --sports 80,443 -j NOTRACK
+iptables -t raw -A OUTPUT -p tcp -m multiport --dports 80,443 -j NOTRACK
+iptables -t raw -A OUTPUT -p tcp -m multiport --sports 80,443 -j NOTRACK</pre>
+
+<p>通过观察cat /proc/net/nf_conntrack条目来测试是否更改生效</p>
+<p>参考地址：</p>
+<p><a href="http://www.361way.com/%E5%86%8D%E7%9C%8Bnf_conntrack-table-full%E9%97%AE%E9%A2%98/2404.html" target="_blank" rel="external">http://www.361way.com/%E5%86%8D%E7%9C%8Bnf_conntrack-table-full%E9%97%AE%E9%A2%98/2404.html</a><br><a href="https://wiki.khnet.info/index.php/Conntrack_tuning" target="_blank" rel="external">https://wiki.khnet.info/index.php/Conntrack_tuning</a><br><a href="https://timanovsky.wordpress.com/2009/04/10/tuning-linux-firewall-connection-tracker-ip_conntrack/" target="_blank" rel="external">https://timanovsky.wordpress.com/2009/04/10/tuning-linux-firewall-connection-tracker-ip_conntrack/</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2015/03/29/microsoft-sql-server-odbc-driver-1-0-for-linux-e5-ae-89-e8-a3-85.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Geekwolf">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/wolf.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Geekwolf's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2015/03/29/microsoft-sql-server-odbc-driver-1-0-for-linux-e5-ae-89-e8-a3-85.html" itemprop="url">Microsoft® SQL Server® ODBC Driver 1.0 for Linux 安装</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-03-29T19:02:10+08:00">
+                2015-03-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux运维/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux运维</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2015/03/29/microsoft-sql-server-odbc-driver-1-0-for-linux-e5-ae-89-e8-a3-85.html" class="leancloud_visitors" data-flag-title="Microsoft® SQL Server® ODBC Driver 1.0 for Linux 安装">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  4
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>本文引用自：<a href="http://hi.baidu.com/phpman/item/1e044d1df39d4f423b176e79" target="_blank" rel="external">http://hi.baidu.com/phpman/item/1e044d1df39d4f423b176e79</a></p>
+<p>接上次，写了“LINUX下通过FREETDS利用ODBC驱动来调用mssql2005”之后，发现一个非常严重的问题出来，系统性能下降，内存不会释放</p>
+<p>总结了一下：主要是LINUX安装Microsoft的驱动程序不兼容导致的</p>
+<p>后来Microsoft出了官方驱动，支持<span style="color: #4f4f4f;">Linux5/6，下面就来说一下如何安装吧：）</span></p>
+<p><span style="color: #4f4f4f;">yum install php-odbc</span></p>
+<p><span style="color: #4f4f4f;">yum install php-mssql</span></p>
+<p><span style="color: #4f4f4f;">这两个必须要有~~你懂的，至于其它的，可以参考官方说明文档，虽然都是英文，但还是有必要看。</span></p>
+<p>准备文件：</p>
+<pre class="lang:php decode:true ">1、unixODBC-2.3.0  （Microsoft铁定要求这个版本的，没有办法）
+wget ftp://ftp.unixodbc.org/pub/unixODBC/unixODBC-2.3.0.tar.gz
+
+2、Linux5-sqlncli-11.0.1790.0 和 Linux6-sqlncli-11.0.1790.0
+wget http://download.microsoft.com/download/6/A/B/6AB27E13-46AE-4CE9-AFFD-406367CADC1D/Linux5/sqlncli-11.0.1790.0.tar.gz
+wget http://download.microsoft.com/download/6/A/B/6AB27E13-46AE-4CE9-AFFD-406367CADC1D/Linux6/sqlncli-11.0.1790.0.tar.gz
+
+cp /root/unixODBC-2.3.0.tar.gz /root/sqlncli-11.0.1790.0/
+#./build_dm.sh --download-url=file://unixODBC-2.3.0.tar.gz
+#cd /tmp/unixODBC.22253.4255.28540/unixODBC-2.3.0/
+make install
+cd /root/sqlncli-11.0.1790.0/
+vi install.sh 
+
+找到
+
+# directories to hold the file categories
+
+bin_dir="";
+lib_dir="";
+sup_dir="/opt/microsoft/$driver_short_name/$driver_version";
+rll_dir="";
+doc_dir="";
+inc_dir="";
+
+改成
+# directories to hold the file categories
+bin_dir="/usr/bin";
+lib_dir="/usr/lib64";
+#sup_dir="/opt/microsoft/$driver_short_name/$driver_version";
+sup_dir="/usr/local/microsoft/$driver_short_name/$driver_version";
+rll_dir="";
+doc_dir="";
+inc_dir="";
+
+./install.sh install   (如果已经安装过，需要重新安装，要在后面加--force)
+
+出现下面消息则为安装成功
+#Microsoft SQL Server ODBC Driver V1.0 for Linux Installation Script
+#Copyright Microsoft Corp.
+#
+#Starting install for Microsoft SQL Server ODBC Driver V1.0 for Linux
+#
+#Checking for 64 bit Linux compatible OS ..................................... OK
+#Checking required libs are installed ........................................ OK
+#unixODBC utilities (odbc_config and odbcinst) installed ..................... OK
+#unixODBC Driver Manager version 2.3.0 installed ............................. OK
+#unixODBC Driver Manager configuration correct .............................. OK*
+#Microsoft SQL Server ODBC Driver V1.0 for Linux already installed .... INSTALLED
+#See /tmp/sqlncli.531.15643.26824/install.log for more information about installation failures.
+
+</pre>
+此外你也可以
+<pre class="lang:php decode:true">At a command prompt, type the following command: "./configure
+--prefix=/usr --libdir=/usr/lib64 --sysconfdir=/etc --enable-gui=no
+--enable-drivers=no --enable-iconv --with-iconv-char-enc=UTF8
+--with-iconv-ucode-enc=UTF16LE" and press enter.</pre>
+
+<p>查询一下unixODBC配置文件odbc.ini的路径</p>
+<p>whereis odbc</p>
+<p>显示路径是 odbc: /etc/odbc.ini</p>
+<p>more odbcinst.ini</p>
+<p>显示如下：</p>
+<pre class="lang:php decode:true"># Example driver definitions
+# Driver from the postgresql-odbc package
+# Setup from the unixODBC package
+
+[PostgreSQL]
+Description= ODBC for PostgreSQL
+Driver= /usr/lib/psqlodbc.so
+Setup= /usr/lib/libodbcpsqlS.so
+Driver64= /usr/lib64/psqlodbc.so
+Setup64= /usr/lib64/libodbcpsqlS.so
+FileUsage= 1
+
+# Driver from the mysql-connector-odbc package
+# Setup from the unixODBC package
+[MySQL]
+Description= ODBC for MySQL
+Driver= /usr/lib/libmyodbc5.so
+Setup= /usr/lib/libodbcmyS.so
+Driver64= /usr/lib64/libmyodbc5.so
+Setup64= /usr/lib64/libodbcmyS.so
+FileUsage= 1
+在odbcinst.ini文件中加入如下配置：
+
+[SQL Server Native Client 11.0] 
+Description = Microsoft SQL Server ODBC Driver V1.0 for Linux 
+Driver = /usr/lib64/libsqlncli-11.0.so.1720.0 
+UsageCount = 1 
+在odbc.ini文件中加入如下配置:
+
+[MSSQLServer] 
+Driver = SQL Server Native Client 11.0 
+Description = Sample Database 
+Trace = Yes 
+Server = 192.168.3.168
+Port = 1433 
+Database = fn
+[root@localhost /]#odbcinst -j
+unixODBC 2.3.0
+DRIVERS............: /etc/odbcinst.ini
+SYSTEM DATA SOURCES: /etc/odbc.ini
+FILE DATA SOURCES..: /etc/ODBCDataSources
+USER DATA SOURCES..: /root/.odbc.ini
+SQLULEN Size.......: 8
+SQLLEN Size........: 8
+SQLSETPOSIROW Size.: 8
+[root@localhost /]# odbcinst -q -s
+[MSSQLServer]isql -v MSSQLServer 'sa' '123456' 
+
++---------------------------------------+
+
+| Connected!                            |
+
+|                                       |
+
+| sql-statement                         |
+
+| help [tablename]                      |
+
+| quit                                  |
+
+|                                       |
+
++---------------------------------------+</pre>
+
+<p>就表示安装成功了</p>
+<p><span style="color: #4f4f4f;">官方请参考<a href="http://www.microsoft.com/download/en/details.aspx?id=28160" target="_blank" rel="external">http://www.microsoft.com/download/en/details.aspx?id=28160</a> </span></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2015/02/09/fastdfs-e5-88-86-e5-b8-83-e5-bc-8f-e5-ad-98-e5-82-a8-e5-ae-9e-e6-88-98.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Geekwolf">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/wolf.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Geekwolf's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2015/02/09/fastdfs-e5-88-86-e5-b8-83-e5-bc-8f-e5-ad-98-e5-82-a8-e5-ae-9e-e6-88-98.html" itemprop="url">FastDFS分布式存储实战</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-02-09T11:16:29+08:00">
+                2015-02-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux运维/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux运维</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2015/02/09/fastdfs-e5-88-86-e5-b8-83-e5-bc-8f-e5-ad-98-e5-82-a8-e5-ae-9e-e6-88-98.html" class="leancloud_visitors" data-flag-title="FastDFS分布式存储实战">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><a href="http://www.simlinux.com/books/FastDFS.pdf"><strong>《FastDFS分布式存储实战》</strong></a></p>
+<p><strong>一、技术选型</strong><br><strong>二、FastDFS相关组件及原理</strong><br>FastDFS介绍<br>FastDFS架构<br>FastDFS工作流程<br>上传<br>同步机制<br>下载<br>文件合并原理<br><strong>三、实验环境说明</strong><br><strong>四、FastDFS部署</strong><br>初始化系统<br>安装libfastcommon和fastdfs<br>storage server安装nginx<br>配置mod_fastdfs.conf<br>配置下载网关<br>tracker和storage目录结构<br>测试<br><strong>五、高级功能</strong><br>防盗链<br>在线扩容<br>增加group<br>组内增加storage server<br>故障磁盘移除<br>文件去重存储<br>自定义文件名<br>拼接url方式<br>使用redis<br>缩略图<br>清除缓存<br><strong>六、FastDFS开发API使用</strong><br><strong>七、性能优化及安全</strong><br>系统方面<br>FastDFS方面<br>安全配置<br><strong>八、监控</strong><br><strong>九、FastDFS常见问题</strong></p>
+<form action="https://shenghuo.alipay.com/send/payment/fill.htm" method="post" target="_blank"><input name="optEmail" type="hidden" value="pscngu123@yeah.net">有错误之处，请多多包涵，特别感谢@HUST<span style="color: #565656;">张友东大神的blog,还有鱼大@FastDFS_开源中国 这么好的分布式存储系统～</span><br><input name="payAmount" type="hidden" value="10"><br><input name="title" type="hidden" value="" placeholder="付款说明"><br><input name="pay" src="/wp-content/uploads/2014/08/alipay4.png" type="image" value="赏杯茶喝"></form>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2015/01/29/fastdfs-e8-a7-92-e8-89-b2-e9-85-8d-e7-bd-ae-e5-8f-82-e6-95-b0-e6-80-9d-e7-bb-b4-e5-af-bc-e5-9b-be.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Geekwolf">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/wolf.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Geekwolf's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2015/01/29/fastdfs-e8-a7-92-e8-89-b2-e9-85-8d-e7-bd-ae-e5-8f-82-e6-95-b0-e6-80-9d-e7-bb-b4-e5-af-bc-e5-9b-be.html" itemprop="url">FastDFS角色配置参数思维导图</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-01-29T14:43:10+08:00">
+                2015-01-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux运维/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux运维</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2015/01/29/fastdfs-e8-a7-92-e8-89-b2-e9-85-8d-e7-bd-ae-e5-8f-82-e6-95-b0-e6-80-9d-e7-bb-b4-e5-af-bc-e5-9b-be.html" class="leancloud_visitors" data-flag-title="FastDFS角色配置参数思维导图">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><a href="http://www.simlinux.com/wp-content/uploads/2015/01/FastDFS%E8%A7%92%E8%89%B2%E9%85%8D%E7%BD%AE%E5%8F%82%E6%95%B0%E5%AF%BC%E5%9B%BE.jpg"><img src="http://www.simlinux.com/wp-content/uploads/2015/01/FastDFS%E8%A7%92%E8%89%B2%E9%85%8D%E7%BD%AE%E5%8F%82%E6%95%B0%E5%AF%BC%E5%9B%BE.jpg" alt=""></a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2015/01/15/mysql-e5-a4-9a-e7-ba-bf-e7-a8-8b-e9-80-bb-e8-be-91-e5-a4-87-e4-bb-bd-e5-b7-a5-e5-85-b7-e4-b9-8bmydumper-3.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Geekwolf">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/wolf.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Geekwolf's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2015/01/15/mysql-e5-a4-9a-e7-ba-bf-e7-a8-8b-e9-80-bb-e8-be-91-e5-a4-87-e4-bb-bd-e5-b7-a5-e5-85-b7-e4-b9-8bmydumper-3.html" itemprop="url">MySQL多线程逻辑备份工具之mydumper</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-01-15T09:58:18+08:00">
+                2015-01-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/MySQL数据库/" itemprop="url" rel="index">
+                    <span itemprop="name">MySQL数据库</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2015/01/15/mysql-e5-a4-9a-e7-ba-bf-e7-a8-8b-e9-80-bb-e8-be-91-e5-a4-87-e4-bb-bd-e5-b7-a5-e5-85-b7-e4-b9-8bmydumper-3.html" class="leancloud_visitors" data-flag-title="MySQL多线程逻辑备份工具之mydumper">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  6
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="下载安装"><a href="#下载安装" class="headerlink" title="下载安装"></a><strong>下载安装</strong></h4><div style="color: #000000;"><br><div>yum -y install cmake glib2 pcre pcre-devel mysql-devel</div><br><div>wget <a href="https://launchpad.net/mydumper/0.6/0.6.2/+download/mydumper-0.6.2.tar.gz" target="_blank" rel="external">https://launchpad.net/mydumper/0.6/0.6.2/+download/mydumper-0.6.2.tar.gz</a></div><br><div>tar xf  mydumper-0.6.2.tar.gz</div><br><div>cd mydumper-0.6.2</div><br><div>cmake .</div><br><div>make &amp;&amp; make install</div><br><div>注释：如果只要帮助可以这样编译make doc_html</div><br><div>安装之后生成两个二进制命令/usr/local/bin/mydumper（备份）和/usr/local/bin/myloader（恢复）</div>
+
+<h4 id="mydumper特性"><a href="#mydumper特性" class="headerlink" title="mydumper特性"></a><strong>mydumper特性</strong></h4><p></p></div><p></p>
+<ul>
+<li>多线程备份，生成多个备份文件</li>
+<li>针对MyISAM表加读锁，会阻塞DML语句</li>
+<li>保证备份数据一致性</li>
+<li>支持文件压缩和导出binlog</li>
+<li>支持多线程恢复</li>
+<li>支持守护进程模式，定时快照和连续二进制日志</li>
+<li>支持正则匹配</li>
+<li>恢复支持是否启用binlog及指定事物的大小(多少insert)</li>
+<li>无法备份视图和触发器</li>
+<li>备份整库时可用备份存储过程和函数，单库备份等情况无法对其进行备份</li>
+</ul>
+<h4 id="mydumper备份机制"><a href="#mydumper备份机制" class="headerlink" title="mydumper备份机制"></a><strong>mydumper备份机制</strong></h4><p><img src="http://www.simlinux.com/wp-content/uploads/2015/01/mydumper.png" alt=""></p>
+<h5 id="主要步骤概括"><a href="#主要步骤概括" class="headerlink" title="主要步骤概括"></a><strong>主要步骤概括</strong></h5><ol>
+<li><span lang="zh-CN">主线程<span lang="en-US"> <span lang="en-US">FLUSH TABLES WITH READ LOCK<span lang="en-US">, <span lang="zh-CN">施加全局只读锁，以阻止<span lang="en-US">DML<span lang="zh-CN">语句写入，保证数据的一致性</span></span></span></span></span></span></span></li>
+<li><span lang="zh-CN">读取当前时间点的二进制日志文件名和日志写入的位置并记录在<span lang="en-US">metadata<span lang="zh-CN">文件中，以供即使点恢复使用</span></span></span></li>
+<li><span lang="en-US">N<span lang="zh-CN">个（线程数可以指定，默认是<span lang="en-US">4<span lang="zh-CN">）<span lang="en-US">dump<span lang="zh-CN">线程<span lang="en-US"> <span lang="en-US">START TRANSACTION WITH CONSISTENT SNAPSHOT<span lang="en-US">; <span lang="zh-CN">开启读一致的事物</span></span></span></span></span></span></span></span></span></span></li>
+<li><span lang="en-US">dump non-InnoDB tables<span lang="en-US">, <span lang="zh-CN">首先导出非事物引擎的表</span></span></span></li>
+<li><span lang="zh-CN">主线程<span lang="en-US"> <span lang="en-US">UNLOCK TABLES<span lang="en-US"> <span lang="zh-CN">非事物引擎备份完后，释放全局只读锁</span></span></span></span></span></li>
+<li><span lang="en-US">dump InnoDB tables<span lang="en-US">, <span lang="zh-CN">基于事物导出<span lang="en-US">InnoDB<span lang="zh-CN">表</span></span></span></span></span></li>
+<li>事物结束</li>
+</ol>
+<h5 id="备份所生成的文件"><a href="#备份所生成的文件" class="headerlink" title="备份所生成的文件"></a><strong>备份所生成的文件</strong></h5><ol>
+<li>所有的备份文件在一个目录中，目录可以自己指定</li>
+<li>目录中包含一个metadata文件<br>记录了备份数据库在备份时间点的二进制日志文件名，日志的写入位置，<br>如果是在从库进行备份，还会记录备份时同步至从库的二进制日志文件及写入位置</li>
+</ol>
+<p>3.  每个表有两个备份文件：</p>
+<p>database.table-schema.sql 表结构文件<br>database.table.sql 表数据文件<br>如果对表文件分片，将生成多个备份数据文件，可以指定行数或指定大小分片</p>
+<h4 id="mydumper参数详解"><a href="#mydumper参数详解" class="headerlink" title="mydumper参数详解"></a><strong>mydumper参数详解</strong></h4><pre class="lang:php decode:true">-B, --database              要备份的数据库，不指定则备份所有库
+-T, --tables-list           需要备份的表，名字用逗号隔开
+-o, --outputdir             备份文件输出的目录
+-s, --statement-size        生成的insert语句的字节数，默认1000000
+-r, --rows                  将表按行分块时，指定的块行数，指定这个选项会关闭 --chunk-filesize
+-F, --chunk-filesize        将表按大小分块时，指定的块大小，单位是 MB
+-c, --compress              压缩输出文件
+-e, --build-empty-files     如果表数据是空，还是产生一个空文件（默认无数据则只有表结构文件）
+-x, --regex                 是同正则表达式匹配 'db.table'
+-i, --ignore-engines        忽略的存储引擎，用逗号分割
+-m, --no-schemas            不备份表结构
+-k, --no-locks              不使用临时共享只读锁，使用这个选项会造成数据不一致
+--less-locking              减少对InnoDB表的锁施加时间（这种模式的机制下文详解）
+-l, --long-query-guard      设定阻塞备份的长查询超时时间，单位是秒，默认是60秒（超时后默认mydumper将会退出）
+--kill-long-queries         杀掉长查询 (不退出)
+-b, --binlogs               导出binlog
+-D, --daemon                启用守护进程模式，守护进程模式以某个间隔不间断对数据库进行备份
+-I, --snapshot-interval     dump快照间隔时间，默认60s，需要在daemon模式下
+-L, --logfile               使用的日志文件名(mydumper所产生的日志), 默认使用标准输出
+--tz-utc                    跨时区是使用的选项，不解释了
+--skip-tz-utc               同上
+--use-savepoints            使用savepoints来减少采集metadata所造成的锁时间，需要 SUPER 权限
+--success-on-1146           Not increment error count and Warning instead of Critical in case of table doesn't exist
+-h, --host                  连接的主机名
+-u, --user                  备份所使用的用户
+-p, --password              密码
+-P, --port                  端口
+-S, --socket                使用socket通信时的socket文件
+-t, --threads               开启的备份线程数，默认是4
+-C, --compress-protocol     压缩与mysql通信的数据
+-V, --version               显示版本号
+-v, --verbose               输出信息模式, 0 = silent, 1 = errors, 2 = warnings, 3 = info, 默认为 2</pre>
+
+<h4 id="myloader参数详解"><a href="#myloader参数详解" class="headerlink" title="myloader参数详解"></a><strong>myloader参数详解</strong></h4><pre class="lang:php decode:true">-d, --directory                   备份文件的目录
+-q, --queries-per-transaction     每次事物执行的查询数量，默认是1000
+-o, --overwrite-tables            如果要恢复的表存在，则先drop掉该表，使用该参数，需要备份时候要备份表结构
+-B, --database                    需要还原的数据库
+-e, --enable-binlog               启用还原数据的二进制日志
+-h, --host                        主机
+-u, --user                        还原的用户
+-p, --password                    密码
+-P, --port                        端口
+-S, --socket                      socket文件
+-t, --threads                     还原所使用的线程数，默认是4
+-C, --compress-protocol           压缩协议
+-V, --version                     显示版本
+-v, --verbose                     输出模式, 0 = silent, 1 = errors, 2 = warnings, 3 = info, 默认为2</pre>
+
+<h4 id="使用案例"><a href="#使用案例" class="headerlink" title="使用案例"></a>使用案例</h4><p><pre class="lang:php decode:true">1.导出test库下面的table1和table2表结构和数据<br>/usr/local/bin/mydumper  -h 10.1.1.1 -u root -p root -B test1 -T table1,table2  -t 8 -r 100000 -c –less-locking  -v 3 -D -L /var/log/mydumper.log   -o /geekwolf/test_table1_table2/<br>若只导出数据增加-m参数<br>2.将导出的数据导入到10.1.1.2服务器的test2库中<br>/usr/local/bin/myloader   -h 10.1.1.2 -u root -p root  -B test2 -e -t 8  -d /geekwolf/test_table1_table2/ –overwrite-tables -v 3</pre><br><strong>注释</strong>:后台记录导出导入的时间</p>
+<p><pre class="lang:php decode:true ">输入screen命令<br>然后(time myloader   -h 10.1.1.2 -u user  -p ‘ap’ -B mnew_gz -e -t 8  -d /geekwolf/m_members/ –overwrite-tables -v 3) 2&gt;/geekwolf/im.log<br>最后Ctrl+A+D<br></pre><br>最后其他备份工具如:mysqldump/mysqlhotcopy/MySQLDumper 、mk-parallel-dump/mk-parallel-restore 、Xtrabackup/LVM Snapshot 暂时想到这么多，以后再想到再补充吧，也欢迎各位大拿fork工具库提交 <a href="https://github.com/geekwolf/sa-scripts/blob/master/devops.md%20" target="_blank" rel="external">https://github.com/geekwolf/sa-scripts/blob/master/devops.md </a></p>
+<div style="color: #000000;">
+
+<h4 id="参考文档"><a href="#参考文档" class="headerlink" title=" 参考文档"></a><strong> 参考文档</strong></h4><p><div></div></p>
+<p><div><a href="http://my.oschina.net/anthonyyau/blog/299794" target="_blank" rel="external">http://my.oschina.net/anthonyyau/blog/299794</a></div></p>
+<p><div><a href="http://www.tuicool.com/articles/BvUBVv" target="_blank" rel="external">http://www.tuicool.com/articles/BvUBVv</a></div></p>
+<p><div><a href="http://centminmod.com/mydumper.html" target="_blank" rel="external">http://centminmod.com/mydumper.html</a></div></p>
+<p><div><a href="http://www.cnblogs.com/linuxnote/p/3817698.html" target="_blank" rel="external">http://www.cnblogs.com/linuxnote/p/3817698.html</a></div></p>
+<p><div><a href="https://launchpad.net/mydumper" target="_blank" rel="external">https://launchpad.net/mydumper</a></div><br></p></div><br><br>&nbsp;<p></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+  </section>
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right"></i></a>
+  </nav>
+
+
+
+          </div>
+          
+
+
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/wolf.jpeg"
+               alt="Geekwolf" />
+          <p class="site-author-name" itemprop="name">Geekwolf</p>
+           
+              <p class="site-description motion-element" itemprop="description">DevOps | Docker | K8S | MySQL | 运维</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">167</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">105</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/geekwolf" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                    
+                      GitHub
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/geekwolf" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                    
+                      Weibo
+                    
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2012 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Geekwolf</span>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  
+    <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('-1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("qms5kJ0y2CItrIVFivKxxPsR-gzGzoHsz", "Cn3w20futtphxpaDSP5tHjzy");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

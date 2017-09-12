@@ -1,0 +1,4277 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Geekwolf,DevOps,Docker,k8s,MySQL,PaaS" />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Geekwolf's Blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="DevOps | Docker | K8S | MySQL | 运维">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Geekwolf&#39;s Blog">
+<meta property="og:url" content="http://www.simlinux.com/page/5/index.html">
+<meta property="og:site_name" content="Geekwolf&#39;s Blog">
+<meta property="og:description" content="DevOps | Docker | K8S | MySQL | 运维">
+<meta property="og:locale" content="zh-Hans">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Geekwolf&#39;s Blog">
+<meta name="twitter:description" content="DevOps | Docker | K8S | MySQL | 运维">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.simlinux.com/page/5/"/>
+
+
+
+
+
+  <title>Geekwolf's Blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="//s13.cnzz.com/z_stat.php?id=1264375041&web_id=1264375041" language="JavaScript"></script>
+  </div>
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left 
+   page-home 
+ ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Geekwolf's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Quick notes</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />
+            
+            站点地图
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+  <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2014/08/20/16-e4-b8-aa-e5-be-88-e6-9c-89-e7-94-a8-e7-9a-84-e5-9c-a8-e7-ba-bf-e5-b7-a5-e5-85-b7.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Geekwolf">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/wolf.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Geekwolf's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2014/08/20/16-e4-b8-aa-e5-be-88-e6-9c-89-e7-94-a8-e7-9a-84-e5-9c-a8-e7-ba-bf-e5-b7-a5-e5-85-b7.html" itemprop="url">16个很有用的在线工具</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-08-20T11:35:41+08:00">
+                2014-08-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux运维/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux运维</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2014/08/20/16-e4-b8-aa-e5-be-88-e6-9c-89-e7-94-a8-e7-9a-84-e5-9c-a8-e7-ba-bf-e5-b7-a5-e5-85-b7.html" class="leancloud_visitors" data-flag-title="16个很有用的在线工具">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  3
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><strong>1. <a href="http://explainshell.com/" target="_blank" rel="external">ExplainShell.com</a> 命令解释</strong></p>
+<p><a href="http://www.simlinux.com/wp-content/uploads/2014/08/explainshell.jpg"><img src="http://www.simlinux.com/wp-content/uploads/2014/08/explainshell.jpg" alt="explainshell"></a></p>
+<p>  对于Linux用户来说每天都会写各种命令和脚本，那么你可以使用这个网站工具来查看命令式如何工作的,这样可以避免不必要的错误出现；也是一个很好的学习命令的方式</p>
+<p><strong>2. <a href="http://simlinux.com/BashrcGenerator.com/" target="_blank" rel="external">BashrcGenerator.com</a> 定制个性命令提示符</strong></p>
+<p><a href="http://www.simlinux.com/wp-content/uploads/2014/08/generator.jpg"><img src="http://www.simlinux.com/wp-content/uploads/2014/08/generator.jpg" alt="generator"></a></p>
+<p>  简单说就是个性化生成命令提示符，可将生成的代码写入到用户家目录的.bashrc或者可以设置全局变量文件/etc/profile对所有用户生效<br>可参考：<a href="http://stackoverflow.com/questions/4133904/ps1-line-with-git-current-branch-and-colors" target="_blank" rel="external">http://stackoverflow.com/questions/4133904/ps1-line-with-git-current-branch-and-colors</a></p>
+<p><strong>3. <a href="http://vim-adventures.com/" target="_blank" rel="external">Vim-adventures.com</a> 通过RPG游戏练习VIM使用</strong></p>
+<p><a href="http://www.simlinux.com/wp-content/uploads/2014/08/vim.jpg"><img src="http://www.simlinux.com/wp-content/uploads/2014/08/vim.jpg" alt="vim"></a></p>
+<p>  通过RPG游戏练习VIM编辑器的使用，使用h,j,k,l字符移动人物来获得新的命令能力和搜集钥匙，查看帮助可使用:help;赶脚这个非常cool!</p>
+<p><strong>4. <a href="https://try.github.io/levels/1/challenges/2" target="_blank" rel="external">Try Github</a> 在线学习Git版本控制</strong></p>
+<p><a href="http://www.simlinux.com/wp-content/uploads/2014/08/trygit.jpg"><img src="http://www.simlinux.com/wp-content/uploads/2014/08/trygit.jpg" alt="trygit"></a></p>
+<p>  十五分钟学会Git，很明显这个网站模拟了一个控制台，以很时尚的界面让人对Git不再望而生畏</p>
+<p><strong>5. <a href="http://shortcutfoo.com/" target="_blank" rel="external">Shortcutfoo.com</a></strong></p>
+<p><a href="http://www.simlinux.com/wp-content/uploads/2014/08/shortcutfoo.jpg"><img src="http://www.simlinux.com/wp-content/uploads/2014/08/shortcutfoo.jpg" alt="shortcutfoo"></a></p>
+<p>  是一个练习快捷键的好地方，涵盖了vim、sublime、emacs、git等软件的快捷使用方式和友好的说明</p>
+<p><strong>6. <a href="https://github.com/geekwolf/free-programming-books" target="_blank" rel="external">GitHub Free Programming Books</a> 免费编程书籍</strong></p>
+<p><a href="http://www.simlinux.com/wp-content/uploads/2014/08/freebooks.jpg"><img src="http://www.simlinux.com/wp-content/uploads/2014/08/freebooks.jpg" alt="freebooks"></a></p>
+<p>  以Github管理的方式搜集了免费的编程和系统管理等书籍，给作者点1024个赞~~，另外连接是fork原作者，后续增加中文书籍</p>
+<p><strong>7. <a href="http://collabedit.com/" target="_blank" rel="external">Collabedit.com</a> 实时文本交互聊天</strong></p>
+<p><a href="http://www.simlinux.com/wp-content/uploads/2014/08/coolabedit.jpg"><img src="http://www.simlinux.com/wp-content/uploads/2014/08/coolabedit.jpg" alt="coolabedit"></a></p>
+<p>   先说下使用，你可以创建一个文档<code>http://collabedit.com/yb22u</code>填写相关的用户名和选择语言；然后可以将此文档地址发给另一个人，那么互相之间就可以实时看到对方的输入，有高亮语法；使用场合嘛，比如通过collabedit可以考量对方编程能力等</p>
+<p><strong>8. <a href="http://cpp.sh/" target="_blank" rel="external">Cpp.sh</a> 在线编写运行分享C++代码编辑器</strong></p>
+<p><a href="http://www.simlinux.com/wp-content/uploads/2014/08/cpp.jpg"><img src="http://www.simlinux.com/wp-content/uploads/2014/08/cpp.jpg" alt="cpp"></a></p>
+<p>  可在线编辑运行C++代码，亦可Ctrl+Z生成url分享给好友</p>
+<p><strong>9. <a href="http://copy.sh/v24/" target="_blank" rel="external">Copy.sh</a> 浏览器运行虚拟机</strong></p>
+<p><a href="http://www.simlinux.com/wp-content/uploads/2014/08/copy.jpg"><img src="http://www.simlinux.com/wp-content/uploads/2014/08/copy.jpg" alt="copy"></a></p>
+<p>  又一个非常crazy的工具，在线运行虚拟机，可以选择下载虚拟机镜像也可以上传自己的iso，copy.sh在线运行虚拟机源码：<a href="https://github.com/copy/v86" target="_blank" rel="external">https://github.com/copy/v86</a>；</p>
+<p><strong>10. <a href="http://commandlinefu.com/" target="_blank" rel="external">Commandlinefu.com</a> 命令或记录网站</strong></p>
+<p><a href="http://www.simlinux.com/wp-content/uploads/2014/08/commandlinefu.jpg"><img src="http://www.simlinux.com/wp-content/uploads/2014/08/commandlinefu.jpg" alt="commandlinefu"></a></p>
+<p>  做运维的应该都知道这个网站，可以分享自己的CLI库，也可以学习借鉴别人的命令脚本</p>
+<p><strong>11. <a href="http://alias.sh/" target="_blank" rel="external">Alias.sh</a> 命令别名数据库</strong></p>
+<p><a href="http://www.simlinux.com/wp-content/uploads/2014/08/alias.jpg"><img src="http://www.simlinux.com/wp-content/uploads/2014/08/alias.jpg" alt="alias"></a></p>
+<p>  有点类似commandlinefu了，可以通过这个网站借鉴获取和分享有用的命令别名<br>比如lr别名定义了显示目录树</p>
+<pre><code>alias lr=&apos;ls -R | grep &quot;:$&quot; | sed -e &apos;\&apos;&apos;s/:$//&apos;\&apos;&apos; -e &apos;\&apos;&apos;s/[^-][^\/]*\//--/g&apos;\&apos;&apos; -e &apos;\&apos;&apos;s/^/   /&apos;\&apos;&apos; -e &apos;\&apos;&apos;s/-/|/&apos;\&apos;&apos;&apos;
+</code></pre><p><strong>12. <a href="http://distrowatch.com/" target="_blank" rel="external">Distrowatch.com</a> 提供了Linux发行版的详细信息</strong></p>
+<p><a href="http://www.simlinux.com/wp-content/uploads/2014/08/distrowatch.jpg"><img src="http://www.simlinux.com/wp-content/uploads/2014/08/distrowatch.jpg" alt="distrowatch"></a></p>
+<p>  通过Distrowath不仅可以精确的查看互联网都有哪些流行的Linux发行版，还可以查看每个发行版的相关信息如默认桌面环境、默认应用程序及镜像的下载链接；堪称Linux的数据库</p>
+<p><strong>13. <a href="http://linuxmanpages.com/" target="_blank" rel="external">Linuxmanpages.com</a> 在线查看命令帮助</strong></p>
+<p><a href="http://www.simlinux.com/wp-content/uploads/2014/08/manpages.jpg"><img src="http://www.simlinux.com/wp-content/uploads/2014/08/manpages.jpg" alt="manpages"></a></p>
+<p>  相当于系统内部的man、help、info等的综合吧</p>
+<p><strong>14. <a href="http://awesomecow.com/" target="_blank" rel="external">AwesomeCow.com</a> 适用Linux环境的软件搜索引擎</strong></p>
+<p><a href="http://www.simlinux.com/wp-content/uploads/2014/08/awe.jpg"><img src="http://www.simlinux.com/wp-content/uploads/2014/08/awe.jpg" alt="awe"></a></p>
+<p>  如果有款win下好用的软件想在linux下使用，或许可以通过AwesomeCow找到与其类似或者一样的软件，或者通过WINE</p>
+<p><strong>15. <a href="http://penguspy.com/" target="_blank" rel="external">PenguSpy.com</a> Linux好玩游戏合集</strong></p>
+<p><a href="http://www.simlinux.com/wp-content/uploads/2014/08/pengu.jpg"><img src="http://www.simlinux.com/wp-content/uploads/2014/08/pengu.jpg" alt="pengu"></a></p>
+<p><strong>16. <a href="http://lxr.free-electrons.com/" target="_blank" rel="external">Linux Cross Reference by Free Electrons</a> 在线查看内核代码及不同版本的差异</strong></p>
+<p><a href="http://www.simlinux.com/wp-content/uploads/2014/08/cross.jpg"><img src="http://www.simlinux.com/wp-content/uploads/2014/08/cross.jpg" alt="cross"></a></p>
+<p>对于内核开发者或许有很大的帮助</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2014/08/20/e6-9f-a5-e7-9c-8b-e5-88-86-e5-8c-ba-e4-bf-a1-e6-81-af.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Geekwolf">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/wolf.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Geekwolf's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2014/08/20/e6-9f-a5-e7-9c-8b-e5-88-86-e5-8c-ba-e4-bf-a1-e6-81-af.html" itemprop="url">查看分区信息</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-08-20T11:24:08+08:00">
+                2014-08-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/MySQL数据库/" itemprop="url" rel="index">
+                    <span itemprop="name">MySQL数据库</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2014/08/20/e6-9f-a5-e7-9c-8b-e5-88-86-e5-8c-ba-e4-bf-a1-e6-81-af.html" class="leancloud_visitors" data-flag-title="查看分区信息">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>查看Mysql里都有哪些数据库里面有什么分区表</p>
+<pre><code>SELECT 
+TABLE_SCHEMA, TABLE_NAME, PARTITION_NAME, PARTITION_COMMENT
+FROM
+INFORMATION_SCHEMA.PARTITIONS
+WHERE
+PARTITION_NAME IS NOT NULL;
+`&lt;/pre&gt;
+
+查看某个分区表都有哪些分区及使用情况
+
+&lt;pre style=&quot;color: #93a1a1;&quot;&gt;`USE LOCKLOG;
+SELECT 
+partition_name part,
+partition_expression expr,
+partition_description descr,
+table_rows
+FROM
+INFORMATION_SCHEMA.partitions
+WHERE
+TABLE_SCHEMA = schema()
+AND TABLE_NAME = &apos;lock_log&apos;;
+`&lt;/pre&gt;
+
+查看分区表lock_log的创建sql及分区类型
+
+&lt;pre style=&quot;color: #93a1a1;&quot;&gt;` SHOW CREATE TABLE lock_log \G;
+</code></pre><p>其他分区操作和管理请参考：<br><a href="http://www.simlinux.com/archives/133.html">http://www.simlinux.com/archives/133.html</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2014/08/20/io-e8-b0-83-e5-ba-a6-e7-ae-97-e6-b3-95-e9-80-82-e7-94-a8-e5-9c-ba-e6-99-af.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Geekwolf">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/wolf.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Geekwolf's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2014/08/20/io-e8-b0-83-e5-ba-a6-e7-ae-97-e6-b3-95-e9-80-82-e7-94-a8-e5-9c-ba-e6-99-af.html" itemprop="url">IO调度算法适用场景</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-08-20T11:13:28+08:00">
+                2014-08-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux运维/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux运维</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2014/08/20/io-e8-b0-83-e5-ba-a6-e7-ae-97-e6-b3-95-e9-80-82-e7-94-a8-e5-9c-ba-e6-99-af.html" class="leancloud_visitors" data-flag-title="IO调度算法适用场景">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  4
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <pre><code>通常磁盘的读写影响是由磁头到柱面移动造成了延迟，解决这种延迟内核主要采用两种策略：缓存和IO调度算法来进行弥补
+</code></pre><p><strong>Caching：</strong>IO请求被缓存在大页和buffer caches里面，读请求会预先从缓存读取，写请求会先写进缓存，然后在保存到磁盘<br><strong>四种IO调度算法：</strong></p>
+<pre><code>cat /sys/block/sda/queue/scheduler
+noop anticipatory deadline [cfq] (当前是cfq)
+`&lt;/pre&gt;
+
+[![io](http://www.simlinux.com/wp-content/uploads/2014/08/io1.png)](http://www.simlinux.com/wp-content/uploads/2014/08/io1.png)
+
+**noop：**noop调度算法不会对I/O请求排序操作，除了合并外也不会做任何其他优化，直接以类似FIFO的顺序提交I/O请求；对于SSD、虚拟机或者存储设备可能会更加高效
+**anticipatory(as)：**基于预测的IO算法，类似DeadLine，也维护了三个请求对列；区别在于当它处理完一个I/O请求后并不会直接返回处理下一个请求，而是等待6ms(默认),如果这时候有新来的针对当前扇区相邻扇区的请求，那么会直接处理它，当等待时间结束后，调度器才返回处理下一个对列请求
+试想一下，如果系统有频繁的针对邻近扇区的I/O请求，那么这种预测算法必然大幅提高整体的吞吐量，毕竟节约了那么多寻道时间
+**deadline：**DEADLINE 在CFQ的基础上，解决了IO请求饿死的极端情况。除了CFQ本身具有的IO排序队列之外，DEADLINE额外分别为读IO和写IO提供了FIFO队 列。读FIFO队列的最大等待时间为500ms，写FIFO队列的最大等待时间为5s。FIFO队列内的IO请求优先级要比CFQ队列中的高，，而读 FIFO队列的优先级又比写FIFO队列的优先级高。优先级可以表示如下：
+FIFO(Read) &amp;gt; FIFO(Write) &amp;gt; CFQ
+deadline 算法保证对于既定的 IO 请求以最小的延迟时间，从这一点理解，对于 DSS 应用应该会是很适合的
+**cfq(2.6.18+内核默认CFQ)：**该算法的特点是按照IO请求的地址进行排序，而不是按照先来后到的顺序来进行响应。在传统的SAS盘上，磁盘寻道花去了绝大多数的IO响应时间。CFQ的出发点是对IO地址进行排序，以尽量少的磁盘旋转次数来满足尽可能多的IO请求。在 CFQ算法下，SAS盘的吞吐量大大提高了。但是相比于NOOP的缺点是，先来的IO请求并不一定能被满足，可能会出现饿死的情况；
+
+**调度算法适用场合：**
+在传统的SAS盘上，CFQ、DEADLINE、ANTICIPATORY都是不错的选择；对于专属的数据库服务器和文件服务器，DEADLINE的吞吐量和响应时间都表现良好，适用于大量IO操作的环境
+
+在SSD、Fusion IO上，最简单的NOOP反而可能是最好的算法，因为其他三个算法的优化是基于缩短寻道时间的，而固态硬盘没有所谓的寻道时间且IO响应时间非常短。
+ANTICIPATORY通常更适用于大量持续读的环境，并不适用于DB Server
+CFQ 适用于有大量来自不同进程的并发读写的环境如桌面环境等
+
+**手动临时更改调度算法：**
+
+&lt;pre style=&quot;color: #93a1a1;&quot;&gt;`echo deadline &amp;gt; /sys/block/sda/queue/scheduler
+`&lt;/pre&gt;
+
+**永久更改：**
+**A.使用tuned来修改调度算法**
+
+&lt;pre style=&quot;color: #93a1a1;&quot;&gt;`比如：vim /etc/tuned-profiles/throughtput-performance/ktune.sysconfig
+ELEVATOR=&quot;deadline&quot;
+ELEVATOR_TUNE_DEVS=&quot;/sys/block/{sd,cciss,dm-,vd}*/queue/scheduler&quot;
+tuned-admin profile throughtput-performance
+chkconfig tuned on
+chkconfig ktune on
+更改调度算法之后/sys/block/sda/quue/iosched/会生成对应的参数文件
+`&lt;/pre&gt;
+
+**B.通过修改grub.conf来修改调度算法**
+
+&lt;pre style=&quot;color: #93a1a1;&quot;&gt;` kernel /vmlinuz-2.6.32-358.11.1.el6.x86_64 ro root=UUID=97693d73-443f-438a-90a3-208855faff19 rd_NO_LUKS  KEYBOARDTYPE=pc KEYTABLE=us rd_NO_MD crashkernel=auto LANG=zh_CN.UTF-8 rd_NO_LVM rd_NO_DM elevator=deadline rhgb quiet
+`&lt;/pre&gt;
+
+**查看调度算法参数的含义：**
+
+&lt;pre style=&quot;color: #93a1a1;&quot;&gt;`yum -y install kernel-doc
+比如:/usr/share/doc/kernel-doc-2.6.32/Documentation/block/deadline-iosched.txt
+</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2014/08/20/centos6-5-e4-b8-8b-e5-ae-89-e8-a3-85puppet-e5-8f-8a-e6-b5-8b-e8-af-95.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Geekwolf">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/wolf.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Geekwolf's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2014/08/20/centos6-5-e4-b8-8b-e5-ae-89-e8-a3-85puppet-e5-8f-8a-e6-b5-8b-e8-af-95.html" itemprop="url">Centos6.5下安装Puppet及测试</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-08-20T11:10:46+08:00">
+                2014-08-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/自动化运维/" itemprop="url" rel="index">
+                    <span itemprop="name">自动化运维</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2014/08/20/centos6-5-e4-b8-8b-e5-ae-89-e8-a3-85puppet-e5-8f-8a-e6-b5-8b-e8-af-95.html" class="leancloud_visitors" data-flag-title="Centos6.5下安装Puppet及测试">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  6
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h5 id="安装前注意事项"><a href="#安装前注意事项" class="headerlink" title="安装前注意事项"></a><strong><span id="ap1" style="font-weight: inherit; font-style: inherit;">安装前注意事项</span></strong></h5><ol>
+<li>Puppet master尽量使用高配置server</li>
+<li>任何官方未支持的系统也可以正常运行puppet，前提是要装合适的版本的ruby环境<br>请参考:<a href="http://docs.puppetlabs.com/puppet/latest/reference/system_requirements.html#basic-requirements" target="_blank" rel="external">http://docs.puppetlabs.com/puppet/latest/reference/system_requirements.html#basic-requirements</a></li>
+<li>master防火墙放行8140端口给agent</li>
+<li>每个节点都必须有一个唯一的主机名，正解析和反解析都被正确配置，如果没有DNS服务，必须在每个节点上配置/etc/hosts<br><strong>注</strong>：默认情况下puppet的master的主机名是puppet</li>
+<li>由于Puppet master同时扮演着CA(认证授权机构)的角色,需要时间同步,启动ntpd服务；</li>
+<li>两种工作模式：Master/Agent、Standatone</li>
+</ol>
+<h5 id="环境说明"><a href="#环境说明" class="headerlink" title="环境说明"></a><strong><span id="ap2" style="font-weight: inherit; font-style: inherit;">环境说明</span></strong></h5><p>192.168.10.216   Puppet Agent   c1.geekwolf.github.io<br>192.168.10.217   Puppet Agent   c2.geekwolf.github.io<br>192.168.10.218   Puppet Master   m.geekwolf.github.io</p>
+<h5 id="安装步骤"><a href="#安装步骤" class="headerlink" title="安装步骤"></a><strong><span id="ap3" style="font-weight: inherit; font-style: inherit;">安装步骤</span></strong></h5><h6 id="安装puppet"><a href="#安装puppet" class="headerlink" title="安装puppet"></a><strong><span id="ap4" style="font-weight: inherit; font-style: inherit;">安装puppet</span></strong></h6><p>rpm -ivh <a href="http://yum.puppetlabs.com/puppetlabs-release-el-6.noarch.rpm" target="_blank" rel="external">http://yum.puppetlabs.com/puppetlabs-release-el-6.noarch.rpm</a><br>说明:若要测试RC版及相关软件编辑/etc/yum.repos.d/puppetlabs.repo：</p>
+<pre><code>[puppetlabs-devel]
+name=Puppet Labs Devel El 6 - $basearch
+baseurl=http://yum.puppetlabs.com/el/6/devel/$basearch
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-puppetlabs
+enabled=1
+gpgcheck=1
+
+yum -y install  ntp
+service ntpd start
+chkconfig ntpd on
+`&lt;/pre&gt;
+
+配置好hostname，并将解析写进hosts同步到所有节点
+**&lt;span id=&quot;ap5&quot; style=&quot;font-weight: inherit; font-style: inherit;&quot;&gt;在master:192.168.10.218安装puppet-server&lt;/span&gt;**
+
+&lt;pre style=&quot;color: #93a1a1;&quot;&gt;`yum -y install puppet-server（依赖puppet、facter一起安装）
+生成启动脚本:
+/etc/init.d/puppetmaster 
+Master配置文件目录：
+/etc/puppet
+
+chkconfig puppetmaster on
+service puppetmaster start
+
+升级puppet master：
+puppet resource package puppet ensure=latest
+service puppetmaster restart
+`&lt;/pre&gt;
+
+**在c1 c2 上安装puppet**
+
+&lt;pre style=&quot;color: #93a1a1;&quot;&gt;`yum -y install puppet
+chkconfig puppet on
+service puppet start
+Agent配置文件目录:
+/etc/sysconfig/puppet.conf
+`&lt;/pre&gt;
+
+**&lt;span id=&quot;ap6&quot; style=&quot;font-weight: inherit; font-style: inherit;&quot;&gt;配置puppet agent c1 c2指定Puppet Master地址&lt;/span&gt;**
+
+&lt;pre style=&quot;color: #93a1a1;&quot;&gt;`vim  /etc/puppet/puppet.conf
+[main]
+# The Puppet log directory.
+# The default value is &apos;$vardir/log&apos;.
+logdir = /var/log/puppet
+# Where Puppet PID files are kept.
+# The default value is &apos;$vardir/run&apos;.
+rundir = /var/run/puppet
+# Where SSL certificates are kept.
+# The default value is &apos;$confdir/ssl&apos;.
+ssldir = $vardir/ssl
+[agent]
+# The file in which puppetd stores a list of the classes
+# associated with the retrieved configuratiion. Can be loaded in
+# the separate ``puppet`` executable using the ``--loadclasses``
+# option.
+# The default value is &apos;$confdir/classes.txt&apos;.
+classfile = $vardir/classes.txt
+# Where puppetd caches the local configuration. An
+# extension indicating the cache format is added automatically.
+# The default value is &apos;$confdir/localconfig&apos;.
+localconfig = $vardir/localconfig
+server = m.geekwolf.github.io
+`&lt;/pre&gt;
+
+###### **&lt;span id=&quot;ap7&quot; style=&quot;font-weight: inherit; font-style: inherit;&quot;&gt;证书管理&lt;/span&gt;**
+
+**A.手动签发证书**
+c1、c2申请证书，由于已经配置了server=m.geekwolf.github.io，故申请时不必在指定server
+
+&lt;pre style=&quot;color: #93a1a1;&quot;&gt;`[root@c1 ~]# puppet agent -t
+Info: Creating a new SSL key for c1.geekwolf.github.io
+Info: Caching certificate for ca
+Info: Caching certificate_request for c1.geekwolf.github.io
+Info: Caching certificate for ca
+Exiting; no certificate found and waitforcert is disabled
+`&lt;/pre&gt;
+
+在Master上管理证书：
+**签发证书：**
+
+&lt;pre style=&quot;color: #93a1a1;&quot;&gt;`puppet cert list --all                   查看请求签发的证书（+表示已签发，-未签发）
+puppet cert --sign c1.geekwolf.github.io 签发主机c1.geekwolf.github.io的证书
+puppet cert --sign --all                 签发所有请求的主机的证书
+`&lt;/pre&gt;
+
+**注销证书：**
+
+&lt;pre style=&quot;color: #93a1a1;&quot;&gt;`puppet cert revoke  c1.geekwolf.github.io 注销主机c1.geekwolf.github.io的证书
+puppet cert revoke --all                  注销所有主机的证书（若想在重新签名，需先重启puppetmaster,然后节点在请求申请证书，再签名即可）
+`&lt;/pre&gt;
+
+**清除证书：**
+
+&lt;pre style=&quot;color: #93a1a1;&quot;&gt;`在master上清除某节点证书,重启puppetmaster后生效
+puppet cert --clean c1.geekwolf.github.io 
+
+在agent上删除相关目录,可以重新再申请签名   
+rm -rf /var/lib/puppet/ssl 或者rm -rf /var/lib/puppet/certs/c1.geekwolf.github.io.pem 
+`&lt;/pre&gt;
+
+**B.自动签发证书**
+在Puppet Master创建/etc/puppet/autosign.conf文件
+*.geekwolf.github.io (geekwolf.github.io域的申请会自动签发)
+service puppetmaster restart
+所有节点上执行
+rm -rf /var/lib/puppet/ssl
+
+然后所有的节点申请签名
+puppet agent -t —server m.geekwolf.github.io
+
+&lt;pre style=&quot;color: #93a1a1;&quot;&gt;`在Puppet Master查看签名
+[root@m puppet]# puppet cert list --all
++ &quot;c1.geekwolf.github.io&quot; (SHA256) 2A:28:96:6C:B0:36:E8:CC:71:80:F4:C6:B5:D8:61:94:A8:59:46:9D:52:A3:58:2A:D9:78:45:A3:57:93:1C:38
++ &quot;c2.geekwolf.github.io&quot; (SHA256) 09:59:71:9A:CA:AE:92:82:1D:D4:0C:A6:D4:5F:51:C3:D6:E4:EE:80:20:19:CB:B1:71:EE:B3:24:F7:E3:80:71
++ &quot;m.geekwolf.github.io&quot; (SHA256) 10:F3:28:EA:36:25:38:C5:1C:8A:38:FD:94:EF:F9:77:6B:97:E9:FA:60:18:D5:53:DD:5D:DA:15:88:4F:96:A1 (alt names: &quot;DNS:m.geekwolf.github.io&quot;, &quot;DNS:puppet&quot;, &quot;DNS:puppet.geekwolf.github.io&quot;)
+`&lt;/pre&gt;
+
+**参考文档：** [多CA配置](http://docs.puppetlabs.com/puppet/3.6/reference/config_ssl_external_ca.html#option-3-two-intermediate-cas-issued-by-one-root-ca)
+
+###### **&lt;span id=&quot;ap8&quot; style=&quot;font-weight: inherit; font-style: inherit;&quot;&gt;测试&lt;/span&gt;**
+
+&lt;pre style=&quot;color: #93a1a1;&quot;&gt;`默认agent（c1，c2）每30分钟连接到puppet master,为测试方便先修改连接时间
+echo &quot;runinterval = 10&quot; &amp;gt;&amp;gt;/etc/puppet/puppet.conf
+service puppet restart
+
+Puppet Master：
+vim /etc/puppet/manifests/site.pp
+file {&quot;/tmp/test.txt&quot; :
+  content=&amp;gt;&quot;test from geekwolf!~\n&quot;; } 
+
+检查c1 c2是否有/tmp/test.txt文件
+</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2014/08/20/mysql5-6-e5-9f-ba-e4-ba-8egtid-e5-a4-8d-e5-88-b6-e9-85-8d-e7-bd-ae.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Geekwolf">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/wolf.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Geekwolf's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2014/08/20/mysql5-6-e5-9f-ba-e4-ba-8egtid-e5-a4-8d-e5-88-b6-e9-85-8d-e7-bd-ae.html" itemprop="url">MySQL5.6基于GTID复制配置</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-08-20T11:06:43+08:00">
+                2014-08-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/MySQL数据库/" itemprop="url" rel="index">
+                    <span itemprop="name">MySQL数据库</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2014/08/20/mysql5-6-e5-9f-ba-e4-ba-8egtid-e5-a4-8d-e5-88-b6-e9-85-8d-e7-bd-ae.html" class="leancloud_visitors" data-flag-title="MySQL5.6基于GTID复制配置">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  8
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h5 id="一、什么是GTID？"><a href="#一、什么是GTID？" class="headerlink" title="一、什么是GTID？"></a><strong><span id="gg1" style="font-weight: inherit; font-style: inherit;">一、什么是GTID？</span></strong></h5><p>  GTID(Global Transaction Identifiers)是全局事务标识<br>当使用GTIDS时，在主上提交的每一个事务都会被识别和跟踪，并且运用到所有从MySQL，而且配置主从或者主从切换时不再需要指定 master_log_files和master_log_pos；由于GTID-base复制是完全基于事务的，所以能很简单的决定主从复制的一致性；官方建议Binlog采用Row格式</p>
+<h5 id="二、GTID的表示方式"><a href="#二、GTID的表示方式" class="headerlink" title="二、GTID的表示方式"></a><strong><span id="gg2" style="font-weight: inherit; font-style: inherit;">二、GTID的表示方式</span></strong></h5><p>source_id：transaction_id<br>source_id：表示执行事务的主库的UUID(server_uuid:Mysql5.6的data目录下启动时会生成auto.cnf文件记录了uuid，重启后uuid不变，删除文件后会重新生成新的uuid)；<br>transaction_id：是一个从1开始自增的计数，表示在这个主库上执行的第n个事务；<br>由于每台Mysql的uuid是全球唯一的，transaction_id自身唯一，就保证了GTID全局唯一性</p>
+<pre><code>mysql&amp;gt; show variables like &apos;server_uuid&apos;; 
++---------------+--------------------------------------+
+| Variable_name | Value |
++---------------+--------------------------------------+
+| server_uuid | 4468c0e8-ef6f-11e3-9c2c-0200c0a80ad8 |
++---------------+--------------------------------------+
+1 row in set (0.00 sec)
+`&lt;/pre&gt;
+
+##### **&lt;span id=&quot;gg3&quot; style=&quot;font-weight: inherit; font-style: inherit;&quot;&gt;三、基于GTID的复制配置&lt;/span&gt;**
+
+**master：**192.168.10.216
+**slave ：**192.168.10.217
+**步骤：**
+修改主从my.cnf增加GTID支持—&amp;gt;主只读—&amp;gt;拷贝数据到从数据目录—&amp;gt;重启主从—&amp;gt;在从上进行配置
+1.修改主从my.cnf增加GTID支持
+
+&lt;pre style=&quot;color: #93a1a1;&quot;&gt;`主Mysql配置：
+server-id=216   
+binlog-format=ROW
+gtid-mode=on
+enforce-gtid-consistency=true 
+log-bin=mysql-bin
+log-slave-updates=true   slave更新是否记入日志
+
+从Mysql配置：
+server-id=217   同一个复制拓扑中的所有服务器的id号必须惟一
+binlog-format=ROW
+gtid-mode=on  启用gtid类型，否则就是普通的复制架构
+enforce-gtid-consistency=true 强制GTID的一致性
+log-bin=mysql-bin
+log-slave-updates=true   slave更新是否记入日志
+只从库配置：
+slave-paralles-workers 设定从服务器的SQL线程数；0表示关闭多线程复制功能；
+`&lt;/pre&gt;
+
+2.主只读
+
+&lt;pre style=&quot;color: #93a1a1;&quot;&gt;`mysql&amp;gt; SET @@global.read_only = ON;
+`&lt;/pre&gt;
+
+拷贝主数据到从目录
+
+3.重启主从Mysql
+
+4.在从上配置基于GTID的复制
+
+&lt;pre style=&quot;color: #93a1a1;&quot;&gt;`mysql&amp;gt; CHANGE MASTER TO 
+     &amp;gt; MASTER_HOST = ‘192.168.10.216’,
+     &amp;gt; MASTER_PORT = 3306,
+     &amp;gt; MASTER_USER = &apos;rep&apos;,
+     &amp;gt; MASTER_PASSWORD = &apos;geekwolf&apos;,
+     &amp;gt; MASTER_AUTO_POSITION = 1;
+`&lt;/pre&gt;
+
+5.启动从库
+
+&lt;pre style=&quot;color: #93a1a1;&quot;&gt;`mysql&amp;gt; start slave; 
+Query OK, 0 rows affected, 1 warning (0.00 sec)
+
+mysql&amp;gt; show slave status \G
+*************************** 1\. row ***************************
+   Slave_IO_State: Waiting for master to send event
+  Master_Host: 192.168.10.216
+  Master_User: rep
+  Master_Port: 3306
+Connect_Retry: 60
+  Master_Log_File: mysql-bin.000002
+  Read_Master_Log_Pos: 41921904
+   Relay_Log_File: relay-bin.000002
+Relay_Log_Pos: 64520
+Relay_Master_Log_File: mysql-bin.000002
+ Slave_IO_Running: Yes
+Slave_SQL_Running: Yes
+  Replicate_Do_DB:
+  Replicate_Ignore_DB:
+   Replicate_Do_Table:
+   Replicate_Ignore_Table:
+  Replicate_Wild_Do_Table:
+  Replicate_Wild_Ignore_Table: mysql.%
+   Last_Errno: 0
+   Last_Error:
+ Skip_Counter: 0
+  Exec_Master_Log_Pos: 41921904
+  Relay_Log_Space: 64718
+  Until_Condition: None
+   Until_Log_File:
+Until_Log_Pos: 0
+   Master_SSL_Allowed: No
+   Master_SSL_CA_File:
+   Master_SSL_CA_Path:
+  Master_SSL_Cert:
+Master_SSL_Cipher:
+   Master_SSL_Key:
+Seconds_Behind_Master: 0
+Master_SSL_Verify_Server_Cert: No
+Last_IO_Errno: 0
+Last_IO_Error:
+   Last_SQL_Errno: 0
+   Last_SQL_Error:
+  Replicate_Ignore_Server_Ids:
+ Master_Server_Id: 216
+  Master_UUID: 21ad8db5-f038-11e3-a14a-0200c0a80ad8
+ Master_Info_File: /usr/local/mysql/data/master.info
+SQL_Delay: 0
+  SQL_Remaining_Delay: NULL
+  Slave_SQL_Running_State: Reading event from the relay log
+   Master_Retry_Count: 86400
+  Master_Bind:
+  Last_IO_Error_Timestamp:
+ Last_SQL_Error_Timestamp:
+   Master_SSL_Crl:
+   Master_SSL_Crlpath:
+   Retrieved_Gtid_Set: 21ad8db5-f038-11e3-a14a-0200c0a80ad8:76793-77026
+Executed_Gtid_Set: 21ad8db5-f038-11e3-a14a-0200c0a80ad8:1-77025
+Auto_Position: 1
+1 row in set (0.00 sec)
+`&lt;/pre&gt;
+
+**注：**
+
+两个Yes代表复制正常
+Slave_IO_Running: Yes
+Slave_SQL_Running: Yes
+
+基于GTID复制的新特性：
+Retrieved_Gtid_Set: 21ad8db5-f038-11e3-a14a-0200c0a80ad8:76793-77026
+Executed_Gtid_Set: 21ad8db5-f038-11e3-a14a-0200c0a80ad8:1-77025
+
+Retrieved_Gtid_Set项：记录了relay日志从Master获取了binlog日志的位置
+Executed_Gtid_Set项：记录本机执行的binlog日志位置（如果是从机，包括Master的binlog日志位置和slave本身的binlog日志位置）
+
+##### **&lt;span id=&quot;gg4&quot; style=&quot;font-weight: inherit; font-style: inherit;&quot;&gt;四、基于GTID复制增加新的slave&lt;/span&gt;**
+
+  备份主MySQL数据，记录主gtid_executed—&amp;gt;将备份数据恢复到从数据目录—&amp;gt;设置从gtid_purged的值为主的gtid_executed值—&amp;gt;启动复制即可
+
+1.使用mysqldump备份主数据
+mysqldump —all-databases —single-transaction —triggers —routines —host=127.0.0.1 —port=3306 —user=root —password=geekwolf &amp;gt; backup.sql
+亦可以使用xtrabackup也支持GTID：
+请参考:[http://www.mysqlperformanceblog.com/2013/05/09/how-to-create-a-new-or-repair-a-broken-gtid-based-slave-with-percona-xtrabackup/](http://www.mysqlperformanceblog.com/2013/05/09/how-to-create-a-new-or-repair-a-broken-gtid-based-slave-with-percona-xtrabackup/)
+
+2.传到从MySQL，恢复数据
+由于新版本msqldump会记录并设置GTID_PURGED的值等于主的GTID_EXECUTED，所以只需要将sql导入到从库即可
+
+3.启动主从复制
+
+&lt;pre style=&quot;color: #93a1a1;&quot;&gt;`从库执行
+mysql &amp;gt; CHANGE MASTER TO MASTER_HOST=&apos;127.0.0.1&apos;, MASTER_USER=&apos;root&apos;, MASTER_PASSWORD=geekwolf&apos;, MASTER_PORT=3306, MASTER_AUTO_POSITION = 1;
+mysql &amp;gt; START SLAVE;
+`&lt;/pre&gt;
+
+##### **&lt;span id=&quot;gg5&quot; style=&quot;font-weight: inherit; font-style: inherit;&quot;&gt;五、基于GTID复制出错的解决办法&lt;/span&gt;**
+
+**问题:**
+
+&lt;pre style=&quot;color: #93a1a1;&quot;&gt;`Slave_IO_Running: No
+Slave_SQL_Running: Yes
+Last_IO_Error: Got fatal error 1236 from master when reading data from binary log: &apos;The slave is connecting using CHANGE MASTER TO MASTER_AUTO_POSITION = 1, but the master has purged binary logs containing GTIDs that the slave requires.&apos;
+`&lt;/pre&gt;
+
+**解决思路:**
+
+从复制跳过已经丢失的binlog，继续复制或者重新做主从（可以参考上面的操作）
+
+&lt;pre style=&quot;color: #93a1a1;&quot;&gt;`主MySQL：
+mysql&amp;gt; show global variables like &apos;%gtid_executed%&apos;;
++---------------+-----------------------------------------------+
+| Variable_name | Value |
++---------------+-----------------------------------------------+
+| gtid_executed | 21ad8db5-f038-11e3-a14a-0200c0a80ad8:1-223937 |
++---------------+-----------------------------------------------+
+1 row in set (0.00 sec)
+
+从MySQL：
+mysql&amp;gt; set global GTID_PURGED=&quot;21ad8db5-f038-11e3-a14a-0200c0a80ad8:1-223937&quot;;
+ERROR 1840 (HY000): @@GLOBAL.GTID_PURGED can only be set when @@GLOBAL.GTID_EXECUTED is empty.
+
+mysql&amp;gt; reset master;
+Query OK, 0 rows affected (0.19 sec)
+mysql&amp;gt; show global variables like &apos;GTID_EXECUTED&apos;;
++---------------+-----------------------------------------------+
+| Variable_name | Value |
++---------------+-----------------------------------------------+
+| gtid_executed |  |
++---------------+-----------------------------------------------+
+1 row in set (0.00 sec)
+
+mysql&amp;gt; stop slave;
+Query OK, 0 rows affected, 1 warning (0.00 sec)
+
+mysql&amp;gt; set global GTID_PURGED=&quot;21ad8db5-f038-11e3-a14a-0200c0a80ad8:1-223937&quot;;
+Query OK, 0 rows affected (0.13 sec)
+
+mysql&amp;gt; start slave;
+Query OK, 0 rows affected (0.04 sec)
+
+mysql&amp;gt; show slave status\G
+[...]
+Slave_IO_Running: Yes
+Slave_SQL_Running: Yes
+[...]
+`&lt;/pre&gt;
+
+**&lt;span id=&quot;gg6&quot; style=&quot;font-weight: inherit; font-style: inherit;&quot;&gt;注意事项：&lt;/span&gt;
+**  使用基于GTID复制时，不需要再关心master_log_file和master_log_pos，替代的是只需要知道master上的GTID，并且配置在从上即可；
+记录GTID的有两个全局变量：gtid_executed和gtid_purged
+
+**与GTID复制相关的参数：**
+
+[![gtid](http://www.simlinux.com/wp-content/uploads/2014/08/gtid1.png)](http://www.simlinux.com/wp-content/uploads/2014/08/gtid1.png)
+
+GTID_EXECUTED ：表示已经在该实例上执行过的事务；执行RESET MASTER可以置空该参数；也可以设置GTID_NEXT执行一个空事务来影响GTID_EXECUTED
+GTID_NEXT ：是SESSION级别参数，表示下一个事务被执行使用的GTID（show variables like ‘gtid_%’;）
+GTID_PURGED ：表示被删除的binlog事务GTID，它是GTID_EXCUTED的子集，MySQL5.6.9，该参数无法被设置
+GTID_OWENED ：表示正在执行的事务的GTID以及对应的线程ID
+
+如果设置MASTER_AUTO_POSITION = 1表示主从复制连接使用基于GTID的方式复制
+
+&lt;pre style=&quot;color: #93a1a1;&quot;&gt;`CHANGE MASTER TO MASTER_HOST=&apos;192.168.10.216&apos;,MASTER_USER=&apos;rep&apos;,MASTER_PASSWORD=&apos;geekwolf&apos;,MASTER_AUTO_POSITION=1;
+`&lt;/pre&gt;
+
+如果在GTID复制模式下想要使用基于文件的复制协议需要MASTER_AUTO_POSITION=0（至少指定其中MASTER_LOG_FILE、MASTER_LOG_POSITION一个）
+
+&lt;pre style=&quot;color: #93a1a1;&quot;&gt;`CHANGE MASTER TO MASTER_HOST=&apos;192.168.10.216&apos;,MASTER_USER=&apos;rep&apos;,MASTER_PASSWORD=&apos;geekwolf&apos;,MASTER_LOG_FILE=&apos;mysql-bin.000002&apos;,MASTER_LOG_POS=120,MASTER_AUTO_POSITION=0;
+</code></pre><p><strong><span id="gg7" style="font-weight: inherit; font-style: inherit;">参考文档：</span></strong></p>
+<p><a href="http://dev.mysql.com/doc/refman/5.6/en/replication-gtids-restrictions.html" target="_blank" rel="external">MYSQL 5.6 GTID-based Replication</a><br><a href="http://www.woqutech.com/?p=1108" target="_blank" rel="external">MYSQL 5.6 GTID模式下手工删除日志导致备库数据丢失</a><br><a href="http://www.mysqlperformanceblog.com/2013/05/09/how-to-create-a-new-or-repair-a-broken-gtid-based-slave-with-percona-xtrabackup/" target="_blank" rel="external">How to create a new (or repair a broken) GTID based slave with Percona XtraBackup</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2014/08/20/e5-88-9d-e8-ae-a4-e8-af-86puppet.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Geekwolf">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/wolf.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Geekwolf's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2014/08/20/e5-88-9d-e8-ae-a4-e8-af-86puppet.html" itemprop="url">初认识Puppet</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-08-20T10:59:23+08:00">
+                2014-08-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/自动化运维/" itemprop="url" rel="index">
+                    <span itemprop="name">自动化运维</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2014/08/20/e5-88-9d-e8-ae-a4-e8-af-86puppet.html" class="leancloud_visitors" data-flag-title="初认识Puppet">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  4
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><strong><span id="pp1" style="font-weight: inherit; font-style: inherit;">自动化运维都有哪些开源软件？</span></strong></p>
+<p>初始化：Kickstart、Cobbler、 Rpmbuild/Xen、Kvm、Lxc、Docker/Openstack、Cloudstack、Opennebula、Eucalyplus<br>配置类工具：Chef、Puppet、Func、Cfengine<br>命令和控制类工具: Fabric、Salstack、Ansible、Capistrano、Pssh、Dsh、Expect<br>监控类工具：Cacti、Nagios、Zabbix、Ganglia<br>推荐阅读：<a href="http://hotpu-meeting.b0.upaiyun.com/2014dtcc/post_pdf/liuyu.pdf" target="_blank" rel="external">http://hotpu-meeting.b0.upaiyun.com/2014dtcc/post_pdf/liuyu.pdf</a></p>
+<p><strong><span id="pp2" style="font-weight: inherit; font-style: inherit;">什么是Puppet？</span></strong><br>puppet是一种Linux、Unix平台的集中配置管理系统，使用ruby语言，可管理配置文件、用户、cron任务、软件包、系统服务等。puppet把这些系统实体称之为资源，puppet的设计目标是简化对这些资源的管理以及妥善处理资源间的依赖关系</p>
+<p><strong><span id="pp3" style="font-weight: inherit; font-style: inherit;">Puppet都有哪些特性？</span></strong></p>
+<ul>
+<li>可自动化重复任务、快速部署关键性应用及本地或者云端完成主动管理变更和快速扩展架构规模等</li>
+<li>遵循GPL协议，基于ruby开发，2.7.0以后使用Apache 2.0 License</li>
+<li>对于sa来讲是抽象的，只依赖于ruby与facter</li>
+<li>基于C/S架构，配置master和agent</li>
+<li>默认agent每30分钟连接到puppet master</li>
+<li>能管理多达40多种资源，如：file、user 、group、host、packeage、service、cron、exec、yumrepo等，适合整个软件生命周期的管理</li>
+</ul>
+<p><strong><span id="pp4" style="font-weight: inherit; font-style: inherit;">puppet的整个生命周期</span></strong><br>供应（provisioning:包安装）—&gt;配置（configuration）—&gt;联动(orchestration)—&gt;报告(reporting)</p>
+<p><strong><span id="pp5" style="font-weight: inherit; font-style: inherit;">Puppet适用于哪些场合？</span></strong></p>
+<ul>
+<li>初始化配置、修复、升级、审计</li>
+<li>统一安装、配置管理软件</li>
+<li>统一配置系统优化参数</li>
+<li>定期检测服务是否运行</li>
+<li>快速替换集群时设备的角色</li>
+</ul>
+<p><strong><span id="pp6" style="font-weight: inherit; font-style: inherit;">Puppet社区版和企业版本功能上有什么差别？</span></strong></p>
+<p><a href="http://www.simlinux.com/wp-content/uploads/2014/08/cb.png"><img src="http://www.simlinux.com/wp-content/uploads/2014/08/cb.png" alt="cb"></a></p>
+<p>请参考：<a href="http://puppetlabs.com/puppet/enterprise-vs-open-source" target="_blank" rel="external">http://puppetlabs.com/puppet/enterprise-vs-open-source</a></p>
+<p><strong><span id="pp7" style="font-weight: inherit; font-style: inherit;">Puppet支持哪些系统？</span></strong></p>
+<p><a href="http://www.simlinux.com/wp-content/uploads/2014/08/zcos.png"><img src="http://www.simlinux.com/wp-content/uploads/2014/08/zcos.png" alt="zcos"></a></p>
+<p><strong><span id="pp8" style="font-weight: inherit; font-style: inherit;">Puppet架构是怎样的？</span></strong></p>
+<p><a href="http://www.simlinux.com/wp-content/uploads/2014/08/ppjg.png"><img src="http://www.simlinux.com/wp-content/uploads/2014/08/ppjg.png" alt="ppjg"></a></p>
+<p><strong><span id="pp9" style="font-weight: inherit; font-style: inherit;">Puppet如何工作的？</span></strong></p>
+<p><a href="http://www.simlinux.com/wp-content/uploads/2014/08/yl.png"><img src="http://www.simlinux.com/wp-content/uploads/2014/08/yl.png" alt="yl"></a></p>
+<p>  所有配置信息为实现其通用性，在master端通常被定义为modules—class—resource（管理和被管理的对象）<br>资源组成类，类封装成模块<br>puppet只定义目标状态，不用关心实现过程；<br>module(class(resource))—&gt;node ‘FQDN’ {class1,class2}—&gt;agent(facter)报告facter给master —&gt;master根据facter信息生成相应的catalog结果—&gt;agent 应用catalog</p>
+<p><strong>流程简述如下：</strong></p>
+<ol>
+<li>客户端puppetd向master发起认证请求。</li>
+<li>Puppet Master告诉client是合法的。</li>
+<li>客户端puppetd开始调用facter，facter可以探测出主机的一些变量，例如主机名，内存大小，IP地址等。pupppetd 把这些信息通过ssl连接发送到服务器端。</li>
+<li>服务器端的puppet Master 检测客户端的主机名，然后找到manifest里面对应的node配置， 并对该部分内容进行解析，解析分为几个阶段，语法检查，如果语法错误就报错。如果语法没错，就继续解析，解析的结果会生成一个中间的“伪代码”(catalog)，然后把伪代码发给客户端。</li>
+<li>客户端接收到“伪代码”，并且执行。</li>
+<li>客户端在执行时判断有没有file文件，如果有就向Fileserver发起请求。</li>
+<li>客户端继续判断有没有配置Report。如果配置，就把执行结果发送给服务器。</li>
+<li>服务器端把客户端的执行结果写入日志。并可以发送给报告系统(DashBoard)</li>
+</ol>
+<p><strong><span id="pp10" style="font-weight: inherit; font-style: inherit;">Puppet组织结构是怎样的？</span></strong></p>
+<p>Puppet的目录结构描述如下： |— puppet.conf # 主配置配置文件<br>|— fileserver.conf #文件服务器配置文件<br>|— auth.conf #认证配置文件 (只允许域内认证)<br>|— autosign.conf #自动验证配置文件<br>|— tagmail.conf # 邮件配置文件（将错误信息发送）<br>|— manifests # 文件存储目录(puppet会先读取该目录的.pp文件&lt;site.pp&gt;)<br>|— nodes<br>| | | puppetclient.pp #puppet解析主配置文件所有的模块和节点都在此文件里include<br>| |— site.pp # 定义puppet相关的变量和默认配置<br>| |— modules.pp # 加载class类模块文件（include nginx）<br>|— modules # 定义模块<br>| —nginx # 以nginx为例<br>| |— file<br>| |— manifests<br>| | |— init.pp #类的定义，类名必须与模块名相同<br>| |—– templates # 模块配置目录，可以被模块的manifests引用<br>| | |— nginx.erb #erb模板</p>
+<p><strong>学习Puppet去哪里？</strong></p>
+<p>Puppet相关文档：<a href="http://docs.puppetlabs.com/" target="_blank" rel="external">http://docs.puppetlabs.com/</a><br>常用模块下载地址： <a href="https://forge.puppetlabs.com/" target="_blank" rel="external">https://forge.puppetlabs.com/</a><br>PuppetDashboard下载地址：<a href="https://downloads.puppetlabs.com/dashboard/" target="_blank" rel="external">https://downloads.puppetlabs.com/dashboard/</a><br>PuppetDashboard帮助文档：<a href="http://docs.puppetlabs.com/dashboard/" target="_blank" rel="external">http://docs.puppetlabs.com/dashboard/</a><br>Puppet中文wiki：<a href="http://puppet.wikidot.com/" target="_blank" rel="external">http://puppet.wikidot.com/</a><br>Puppet中文论坛：<a href="http://www.puppetfans.com/" target="_blank" rel="external">http://www.puppetfans.com/</a><br>Puppet运维自动化文档：<a href="http://pan.baidu.com/s/1c0hBMgg" target="_blank" rel="external">http://pan.baidu.com/s/1c0hBMgg</a><br>Puppet简单安装可以参考：<a href="http://www.chenshake.com/puppet-study-notes/#i-3" target="_blank" rel="external">http://www.chenshake.com/puppet-study-notes/#i-3</a></p>
+<blockquote>
+<p>参考 南非蜘蛛</p>
+</blockquote>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2014/08/20/mysql-e5-a4-8d-e5-88-b6-e5-8e-9f-e7-90-86-e4-b8-8e-e9-85-8d-e7-bd-ae.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Geekwolf">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/wolf.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Geekwolf's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2014/08/20/mysql-e5-a4-8d-e5-88-b6-e5-8e-9f-e7-90-86-e4-b8-8e-e9-85-8d-e7-bd-ae.html" itemprop="url">MySQL复制原理与配置</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-08-20T10:50:46+08:00">
+                2014-08-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/MySQL数据库/" itemprop="url" rel="index">
+                    <span itemprop="name">MySQL数据库</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2014/08/20/mysql-e5-a4-8d-e5-88-b6-e5-8e-9f-e7-90-86-e4-b8-8e-e9-85-8d-e7-bd-ae.html" class="leancloud_visitors" data-flag-title="MySQL复制原理与配置">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  14
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h5 id="一、Mysql复制基本原理"><a href="#一、Mysql复制基本原理" class="headerlink" title="一、Mysql复制基本原理"></a><strong><span id="r1" style="font-style: inherit;">一、Mysql复制基本原理</span></strong></h5><p><a href="http://www.simlinux.com/wp-content/uploads/2014/08/fzyl.png"><img src="http://www.simlinux.com/wp-content/uploads/2014/08/fzyl.png" alt="fzyl"></a></p>
+<ol>
+<li>Mysql主库在事务提交时会将数据变更作为Events记录在Binlog中，Mysql主库的sync_binlog参数(默认值为0<br>可参考<a href="http://dev.mysql.com/doc/refman/5.6/en/replication-options-binary-log.html#sysvar_sync_binlog" target="_blank" rel="external">http://dev.mysql.com/doc/refman/5.6/en/replication-options-binary-log.html#sysvar_sync_binlog</a>)控制Binlog日志刷新到磁盘</li>
+<li>主库推送Binlog中的事件到从库的Relay Log，之后从库根据Relay Log重做DML操作</li>
+<li>Mysql通过3个线程完成主从复制：Binlog Dump线程跑在主库，I/O线程和SQL线程跑在从库；<br>当从库启动复制，首先创建I/O线程连接到主库，主库随后创建Binlog Dump线程读取数据库事件并发给I/O线程，I/O线程获取到事件数据后更新到从库的Relay Log中去，之后从库上的SQL线程读取Relay Log中更新的数据库事件并应用</li>
+</ol>
+<p><strong>注释：</strong><br>从库上两个重要文件：<code>master.info</code>：记录I/O线程连接主库的一些参数；<code>relay-log.info</code>：记录SQL线程应用Relay Log的一些参数</p>
+<p>#####<br><strong><span id="r2" style="font-weight: inherit; font-style: inherit;">二、Mysql复制中Binlog的三种格式</span></strong></p>
+<h6 id="三种格式的介绍"><a href="#三种格式的介绍" class="headerlink" title="三种格式的介绍"></a><strong><span id="r3" style="font-weight: inherit; font-style: inherit;">三种格式的介绍</span></strong></h6><p><strong>Statement (statement-based replication:SBR)：</strong>基于SQL语句级别的Binlog，每条修改数据的SQL都会保存在Binlog里面；<br><strong>Row(RBR)：</strong>基于行级别，记录每一行数据的变化，也就是将每行数据的变化都记录到Binlog里面，记录得非常详细，单并不记录原始SQL；在复制过程，并不会因为存储过程或者触发器造成主从数据不一致问题，但记录的binlog大小会比Statement格式大很多,CREATE、DROP、ALTER操作只记录原始SQL，而不会记录每行数据的变化到Binlog；<br><strong>Mixed(MBR):</strong>混合Statement和Row模式，默认是Statement模式记录，某些情况下会切换到Row模式，例如SQL中包含与时间、用户相关的函数等statement无法完成主从复制的操作；<br><strong><span id="r4" style="font-weight: inherit; font-style: inherit;"></span></strong></p>
+<h6 id="Binlog格式的优缺点"><a href="#Binlog格式的优缺点" class="headerlink" title="Binlog格式的优缺点"></a><strong><span id="r4" style="font-weight: inherit; font-style: inherit;">Binlog格式的优缺点</span></strong></h6><p><strong>基于Statement复制(Mysql5.5默认格式):</strong><br><strong>优点：</strong><br>Binlog日志量少，节约IO，和减少了主从网络binlog传输量<br>只记录在master上所执行的语句的细节，以及执行语句的上下文信息<br>同时，审计数据库变的更容易</p>
+<p><strong>缺点：</strong><br>由于此格式是记录原始执行的SQL，保证能在slave上正确执行必须记录每条语句的上下文信息<br>部分修改数据库时使用的函数可能出现无法复制：sleep()、last_insert_id()、 load_file()、uuid()、user()、found_rows()、sysdate()(除非启动时—sysdate-is-now=true)<br>可能会导致触发器或者存储过程复制导致数据不一致，如调用NOW()函数<br>INSERT…SELECT 可能会产生比RBR更多的行级锁，例如没有order by的insert…select<br>复制需要执行全表扫描(WHERE中没有使用索引)的UPDATE时，需比row请求更多的行级锁<br>对于AUTO_INCREMENT字段的InnoDB引擎表，INSERT会阻塞其他INSERT语句</p>
+<p><strong>注：</strong>如果statement不能保证主从正常复制,error日志会有提示：Statement may not be safe to log in statement format</p>
+<p><strong>基于Row复制:</strong><br><strong>优点：</strong><br>只记录每一行数据变化的细节，不需要记录上下文信息<br>不会出现某些情况下auto_increment columns,timestamps,.triger、function、procedure无法正常复制的问题<br>新的row格式已经有了优化， CREATE、DROP、ALTER操作只记录原始SQL，而不会记录每行数据的变化到Binlog<br>适用于主从复制要求强一致性的环境</p>
+<p><strong>缺点：</strong><br>update、delete、load data local infile等频繁更新或者删除大量行时会产生大量的binlog日志，会有一定的I/O压力，主从同步产生不必要的流量<br>如：UPDATE products set status=‘sold’ where product_id BETWEEN 30000 and 50000;<br>无法很好的进行数据库审计</p>
+<h6 id="Binlog基本配置"><a href="#Binlog基本配置" class="headerlink" title="Binlog基本配置"></a><strong><span id="r5" style="font-weight: inherit; font-style: inherit;">Binlog基本配置</span></strong></h6><p>修改配置文件my.cnf</p>
+<pre><code>binlog_format=row                               binlog日志格式 
+max_binlog_size = 512M                          每个日志文件大小
+binlog_cache_size=1M                            二进制日志缓冲大小,uncommitted事务产生的日志写在cache，committed的持久化到磁盘binlog里面，此参数不是全局的，是针对session的
+expire_logs_days = 3                            binlog有效期
+log-bin=/datas/mysql/logs/mysql-bin             binlog日志目录
+relay-log=/datas/mysql/logs/relay-bin           从库中继日志目录
+#slave_skip_errors = all
+`&lt;/pre&gt;
+
+##### **&lt;span id=&quot;r6&quot; style=&quot;font-weight: inherit; font-style: inherit;&quot;&gt;三、Mysql常见两种复制方式&lt;/span&gt;**
+
+###### **&lt;span id=&quot;r6&quot; style=&quot;font-weight: inherit; font-style: inherit;&quot;&gt;&lt;/span&gt;**
+**&lt;span id=&quot;r7&quot; style=&quot;font-weight: inherit; font-style: inherit;&quot;&gt; 异步复制（Asynchronous Replication）&lt;/span&gt;**
+
+[![ybfz](http://www.simlinux.com/wp-content/uploads/2014/08/ybfz.png)](http://www.simlinux.com/wp-content/uploads/2014/08/ybfz.png)
+
+  主库执行完Commit后，在主库写入Binlog日志后即可成功返回客户端，无需等等Binlog日志传送给从库
+
+**异步复制主从配置：**
+
+主 : 192.168.10.216
+从 : 192.168.10.217
+
+**步骤：**主从版本一致—&amp;gt;主库授权复制帐号—&amp;gt;确保开启binlog及主从server_id唯一—&amp;gt;主库只读，记录主binlog名称及偏移量—&amp;gt;拷贝主数据文件到从相应位置—&amp;gt;从库change master to —&amp;gt;slave start—&amp;gt;检查两个yes
+
+**1.主MySQL配置**
+
+&lt;pre style=&quot;color: #93a1a1;&quot;&gt;`mysql&amp;gt;GRANT REPLICATION SLAVE ON *.* TO &apos;rep&apos;@&apos;192.168.10.217&apos;  IDENTIFIED BY  &apos;geekwolf&apos;;
+mysql&amp;gt;FLUSH TABLES WITH READ LOCK;
+mysql&amp;gt; SHOW MASTER STATUS;
++------------------+----------+--------------+------------------+-------------------+
+| File | Position | Binlog_Do_DB | Binlog_Ignore_DB | Executed_Gtid_Set |
++------------------+----------+--------------+------------------+-------------------+
+| mysql-bin.000003 | 120 | | | |
++------------------+----------+--------------+------------------+-------------------+
+1 row in set (0.00 sec)
+将主库数据文件拷贝到从库对应目录
+mysql&amp;gt;UNLOCK TABLES;
+`&lt;/pre&gt;
+
+**2.从MySQL配置**
+
+&lt;pre style=&quot;color: #93a1a1;&quot;&gt;`mysql&amp;gt;CHANGE MASTER TO MASTER_HOST=&apos;192.168.10.216&apos;,MASTER_USER=&apos;rep&apos;,MASTER_PASSWORD=&apos;geekwolf&apos;,MASTER_LOG_FILE=&apos;mysql-bin.000003&apos;,MASTER_LOG_POS=120;
+mysql&amp;gt;START  SLAVE;
+mysql&amp;gt; SHOW SLAVE STATUS \G;
+*************************** 1\. row ***************************
+   Slave_IO_State: Waiting for master to send event
+  Master_Host: 192.168.10.216
+  Master_User: rep
+  Master_Port: 3306
+Connect_Retry: 1
+  Master_Log_File: mysql-bin.000003
+  Read_Master_Log_Pos: 120
+   Relay_Log_File: relay-bin.000002
+Relay_Log_Pos: 283
+Relay_Master_Log_File: mysql-bin.000003
+ Slave_IO_Running: Yes
+Slave_SQL_Running: Yes
+  Replicate_Do_DB:
+  Replicate_Ignore_DB:
+   Replicate_Do_Table:
+   Replicate_Ignore_Table:
+  Replicate_Wild_Do_Table:
+  Replicate_Wild_Ignore_Table:
+   Last_Errno: 0
+   Last_Error:
+ Skip_Counter: 0
+  Exec_Master_Log_Pos: 120
+  Relay_Log_Space: 450
+  Until_Condition: None
+   Until_Log_File:
+Until_Log_Pos: 0
+   Master_SSL_Allowed: No
+   Master_SSL_CA_File:
+   Master_SSL_CA_Path:
+  Master_SSL_Cert:
+Master_SSL_Cipher:
+   Master_SSL_Key:
+Seconds_Behind_Master: 0
+Master_SSL_Verify_Server_Cert: No
+Last_IO_Errno: 0
+Last_IO_Error:
+   Last_SQL_Errno: 0
+   Last_SQL_Error:
+  Replicate_Ignore_Server_Ids:
+ Master_Server_Id: 216
+  Master_UUID: bd2a4c6b-d954-11e3-8c0a-0200c0a80ad8
+ Master_Info_File: /usr/local/mysql/data/master.info
+SQL_Delay: 0
+  SQL_Remaining_Delay: NULL
+  Slave_SQL_Running_State: Slave has read all relay log; waiting for the slave I/O thread to update it
+   Master_Retry_Count: 86400
+  Master_Bind:
+  Last_IO_Error_Timestamp:
+ Last_SQL_Error_Timestamp:
+   Master_SSL_Crl:
+   Master_SSL_Crlpath:
+   Retrieved_Gtid_Set:
+Executed_Gtid_Set:
+Auto_Position: 0
+1 row in set (0.00 sec)
+`&lt;/pre&gt;
+
+**注:** 异步复制中只要binlog不丢失即可保证数据的完整性；当主宕机，从库未收到binlog时，就会丢失数据（主磁盘正常时可以提取差异binlog在从执行），此时就需要用到半同步复制方式
+
+###### **&lt;span id=&quot;r8&quot; style=&quot;font-weight: inherit; font-style: inherit;&quot;&gt;半同步复制(Semi-synchroous Replicaion)&lt;/span&gt;**
+
+[![btb](http://www.simlinux.com/wp-content/uploads/2014/08/btb.png)](http://www.simlinux.com/wp-content/uploads/2014/08/btb.png)
+
+  主库每次事务成功提交时并不及时反馈给前端，而是等待其中一个从库也接收到Binlog事务并成功写入Relay Log之后，才返回Commit操作成功给客户端；如此半同步就保证了事务成功提交后，至少有两份日志记录，一份在主库Binlog上，另一份在从库的Relay Log上，从而进一步保证数据完整性；半同步复制很大程度取决于主从网络RTT（往返时延）；以插件形式存在，
+
+**半同步复制主从配置：**
+
+主 : 192.168.10.216
+从 : 192.168.10.217
+
+**1.判断是否支持动态增加插件**
+
+&lt;pre style=&quot;color: #93a1a1;&quot;&gt;`mysql&amp;gt; select @@have_dynamic_loading;
++------------------------+
+| @@have_dynamic_loading |
++------------------------+
+| YES |
++------------------------+
+`&lt;/pre&gt;
+
+**2.检查是否存在半同步插件,分别在主从安装**
+/usr/local/mysql/lib/mysql/plugin/semisync_master.so
+/usr/local/mysql/lib/mysql/plugin/semisync_slave.so
+
+主MySQL上安装semisync_master.so:
+mysql&amp;gt;install plugin rpl_semi_sync_master SONAME ‘semisync_master.so’
+
+从MySQL上安装semisync_slave.so:
+mysql&amp;gt;install plugin rpl_semi_sync_slave SONAME ‘semisync_slave.so’
+
+安装后通过show plugins;查看安装的插件
+
+**3.分别在主从打开semi-sync(默认关闭)**
+主：
+修改my.cnf
+
+&lt;pre style=&quot;color: #93a1a1;&quot;&gt;`rpl_semi_sync_master_enabled=1
+rpl_semi_sync_master_timeout=30000(毫秒)   从库宕机或网络故障导致binlog没有及时传送到从库，此时主库上的事务需要等待的时间；此时间内没恢复，MySQL自动调整复制为异步复制模式
+mysql&amp;gt; set global rpl_semi_sync_master_enabled=1; 
+Query OK, 0 rows affected (0.00 sec)
+mysql&amp;gt; set global rpl_semi_sync_master_timeout=30000;
+Query OK, 0 rows affected (0.00 sec)
+`&lt;/pre&gt;
+
+**从:**
+修改my.cnf
+
+&lt;pre style=&quot;color: #93a1a1;&quot;&gt;`rpl_semi_sync_master_enabled=1
+mysql&amp;gt; set global rpl_semi_sync_master_enabled=1; 
+Query OK, 0 rows affected (0.00 sec)
+由于之前配置的复制是异步的，所以需要重启下从库I/O线程(或者直接重启主从stop slave;start slave;)：
+
+mysql&amp;gt; STOP SLAVE  IO_THREAD;
+Query OK, 0 rows affected (0.04 sec)
+mysql&amp;gt; START SLAVE  IO_THREAD;
+Query OK, 0 rows affected (0.00 sec)
+`&lt;/pre&gt;
+
+**4.验证**
+**主：**
+
+&lt;pre style=&quot;color: #93a1a1;&quot;&gt;`mysql&amp;gt; show status like &apos;%semi_sync%&apos;;
+`&lt;/pre&gt;
+
+[![semi](http://www.simlinux.com/wp-content/uploads/2014/08/semi.png)](http://www.simlinux.com/wp-content/uploads/2014/08/semi.png)
+
+&lt;pre style=&quot;color: #93a1a1;&quot;&gt;`Rpl_semi_sync_master_clients: 值为2，表示有2个semi-sync的备库
+Rpl_semi_sync_master_net_avg_wait_time: 表示事务提交后，等待备库响应的平均时间
+Rpl_semi_sync_master_no_times: 表示有几次从半同步切换到异步复制
+Rpl_semi_sync_master_status : 值为ON，表示半同步复制处于打开状态
+Rpl_semi_sync_master_tx_avg_wait_time ：开启Semi-sync，事务返回需要等待的平均时间
+Rpl_semi_sync_master_wait_sessions：当前有几个线程在等备库响应
+Rpl_semi_sync_master_yes_tx : 值为1054，表示主库有1054个事务是通过半同步复制到从库
+Rpl_semi_sync_master_no_tx  : 值为0，表示当前有0个事务不是通过半同步模式同步到从库的
+`&lt;/pre&gt;
+
+**从：**
+
+&lt;pre style=&quot;color: #93a1a1;&quot;&gt;`检查半同步是否开启
+show status like &apos;%semi_sync%&apos;;
+`&lt;/pre&gt;
+
+[![semion](http://www.simlinux.com/wp-content/uploads/2014/08/semion.png)](http://www.simlinux.com/wp-content/uploads/2014/08/semion.png)
+
+&lt;pre style=&quot;color: #93a1a1;&quot;&gt;`检查复制是否正常
+show slave status \G;
+`&lt;/pre&gt;
+
+##### **&lt;span id=&quot;r9&quot; style=&quot;font-weight: inherit; font-style: inherit;&quot;&gt;四、提升主从复制性能的方法&lt;/span&gt;**
+
+**方案1：**多级主从架构，将不同库分开复制到不同从上
+
+[![fzjg](http://www.simlinux.com/wp-content/uploads/2014/08/fzjg.png)](http://www.simlinux.com/wp-content/uploads/2014/08/fzjg.png)
+
+**注意事项：**
+M2上打开log-slave-updates配置，保证M1传送的binlog能够被记录在M2的RelayLog和Binlog；M2可以选择BLACKHOLE引擎降低M2的I/O；并且Binlog日志的过滤可以在M2去做
+BLACKHOLE引擎的使用测试参考:   [http://jroller.com/dschneller/entry/mysql_replication_using_blackhole_engine](http://jroller.com/dschneller/entry/mysql_replication_using_blackhole_engine)
+[http://blog.csdn.net/kylinbl/article/details/8903336](http://blog.csdn.net/kylinbl/article/details/8903336)
+
+**方案2：多线程复制（MySQL5.6+）**
+多线程复制是基于库的，允许从库并行更新，若单库压力大，此处的多线程复制没有意义；从库设置slave_parallel_workers=4表示MySQL从库在复制时启动4个SQL线程
+MySQL5.6一下版本可以尝试Transfer补丁[http://dinglin.iteye.com/blog/1888640](http://dinglin.iteye.com/blog/1888640)
+
+##### 
+**&lt;span id=&quot;r10&quot; style=&quot;font-weight: inherit; font-style: inherit;&quot;&gt;五、Mysql复制遇到的一些问题&lt;/span&gt;**
+
+**1.指定特定的数据库或者表**
+
+&lt;pre style=&quot;color: #93a1a1;&quot;&gt;`replicate-do-db  告诉从服务器限制默认数据库(由USE所选择)为db_name的语句的复制，指定多个库时多次使用此参数，一次指定一个库，不能跨数据库更新；需要跨数据库进行更新，使用--replicate-wild-do-table=db_name.%
+比如：
+如果用--replicate-do-db=sales启动从服务器，并且在主服务器上执行下面的语句，UPDATE语句不会复制：
+USE prices; UPDATE sales.january SET amount=amount+1000;
+
+replicate-do-table  只复制某个表 ，支持跨库更新，指定多个表时多次使用此参数，一次指定一个表
+replicate-ignore-db告诉从服务器不要复制默认数据库(由USE所选择)为db_name的语句。要想忽略多个数据库，应多次使用该选项，每个数据库使用一次。如果正进行跨数据库更新并且不想复制这些更新，不应使用该选项。应使用--replicate-wild-ignore-table=db_name.%
+replicate-ignore-table 告诉从服务器线程不要复制更新指定表的任何语句(即使该语句可能更新其它的表)。要想忽略多个表，应多次使用该选项，每个表使用一次。同--replicate-ignore-db对比，该选项可以跨数据库进行更新
+
+replicate-wild-do-table  告诉从服务器线程限制复制更新的表匹配指定的数据库和表名模式的语句。模式可以包含‘%’和‘_’通配符，与LIKE模式匹配操作符具有相同的含义。要指定多个表，应多次使用该选项，每个表使用一次。该选项可以跨数据库进行更新。请读取该选项后面的注意事项。
+例如：--replicate-wild-do-table=foo%.bar%只复制数据库名以foo开始和表名以bar开始的表的更新。
+
+replicate-wild-ignore-table告诉从服务器线程不要复制表匹配给出的通配符模式的语句 
+
+从库增加(同步test库的bench1表，忽略同步mysql库所有表)：
+replicate-wild-do-table=test.bench1
+replicate-wild-ignore-table=mysql.%
+`&lt;/pre&gt;
+
+**2.从库复制出错跳过**
+
+&lt;pre style=&quot;color: #93a1a1;&quot;&gt;`mysql&amp;gt;SET GLOBAL SQL_SLAVE_SKIP_COUNTER=1;
+</code></pre><p><strong>3.log event entry exceeded max_allowed_packet的处理</strong></p>
+<p>  适当增加max_allowed_packet大小</p>
+<p><strong>4.因主库大量滞后binlog，启动slave时，可能会跑满网卡带宽</strong></p>
+<p>  前段时间微博上@zolker遇到这类问题，网友也给了很多解决办法，趁此blog总结下<br>A.级联备库方式，避免主MySQL网卡跑满影响<br>B.脚本的方式每隔几秒(sleep)把io_thread停一会，进行缓解 （这种方法简单、粗暴、有效,但有抖动）<br>C.使用facebook的patch <a href="https://github.com/facebook/mysql-5.6/commit/d3b0c7814090bded6563fee7d46d2ae41ed32a60" target="_blank" rel="external">https://github.com/facebook/mysql-5.6/commit/d3b0c7814090bded6563fee7d46d2ae41ed32a60</a></p>
+<p>  以上是本人在学习过程中的笔记，一码一字敲出来的，有错误地方请留言~</p>
+<p><strong>参考文档：</strong></p>
+<p><a href="http://www.ovaistariq.net/528/statement-based-vs-row-based-replication/" target="_blank" rel="external">http://www.ovaistariq.net/528/statement-based-vs-row-based-replication/</a><br><a href="http://www.orczhou.com/index.php/2011/06/mysql-5-5-semi-sync-replication-setup-config/" target="_blank" rel="external">http://www.orczhou.com/index.php/2011/06/mysql-5-5-semi-sync-replication-setup-config/</a><br><a href="http://www.linuxde.net/2013/09/15194.html" target="_blank" rel="external">http://www.linuxde.net/2013/09/15194.html</a><br><a href="http://dev.mysql.com/doc/refman/5.6/en/replication.html" target="_blank" rel="external">http://dev.mysql.com/doc/refman/5.6/en/replication.html</a><br>《深入浅出MySQL》</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2014/08/20/mha-e9-ab-98-e5-8f-af-e7-94-a8-e9-83-a8-e7-bd-b2-e5-8f-8a-e6-b5-8b-e8-af-95.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Geekwolf">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/wolf.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Geekwolf's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2014/08/20/mha-e9-ab-98-e5-8f-af-e7-94-a8-e9-83-a8-e7-bd-b2-e5-8f-8a-e6-b5-8b-e8-af-95.html" itemprop="url">MHA高可用部署及测试</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-08-20T10:37:19+08:00">
+                2014-08-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/MySQL数据库/" itemprop="url" rel="index">
+                    <span itemprop="name">MySQL数据库</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2014/08/20/mha-e9-ab-98-e5-8f-af-e7-94-a8-e9-83-a8-e7-bd-b2-e5-8f-8a-e6-b5-8b-e8-af-95.html" class="leancloud_visitors" data-flag-title="MHA高可用部署及测试">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  29
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h5 id="一-MHA特性"><a href="#一-MHA特性" class="headerlink" title="一.MHA特性"></a><span id="t1" style="font-weight: inherit; font-style: inherit;">一.MHA特性</span></h5><p>1.主服务器的自动监控和故障转移<br>MHA监控复制架构的主服务器，一旦检测到主服务器故障，就会自动进行故障转移。即使有些从服务器没有收到最新的relay log，MHA自动从最新的从服务器上识别差异的relay log并把这些日志应用到其他从服务器上，因此所有的从服务器保持一致性了。MHA通常在几秒内完成故障转移，9-12秒可以检测出主服务器故障，7-10秒内关闭故障的主服务器以避免脑裂，几秒中内应用差异的relay log到新的主服务器上，整个过程可以在10-30s内完成。还可以设置优先级指定其中的一台slave作为master的候选人。由于MHA在slaves之间修复一致性，因此可以将任何slave变成新的master，而不会发生一致性的问题，从而导致复制失败。<br>2.交互式主服务器故障转移</p>
+<p>  可以只使用MHA的故障转移，而不用于监控主服务器，当主服务器故障时，人工调用MHA来进行故障故障。<br>3.非交互式的主故障转移<br>不监控主服务器，但自动实现故障转移。这种特征适用于已经使用其他软件来监控主服务器状态，比如heartbeat来检测主服务器故障和虚拟IP地址接管，可以使用MHA来实现故障转移和slave服务器晋级为master服务器。<br>4.在线切换主服务器<br>在许多情况下，需要将现有的主服务器迁移到另外一台服务器上。比如主服务器硬件故障，RAID控制卡需要重建，将主服务器移到性能更好的服务器上等等。维护主服务器引起性能下降，导致停机时间至少无法写入数据。另外，阻塞或杀掉当前运行的会话会导致主主之间数据不一致的问题发生。MHA提供快速切换和优雅的阻塞写入，这个切换过程只需要0.5-2s的时间，这段时间内数据是无法写入的。在很多情况下，0.5-2s的阻塞写入是可以接受的。因此切换主服务器不需要计划分配维护时间窗口(呵呵，不需要你在夜黑风高时通宵达旦完成切换主服务器的任务)。</p>
+<h5 id="二-MHA工作机制"><a href="#二-MHA工作机制" class="headerlink" title="二.MHA工作机制"></a><span id="t2" style="font-weight: inherit; font-style: inherit;">二.MHA工作机制</span></h5><p>MHA自动Failover过程解析<br><a href="http://www.mysqlsystems.com/2012/03/figure-out-process-of-autofailover-on-mha.html" target="_blank" rel="external">http://www.mysqlsystems.com/2012/03/figure-out-process-of-autofailover-on-mha.html</a><br><a href="https://code.google.com/p/mysql-master-ha/wiki/Sequences_of_MHA" target="_blank" rel="external">https://code.google.com/p/mysql-master-ha/wiki/Sequences_of_MHA</a></p>
+<h5 id="三-MHA适用的主从架构"><a href="#三-MHA适用的主从架构" class="headerlink" title="三.MHA适用的主从架构"></a><span id="t3" style="font-weight: inherit; font-style: inherit;">三.MHA适用的主从架构</span></h5><p><a href="https://code.google.com/p/mysql-master-ha/wiki/UseCases" target="_blank" rel="external">https://code.google.com/p/mysql-master-ha/wiki/UseCases</a></p>
+<h5 id="四-MHA高可用环境的构建"><a href="#四-MHA高可用环境的构建" class="headerlink" title="四.MHA高可用环境的构建"></a><span id="t4" style="font-weight: inherit; font-style: inherit;">四.MHA高可用环境的构建</span></h5><h6 id="实验环境"><a href="#实验环境" class="headerlink" title="实验环境"></a><span id="t5" style="font-weight: inherit; font-style: inherit;">实验环境</span></h6><p><a href="http://www.simlinux.com/wp-content/uploads/2014/08/ar.png"><img src="http://www.simlinux.com/wp-content/uploads/2014/08/ar.png" alt="ar"></a></p>
+<ul>
+<li>Node1:192.168.10.216 (主)</li>
+<li>Node2:192.168.10.217 (从,主故障切换的备主)</li>
+<li>Node3:192.168.10.218 (从,兼MHA管理节点)</li>
+<li>VIP : 192.168.10.219</li>
+<li>Mysql:Percona-Server-5.6.16-rel64.2-569</li>
+<li>以上节点系统均为CentOS6.5 x64</li>
+</ul>
+<h6 id="实验大概步骤"><a href="#实验大概步骤" class="headerlink" title="实验大概步骤"></a><span id="t6" style="font-weight: inherit; font-style: inherit;">实验大概步骤</span></h6><ol>
+<li>三节点配置epel的yum源，安装相关依赖包</li>
+<li>建立主从复制关系</li>
+<li>ssh-keygen实现三台机器之间相互免密钥登录</li>
+<li>三节点安装mha4mysql-node-0.56,node3上安装mha4mysql-manager-0.56</li>
+<li>在node3上管理MHA配置文件</li>
+<li>masterha_check_ssh验证ssh信任登录是否成功,masterha_check_repl验证mysql复制是否成功</li>
+<li>启动MHA manager，并监控日志文件</li>
+<li>测试master(Node1)的mysql宕掉后，是否会自动切换正常<br>I . 配置VIP，切换后从自动接管主服务，并对客户端透明</li>
+</ol>
+<h6 id="脚本相关说明"><a href="#脚本相关说明" class="headerlink" title="脚本相关说明"></a><span id="t7" style="font-weight: inherit; font-style: inherit;">脚本相关说明</span></h6><p>MHA node有三个脚本，依赖perl模块<br>save_binary_logs：保存和拷贝宕掉的主服务器二进制日志<br>apply_diff_relay_logs:识别差异的relay log事件，并应用到所有从服务器节点<br>purge_relay_logs:清除relay log日志文件</p>
+<h6 id="MHA部署过程"><a href="#MHA部署过程" class="headerlink" title="MHA部署过程"></a><span id="t8" style="font-weight: inherit; font-style: inherit;">MHA部署过程</span></h6><p><strong>A.</strong>三节点配置epel的yum源，安装相关依赖包</p>
+<pre><code>rpm -Uvh http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm
+rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-6
+yum  -y install perl-DBD-MySQL  ncftp
+`&lt;/pre&gt;
+
+**B.** 建立主从复制关系
+
+在node1上：
+
+&lt;pre style=&quot;color: #93a1a1;&quot;&gt;`mysql&amp;gt;grant replication slave  on *.* to &apos;rep&apos;@&apos;192.168.10.%&apos; identified by &apos;geekwolf&apos;;
+mysql&amp;gt;grant all on *.* to &apos;root&apos;@&apos;192.168.10.%&apos; identified by &apos;geekwolf&apos;;
+mysql&amp;gt;show master status;
+`&lt;/pre&gt;
+
+拷贝node1的data目录同步到node2，node3 在node2 node3上：
+
+&lt;pre style=&quot;color: #93a1a1;&quot;&gt;`mysql&amp;gt;change master  to  master_host=&apos;192.168.10.216&apos;, master_user=&apos;rep&apos;, master_password=&apos;geekwolf&apos;,master_port=3306, master_log_file=&apos;mysql-in.000006&apos;,master_log_pos=120,master_connect_retry=1;
+mysql&amp;gt;start slave;
+`&lt;/pre&gt;
+
+每个节点都做好mysql命令的软链
+
+`ln -s /usr/local/mysql/bin/* /usr/local/bin/`
+
+**C.** ssh-keygen实现三台机器之间相互免密钥登录 在node1(在其他两个节点一同)执行
+
+&lt;pre style=&quot;color: #93a1a1;&quot;&gt;`ssh-keygen -t rsa 
+ssh-copy-id -i /root/.ssh/id_rsa.pub root@node1 
+ssh-copy-id -i /root/.ssh/id_rsa.pub root@node2 
+ssh-copy-id -i /root/.ssh/id_rsa.pub root@node3
+`&lt;/pre&gt;
+
+**D.** 三节点安装mha4mysql-node-0.56,node3上安装mha4mysql-manager-0.56
+在node1 node2 node3安装mha4mysql-node
+wget [https://googledrive.com/host/0B1lu97m8-haWeHdGWXp0YVVUSlk/mha4mysql-node-0.56.tar.gz](https://googledrive.com/host/0B1lu97m8-haWeHdGWXp0YVVUSlk/mha4mysql-node-0.56.tar.gz)
+tar xf mha4mysql-node-0.56.tar.gz
+cd mha4mysql-node
+perl Makefile.PL
+make &amp;amp;&amp;amp; make install
+
+在node3上安装mha4mysql-manager
+wget [https://googledrive.com/host/0B1lu97m8-haWeHdGWXp0YVVUSlk/mha4mysql-manager-0.56.tar.gz](https://googledrive.com/host/0B1lu97m8-haWeHdGWXp0YVVUSlk/mha4mysql-manager-0.56.tar.gz)
+tar xf mha4mysql-manager-0.56.tar.gz
+cd mha4mysql-manager-0.56
+yum install perl-DBD-MySQL perl-Config-Tiny perl-Log-Dispatch perl-Parallel-ForkManager perl-Config-IniFiles perl-Time-HiRes
+
+**E.** 在node3上管理MHA配置文件
+mkdir -p /etc/mha/{app1,scripts}
+cp mha4mysql-manager-0.56/samples/conf/_ /etc/mha/
+cp mha4mysql-manager-0.56/samples/scripts/_ /etc/mha/scripts/
+mv /etc/mha/app1.cnf /etc/mha/app1/
+mv /etc/mha/masterha_default.cnf /etc/masterha_default.cnf
+
+设置全局配置：
+vim /etc/mha/masterha_default.cnf
+
+&lt;pre style=&quot;color: #93a1a1;&quot;&gt;`[server default]
+user=root
+password=geekwolf
+ssh_user=root
+repl_user=rep
+repl_password=geekwolf
+ping_interval=1
+#shutdown_script=&quot;&quot;
+secondary_check_script = masterha_secondary_check -s node1 -s node2 -s node3 --user=root --master_host=node1 --master_ip=192.168.10.216 --master_port=3306
+#master_ip_failover_script=&quot;/etc/mha/scripts/master_ip_failover&quot;
+#master_ip_online_change_script=&quot;/etc/mha/scripts/master_ip_online_change&quot;
+# shutdown_script= /script/masterha/power_manager
+#report_script=&quot;&quot;
+`&lt;/pre&gt;
+
+vim /etc/mha/app1/app1.cnf
+
+&lt;pre style=&quot;color: #93a1a1;&quot;&gt;`[server default] 
+manager_workdir=/var/log/mha/app1
+manager_log=/var/log/mha/app1/manager.log
+[server1] 
+hostname=node1
+master_binlog_dir=&quot;/usr/local/mysql/logs&quot;
+candidate_master=1
+[server2]
+hostname=node2
+master_binlog_dir=&quot;/usr/local/mysql/logs&quot;
+candidate_master=1
+[server3]
+hostname=node3
+master_binlog_dir=&quot;/usr/local/mysql/logs&quot;
+no_master=1
+`&lt;/pre&gt;
+
+**注释：**
+candidate_master=1 表示该主机优先可被选为new master，当多个[serverX]等设置此参数时，优先级由[serverX]配置的顺序决定
+secondary_check_script mha强烈建议有两个或多个网络线路检查MySQL主服务器的可用性。默认情况下,只有单一的路线 MHA Manager检查:从Manager to Master,但这是不可取的。MHA实际上可以有两个或两个以上的检查路线通过调用外部脚本定义二次检查脚本参数
+master_ip_failover_script 在MySQL从服务器提升为新的主服务器时，调用此脚本，因此可以将vip信息写到此配置文件
+master_ip_online_change_script 使用masterha_master_switch命令手动切换MySQL主服务器时后会调用此脚本，参数和master_ip_failover_script 类似，脚本可以互用   shutdown_script 此脚本(默认samples内的脚本)利用服务器的远程控制IDRAC等，使用ipmitool强制去关机，以避免fence设备重启主服务器，造成脑列现象
+report_script 当新主服务器切换完成以后通过此脚本发送邮件报告，可参考使用 [http://caspian.dotconf.net/menu/Software/SendEmail/sendEmail-v1.56.tar.gz](http://caspian.dotconf.net/menu/Software/SendEmail/sendEmail-v1.56.tar.gz)
+以上涉及到的脚本可以从mha4mysql-manager-0.56/samples/scripts/*拷贝进行修改使用
+其他manager详细配置参数[https://code.google.com/p/mysql-master-ha/wiki/Parameters](https://code.google.com/p/mysql-master-ha/wiki/Parameters)
+
+**F.** masterha_check_ssh验证ssh信任登录是否成功,masterha_check_repl验证mysql复制是否成功
+验证ssh信任：masterha_check_ssh —conf=/etc/mha/app1/app1.cnf
+
+&lt;pre style=&quot;color: #93a1a1;&quot;&gt;`[root@localhost ~]# masterha_check_ssh --conf=/etc/mha/app1/app1.cnf
+Tue May 13 07:53:15 2014 - [warning] Global configuration file /etc/masterha_default.cnf not found. Skipping.
+Tue May 13 07:53:15 2014 - [info] Reading application default configuration from /etc/mha/app1/app1.cnf..
+Tue May 13 07:53:15 2014 - [info] Reading server configuration from /etc/mha/app1/app1.cnf..
+Tue May 13 07:53:15 2014 - [info] Starting SSH connection tests..
+Tue May 13 07:53:16 2014 - [debug]
+Tue May 13 07:53:15 2014 - [debug] Connecting via SSH from root@node1(192.168.10.216:22) to root@node2(192.168.10.217:22)..
+Tue May 13 07:53:15 2014 - [debug] ok.
+Tue May 13 07:53:15 2014 - [debug] Connecting via SSH from root@node1(192.168.10.216:22) to root@node3(192.168.10.218:22)..
+Tue May 13 07:53:16 2014 - [debug] ok.
+Tue May 13 07:53:16 2014 - [debug]
+Tue May 13 07:53:16 2014 - [debug] Connecting via SSH from root@node2(192.168.10.217:22) to root@node1(192.168.10.216:22)..
+Tue May 13 07:53:16 2014 - [debug] ok.
+Tue May 13 07:53:16 2014 - [debug] Connecting via SSH from root@node2(192.168.10.217:22) to root@node3(192.168.10.218:22)..
+Tue May 13 07:53:16 2014 - [debug] ok.
+Tue May 13 07:53:17 2014 - [debug]
+Tue May 13 07:53:16 2014 - [debug] Connecting via SSH from root@node3(192.168.10.218:22) to root@node1(192.168.10.216:22)..
+Tue May 13 07:53:16 2014 - [debug] ok.
+Tue May 13 07:53:16 2014 - [debug] Connecting via SSH from root@node3(192.168.10.218:22) to root@node2(192.168.10.217:22)..
+Tue May 13 07:53:17 2014 - [debug] ok.
+Tue May 13 07:53:17 2014 - [info] All SSH connection tests passed successfully.
+`&lt;/pre&gt;
+
+验证主从复制：masterha_check_repl —conf=/etc/mha/app1/app1.cnf
+
+&lt;pre style=&quot;color: #93a1a1;&quot;&gt;`[root@localhost mha]# masterha_check_repl --conf=/etc/mha/app1/app1.cnf
+Tue May 13 08:10:54 2014 - [info] Reading default configuration from /etc/masterha_default.cnf..
+Tue May 13 08:10:54 2014 - [info] Reading application default configuration from /etc/mha/app1/app1.cnf..
+Tue May 13 08:10:54 2014 - [info] Reading server configuration from /etc/mha/app1/app1.cnf..
+Tue May 13 08:10:54 2014 - [info] MHA::MasterMonitor version 0.56.
+Tue May 13 08:10:54 2014 - [info] GTID failover mode = 0
+Tue May 13 08:10:54 2014 - [info] Dead Servers:
+Tue May 13 08:10:54 2014 - [info] Alive Servers:
+Tue May 13 08:10:54 2014 - [info] node1(192.168.10.216:3306)
+Tue May 13 08:10:54 2014 - [info] node2(192.168.10.217:3306)
+Tue May 13 08:10:54 2014 - [info] node3(192.168.10.218:3306)
+Tue May 13 08:10:54 2014 - [info] Alive Slaves:
+Tue May 13 08:10:54 2014 - [info] node2(192.168.10.217:3306) Version=5.6.16-64.2-rel64.2-log (oldest major version between slaves) log-bin:enabled
+Tue May 13 08:10:54 2014 - [info] Replicating from 192.168.10.216(192.168.10.216:3306)
+Tue May 13 08:10:54 2014 - [info] Primary candidate for the new Master (candidate_master is set)
+Tue May 13 08:10:54 2014 - [info] node3(192.168.10.218:3306) Version=5.6.16-64.2-rel64.2-log (oldest major version between slaves) log-bin:enabled
+Tue May 13 08:10:54 2014 - [info] Replicating from 192.168.10.216(192.168.10.216:3306)
+Tue May 13 08:10:54 2014 - [info] Not candidate for the new Master (no_master is set)
+Tue May 13 08:10:54 2014 - [info] Current Alive Master: node1(192.168.10.216:3306)
+Tue May 13 08:10:54 2014 - [info] Checking slave configurations..
+Tue May 13 08:10:54 2014 - [info] read_only=1 is not set on slave node2(192.168.10.217:3306).
+Tue May 13 08:10:54 2014 - [warning] relay_log_purge=0 is not set on slave node2(192.168.10.217:3306).
+Tue May 13 08:10:54 2014 - [info] read_only=1 is not set on slave node3(192.168.10.218:3306).
+Tue May 13 08:10:54 2014 - [warning] relay_log_purge=0 is not set on slave node3(192.168.10.218:3306).
+Tue May 13 08:10:54 2014 - [info] Checking replication filtering settings..
+Tue May 13 08:10:54 2014 - [info] binlog_do_db= , binlog_ignore_db=
+Tue May 13 08:10:54 2014 - [info] Replication filtering check ok.
+Tue May 13 08:10:54 2014 - [info] GTID (with auto-pos) is not supported
+Tue May 13 08:10:54 2014 - [info] Starting SSH connection tests..
+Tue May 13 08:10:55 2014 - [info] All SSH connection tests passed successfully.
+Tue May 13 08:10:55 2014 - [info] Checking MHA Node version..
+Tue May 13 08:10:55 2014 - [info] Version check ok.
+Tue May 13 08:10:55 2014 - [info] Checking SSH publickey authentication settings on the current master..
+Tue May 13 08:10:56 2014 - [info] HealthCheck: SSH to node1 is reachable.
+Tue May 13 08:10:56 2014 - [info] Master MHA Node version is 0.56.
+Tue May 13 08:10:56 2014 - [info] Checking recovery script configurations on node1(192.168.10.216:3306)..
+Tue May 13 08:10:56 2014 - [info] Executing command: save_binary_logs --command=test --start_pos=4 --binlog_dir=/usr/local/mysql/logs --output_file=/var/tmp/save_binary_logs_test --manager_version=0.56 --start_file=mysql-bin.000009
+Tue May 13 08:10:56 2014 - [info] Connecting to root@192.168.10.216(node1:22)..
+  Creating /var/tmp if not exists.. ok.
+  Checking output directory is accessible or not..
+   ok.
+  Binlog found at /usr/local/mysql/logs, up to mysql-bin.000009
+Tue May 13 08:10:56 2014 - [info] Binlog setting check done.
+Tue May 13 08:10:56 2014 - [info] Checking SSH publickey authentication and checking recovery script configurations on all alive slave servers..
+Tue May 13 08:10:56 2014 - [info] Executing command : apply_diff_relay_logs --command=test --slave_user=&apos;root&apos; --slave_host=node2 --slave_ip=192.168.10.217 --slave_port=3306 --workdir=/var/tmp --target_version=5.6.16-64.2-rel64.2-log --manager_version=0.56 --relay_log_info=/usr/local/mysql/data/relay-log.info --relay_dir=/usr/local/mysql/data/ --slave_pass=xxx
+Tue May 13 08:10:56 2014 - [info] Connecting to root@192.168.10.217(node2:22)..
+  Checking slave recovery environment settings..
+    Opening /usr/local/mysql/data/relay-log.info ... ok.
+    Relay log found at /usr/local/mysql/logs, up to relay-bin.000006
+    Temporary relay log file is /usr/local/mysql/logs/relay-bin.000006
+    Testing mysql connection and privileges..Warning: Using a password on the command line interface can be insecure.
+ done.
+    Testing mysqlbinlog output.. done.
+    Cleaning up test file(s).. done.
+Tue May 13 08:10:57 2014 - [info] Executing command : apply_diff_relay_logs --command=test --slave_user=&apos;root&apos; --slave_host=node3 --slave_ip=192.168.10.218 --slave_port=3306 --workdir=/var/tmp --target_version=5.6.16-64.2-rel64.2-log --manager_version=0.56 --relay_log_info=/usr/local/mysql/data/relay-log.info --relay_dir=/usr/local/mysql/data/ --slave_pass=xxx
+Tue May 13 08:10:57 2014 - [info] Connecting to root@192.168.10.218(node3:22)..
+  Checking slave recovery environment settings..
+    Opening /usr/local/mysql/data/relay-log.info ... ok.
+    Relay log found at /usr/local/mysql/logs, up to relay-bin.000006
+    Temporary relay log file is /usr/local/mysql/logs/relay-bin.000006
+    Testing mysql connection and privileges..Warning: Using a password on the command line interface can be insecure.
+ done.
+    Testing mysqlbinlog output.. done.
+    Cleaning up test file(s).. done.
+Tue May 13 08:10:57 2014 - [info] Slaves settings check done.
+Tue May 13 08:10:57 2014 - [info]
+node1(192.168.10.216:3306) (current master)
+ +--node2(192.168.10.217:3306)
+ +--node3(192.168.10.218:3306)
+Tue May 13 08:10:57 2014 - [info] Checking replication health on node2..
+Tue May 13 08:10:57 2014 - [info] ok.
+Tue May 13 08:10:57 2014 - [info] Checking replication health on node3..
+Tue May 13 08:10:57 2014 - [info] ok.
+Tue May 13 08:10:57 2014 - [warning] master_ip_failover_script is not defined.
+Tue May 13 08:10:57 2014 - [warning] shutdown_script is not defined.
+Tue May 13 08:10:57 2014 - [info] Got exit code 0 (Not master dead).
+MySQL Replication Health is OK.
+`&lt;/pre&gt;
+
+**G.** 启动MHA manager，并监控日志文件
+在node1上killall mysqld的同时在node3上启动manager服务
+
+&lt;pre style=&quot;color: #93a1a1;&quot;&gt;`[root@localhost mha]# masterha_manager --conf=/etc/mha/app1/app1.cnf
+Tue May 13 08:19:01 2014 - [info] Reading default configuration from /etc/masterha_default.cnf..
+Tue May 13 08:19:01 2014 - [info] Reading application default configuration from /etc/mha/app1/app1.cnf..
+Tue May 13 08:19:01 2014 - [info] Reading server configuration from /etc/mha/app1/app1.cnf..
+  Creating /var/tmp if not exists.. ok.
+  Checking output directory is accessible or not..
+   ok.
+  Binlog found at /usr/local/mysql/logs, up to mysql-bin.000009
+Tue May 13 08:19:18 2014 - [info] Reading default configuration from /etc/masterha_default.cnf..
+Tue May 13 08:19:18 2014 - [info] Reading application default configuration from /etc/mha/app1/app1.cnf..
+Tue May 13 08:19:18 2014 - [info] Reading server configuration from /etc/mha/app1/app1.cnf..
+`&lt;/pre&gt;
+
+  之后观察node3上/var/log/mha/app1/manager.log日志会发现node1 dead状态，主自动切换到node2上，而node3上的主从配置指向了node2，并且发生一次切换后会生成/var/log/mha/app1/app1.failover.complete文件；
+**手动恢复node1操作：**
+rm -rf /var/log/mha/app1/app1.failover.complete
+启动node1上的mysql，重新配置node2 node3 主从指向node1（change master to）
+**MHA Manager后台执行：**
+nohup masterha_manager —conf=/etc/mha/app1/app1.cnf &amp;lt; /dev/null &amp;gt; /var/log/mha/app1/app1.log 2&amp;gt;&amp;amp;1 &amp;amp;
+守护进程方式参考： [https://code.google.com/p/mysql-master-ha/wiki/Runnning_Background](https://code.google.com/p/mysql-master-ha/wiki/Runnning_Background)
+[ftp://ftp.pbone.net/mirror/ftp5.gwdg.de/pub/opensuse/repositories/home:/weberho:/qmailtoaster/openSUSE_Tumbleweed/x86_64/daemontools-0.76-5.3.x86_64.rpm](ftp://ftp.pbone.net/mirror/ftp5.gwdg.de/pub/opensuse/repositories/home:/weberho:/qmailtoaster/openSUSE_Tumbleweed/x86_64/daemontools-0.76-5.3.x86_64.rpm)
+
+###### &lt;span id=&quot;t9&quot; style=&quot;font-weight: inherit; font-style: inherit;&quot;&gt;配置VIP的方式&lt;/span&gt;
+
+**A.**通过全局配置文件实现
+vim /etc/mha/masterha_default.cnf
+
+&lt;pre style=&quot;color: #93a1a1;&quot;&gt;`[server default]
+  user=root
+  password=geekwolf
+  ssh_user=root
+  repl_user=rep
+  repl_password=geekwolf
+  ping_interval=1
+  secondary_check_script = masterha_secondary_check -s node1 -s node2 -s node3 --user=root --master_host=node1 --master_ip=192.168.10.216 --master_port=3306
+  master_ip_failover_script=&quot;/etc/mha/scripts/master_ip_failover&quot;
+  master_ip_online_change_script=&quot;/etc/mha/scripts/master_ip_online_change&quot;
+  #shutdown_script= /script/masterha/power_manager
+  #report_script=&quot;&quot;
+`&lt;/pre&gt;
+
+修改后的master_ip_failover、master_ip_online_change脚本
+
+&lt;pre style=&quot;color: #93a1a1;&quot;&gt;`#!/usr/bin/env perl
+use strict;
+use warnings FATAL =&amp;gt; &apos;all&apos;;
+use Getopt::Long;
+my (
+    $command, $ssh_user, $orig_master_host, $orig_master_ip,
+    $orig_master_port, $new_master_host, $new_master_ip, $new_master_port
+);
+my $vip = &apos;192.168.10.218&apos;; # Virtual IP
+my $gateway = &apos;192.168.10.1&apos;;#Gateway IP
+my $interface = &apos;eth0&apos;
+my $key = &quot;1&quot;;
+my $ssh_start_vip = &quot;/sbin/ifconfig $interface:$key $vip;/sbin/arping -I $interface -c 3 -s $vip $gateway &amp;gt;/dev/null 2&amp;gt;&amp;amp;1&quot;;
+my $ssh_stop_vip = &quot;/sbin/ifconfig $interface:$key down&quot;;
+GetOptions(
+    &apos;command=s&apos; =&amp;gt; \$command,
+    &apos;ssh_user=s&apos; =&amp;gt; \$ssh_user,
+    &apos;orig_master_host=s&apos; =&amp;gt; \$orig_master_host,
+    &apos;orig_master_ip=s&apos; =&amp;gt; \$orig_master_ip,
+    &apos;orig_master_port=i&apos; =&amp;gt; \$orig_master_port,
+    &apos;new_master_host=s&apos; =&amp;gt; \$new_master_host,
+    &apos;new_master_ip=s&apos; =&amp;gt; \$new_master_ip,
+    &apos;new_master_port=i&apos; =&amp;gt; \$new_master_port,
+);
+exit &amp;amp;main();
+sub main {
+    print &quot;\n\nIN SCRIPT TEST====$ssh_stop_vip==$ssh_start_vip===\n\n&quot;;
+    if ( $command eq &quot;stop&quot; || $command eq &quot;stopssh&quot; ) {
+        # $orig_master_host, $orig_master_ip, $orig_master_port are passed.
+        # If you manage master ip address at global catalog database,
+        # invalidate orig_master_ip here.
+        my $exit_code = 1;
+        eval {
+            print &quot;Disabling the VIP on old master: $orig_master_host \n&quot;;
+            &amp;amp;stop_vip();
+            $exit_code = 0;
+        };
+        if ($@) {
+            warn &quot;Got Error: $@\n&quot;;
+            exit $exit_code;
+        }
+        exit $exit_code;
+    }
+    elsif ( $command eq &quot;start&quot; ) {
+        # all arguments are passed.
+        # If you manage master ip address at global catalog database,
+        # activate new_master_ip here.
+        # You can also grant write access (create user, set read_only=0, etc) here.
+        my $exit_code = 10;
+        eval {
+            print &quot;Enabling the VIP - $vip on the new master - $new_master_host \n&quot;;
+            &amp;amp;start_vip();
+            $exit_code = 0;
+        };
+        if ($@) {
+            warn $@;
+            exit $exit_code;
+        }
+        exit $exit_code;
+    }
+    elsif ( $command eq &quot;status&quot; ) {
+        print &quot;Checking the Status of the script.. OK \n&quot;;
+        `ssh $ssh_user\@cluster1 \&quot; $ssh_start_vip \&quot;`;
+        exit 0;
+    }
+    else {
+        &amp;amp;usage();
+        exit 1;
+    }
+}
+# A simple system call that enable the VIP on the new master
+sub start_vip() {
+    `ssh $ssh_user\@$new_master_host \&quot; $ssh_start_vip \&quot;`;
+}
+# A simple system call that disable the VIP on the old_master
+sub stop_vip() {
+    `ssh $ssh_user\@$orig_master_host \&quot; $ssh_stop_vip \&quot;`;
+}
+sub usage {
+    print
+    &quot;Usage: master_ip_failover --command=start|stop|stopssh|status --orig_master_host=host --orig_master_ip=ip --orig_master_port=port --new_master_host=host --new_master_ip=ip --new_master_port=port\n&quot;;
+}
+`&lt;/pre&gt;
+
+**B.**通过第三方HA（keepalived、heartbeat）实现VIP，以keepalived为例
+以node1 node2互为主备进行配置keepalived
+在node1 node2上分别下载安装keepalived
+wget [http://www.keepalived.org/software/keepalived-1.2.13.tar.gz](http://www.keepalived.org/software/keepalived-1.2.13.tar.gz)
+yum -y install popt-*
+./configure —prefix=/usr/local/keepalived —enable-snmp
+make &amp;amp;&amp;amp; make install
+cp /usr/local/keepalived/etc/rc.d/init.d/keepalived /etc/rc.d/init.d/
+cp /usr/local/keepalived/etc/sysconfig/keepalived /etc/sysconfig/
+chmod +x /etc/rc.d/init.d/keepalived
+chkconfig keepalived on
+mkdir /etc/keepalived
+ln -s /usr/local/keepalived/sbin/keepalived /usr/sbin
+
+修改node1(192.168.10.216)配置文件
+vim /etc/keepalived/keepalived.conf
+
+&lt;pre style=&quot;color: #93a1a1;&quot;&gt;`! Configuration File for keepalived
+global_defs {
+ router_id MHA 
+ notification_email {
+ root@localhost   #接收邮件，可以有多个，一行一个
+}
+ #当主、备份设备发生改变时，通过邮件通知
+ notification_email_from  m@localhost
+ #发送邮箱服务器
+ smtp_server 127.0.0.1
+ #发送邮箱超时时间
+ smtp_connect_timeout 30
+ }
+
+varrp_script check_mysql {
+     script &quot;/etc/keepalived/check_mysql.sh&quot;
+}
+vrrp_sync_group VG1 {
+    group {
+          VI_1
+    }
+notify_master &quot;/etc/keepalived/master.sh&quot;
+}
+
+vrrp_instance VI_1 {
+     state master     
+     interface eth0   
+     virtual_router_id 110
+     priority 100            
+     advert_int 1
+     nopreempt #不抢占资源，意思就是它活了之后也不会再把主抢回来
+
+     authentication {
+     # 认证方式，可以是PASS或AH两种认证方式
+     auth_type PASS
+     # 认证密码
+     auth_pass geekwolf
+     }
+track_script {
+     check_mysql
+}
+virtual_ipaddress {
+     192.168.10.219
+     }
+
+}
+`&lt;/pre&gt;
+
+修改node2(192.168.10.217)配置文件
+vim /etc/keepalived/keepalived.conf
+
+&lt;pre style=&quot;color: #93a1a1;&quot;&gt;`! Configuration File for keepalived
+global_defs {
+ router_id MHA 
+ notification_email {
+ root@localhost   #接收邮件，可以有多个，一行一个
+}
+ #当主、备份设备发生改变时，通过邮件通知
+ notification_email_from  m@localhost
+ #发送邮箱服务器
+ smtp_server 127.0.0.1
+ #发送邮箱超时时间
+ smtp_connect_timeout 30
+ }
+
+varrp_script check_mysql {
+     script &quot;/etc/keepalived/check_mysql.sh&quot;
+}
+vrrp_sync_group VG1 {
+    group {
+          VI_1
+    }
+notify_master &quot;/etc/keepalived/master.sh&quot;
+}
+vrrp_instance VI_1 {
+     state backup    
+     interface eth0    
+     virtual_router_id 110
+     priority 99            
+     advert_int 1
+
+     authentication {
+     # 认证方式，可以是PASS或AH两种认证方式
+     auth_type PASS
+     # 认证密码
+     auth_pass geekwolf
+     }
+track_script {
+     check_mysql
+}
+virtual_ipaddress {
+     192.168.10.219
+     }
+
+}
+`&lt;/pre&gt;
+
+check_mysql.sh
+
+&lt;pre style=&quot;color: #93a1a1;&quot;&gt;`#!/bin/bash
+MYSQL=/usr/local/mysql/bin/mysql
+MYSQL_HOST=127.0.0.1
+MYSQL_USER=root
+MYSQL_PASSWORD=geekwolf
+CHECK_TIME=3
+#mysql  is working MYSQL_OK is 1 , mysql down MYSQL_OK is 0
+MYSQL_OK=1
+function check_mysql_helth (){
+$MYSQL -h $MYSQL_HOST -u $MYSQL_USER -e &quot;show status;&quot; &amp;gt;/dev/null 2&amp;gt;&amp;amp;1
+if [ $? = 0 ] ;then
+     MYSQL_OK=1
+else
+     MYSQL_OK=0
+fi
+     return $MYSQL_OK
+}
+while [ $CHECK_TIME -ne 0 ]
+do
+     let &quot;CHECK_TIME -= 1&quot;
+     check_mysql_helth
+if [ $MYSQL_OK = 1 ] ; then
+     CHECK_TIME=0
+     exit 0
+fi
+if [ $MYSQL_OK -eq 0 ] &amp;amp;&amp;amp;  [ $CHECK_TIME -eq 0 ]
+then
+     pkill keepalived
+exit 1
+fi
+sleep 1
+done
+`&lt;/pre&gt;
+
+master.sh
+
+&lt;pre style=&quot;color: #93a1a1;&quot;&gt;`#!/bin/bash
+VIP=192.168.10.219
+GATEWAY=1.1
+/sbin/arping -I eth0 -c 5 -s $VIP $GATEWAY &amp;amp;&amp;gt;/dev/null
+</code></pre><p>chmod +x /etc/keepalived/check_mysql.sh<br>chmod +x /etc/keepalived/master.sh</p>
+<h5 id="五-MHA常用命令"><a href="#五-MHA常用命令" class="headerlink" title="五.MHA常用命令"></a><span id="t10" style="font-weight: inherit; font-style: inherit;">五.MHA常用命令</span></h5><p>查看manager状态<br>masterha_check_status —conf=/etc/mha/app1/app1.cnf</p>
+<p>查看免密钥是否正常<br>masterha_check_ssh —conf=/etc/mha/app1/app1.cnf</p>
+<p>查看主从复制是否正常<br>masterha_check_repl —conf=/etc/mha/app1/app1.cnf</p>
+<p>添加新节点server4到配置文件<br>masterha_conf_host —command=add —conf=/etc/mha/app1/app1.cnf —hostname=geekwolf —block=server4 —params=“no_master=1;ignore_fail=1” 删除server4节点<br>masterha_conf_host —command=delete —conf=/etc/mha/app1/app1.cnf —block=server4</p>
+<p><strong>注：</strong><br>block:为节点区名，默认值 为[server_$hostname],如果设置成block=100，则为[server100] params:参数，分号隔开(参考<a href="https://code.google.com/p/mysql-master-ha/wiki/Parameters" target="_blank" rel="external">https://code.google.com/p/mysql-master-ha/wiki/Parameters</a>)</p>
+<p>关闭manager服务<br>masterha_stop —conf=/etc/mha/app1/app1.cnf</p>
+<p>主手动切换(前提不要启动masterha_manager服务)<br>在主node1存活情况下进行切换<br>交互模式：<br>masterha_master_switch —master_state=alive —conf=/etc/mha/app1/app1.cnf —new_master_host=node2<br>非交互模式：<br>masterha_master_switch —master_state=alive —conf=/etc/mha/app1/app1.cnf —new_master_host=node2 —interactive=0<br>在主node1宕掉情况下进行切换<br>masterha_master_switch —master_state=dead —conf=/etc/mha/app1/app1.cnf —dead_master_host=node1 —dead_master_ip=192.168.10.216 —dead_master_port=3306 —new_master_host=192.168.10.217 详细请参考:<a href="https://code.google.com/p/mysql-master-ha/wiki/TableOfContents?tm=6" target="_blank" rel="external">https://code.google.com/p/mysql-master-ha/wiki/TableOfContents?tm=6</a> *</p>
+<h5 id="六-注意事项"><a href="#六-注意事项" class="headerlink" title="六.注意事项"></a><span id="t11" style="font-weight: inherit; font-style: inherit;">六.注意事项</span></h5><p><strong>A.</strong> 以上两种vip切换方式，建议采用第一种方法<br><strong>B.</strong> 发生主备切换后，manager服务会自动停掉，且在/var/log/mha/app1下面生成<br>app1.failover.complete，若再次发生切换需要删除app1.failover.complete文件<br><strong>C.</strong> 测试过程发现一主两从的架构(两从都设置可以担任主角色candidate_master=1)，当旧主故障迁移到备主后，删除app1.failover.complete，再次启动manager，停掉新主后，发现无法正常切换(解决方式：删除/etc/mha/app1/app1.cnf里面的旧主node1的信息后，重新切换正常)<br><strong>D.</strong> arp缓存导致切换VIP后，无法使用问题<br><strong>E.</strong> 使用Semi-Sync能够最大程度保证数据安全<br><strong>F.</strong> Purge_relay_logs脚本删除中继日志不会阻塞SQL线程，在每台从节点上设置计划任务定期清除中继日志<br>0 5 <em> </em> * root /usr/bin/purge_relay_logs —user=root —password=geekwolf —disable_relay_log_purge &gt;&gt; /var/log/mha/purge_relay_logs.log 2&gt;&amp;1</p>
+<h5 id="七-部署过程遇到的问题"><a href="#七-部署过程遇到的问题" class="headerlink" title="七.部署过程遇到的问题"></a><span id="t12" style="font-weight: inherit; font-style: inherit;">七.部署过程遇到的问题</span></h5><p><strong>问题1：</strong> [root@node1 mha4mysql-node-0.56]# perl Makefile.PL<br>Can’t locate ExtUtils/MakeMaker.pm in @INC (@INC contains: inc /usr/local/lib64/perl5 /usr/local/share/perl5 /usr/lib64/perl5/vendor_perl /usr/share/perl5/vendor_perl /usr/lib64/perl5 /usr/share/perl5 .) at inc/Module/Install/Makefile.pm line 4.<br>BEGIN failed—compilation aborted at inc/Module/Install/Makefile.pm line 4. Compilation failed in require at inc/Module/Install.pm line 283.<br>Can’t locate ExtUtils/MakeMaker.pm in @INC (@INC contains: inc /usr/local/lib64/perl5 /usr/local/share/perl5 /usr/lib64/perl5/vendor_perl /usr/share/perl5/<br>vendor_perl /usr/lib64/perl5 /usr/share/perl5 .) at inc/Module/Install/Can.pm line 6.<br>BEGIN failed—compilation aborted at inc/Module/Install/Can.pm line 6.<br>Compilation failed in require at inc/Module/Install.pm line 283.<br>Can’t locate ExtUtils/MM_Unix.pm in @INC (@INC contains: inc /usr/local/lib64/<br>perl5 /usr/local/share/perl5 /usr/lib64/perl5/vendor_perl /usr/share/perl5/vendor_perl /usr/lib64/perl5 /usr/share/perl5 .) at inc/Module/Install/<br>Metadata.pm line 349.<br><strong>解决办法：</strong><br>yum -y install perl-CPAN perl-devel perl-DBD-MySQL</p>
+<p><strong>问题2：</strong><br>Can’t locate Time/HiRes.pm in @INC (@INC contains: /usr/local/lib64/perl5 /usr/local/share/perl5 /usr/lib64/perl5/vendor_perl /usr/share/perl5/vendor_perl /usr/lib64/perl5 /usr/share/perl5 .) at /usr/local/share/perl5/MHA/SSHCheck.pm line 28.<br>BEGIN failed—compilation aborted at /usr/local/share/perl5/MHA/SSHCheck.pm line 28.<br>Compilation failed in require at /usr/local/bin/masterha_check_ssh line 25. BEGIN failed—compilation aborted at /usr/local/bin/masterha_check_ssh line 25.<br><strong>解决办法</strong>：<br>yum -y install perl-Time-HiRes</p>
+<p><strong>问题3：</strong></p>
+<p><a href="http://www.simlinux.com/wp-content/uploads/2014/08/mhaq.jpg"><img src="http://www.simlinux.com/wp-content/uploads/2014/08/mhaq.jpg" alt="mhaq"></a></p>
+<p><strong>解决办法:</strong><br>每个节点都做好mysql命令的软链<br>ln -s /usr/local/mysql/bin/* /usr/local/bin/</p>
+<p><strong>参考文档：</strong></p>
+<p><a href="https://code.google.com/p/mysql-master-ha" target="_blank" rel="external">https://code.google.com/p/mysql-master-ha</a><br><a href="http://blog.chinaunix.net/uid-28437434-id-3476641.html" target="_blank" rel="external">http://blog.chinaunix.net/uid-28437434-id-3476641.html</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2014/08/20/e5-ad-98-e5-82-a8-e5-bc-95-e6-93-8e-e4-bb-8b-e7-bb-8d-e5-8f-8a-e9-80-82-e7-94-a8-e5-9c-ba-e6-99-af.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Geekwolf">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/wolf.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Geekwolf's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2014/08/20/e5-ad-98-e5-82-a8-e5-bc-95-e6-93-8e-e4-bb-8b-e7-bb-8d-e5-8f-8a-e9-80-82-e7-94-a8-e5-9c-ba-e6-99-af.html" itemprop="url">存储引擎介绍及适用场景</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-08-20T10:23:06+08:00">
+                2014-08-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/MySQL数据库/" itemprop="url" rel="index">
+                    <span itemprop="name">MySQL数据库</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2014/08/20/e5-ad-98-e5-82-a8-e5-bc-95-e6-93-8e-e4-bb-8b-e7-bb-8d-e5-8f-8a-e9-80-82-e7-94-a8-e5-9c-ba-e6-99-af.html" class="leancloud_visitors" data-flag-title="存储引擎介绍及适用场景">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  5
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>查看当前的默认存储引擎<br><code>show variables like &#39;table_type&#39;;</code></p>
+<p>查看当前数据库支持的引擎<br><code>show engines \G;</code><br><code>show variables like &#39;have%&#39;;</code></p>
+<p>创建表时指定存储引擎<br><code>create table ai (i bigint(20) not null auto_increment,primary key(i));</code></p>
+<p>修改表引擎<br><code>alter table ai engine=innodb;</code></p>
+<p><strong>常见Mysql数据库引擎对比：</strong></p>
+<p><a href="http://www.simlinux.com/wp-content/uploads/2014/08/engines.png"><img src="http://www.simlinux.com/wp-content/uploads/2014/08/engines.png" alt="engines"></a></p>
+<h5 id="一、MyISAM引擎特点："><a href="#一、MyISAM引擎特点：" class="headerlink" title="一、MyISAM引擎特点："></a>一、MyISAM引擎特点：</h5><p>在磁盘存储成3个文件，文件名和表名一样，但扩展名分别为：<br>.frm (存储表定义)<br>.MYD （MYData，存储数据）<br>.MYI （MYIndex，存储索引）<br>其中数据文件和索引文件可以分开在不同目录，平均分布IO</p>
+<p>创建表时指定数据和索引路径：</p>
+<p><code>create table geekwolf (id int,c varchar(10)) data directory=&#39;/data/data/&#39; index directory=&#39;/data/index&#39; engine=&#39;MyISAM&#39;;</code></p>
+<p>MyISAM的表可能出现损坏的解决办法：<br>check table geekwolf；检查表的健康情况<br>repair table geekwolf；修改表</p>
+<p>MyISAM的表引擎支持3种不同的存储格式：<br><strong>静态表</strong>（默认格式，固定长度，存储时按照列宽度定义补足空格；在查询时会丢失尾部的空格）<br><strong>动态表</strong>（频繁更新删除记录会产生碎片，占用空间相对较少，需要定期执行optimize table 或myisamchk -r来改善性能）<br><strong>压缩表</strong> （由myisampack工具创建）</p>
+<p><strong>适用场景：</strong><br>以读操作和插入操作为主，只有很少的更新和删除操作，并且对事务的完整性，并发性要求不是很高的场景</p>
+<h5 id="二、INNODB引擎特点："><a href="#二、INNODB引擎特点：" class="headerlink" title="二、INNODB引擎特点："></a>二、INNODB引擎特点：</h5><p><strong>1.自动增长列：</strong></p>
+<pre><code>InnoDB表，自动增长列必须是索引，如果是组合索引，必须是组合索引的第一列；&amp;lt;br&amp;gt;
+对于MyISAM引擎表，自动增长列可以是组合索引的其他列，这样插入记录后，自动增长列是按照组合索引的前面激烈进行排序后递增的&amp;lt;br&amp;gt;
+创建MyISAM表autoincre_demo&amp;lt;br&amp;gt;
+`&lt;/pre&gt;
+`create table autoincre_demo (d1 smallint not null auto_increment,d2 smallint not null,name varchar(10),index(d2.d1)) engine=myisam;`
+
+如图所示：自动增长列是d1作为组合索引的第二列,插入记录后，发现增长列是按照组合索引的第一列d2进行排序后递增的
+
+[![autoincre](http://www.simlinux.com/wp-content/uploads/2014/08/autoincre.png)](http://www.simlinux.com/wp-content/uploads/2014/08/autoincre.png)
+
+**2.外键约束：** Innodb引擎支持外键，在创建外键时，要求父表必须有对应的索引，子表在创建外键的时候也会自动创建对应的索引
+外键信息可以通过show table status like ‘test’ \G; show create table ‘test’;
+
+**3.存储方式：**
+**A.** 使用共享表空间，这种方式创建的表结果保存在.frm文件，数据和索引保存在innodb_data_home_dir innodb_data_file_path定义的表空间中
+**B.**多表空间存储，表结构保存在.frm文件中，但是每个表的数据和索引单独存放在.ibd中；每个分区对于单独的.ibd
+（需要开启innodb_file_per_table=1）
+对于使用多表空间的表可以方便进行单表备份恢复，简单复制ibd和frm文件的方法因没有共享表空间的字典信息，而无法使用；多表空间情况，因为Innodb把内部的数据字典和在线重做日志存放在共享表空间里面
+
+**使用此语句删除.ibd文件：**
+`ALTER TABLE tbl_name DISCARD TABLESPACE;`
+要把备份的.ibd文件还原到表中，需把此文件复制到数据库目录中，然后书写此语句：
+`ALTER TABLE tbl_name IMPORT TABLESPACE;`
+
+**适用场景：**
+需要事务处理，对事务的完整性要求高，并发条件下要求数据一致性的计费系统或者财务系统等对数据准心要求比较搞的系统（5.5+默认引擎）
+
+##### 三、MEMORY引擎：
+
+**A.**每个MEMORY表实际对应一个磁盘文件.frm，数据存放在内存，默认采用HASH索引（也可以设置撑Btree索引），服务关闭数据会丢失
+**B.**是否memory表中的内存可以通过delete from 或者truncate 或者drop table
+**C.**memory表可以放置数据量的大小受到max_heap_table_size变量约束，默认16M，在定义表时可以用MAX_ROWS指定表的最大行数
+**D.**使用环境：用于内容变化不频繁或者作为统计操作的中间结果表
+
+**适用场景：**
+一般用于更新不太频繁的小表，用以快速得到访问结果的环境，但对表大小有限制
+
+##### 四、TOKUDB引擎：
+
+具有高压缩率高效的插入性能，支持大多数在线DDL
+与InnoDB引擎对比测试：[http://www.tokutek.com/resources/tokudb-vs-innodb/](http://www.tokutek.com/resources/tokudb-vs-innodb/)
+**特性：**
+
+&lt;pre style=&quot;color: #93a1a1;&quot;&gt;`使用Fractal树索引保证了高效的插入性能
+优秀的压缩特性，比InnoDB高近10倍
+Hot Schema Changes特性支持在线创建索引和添加/删除属性列等DDL操作
+使用Bulk Loader达到快速加载大数据量
+提供主从延迟消除技术
+支持ACID和MVCC
+</code></pre><p><strong>适用场景：</strong><br>日志数据，日志通常插入频繁切存储量大；<br>历史数据，通常不会再有写操作，可以利用TokuDB的高压缩特性存储；<br>在线DDL较频繁的场景，使用TokuDB可以大大增加系统可用性；</p>
+<p><strong>注：</strong> 具体使用哪种引擎要根据自己的业务的特点去决定</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2014/08/20/e7-90-86-e8-a7-a3mysql-e8-bf-90-e7-ae-97-e7-ac-a6-e5-92-8c-e5-b8-b8-e7-94-a8-e5-86-85-e7-bd-ae-e5-87-bd-e6-95-b0.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Geekwolf">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/wolf.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Geekwolf's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2014/08/20/e7-90-86-e8-a7-a3mysql-e8-bf-90-e7-ae-97-e7-ac-a6-e5-92-8c-e5-b8-b8-e7-94-a8-e5-86-85-e7-bd-ae-e5-87-bd-e6-95-b0.html" itemprop="url">理解MySQL运算符和常用内置函数</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-08-20T10:20:05+08:00">
+                2014-08-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/MySQL数据库/" itemprop="url" rel="index">
+                    <span itemprop="name">MySQL数据库</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2014/08/20/e7-90-86-e8-a7-a3mysql-e8-bf-90-e7-ae-97-e7-ac-a6-e5-92-8c-e5-b8-b8-e7-94-a8-e5-86-85-e7-bd-ae-e5-87-bd-e6-95-b0.html" class="leancloud_visitors" data-flag-title="理解MySQL运算符和常用内置函数">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  4
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h5 id="一、MySQL中的运算符"><a href="#一、MySQL中的运算符" class="headerlink" title="一、MySQL中的运算符"></a>一、MySQL中的运算符</h5><p><a href="http://www.simlinux.com/wp-content/uploads/2014/08/suanshu.png"><img src="http://www.simlinux.com/wp-content/uploads/2014/08/suanshu.png" alt="suanshu"></a></p>
+<p><a href="http://www.simlinux.com/wp-content/uploads/2014/08/lj.png"><img src="http://www.simlinux.com/wp-content/uploads/2014/08/lj.png" alt="lj"></a></p>
+<p><strong>注意事项：<br>1.在除法运算和模数运算中，如果除数是0，将是非法除数，结果返回NULL</strong><br>取模运算中，也可以用MOD(a,b)函数或者a%b</p>
+<pre><code>mysql&amp;gt; select 1/0, 100%0;
++------+-------+
+| 1/0 | 100%0 |
++------+-------+
+| NULL | NULL |
++------+-------+
+1 row in set (0.01 sec)
+mysql&amp;gt; select 3%2,mod(3,2);
++------+----------+
+| 3%2 | mod(3,2) |
++------+----------+
+| 1 | 1 |
++------+----------+
+1 row in set (0.00 sec)
+`&lt;/pre&gt;
+
+**2.NULL只能用&amp;lt;=&amp;gt;进行比较，其他的比较运算符时返回NULL**
+
+&lt;pre style=&quot;color: #93a1a1;&quot;&gt;`mysql&amp;gt; select &apos;a&apos;&amp;lt;&apos;b&apos;,&apos;a&apos;&amp;lt;&apos;a&apos;,1&amp;lt;2,null&amp;lt;=&amp;gt;null;
++---------+---------+-----+-------------+
+| &apos;a&apos;&amp;lt;&apos;b&apos; | &apos;a&apos;&amp;lt;&apos;a&apos; | 1&amp;lt;2 | null&amp;lt;=&amp;gt;null |
++---------+---------+-----+-------------+
+| 1 | 0 | 1 | 1 |
++---------+---------+-----+-------------+
+1 row in set (0.02 sec)
+mysql&amp;gt; select &apos;a&apos;&amp;lt;&apos;b&apos;,&apos;a&apos;&amp;lt;&apos;a&apos;,1&amp;lt;2,null&amp;lt;null;
++---------+---------+-----+-----------+
+| &apos;a&apos;&amp;lt;&apos;b&apos; | &apos;a&apos;&amp;lt;&apos;a&apos; | 1&amp;lt;2 | null&amp;lt;null |
++---------+---------+-----+-----------+
+| 1 | 0 | 1 | NULL |
++---------+---------+-----+-----------+
+1 row in set (0.00 sec)
+`&lt;/pre&gt;
+
+**3.BETWEEN IN**
+between运算符使用“a BETWEEN min AND max”当a大于等于min并且小于等于max返回1，否则返回0  IN运算符使用”a IN（values1,values2,…)“，当a的值存在于列表中时，则郑鄂表达式返回值1，否则0
+
+&lt;pre style=&quot;color: #93a1a1;&quot;&gt;`mysql&amp;gt; select 10 between 10 and 20,9 between 10 and 20;
++----------------------+---------------------+
+| 10 between 10 and 20 | 9 between 10 and 20 |
++----------------------+---------------------+
+| 1 | 0 |
++----------------------+---------------------+
+1 row in set (0.00 sec)
+mysql&amp;gt; select 1 in(1,2,3),&apos;t&apos; in (&apos;t&apos;,&apos;a&apos;,&apos;b&apos;,&apos;f&apos;),0 in(1,2);
++-------------+--------------------------+-----------+
+| 1 in(1,2,3) | &apos;t&apos; in (&apos;t&apos;,&apos;a&apos;,&apos;b&apos;,&apos;f&apos;) | 0 in(1,2) |
++-------------+--------------------------+-----------+
+| 1 | 1 | 0 |
++-------------+--------------------------+-----------+
+1 row in set (0.00 sec)
+`&lt;/pre&gt;
+
+**4.REGEXP运算符格式”str REGEXP str_pat”**
+当str字符串中含有str_pat相匹配的字符串时返回1，否则0
+
+&lt;pre style=&quot;color: #93a1a1;&quot;&gt;`mysql&amp;gt; select &apos;abcdef&apos; regexp &apos;ac&apos;,&apos;abcdef&apos; regexp &apos;ab&apos;,&apos;abcdefg&apos; regexp &apos;k&apos;;
++----------------------+----------------------+----------------------+
+| &apos;abcdef&apos; regexp &apos;ac&apos; | &apos;abcdef&apos; regexp &apos;ab&apos; | &apos;abcdefg&apos; regexp &apos;k&apos; |
++----------------------+----------------------+----------------------+
+| 0 | 1 | 0 |
++----------------------+----------------------+----------------------+
+1 row in set (0.00 sec)
+`&lt;/pre&gt;
+
+**5\. 逻辑与AND和逻辑或OR**
+AND：当所有操作数都为非零，并且不为NULL时，返回1；当一个或多个为0时，返回0；操作数任何一个为NULL，则返回NULL
+OR : 当两个操作数均为非NULL值时，如有任意一个为非零值，则返回1，否则0；
+当有一个操作数为NULL时，如另外一个为非0，则结果1，否则NULL;
+如果两个操作数均为NULL，则所得结果为NULL
+
+&lt;pre style=&quot;color: #93a1a1;&quot;&gt;`mysql&amp;gt; select (1 and 1),(0 and 1),(3 and 1),(1 and null);
++-----------+-----------+-----------+--------------+
+| (1 and 1) | (0 and 1) | (3 and 1) | (1 and null) |
++-----------+-----------+-----------+--------------+
+| 1 | 0 | 1 | NULL |
++-----------+-----------+-----------+--------------+
+1 row in set (0.00 sec)
+mysql&amp;gt; select (1 or 0),(0 or 0),(1 or null),(1 or 1),(null or null);
++----------+----------+-------------+----------+----------------+
+| (1 or 0) | (0 or 0) | (1 or null) | (1 or 1) | (null or null) |
++----------+----------+-------------+----------+----------------+
+| 1 | 0 | 1 | 1 | NULL |
++----------+----------+-------------+----------+----------------+
+1 row in set (0.00 sec)
+`&lt;/pre&gt;
+
+**6.位运算**
+位与对多个操作数的二进制位做逻辑与操作
+
+&lt;pre style=&quot;color: #93a1a1;&quot;&gt;`mysql&amp;gt; select bin(2);
++--------+
+| bin(2) |
++--------+
+| 10 |
++--------+
+1 row in set (0.00 sec)
+mysql&amp;gt; select bin(3);
++--------+
+| bin(3) |
++--------+
+| 11 |
++--------+
+1 row in set (0.00 sec)
+mysql&amp;gt; select bin(100);
++----------+
+| bin(100) |
++----------+
+| 1100100 |
++----------+
+1 row in set (0.00 sec)
+mysql&amp;gt; select 2&amp;amp;3&amp;amp;100;
++---------+
+| 2&amp;amp;3&amp;amp;100 |
++---------+
+| 0 |
++---------+
+1 row in set (0.00 sec)
+</code></pre><p><strong>7.位取反</strong><br>在MySQL中，常量数字默认会以8个字节来表示，8字节就是64位，常量1的二进制表示为63个0加1个1，位取反后就是63个1加1个0，转换成十进制后就是18446744073709551614</p>
+<p><a href="http://www.simlinux.com/wp-content/uploads/2014/08/qf.png"><img src="http://www.simlinux.com/wp-content/uploads/2014/08/qf.png" alt="qf"></a></p>
+<p><strong>8.位右移</strong></p>
+<p><a href="http://www.simlinux.com/wp-content/uploads/2014/08/wyy.png"><img src="http://www.simlinux.com/wp-content/uploads/2014/08/wyy.png" alt="wyy"></a></p>
+<h5 id="二、运算符的优先级"><a href="#二、运算符的优先级" class="headerlink" title="二、运算符的优先级"></a>二、运算符的优先级</h5><p><a href="http://www.simlinux.com/wp-content/uploads/2014/08/yxj.png"><img src="http://www.simlinux.com/wp-content/uploads/2014/08/yxj.png" alt="yxj"></a></p>
+<h5 id="三、常用内置函数"><a href="#三、常用内置函数" class="headerlink" title="三、常用内置函数"></a>三、常用内置函数</h5><p><a href="http://www.simlinux.com/wp-content/uploads/2014/08/strfun.png"><img src="http://www.simlinux.com/wp-content/uploads/2014/08/strfun.png" alt="strfun"></a></p>
+<p><a href="http://www.simlinux.com/wp-content/uploads/2014/08/numfun.png"><img src="http://www.simlinux.com/wp-content/uploads/2014/08/numfun.png" alt="numfun"></a></p>
+<p><a href="http://www.simlinux.com/wp-content/uploads/2014/08/timefun.png"><img src="http://www.simlinux.com/wp-content/uploads/2014/08/timefun.png" alt="timefun"></a></p>
+<p><a href="http://www.simlinux.com/wp-content/uploads/2014/08/otherfun.png"><img src="http://www.simlinux.com/wp-content/uploads/2014/08/otherfun.png" alt="otherfun"></a></p>
+<p><strong>注意事项：</strong><br><span style="color: #222222;">date_format(date,fmt)fmt格式:</span><br><a href="http://dev.mysql.com/doc/refman/5.5/en/date-and-time-functions.html#function_date-format" target="_blank" rel="external">http://dev.mysql.com/doc/refman/5.5/en/date-and-time-functions.html#function_date-format</a><br><span style="color: #222222;">date_add(date,INTERVAL expr type) type类型：</span><br><a href="http://dev.mysql.com/doc/refman/5.5/en/date-and-time-functions.html#function_date-add" target="_blank" rel="external">http://dev.mysql.com/doc/refman/5.5/en/date-and-time-functions.html#function_date-add</a></p>
+<p><strong>参考文档：</strong><a href="http://dev.mysql.com/doc/refman/5.5/en/functions.html" target="_blank" rel="external">http://dev.mysql.com/doc/refman/5.5/en/functions.html</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+  </section>
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/4/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><a class="extend next" rel="next" href="/page/6/"><i class="fa fa-angle-right"></i></a>
+  </nav>
+
+
+
+          </div>
+          
+
+
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/wolf.jpeg"
+               alt="Geekwolf" />
+          <p class="site-author-name" itemprop="name">Geekwolf</p>
+           
+              <p class="site-description motion-element" itemprop="description">DevOps | Docker | K8S | MySQL | 运维</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">167</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">105</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/geekwolf" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                    
+                      GitHub
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/geekwolf" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                    
+                      Weibo
+                    
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2012 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Geekwolf</span>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  
+    <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('-1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("qms5kJ0y2CItrIVFivKxxPsR-gzGzoHsz", "Cn3w20futtphxpaDSP5tHjzy");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

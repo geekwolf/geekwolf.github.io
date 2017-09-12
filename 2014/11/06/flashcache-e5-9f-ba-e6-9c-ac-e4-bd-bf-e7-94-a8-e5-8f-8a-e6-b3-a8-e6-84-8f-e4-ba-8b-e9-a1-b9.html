@@ -1,0 +1,1324 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="flashcache," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Geekwolf's Blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="环境：Centos6.5 x64 minal  安装方法1.rpm安装rpm –import http://elrepo.org/RPM-GPG-KEY-elrepo.orgrpm -Uvh http://elrepo.org/elrepo-release-6-5.el6.elrepo.noarch.rpmyum install flashcache-utils kmod-flashcache2.">
+<meta name="keywords" content="flashcache">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Flashcache基本使用及注意事项">
+<meta property="og:url" content="http://www.simlinux.com/2014/11/06/flashcache-e5-9f-ba-e6-9c-ac-e4-bd-bf-e7-94-a8-e5-8f-8a-e6-b3-a8-e6-84-8f-e4-ba-8b-e9-a1-b9.html">
+<meta property="og:site_name" content="Geekwolf&#39;s Blog">
+<meta property="og:description" content="环境：Centos6.5 x64 minal  安装方法1.rpm安装rpm –import http://elrepo.org/RPM-GPG-KEY-elrepo.orgrpm -Uvh http://elrepo.org/elrepo-release-6-5.el6.elrepo.noarch.rpmyum install flashcache-utils kmod-flashcache2.">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-09-12T01:12:15.136Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Flashcache基本使用及注意事项">
+<meta name="twitter:description" content="环境：Centos6.5 x64 minal  安装方法1.rpm安装rpm –import http://elrepo.org/RPM-GPG-KEY-elrepo.orgrpm -Uvh http://elrepo.org/elrepo-release-6-5.el6.elrepo.noarch.rpmyum install flashcache-utils kmod-flashcache2.">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.simlinux.com/2014/11/06/flashcache-e5-9f-ba-e6-9c-ac-e4-bd-bf-e7-94-a8-e5-8f-8a-e6-b3-a8-e6-84-8f-e4-ba-8b-e9-a1-b9.html"/>
+
+
+
+
+
+  <title>Flashcache基本使用及注意事项 | Geekwolf's Blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="//s13.cnzz.com/z_stat.php?id=1264375041&web_id=1264375041" language="JavaScript"></script>
+  </div>
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Geekwolf's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Quick notes</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />
+            
+            站点地图
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2014/11/06/flashcache-e5-9f-ba-e6-9c-ac-e4-bd-bf-e7-94-a8-e5-8f-8a-e6-b3-a8-e6-84-8f-e4-ba-8b-e9-a1-b9.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Geekwolf">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/wolf.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Geekwolf's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Flashcache基本使用及注意事项</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-11-06T16:55:21+08:00">
+                2014-11-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/MySQL数据库/" itemprop="url" rel="index">
+                    <span itemprop="name">MySQL数据库</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2014/11/06/flashcache-e5-9f-ba-e6-9c-ac-e4-bd-bf-e7-94-a8-e5-8f-8a-e6-b3-a8-e6-84-8f-e4-ba-8b-e9-a1-b9.html" class="leancloud_visitors" data-flag-title="Flashcache基本使用及注意事项">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  6
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <div style="color: #000000;"><strong>环境：Centos6.5 x64 minal</strong></div>
+
+<h4 id="安装方法"><a href="#安装方法" class="headerlink" title="安装方法"></a><strong>安装方法</strong></h4><div style="color: #000000;"><span style="font-family: 'Microsoft Yahei';">1.rpm安装</span></div><br><div style="color: #000000;"><br><pre class="lang:php decode:true">rpm –import <a href="http://elrepo.org/RPM-GPG-KEY-elrepo.org" target="_blank" rel="external">http://elrepo.org/RPM-GPG-KEY-elrepo.org</a><br>rpm -Uvh <a href="http://elrepo.org/elrepo-release-6-5.el6.elrepo.noarch.rpm" target="_blank" rel="external">http://elrepo.org/elrepo-release-6-5.el6.elrepo.noarch.rpm</a><br>yum install flashcache-utils kmod-flashcache</pre><br><span style="font-family: 'Microsoft Yahei';">2.源码安装</span><br><pre class="lang:php decode:true">rpm -ivh <a href="http://mirrors.ustc.edu.cn/centos/6.5/os/x86_64/Packages/kernel-headers-2.6.32-431.el6.x86_64.rpm" target="_blank" rel="external">http://mirrors.ustc.edu.cn/centos/6.5/os/x86_64/Packages/kernel-headers-2.6.32-431.el6.x86_64.rpm</a><br>rpm -ivh <a href="http://mirrors.ustc.edu.cn/centos/6.5/os/x86_64/Packages/kernel-devel-2.6.32-431.el6.x86_64.rpm" target="_blank" rel="external">http://mirrors.ustc.edu.cn/centos/6.5/os/x86_64/Packages/kernel-devel-2.6.32-431.el6.x86_64.rpm</a><br>wget <a href="https://github.com/facebook/flashcache/archive/3.1.2.tar.gz" target="_blank" rel="external">https://github.com/facebook/flashcache/archive/3.1.2.tar.gz</a><br>tar xf 3.1.2.tar.gz<br>cd flashcache-3.1.2<br>make &amp;&amp; make install</pre><br><br>#### <span style="font-family: 'Microsoft Yahei';"><strong>自动加载模块</strong></span><br><br><span style="font-family: 'Microsoft Yahei';">开机自动加载模块配置：</span><br><pre class="lang:php decode:true  ">vim /etc/sysconfig/modules/flashcache.modules<br><br>#! /bin/sh<br>/sbin/modinfo -F filename flashcache &gt; /dev/null 2&gt;&amp;1<br>if [ $? -eq 0 ]; then<br>    /sbin/modprobe flashcache<br>fi<br>chmod +x  /etc/sysconfig/modules/flashcache.modules</pre><br><span style="font-family: 'Microsoft Yahei';">模块的自动加载最好不要采用写入/etc/rc.local的方式</span><br><pre class="lang:php decode:true">##加载flashcache模块<br>modprobe flashcache<br><br>##查看flashcache模块是否加载<br>[root@localhost ~]# lsmod |grep flashcache<br>flashcache 92068 0<br>dm_mod 84209 14 flashcache,dm_mirror,dm_log<br><br>##删除flashcache模块<br>rmmod flashcache</pre><br><br>#### <span style="color: #333333;"><strong><span style="font-family: 'Microsoft Yahei';">创建Flashcache</span></strong></span><br><br><div><br><div><span style="font-family: 'Microsoft Yahei';">SSD:/dev/sdc</span></div><br><div><span style="font-family: 'Microsoft Yahei';">SAS:/dev/sdb2</span></div><br></div><br><div><span style="font-family: 'Microsoft Yahei';">创建设备名为cachedev的flashcache</span></div><br><div><br><pre class="lang:php decode:true">flashcache_create -p back -b 4k cachedev /dev/sdc /dev/sdb2</pre><br>生成/dev/mapper/cachedev设备<br>指定flashcache的block大小与Percona的page大小相同,一般默认<br><br><strong>flashcache_create相关参数说明：</strong><br><br></div><br><span style="font-family: 'Microsoft Yahei';">-p:缓存模式 writeback(数据先写到SSD，随后写到普通硬盘)，</span><br><span style="font-family: 'Microsoft Yahei';">                    writethrough(数据同时写到SSD和普通硬盘)，</span><br><span style="font-family: 'Microsoft Yahei';">                    writearound（数据绕过SSD，直接写到普通硬盘）三种，三种模式的所有读都会被缓存到flashcache可以通过dev.flashcache.&lt;cachedev&gt;.cache_all参数调整</span><br><span style="font-family: 'Microsoft Yahei';">-s：缓存大小，可选项，如果未指定则整个SSD设备被用于缓存，默认的计数单位是扇区（sectors）,但是可以接受k/m/g单位。</span><br><span style="font-family: 'Microsoft Yahei';">-b：指定块大小，可选项，默认为4KB，必须为2的指数。默认单位为扇区。也可以用K作为单位，一般选4KB。<br>-f：强制创建，不进行检查</span><br><span style="font-family: 'Microsoft Yahei';">-m：设备元数据块大小，只有writeback需要存储metadata块，默认4K</span><br><br><strong><span style="font-family: 'Microsoft Yahei';">查看帮助</span></strong><br><pre class="lang:php decode:true">[root@localhost ~]# flashcache_create<br>Usage: flashcache_create [-v] [-p back|thru|around] [-b block size] [-m md block size] [-s cache size] [-a associativity] cachedev ssd_devname disk_devname<br>Usage : flashcache_create Cache Mode back|thru|around is required argument<br>Usage : flashcache_create Default units for -b, -m, -s are sectors, or specify in k/M/G. Default associativity is 512</pre><br><span style="font-family: 'Microsoft Yahei';">其他帮助参考flashcache源码目录下的man目录</span><br><br>#### <strong><span style="font-family: 'Microsoft Yahei';">加载缓存设备</span></strong><br><br><pre class="lang:php decode:true">flashcache_load /dev/sdc  cachedev (系统重启时使用来加载已经创建过的缓存设备cachedev)</pre><br>加载已存在的flashcache操作仅用于writeback模式，writethrough和writearound模式重启机器后需要重新使用flashcache_create创建<br><br>#### <strong><span style="font-family: 'Microsoft Yahei';">使用Flashcache</span></strong><br><br><span style="font-family: 'Microsoft Yahei';">创建好的flashcache设备是块设备，可格式文件系统后挂在使用,也可以继续对其分区等</span><br><br><span style="font-family: 'Microsoft Yahei';">mount /dev/mapper/cachedev /data</span><br><br>#### <strong><span style="font-family: 'Microsoft Yahei';">销毁Flashcache</span></strong><br><br><span style="font-family: 'Microsoft Yahei';">flashcache_destroy /dev/sdc  </span><br><br><span style="font-family: 'Microsoft Yahei';">这种方式删除writeback模式的flashcache时会将SSD上的所有数据删除包括脏数据</span><br><br><span style="font-family: 'Microsoft Yahei';">建议使用dmsetup命令（device-mapper软件包）删除，会自动将脏数据写入磁盘</span><br><br><span style="font-family: 'Microsoft Yahei';">dmsetup remove cachedev</span><br><br>#### <strong>Flashcache参数优化</strong><br><br><pre class="lang:php decode:true">[root@localhost ]#sysctl dev.flashcache<br>dev.flashcache.sdc+sdb2.io_latency_hist = 0<br>dev.flashcache.sdc+sdb2.do_sync = 0<br>dev.flashcache.sdc+sdb2.stop_sync = 0<br>dev.flashcache.sdc+sdb2.dirty_thresh_pct = 20<br>dev.flashcache.sdc+sdb2.max_clean_ios_total = 4<br>dev.flashcache.sdc+sdb2.max_clean_ios_set = 2<br>dev.flashcache.sdc+sdb2.do_pid_expiry = 0<br>dev.flashcache.sdc+sdb2.max_pids = 100<br>dev.flashcache.sdc+sdb2.pid_expiry_secs = 60<br>dev.flashcache.sdc+sdb2.reclaim_policy = 0<br>dev.flashcache.sdc+sdb2.zero_stats = 0<br>dev.flashcache.sdc+sdb2.fast_remove = 0<br>dev.flashcache.sdc+sdb2.cache_all = 1<br>dev.flashcache.sdc+sdb2.fallow_clean_speed = 2<br>dev.flashcache.sdc+sdb2.fallow_delay = 900<br>dev.flashcache.sdc+sdb2.skip_seq_thresh_kb = 0<br>dev.flashcache.sdc+sdb2.clean_on_read_miss = 0<br>dev.flashcache.sdc+sdb2.clean_on_write_miss = 0<br>dev.flashcache.sdc+sdb2.lru_promote_thresh = 2<br>dev.flashcache.sdc+sdb2.lru_hot_pct = 75<br>dev.flashcache.sdc+sdb2.new_style_write_merge = 0</pre><br><strong>参数介绍参考：</strong><a href="https://github.com/facebook/flashcache/blob/master/doc/flashcache-sa-guide.txt" target="_blank" rel="external">https://github.com/facebook/flashcache/blob/master/doc/flashcache-sa-guide.txt</a><br><br>针对MySQL作此优化<br><pre class="lang:php decode:true">dev.flashcache.sdc+sdb2.cache_all = 1   默认值1表示缓存所有，0都不缓存，另外通过进程黑白名单控制<br>dev.flashcache.sdc+sdb2.reclaim_policy = 1  缓存回收策略，0：FIFO，1：LRU，可动态调整<br>dev.flashcache.sdbc+sdb2.fast_remove = 1  0表示不同步脏块到磁盘，1表示同步脏块到磁盘<br>dev.flashcache.sdc+sdb2.dirty_thresh_pct = 90  每组脏块占有的百分比，过低会减少块覆盖，增加磁盘写操作和读缓存<br>dev.flashcache.sdc+sdb2.new_style_write_merge = 1 打开写入合并，提升写磁盘的性能(旧版本dev.flashcache.sdc+sdb2.write_merge)<br>dev.flashcache.sdb1+sda6.skip_seq_thresh_kb = 256  表示不缓存超过256kb的顺序IO(由于SSD的随机读写比SAS好，但顺序读写相差不大，故作此优化)</pre><br><br>#### <strong>Flashcache开机启动</strong><br><br><span style="font-family: 'Microsoft Yahei';">flashcache模块自动加载–flashcache设备自动加载flashcache_load /dev/sdc  cachedev</span><br><br><span style="font-family: 'Microsoft Yahei';">A.模块自动加载请参考安装部分</span><br><br><span style="font-family: 'Microsoft Yahei';">B.开机自动加载已创建的缓存设备及挂载</span><br><pre class="lang:php decode:true">cd /usr/src/flashcache-3.1.2/utils<br>cp flashcache /etc/init.d/<br>chmod +x /etc/init.d/flashcache<br>修改/etc/init.d/flashcache<br>SSD_DISK= /dev/sdc<br>BACKEND_DISK= /dev/sdb2<br>CACHEDEV_NAME= cachedev<br>MOUNTPOINT= /data<br>FLASHCACHE_NAME=sdc+sdb2<br>chkconfig flashcache on</pre><br><br>#### <strong>Flashcache状态监控</strong><br><br><pre class="lang:php decode:true">dmsetup status cachedev<br>dmsetup table  cachedev<br><br>错误日志报告<br>/proc/flashcache/sdc+sdb2/flashcache_errors<br><br>状态报告<br>/proc/flashcache/sdc+sdb2/flashcache_stats<br><br>亦可使用flashstat命令实时查看</pre><br><span style="font-family: 'Microsoft Yahei';">到此flashcache的基本使用就是这样，看了网上很多资料都是各种抄袭，不凡错误的，最后还是读了官方的帮助，总结出自己的以便以后使用；</span><br><br><span style="font-family: 'Microsoft Yahei';">后续要做的就是增加了SSD缓存后，要观察SSD的使用情况及缓存命中率等在逐渐调试优化，下一篇增加MySQL数据库从系统/MySQL方面的一些优化总结和大家分享，请继续关注</span><br><br><span style="color: #333333;"><strong>推荐IO测试工具</strong></span><br><br><span style="color: #333333; font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace;">fio、iozone 更多参考</span><a href="https://github.com/geekwolf/sa-scripts/blob/master/devops.md" target="_blank" rel="external">https://github.com/geekwolf/sa-scripts/blob/master/devops.md</a><br><br><strong><span style="font-family: 'Microsoft Yahei';">注意事项：</span></strong><br><br><span style="font-family: 'Microsoft Yahei';">flashcache_create创建了缓存设备之后挂载即可使用，如创建之后使用flashcache_load /dev/sdc  cachedev会提示Invalid Flashcache superblock的错误</span><br><br>#### <span style="color: #555555;"><strong>参考文档</strong></span><br><br><a href="http://blog.163.com/digoal%40126/blog/static/163877040201463101652528/" target="_blank" rel="external">http://blog.163.com/digoal%40126/blog/static/163877040201463101652528/</a><br><br><a href="https://github.com/facebook/flashcache/blob/master/doc/flashcache-sa-guide.txt" target="_blank" rel="external">https://github.com/facebook/flashcache/blob/master/doc/flashcache-sa-guide.txt</a><br><br></div>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创分享，您的支持将鼓励我继续创作</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.png" alt="Geekwolf WeChat Pay"/>
+        <p>微信打赏</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.png" alt="Geekwolf Alipay"/>
+        <p>支付宝打赏</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    Geekwolf
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://www.simlinux.com/2014/11/06/flashcache-e5-9f-ba-e6-9c-ac-e4-bd-bf-e7-94-a8-e5-8f-8a-e6-b3-a8-e6-84-8f-e4-ba-8b-e9-a1-b9.html" title="Flashcache基本使用及注意事项">http://www.simlinux.com/2014/11/06/flashcache-e5-9f-ba-e6-9c-ac-e4-bd-bf-e7-94-a8-e5-8f-8a-e6-b3-a8-e6-84-8f-e4-ba-8b-e9-a1-b9.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/flashcache/" rel="tag"># flashcache</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2014/10/30/e4-b8-bb-e4-bb-8e-e4-b8-80-e8-87-b4-e6-80-a7-e6-a3-80-e6-9f-a5-e5-92-8c-e4-bf-ae-e5-a4-8d.html" rel="next" title="主从一致性检查和修复">
+                <i class="fa fa-chevron-left"></i> 主从一致性检查和修复
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2014/12/05/ansible-e5-ad-a6-e4-b9-a0-e7-ac-94-e8-ae-b0.html" rel="prev" title="Ansible学习笔记">
+                Ansible学习笔记 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zMDc3Mi83MzI0"></div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/wolf.jpeg"
+               alt="Geekwolf" />
+          <p class="site-author-name" itemprop="name">Geekwolf</p>
+           
+              <p class="site-description motion-element" itemprop="description">DevOps | Docker | K8S | MySQL | 运维</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">167</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">105</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/geekwolf" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                    
+                      GitHub
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/geekwolf" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                    
+                      Weibo
+                    
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#安装方法"><span class="nav-number">1.</span> <span class="nav-text">安装方法</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2012 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Geekwolf</span>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('-1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("qms5kJ0y2CItrIVFivKxxPsR-gzGzoHsz", "Cn3w20futtphxpaDSP5tHjzy");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,2966 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Geekwolf,DevOps,Docker,k8s,MySQL,PaaS" />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Geekwolf's Blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="DevOps | Docker | K8S | MySQL | 运维">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Geekwolf&#39;s Blog">
+<meta property="og:url" content="http://www.simlinux.com/page/9/index.html">
+<meta property="og:site_name" content="Geekwolf&#39;s Blog">
+<meta property="og:description" content="DevOps | Docker | K8S | MySQL | 运维">
+<meta property="og:locale" content="zh-Hans">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Geekwolf&#39;s Blog">
+<meta name="twitter:description" content="DevOps | Docker | K8S | MySQL | 运维">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.simlinux.com/page/9/"/>
+
+
+
+
+
+  <title>Geekwolf's Blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="//s13.cnzz.com/z_stat.php?id=1264375041&web_id=1264375041" language="JavaScript"></script>
+  </div>
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left 
+   page-home 
+ ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Geekwolf's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Quick notes</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />
+            
+            站点地图
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+  <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2013/01/22/nginx-e9-85-8d-e7-bd-ae-e4-b8-ad-e6-96-87-e5-9f-9f-e5-90-8d.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Geekwolf">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/wolf.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Geekwolf's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2013/01/22/nginx-e9-85-8d-e7-bd-ae-e4-b8-ad-e6-96-87-e5-9f-9f-e5-90-8d.html" itemprop="url">nginx配置中文域名</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2013-01-22T09:23:06+08:00">
+                2013-01-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux运维/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux运维</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2013/01/22/nginx-e9-85-8d-e7-bd-ae-e4-b8-ad-e6-96-87-e5-9f-9f-e5-90-8d.html" class="leancloud_visitors" data-flag-title="nginx配置中文域名">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>当在浏览器中敲入www.明月博客.com时，浏览器会转为www.xn–9kRq6Qw2Iu2A.com<br>其实中文域名就是一个经过编码的英文域名（中文域名–&gt;punycode编码–&gt;英文域名）<br>在线转换地址<a href="http://www.webmasterhome.cn/tool/punycode.asp" target="_blank" rel="external">http://www.webmasterhome.cn/tool/punycode.asp</a><br>配置：<br>listen 80;<br>server_name www.xn–9kRq6Qw2Iu2A.com;<br>index index.html;  </p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2013/01/15/windows-server-2008-e6-90-ad-e5-bb-bavpn-e6-9c-8d-e5-8a-a1.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Geekwolf">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/wolf.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Geekwolf's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2013/01/15/windows-server-2008-e6-90-ad-e5-bb-bavpn-e6-9c-8d-e5-8a-a1.html" itemprop="url">Windows server 2008 搭建VPN服务</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2013-01-15T11:11:02+08:00">
+                2013-01-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux运维/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux运维</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2013/01/15/windows-server-2008-e6-90-ad-e5-bb-bavpn-e6-9c-8d-e5-8a-a1.html" class="leancloud_visitors" data-flag-title="Windows server 2008 搭建VPN服务">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  2
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>&#160;</p>
+<p>VPN英文全称是“Virtual Private Network”，就是“<a href="http://baike.baidu.com/view/480950.htm" target="_blank" rel="external">虚拟专用网络”。</a></p>
+<p>虚拟专用网络就是一种虚拟出来的企业内部专用线路、这条隧道可以对数据进行几倍加密达到安全使用互联网的目的。</p>
+<p>此项技术已被广泛使用、虚拟专用网可以帮助远程用户、公司分支机构、商业伙伴及供应商同公司的内部网建立可信的安全连接，用于经济有效地连接到商业伙伴和用户的安全外联网虚拟专用网。</p>
+<p>实验环境:</p>
+<p>服务器系统:Windows server 2008</p>
+<p>客户机系统:Windows server 2003</p>
+<p>服务器双网卡</p>
+<p>外网卡IP:192.168.2.253</p>
+<p>内网卡IP:172.16.2.253</p>
+<p>客户机IP:</p>
+<p><a href="http://img1.51cto.com/attachment/201107/173208662.jpg" target="_blank" rel="external"><img src="http://img1.51cto.com/attachment/201107/173208662.jpg" alt=""></a></p>
+<p>最终效果:客户机拨入VPN访问服务器内网、同时通过VPN服务器继续访问互联网</p>
+<p>一、安装VPN服务</p>
+<p>打开服务器管理器-添加角色</p>
+<p><a href="http://img1.51cto.com/attachment/201107/173512759.jpg" target="_blank" rel="external"><img src="http://img1.51cto.com/attachment/201107/173512759.jpg" alt=""></a></p>
+<p>勾选网络策略和访问服务</p>
+<p><a href="http://img1.51cto.com/attachment/201107/173530284.jpg" target="_blank" rel="external"><img src="http://img1.51cto.com/attachment/201107/173530284.jpg" alt=""></a></p>
+<p>下一步</p>
+<p><a href="http://img1.51cto.com/attachment/201107/173711718.jpg" target="_blank" rel="external"><img src="http://img1.51cto.com/attachment/201107/173711718.jpg" alt=""></a></p>
+<p>勾选需要安装的服务:如图</p>
+<p><a href="http://img1.51cto.com/attachment/201107/173748698.jpg" target="_blank" rel="external"><img src="http://img1.51cto.com/attachment/201107/173748698.jpg" alt=""></a></p>
+<p>下一步</p>
+<p><a href="http://img1.51cto.com/attachment/201107/173833688.jpg" target="_blank" rel="external"><img src="http://img1.51cto.com/attachment/201107/173833688.jpg" alt=""></a></p>
+<p>开始安装</p>
+<p><a href="http://img1.51cto.com/attachment/201107/173901320.jpg" target="_blank" rel="external"><img src="http://img1.51cto.com/attachment/201107/173901320.jpg" alt=""></a></p>
+<p>安装完成</p>
+<p><a href="http://img1.51cto.com/attachment/201107/173929957.jpg" target="_blank" rel="external"><img src="http://img1.51cto.com/attachment/201107/173929957.jpg" alt=""></a></p>
+<p>二、配置VPN服务</p>
+<p>当安装完路由和远程访问默认是禁用的,看到的是红下箭头,需要进行配置才变绿</p>
+<p><a href="http://img1.51cto.com/attachment/201107/173955125.jpg" target="_blank" rel="external"><img src="http://img1.51cto.com/attachment/201107/173955125.jpg" alt=""></a></p>
+<p>右击路由和远程访问-配置并启动路由与远程访问</p>
+<p><a href="http://img1.51cto.com/attachment/201107/174301390.jpg" target="_blank" rel="external"><img src="http://img1.51cto.com/attachment/201107/174301390.jpg" alt=""></a></p>
+<p>选择自定义-下一步</p>
+<p><a href="http://img1.51cto.com/attachment/201107/174422623.jpg" target="_blank" rel="external"><img src="http://img1.51cto.com/attachment/201107/174422623.jpg" alt=""></a></p>
+<p><a href="http://img1.51cto.com/attachment/201107/174702719.jpg" target="_blank" rel="external"><img src="http://img1.51cto.com/attachment/201107/174702719.jpg" alt=""></a></p>
+<p>配置完启动服务</p>
+<p><a href="http://img1.51cto.com/attachment/201107/174718918.jpg" target="_blank" rel="external"><img src="http://img1.51cto.com/attachment/201107/174718918.jpg" alt=""></a></p>
+<p>已经可以看到变绿了!</p>
+<p><a href="http://img1.51cto.com/attachment/201107/174744698.jpg" target="_blank" rel="external"><img src="http://img1.51cto.com/attachment/201107/174744698.jpg" alt=""></a></p>
+<p>展开以后-右击NAT-新增接口</p>
+<p><a href="http://img1.51cto.com/attachment/201107/174840398.jpg" target="_blank" rel="external"><img src="http://img1.51cto.com/attachment/201107/174840398.jpg" alt=""></a></p>
+<p>选择本地接口-公用接口(连接互联网),并在此接口上启用NAT,不然客户机拨号进来就只能访问服务器内网,无法连接互联网</p>
+<p><a href="http://img1.51cto.com/attachment/201107/175052342.jpg" target="_blank" rel="external"><img src="http://img1.51cto.com/attachment/201107/175052342.jpg" alt=""></a></p>
+<p><a href="http://img1.51cto.com/attachment/201107/175119965.jpg" target="_blank" rel="external"><img src="http://img1.51cto.com/attachment/201107/175119965.jpg" alt=""></a></p>
+<p>右击NAT-新增接口-内部-专用接口 (连接虚拟专用网络)</p>
+<p><a href="http://img1.51cto.com/attachment/201107/175204245.jpg" target="_blank" rel="external"><img src="http://img1.51cto.com/attachment/201107/175204245.jpg" alt=""></a> <a href="http://img1.51cto.com/attachment/201107/175204135.jpg" target="_blank" rel="external"><img src="http://img1.51cto.com/attachment/201107/175204135.jpg" alt=""></a></p>
+<p>右击路由和远程访问-属性-IPv4-静态地址池(用于指定客户机拨入VPN后,分配的IP范围,我指定IP是:172.16.2.100-200)</p>
+<p><a href="http://img1.51cto.com/attachment/201107/175204755.jpg" target="_blank" rel="external"><img src="http://img1.51cto.com/attachment/201107/175204755.jpg" alt=""></a></p>
+<p>创建一个名为sky的VPN用户-属性-允许拨入</p>
+<p><a href="http://img1.51cto.com/attachment/201107/175204381.jpg" target="_blank" rel="external"><img src="http://img1.51cto.com/attachment/201107/175204381.jpg" alt=""></a></p>
+<p><a href="http://img1.51cto.com/attachment/201107/175355659.jpg" target="_blank" rel="external"><img src="http://img1.51cto.com/attachment/201107/175355659.jpg" alt=""></a></p>
+<p>客户机测试</p>
+<p>1、测试能否正常拨入</p>
+<p>2、测试能否访问服务器内网和互联网</p>
+<p><a href="http://img1.51cto.com/attachment/201107/175355433.jpg" target="_blank" rel="external"><img src="http://img1.51cto.com/attachment/201107/175355433.jpg" alt=""></a> <a href="http://img1.51cto.com/attachment/201107/175355479.jpg" target="_blank" rel="external"><img src="http://img1.51cto.com/attachment/201107/175355479.jpg" alt=""></a> <a href="http://img1.51cto.com/attachment/201107/175356592.jpg" target="_blank" rel="external"><img src="http://img1.51cto.com/attachment/201107/175356592.jpg" alt=""></a></p>
+<p>查看客户机成功拨入后的IP信息!</p>
+<p><a href="http://img1.51cto.com/attachment/201107/175711218.jpg" target="_blank" rel="external"><img src="http://img1.51cto.com/attachment/201107/175711218.jpg" alt=""></a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2013/01/04/713.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Geekwolf">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/wolf.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Geekwolf's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2013/01/04/713.html" itemprop="url">maptail实现实时、美观的用户访问视图</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2013-01-04T02:51:48+08:00">
+                2013-01-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux运维/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux运维</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2013/01/04/713.html" class="leancloud_visitors" data-flag-title="maptail实现实时、美观的用户访问视图">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  2
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>转自liuts blog讲解，测试完了一下maptail，在线DEMO：<a href="http://view.linuxtone.org" target="_blank" rel="external">http://view.linuxtone.org</a><br><strong>一、效果图</strong><br><a href="http://t2.qpic.cn/mblogpic/1b8bb61880ea82f235d0/2000" target="_blank" rel="external"><img src="http://t2.qpic.cn/mblogpic/1b8bb61880ea82f235d0/2000" alt="点击在新窗口中浏览此图片" title="点击在新窗口中浏览此图片"></a></p>
+<p><strong>二、安装</strong></p>
+<p>1、依赖python2.6~2.7版本模块的支持，python已经是2.6或2.7版本略过此步骤</p>
+<div><br><div><br><div><a href="http://blog.liuts.com/#" target="_blank" rel="external">view plain</a><a href="http://blog.liuts.com/#" target="_blank" rel="external">print</a><a href="http://blog.liuts.com/#" target="_blank" rel="external">?</a></div><br></div>
+
+<ol>
+<li>wget <a href="http://www.python.org/ftp/python/2.7.3/Python-2.7.3.tgz" target="_blank" rel="external">http://www.python.org/ftp/python/2.7.3/Python-2.7.3.tgz</a></li>
+<li>tar -zxvf Python-2.7.3.tgz</li>
+<li>cd Python-2.7.3</li>
+<li>./configure</li>
+<li>make;make install</li>
+<li>cd /usr/bin</li>
+<li>mv python python.bak</li>
+<li><p>ln -s /usr/local/bin/python python<br></p></li></ol></div><br>2、安装nodeJS<p></p>
+<div><br><div><br><div><a href="http://blog.liuts.com/#" target="_blank" rel="external">view plain</a><a href="http://blog.liuts.com/#" target="_blank" rel="external">print</a><a href="http://blog.liuts.com/#" target="_blank" rel="external">?</a></div><br></div>
+
+<li><p>wget <a href="http://nodejs.org/dist/v0.8.16/node-v0.8.16.tar.gz" target="_blank" rel="external">http://nodejs.org/dist/v0.8.16/node-v0.8.16.tar.gz</a></p>
+</li>
+<li>tar -zxvf node-v0.8.16.tar.gz</li>
+<li>cd node-v0.8.16</li>
+<li>./configure</li>
+<li><p>make;make install<br></p></li></div><br>3、模板安装maptail<p></p>
+<div>
+
+<li><p>npm install maptail -g<br></p></li></div><br><span style="color: red;">*npm作为一个在线管理NodeJS模块的工具，官方默认托管站<a href="https://registry.npmjs.org速度在国内很差，建议使用第三代理；推荐http://registry.npmjs.vitecho.com，使用方法：npm" target="_blank" rel="external">https://registry.npmjs.org速度在国内很差，建议使用第三代理；推荐http://registry.npmjs.vitecho.com，使用方法：npm</a> –registry “<a href="http://registry.npmjs.vitecho.com" target="_blank" rel="external">http://registry.npmjs.vitecho.com</a>“ install maptail -g</span><p></p>
+
+
+<p>4、启用maptail监听<br>cd /var/log/httpd (以apache日志为例，系统支持任一带IP地址的日志格式，会自动匹配出IP规则)<br>nohup tail -f access.log |/maptail -h 192.168.1.5 -p 8080 &amp;</p>
+<p>#开机自启动<br>echo “/usr/bin/nohup /usr/bin/tail -f /var/log/httpd/access_log|/usr/local/bin/node /usr/local/bin/maptail -h 192.168.1.5 -p 8080 &amp;” &gt;&gt; /etc/rc.local<br>打开浏览器访问：<a href="http://192.168.1.5:8080/" target="_blank" rel="external">http://192.168.1.5:8080/</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2012/12/16/e7-ae-80-e5-8d-95-e4-bb-8b-e7-bb-8drpm-e5-8c-85-e5-88-b6-e4-bd-9c-e6-96-b9-e6-b3-95.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Geekwolf">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/wolf.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Geekwolf's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2012/12/16/e7-ae-80-e5-8d-95-e4-bb-8b-e7-bb-8drpm-e5-8c-85-e5-88-b6-e4-bd-9c-e6-96-b9-e6-b3-95.html" itemprop="url">简单介绍RPM包制作方法</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2012-12-16T14:25:35+08:00">
+                2012-12-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux运维/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux运维</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2012/12/16/e7-ae-80-e5-8d-95-e4-bb-8b-e7-bb-8drpm-e5-8c-85-e5-88-b6-e4-bd-9c-e6-96-b9-e6-b3-95.html" class="leancloud_visitors" data-flag-title="简单介绍RPM包制作方法">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  3
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>RPM是RedHat Package Manager（RedHat软件包管理工具）的缩写,是一种用于互联网下载包的打包及安装工具，它包含在某些Linux分发版中。它生成具有.RPM扩展名的文件。使用rpm安装软件和管理软件非常的方便。而这节我们不是介绍如何使用rpm安装或管理软件，而是如何把源码制作成rpm包。<br>下面我们以制作nginx的rpm开始介绍其制作方法。以下操作在centos-5 32系统进行。<br>A<br>制作nginx的rpm例子<br><strong>1、建立目录结构</strong><br>/usr/src/redhat/SOURCES — 存放源代码，补丁，图标等文件。<br>/usr/src/redhat/SPECS — 存放用于管理rpm制作进程的spec文件。<br>/usr/src/redhat/BUILD — 解压后的文件存放在这里。<br>/usr/src/redhat/RPMS — 存放由rpmbuild制作好的二进制包。<br>/usr/src/redhat/SRPMS —存放由rpmbuild制作好的源码包。</p>
+<p>mkdir -p /usr/src/redhat<br>cd /usr/src/redhat<br>mkdir SOURCES SPECS BUILD RPMS SRPMS<br><strong>2、下载源码包</strong><br>下载源码包到SOURCES目录，不需要解压。</p>
+<p>cd /usr/src/redhat/SOURCES<br>wget <a href="http://nginx.org/download/nginx-1.2.1.tar.gz" target="_blank" rel="external">http://nginx.org/download/nginx-1.2.1.tar.gz</a><br><strong>3、创建Spec文件</strong><br>cd /usr/src/redhat/SPECS<br>vi nginx.spec<br>内容如下：</p>
+<p>#</p>
+<h1 id="Example-spec-file-for-nginx"><a href="#Example-spec-file-for-nginx" class="headerlink" title="Example spec file for nginx"></a>Example spec file for nginx</h1><p>#<br>Summary: high performance web server<br>Name: nginx<br>Version: 1.2.1<br>Release: 1.el5.ngx<br>License: 2-clause BSD-like license<br>Group: Applications/Server<br>Source: <a href="http://nginx.org/download/nginx-1.2.1.tar.gz" target="_blank" rel="external">http://nginx.org/download/nginx-1.2.1.tar.gz</a><br>URL: <a href="http://nginx.org/" target="_blank" rel="external">http://nginx.org/</a><br>Distribution: Linux<br>Packager: zhumaohai &lt;admin@www.centos.bz&gt;</p>
+<p>%description<br>nginx [engine x] is a HTTP and reverse proxy server, as well as<br>a mail proxy server<br>%prep<br>rm -rf $RPM_BUILD_DIR/nginx-1.2.1<br>zcat $RPM_SOURCE_DIR/nginx-1.2.1.tar.gz | tar -xvf -<br>%build<br>cd nginx-1.2.1<br>./configure –prefix=/usr/local/nginx<br>make<br>%install<br>cd nginx-1.2.1<br>make install<br>%preun<br>if [ -z “<code>ps aux | grep nginx | grep -v grep</code>“ ];then<br>killall nginx &gt;/dev/null<br>exit 0<br>fi<br>%files<br>/usr/local/nginx<br><strong>4、开始RPM制作</strong><br>在制作RPM包之前需要安装必要的工具，如rpmbuild,gcc等。</p>
+<p>yum install gcc rpm-build pcre-devel<br>cd /usr/src/redhat/SPECS/<br>rpmbuild -bb nginx.spec<br>一切顺利的话，会生成nginx的rpm包，/usr/src/redhat/RPMS/i386/nginx-1.2.1-1.el5.ngx.i386.rpm。</p>
+<p><strong>5、测试rpm包</strong><br>rpm -ivh /usr/src/redhat/RPMS/i386/nginx-1.2.1-1.el5.ngx.i386.rpm<br>spec文件解释<br>从以上的简单例子可以看出，制作rpm包最重要的还是spec文件，下面解释一下例子所用到的指令。</p>
+<p>#:以#开头是注释，rpm会忽略它。<br>Summary：简单描述软件。<br>Name ：定义rpm的名称。<br>Version: 定义软件版本<br>Release: 发行版本<br>License: 定义许可证<br>Group: 软件分类<br>Source: 源码下载地址<br>URL: 源码相关网站<br>Distribution: 发行版系列<br>Packager: 打包人的信息</p>
+<p>%description:软件详细描述，可多行<br>%prep ：软件编译之前的处理，如解压。<br>%build ：开始编译软件，如make<br>%install :开始安装软件，如make install<br>%files :指定哪些文件需要被打包，如/usr/local/nginx<br>%preun :定义卸载之前的动作，如杀掉进程。<br>这里只介绍了几个常用的tag，更详细的请参考：<a href="http://www.rpm.org/max-rpm/ch-rpm-inside.html" target="_blank" rel="external">http://www.rpm.org/max-rpm/ch-rpm-inside.html</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2012/12/16/e8-b7-a8-e5-b9-b3-e5-8f-b0-e7-9a-84-net-e8-bf-90-e8-a1-8c-e7-8e-af-e5-a2-83-mono.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Geekwolf">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/wolf.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Geekwolf's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2012/12/16/e8-b7-a8-e5-b9-b3-e5-8f-b0-e7-9a-84-net-e8-bf-90-e8-a1-8c-e7-8e-af-e5-a2-83-mono.html" itemprop="url">跨平台的.NET运行环境 Mono</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2012-12-16T14:21:45+08:00">
+                2012-12-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux运维/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux运维</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2012/12/16/e8-b7-a8-e5-b9-b3-e5-8f-b0-e7-9a-84-net-e8-bf-90-e8-a1-8c-e7-8e-af-e5-a2-83-mono.html" class="leancloud_visitors" data-flag-title="跨平台的.NET运行环境 Mono">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Mono 是一个由Novell 公司主持的项目。该项目的目标是创建一系列符合ECMA 标准（Ecma-334 和Ecma-335）的.NET 工具，包括C# 编译器和共通语言执行平台。与微软的.NET Framework 不同，Mono 项目不仅可以运行于Windows 系统上，还可以运行于Linux，FreeBSD，Unix，Mac OS X 和Solaris。</p>
+<p><strong>Mono 的开发工具 <a href="http://www.oschina.net/p/monodevelop" target="_blank" rel="external">MonoDevelop</a></strong></p>
+<p>微软开发了一个称为共享源码公共语言基础（Shared Source Common Language Infrastructure，Shared Source CLI）的可用于 FreeBSD，Windows 和 Mac OS X 的 .NET 实现版本。微软的共享源码协议并不是开源软件协议，且可能对于社区来说也是不足够的（它明文禁止了对软件的商业用途）。我们还可以见到另外一个 .NET 实现版本，Portable.NET 项目，该项目与 Mono 项目有着很多相同的目标。</p>
+<p>Mono 虚拟机包含一个实时编译引擎，该引擎可用于如下处理器：x86，SPARC，PowerPC，ARM，S390（32位模式和64位模式），x86-64，IA64 和64位模式的 SPARC。该虚拟机可以将代码实时编译或者预先编译到原生代码。对于那些没有列出来的系统，则使用的是代码解释器。</p>
+<p>下图是MONO的体系结构图<br><img src="http://www.oschina.net/uploads/img/200901/19094456_ni35.png" alt=""></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2012/12/16/e7-94-a8redis-live-e7-9b-91-e6-8e-a7redis-e6-9c-8d-e5-8a-a1-e5-99-a8.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Geekwolf">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/wolf.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Geekwolf's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2012/12/16/e7-94-a8redis-live-e7-9b-91-e6-8e-a7redis-e6-9c-8d-e5-8a-a1-e5-99-a8.html" itemprop="url">用redis-live监控redis服务器</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2012-12-16T14:05:51+08:00">
+                2012-12-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/NoSQL/" itemprop="url" rel="index">
+                    <span itemprop="name">NoSQL</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2012/12/16/e7-94-a8redis-live-e7-9b-91-e6-8e-a7redis-e6-9c-8d-e5-8a-a1-e5-99-a8.html" class="leancloud_visitors" data-flag-title="用redis-live监控redis服务器">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  3
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>目前来说，越来越多的使用多了NOSQL的业务，但是这方面的监控缺不多。今天给大家介绍几个专业<a href="http://www.linuxyan.com/tag/%e7%9b%91%e6%8e%a7redis" title="查看 监控redis 中的全部文章" target="_blank" rel="external">监控redis</a>服务的工具，便于大家进行<a href="http://www.linuxyan.com/tag/redis" title="查看 redis 中的全部文章" target="_blank" rel="external">redis</a>性能分析。<br>一、<a href="http://www.linuxyan.com/tag/redmon" title="查看 redmon 中的全部文章" target="_blank" rel="external">redmon</a>：<br>这个工具是用ruby语言写的，ruby是小鬼子弄出来的，个人真心觉得比较难用。这个语言的包需要安装rvm(ruby version manager)来管理。所以首先要部署rvm的环境，虽然说不是很复杂，但是真心觉得不想用这个，以后有时间了会给大家介绍这个的。</p>
+<p>二、<a href="http://www.linuxyan.com/tag/redis-live" title="查看 redis-live 中的全部文章" target="_blank" rel="external">redis-live</a><br>今天的主要目的是<a href="http://www.linuxyan.com/tag/redis-live" title="查看 redis-live 中的全部文章" target="_blank" rel="external">redis-live</a>这个软件。相对于<a href="http://www.linuxyan.com/tag/redmon" title="查看 redmon 中的全部文章" target="_blank" rel="external">redmon</a>来说，部署相对来说简单的多了，而且功能上面也丝毫不逊色于<a href="http://www.linuxyan.com/tag/redmon" title="查看 redmon 中的全部文章" target="_blank" rel="external">redmon</a>。<br>下面开始介绍安装<a href="http://www.linuxyan.com/tag/redis-live" title="查看 redis-live 中的全部文章" target="_blank" rel="external">redis-live</a>：<br>因为<a href="http://www.linuxyan.com/tag/redis-live" title="查看 redis-live 中的全部文章" target="_blank" rel="external">redis-live</a>是基于python开发的，所以首先要部署所需要的python环境</p>
+<p><div></div></p>
+<p><table></table></p>
+<p><tbody></tbody></p>
+<p><tr></tr></p>
+<p><td></td></p>
+<p><pre>1.wget <a href="http://dl.fedoraproject.org/pub/epel/6/x86_64/python-pip-0.8-1.el6.noarch.rpm" target="_blank" rel="external">http://dl.fedoraproject.org/pub/epel/6/x86_64/python-pip-0.8-1.el6.noarch.rpm</a><br>2.rpm -ivh python-pip-0.8-1.el6.noarch.rpm<br>3.pip-python install tornado<br>4.pip-python install redis<br>5.pip-python install python-dateutil<br>6.pip-python install argparse</pre><br><br><br><br><br><br>环境部署完了之后，就需要开始安装软件了。</p>
+<p><div></div></p>
+<p><table></table></p>
+<p><tbody></tbody></p>
+<p><tr></tr></p>
+<p><td></td></p>
+<p><pre>git clone <a href="https://github.com/kumarnitin/RedisLive.git" target="_blank" rel="external">https://github.com/kumarnitin/RedisLive.git</a><br>Initialized empty Git repository in /root/RedisLive/.git/<br>remote: Counting objects: 715, done.<br>remote: Compressing objects: 100% (377/377), done.<br>remote: Total 715 (delta 338), reused 699 (delta 323)<br>Receiving objects: 100% (715/715), 2.59 MiB | 353 KiB/s, done.<br>Resolving deltas: 100% (338/338), done.</pre><br><br><br><br><br><br>因为没有打包的安装包，所以只能下载安装git的源码。<br>安装好之后就可以配置了：</p>
+<p><div></div></p>
+<p><table></table></p>
+<p><tbody></tbody></p>
+<p><tr></tr></p>
+<p><td></td></p>
+<p><pre>cd RedisLive/src<br>vi redis-live.conf<br>{<br>        “RedisServers”:<br>        [<br>                {<br>                  “server” : “127.0.0.1”,<br>                  “port”  : 6379<br>                }<br>        ],  </pre></p>
+<pre><code>&quot;DataStoreType&quot; : &quot;sqlite&quot;,  
+
+&quot;RedisStatsServer&quot;:  
+{  
+        &quot;server&quot; : &quot;127.0.0.1&quot;,  
+        &quot;port&quot; : 6381  
+}  
+</code></pre><p>}<br><br><br><br><br><br>RedisServers这个是<a href="http://www.linuxyan.com/tag/redis" title="查看 redis 中的全部文章" target="_blank" rel="external">redis</a>服务器的配置。<br>RedisStatsServer是<a href="http://www.linuxyan.com/tag/redis" title="查看 redis 中的全部文章" target="_blank" rel="external">redis</a>服务器的监控信息可以存放在其他的<a href="http://www.linuxyan.com/tag/redis" title="查看 redis 中的全部文章" target="_blank" rel="external">redis</a>服务器中.也就是RedisStatsServe.<br>一般的是把”DataStoreType”改成sqlite类型的，下面的RedisStatsServer就不用配置了.</p>
+<p>注：因为有些<a href="http://www.linuxyan.com/tag/redis" title="查看 redis 中的全部文章" target="_blank" rel="external">redis</a>服务器是需要密码进行访问的，所以如果有密码的话，需要在RedisServers里面写上密码：如下：</p>
+<p><div></div></p>
+<p><table></table></p>
+<p><tbody></tbody></p>
+<p><tr></tr></p>
+<p><td></td></p>
+<p><pre>        “RedisServers”:<br>        [<br>                {<br>                  “server” : “127.0.0.1”,<br>                  “port”  : 6379,<br>                  “password”:”xxxxxx”<br>                }<br>        ],</pre><br><br><br><br><br><br>配置好之后，就可以启动服务了。<br>./<a href="http://www.linuxyan.com/tag/redis" title="查看 redis 中的全部文章" target="_blank" rel="external">redis</a>-monitor.py –duration 120 &amp;<br>./<a href="http://www.linuxyan.com/tag/redis" title="查看 redis 中的全部文章" target="_blank" rel="external">redis</a>-live.py &amp;<br>注：启动服务之后，如果访问web页面的话，会在当前终端输出日志，如果不想在终端输出，可以查看<a href="http://www.linuxyan.com/tag/redis" title="查看 redis 中的全部文章" target="_blank" rel="external">redis</a>-live.py的参数</p>
+<p><div></div></p>
+<p><table></table></p>
+<p><tbody></tbody></p>
+<p><tr></tr></p>
+<p><td></td></p>
+<p><pre>[root@localhost src]# ./redis-live.py –help<br>Usage: ./redis-live.py [OPTIONS]</pre></p>
+<p>Options:</p>
+<p>  –help                           show this help information<br>  –log_file_max_size              max size of log files before rollover<br>                                   (default 100000000)<br>  –log_file_num_backups           number of log files to keep (default 10)<br>  –log_file_prefix=PATH           Path prefix for log files. Note that if you<br>                                   are running multiple tornado processes,<br>                                   log_file_prefix must be different for each<br>                                   of them (e.g. include the port number)<br>  –log_to_stderr                  Send log output to stderr (colorized if<br>                                   possible). By default use stderr if<br>                                   –log_file_prefix is not set and no other<br>                                   logging is configured.<br>  –logging=debug|info|warning|error|none<br>                                   Set the Python log level. If ‘none’, tornado<br>                                   won’t touch the logging configuration.<br>                                   (default info)<br><br><br><br><br><br>可以看到有日志大小，路径，级别等等的选项。<br>最后来看下监控效果图：<br><img src="http://www.linuxyan.com/wp-content/uploads/2012/10/redis-live.jpg" alt=""></p>
+<p>&nbsp;</p>
+<p>相关学习网址：</p>
+<p><a href="http://redis.readthedocs.org/en/latest/" target="_blank" rel="external">http://redis.readthedocs.org/en/latest/</a></p>
+<p><a href="http://redis.io/documentation" target="_blank" rel="external">http://redis.io/documentation</a></p>
+<p><a href="http://zh.wikipedia.org/wiki/Redis" target="_blank" rel="external">http://zh.wikipedia.org/wiki/Redis</a></p>
+<p>&nbsp;</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2012/12/16/e7-b3-bb-e7-bb-9f-e7-ae-a1-e7-90-86-e5-8f-8adebug-e5-b8-b8-e7-94-a8-e5-91-bd-e4-bb-a4.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Geekwolf">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/wolf.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Geekwolf's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2012/12/16/e7-b3-bb-e7-bb-9f-e7-ae-a1-e7-90-86-e5-8f-8adebug-e5-b8-b8-e7-94-a8-e5-91-bd-e4-bb-a4.html" itemprop="url">系统管理及debug常用命令</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2012-12-16T06:33:12+08:00">
+                2012-12-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux运维/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux运维</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2012/12/16/e7-b3-bb-e7-bb-9f-e7-ae-a1-e7-90-86-e5-8f-8adebug-e5-b8-b8-e7-94-a8-e5-91-bd-e4-bb-a4.html" class="leancloud_visitors" data-flag-title="系统管理及debug常用命令">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  4
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>系统连接状态篇： 1.查看TCP连接状态 netstat -nat |awk ‘{print $6}’|sort|uniq -c|sort -rn<br>netstat -n | awk ‘/^tcp/ {++S[$NF]};END {for(a in S) print a, S[a]}’ 或 netstat -n | awk ‘/^tcp/ {++state[$NF]}; END {for(key in state) print key,”t”,state[key]}’ netstat -n | awk ‘/^tcp/ {++arr[$NF]};END {for(k in arr) print k,”t”,arr[k]}’<br>netstat -n |awk ‘/^tcp/ {print $NF}’|sort|uniq -c|sort -rn<br>netstat -ant | awk ‘{print $NF}’ | grep -v ‘[a-z]’ | sort | uniq -c<br>2.查找请求数请20个IP（常用于查找攻来源）： netstat -anlp|grep 80|grep tcp|awk ‘{print $5}’|awk -F: ‘{print $1}’|sort|uniq -c|sort -nr|head -n20<br>netstat -ant |awk ‘/:80/{split($5,ip,”:”);++A[ip[1]]}END{for(i in A) print A[i],i}’ |sort -rn|head -n20<br>3.用tcpdump嗅探80端口的访问看看谁最高 tcpdump -i eth0 -tnn dst port 80 -c 1000 | awk -F”.” ‘{print $1”.”$2”.”$3”.”$4}’ | sort | uniq -c | sort -nr |head -20<br>4.查找较多time_wait连接 netstat -n|grep TIME_WAIT|awk ‘{print $5}’|sort|uniq -c|sort -rn|head -n20<br>5.找查较多的SYN连接 netstat -an | grep SYN | awk ‘{print $5}’ | awk -F: ‘{print $1}’ | sort | uniq -c | sort -nr | more<br>6.根据端口列进程 netstat -ntlp | grep 80 | awk ‘{print $7}’ | cut -d/ -f1<br>网站日志分析篇1（Apache）：<br>1.获得访问前10位的ip地址 cat access.log|awk ‘{print $1}’|sort|uniq -c|sort -nr|head -10 cat access.log|awk ‘{counts[$(11)]+=1}; END {for(url in counts) print counts[url], url}’<br>2.访问次数最多的文件或页面,取前20 cat access.log|awk ‘{print $11}’|sort|uniq -c|sort -nr|head -20<br>3.列出传输最大的几个exe文件（分析下载站的时候常用） cat access.log |awk ‘($7~/.exe/){print $10 “ “ $1 “ “ $4 “ “ $7}’|sort -nr|head -20<br>4.列出输出大于200000byte(约200kb)的exe文件以及对应文件发生次数 cat access.log |awk ‘($10 &gt; 200000 &amp;&amp; $7~/.exe/){print $7}’|sort -n|uniq -c|sort -nr|head -100<br>5.如果日志最后一列记录的是页面文件传输时间，则有列出到客户端最耗时的页面 cat access.log |awk  ‘($7~/.php/){print $NF “ “ $1 “ “ $4 “ “ $7}’|sort -nr|head -100<br>6.列出最最耗时的页面(超过60秒的)的以及对应页面发生次数 cat access.log |awk ‘($NF &gt; 60 &amp;&amp; $7~/.php/){print $7}’|sort -n|uniq -c|sort -nr|head -100<br>7.列出传输时间超过 30 秒的文件 cat access.log |awk ‘($NF &gt; 30){print $7}’|sort -n|uniq -c|sort -nr|head -20<br>8.统计网站流量（G) cat access.log |awk ‘{sum+=$10} END {print sum/1024/1024/1024}’<br>9.统计404的连接 awk ‘($9 ~/404/)’ access.log | awk ‘{print $9,$7}’ | sort<br>10. 统计http status. cat access.log |awk ‘{counts[$(9)]+=1}; END {for(code in counts) print code, counts[code]}’ cat access.log |awk ‘{print $9}’|sort|uniq -c|sort -rn<br>10.蜘蛛分析 查看是哪些蜘蛛在抓取内容。 /usr/sbin/tcpdump -i eth0 -l -s 0 -w - dst port 80 | strings | grep -i user-agent | grep -i -E ‘bot|crawler|slurp|spider’<br>网站日分析2(Squid篇）<br>2.按域统计流量 zcat squid_access.log.tar.gz| awk ‘{print $10,$7}’ |awk ‘BEGIN{FS=”[ /]”}{trfc[$4]+=$1}END{for(domain in trfc){printf “%st%dn”,domain,trfc[domain]}}’<br>效率更高的perl版本请到此下载:<a href="http://docs.linuxtone.org/soft/tools/tr.pl" target="_blank" rel="external">http://docs.linuxtone.org/soft/tools/tr.pl</a><br>数据库篇 1.查看数据库执行的sql /usr/sbin/tcpdump -i eth0 -s 0 -l -w - dst port 3306 | strings | egrep -i ‘SELECT|UPDATE|DELETE|INSERT|SET|COMMIT|ROLLBACK|CREATE|DROP|ALTER|CALL’</p>
+<p>系统Debug分析篇<br>1.调试命令 strace -p pid<br>2.跟踪指定进程的PID gdb -p pid</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2012/12/14/nginx-e9-85-8d-e7-bd-ae-e9-94-99-e8-af-af-e8-80-8c-e5-af-bc-e8-87-b4-e7-9b-ae-e5-bd-95-e9-81-8d-e5-8e-86-e6-bc-8f-e6-b4-9e.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Geekwolf">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/wolf.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Geekwolf's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2012/12/14/nginx-e9-85-8d-e7-bd-ae-e9-94-99-e8-af-af-e8-80-8c-e5-af-bc-e8-87-b4-e7-9b-ae-e5-bd-95-e9-81-8d-e5-8e-86-e6-bc-8f-e6-b4-9e.html" itemprop="url">nginx配置错误而导致目录遍历漏洞</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2012-12-14T10:19:37+08:00">
+                2012-12-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/系统安全/" itemprop="url" rel="index">
+                    <span itemprop="name">系统安全</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2012/12/14/nginx-e9-85-8d-e7-bd-ae-e9-94-99-e8-af-af-e8-80-8c-e5-af-bc-e8-87-b4-e7-9b-ae-e5-bd-95-e9-81-8d-e5-8e-86-e6-bc-8f-e6-b4-9e.html" class="leancloud_visitors" data-flag-title="nginx配置错误而导致目录遍历漏洞">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>漏洞版本:nginx(Tested at 1.1.10)</p>
+<p>漏洞描述:nginx是一款高性能的web服务器，使用非常广泛，其不仅经常被用作反向代理，也是一个 IMAP/POP3/SMTP 代理服务器。 Nginx 是由 Igor Sysoev 为俄罗斯访问量第二的 Rambler.ru 站点开发的，第一个公开版本0.1.0发布于2004年10月4日。其将源代码以类BSD许可证的形式发布，因它的稳定性、丰富的功能集、示例配置文件和低系统资源的消耗而闻名。</p>
+<p>在nginx中开启autoindex，配置不规范而造成目录遍历漏洞。</p>
+<p>配置如下：</p>
+<ol>
+<li><p>server {</p>
+</li>
+<li><p>listen    80;</p>
+</li>
+<li><p>server_name sebug.net;</p>
+</li>
+<li><p>index index.htm index.html;</p>
+</li>
+<li><p>root  /home/wwwroot/www;</p>
+</li>
+<li><p>access_log off;</p>
+</li>
+<li><p>location /paper {</p>
+</li>
+<li><p>alias /home/wwwroot/paper/;</p>
+</li>
+<li><p>autoindex on;</p>
+</li>
+<li><p>}</p>
+</li>
+<li><p>}</p>
+</li>
+</ol>
+<p>注意 这里/home/wwwroot/paper/;  有个/</p>
+<p>当你浏览<a href="http://sebug.net/paper/,正常情况应该遍历/home/wwwroot/paper/这个目录，但是如果访问http://sebug.net/paper../，" target="_blank" rel="external">http://sebug.net/paper/,正常情况应该遍历/home/wwwroot/paper/这个目录，但是如果访问http://sebug.net/paper../，</a> 这个的话就会遍历/home/wwwroot/这个目录了&lt;* 参考</p>
+<p><a href="http://luoq.net/ais/1191/" target="_blank" rel="external">http://luoq.net/ais/1191/</a></p>
+<p>*&gt;</p>
+<p>安全建议:sebug建议：</p>
+<p>使用如下配置</p>
+<p>location /paper {</p>
+<p>alias /home/wwwroot/paper;</p>
+<p>或</p>
+<p>location /paper/ {</p>
+<p>alias /home/wwwroot/paper/;</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2012/12/11/apache-e6-a8-a1-e5-9d-97-e4-b9-8bmod-bandwidth-e5-b8-a6-e5-ae-bd-e9-99-90-e5-88-b6.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Geekwolf">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/wolf.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Geekwolf's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2012/12/11/apache-e6-a8-a1-e5-9d-97-e4-b9-8bmod-bandwidth-e5-b8-a6-e5-ae-bd-e9-99-90-e5-88-b6.html" itemprop="url">Apache模块之mod_bandwidth带宽限制</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2012-12-11T04:04:44+08:00">
+                2012-12-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux运维/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux运维</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2012/12/11/apache-e6-a8-a1-e5-9d-97-e4-b9-8bmod-bandwidth-e5-b8-a6-e5-ae-bd-e9-99-90-e5-88-b6.html" class="leancloud_visitors" data-flag-title="Apache模块之mod_bandwidth带宽限制">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  3
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>步骤<br>1、下载模块 mod_bandwidth</p>
+<p><a href="ftp://ftp.cohprog.com/pub/apache/module/" target="_blank" rel="external">ftp://ftp.cohprog.com/pub/apache/module/</a><br>2、编译和安装<br>a) 编译：</p>
+<p>由于 apache 是用编译好的包安装的，因此只有采用 apxs 方式编译<br>/usr/local/sbin/apxs -c mod_bandwidth.c -o /usr/local/libexec/apache/mod_bandwidth.so<br>b) 创建 mod_bandwidth 运行需要的目录：<br>mkdir /tmp/apachebw<br>mkdir /tmp/apachebw/link<br>mkdir /tmp/apachebw/master<br>chmod -R 777 /tmp/apachebw<br>c) 修改 /usr/local/etc/apache/httpd.conf 文件：<br>c.1) 增加下列内容</p>
+<p>LoadModule bandwidth_module   libexec/apache/mod_bandwidth.so<br>AddModule mod_bandwidth.c<br>注意：这两行必须分别加在相应区域的最前面，使得这个模块以最低的优先级运行。<br>c.2) 增加下列内容</p>
+<p>BandWidthDataDir “/tmp/apachebw/“<br>BandWidthModule on</p>
+<p>c.3) 修改  的设置</p>
+<h1 id="不限制局域网内用户的下载速度"><a href="#不限制局域网内用户的下载速度" class="headerlink" title="不限制局域网内用户的下载速度"></a>不限制局域网内用户的下载速度</h1><p>BandWidth 192.168.0 0</p>
+<h1 id="限制其他用户的下载速度为每秒-8192-字节"><a href="#限制其他用户的下载速度为每秒-8192-字节" class="headerlink" title="限制其他用户的下载速度为每秒 8192 字节"></a>限制其他用户的下载速度为每秒 8192 字节</h1><p>BandWidth all 8192<br>….</p>
+<p>按照上面的方式修改其他  小节<br>d) 重新启动 apache：<br>apachectl configtest</p>
+<h2 id="apachectl-restart"><a href="#apachectl-restart" class="headerlink" title="apachectl restart"></a>apachectl restart</h2><p>mod_bandwidth 的选项简单说明：<br>…………………………<br>BandWidthDataDir<br>格式： BandWidthDataDir<br>默认： “/tmp/apachebw”<br>上下文： server config<br>设置 mod_bandwidth 保存运行时数据的目录。需要在该目录下创建 ./master<br>和 ./link 两个子目录，并设置为权限为 777。<br>注意：有些系统会定时清理 /tmp 目录，所以在这些系统上最好把<br>BandWidthDataDir 设置到其他地方。<br>…………………………<br>BandWidthModule<br>格式： BandWidthModule<br>默认： Off<br>上下文： per server config<br>允许或者禁止模块。<br>…………………………<br>BandWidthPulse<br>格式： BandWidthPulse<br>默认： 1000<br>上下文： per server config<br>改变计算带宽的时间间隔，默认为1000毫秒（1秒）。使用更低的间隔可以获得<br>更精确的带宽控制，但消耗更多的CPU时间，反之亦然。<br>注意：这个选项的详细说明请参考 mod_bandwidth 的文档。<br>…………………………<br>BandWidth<br>格式： BandWidth<br>默认： 无<br>上下文： per directory, .htaccess<br>限制这个目录下文件下载的速率。<br>domain 指定来自哪个域的连接受到这个设置的影响。<br>ip 指定来自哪个ip地址（或者ip段）的连接受到影响。<br>all 所有连接都受到影响。<br>示例：</p>
+<h1 id="来自-dualface-com-的连接不限制下载速度"><a href="#来自-dualface-com-的连接不限制下载速度" class="headerlink" title="来自 dualface.com 的连接不限制下载速度"></a>来自 dualface.com 的连接不限制下载速度</h1><p>BandWidth dualface.com 0</p>
+<h1 id="来自-192-168-0-0-16（或者192-168-0）-网段的连接不限制下载速度"><a href="#来自-192-168-0-0-16（或者192-168-0）-网段的连接不限制下载速度" class="headerlink" title="来自 192.168.0.0/16（或者192.168.0） 网段的连接不限制下载速度"></a>来自 192.168.0.0/16（或者192.168.0） 网段的连接不限制下载速度</h1><p>BandWidth 192.168.0.0/16 0</p>
+<h1 id="其他连接限制下载速度为每秒1024字节"><a href="#其他连接限制下载速度为每秒1024字节" class="headerlink" title="其他连接限制下载速度为每秒1024字节"></a>其他连接限制下载速度为每秒1024字节</h1><p>BandWidth all 1024</p>
+<h1 id="越前面的设置优先权越高"><a href="#越前面的设置优先权越高" class="headerlink" title="越前面的设置优先权越高"></a>越前面的设置优先权越高</h1><p>…………………………<br>LargeFileLimit<br>格式： LargeFileLimit<br>默认： 无<br>上下文： per directory, .htaccess<br>对于超过指定大小的文件，下载时使用的速率。如果速率设置0即不限制速度，<br>但下载速度仍然要受到BandWidth设置的影响。如果设置成-1，则完全不受影响。<br>通过设置不同的文件大小和速率，可以设置不同大小范围内文件的下载速度。<br>示例：</p>
+<h1 id="文件尺寸大于等于200千字节的文件，下载速率为每秒3072字节"><a href="#文件尺寸大于等于200千字节的文件，下载速率为每秒3072字节" class="headerlink" title="文件尺寸大于等于200千字节的文件，下载速率为每秒3072字节"></a>文件尺寸大于等于200千字节的文件，下载速率为每秒3072字节</h1><p>LargeFileLimit 200 3072<br>LargeFileLimit 1024 2048<br>…………………………<br>MaxConnection<br>格式： MaxConnection<br>默认： 0 （不限制）<br>上下文： per directory, .htaccess<br>当超过指定连接数时，拒绝新的连接。<br>…………………………<br>MinBandWidth<br>格式： MinBandWidth<br>默认： all 256<br>上下文： per directory, .htaccess<br>设置最小带宽，默认为每秒256字节。根据BandWidth和LargeFileLimit设置的速<br>率。mod_bandwidth会计算允许的连接数。例如BandWidth为4096字节，而<br>MinBandWidth为1024字节，则最大并发连接数为4。<br>注意：这个选项的详细说明请参考 mod_bandwidth 的文档。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2012/12/11/linux-e6-93-8d-e4-bd-9c-e7-b3-bb-e7-bb-9f-e4-b8-8aadsl-e6-8b-a8-e5-8f-b7-e4-b8-8a-e7-bd-91.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Geekwolf">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/wolf.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Geekwolf's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2012/12/11/linux-e6-93-8d-e4-bd-9c-e7-b3-bb-e7-bb-9f-e4-b8-8aadsl-e6-8b-a8-e5-8f-b7-e4-b8-8a-e7-bd-91.html" itemprop="url">LINUX操作系统上ADSL拨号上网</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2012-12-11T03:48:32+08:00">
+                2012-12-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux运维/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux运维</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2012/12/11/linux-e6-93-8d-e4-bd-9c-e7-b3-bb-e7-bb-9f-e4-b8-8aadsl-e6-8b-a8-e5-8f-b7-e4-b8-8a-e7-bd-91.html" class="leancloud_visitors" data-flag-title="LINUX操作系统上ADSL拨号上网">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  3
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>LINUX下的ADSL拨号上网大体有2种方法：一是用系统自带的图形界面（在网络里面建立新拨号连接，类似于WIN下），一是用命令行。下面呢我就主要介绍一下在命令行环境下配置上网。<br><strong>一、解压缩</strong></p>
+<p>#tar xvfz rp-pppoe-3.2.tar.gz</p>
+<p>#cd rp-pppoe-3.2<br><strong>二、进行编译和安装</strong><br>运行脚本</p>
+<p>#./go<br>将自动进行编译和安装，最后，调用/usr/sbin/adsl-setup进行配置，具体解释见三。<br><strong>三、配置PPPOE客户端软件</strong><br>安装完软件包后，必须配置pppoe的配置文件/etc/ppp/pppoe.conf，从而让ADSL拨号时使用配置文件中的用户名、密码等参数。我们不必手工改动这个文件，可以使用adsl-setup这个工具进行配置：</p>
+<p>#/usr/sbin/adsl-setup<br>当出现<br>&gt;&gt;&gt; Enter your PPPoE user name :<br>输入ADSL帐号的用户名<br>当出现<br>&gt;&gt;&gt; Enter the Ethernet interface connected to the ADSL modem<br>For Solaris, this is likely to be something like /dev/hme0.<br>For Linux, it will be ethn, where ‘n’ is a number.<br>(default eth0):<br>输入 eth0 ,这是ADSL相连的网卡的名字。<br>当出现<br>&gt;&gt;&gt; Enter the demand value (default no):<br>输入 no<br>当出现<br>&gt;&gt;&gt; Enter the DNS information here:<br>输入 server ,这表示使用ADSL拨号自动获得的DNS服务器IP地址<br>当出现<br>&gt;&gt;&gt; Please enter your PPPoE password:<br>输入ADSL帐号的密码<br>当出现<br>&gt;&gt;&gt; Choose a type of firewall (0-2):<br>输入 0 ，不使用防火墙<br>当出现<br>&gt;&gt;&gt; Accept these settings and adjust configuration files (y/n)?<br>如果输入的信息正确，输入 y ,完成配置，否则，输入 n 重新输入。<br><strong>四、 启动PPPOE客户端软件</strong><br>使用命令：</p>
+<p>#/usr/sbin/adsl -start<br>启动PPPOE客户端软件,进行连接，如果成功，将出现Connected；如果不成功，请检查网线、ADSL MODEM等物理设备，并查看 /var/log/messages中的信息<br>/usr/sbin/adsl-stop 关闭和ISP的连接<br>/usr/sbin/adsl-status 查看当前连接的状态<br>如果想在Linux系统启动时自动启动ADSL连接，输入以下命令</p>
+<p>#chkconfig –add adsl<br>将在当前的运行级下加入ADSL的自启动脚本。<br><strong>五、测试</strong><br>当连接成功后，使用命令：</p>
+<p>#ifconfig -a<br>在输出中应该含有关于 ppp0 的一堆信息，其中还绑定了 IP 地址,说明已经从拨号中获得了IP地址。<br>使用命令</p>
+<p>#netstat -nr<br>查看路由表信息，这时的默认路由应该是上面获得的IP地址。如果没有默认路由，我们可以手动增加：</p>
+<p>#route add default gw 上面获得的IP地址<br>使用命令</p>
+<p>#nslookup <a href="http://www.163.com/" target="_blank" rel="external">www.163.com</a>如果解析出新浪的IP，说明已经从拨号中正确获得了DNS服务器。最后，使用命令ping某个域名或IP，如果有响应，表示你已经大功告成了。</p>
+<p>&nbsp;</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+  </section>
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/8/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/page/10/">10</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><a class="extend next" rel="next" href="/page/10/"><i class="fa fa-angle-right"></i></a>
+  </nav>
+
+
+
+          </div>
+          
+
+
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/wolf.jpeg"
+               alt="Geekwolf" />
+          <p class="site-author-name" itemprop="name">Geekwolf</p>
+           
+              <p class="site-description motion-element" itemprop="description">DevOps | Docker | K8S | MySQL | 运维</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">167</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">105</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/geekwolf" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                    
+                      GitHub
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/geekwolf" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                    
+                      Weibo
+                    
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2012 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Geekwolf</span>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  
+    <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('-1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("qms5kJ0y2CItrIVFivKxxPsR-gzGzoHsz", "Cn3w20futtphxpaDSP5tHjzy");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

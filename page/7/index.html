@@ -1,0 +1,3626 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Geekwolf,DevOps,Docker,k8s,MySQL,PaaS" />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Geekwolf's Blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="DevOps | Docker | K8S | MySQL | 运维">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Geekwolf&#39;s Blog">
+<meta property="og:url" content="http://www.simlinux.com/page/7/index.html">
+<meta property="og:site_name" content="Geekwolf&#39;s Blog">
+<meta property="og:description" content="DevOps | Docker | K8S | MySQL | 运维">
+<meta property="og:locale" content="zh-Hans">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Geekwolf&#39;s Blog">
+<meta name="twitter:description" content="DevOps | Docker | K8S | MySQL | 运维">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.simlinux.com/page/7/"/>
+
+
+
+
+
+  <title>Geekwolf's Blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="//s13.cnzz.com/z_stat.php?id=1264375041&web_id=1264375041" language="JavaScript"></script>
+  </div>
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left 
+   page-home 
+ ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Geekwolf's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Quick notes</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />
+            
+            站点地图
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+  <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2013/12/14/centos-6-4-e4-b8-8b-e9-83-a8-e7-bd-b2opennebula4-4.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Geekwolf">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/wolf.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Geekwolf's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2013/12/14/centos-6-4-e4-b8-8b-e9-83-a8-e7-bd-b2opennebula4-4.html" itemprop="url">Centos 6.4 下 部署OpenNebula4.4</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2013-12-14T11:27:34+08:00">
+                2013-12-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux运维/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux运维</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2013/12/14/centos-6-4-e4-b8-8b-e9-83-a8-e7-bd-b2opennebula4-4.html" class="leancloud_visitors" data-flag-title="Centos 6.4 下 部署OpenNebula4.4">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  3
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><strong>安装部署</strong><br><strong>1.环境说明</strong><br>Front:192.168.10.101 Centos6.4 x 64 NF5120<br>Node1:192.168.10.102 Centos6.4 x 64 NF5120<br><strong>2.部署OpenNebula4.4</strong><br>下载相应版本 <a href="http://www.opennebula.org/software:software#from_official_repository_of_linux_distributions" target="_blank" rel="external">http://www.opennebula.org/software:software#from_official_repository_of_linux_distributions</a><br>CentOS-6-opennebula-4.4.0-1<br>安装Epel源<br>rpm -ivh <a href="http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm" target="_blank" rel="external">http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm</a><br>cd opennebula-4.4.0-1<br>yum -y localinstall *.rpm<br>Front控制器在此也作为节点使用，在计算节点上安装 kvm 和 opennebula-node-kvm：</p>
+<p>yum localinstall opennebula-node-kvm-4.0.0-1.x86_64.rpm<br>yum install qemu-kvm qemu-kvm-tools libvirt<br>/etc/init.d/libvirtd start</p>
+<p>以上OpenNebula的控制节点和计算节点所需软件包均以安装完，下面进行简单的配置( 事先关闭iptables和selinux，后续讲如何加固)<br>a. 更改Opennebula的front，即OpenNebula-sunstone服务的监听地址<br>sed -i ‘s#127.0.0.1#192.168.10.101#g’ /etc/one/sunstone-server.conf<br>b. 默认会生成用户名和随机密码<br>cat /var/lib/one/.one/one_auth<br>oneadmin:6696d237e58221ae1eb39fdf3a01335f<br>访问<a href="http://192.168.10.101:9869" target="_blank" rel="external">http://192.168.10.101:9869</a> 输入账号密码<br>c. 更改opennebula数据存储方式为mysql<br>vim /etc/one/oned.conf<br>修改仓库路径：<br>DATASTORE_BASE_PATH = /data/datastoress(注意目录权限为oneadmin)<br>注释DB = [ backend = “sqlite” ]<br>打开注释：<br>DB = [ backend = “mysql”,<br>server = “localhost”,<br>port = 0,<br>user = “oneadmin”,<br>passwd = “oneadmin”,<br>db_name = “opennebula” ]<br>（相关授权略）<br>d. 添加环境变量<br>export ONE_XMLRPC=<a href="http://localhost:2633/RPC2" target="_blank" rel="external">http://localhost:2633/RPC2</a><br>export ONE_AUTH=$HOME/.one/one_auth<br>export PATH=$ONE_LOCATION/bin:$PATH<br>e. 为初次部署方便暂使用网络桥接模式<br>母机桥接配置：<br>ifcfg-eth0:</p>
+<p>DEVICE=eth0<br>TYPE=Ethernet<br>UUID=200f14a6-c347-4d4a-9564-257ccf4ebe8a<br>ONBOOT=yes<br>NM_CONTROLLED=yes<br>BOOTPROTO=none<br>HWADDR=00:E0:81:DE:6C:CA<br>BRIDGE=”br0”</p>
+<p>ifcfg-br0:<br>DEVICE=”br0”<br>TYPE=”Bridge”<br>BOOTPROTO=”static”<br>ONBOOT=”yes”<br>IPADDR=192.168.10.102<br>NETMASK=255.255.240.0<br>DNS1=114.114.114.114<br>brctl show 可查询现有桥接的网络<br>bridge name bridge id STP enabled interfaces<br>br0 8000.00e081de6cca no eth0<br>重启网卡</p>
+<p>f. 确定计算节点权限（Front安装时会自动配置）<br>/etc/libvirt/qemu.conf<br>user = “oneadmin”<br>group = “oneadmin”<br>dynamic_ownership = 0</p>
+<p>/etc/libvirt/libvirtd.conf<br>listen_tcp = 1<br>listen_tls = 0<br>mdns_adv = 0<br>unix_sock_group = “oneadmin”<br>unix_sock_ro_perms = “0777”<br>unix_sock_rw_perms = “0777”<br>auth_unix_ro = “none”<br>auth_unix_rw = “none”</p>
+<p>/etc/sysconfig/libvirtd(修改监听地址)<br>LIBVIRTD_ARGS=”–listen”</p>
+<p>/etc/sudoers<br>添加oneadmin ALL=(root)NOPASSWD:ALL<br>注释#Defaults requiretty</p>
+<p>ln -s /usr/libexec/qemu-kvm /usr/bin/kvm<br>将Front的oneadmin的公钥拷贝到计算节点oneadmin下实现无密码认证</p>
+<p>g .以上OpenNebula的部署已经完成，下面启动服务器进行简单操作<br>service OpenNebula start<br>service OpenNebula-sunstone start</p>
+<p><a href="http://www.simlinux.com/old/wp-content/uploads/2013/12/s2.jpg"><img src="http://www.simlinux.com/old/wp-content/uploads/2013/12/s2-1024x573.jpg" alt="s"></a></p>
+<p>下篇预告：</p>
+<p>  关于OpenNebula镜像压缩传输及本地镜像缓存</p>
+<p>&nbsp;</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2013/12/11/e7-94-a8octopress-e5-9c-a8github-e4-b8-8a-e5-86-99-e5-8d-9a-e5-ae-a2.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Geekwolf">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/wolf.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Geekwolf's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2013/12/11/e7-94-a8octopress-e5-9c-a8github-e4-b8-8a-e5-86-99-e5-8d-9a-e5-ae-a2.html" itemprop="url">用Octopress在github上写博客</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2013-12-11T09:16:27+08:00">
+                2013-12-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux运维/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux运维</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2013/12/11/e7-94-a8octopress-e5-9c-a8github-e4-b8-8a-e5-86-99-e5-8d-9a-e5-ae-a2.html" class="leancloud_visitors" data-flag-title="用Octopress在github上写博客">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  6
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><strong>1.安装git及依赖</strong><br>yum -y install git<br>yum -y install gcc-c++ patch readline readline-devel zlib zlib-devel libyaml-devel libffi-devel openssl-devel make bzip2 autoconf automake libtool bison iconv-devel</p>
+<p><strong>2.安装rvm</strong><br>otopress官方要求用ruby 1.9.3，ruby可以通过rbenv或者RVM（Ruby版本管理，Ruby Version Manager）来安装。安装RVM也是有讲究的，分为单用户安装和多用户安装，建议用单用户安装，即直接在用户权限下进行，所以要注意下~/下面的文件夹是否有w权限；若要多用户安装，则在命令前加sudo，不要在root下直接进行安装。<br>安装前要有编译软件如gcc，如果这一步一直有error的话，不妨先安装gcc。</p>
+<p>curl -L <a href="https://get.rvm.io" target="_blank" rel="external">https://get.rvm.io</a> | bash -s stable –ruby</p>
+<p>#<span style="font-family: 宋体;">如果</span><span style="font-family: Consolas;">curl</span><span style="font-family: 宋体;">报错的话就先</span><span style="font-family: Consolas;">install curl</span><br>然后在<span style="font-family: Consolas;">~/.bashrc</span><span style="font-family: 宋体;">文件后面添加下列语句：</span><br>[[ -s “$HOME/.rvm/scripts/rvm” ]] &amp;&amp; source “$HOME/.rvm/scripts/rvm”</p>
+<h1 id="RVM-bash-completion"><a href="#RVM-bash-completion" class="headerlink" title="RVM bash completion"></a>RVM bash completion</h1><p>[[ -r “$HOME/.rvm/scripts/completion” ]] &amp;&amp; source “$HOME/.rvm/scripts/completion”<br>之后在当前<span style="font-family: Arial;">shell</span><span style="font-family: 宋体;">中载入</span><span style="font-family: Arial;">rvm</span><span style="font-family: 宋体;">环境：</span><br>source ~/.bashrc<br>也可以重新打开一个<span style="font-family: Arial;">shell</span><span style="font-family: 宋体;">，就自动载入了</span></p>
+<p><strong>检查:</strong><br>type rvm | head -n1</p>
+<p>#<span style="font-family: 宋体;">若返回</span><span style="font-family: Consolas;">$ rvm is a function</span><span style="font-family: 宋体;">则说明安装成功，否则检查一下前面步骤有没有报错，权限、载入与否等</span><br>rvm notes</p>
+<p>#<span style="font-family: 宋体;">检查</span><span style="font-family: Consolas;">rvm</span><span style="font-family: 宋体;">函数是否工作</span><br>rvm requiments</p>
+<p>#<span style="font-family: 宋体;">查看其他依赖并从源中安装，这时终端中会出现下列信息</span><br>Additional Dependencies:</p>
+<h1 id="For-Ruby-Ruby-HEAD-MRI-Rubinius-amp-REE-install-the-following"><a href="#For-Ruby-Ruby-HEAD-MRI-Rubinius-amp-REE-install-the-following" class="headerlink" title="For Ruby / Ruby HEAD (MRI, Rubinius, &amp; REE), install the following:"></a>For Ruby / Ruby HEAD (MRI, Rubinius, &amp; REE), install the following:</h1><p>ruby: yum install -y gcc-c++ patch readline readline-devel zlib zlib-devel libyaml-devel libffi-devel openssl-devel make bzip2 autoconf automake libtool bison iconv-devel</p>
+<h2 id="NOTE-For-centos-gt-5-4-iconv-devel-is-provided-by-glibc"><a href="#NOTE-For-centos-gt-5-4-iconv-devel-is-provided-by-glibc" class="headerlink" title="NOTE: For centos &gt;= 5.4 iconv-devel is provided by glibc"></a>NOTE: For centos &gt;= 5.4 iconv-devel is provided by glibc</h2><p>注释：将<span style="font-family: Arial;">yum</span><span style="font-family: 宋体;">那一段复制，在另一个终端中执行即可安装。不同电脑所需要的依赖也不同。</span><br>在<span style="font-family: Arial;">Ruby</span><span style="font-family: 宋体;">中文社区的</span><span style="font-family: Arial;">wiki</span><span style="font-family: 宋体;">文档里面有一句单独安装</span><span style="font-family: Arial;">readline</span><span style="font-family: 宋体;">的命令，这里已经包括了</span></p>
+<p><strong>3.安装Ruby环境</strong></p>
+<p>rvm list known<br>rvm install 1.9.3<br>rvm use 1.9.3 –default(<span style="font-family: 宋体;">设置默认</span><span style="font-family: Consolas;">)</span><br>rvm list</p>
+<p>#<span style="font-family: 宋体;">查看安装的</span><span style="font-family: Consolas;">rubies</span><br>rvm [-v] [–version]</p>
+<p>#<span style="font-family: 宋体;">查看版本</span><br>rvm remove &lt;ruby_version&gt;</p>
+<p>#<span style="font-family: 宋体;">卸载一个版本</span></p>
+<p><strong>4.设置Octopress</strong></p>
+<p>结构：</p>
+<p>1 <a href="https://github.com/jsw0528/octopress/blob/mrzhang_me/.rvmrc" target="_blank" rel="external">.rvmrc</a><br>改成使用我机子上装的Ruby版本（1.9.3），Octopress最低要求是1.9.2。<br>2 <a href="https://github.com/jsw0528/octopress/blob/mrzhang_me/Gemfile" target="_blank" rel="external">Gemfile</a><br>把源改成ruby.taobao.org，去掉部分gem的版本号限制，咱都用最新的。<br>3 <a href="https://github.com/jsw0528/octopress/blob/mrzhang_me/Rakefile" target="_blank" rel="external">Rakefile</a><br>用haml替换markdown（这个根据自己喜好来，只要是被支持的），时间改成东八区的，降低主题对custom目录的依赖。<br>4 <a href="https://github.com/jsw0528/octopress/blob/mrzhang_me/_config.yml" target="_blank" rel="external">_config.yml</a><br>这里都是一些定制化的配置信息，比如日期格式、永久链接、新浪微博等。<br>5 <a href="https://github.com/jsw0528/octopress/blob/mrzhang_me/plugins/sh_js.rb" target="_blank" rel="external">plugins/sh_js.rb</a><br>[新增] 代码高亮插件，具体介绍看：<a href="http://mrzhang.me/blog/using-shjs-for-jekyll.html" target="_blank" rel="external">Using SHJS for Jekyll</a><br>6 <a href="https://github.com/jsw0528/octopress/blob/mrzhang_me/plugins/tag_generator.rb" target="_blank" rel="external">plugins/tag_generator.rb</a><br>[新增] 其实Jekyll是支持Tag的，只不过Octopress目前没有官方插件支持，所以我自己搞了个，支持中文。<br>7 <a href="https://github.com/jsw0528/octopress/blob/mrzhang_me/.themes/blog/" target="_blank" rel="external">.themes/blog/</a></p>
+<p>到准备好的目录下，先把<span style="font-family: Consolas;">Octopress</span><span style="font-family: 宋体;">从仓库里</span><span style="font-family: Consolas;">clone</span><span style="font-family: 宋体;">下来</span></p>
+<p>git clone git://github.com/imathis/octopress.git octopress<br>cd octopress</p>
+<p>#<span style="font-family: 宋体;">如果使用的是</span><span style="font-family: Consolas;">RVM</span><span style="font-family: 宋体;">，这一步会被讯网你是否相信</span><span style="font-family: Consolas;">.rvmrc</span><span style="font-family: 宋体;">，选择</span><span style="font-family: Consolas;">yes</span><br>gem install bundler<br>bundle install</p>
+<p>#<span style="font-family: 宋体;">安装依赖</span><br>rake install[‘Theme Name’]</p>
+<p>#<span style="font-family: 宋体;">安装主题，无参数则是默认主题</span><br>【参考：<a href="http://www.360doc.com/content/12/0421/21/1016783_205514919.shtml" target="_blank" rel="external">http://www.360doc.com/content/12/0421/21/1016783_205514919.shtml</a>】</p>
+<p>通过octopress/_config.yml修改博客设置，诸如博客标题，插件，以及<span style="font-family: Arial;">url</span><span style="font-family: 宋体;">格式等，这个很重要，稍后会说。</span></p>
+<p>然后登录<span style="font-family: Arial;">GitHub</span><span style="font-family: 宋体;">并注册一个帐号</span>,创建一个<span style="font-family: Arial;">repository</span><span style="font-family: 宋体;">，这里有两种方式：</span></p>
+<p>1.<span style="font-family: 宋体;">用</span><span style="font-family: Arial;">GitHub</span><span style="font-family: 宋体;">的用户</span><span style="font-family: Arial;">/</span><span style="font-family: 宋体;">组织页面（</span><span style="font-family: Arial;">Github User/Organization pages</span><span style="font-family: 宋体;">）。这样的话</span><span style="font-family: Arial;">repository</span><span style="font-family: 宋体;">需命名为</span><span style="font-family: Arial;">user.github.com</span><span style="font-family: 宋体;">，这样的页面只能有一个。可通过</span><span style="font-family: Arial;"><a href="http://username.github.com" target="_blank" rel="external">http://username.github.com</a></span><span style="font-family: 宋体;">来访问。</span><br>2.<span style="font-family: 宋体;">用</span><span style="font-family: Arial;">GitHub</span><span style="font-family: 宋体;">的项目页面（</span><span style="font-family: Arial;">Github projects pages</span><span style="font-family: 宋体;">）。</span><span style="font-family: Arial;">repository</span><span style="font-family: 宋体;">可任意命名，这样的页面可拥有多个。通过</span><span style="font-family: Arial;"><a href="http://username.github.com/repo_name" target="_blank" rel="external">http://username.github.com/repo_name</a></span><span style="font-family: 宋体;">来访问，</span><span style="font-family: Arial;">Github</span><span style="font-family: 宋体;">会寻找项目中</span><span style="font-family: Arial;">gh-pages</span><span style="font-family: 宋体;">分支，并且在浏览器中显示出其中的网页内容。所以我选择了第二种</span></p>
+<p>下面采用第一种方式：</p>
+<p>在<span style="font-family: Arial;">github</span><span style="font-family: 宋体;">创建</span><span style="font-family: Arial;">geekwolf.github.io</span><span style="font-family: 宋体;">库（暂不要自动生成网页）</span></p>
+<p>cd octopress<br>rake setup_github_pages<br>输入<span style="font-family: Consolas;">geekwolf.github.io</span><span style="font-family: 宋体;">的</span><span style="font-family: Consolas;">ssh</span><span style="font-family: 宋体;">链接地址：</span><span style="font-family: Consolas;">git@github.com:geekwolf/geekwolf.github.io.git</span></p>
+<p>rake generate</p>
+<p>#<span style="font-family: 宋体;">产生静态文件，将文件从</span><span style="font-family: Consolas;">source/</span><span style="font-family: 宋体;">复制到</span><span style="font-family: Consolas;">public/</span></p>
+<p>rake preview</p>
+<p>#<span style="font-family: 宋体;">本地预览，地址栏输入</span><span style="font-family: Consolas;">localhost:4000/repo_name</span></p>
+<p>rake deploy</p>
+<p>#<span style="font-family: 宋体;">将文件从</span><span style="font-family: Consolas;">public/</span><span style="font-family: 宋体;">复制到</span><span style="font-family: Consolas;">_deploy/</span><span style="font-family: 宋体;">，再从</span><span style="font-family: Consolas;">_deploy/</span><span style="font-family: 宋体;">中推送到远端仓库（默认远端</span><span style="font-family: Consolas;">master</span><span style="font-family: 宋体;">分支），需要</span><span style="font-family: Consolas;">ssh publickey</span></p>
+<p>下面将<span style="font-family: Consolas;">octopress</span><span style="font-family: 宋体;">源文件传送到远端</span><span style="font-family: Consolas;">source</span><span style="font-family: 宋体;">分支</span></p>
+<p>git remote add origin git@github.com:geekwolf/geekwolf.github.io.git</p>
+<p>#<span style="font-family: 宋体;">将</span><span style="font-family: Consolas;">repository</span><span style="font-family: 宋体;">设置为默认的远端仓库</span><br>git config branch.master.remote origin</p>
+<p>#<span style="font-family: 宋体;">将</span><span style="font-family: Consolas;">master</span><span style="font-family: 宋体;">分支和</span><span style="font-family: Consolas;">origin</span><span style="font-family: 宋体;">远端仓库对应</span><br>git branch -m master source</p>
+<p>#rename branch<br>git add .<br>git commit -m ‘blog source’<br>git push origin source</p>
+<p>以上完成后，每次博客更改过通过<span style="font-family: Consolas;">rake generate </span><span style="font-family: 宋体;">生成静态页面</span><span style="font-family: Consolas;">,</span><span style="font-family: 宋体;">然后通过</span><span style="font-family: Consolas;">rake deploy</span><span style="font-family: 宋体;">发布到远端</span><span style="font-family: Consolas;">master</span><span style="font-family: 宋体;">分支，从而发布网站</span></p>
+<p><strong>  5.绑定域名</strong></p>
+<p><strong> </strong>echo “linuxhonker.com”&gt;&gt; oectopress/source/CNAME<br>修改A记录为207.97.227.245</p>
+<p><strong>6.新机器使用方法</strong></p>
+<p>克隆远端source分支到本地octopress目录<br>git clone -b source git@github.com:geekwolf.github.io.git octopress<br>克隆远端master分支到octopress下的_deploy目录<br>cd  octopress<br>git clone -b git@github.com:geekwolf.github.io.git _deploy</p>
+<p>然后继续<br>gem install bundler<br>bundle install<br>rake setup_github_pages<br>rake generate<br>git add .<br>git commit -am “some comment here”<br>git push origin source (update the remote source branch)<br>rake deploy(update the remote master branch)</p>
+<p><strong>参考：</strong><br>Windows下部署方式：<br><a href="http://www.freehao123.com/octopress/" target="_blank" rel="external">http://www.freehao123.com/octopress/</a><br>Octopress定制：<br><a href="http://biaobiaoqi.me/blog/2013/07/10/decorate-octopress/" target="_blank" rel="external">http://biaobiaoqi.me/blog/2013/07/10/decorate-octopress/</a><br><a href="http://octopress.org/docs/blogging/" target="_blank" rel="external">http://octopress.org/docs/blogging/</a><br><a href="http://octopress.org/docs/configuring/" target="_blank" rel="external">http://octopress.org/docs/configuring/</a><br>其他参考：<br><a href="http://blog.zerosharp.com/clone-your-octopress-to-blog-from-two-places/" target="_blank" rel="external">http://blog.zerosharp.com/clone-your-octopress-to-blog-from-two-places/</a><br><a href="http://www.psichen.com/octopress-static-blog" target="_blank" rel="external">http://www.psichen.com/octopress-static-blog</a><br>Git提交本地分支到远程分支操作<br><a href="http://www.cnblogs.com/springbarley/archive/2012/11/03/2752984.html" target="_blank" rel="external">http://www.cnblogs.com/springbarley/archive/2012/11/03/2752984.html</a><br>Vim markdown插件<br><a href="http://whbzju.github.io/blog/2013/02/02/octopress-peizhi/" target="_blank" rel="external">http://whbzju.github.io/blog/2013/02/02/octopress-peizhi/</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2013/11/28/openstack-hacker-e5-85-bb-e6-88-90-e6-8c-87-e5-8d-97.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Geekwolf">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/wolf.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Geekwolf's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2013/11/28/openstack-hacker-e5-85-bb-e6-88-90-e6-8c-87-e5-8d-97.html" itemprop="url">OpenStack Hacker养成指南</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2013-11-28T09:31:24+08:00">
+                2013-11-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux运维/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux运维</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2013/11/28/openstack-hacker-e5-85-bb-e6-88-90-e6-8c-87-e5-8d-97.html" class="leancloud_visitors" data-flag-title="OpenStack Hacker养成指南">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  13
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="0-阅读指南"><a href="#0-阅读指南" class="headerlink" title="0 阅读指南"></a>0 阅读指南</h1><ul>
+<li>希望本文能够解开你心中萦绕已久的心结，假如是死结，请移步到 <a href="https://wiki.openstack.org/wiki/Main_Page" title="https://wiki.openstack.org/wiki/Main_Page" target="_blank" rel="external">https://wiki.openstack.org/wiki/Main_Page</a></li>
+<li>学习OpenStack其实就是学习各种Python库的过程。</li>
+<li>把OpenStack的设计原则贴在你的墙上。 <a href="https://wiki.openstack.org/wiki/BasicDesignTenets" title="https://wiki.openstack.org/wiki/BasicDesignTenets" target="_blank" rel="external">https://wiki.openstack.org/wiki/BasicDesignTenets</a></li>
+</ul>
+<h1 id="1-OpenStack-Hacker"><a href="#1-OpenStack-Hacker" class="headerlink" title="1 OpenStack Hacker"></a>1 OpenStack Hacker</h1><div><br><br><em>   <div>态度：开放、主动、沟通</div>
+</em>   <div>影响力：能说、能写、能分享</div><br>*   <div>四化：自动化、流程化、系统化、文档化</div><br>&nbsp;<br><br></div>
+
+<h1 id="2-基础技能"><a href="#2-基础技能" class="headerlink" title="2 基础技能"></a>2 基础技能</h1><h2 id="Python"><a href="#Python" class="headerlink" title="Python"></a>Python</h2><div><br><br>*   <div>书籍:</div>
+
+<pre><code>*   &lt;div&gt;[《python参考手册》](http://book.douban.com/subject/5401851/ &quot;http://book.douban.com/subject/5401851/&quot;)&lt;/div&gt;
+*   &lt;div&gt;[《python基础教程》](http://book.douban.com/subject/4866934/ &quot;http://book.douban.com/subject/4866934/&quot;)&lt;/div&gt;
+</code></pre><ul>
+<li><div>教程: <a href="http://www.codecademy.com/zh/tracks/python" title="http://www.codecademy.com/zh/tracks/python" target="_blank" rel="external">Codecademy</a></div></li>
+<li><div>挑战: <a href="http://www.pythonchallenge.com/" title="http://www.pythonchallenge.com/" target="_blank" rel="external">Python Challenge</a></div></li>
+<li><div>文档: <a href="http://docs.python.org/2/index.html" title="http://docs.python.org/2/index.html" target="_blank" rel="external">Python v2.7.3 documentation</a></div></li>
+<li><div>高阶:</div>
+
+<ul>
+<li><div><a href="http://docs.python-guide.org/en/latest/" title="http://docs.python-guide.org/en/latest/" target="_blank" rel="external">The Hitchhiker’s Guide to Python!</a></div></li>
+<li><div><a href="http://pymotw.com/2/" title="http://pymotw.com/2/" target="_blank" rel="external">Python Module of the Week</a></div><br></li></ul></li></ul></div>
+
+
+
+
+
+<h2 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h2><div><br><br>*   <div>书籍:</div>
+
+<pre><code>*   &lt;div&gt;[鸟哥的Linux私房菜](http://vbird.dic.ksu.edu.tw/ &quot;http://vbird.dic.ksu.edu.tw&quot;)&lt;/div&gt;
+*   &lt;div&gt;[《Unix环境高级编程》](http://book.douban.com/subject/1788421/ &quot;http://book.douban.com/subject/1788421/&quot;)&lt;/div&gt;
+*   &lt;div&gt;[《UNIX系统编程》](http://book.douban.com/subject/1314538/ &quot;http://book.douban.com/subject/1314538/&quot;)&lt;/div&gt;
+</code></pre><p></p></div><p></p>
+<h2 id="Git"><a href="#Git" class="headerlink" title="Git"></a>Git</h2><div><br><br>*   <div>书籍：</div>
+
+<pre><code>*   &lt;div&gt;[Pro Git](http://git-scm.com/book/zh &quot;http://git-scm.com/book/zh&quot;)&lt;/div&gt;
+*   &lt;div&gt;[GotGitHub](http://www.worldhello.net/gotgithub/index.html &quot;http://www.worldhello.net/gotgithub/index.html&quot;)&lt;/div&gt;
+</code></pre><ul>
+<li><div>教程：</div>
+
+<ul>
+<li><div><a href="http://try.github.com/levels/1/challenges/1" title="http://try.github.com/levels/1/challenges/1" target="_blank" rel="external">tryGit</a></div></li>
+<li><div><a href="http://gitimmersion.com/lab_01.html" title="http://gitimmersion.com/lab_01.html" target="_blank" rel="external">GitImmersion</a></div>
+</li>
+</ul>
+</li>
+<li><div>进阶：</div>
+
+<ul>
+<li><div><a href="http://marklodato.github.com/visual-git-guide/index-zh-cn.html" title="http://marklodato.github.com/visual-git-guide/index-zh-cn.html" target="_blank" rel="external">visual-git-guide</a></div></li>
+<li><div><a href="http://nvie.com/posts/a-successful-git-branching-model/" title="http://nvie.com/posts/a-successful-git-branching-model/" target="_blank" rel="external">a-successful-git-branching-model</a></div>
+</li>
+</ul>
+</li>
+<li><div>最常用的git命令：<a href="http://www.kernel.org/pub/software/scm/git/docs/everyday.html" title="http://www.kernel.org/pub/software/scm/git/docs/everyday.html" target="_blank" rel="external"> Everyday GIT With 20 Commands Or So</a></div><br></li></ul></div>
+
+
+
+<h2 id="Unittest"><a href="#Unittest" class="headerlink" title="Unittest"></a>Unittest</h2><div><br><br>*   <div>教程:<a href="http://docs.python.org/2/library/unittest.html" title="http://docs.python.org/2/library/unittest.html" target="_blank" rel="external"> python unittest</a></div><br></div>
+
+<h1 id="3-OpenStack-基础"><a href="#3-OpenStack-基础" class="headerlink" title="3 OpenStack 基础"></a>3 OpenStack 基础</h1><h2 id="The-5-minute-Overview"><a href="#The-5-minute-Overview" class="headerlink" title="The 5-minute Overview"></a>The 5-minute Overview</h2><div><br><br><strong>OpenStack</strong> is a global collaboration of developers and cloud computing technologists producing the ubiquitous open source cloud computing platform for <em><strong>public and private clouds</strong></em>. The project aims to deliver solutions for all types of clouds by being simple to implement, massively scalable, and feature rich. The technology consists of a series of <a href="https://www.openstack.org/software/" title="https://www.openstack.org/software/" target="_blank" rel="external">interrelated projects</a> delivering various components for a cloud infrastructure solution. <strong>OpenStack</strong>controls <em><strong>large pools of compute, storage, and networking resources</strong></em> throughout a datacenter, all managed through a dashboard that gives administrators control while empowering their users to provision resources through a web interface.<br><br><a href="http://www.ustack.com/wp-content/uploads/2013/08/11.png" target="_blank" rel="external"><img src="http://www.ustack.com/wp-content/uploads/2013/08/11.png" alt="1"></a><br><br></div>
+
+<h2 id="OpenStack-基本概念"><a href="#OpenStack-基本概念" class="headerlink" title="OpenStack 基本概念"></a>OpenStack 基本概念</h2><div><br><br><em>   <div>介绍： <a href="https://www.openstack.org/software/" title="https://www.openstack.org/software/" target="_blank" rel="external">https://www.openstack.org/software/</a></div>
+</em>   <div>Compute管理员手册(必看)：<a href="http://docs.openstack.org/trunk/openstack-compute/admin/content/ch_getting-started-with-openstack.html" title="http://docs.openstack.org/trunk/openstack-compute/admin/content/ch_getting-started-with-openstack.html" target="_blank" rel="external">http://docs.openstack.org/trunk/openstack-compute/admin/content/ch_getting-started-with-openstack.html</a></div><br><em>   <div>OpenStack End User Guide(必看): <a href="http://docs.openstack.org/user-guide/content/" title="http://docs.openstack.org/user-guide/content/" target="_blank" rel="external">http://docs.openstack.org/user-guide/content/</a></div>
+</em>   <div>Network管理员手册：<a href="http://docs.openstack.org/folsom/openstack-network/admin/content/" title="http://docs.openstack.org/folsom/openstack-network/admin/content/" target="_blank" rel="external">http://docs.openstack.org/folsom/openstack-network/admin/content/</a></div><br><em>   <div>Object Storage管理员手册：<a href="http://docs.openstack.org/folsom/openstack-object-storage/admin/content/" title="http://docs.openstack.org/folsom/openstack-object-storage/admin/content/" target="_blank" rel="external">http://docs.openstack.org/folsom/openstack-object-storage/admin/content/</a></div>
+</em>   <div>OpenStack文档：<a href="http://docs.openstack.org/" title="http://docs.openstack.org/" target="_blank" rel="external">http://docs.openstack.org/</a></div><br><em>   <div>OpenStack词汇表：<a href="http://docs.openstack.org/glossary/content/glossary.html" title="http://docs.openstack.org/glossary/content/glossary.html" target="_blank" rel="external">http://docs.openstack.org/glossary/content/glossary.html</a></div>
+</em>   <div>使用命令行管理openstack: <a href="http://docs.openstack.org/cli/quick-start/content/index.html" title="http://docs.openstack.org/cli/quick-start/content/index.html" target="_blank" rel="external">http://docs.openstack.org/cli/quick-start/content/index.html</a></div><br>*   <div>OpenStack Wiki: <a href="https://wiki.openstack.org/wiki/Main_Page" title="https://wiki.openstack.org/wiki/Main_Page" target="_blank" rel="external">https://wiki.openstack.org/wiki/Main_Page</a></div><br></div>
+
+<h2 id="简单安装-OpenStack"><a href="#简单安装-OpenStack" class="headerlink" title="简单安装 OpenStack"></a>简单安装 OpenStack</h2><h3 id="环境设置"><a href="#环境设置" class="headerlink" title="环境设置"></a>环境设置</h3><div><br><br>为了快速安装OpenStack,你要设置最快的apt源(或者设置yum源)和pypi源。<br><br><em>   <div>设置apt源：<a href="http://blog.ubuntusoft.com/ubuntu-update-source.html" title="http://blog.ubuntusoft.com/ubuntu-update-source.html" target="_blank" rel="external">http://blog.ubuntusoft.com/ubuntu-update-source.html</a></div>
+</em>   <div>设置pypi源：<a href="http://www.v2ex.com/t/75316" title="http://www.v2ex.com/t/75316" target="_blank" rel="external">http://www.v2ex.com/t/75316</a></div><br>你也可以搭建自己的apt源和pypi源：<br><br>*   <div>搭建apt源：</div>
+
+<pre><code>*   &lt;div&gt;[http://blog.ef.net/2012/10/26/unbutu-release-upgrade-with-local-apt-mirror.html](http://blog.ef.net/2012/10/26/unbutu-release-upgrade-with-local-apt-mirror.html &quot;http://blog.ef.net/2012/10/26/unbutu-release-upgrade-with-local-apt-mirror.html&quot;)&lt;/div&gt;
+*   &lt;div&gt;[http://www.cnblogs.com/kulin/archive/2012/08/08/2628400.html](http://www.cnblogs.com/kulin/archive/2012/08/08/2628400.html &quot;http://www.cnblogs.com/kulin/archive/2012/08/08/2628400.html&quot;)&lt;/div&gt;
+</code></pre><ul>
+<li><div>搭建pypi源：</div>
+
+<ul>
+<li><div><a href="https://pypi.python.org/pypi/bandersnatch" title="https://pypi.python.org/pypi/bandersnatch" target="_blank" rel="external">https://pypi.python.org/pypi/bandersnatch</a></div><br></li></ul></li></ul></div>
+
+
+
+
+
+<h3 id="devstack-安装"><a href="#devstack-安装" class="headerlink" title="devstack 安装"></a>devstack 安装</h3><div><br><br><em>   <div>使用devstack安装 <a href="http://devstack.org/" title="http://devstack.org" target="_blank" rel="external">http://devstack.org</a></div>
+</em>   <div>阅读devstack.sh脚本 <a href="http://devstack.org/" title="http://devstack.org" target="_blank" rel="external">http://devstack.org</a></div><br>*   <div>screen的使用：<a href="http://www.9usb.net/201002/linux-screen-mingling.html" title="http://www.9usb.net/201002/linux-screen-mingling.html" target="_blank" rel="external">http://www.9usb.net/201002/linux-screen-mingling.html</a></div><br>devstack使用screen管理OpenStack各个服务，所以你要用screen调试OpenStack。<br><br></div>
+
+<h3 id="packstack-RHEL-CentOS-安装"><a href="#packstack-RHEL-CentOS-安装" class="headerlink" title="packstack(RHEL,CentOS) 安装"></a>packstack(RHEL,CentOS) 安装</h3><div><br><br><em>   <div>git仓库: <a href="https://github.com/stackforge/packstack" title="https://github.com/stackforge/packstack" target="_blank" rel="external">https://github.com/stackforge/packstack</a></div>
+</em>   <div>quickstart: <a href="http://openstack.redhat.com/Quickstart" title="http://openstack.redhat.com/Quickstart" target="_blank" rel="external">http://openstack.redhat.com/Quickstart</a></div><br></div>
+
+<h3 id="deb包安装"><a href="#deb包安装" class="headerlink" title="deb包安装"></a>deb包安装</h3><div><br><br><em>   <div><a href="http://wiki.stacklab.org/doku.php?id=stacklab:documentation:use-virtualbox-install-openstack" title="http://wiki.stacklab.org/doku.php?id=stacklab:documentation:use-virtualbox-install-openstack" target="_blank" rel="external">使用VirtualBox安装OpenStack</a></div>
+</em>   <div><a href="http://wiki.stacklab.org/doku.php?id=stacklab:documentation:install-openstack-folsom-with-nova-network" title="http://wiki.stacklab.org/doku.php?id=stacklab:documentation:install-openstack-folsom-with-nova-network" target="_blank" rel="external">在Ubuntu 12.04上安装OpenStack Folsom版(FlatDHCP+Multihost)</a></div><br><em>   <div><a href="http://www.chenshake.com/ubuntu12-04-2-installed-openstack-grizzly-bridge-mode/" title="http://www.chenshake.com/ubuntu12-04-2-installed-openstack-grizzly-bridge-mode/" target="_blank" rel="external">Ubuntu12.04.2 OpenStack Grizzly 安装（Bridge）</a></div><br></em></div><br>&nbsp;<br><br>## 调戏 OpenStack<br><br><div>
+
+   <div>pdb：</div>
+
+<pre><code>*   &lt;div&gt;[http://docs.python.org/2/library/pdb.html](http://docs.python.org/2/library/pdb.html &quot;http://docs.python.org/2/library/pdb.html&quot;)&lt;/div&gt;
+*   &lt;div&gt;[http://blog.csdn.net/hackerain/article/details/8373597](http://blog.csdn.net/hackerain/article/details/8373597 &quot;http://blog.csdn.net/hackerain/article/details/8373597&quot;)&lt;/div&gt;
+*   &lt;div&gt;[http://www.ibm.com/developerworks/cn/linux/l-cn-pythondebugger/](http://www.ibm.com/developerworks/cn/linux/l-cn-pythondebugger/ &quot;http://www.ibm.com/developerworks/cn/linux/l-cn-pythondebugger/&quot;)&lt;/div&gt;
+</code></pre><p></p></div><p></p>
+<h2 id="Python基本库"><a href="#Python基本库" class="headerlink" title="Python基本库"></a>Python基本库</h2><h3 id="WSGI"><a href="#WSGI" class="headerlink" title="WSGI"></a>WSGI</h3><div><br><br><em>   <div>eventlet.wsgi: <a href="http://eventlet.net/doc/examples.html#wsgi-server" title="http://eventlet.net/doc/examples.html#wsgi-server" target="_blank" rel="external">http://eventlet.net/doc/examples.html#wsgi-server</a></div>
+</em>   <div>webob: <a href="http://webob.org/" title="http://webob.org/" target="_blank" rel="external">http://webob.org/</a></div><br><em>   <div>pecan: <a href="http://pecanpy.org/" title="http://pecanpy.org/" target="_blank" rel="external">http://pecanpy.org/</a></div>
+</em>   <div>wsme: <a href="http://pythonhosted.org/WSME/" title="http://pythonhosted.org/WSME/" target="_blank" rel="external">http://pythonhosted.org/WSME/</a></div><br><em>   <div>paste: <a href="http://pythonpaste.org/" title="http://pythonpaste.org/" target="_blank" rel="external">http://pythonpaste.org/</a></div>
+</em>   <div>routes: <a href="http://routes.readthedocs.org/en/latest/" title="http://routes.readthedocs.org/en/latest/" target="_blank" rel="external">http://routes.readthedocs.org/en/latest/</a></div><br></div>
+
+<h3 id="重要的库"><a href="#重要的库" class="headerlink" title="重要的库"></a>重要的库</h3><div><br><br><em>   <div>SQLAlchemy:<a href="http://www.sqlalchemy.org/" title="http://www.sqlalchemy.org/" target="_blank" rel="external">http://www.sqlalchemy.org/</a></div>
+</em>   <div>libvirt: <a href="http://libvirt.org/index.html" title="http://libvirt.org/index.html" target="_blank" rel="external">http://libvirt.org/index.html</a></div><br><em>   <div>logging: <a href="http://docs.python.org/2/howto/logging-cookbook.html" title="http://docs.python.org/2/howto/logging-cookbook.html" target="_blank" rel="external">http://docs.python.org/2/howto/logging-cookbook.html</a></div>
+</em>   <div>greenlet: <a href="http://greenlet.readthedocs.org/en/latest/" title="http://greenlet.readthedocs.org/en/latest/" target="_blank" rel="external">http://greenlet.readthedocs.org/en/latest/</a></div><br><em>   <div>eventlet: <a href="http://eventlet.net/" title="http://eventlet.net/" target="_blank" rel="external">http://eventlet.net/</a></div>
+</em>   <div>kombu: <a href="http://kombu.readthedocs.org/en/latest/" title="http://kombu.readthedocs.org/en/latest/" target="_blank" rel="external">http://kombu.readthedocs.org/en/latest/</a></div><br><em>   <div>oslo.config: <a href="https://wiki.openstack.org/wiki/Oslo#oslo.config" title="https://wiki.openstack.org/wiki/Oslo#oslo.config" target="_blank" rel="external">https://wiki.openstack.org/wiki/Oslo#oslo.config</a></div>
+</em>   <div>stevedore: <a href="http://stevedore.readthedocs.org/en/latest/" title="http://stevedore.readthedocs.org/en/latest/" target="_blank" rel="external">http://stevedore.readthedocs.org/en/latest/</a></div><br></div>
+
+<h3 id="TESTING"><a href="#TESTING" class="headerlink" title="TESTING"></a>TESTING</h3><div><br><br><em>   <div>PythonTestingToolsTaxonomy: <a href="http://wiki.python.org/moin/PythonTestingToolsTaxonomy" title="http://wiki.python.org/moin/PythonTestingToolsTaxonomy" target="_blank" rel="external">http://wiki.python.org/moin/PythonTestingToolsTaxonomy</a> (all in one)</div>
+</em>   <div>testtools：<a href="https://readthedocs.org/projects/testtools/" title="https://readthedocs.org/projects/testtools/" target="_blank" rel="external">https://readthedocs.org/projects/testtools/</a></div><br><em>   <div>mox：<a href="http://code.google.com/p/pymox/wiki/MoxDocumentation" title="http://code.google.com/p/pymox/wiki/MoxDocumentation" target="_blank" rel="external">http://code.google.com/p/pymox/wiki/MoxDocumentation</a></div>
+</em>   <div>mock：<a href="http://www.voidspace.org.uk/python/mock/" title="http://www.voidspace.org.uk/python/mock/" target="_blank" rel="external">http://www.voidspace.org.uk/python/mock/</a></div><br><em>   <div>tox：<a href="http://tox.readthedocs.org/en/latest/" title="http://tox.readthedocs.org/en/latest/" target="_blank" rel="external">http://tox.readthedocs.org/en/latest/</a></div>
+</em>   <div>fixtures：<a href="https://pypi.python.org/pypi/fixtures" title="https://pypi.python.org/pypi/fixtures" target="_blank" rel="external">https://pypi.python.org/pypi/fixtures</a></div><br><em>   <div>testscenarios：<a href="https://pypi.python.org/pypi/testscenarios/" title="https://pypi.python.org/pypi/testscenarios/" target="_blank" rel="external">https://pypi.python.org/pypi/testscenarios/</a></div>
+</em>   <div>nose：<a href="https://nose.readthedocs.org/en/latest/" title="https://nose.readthedocs.org/en/latest/" target="_blank" rel="external">https://nose.readthedocs.org/en/latest/</a></div><br>*   <div>testrepository：<a href="https://testrepository.readthedocs.org/en/latest/MANUAL.html" title="https://testrepository.readthedocs.org/en/latest/MANUAL.html" target="_blank" rel="external">https://testrepository.readthedocs.org/en/latest/MANUAL.html</a></div><br></div>
+
+<h2 id="OpenStack基础组件"><a href="#OpenStack基础组件" class="headerlink" title="OpenStack基础组件"></a>OpenStack基础组件</h2><div><br><br>在OpenStack中，有一个重要的项目叫做Oslo(原名是openstack-common),给OpenStack其他项目提供基础组件。<br><br>*   <div><a href="https://wiki.openstack.org/wiki/Oslo" title="https://wiki.openstack.org/wiki/Oslo" target="_blank" rel="external">https://wiki.openstack.org/wiki/Oslo</a></div><br></div>
+
+<h3 id="RPC组件"><a href="#RPC组件" class="headerlink" title="RPC组件"></a>RPC组件</h3><div><br><br><em>   <div><a href="http://wiki.ustack.com/doku.php?id=rpc%E6%A8%A1%E5%9D%97" title="http://wiki.ustack.com/doku.php?id=rpc%E6%A8%A1%E5%9D%97" target="_blank" rel="external">RPC组件</a></div>
+</em>   <div><a href="http://blog.ftofficer.com/2010/03/translation-rabbitmq-python-rabbits-and-warrens/" title="http://blog.ftofficer.com/2010/03/translation-rabbitmq-python-rabbits-and-warrens/" target="_blank" rel="external">http://blog.ftofficer.com/2010/03/translation-rabbitmq-python-rabbits-and-warrens/</a></div><br><em>   <div><a href="http://www.rabbitmq.com/tutorials/tutorial-six-python.html" title="http://www.rabbitmq.com/tutorials/tutorial-six-python.html" target="_blank" rel="external">http://www.rabbitmq.com/tutorials/tutorial-six-python.html</a></div>
+</em>   <div><a href="http://docs.openstack.org/developer/nova/devref/rpc.html" title="http://docs.openstack.org/developer/nova/devref/rpc.html" target="_blank" rel="external">http://docs.openstack.org/developer/nova/devref/rpc.html</a></div><br></div>
+
+<h3 id="WSGI-1"><a href="#WSGI-1" class="headerlink" title="WSGI"></a>WSGI</h3><div><br><br>*   <div><a href="http://archimedeanco.com/wsgi-tutorial/" title="http://archimedeanco.com/wsgi-tutorial/" target="_blank" rel="external">http://archimedeanco.com/wsgi-tutorial/</a></div><br></div>
+
+<h2 id="OpenStack-代码规范"><a href="#OpenStack-代码规范" class="headerlink" title="OpenStack 代码规范"></a>OpenStack 代码规范</h2><div><br><br>*   <div>Python PEP8 规范: <a href="http://www.python.org/dev/peps/pep-0008/" title="http://www.python.org/dev/peps/pep-0008/" target="_blank" rel="external">http://www.python.org/dev/peps/pep-0008/</a></div>
+
+<ul>
+<li><div>OpenStack HACKING 规范: <a href="https://github.com/openstack-dev/hacking/blob/master/HACKING.rst" title="https://github.com/openstack-dev/hacking/blob/master/HACKING.rst" target="_blank" rel="external">https://github.com/openstack-dev/hacking/blob/master/HACKING.rst</a></div><br></li></ul></div>
+
+
+
+<h2 id="Python-深入学习"><a href="#Python-深入学习" class="headerlink" title="Python 深入学习"></a>Python 深入学习</h2><div><br><br>理解python中optparse.OptionParser类。<br><a href="http://docs.python.org/library/optparse.html" title="http://docs.python.org/library/optparse.html" target="_blank" rel="external">http://docs.python.org/library/optparse.html</a><br><br>理解collections.Mapping类。<br><a href="http://docs.python.org/library/collections.html" title="http://docs.python.org/library/collections.html" target="_blank" rel="external">http://docs.python.org/library/collections.html</a><br><br>分析浅拷贝，深拷贝<br><a href="http://blog.csdn.net/winterttr/article/details/2590741" title="http://blog.csdn.net/winterttr/article/details/2590741" target="_blank" rel="external">http://blog.csdn.net/winterttr/article/details/2590741</a><br><a href="http://longmans1985.blog.163.com/blog/static/70605475200991603624942/" title="http://longmans1985.blog.163.com/blog/static/70605475200991603624942/" target="_blank" rel="external">http://longmans1985.blog.163.com/blog/static/70605475200991603624942/</a><br><a href="http://book.51cto.com/art/200806/77233.htm" title="http://book.51cto.com/art/200806/77233.htm" target="_blank" rel="external">http://book.51cto.com/art/200806/77233.htm</a><br><br>LoggerAdapter类<br><a href="http://docs.python.org/howto/logging-cookbook.html#context-info" title="http://docs.python.org/howto/logging-cookbook.html#context-info" target="_blank" rel="external">http://docs.python.org/howto/logging-cookbook.html#context-info</a>中。<br><br>介绍rabbitmq<br><a href="http://blog.ftofficer.com/2010/03/translation-rabbitmq-python-rabbits-and-warrens/" title="http://blog.ftofficer.com/2010/03/translation-rabbitmq-python-rabbits-and-warrens/" target="_blank" rel="external">http://blog.ftofficer.com/2010/03/translation-rabbitmq-python-rabbits-and-warrens/</a><br><a href="http://kombu.readthedocs.org/en/latest/introduction.html#synopsis" title="http://kombu.readthedocs.org/en/latest/introduction.html#synopsis" target="_blank" rel="external">http://kombu.readthedocs.org/en/latest/introduction.html#synopsis</a><br><br>Python Decorators入门<br><a href="http://blog.csdn.net/beckel/article/details/3585352" title="http://blog.csdn.net/beckel/article/details/3585352" target="_blank" rel="external">http://blog.csdn.net/beckel/article/details/3585352</a><br><br>Python @classmethod @staticmethod的区别。<br><br><a href="http://www.libaoyin.com/2013/08/06/pyhton-staticmethod-classmethod/" target="_blank" rel="external">http://www.libaoyin.com/2013/08/06/pyhton-staticmethod-classmethod/</a><br><br>五分钟理解元类（Metaclasses）<br><a href="http://www.cnblogs.com/coderzh/archive/2008/12/07/1349735.html" title="http://www.cnblogs.com/coderzh/archive/2008/12/07/1349735.html" target="_blank" rel="external">http://www.cnblogs.com/coderzh/archive/2008/12/07/1349735.html</a><br><br>nova中用到的python知识<br><a href="http://canx.me/2011/12/%E4%B8%80%E4%BA%9Bpython/" title="http://canx.me/2011/12/%E4%B8%80%E4%BA%9Bpython/" target="_blank" rel="external">http://canx.me/2011/12/%E4%B8%80%E4%BA%9Bpython/</a><br><br>python中类的总结<br><a href="http://ipseek.blog.51cto.com/1041109/802243" title="http://ipseek.blog.51cto.com/1041109/802243" target="_blank" rel="external">http://ipseek.blog.51cto.com/1041109/802243</a><br><br>with的总结<br><a href="http://effbot.org/zone/python-with-statement.htm" title="http://effbot.org/zone/python-with-statement.htm" target="_blank" rel="external">http://effbot.org/zone/python-with-statement.htm</a><br><br>Pool类<br><a href="http://nullege.com/codes/search/eventlet.pools.Pool" title="http://nullege.com/codes/search/eventlet.pools.Pool" target="_blank" rel="external">http://nullege.com/codes/search/eventlet.pools.Pool</a><br><br>paste模块<br><a href="http://pythonpaste.org/" title="http://pythonpaste.org/" target="_blank" rel="external">http://pythonpaste.org/</a><br><br>python魔术方法<br><a href="http://pycoders-weekly-chinese.readthedocs.org/en/latest/issue6/a-guide-to-pythons-magic-methods.html" title="http://pycoders-weekly-chinese.readthedocs.org/en/latest/issue6/a-guide-to-pythons-magic-methods.html" target="_blank" rel="external">http://pycoders-weekly-chinese.readthedocs.org/en/latest/issue6/a-guide-to-pythons-magic-methods.html</a><br><br>Routes模块<br><a href="http://routes.readthedocs.org/en/latest/index.html" title="http://routes.readthedocs.org/en/latest/index.html" target="_blank" rel="external">http://routes.readthedocs.org/en/latest/index.html</a><br><br>yield学习<br><br><em>   <div><a href="http://www.pythonclub.org/python-basic/yield" title="http://www.pythonclub.org/python-basic/yield" target="_blank" rel="external">http://www.pythonclub.org/python-basic/yield</a></div>
+</em>   <div><a href="http://blog.donews.com/limodou/archive/2006/09/04/1028747.aspx" title="http://blog.donews.com/limodou/archive/2006/09/04/1028747.aspx" target="_blank" rel="external">http://blog.donews.com/limodou/archive/2006/09/04/1028747.aspx</a></div><br><em>   <div><a href="http://www.ibm.com/developerworks/cn/opensource/os-cn-python-yield/" title="http://www.ibm.com/developerworks/cn/opensource/os-cn-python-yield/" target="_blank" rel="external">http://www.ibm.com/developerworks/cn/opensource/os-cn-python-yield/</a></div>
+</em>   <div><a href="http://www.jeffknupp.com/blog/2013/04/07/improve-your-python-yield-and-generators-explained/" title="http://www.jeffknupp.com/blog/2013/04/07/improve-your-python-yield-and-generators-explained/" target="_blank" rel="external">http://www.jeffknupp.com/blog/2013/04/07/improve-your-python-yield-and-generators-explained/</a></div><br></div>
+
+<h1 id="4-OpenStack-整体架构"><a href="#4-OpenStack-整体架构" class="headerlink" title="4 OpenStack 整体架构"></a>4 OpenStack 整体架构</h1><h2 id="架构图"><a href="#架构图" class="headerlink" title="架构图"></a>架构图</h2><div><br><br>必看：<br><br><em>   <div><a href="http://ken.pepple.info/openstack/2012/09/25/openstack-folsom-architecture/" title="http://ken.pepple.info/openstack/2012/09/25/openstack-folsom-architecture/" target="_blank" rel="external">http://ken.pepple.info/openstack/2012/09/25/openstack-folsom-architecture/</a></div>
+</em>   <div><a href="http://www.solinea.com/2013/06/15/openstack-grizzly-architecture-revisited/" title="http://www.solinea.com/2013/06/15/openstack-grizzly-architecture-revisited/" target="_blank" rel="external">http://www.solinea.com/2013/06/15/openstack-grizzly-architecture-revisited/</a></div><br>*   <a href="http://www.slideshare.net/mirantis/open-stack-architecture-overviewmeetup662013" target="_blank" rel="external">http://www.slideshare.net/mirantis/open-stack-architecture-overviewmeetup662013</a><br>OpenStack架构图，你可以点击放大。<br><br><a href="http://www.ustack.com/wp-content/uploads/2013/08/openstack-logical-arch-folsom.jpg" target="_blank" rel="external"><img src="http://www.ustack.com/wp-content/uploads/2013/08/openstack-logical-arch-folsom-1024x626.jpg" alt="openstack-logical-arch-folsom"></a><br><br></div>
+
+<h2 id="工作流"><a href="#工作流" class="headerlink" title="工作流"></a>工作流</h2><h3 id="Keystone-Workflow"><a href="#Keystone-Workflow" class="headerlink" title="Keystone Workflow"></a>Keystone Workflow</h3><div><br><br>必看：<br><br><em>   <div><a href="https://www.ibm.com/developerworks/community/blogs/e93514d3-c4f0-4aa0-8844-497f370090f5/entry/openstack_keystone_workflow_token_scoping?lang=zh" title="https://www.ibm.com/developerworks/community/blogs/e93514d3-c4f0-4aa0-8844-497f370090f5/entry/openstack_keystone_workflow_token_scoping?lang=zh" target="_blank" rel="external">https://www.ibm.com/developerworks/community/blogs/e93514d3-c4f0-4aa0-8844-497f370090f5/entry/openstack_keystone_workflow_token_scoping?lang=zh</a></div>
+</em>   <div><a href="http://docs.openstack.org/trunk/openstack-compute/admin/content/keystone-concepts.html" title="http://docs.openstack.org/trunk/openstack-compute/admin/content/keystone-concepts.html" target="_blank" rel="external">http://docs.openstack.org/trunk/openstack-compute/admin/content/keystone-concepts.html</a></div><br>点击可看大图。<br><br><a href="http://www.ustack.com/wp-content/uploads/2013/08/Keystone-workflow.png" target="_blank" rel="external"><img src="http://www.ustack.com/wp-content/uploads/2013/08/Keystone-workflow.png" alt="Keystone-workflow"></a><br><br></div>
+
+<h3 id="Nova-Workflow"><a href="#Nova-Workflow" class="headerlink" title="Nova Workflow"></a>Nova Workflow</h3><div><br><br>必看：<br><br><em>   <div><a href="https://www.ibm.com/developerworks/community/blogs/e93514d3-c4f0-4aa0-8844-497f370090f5/entry/openstack_nova_api?lang=en" title="https://www.ibm.com/developerworks/community/blogs/e93514d3-c4f0-4aa0-8844-497f370090f5/entry/openstack_nova_api?lang=en" target="_blank" rel="external">https://www.ibm.com/developerworks/community/blogs/e93514d3-c4f0-4aa0-8844-497f370090f5/entry/openstack_nova_api?lang=en</a></div>
+</em>   <div><a href="http://ilearnstack.com/2013/04/26/request-flow-for-provisioning-instance-in-openstack/comment-page-1/" title="http://ilearnstack.com/2013/04/26/request-flow-for-provisioning-instance-in-openstack/comment-page-1/" target="_blank" rel="external">http://ilearnstack.com/2013/04/26/request-flow-for-provisioning-instance-in-openstack/comment-page-1/</a></div><br>nova-api处理 REST 请求。<br><br><a href="http://www.ustack.com/wp-content/uploads/2013/08/nova-server-request.jpeg" target="_blank" rel="external"><img src="http://www.ustack.com/wp-content/uploads/2013/08/nova-server-request.jpeg" alt="nova-server-request"></a><br><br>nova创建虚拟机的工作流。<br><br><a href="http://www.ustack.com/wp-content/uploads/2013/08/request-flow1.png" target="_blank" rel="external"><img src="http://www.ustack.com/wp-content/uploads/2013/08/request-flow1-1024x665.png" alt="request-flow1"></a><br><br></div>
+
+<h2 id="OpenStack-核心项目"><a href="#OpenStack-核心项目" class="headerlink" title="OpenStack 核心项目"></a>OpenStack 核心项目</h2><div><br><br>对各个项目简要分析：<a href="http://www.slideshare.net/randybias/state-of-the-stack-april-2013" title="http://www.slideshare.net/randybias/state-of-the-stack-april-2013" target="_blank" rel="external">http://www.slideshare.net/randybias/state-of-the-stack-april-2013</a><br><br>核心项目的分析：<br><br>*   <div><a href="https://wiki.openstack.org/wiki/Keystone" title="https://wiki.openstack.org/wiki/Keystone" target="_blank" rel="external">Keystone</a>：</div>
+
+<pre><code>*   &lt;div&gt;[http://docs.openstack.org/developer/keystone/](http://docs.openstack.org/developer/keystone/ &quot;http://docs.openstack.org/developer/keystone/&quot;)&lt;/div&gt;
+*   &lt;div&gt;[http://www.slideshare.net/openstackindia/openstack-keystone-identity-service](http://www.slideshare.net/openstackindia/openstack-keystone-identity-service &quot;http://www.slideshare.net/openstackindia/openstack-keystone-identity-service&quot;)&lt;/div&gt;
+</code></pre><ul>
+<li><div><a href="https://wiki.openstack.org/wiki/Glance" title="https://wiki.openstack.org/wiki/Glance" target="_blank" rel="external">Glance</a>：</div>
+
+<ul>
+<li><div><a href="http://docs.openstack.org/developer/glance/" title="http://docs.openstack.org/developer/glance/" target="_blank" rel="external">http://docs.openstack.org/developer/glance/</a></div>
+</li>
+</ul>
+</li>
+<li><div><a href="https://wiki.openstack.org/wiki/Nova" title="https://wiki.openstack.org/wiki/Nova" target="_blank" rel="external">Nova</a>：</div>
+
+<ul>
+<li><div><a href="http://docs.openstack.org/developer/nova/" title="http://docs.openstack.org/developer/nova/" target="_blank" rel="external">http://docs.openstack.org/developer/nova/</a></div></li>
+<li><div><a href="https://www.ibm.com/developerworks/community/blogs/e93514d3-c4f0-4aa0-8844-497f370090f5/entry/openstack_nova_scheduler_and_its_algorithm27?lang=en" title="https://www.ibm.com/developerworks/community/blogs/e93514d3-c4f0-4aa0-8844-497f370090f5/entry/openstack_nova_scheduler_and_its_algorithm27?lang=en" target="_blank" rel="external">https://www.ibm.com/developerworks/community/blogs/e93514d3-c4f0-4aa0-8844-497f370090f5/entry/openstack_nova_scheduler_and_its_algorithm27?lang=en</a></div>
+</li>
+</ul>
+</li>
+<li><div><a href="https://wiki.openstack.org/wiki/Cinder" title="https://wiki.openstack.org/wiki/Cinder" target="_blank" rel="external">Cinder</a>：</div>
+
+<ul>
+<li><div><a href="http://docs.openstack.org/developer/cinder/" title="http://docs.openstack.org/developer/cinder/" target="_blank" rel="external">http://docs.openstack.org/developer/cinder/</a></div></li>
+<li><div><a href="https://wiki.openstack.org/w/images/3/3b/Cinder-grizzly-deep-dive-pub.pdf" title="https://wiki.openstack.org/w/images/3/3b/Cinder-grizzly-deep-dive-pub.pdf" target="_blank" rel="external">Cinder grizzly deep dive pub</a></div>
+</li>
+</ul>
+</li>
+<li><div><a href="https://wiki.openstack.org/wiki/Neutron" title="https://wiki.openstack.org/wiki/Neutron" target="_blank" rel="external">Neutron</a>：</div>
+
+<ul>
+<li><div><a href="http://docs.openstack.org/developer/neutron/" title="http://docs.openstack.org/developer/neutron/" target="_blank" rel="external">http://docs.openstack.org/developer/neutron/</a></div></li>
+<li><div><a href="http://www.slideshare.net/openstackindia/openstack-quantum-16710792" title="http://www.slideshare.net/openstackindia/openstack-quantum-16710792" target="_blank" rel="external">http://www.slideshare.net/openstackindia/openstack-quantum-16710792</a></div></li>
+<li><div><a href="http://www.slideshare.net/lewtucker/openstack-quantum-network-service" title="http://www.slideshare.net/lewtucker/openstack-quantum-network-service" target="_blank" rel="external">http://www.slideshare.net/lewtucker/openstack-quantum-network-service</a></div></li>
+<li><div><a href="http://www.slideshare.net/openstackindia/openstack-quantum-18418306" title="http://www.slideshare.net/openstackindia/openstack-quantum-18418306" target="_blank" rel="external">http://www.slideshare.net/openstackindia/openstack-quantum-18418306</a></div>
+</li>
+</ul>
+</li>
+<li><div><a href="https://wiki.openstack.org/wiki/Horizon" title="https://wiki.openstack.org/wiki/Horizon" target="_blank" rel="external">Horizon</a>：</div>
+
+<ul>
+<li><div><a href="http://docs.openstack.org/developer/horizon/" title="http://docs.openstack.org/developer/horizon/" target="_blank" rel="external">http://docs.openstack.org/developer/horizon/</a></div>
+</li>
+</ul>
+</li>
+<li><div><a href="https://wiki.openstack.org/wiki/Swift" title="https://wiki.openstack.org/wiki/Swift" target="_blank" rel="external">Swift</a>：</div>
+
+<ul>
+<li><div><a href="http://docs.openstack.org/developer/swift/" title="http://docs.openstack.org/developer/swift/" target="_blank" rel="external">http://docs.openstack.org/developer/swift/</a></div></li>
+<li><div><a href="http://blog.csdn.net/alex890714/article/details/7314780" title="http://blog.csdn.net/alex890714/article/details/7314780" target="_blank" rel="external">http://blog.csdn.net/alex890714/article/details/7314780</a></div></li>
+<li><div><a href="http://events.csdn.net/OpenStack/%E6%9D%A8%E9%9B%A8-Swift%E6%9E%B6%E6%9E%84%E4%B8%8E%E5%AE%9E%E8%B7%B5.pdf" title="http://events.csdn.net/OpenStack/%E6%9D%A8%E9%9B%A8-Swift%E6%9E%B6%E6%9E%84%E4%B8%8E%E5%AE%9E%E8%B7%B5.pdf" target="_blank" rel="external">Swift架构与实践</a></div>
+</li>
+</ul>
+</li>
+<li><p><div><a href="https://wiki.openstack.org/wiki/Oslo" title="https://wiki.openstack.org/wiki/Oslo" target="_blank" rel="external">Oslo</a>：</div><br>通用机制的分析：</p>
+</li>
+<li><div>quota: <a href="http://blog.csdn.net/hackerain/article/details/8223125" title="http://blog.csdn.net/hackerain/article/details/8223125" target="_blank" rel="external">http://blog.csdn.net/hackerain/article/details/8223125</a></div></li>
+<li><div>policy: <a href="http://blog.csdn.net/hackerain/article/details/8241691" title="http://blog.csdn.net/hackerain/article/details/8241691" target="_blank" rel="external">http://blog.csdn.net/hackerain/article/details/8241691</a></div><br></li></ul></div>
+
+
+
+<h1 id="5-OpenStack-部署-管理"><a href="#5-OpenStack-部署-管理" class="headerlink" title="5 OpenStack 部署/管理"></a>5 OpenStack 部署/管理</h1><h2 id="OpenStack-自动化部署"><a href="#OpenStack-自动化部署" class="headerlink" title="OpenStack 自动化部署"></a>OpenStack 自动化部署</h2><div><br><br>Puppet:<br><br><em>   <div><a href="https://wiki.openstack.org/wiki/Puppet-openstack" title="https://wiki.openstack.org/wiki/Puppet-openstack" target="_blank" rel="external">https://wiki.openstack.org/wiki/Puppet-openstack</a></div>
+</em>   <div><a href="https://github.com/stackforge/puppet-openstack" title="https://github.com/stackforge/puppet-openstack" target="_blank" rel="external">https://github.com/stackforge/puppet-openstack</a></div><br><em>   <div><a href="https://puppetlabs.com/solutions/openstack/" title="https://puppetlabs.com/solutions/openstack/" target="_blank" rel="external">https://puppetlabs.com/solutions/openstack/</a></div><br>Fule: Mirantis出品的部署工具，从裸机到OpenStack组件再到HA全部搞定
+
+</em>   <div><a href="https://fuel.mirantis.com/" title="https://fuel.mirantis.com/" target="_blank" rel="external">https://fuel.mirantis.com/</a></div><br></div>
+
+<h2 id="OpenStack-监控"><a href="#OpenStack-监控" class="headerlink" title="OpenStack 监控"></a>OpenStack 监控</h2><div><br><br>*   <div>OpenStack 监控: <a href="http://www.mirantis.com/blog/openstack-monitoring/" title="http://www.mirantis.com/blog/openstack-monitoring/" target="_blank" rel="external">http://www.mirantis.com/blog/openstack-monitoring/</a></div><br></div>
+
+<h1 id="6-参与-OpenStack-社区"><a href="#6-参与-OpenStack-社区" class="headerlink" title="6 参与 OpenStack 社区"></a>6 参与 OpenStack 社区</h1><div><br><br>都在这里:<a href="https://wiki.openstack.org/wiki/Main_Page" title="https://wiki.openstack.org/wiki/Main_Page" target="_blank" rel="external">https://wiki.openstack.org/wiki/Main_Page</a><br><br><em>   <div>山头： <a href="https://review.openstack.org/#/admin/groups" title="https://review.openstack.org/#/admin/groups" target="_blank" rel="external">https://review.openstack.org/#/admin/groups</a></div>
+</em>   <div>向社区提交Patch：<a href="https://wiki.openstack.org/wiki/How_To_Contribute" title="https://wiki.openstack.org/wiki/How_To_Contribute" target="_blank" rel="external">https://wiki.openstack.org/wiki/How_To_Contribute</a></div><br><em>   <div>gerrit的使用：<a href="https://wiki.openstack.org/wiki/Gerrit_Workflow" title="https://wiki.openstack.org/wiki/Gerrit_Workflow" target="_blank" rel="external">https://wiki.openstack.org/wiki/Gerrit_Workflow</a></div>
+</em>   <div>Review别人的Patch：<a href="https://review.openstack.org/" title="https://review.openstack.org" target="_blank" rel="external">https://review.openstack.org</a></div><br>*   <div>参与IRC Meeting：</div>
+
+<pre><code>*   &lt;div&gt;[https://wiki.openstack.org/wiki/Meetings](https://wiki.openstack.org/wiki/Meetings &quot;https://wiki.openstack.org/wiki/Meetings&quot;)&lt;/div&gt;
+*   &lt;div&gt;[https://wiki.openstack.org/wiki/Mailing_Lists](https://wiki.openstack.org/wiki/Mailing_Lists &quot;https://wiki.openstack.org/wiki/Mailing_Lists&quot;)&lt;/div&gt;
+*   &lt;div&gt;[https://wiki.openstack.org/wiki/People](https://wiki.openstack.org/wiki/People &quot;https://wiki.openstack.org/wiki/People&quot;)&lt;/div&gt;
+</code></pre><ul>
+<li><div>参与邮件列表讨论：<a href="https://wiki.openstack.org/wiki/Mailing_Lists" title="https://wiki.openstack.org/wiki/Mailing_Lists" target="_blank" rel="external">https://wiki.openstack.org/wiki/Mailing_Lists</a></div></li>
+<li><div>跟踪OpenStack项目的发展：</div>
+
+<ul>
+<li><div><a href="http://www.openstack.org/blog/" title="http://www.openstack.org/blog/" target="_blank" rel="external">http://www.openstack.org/blog/</a></div></li>
+<li><div><a href="http://planet.openstack.org/" title="http://planet.openstack.org/" target="_blank" rel="external">http://planet.openstack.org/</a></div></li>
+<li><div><a href="https://wiki.openstack.org/wiki/Special:RecentChanges" title="https://wiki.openstack.org/wiki/Special:RecentChanges" target="_blank" rel="external">https://wiki.openstack.org/wiki/Special:RecentChanges</a></div></li>
+<li><div><a href="http://github.com/openstack" title="http://github.com/openstack" target="_blank" rel="external">http://github.com/openstack</a></div></li>
+<li><div><a href="https://github.com/stackforge/" title="https://github.com/stackforge/" target="_blank" rel="external">https://github.com/stackforge/</a> (You will like it)</div></li>
+<li><div><a href="https://github.com/openstack-dev/" title="https://github.com/openstack-dev/" target="_blank" rel="external">https://github.com/openstack-dev/</a></div></li>
+<li><div><a href="https://github.com/openstack-infra" title="https://github.com/openstack-infra" target="_blank" rel="external">https://github.com/openstack-infra</a></div>
+</li>
+</ul>
+</li>
+<li><div>学习CI：<a href="http://ci.openstack.org/" title="http://ci.openstack.org/" target="_blank" rel="external">http://ci.openstack.org/</a></div><br></li></ul></div>
+
+
+
+<h1 id="7-OpenStack-二次开发"><a href="#7-OpenStack-二次开发" class="headerlink" title="7 OpenStack 二次开发"></a>7 OpenStack 二次开发</h1><div><br><br>*   <div>开发Nova的扩展API：</div>
+
+<pre><code>*   &lt;div&gt;[https://www.ibm.com/developerworks/community/blogs/e93514d3-c4f0-4aa0-8844-497f370090f5/entry/openstack_nova_api?lang=zh](https://www.ibm.com/developerworks/community/blogs/e93514d3-c4f0-4aa0-8844-497f370090f5/entry/openstack_nova_api?lang=zh &quot;https://www.ibm.com/developerworks/community/blogs/e93514d3-c4f0-4aa0-8844-497f370090f5/entry/openstack_nova_api?lang=zh&quot;)&lt;/div&gt;
+*   &lt;div&gt;[https://wiki.openstack.org/wiki/WritingRequestExtensions](https://wiki.openstack.org/wiki/WritingRequestExtensions &quot;https://wiki.openstack.org/wiki/WritingRequestExtensions&quot;)&lt;/div&gt;
+*   &lt;div&gt;[http://stephanfr.com/2013/04/07/creating-an-openstack-keystone-helloworld-extension/](http://stephanfr.com/2013/04/07/creating-an-openstack-keystone-helloworld-extension/ &quot;http://stephanfr.com/2013/04/07/creating-an-openstack-keystone-helloworld-extension/&quot;)&lt;/div&gt;
+*   &lt;div&gt;[http://www.cnblogs.com/willier/archive/2013/05/22/3092961.html](http://www.cnblogs.com/willier/archive/2013/05/22/3092961.html &quot;http://www.cnblogs.com/willier/archive/2013/05/22/3092961.html&quot;)&lt;/div&gt;
+</code></pre><ul>
+<li><div>开发Cinder的driver：</div>
+
+<ul>
+<li><div>新的driver必须满足 <a href="https://github.com/openstack/cinder/blob/master/doc/source/devref/drivers.rst" title="https://github.com/openstack/cinder/blob/master/doc/source/devref/drivers.rst" target="_blank" rel="external">Minimum Features</a>,参考同类型的driver，依葫芦画瓢。</div><br></li></ul></li></ul></div>
+
+
+
+
+
+<h1 id="8-OpenStack-生态圈"><a href="#8-OpenStack-生态圈" class="headerlink" title="8 OpenStack 生态圈"></a>8 OpenStack 生态圈</h1><div><br><br><em>   <div>OpenStack幕后的公司：<a href="http://www.chenshake.com/behind-the-openstack-company" title="http://www.chenshake.com/behind-the-openstack-company" target="_blank" rel="external">http://www.chenshake.com/behind-the-openstack-company</a></div>
+</em>   <div>State of The Stack：<a href="http://www.slideshare.net/randybias/state-of-the-stack-april-2013" title="http://www.slideshare.net/randybias/state-of-the-stack-april-2013" target="_blank" rel="external">http://www.slideshare.net/randybias/state-of-the-stack-april-2013</a> (一针见血)</div><br><em>   <div>OpenStack贡献排行榜：<a href="http://stackalytics.com/" title="http://stackalytics.com/" target="_blank" rel="external">http://stackalytics.com/</a></div>
+</em>   <div>OpenStack实践分享：<a href="http://www.mirantis.com/blog/" title="http://www.mirantis.com/blog/" target="_blank" rel="external">http://www.mirantis.com/blog/</a> (mirantis是目前最成功的OpenStack系统集成商)</div><br>转自<a href="http://www.ustack.com" target="_blank" rel="external">http://www.ustack.com</a><br><br></div>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2013/09/22/echo-e6-98-be-e7-a4-ba-e5-ad-97-e4-bd-93-e9-a2-9c-e8-89-b2.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Geekwolf">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/wolf.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Geekwolf's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2013/09/22/echo-e6-98-be-e7-a4-ba-e5-ad-97-e4-bd-93-e9-a2-9c-e8-89-b2.html" itemprop="url">echo显示字体颜色</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2013-09-22T17:03:51+08:00">
+                2013-09-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/脚本开发/" itemprop="url" rel="index">
+                    <span itemprop="name">脚本开发</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2013/09/22/echo-e6-98-be-e7-a4-ba-e5-ad-97-e4-bd-93-e9-a2-9c-e8-89-b2.html" class="leancloud_visitors" data-flag-title="echo显示字体颜色">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  2
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <div>echo要变换颜色的时候，要使用参数-e</div><br><div>格式: echo -e “ 33[字背景颜色;字体颜色m字符串 33[0m”</div><br><div>例如:<br>echo -e “ 33[41;36m something here  33[0m”</div><br><div>其中41的位置代表底色, 36的位置是代表字的颜色</div><br><div>那些ascii code 是对颜色调用的始末.<br> 33[ ; m ……  33[0m</div><br><div></div><br><div>让字体变为红色并且不停的闪烁<br>#echo -e “ 33[31m 33[05m 请确认是否要停止当前的squid进程,输入 [Y/N]  33[0m”</div><br><div>或者</div><br><div>#echo -e “ 33[31m  33[05m 请确认是否要停止当前的squid进程,输入 [Y/N]  33[0m”</div><br><div></div><br><div><br><div>字背景颜色范围:40—-49<br>40:黑<br>41:深红<br>42:绿<br>43:黄色<br>44:蓝色<br>45:紫色<br>46:深绿<br>47:白色</div><br><div>字颜色:30———–39<br>30:黑<br>31:红<br>32:绿<br>33:黄<br>34:蓝色<br>35:紫色<br>36:深绿<br>37:白色</div><br><div></div><br><div><strong>ANSI控制码的说明 </strong><br>33[0m 关闭所有属性<br>33[1m 设置高亮度<br>33[4m 下划线<br>33[5m 闪烁<br>33[7m 反显<br>33[8m 消隐<br>33[30m – 33[37m 设置前景色<br>33[40m – 33[47m 设置背景色<br>33[nA 光标上移n行<br>33[nB 光标下移n行<br>33[nC 光标右移n行<br>33[nD 光标左移n行<br>33[y;xH设置光标位置<br>33[2J 清屏<br>33[K 清除从光标到行尾的内容<br>33[s 保存光标位置<br>33[u 恢复光标位置<br>33[?25l 隐藏光标<br>33[?25h 显示光标</div><br></div>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2013/09/11/e9-80-9a-e8-bf-87openssh-e9-85-8d-e7-bd-ae-e6-99-ae-e9-80-9a-e7-94-a8-e6-88-b7-e6-9d-83-e9-99-90-e5-8f-8a-e5-ae-b6-e7-9b-ae-e5-bd-95.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Geekwolf">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/wolf.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Geekwolf's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2013/09/11/e9-80-9a-e8-bf-87openssh-e9-85-8d-e7-bd-ae-e6-99-ae-e9-80-9a-e7-94-a8-e6-88-b7-e6-9d-83-e9-99-90-e5-8f-8a-e5-ae-b6-e7-9b-ae-e5-bd-95.html" itemprop="url">通过openssh构建chroot环境</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2013-09-11T13:43:15+08:00">
+                2013-09-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux运维/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux运维</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2013/09/11/e9-80-9a-e8-bf-87openssh-e9-85-8d-e7-bd-ae-e6-99-ae-e9-80-9a-e7-94-a8-e6-88-b7-e6-9d-83-e9-99-90-e5-8f-8a-e5-ae-b6-e7-9b-ae-e5-bd-95.html" class="leancloud_visitors" data-flag-title="通过openssh构建chroot环境">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  3
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><strong>测试环境</strong>：Centos6.4 x64<br><strong>软件版本</strong>：openssh-5.3p1 在openssh-4.8p1 之前的版本自身并不支持chroot，如果版本过低又想实现此功能，请升级版本（略）；此处介绍openssh-5.3p1版本的实现方法：<br>注释：运行一个基本的chroot环境至少需要有shell和一些ssh必须的设备文件以及授权给用户使用的命令</p>
+<h4 id="操作步骤："><a href="#操作步骤：" class="headerlink" title="操作步骤："></a>操作步骤：</h4><p><strong>1.创建chroot目录为/var/chroot</strong><br>mkdir -p /var/chroot/{bin,dev,lib,lib64,etc,home}</p>
+<p><strong>2.创建重要的设备文件</strong><br>mknod /var/chroot/dev/null c 1 3<br>mknod /var/chroot/dev/zero c 1 5<br>可选设备文件： (ssh命令所需文件，若缺少会出现：PING is not seeded)<br>mknod /var/chroot/dev/random c 1 8<br>mknod /var/chroot/dev/urandom c 1 9<br>(ssh命令所需文件，若缺少会出现：Host key verification failed) mknod /var/chroot/dev/tty c 5 0<br>更改设备文件权限： chmod 0666 /var/chroot/dev/{null,zero,tty}</p>
+<p><strong>3.修改chroot目录权限</strong><br>chown -R root.root /var/chroot</p>
+<p><strong>5.拷贝授权的命令及命令所依赖的库文件，查看命令所依赖的库文件信息可使用ldd命令查询</strong> <a href="http://www.simlinux.com/old/wp-content/uploads/2013/09/1.png"><img src="http://www.simlinux.com/old/wp-content/uploads/2013/09/1.png" alt="1"></a> 对于以上操作我们采用脚本实现：cmd.sh</p>
+<p><pre class="lang:sh decode:true">#!/bin/bash</pre></p>
+<p>#定义授权的命令<br>cmd=”/bin/ls /bin/bash /bin/cp /bin/mkdir /bin/mv /bin/rm /bin/rmdir”<br>chroot=”/var/chroot”<br>lib1=<code>ldd $cmd|awk &#39;{print $1}&#39;|grep &quot;/lib&quot;|sort|uniq</code><br>lib2=<code>ldd $cmd|awk &#39;{print $3}&#39;|grep &quot;/lib&quot;|sort|uniq</code></p>
+<p>for i in $cmd<br>do<br>        cp -a $i $chroot/bin/<br>        echo “$i done”<br>done</p>
+<p>#x64位库文件存放目录为$chroot/lib64，32位为$/chroot/lib,请根据系统自身情况更改脚本<br>for j in $lib1<br>do<br>        cp -f $j $chroot/lib64/<br>        echo “$j done”<br>done</p>
+<p>for k in $lib2<br>do<br>        cp -f $k $chroot/lib64/<br>        echo “$k done”<br>done<br>chmod 755 cmd.sh;./cmd.sh</p>
+<p><a href="http://www.simlinux.com/old/wp-content/uploads/2013/09/2.png"><img src="http://www.simlinux.com/old/wp-content/uploads/2013/09/2.png" alt="2"></a><br>新建用户geekwolf<br>useradd -M geekwolf<br>将passwd及group拷贝到chroot环境<br>grep geekwolf /etc/passwd&gt;/var/chroot/etc/passwd<br>grep geekwolf /etc/group&gt;/var/chroot/etc/passwd</p>
+<p><strong>6.建立chroot目录中用户家目录</strong><br>mkdir /var/chroot/home/geekwolf<br>chown -R geekwolf /var/chroot/home/geekwolf<br>chmod 700 /var/chroot/home/geekwolf</p>
+<p><strong>7.通过openssh方式设定chroot环境</strong><br>vim /etc/ssh/sshd_config (可以匹配用户组)<br>Match User geekwolf<br>ChrootDirectory /var/chroot/<br>service sshd restart</p>
+<p><strong>8.测试</strong><br>测试chroot环境是否正常<br>chroot /var/chroot 如果没有错误表示正常<br>ssh登录测试 <a href="http://www.simlinux.com/old/wp-content/uploads/2013/09/3.png"><img src="http://www.simlinux.com/old/wp-content/uploads/2013/09/3.png" alt="3"></a><br>如图不能正常显示用户名路径，现在修改环境变量<br>cp /etc/skel/.bash* /var/chroot/home/geekwolf/<br>echo “export PS1=’[u@h w]’” &gt;&gt;/var/chroot/home/geekwolf/.bash_profile</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2013/09/09/svn-e5-bc-ba-e5-88-b6-e8-a6-81-e6-b1-82-e6-b7-bb-e5-8a-a0-e6-b3-a8-e9-87-8a-e4-bf-a1-e6-81-af.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Geekwolf">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/wolf.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Geekwolf's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2013/09/09/svn-e5-bc-ba-e5-88-b6-e8-a6-81-e6-b1-82-e6-b7-bb-e5-8a-a0-e6-b3-a8-e9-87-8a-e4-bf-a1-e6-81-af.html" itemprop="url">svn强制要求添加并允许修改注释信息</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2013-09-09T10:59:55+08:00">
+                2013-09-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux运维/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux运维</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2013/09/09/svn-e5-bc-ba-e5-88-b6-e8-a6-81-e6-b1-82-e6-b7-bb-e5-8a-a0-e6-b3-a8-e9-87-8a-e4-bf-a1-e6-81-af.html" class="leancloud_visitors" data-flag-title="svn强制要求添加并允许修改注释信息">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><strong>SVN强制添加注释信息</strong></p>
+<p>hooks目录 编辑pre-commit 文件内容，找到下面3行，用#注释掉。</p>
+<pre class="lang:sh decode:true">$SVNLOOK log -t "$TXN" "$REPOS" | 
+ grep "[a-zA-Z0-9]" &gt; /dev/null || exit 1
+ commit-access-control.pl "$REPOS" "$TXN" commit-access-control.cfg || exit 1</pre>
+然后再修改处下面增加一下内容。
+<pre class="lang:sh decode:true">LOGMSG=`$SVNLOOK log -t "$TXN" "$REPOS" | grep "[a-zA-Z0-9]" | wc -c`
+if [ "$LOGMSG" -lt 5 ];#........5.........
+then
+ echo -e "nLog message cann't be empty! you must input more than 5 chars as comment!." 1&gt;&amp;2
+exit 1
+fi</pre>
+保存退出。 设置pre-commit文件权限可执行 使用如下命令chomd +x pre-commit
+
+**允许用户修改注释信息**
+
+用户修改注释信息的动作，对应的是pre-revpos-change。将hooks目录下的pre-revpos-change.tmpl改名为pre-revpos-change
+<pre class="lang:default decode:true">#!/bin/sh
+REPOS="$1"
+REV="$2"
+USER="$3"
+PROPNAME="$4"
+ACTION="$5"
+
+if [ "$ACTION" = "M" -a "$PROPNAME" = "svn:log" ];
+then
+    exit 0;
+fi
+
+echo "Changing revision properties other than svn:log is prohibited" &gt;&amp;2
+exit 1</pre>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2013/09/05/smokeping-e7-bd-91-e7-bb-9c-e8-b4-a8-e9-87-8f-e7-9b-91-e6-8e-a7-e9-83-a8-e7-bd-b2.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Geekwolf">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/wolf.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Geekwolf's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2013/09/05/smokeping-e7-bd-91-e7-bb-9c-e8-b4-a8-e9-87-8f-e7-9b-91-e6-8e-a7-e9-83-a8-e7-bd-b2.html" itemprop="url">smokeping网络质量监控部署</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2013-09-05T10:08:58+08:00">
+                2013-09-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/系统监控/" itemprop="url" rel="index">
+                    <span itemprop="name">系统监控</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2013/09/05/smokeping-e7-bd-91-e7-bb-9c-e8-b4-a8-e9-87-8f-e7-9b-91-e6-8e-a7-e9-83-a8-e7-bd-b2.html" class="leancloud_visitors" data-flag-title="smokeping网络质量监控部署">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  4
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>前提条件：smokeping依赖于LNMP或者LAMP及rrdtool<br><strong>一.LNMP环境配置略</strong><br><strong>二.安装rrdtool支持</strong></p>
+<pre class="lang:sh decode:true ">yum -y install libxml2-devel libpng-devel glib pango pango-devel  freetypefreetype-devel fontconfig cairo cairo-devel libart_lgpl libart_lgpl-devel perl perl-Net-Telnet perl-Net-DNSperl-LDAP perl-libwww-perl perl-RadiusPerl perl-IO-Socket-SSL perl-Socket6perl-CGI-SpeedyCGI rrdtool-per
+
+wget http://oss.oetiker.ch/rrdtool/pub/rrdtool-1.4.7.tar.gz
+
+cd rrdtool-1.4.7
+./configure --prefix=/usr/local/rrdtool
+make && make install</pre>
+
+<p>问题：<a href="http://www.simlinux.com/old/wp-content/uploads/2013/09/c2.png"><img src="http://www.simlinux.com/old/wp-content/uploads/2013/09/c2.png" alt="c"></a> <a href="http://www.simlinux.com/old/wp-content/uploads/2013/09/c1.png">1</a> 解决：</p>
+<pre class="lang:sh decode:true ">yum -y install perl-ExtUtils-CBuilder perl-ExtUtils-MakeMaker</pre>
+
+<p><strong>三、安装 smokeping 依赖的软件</strong></p>
+<pre class="lang:sh decode:true ">wget http://down1.chinaunix.net/distfiles/cgilib-0.5.tar.gz
+ tar xzvf cgilib-0.5.tar.gz
+ cd cgilib-0.5
+ make
+ cp libcgi.a  /usr/local/lib
+ cp cgi.h /usr/include/
+
+http://fping.org/dist/fping-3.4.tar.gz
+./configure –prefix=/usr/local/fping
+make && make install
+whereis fping
+ fping: /usr/local/fping
+ln -s /usr/local/fping/sbin/fping  /usr/sbin/fping
+这个链接是对应/usr/local/smokeping/etc/config里面的probe fping
+
+wget http://ncu.dl.sourceforge.net/project/echoping/echoping/6.0.2/echoping-6.0.2.tar.gz
+tar xzvf echoping-6.0.2.tar.gz
+cd echoping-6.0.2
+./configure
+make && make install</pre>
+
+<p>问题： <a href="http://www.simlinux.com/old/wp-content/uploads/2013/09/cc3.png"><img src="http://www.simlinux.com/old/wp-content/uploads/2013/09/cc3.png" alt="cc"></a> 解决：</p>
+<pre class="lang:sh decode:true ">下载popt-1.14.tar.gz
+wget http://downloads.sourceforge.net/project/kanapi/sources/RELEASES/popt-1.14.tar.gz?r=http%3A%2F%2Fen.sourceforge.jp%2Fprojects%2Fsfnet_kanapi%2Fdownloads%2Fsources%2FRELEASES%2Fpopt-1.14.tar.gz%2F&ts=1368433312&use_mirror=jaist
+
+./configure 
+make && make install
+
+wget http://ftp.gnu.org/gnu/gettext/gettext-0.18.tar.gz
+tar zxvf gettext-0.18.tar.gz
+cd gettext-0.18
+./configure 
+make && make install
+cd ..</pre>
+
+<p><strong>四、安装配置Smokeping </strong></p>
+<pre class="lang:sh decode:true ">wget http://oss.oetiker.ch/smokeping/pub/smokeping-2.6.8.tar.gz
+tar zxvf smokeping-2.6.8.tar.gz
+cd smokeping-2.6.8
+./configure –prefix=/usr/local/smokeping
+编译的时候会报错提示缺少很多的扩展程序，这时候我们只需要执行一个安装脚本就好了
+./setup/build-perl-modules.sh /usr/local/smokeping/thirdparty
+等他安装完再继续编译安装
+./configure –prefix=/usr/local/smokeping 
+www.yunvn.com  运维网原创作品  转载请注明出处
+gmake install 
+安装完毕，下面修改配置文件。
+进入 bin 目录，修改 smokeping 文件
+#vim smokeping
+第八行：  use lib qw(); # PERL5LIB
+修改为：     use lib qw(/usr/local/rrdtool/lib/perl);
+进入 htdocs 目录
+# mv smokeping.fcgi.dist smokeping.fcgi
+进入 etc 目录
+cp config.dist config
+修改 config 文件
+
+创建存放数据文件的目录
+mkdir  c/usr/local/smokeping/data  /usr/local/smokeping/var 
+/usr/local/smokeping/cache
+修改 smokeping 的目录为 nginx 运行用户的属主、组
+chown -R daemon.daemon smokeping/
+chmod 600 /usr/local/smokeping/etc/smokeping_secrets.dist
+chmod  –R  777  /usr/local/smokeping/cache  /usr/local/smokeping/data 
+/usr/local/smokeping/var
+创建 smokeping 的 log 文件
+touch /var/log/smokeping.log
+chown daemon.daemon /var/log/smokeping.log
+启动 smokeping
+perl /usr/local/smokeping/bin/smokeping --logfile=/var/log/smokeping.log
+建立 smokeping 启动脚本，方便启动
+vim /etc/init.d/smokeping
+添加为以下内容：
+#!/bin/bash
+#
+# chkconfig: 2345 80 05
+# Description: Smokeping init.d script
+# Hacked by : YunVN - http://www.yunvn.com
+# Get function from functions library
+. /etc/init.d/functions
+# Start the service Smokeping
+start() {
+echo -n "Starting Smokeping: "
+/usr/local/smokeping/bin/smokeping &gt;/dev/null 2&gt;&1
+### Create the lock file ### 
+touch /var/lock/subsys/smokeping
+success $"Smokeping startup"
+echo
+}
+# Restart the service Smokeping
+stop() {
+echo -n "Stopping Smokeping: "
+kill -9 `ps ax | grep "/usr/local/smokeping/bin/smokeping" | grep -v grep | awk 
+'{ print $1 }'` &gt;/dev/null 2&gt;&1
+### Now, delete the lock file ###
+rm -f /var/lock/subsys/smokeping
+success $"Smokeping shutdown"
+echo
+}
+### main logic ###
+case "$1" in
+start)
+start
+;;
+stop)
+stop
+;;
+status)
+status Smokeping
+;;
+restart|reload|condrestart)
+stop
+start
+;;
+*)
+echo $"Usage: $0 {start|stop|restart|reload|status}"
+exit 1
+esac
+exit 0
+给脚本有可执行权限
+# chmod 755 /etc/rc.d/init.d/smokeping
+设置开机启动 smokeping </pre>
+
+<p>问题： 启动时出现问题： <a href="http://www.simlinux.com/old/wp-content/uploads/2013/09/ccc2.png"><img src="http://www.simlinux.com/old/wp-content/uploads/2013/09/ccc2.png" alt="ccc"></a> 解决：yum -y install rrdtool-perl</p>
+<p><strong>参考配置文件：</strong> <a href="https://github.com/geekwolf/sa-scripts/tree/master/config" target="_blank" rel="external">https://github.com/geekwolf/sa-scripts/tree/master/config</a></p>
+<p>注释：ping的节点可以适当做些调整</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2013/09/05/python-e6-ad-a3-e5-88-99-e6-a3-80-e6-9f-a5php-webshell-e6-96-b9-e6-b3-95.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Geekwolf">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/wolf.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Geekwolf's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2013/09/05/python-e6-ad-a3-e5-88-99-e6-a3-80-e6-9f-a5php-webshell-e6-96-b9-e6-b3-95.html" itemprop="url"> python正则检查php webshell方法</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2013-09-05T09:51:33+08:00">
+                2013-09-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/系统安全/" itemprop="url" rel="index">
+                    <span itemprop="name">系统安全</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2013/09/05/python-e6-ad-a3-e5-88-99-e6-a3-80-e6-9f-a5php-webshell-e6-96-b9-e6-b3-95.html" class="leancloud_visitors" data-flag-title=" python正则检查php webshell方法">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="python正则检查php-webshell方法"><a href="#python正则检查php-webshell方法" class="headerlink" title="python正则检查php webshell方法"></a>python正则检查php webshell方法</h2><p>注释：扩展rulelist</p>
+<pre class="lang:python decode:true ">#!/usr/bin/python
+# -*- coding: utf-8 -*-
+#By:Seay
+import os
+import sys
+import re
+
+rulelist = [
+    '($_(GET|POST|REQUEST)[.{0,15}]($_(GET|POST|REQUEST)[.{0,15}]))',
+    '(base64_decode(['"][w+/=]{200,}['"]))',
+    'eval(base64_decode(',
+    '(eval($_(POST|GET|REQUEST)[.{0,15}]))',
+    '(assert($_(POST|GET|REQUEST)[.{0,15}]))',
+    '($[w_]{0,15}($_(POST|GET|REQUEST)[.{0,15}]))',
+    '(wscript.shell)',
+    '(gethostbyname()',
+    '(cmd.exe)',
+    '(shell.application)',
+    '(documentss+ands+settings)',
+    '(system32)',
+    '(serv-u)',
+    '(提权)',
+    '(phpspy)',
+    '(后门)',
+    '(webshell)',
+    '(Programs+Files)'
+]
+
+def Scan(path):
+    for root,dirs,files in os.walk(path):
+        for filespath in files:
+            isover = False
+            if '.' in filespath:
+                ext = filespath[(filespath.rindex('.')+1):]
+                if ext=='php':
+                    file= open(os.path.join(root,filespath))
+                    filestr = file.read()
+                    file.close()
+                    for rule in rulelist:
+                        result = re.compile(rule).findall(filestr)
+                        if result:
+                            print '文件：'+os.path.join(root,filespath)
+                            print '恶意代码：'+str(result[0])
+                            print 'nn'
+                            break
+
+if os.path.lexists(sys.argv[1]):
+    print('nn开始扫描：'+sys.argv[1])
+    print('               可疑文件                 ')
+    print('########################################')
+    Scan(sys.argv[1])
+    print('提示：扫描完成-- O(∩_∩)O哈哈~')
+else:
+    print '提示：指定的扫描目录不存在---  我靠( 'o′)！！凸'</pre>
+
+<p>参考：<a href="http://www.simlinux.com/old/index.php/2012/11/linux%E4%B8%8B%E7%9A%84php%E6%9C%A8%E9%A9%AC%E6%9F%A5%E8%AF%A2/">LINUX下的PHP木马查询</a><br>转自angryfox</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2013/08/09/1129.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Geekwolf">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/wolf.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Geekwolf's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2013/08/09/1129.html" itemprop="url">mysql性能优化-慢查询分析、优化索引和配置</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2013-08-09T03:44:59+08:00">
+                2013-08-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/MySQL数据库/" itemprop="url" rel="index">
+                    <span itemprop="name">MySQL数据库</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2013/08/09/1129.html" class="leancloud_visitors" data-flag-title="mysql性能优化-慢查询分析、优化索引和配置">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  25
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>目录</p>
+<p><strong>一、优化概述</strong></p>
+<p><strong>二、查询与索引优化分析</strong></p>
+<p>1性能瓶颈定位</p>
+<p>Show命令</p>
+<p>慢查询日志</p>
+<p>explain分析查询</p>
+<p>profiling分析查询</p>
+<p>2索引及查询优化</p>
+<p><strong>三、配置优化</strong></p>
+<p>1)      max_connections</p>
+<p>2)      back_log</p>
+<p>3)      interactive_timeout</p>
+<p>4)      key_buffer_size</p>
+<p>5)      query_cache_size</p>
+<p>6)      record_buffer_size</p>
+<p>7)      read_rnd_buffer_size</p>
+<p>8)      sort_buffer_size</p>
+<p>9)      join_buffer_size</p>
+<p>10)    table_cache</p>
+<p>11)    max_heap_table_size</p>
+<p>12)    tmp_table_size</p>
+<p>13)    thread_cache_size</p>
+<p>14)    thread_concurrency</p>
+<p>15)    wait_timeout</p>
+<p><strong>一、 优化概述</strong></p>
+<p><a href="http://www.simlinux.com/old/wp-content/uploads/2013/08/1.png"><img src="http://www.simlinux.com/old/wp-content/uploads/2013/08/1.png" alt="1"></a></p>
+<p>MySQL数据库是常见的两个瓶颈是CPU和I/O的瓶颈，CPU在饱和的时候一般发生在数据装入内存或从磁盘上读取数据时候。磁盘I/O瓶颈发生在装入数据远大于内存容量的时候，如果应用分布在网络上，那么查询量相当大的时候那么平瓶颈就会出现在网络上，我们可以用mpstat, iostat, sar和vmstat来查看系统的性能状态。</p>
+<p>除了服务器硬件的性能瓶颈，对于MySQL系统本身，我们可以使用工具来优化数据库的性能，通常有三种：使用索引，使用EXPLAIN分析查询以及调整MySQL的内部配置。</p>
+<p>二、查询与索引优化分析</p>
+<p>在优化MySQL时，通常需要对数据库进行分析，常见的分析手段有慢查询日志，EXPLAIN 分析查询，profiling分析以及show命令查询系统状态及系统变量，通过定位分析性能的瓶颈，才能更好的优化数据库系统的性能。</p>
+<h2 id="1-性能瓶颈定位"><a href="#1-性能瓶颈定位" class="headerlink" title="1 性能瓶颈定位"></a>1 性能瓶颈定位</h2><h3 id="Show命令"><a href="#Show命令" class="headerlink" title="Show命令"></a>Show命令</h3><p>我们可以通过show命令查看MySQL状态及变量，找到系统的瓶颈：</p>
+<p>Mysql&gt; show status ——显示状态信息（扩展show status like ‘XXX’）</p>
+<p>Mysql&gt; show variables ——显示系统变量（扩展show variables like ‘XXX’）</p>
+<p>Mysql&gt; show innodb status ——显示InnoDB存储引擎的状态</p>
+<p>Mysql&gt; show processlist ——查看当前SQL执行，包括执行状态、是否锁表等</p>
+<p>Shell&gt; mysqladmin variables -u username -p password——显示系统变量</p>
+<p>Shell&gt; mysqladmin extended-status -u username -p password——显示状态信息</p>
+<p>查看状态变量及帮助：</p>
+<p>Shell&gt; mysqld –verbose –help [|more #逐行显示]</p>
+<p>比较全的Show命令的使用可参考： <a href="http://blog.phpbean.com/a.cn/18/" target="_blank" rel="external">http://blog.phpbean.com/a.cn/18/</a></p>
+<h3 id="慢查询日志"><a href="#慢查询日志" class="headerlink" title="慢查询日志"></a>慢查询日志</h3><p><strong>慢查询日志开启：</strong></p>
+<p>在配置文件my.cnf或my.ini中在[mysqld]一行下面加入两个配置参数</p>
+<p>log-slow-queries=/data/mysqldata/slow-query.log</p>
+<p>long_query_time=2</p>
+<p>注：log-slow-queries参数为慢查询日志存放的位置，一般这个目录要有mysql的运行帐号的可写权限，一般都将这个目录设置为mysql的数据存放目录；</p>
+<p>long_query_time=2中的2表示查询超过两秒才记录；</p>
+<p>在my.cnf或者my.ini中添加log-queries-not-using-indexes参数，表示记录下没有使用索引的查询。</p>
+<p>log-slow-queries=/data/mysqldata/slow-query.log</p>
+<p>long_query_time=10</p>
+<p>log-queries-not-using-indexes</p>
+<p><strong>慢查询日志开启方法二：</strong></p>
+<p>我们可以通过命令行设置变量来即时启动慢日志查询。由下图可知慢日志没有打开，slow_launch_time=# 表示如果建立线程花费了比这个值更长的时间,slow_launch_threads 计数器将增加</p>
+<p><a href="http://www.simlinux.com/old/wp-content/uploads/2013/08/2.png"><img src="http://www.simlinux.com/old/wp-content/uploads/2013/08/2.png" alt="2"></a></p>
+<p>设置慢日志开启</p>
+<p><a href="http://www.simlinux.com/old/wp-content/uploads/2013/08/3.png"><img src="http://www.simlinux.com/old/wp-content/uploads/2013/08/3.png" alt="3"></a></p>
+<p>MySQL后可以查询long_query_time 的值 。</p>
+<p><a href="http://www.simlinux.com/old/wp-content/uploads/2013/08/4.png"><img src="http://www.simlinux.com/old/wp-content/uploads/2013/08/4.png" alt="4"></a></p>
+<p>为了方便测试，可以将修改慢查询时间为5秒。</p>
+<p><a href="http://www.simlinux.com/old/wp-content/uploads/2013/08/5.png"><img src="http://www.simlinux.com/old/wp-content/uploads/2013/08/5.png" alt="5"></a></p>
+<p><strong>慢查询分析mysqldumpslow</strong></p>
+<p>我们可以通过打开log文件查看得知哪些SQL执行效率低下</p>
+<p>[root@localhost mysql]# more slow-query.log</p>
+<h1 id="Time-081026-19-46-34"><a href="#Time-081026-19-46-34" class="headerlink" title="Time: 081026 19:46:34"></a>Time: 081026 19:46:34</h1><h1 id="User-Host-root-root-localhost"><a href="#User-Host-root-root-localhost" class="headerlink" title="User@Host: root[root] @ localhost []"></a>User@Host: root[root] @ localhost []</h1><h1 id="Query-time-11-Lock-time-0-Rows-sent-1-Rows-examined-6552961"><a href="#Query-time-11-Lock-time-0-Rows-sent-1-Rows-examined-6552961" class="headerlink" title="Query_time: 11 Lock_time: 0 Rows_sent: 1 Rows_examined: 6552961"></a>Query_time: 11 Lock_time: 0 Rows_sent: 1 Rows_examined: 6552961</h1><p>select count(*) from t_user;</p>
+<p>从日志中，可以发现查询时间超过5 秒的SQL，而小于5秒的没有出现在此日志中。</p>
+<p>如果慢查询日志中记录内容很多，可以使用mysqldumpslow工具（MySQL客户端安装自带）来对慢查询日志进行分类汇总。mysqldumpslow对日志文件进行了分类汇总，显示汇总后摘要结果。</p>
+<p>进入log的存放目录，运行</p>
+<p>[root@mysql_data]#mysqldumpslow  slow-query.log</p>
+<p>Reading mysql slow query log from slow-query.log</p>
+<p>Count: 2 Time=11.00s (22s) Lock=0.00s (0s) Rows=1.0 (2), root[root]@mysql</p>
+<p>select count(N) from t_user;</p>
+<p>mysqldumpslow命令</p>
+<p>/path/mysqldumpslow -s c -t 10 /database/mysql/slow-query.log</p>
+<p>这会输出记录次数最多的10条SQL语句，其中：</p>
+<p>-s, 是表示按照何种方式排序，c、t、l、r分别是按照记录次数、时间、查询时间、返回的记录数来排序，ac、at、al、ar，表示相应的倒叙；</p>
+<p>-t, 是top n的意思，即为返回前面多少条的数据；</p>
+<p>-g, 后边可以写一个正则匹配模式，大小写不敏感的；</p>
+<p>例如：</p>
+<p>/path/mysqldumpslow -s r -t 10 /database/mysql/slow-log</p>
+<p>得到返回记录集最多的10个查询。</p>
+<p>/path/mysqldumpslow -s t -t 10 -g “left join” /database/mysql/slow-log</p>
+<p>得到按照时间排序的前10条里面含有左连接的查询语句。</p>
+<p>使用mysqldumpslow命令可以非常明确的得到各种我们需要的查询语句，对MySQL查询语句的监控、分析、优化是MySQL优化非常重要的一步。开启慢查询日志后，由于日志记录操作，在一定程度上会占用CPU资源影响mysql的性能，但是可以阶段性开启来定位性能瓶颈。</p>
+<h3 id="explain分析查询"><a href="#explain分析查询" class="headerlink" title="explain分析查询"></a>explain分析查询</h3><p>使用 EXPLAIN 关键字可以模拟优化器执行SQL查询语句，从而知道MySQL是如何处理你的SQL语句的。这可以帮你分析你的查询语句或是表结构的性能瓶颈。通过explain命令可以得到:</p>
+<p>– 表的读取顺序</p>
+<p>– 数据读取操作的操作类型</p>
+<p>– 哪些索引可以使用</p>
+<p>– 哪些索引被实际使用</p>
+<p>– 表之间的引用</p>
+<p>– 每张表有多少行被优化器查询</p>
+<p><a href="http://www.simlinux.com/old/wp-content/uploads/2013/08/6.png"><img src="http://www.simlinux.com/old/wp-content/uploads/2013/08/6.png" alt="6"></a></p>
+<p>EXPLAIN字段：</p>
+<p>ØTable：显示这一行的数据是关于哪张表的</p>
+<p>Øpossible_keys：显示可能应用在这张表中的索引。如果为空，没有可能的索引。可以为相关的域从WHERE语句中选择一个合适的语句</p>
+<p>Økey：实际使用的索引。如果为NULL，则没有使用索引。MYSQL很少会选择优化不足的索引，此时可以在SELECT语句中使用USE INDEX（index）来强制使用一个索引或者用IGNORE INDEX（index）来强制忽略索引</p>
+<p>Økey_len：使用的索引的长度。在不损失精确性的情况下，长度越短越好</p>
+<p>Øref：显示索引的哪一列被使用了，如果可能的话，是一个常数</p>
+<p>Ørows：MySQL认为必须检索的用来返回请求数据的行数</p>
+<p>Øtype：这是最重要的字段之一，显示查询使用了何种类型。从最好到最差的连接类型为system、const、eq_reg、ref、range、index和ALL</p>
+<p>nsystem、const：可以将查询的变量转为常量.  如id=1; id为 主键或唯一键.</p>
+<p>neq_ref：访问索引,返回某单一行的数据.(通常在联接时出现，查询使用的索引为主键或惟一键)</p>
+<p>nref：访问索引,返回某个值的数据.(可以返回多行) 通常使用=时发生</p>
+<p>nrange：这个连接类型使用索引返回一个范围中的行，比如使用&gt;或&lt;查找东西，并且该字段上建有索引时发生的情况(注:不一定好于index)</p>
+<p>nindex：以索引的顺序进行全表扫描，优点是不用排序,缺点是还要全表扫描</p>
+<p>nALL：全表扫描，应该尽量避免</p>
+<p>ØExtra：关于MYSQL如何解析查询的额外信息，主要有以下几种</p>
+<p>nusing index：只用到索引,可以避免访问表.</p>
+<p>nusing where：使用到where来过虑数据. 不是所有的where clause都要显示using where. 如以=方式访问索引.</p>
+<p>nusing tmporary：用到临时表</p>
+<p>nusing filesort：用到额外的排序. (当使用order by v1,而没用到索引时,就会使用额外的排序)</p>
+<p>nrange checked for eache record(index map:N)：没有好的索引.</p>
+<p><a href="http://www.simlinux.com/old/wp-content/uploads/2013/08/7.png"><img src="http://www.simlinux.com/old/wp-content/uploads/2013/08/7.png" alt="7"></a></p>
+<p>&nbsp;</p>
+<h3 id="profiling分析查询"><a href="#profiling分析查询" class="headerlink" title="profiling分析查询"></a>profiling分析查询</h3><p>通过慢日志查询可以知道哪些SQL语句执行效率低下，通过explain我们可以得知SQL语句的具体执行情况，索引使用等，还可以结合show命令查看执行状态。</p>
+<p>如果觉得explain的信息不够详细，可以同通过profiling命令得到更准确的SQL执行消耗系统资源的信息。</p>
+<p>profiling默认是关闭的。可以通过以下语句查看</p>
+<p><a href="http://www.simlinux.com/old/wp-content/uploads/2013/08/11.png"><img src="http://www.simlinux.com/old/wp-content/uploads/2013/08/11.png" alt="11"></a></p>
+<p>&nbsp;</p>
+<p>打开功能： mysql&gt;set profiling=1; 执行需要测试的sql 语句：</p>
+<p><a href="http://www.simlinux.com/old/wp-content/uploads/2013/08/12.png"><img src="http://www.simlinux.com/old/wp-content/uploads/2013/08/12.png" alt="12"></a></p>
+<p>mysql&gt; show profilesG; 可以得到被执行的SQL语句的时间和ID</p>
+<p>mysql&gt;show profile for query 1; 得到对应SQL语句执行的详细信息</p>
+<p>Show Profile命令格式：</p>
+<p>SHOW PROFILE [type [, type] … ]</p>
+<p>[FOR QUERY n]</p>
+<p>[LIMIT row_count [OFFSET offset]]</p>
+<p>type:</p>
+<p>ALL</p>
+<p>| BLOCK IO</p>
+<p>| CONTEXT SWITCHES</p>
+<p>| CPU</p>
+<p>| IPC</p>
+<p>| MEMORY</p>
+<p>| PAGE FAULTS</p>
+<p>| SOURCE</p>
+<p>| SWAPS</p>
+<p>以上的16rows是针对非常简单的select语句的资源信息，对于较复杂的SQL语句，会有更多的行和字段，比如converting HEAP to MyISAM 、Copying to tmp table等等，由于以上的SQL语句不存在复杂的表操作，所以未显示这些字段。通过profiling资源耗费信息，我们可以采取针对性的优化措施。</p>
+<p>测试完毕以后 ，关闭参数：mysql&gt; set profiling=</p>
+<p><strong>2     索引及查询优化</strong></p>
+<p><strong>索引的类型</strong></p>
+<p>Ø 普通索引：这是最基本的索引类型，没唯一性之类的限制。</p>
+<p>Ø 唯一性索引：和普通索引基本相同，但所有的索引列值保持唯一性。</p>
+<p>Ø 主键：主键是一种唯一索引，但必须指定为”PRIMARY KEY”。</p>
+<p>Ø 全文索引：MYSQL从3.23.23开始支持全文索引和全文检索。在MYSQL中，全文索引的索引类型为FULLTEXT。全文索引可以在VARCHAR或者TEXT类型的列上创建。</p>
+<p>大多数MySQL索引(PRIMARY KEY、UNIQUE、INDEX和FULLTEXT)使用B树中存储。空间列类型的索引使用R-树，MEMORY表支持hash索引。</p>
+<p><strong>单列索引和多列索引（复合索引）</strong></p>
+<p>索引可以是单列索引，也可以是多列索引。对相关的列使用索引是提高SELECT操作性能的最佳途径之一。</p>
+<p><strong>多列索引：</strong></p>
+<p>MySQL可以为多个列创建索引。一个索引可以包括15个列。对于某些列类型，可以索引列的左前缀，列的顺序非常重要。</p>
+<p>多列索引可以视为包含通过连接索引列的值而创建的值的排序的数组。一般来说，即使是限制最严格的单列索引，它的限制能力也远远低于多列索引。</p>
+<p><strong>最左前缀</strong></p>
+<p>多列索引有一个特点，即最左前缀（Leftmost Prefixing）。假如有一个多列索引为key(firstname lastname age)，当搜索条件是以下各种列的组合和顺序时，MySQL将使用该多列索引：</p>
+<p>firstname，lastname，age</p>
+<p>firstname，lastname</p>
+<p>firstname</p>
+<p>也就是说，相当于还建立了key(firstname lastname)和key(firstname)。</p>
+<p>索引主要用于下面的操作：</p>
+<p>Ø 快速找出匹配一个WHERE子句的行。</p>
+<p>Ø 删除行。当执行联接时，从其它表检索行。</p>
+<p>Ø 对具体有索引的列key_col找出MAX()或MIN()值。由预处理器进行优化，检查是否对索引中在key_col之前发生所有关键字元素使用了WHERE key<em>part</em># = constant。在这种情况下，MySQL为每个MIN()或MAX()表达式执行一次关键字查找，并用常数替换它。如果所有表达式替换为常量，查询立即返回。例如：</p>
+<p>SELECT MIN(key2), MAX (key2)  FROM tb WHERE key1=10;</p>
+<p>Ø 如果对一个可用关键字的最左面的前缀进行了排序或分组(例如，ORDER BY key_part_1,key_part_2)，排序或分组一个表。如果所有关键字元素后面有DESC，关键字以倒序被读取。</p>
+<p>Ø 在一些情况中，可以对一个查询进行优化以便不用查询数据行即可以检索值。如果查询只使用来自某个表的数字型并且构成某些关键字的最左面前缀的列，为了更快，可以从索引树检索出值。</p>
+<p>SELECT key_part3 FROM tb WHERE key_part1=1</p>
+<p>有时MySQL不使用索引，即使有可用的索引。一种情形是当优化器估计到使用索引将需要MySQL访问表中的大部分行时。(在这种情况下，表扫描可能会更快些）。然而，如果此类查询使用LIMIT只搜索部分行，MySQL则使用索引，因为它可以更快地找到几行并在结果中返回。例如：</p>
+<p><a href="http://www.simlinux.com/old/wp-content/uploads/2013/08/20111020040827120.png"><img src="http://www.simlinux.com/old/wp-content/uploads/2013/08/20111020040827120.png" alt="20111020040827120"></a></p>
+<p><strong>合理的建立索引**</strong>的建议：**</p>
+<p>(1)  越小的数据类型通常更好：越小的数据类型通常在磁盘、内存和CPU缓存中都需要更少的空间，处理起来更快。</p>
+<p>(2)  简单的数据类型更好：整型数据比起字符，处理开销更小，因为字符串的比较更复杂。在MySQL中，应该用内置的日期和时间数据类型，而不是用字符串来存储时间；以及用整型数据类型存储IP地址。</p>
+<p>(3)  尽量避免NULL：应该指定列为NOT NULL，除非你想存储NULL。在MySQL中，含有空值的列很难进行查询优化，因为它们使得索引、索引的统计信息以及比较运算更加复杂。你应该用0、一个特殊的值或者一个空串代替空值</p>
+<p>这部分是关于索引和写SQL语句时应当注意的一些琐碎建议和注意点。</p>
+<p><strong>1. **</strong>当结果集只有一行数据时使用<strong>**LIMIT 1</strong></p>
+<p><strong>2. **</strong>避免<strong><strong>SELECT *</strong></strong>，始终指定你需要的列**</p>
+<p>从表中读取越多的数据，查询会变得更慢。他增加了磁盘需要操作的时间，还是在数据库服务器与WEB服务器是独立分开的情况下。你将会经历非常漫长的网络延迟，仅仅是因为数据不必要的在服务器之间传输。</p>
+<p><strong>3. **</strong>使用连接（<strong><strong>JOIN</strong></strong>）来代替子查询<strong>**(Sub-Queries)</strong></p>
+<p>连接（JOIN）.. 之所以更有效率一些，是因为MySQL不需要在内存中创建临时表来完成这个逻辑上的需要两个步骤的查询工作。</p>
+<p><strong>4. **</strong>使用<strong><strong>ENUM</strong></strong>、<strong><strong>CHAR </strong></strong>而不是<strong><strong>VARCHAR</strong></strong>，使用合理的字段属性长度**</p>
+<p><strong>5. **</strong>尽可能的使用<strong>**NOT NULL</strong></p>
+<p><strong>6. **</strong>固定长度的表会更快**</p>
+<p><strong>7. **</strong>拆分大的<strong><strong>DELETE </strong></strong>或<strong><strong>INSERT </strong></strong>语句**</p>
+<p><strong>8. **</strong>查询的列越小越快**</p>
+<p>Where条件</p>
+<p>在查询中，WHERE条件也是一个比较重要的因素，尽量少并且是合理的where条件是很重要的，尽量在<strong>多个条件的时候，把会提取尽量少数据量的条件放在前面，减少后一个where条件的查询时间。</strong></p>
+<p>有些where条件会导致索引无效：</p>
+<p>Ø where子句的查询条件里有！=，MySQL将无法使用索引。</p>
+<p>Ø where子句使用了Mysql函数的时候，索引将无效，比如：select * from tb where left(name, 4) = ‘xxx’</p>
+<p>Ø 使用LIKE进行搜索匹配的时候，这样<strong>索引是有效的：select * from tbl1 where name like ‘xxx%’，而like ‘%xxx%’ 时索引无效</strong></p>
+<p>三、    配置优化</p>
+<p>安装MySQL后，配置文件my.cnf在 /MySQL安装目录/share/mysql目录中，该目录中还包含多个配置文件可供参考，有my-large.cnf ，my-huge.cnf，  my-medium.cnf，my-small.cnf，分别对应大中小型数据库应用的配置。win环境下即存在于MySQL安装目录中的.ini文件。</p>
+<p>下面列出了对性能优化影响较大的主要变量，主要分为连接请求的变量和缓冲区变量。</p>
+<p><strong><em>1.   </em>**</strong><em>连接请求的变量：</em>**</p>
+<h2 id="1-max-connections"><a href="#1-max-connections" class="headerlink" title="1)     max_connections"></a>1)     max_connections</h2><p>MySQL的最大连接数，增加该值增加mysqld 要求的文件描述符的数量。如果服务器的并发连接请求量比较大，建议调高此值，以增加并行连接数量，当然这建立在机器能支撑的情况下，因为如果连接数越多，介于MySQL会为每个连接提供连接缓冲区，就会开销越多的内存，所以要适当调整该值，不能盲目提高设值。</p>
+<p>数值过小会经常出现ERROR 1040: Too many connections错误，可以过’conn%’通配符查看当前状态的连接数量，以定夺该值的大小。</p>
+<p>show variables like ‘max_connections’ 最大连接数</p>
+<p>show  status like ‘max_used_connections’响应的连接数</p>
+<p>如下：</p>
+<p>mysql&gt; show variables like ‘max_connections‘;</p>
+<p>+———————–+——-+</p>
+<p>| Variable_name　| Value |</p>
+<p>+———————–+——-+</p>
+<p>| max_connections | 256　　|</p>
+<p>+———————–+——-+</p>
+<p>mysql&gt; show status like ‘max%connections‘;</p>
+<p>+———————–+——-+</p>
+<p>| Variable_name　      | Value |</p>
+<p>+—————————-+——-+</p>
+<p>| max_used_connections | 256|</p>
+<p>+—————————-+——-+</p>
+<p>max_used_connections / max_connections * 100% （理想值≈ 85%）</p>
+<p>如果max_used_connections跟max_connections相同 那么就是max_connections设置过低或者超过服务器负载上限了，低于10%则设置过大。</p>
+<h2 id="2-back-log"><a href="#2-back-log" class="headerlink" title="2)     back_log"></a>2)     back_log</h2><p>MySQL能暂存的连接数量。当主要MySQL线程在一个很短时间内得到非常多的连接请求，这就起作用。如果MySQL的连接数据达到max_connections时，新来的请求将会被存在堆栈中，以等待某一连接释放资源，该堆栈的数量即back_log，如果等待连接的数量超过back_log，将不被授予连接资源。</p>
+<p>back_log值指出在MySQL暂时停止回答新请求之前的短时间内有多少个请求可以被存在堆栈中。只有如果期望在一个短时间内有很多连接，你需要增加它，换句话说，这值对到来的TCP/IP连接的侦听队列的大小。</p>
+<p>当观察你主机进程列表（mysql&gt; show full processlist），发现大量264084 | unauthenticated user | xxx.xxx.xxx.xxx | NULL | Connect | NULL | login | NULL 的待连接进程时，就要加大back_log 的值了。</p>
+<p>默认数值是50，可调优为128，对于<a href="http://www.2cto.com/os/linux/" target="_blank" rel="external">Linux</a>系统设置范围为小于512的整数。</p>
+<h2 id="3-interactive-timeout"><a href="#3-interactive-timeout" class="headerlink" title="3)     interactive_timeout"></a>3)     interactive_timeout</h2><p>一个交互连接在被服务器在关闭前等待行动的秒数。一个交互的客户被定义为对mysql_real_connect()使用CLIENT_INTERACTIVE 选项的客户。</p>
+<p>默认数值是28800，可调优为7200。</p>
+<p><strong><em>2.   </em>**</strong><em>缓冲区变量</em>**</p>
+<p><strong>全局缓冲：</strong></p>
+<h2 id="4-key-buffer-size"><a href="#4-key-buffer-size" class="headerlink" title="4)     key_buffer_size"></a>4)     key_buffer_size</h2><p>key_buffer_size指定索引缓冲区的大小，它决定索引处理的速度，尤其是索引读的速度。通过检查状态值Key_read_requests和Key_reads，可以知道key_buffer_size设置是否合理。比例key_reads / key_read_requests应该尽可能的低，至少是1:100，1:1000更好（上述状态值可以使用SHOW STATUS LIKE ‘key_read%’获得）。</p>
+<p>key_buffer_size只对MyISAM表起作用。即使你不使用MyISAM表，但是内部的临时磁盘表是MyISAM表，也要使用该值。可以使用检查状态值created_tmp_disk_tables得知详情。</p>
+<p>举例如下：</p>
+<p>mysql&gt; show variables like ‘key_buffer_size‘;</p>
+<p>+——————-+————+</p>
+<p>| Variable_name | Value      |</p>
+<p>+———————+————+</p>
+<p>| key_buffer_size | 536870912 |</p>
+<p>+———— ———-+————+</p>
+<p>key_buffer_size为512MB，我们再看一下key_buffer_size的使用情况：</p>
+<p>mysql&gt; show global status like ‘key_read%‘;</p>
+<p>+————————+————-+</p>
+<p>| Variable_name　  | Value    |</p>
+<p>+————————+————-+</p>
+<p>| Key_read_requests| 27813678764 |</p>
+<p>| Key_reads　　　|  6798830      |</p>
+<p>+————————+————-+</p>
+<p>一共有27813678764个索引读取请求，有6798830个请求在内存中没有找到直接从硬盘读取索引，计算索引未命中缓存的概率：</p>
+<p>key_cache_miss_rate ＝Key_reads / Key_read_requests * 100%，设置在1/1000左右较好</p>
+<p>默认配置数值是8388600(8M)，主机有4GB内存，可以调优值为268435456(256MB)。</p>
+<h2 id="5-query-cache-size"><a href="#5-query-cache-size" class="headerlink" title="5)     query_cache_size"></a>5)     query_cache_size</h2><p>使用查询缓冲，MySQL将查询结果存放在缓冲区中，今后对于同样的SELECT语句（区分大小写），将直接从缓冲区中读取结果。</p>
+<p>通过检查状态值Qcache_*，可以知道query_cache_size设置是否合理（上述状态值可以使用SHOW STATUS LIKE ‘Qcache%’获得）。如果Qcache_lowmem_prunes的值非常大，则表明经常出现缓冲不够的情况，如果Qcache_hits的值也非常大，则表明查询缓冲使用非常频繁，此时需要增加缓冲大小；如果Qcache_hits的值不大，则表明你的查询重复率很低，这种情况下使用查询缓冲反而会影响效率，那么可以考虑不用查询缓冲。此外，在SELECT语句中加入SQL_NO_CACHE可以明确表示不使用查询缓冲。</p>
+<p>&nbsp;</p>
+<p>与查询缓冲有关的参数还有query_cache_type、query_cache_limit、query_cache_min_res_unit。</p>
+<p>&nbsp;</p>
+<p>query_cache_type指定是否使用查询缓冲，可以设置为0、1、2，该变量是SESSION级的变量。</p>
+<p>query_cache_limit指定单个查询能够使用的缓冲区大小，缺省为1M。</p>
+<p>query_cache_min_res_unit是在4.1版本以后引入的，它指定分配缓冲区空间的最小单位，缺省为4K。检查状态值Qcache_free_blocks，如果该值非常大，则表明缓冲区中碎片很多，这就表明查询结果都比较小，此时需要减小query_cache_min_res_unit。</p>
+<p>举例如下：</p>
+<p>mysql&gt; show global status like ‘qcache%‘;</p>
+<p>+——————————-+—————–+</p>
+<p>| Variable_name                  | Value　       |</p>
+<p>+——————————-+—————–+</p>
+<p>| Qcache_free_blocks　       | 22756　      |</p>
+<p>| Qcache_free_memory　    | 76764704    |</p>
+<p>| Qcache_hits　　　　　      | 213028692 |</p>
+<p>| Qcache_inserts　　　　     | 208894227   |</p>
+<p>| Qcache_lowmem_prunes   | 4010916      |</p>
+<p>| Qcache_not_cached　| 13385031    |</p>
+<p>| Qcache_queries_in_cache | 43560　|</p>
+<p>| Qcache_total_blocks          | 111212　     |</p>
+<p>+——————————-+—————–+</p>
+<p>mysql&gt; show variables like ‘query_cache%‘;</p>
+<p>+————————————–+————–+</p>
+<p>| Variable_name　　　　　       | Value　     |</p>
+<p>+————————————–+———–+</p>
+<p>| query_cache_limit　　　　　    | 2097152     |</p>
+<p>| query_cache_min_res_unit　     | 4096　　  |</p>
+<p>| query_cache_size　　　　　    | 203423744 |</p>
+<p>| query_cache_type　　　　　   | ON　          |</p>
+<p>| query_cache_wlock_invalidate | OFF　  |</p>
+<p>+————————————–+—————+</p>
+<p>查询缓存碎片率= Qcache_free_blocks / Qcache_total_blocks * 100%</p>
+<p>如果查询缓存碎片率超过20%，可以用FLUSH QUERY CACHE整理缓存碎片，或者试试减小query_cache_min_res_unit，如果你的查询都是小数据量的话。</p>
+<p>查询缓存利用率= (query_cache_size – Qcache_free_memory) / query_cache_size * 100%</p>
+<p>查询缓存利用率在25%以下的话说明query_cache_size设置的过大，可适当减小；查询缓存利用率在80％以上而且Qcache_lowmem_prunes &gt; 50的话说明query_cache_size可能有点小，要不就是碎片太多。</p>
+<p>查询缓存命中率= (Qcache_hits – Qcache_inserts) / Qcache_hits * 100%</p>
+<p>示例服务器查询缓存碎片率＝20.46％，查询缓存利用率＝62.26％，查询缓存命中率＝1.94％，命中率很差，可能写操作比较频繁吧，而且可能有些碎片。</p>
+<p><strong>每个连接的缓冲</strong></p>
+<h2 id="6-record-buffer-size"><a href="#6-record-buffer-size" class="headerlink" title="6)    record_buffer_size"></a>6)    record_buffer_size</h2><p>每个进行一个顺序扫描的线程为其扫描的每张表分配这个大小的一个缓冲区。如果你做很多顺序扫描，你可能想要增加该值。</p>
+<p>默认数值是131072(128K)，可改为16773120 (16M)</p>
+<h2 id="7-read-rnd-buffer-size"><a href="#7-read-rnd-buffer-size" class="headerlink" title="7)     read_rnd_buffer_size"></a>7)     read_rnd_buffer_size</h2><p>随机读缓冲区大小。当按任意顺序读取行时(例如，按照排序顺序)，将分配一个随机读缓存区。进行排序查询时，MySQL会首先扫描一遍该缓冲，以避免磁盘搜索，提高查询速度，如果需要排序大量数据，可适当调高该值。但MySQL会为每个客户连接发放该缓冲空间，所以应尽量适当设置该值，以避免内存开销过大。</p>
+<p>一般可设置为16M</p>
+<h2 id="8-sort-buffer-size"><a href="#8-sort-buffer-size" class="headerlink" title="8)     sort_buffer_size"></a>8)     sort_buffer_size</h2><p>每个需要进行排序的线程分配该大小的一个缓冲区。增加这值加速ORDER BY或GROUP BY操作。</p>
+<p>默认数值是2097144(2M)，可改为16777208 (16M)。</p>
+<h2 id="9-join-buffer-size"><a href="#9-join-buffer-size" class="headerlink" title="9)     join_buffer_size"></a>9)     join_buffer_size</h2><p>联合查询操作所能使用的缓冲区大小</p>
+<p><strong>record_buffer_size**</strong>，read_rnd_buffer_size，sort_buffer_size，join_buffer_size为每个线程独占，也就是说，如果有100个线程连接，则占用为16M<em>100*</em></p>
+<h2 id="10-table-cache"><a href="#10-table-cache" class="headerlink" title="10)  table_cache"></a>10)  table_cache</h2><p>表高速缓存的大小。每当MySQL访问一个表时，如果在表缓冲区中还有空间，该表就被打开并放入其中，这样可以更快地访问表内容。<strong>通过检查峰值时间的状态值</strong>Open_tables<strong>和</strong>Opened_tables<strong>，可以决定是否需要增加</strong>table_cache<strong>的值。</strong>如果你发现open_tables等于table_cache，并且opened_tables在不断增长，那么你就需要增加table_cache的值了（上述状态值可以使用SHOW STATUS LIKE ‘Open%tables’获得）。注意，不能盲目地把table_cache设置成很大的值。如果设置得太高，可能会造成文件描述符不足，从而造成性能不稳定或者连接失败。</p>
+<p>1G内存机器，推荐值是128－256。内存在4GB左右的服务器该参数可设置为256M或384M。</p>
+<h2 id="11-max-heap-table-size"><a href="#11-max-heap-table-size" class="headerlink" title="11)  max_heap_table_size"></a>11)  max_heap_table_size</h2><p>用户可以创建的内存表(memory table)的大小。这个值用来计算内存表的最大行数值。这个变量支持动态改变，即set @max_heap_table_size=#</p>
+<p>这个变量和tmp_table_size一起限制了内部内存表的大小。如果某个内部heap（堆积）表大小超过tmp_table_size，MySQL可以根据需要自动将内存中的heap表改为基于硬盘的MyISAM表。</p>
+<h2 id="12-tmp-table-size"><a href="#12-tmp-table-size" class="headerlink" title="12)  tmp_table_size"></a>12)  tmp_table_size</h2><p>通过设置tmp_table_size选项来增加一张临时表的大小，例如做高级GROUP BY操作生成的临时表。如果调高该值，MySQL同时将增加heap表的大小，可达到提高联接查询速度的效果，<strong>建议尽量优化查询，要确保查询过程中生成的临时表在内存中，避免临时表过大导致生成基于硬盘的MyISAM表</strong>。</p>
+<p>mysql&gt; show global status like ‘created_tmp%‘;</p>
+<p>+——————————–+———+</p>
+<p>| Variable_name　　           | Value　|</p>
+<p>+———————————-+———+</p>
+<p>| Created_tmp_disk_tables | 21197  |</p>
+<p>| Created_tmp_files　　　| 58　　|</p>
+<p>| Created_tmp_tables　　| 1771587 |</p>
+<p>+——————————–+———–+</p>
+<p>每次创建临时表，Created_tmp_tables增加，如果临时表大小超过tmp_table_size，则是在磁盘上创建临时表，Created_tmp_disk_tables也增加,Created_tmp_files表示MySQL服务创建的临时文件文件数，比较理想的配置是：</p>
+<p>Created_tmp_disk_tables / Created_tmp_tables <em> 100% &lt;= 25%比如上面的服务器Created_tmp_disk_tables / Created_tmp_tables </em> 100% ＝1.20%，应该相当好了</p>
+<p>默认为16M，可调到64-256最佳，线程独占，太大可能内存不够I/O堵塞</p>
+<h2 id="13-thread-cache-size"><a href="#13-thread-cache-size" class="headerlink" title="13)  thread_cache_size"></a>13)  thread_cache_size</h2><p>可以复用的保存在中的线程的数量。如果有，新的线程从缓存中取得，当断开连接的时候如果有空间，客户的线置在缓存中。如果有很多新的线程，为了提高性能可以这个变量值。</p>
+<p>通过比较 Connections和Threads_created状态的变量，可以看到这个变量的作用。</p>
+<p>默认值为110，可调优为80。</p>
+<h2 id="14-thread-concurrency"><a href="#14-thread-concurrency" class="headerlink" title="14)  thread_concurrency"></a>14)  thread_concurrency</h2><p>推荐设置为服务器 CPU核数的2倍，例如双核的CPU, 那么thread_concurrency的应该为4；2个双核的cpu, thread_concurrency的值应为8。默认为8</p>
+<h2 id="15-wait-timeout"><a href="#15-wait-timeout" class="headerlink" title="15)  wait_timeout"></a>15)  wait_timeout</h2><p>指定一个请求的最大连接时间，对于4GB左右内存的服务器可以设置为5-10。</p>
+<p><em>3.    __配置InnoDB的几个变量</em></p>
+<p><strong>innodb_buffer_pool_size</strong></p>
+<p>对于InnoDB表来说，innodb_buffer_pool_size的作用就相当于key_buffer_size对于MyISAM表的作用一样。InnoDB使用该参数指定大小的内存来缓冲数据和索引。对于单独的MySQL<a href="http://www.2cto.com/database/" target="_blank" rel="external">数据库</a>服务器，最大可以把该值设置成物理内存的80%。</p>
+<p>根据MySQL手册，对于2G内存的机器，推荐值是1G（50%）。</p>
+<p><strong>innodb_flush_log_at_trx_commit</strong></p>
+<p>主要控制了innodb将log buffer中的数据写入日志文件并flush磁盘的时间点，取值分别为0、1、2三个。0，表示当事务提交时，不做日志写入操作，而是每秒钟将log buffer中的数据写入日志文件并flush磁盘一次；1，则在每秒钟或是每次事物的提交都会引起日志文件写入、flush磁盘的操作，确保了事务的ACID；设置为2，每次事务提交引起写入日志文件的动作，但每秒钟完成一次flush磁盘操作。</p>
+<p>实际测试发现，该值对插入数据的速度影响非常大，设置为2时插入10000条记录只需要2秒，设置为0时只需要1秒，而设置为1时则需要229秒。因此，MySQL手册也建议尽量将插入操作合并成一个事务，这样可以大幅提高速度。</p>
+<p>根据MySQL手册，在允许丢失最近部分事务的危险的前提下，可以把该值设为0或2。</p>
+<p><strong>innodb_log_buffer_size</strong></p>
+<p>log缓存大小，一般为1-8M，默认为1M，对于较大的事务，可以增大缓存大小。</p>
+<p>可设置为4M或8M。</p>
+<p><strong>innodb_additional_mem_pool_size</strong></p>
+<p>该参数指定InnoDB用来存储数据字典和其他内部数据结构的内存池大小。缺省值是1M。通常不用太大，只要够用就行，应该与表结构的复杂度有关系。如果不够用，MySQL会在错误日志中写入一条警告信息。</p>
+<p>根据MySQL手册，对于2G内存的机器，推荐值是20M，可适当增加。</p>
+<p><strong>innodb_thread_concurrency=8</strong></p>
+<p>推荐设置为 2*(NumCPUs+NumDisks)，默认一般为8</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2013/08/03/lvm-e7-ae-80-e5-8d-95-e9-85-8d-e7-bd-ae-e6-80-bb-e7-bb-93.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Geekwolf">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/wolf.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Geekwolf's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2013/08/03/lvm-e7-ae-80-e5-8d-95-e9-85-8d-e7-bd-ae-e6-80-bb-e7-bb-93.html" itemprop="url">LVM简单配置总结</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2013-08-03T08:40:08+08:00">
+                2013-08-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux运维/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux运维</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2013/08/03/lvm-e7-ae-80-e5-8d-95-e9-85-8d-e7-bd-ae-e6-80-bb-e7-bb-93.html" class="leancloud_visitors" data-flag-title="LVM简单配置总结">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>lvm  操作步骤：<br>1、找块空的硬盘 ，分区sdd1和sdd2。用t 改变system  id ，为8e，（lvm），w保持退出。</p>
+<div>2、pvscan</div><br><div>3、pvcreate  /dev/sdd1   生成pv</div><br><div>4、vgcreate  vg1   /dev/sdd1  把pv（dev/sdd1）创建为一个vg1的卷组</div><br><div>5、lvcreate   －L  10M  -n  lv1  vg1   把vg1里面的10M的空间划分出来创建lv1。</div><br><div>6、格式化lv1   mkfs.ext3  /dev/vg1/lv1</div><br><div>7、挂载lv1    mount  /dev/vg1/lv1   /mnt/lv1</div><br><div>8、可以正常使用lv1</div><br><div>改变lv的大小</div><br><div>方法一：在未使用lv的时候，可以通过lvextend  扩展，需要先卸载，再扩展，再格式化，最后重新挂载。<br>lvextend  -L  +20M  /dev/vg1/lv1  增加20M<br>lvreduce  -L  -10M  /dev/vg1/lv1   减少10M</div><br><div>方法二：在已使用lv的时候，可以通过resize2fs  无损扩展，无需重新挂载，无需格式化。<br>lvresize  -L  200M  /dev/vg1/lv1<br>先设定大小为200M<br>lvresize  －L   ＋10M  /dev/vg1/lv1<br>带＋  意思是在原有基础上面增加10M<br>resize2fs  /dev/vg1/lv1<br>这条命令是执行重定义尺寸操作</div><br><div><br><br># <span style="color: #0000ff; font-size: medium;"><span style="color: #ff0000;">将逻辑卷data扩容20M,注意有+和没+的区别，有+是将逻辑卷增加了20M,没+是将逻辑卷增加到20M，区别很大</span></span><br><br></div><br><div>改变vg大小<br>通过增加pv到vg中，来增加vg的总容量<br>步骤：<br>1、pvcreate  /dev/sdd2<br>2、vgextend  vg1   /dev/sdd2</div><br><div></div><br><div></div><br><div>上面是我个人总结实验的基本步骤，现在给一张拓扑图 ，便于理解操作！</div><br><div><img src="http://img1.51cto.com/attachment/200908/200908301251618386095.jpg" alt=""></div><br><div></div><br><div></div>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+  </section>
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/6/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><a class="extend next" rel="next" href="/page/8/"><i class="fa fa-angle-right"></i></a>
+  </nav>
+
+
+
+          </div>
+          
+
+
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/wolf.jpeg"
+               alt="Geekwolf" />
+          <p class="site-author-name" itemprop="name">Geekwolf</p>
+           
+              <p class="site-description motion-element" itemprop="description">DevOps | Docker | K8S | MySQL | 运维</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">167</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">105</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/geekwolf" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                    
+                      GitHub
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/geekwolf" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                    
+                      Weibo
+                    
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2012 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Geekwolf</span>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  
+    <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('-1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("qms5kJ0y2CItrIVFivKxxPsR-gzGzoHsz", "Cn3w20futtphxpaDSP5tHjzy");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
