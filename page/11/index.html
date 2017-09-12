@@ -339,181 +339,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2012/11/09/ssh-e5-af-86-e9-92-a5-e8-ae-a4-e8-af-81-e5-8e-9f-e7-90-86.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Geekwolf">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/wolf.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Geekwolf's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2012/11/09/ssh-e5-af-86-e9-92-a5-e8-ae-a4-e8-af-81-e5-8e-9f-e7-90-86.html" itemprop="url">ssh密钥认证原理</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2012-11-09T15:16:24+08:00">
-                2012-11-09
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux运维/" itemprop="url" rel="index">
-                    <span itemprop="name">Linux运维</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2012/11/09/ssh-e5-af-86-e9-92-a5-e8-ae-a4-e8-af-81-e5-8e-9f-e7-90-86.html" class="leancloud_visitors" data-flag-title="ssh密钥认证原理">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长</span>
-                
-                <span title="阅读时长">
-                  2
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>所谓的密钥认证，实际上是使用一对加密字符串，一个称为公钥(public key)， 任何人都可以看到其内容，用于加密；另一个称为密钥(private key)，只有拥有者才能看到，用于解密。 通过公钥加密过的密文使用密钥可以轻松解密，但根据公钥来猜测密钥却十分困难。</p>
-<p>ssh 的密钥认证就是使用了这一特性。服务器和客户端都各自拥有自己的公钥和密钥。 为了说明方便，以下将使用这些符号。<br>Ac 客户端公钥<br>Bc 客户端密钥<br>As 服务器公钥<br>Bs 服务器密钥</p>
-<p>在认证之前，客户端需要通过某种方法将公钥 Ac 登录到服务器上。</p>
-<p>认证过程分为两个步骤。</p>
-<p>1. 会话密 钥(session key)生成<br>1. 客户端 请求连接服务器，服务器将 As 发送给客户端。<br>2. 服务器生成会话ID(session id)，设为 p，发送给客户端。<br>3. 客户端生成会话密钥(session key)，设为 q，并计算 r = p xor q。<br>4. 客户端将 r 用 As 进行加密，结果发送给服务器。<br>5. 服务器用 Bs 进行解密，获得 r。<br>6. 服务器进行 r xor p 的运算，获得 q。<br>7. 至此服务器和客户端都知道了会话密钥q，以后的传输都将被 q 加密。<br>2. 认证<br>1. 服务器 生成随机数 x，并用 Ac 加密后生成结果 S(x)，发送给客户端<br>2. 客户端使用 Bc 解密 S(x) 得到 x<br>3. 客户端计算 q + x 的 md5 值 n(q+x)，q为上一步得到的会话密钥<br>4. 服务器计算 q + x 的 md5 值 m(q+x)<br>5. 客户端将 n(q+x) 发送给服务器<br>6. 服务器比较 m(q+x) 和 n(q+x)，两者相同则认证成功</p>
-<div></div><br><div></div><br><div></div><br><div></div><br><div><br><div><br><div></div><br></div><br></div>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2012/10/21/nginx-auth-basicphpmyadmin-e5-ae-89-e5-85-a8-e9-aa-8c-e8-af-81-ef-bc-88-e8-bd-ac-e8-bd-bd-ef-bc-89.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2356,6 +2181,192 @@ kill -HUP `cat /etc/nginx/logs/nginx.pid`</pre>
 
 
     
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2012/09/02/e5-90-af-e5-8a-a8mysql-e7-9a-84innodb-monitor-e5-8a-9f-e8-83-bd.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Geekwolf">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/wolf.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Geekwolf's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2012/09/02/e5-90-af-e5-8a-a8mysql-e7-9a-84innodb-monitor-e5-8a-9f-e8-83-bd.html" itemprop="url">启动mysql的innodb monitor功能</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2012-09-02T04:12:12+08:00">
+                2012-09-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/MySQL数据库/" itemprop="url" rel="index">
+                    <span itemprop="name">MySQL数据库</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2012/09/02/e5-90-af-e5-8a-a8mysql-e7-9a-84innodb-monitor-e5-8a-9f-e8-83-bd.html" class="leancloud_visitors" data-flag-title="启动mysql的innodb monitor功能">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  2
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>在使用Innodb做为存储引擎的数据库系统中，可以使用innodb_monitor 来监控数据库的性能，</p>
+<p>启动innodb_monitor的方法为 </p>
+<p>Create table innodb_monitor (i int) engine=innodb ；</p>
+<p>通过建立这个表就启动了innodb_monitor，监控的结果并不会记录到这个表中，而是记录到了mysql的err日志中，如果我们想监控更我的关 于innodb的锁信息还可更进一步的建立表</p>
+<p>create table innodb_lock_monitor (i int) engine=innodb 这样在日志中会加入更多的锁信息，</p>
+<p>如果要关闭监控只要简单的删除这两个表就可以了.Drop table innodb_monitor; drop table innodb_lock_monitor;</p>
+<p>&#160;</p>
+<p>&#160;&#160;&#160;&#160;&#160; InnoDB引擎提供了一个monitor，可以通过monitor一窥其内部的一些统计信息，也可以说是了解InnoDB引擎的一个很好的窗口。</p>
+<p>我们最熟悉的，应当就是show innodb status命令，可以直接在客户端输出很多的信息。</p>
+<p>其实InnoDB monitor一共有四种模式，show innodb status只是其一种模式的直接展现，并且只能交互式开启，无法自动循环捕获信息。另外还有一种适合四种模式的开启方式，则是通过创建一张特殊的 innodb表来开启，开启后会按照固定的时间间隔循环，输出信息到log-error参数指定的错误日志文件中，通过drop对应的表，可以停止 monitor。</p>
+<p>四种monitor分别是:</p>
+<ul>
+<li>innodb_monitor：create table innodb_monitor(x int) engine=innodb;<em>   innodb_lock_monitor：create table innodb_lock_monitor(x int) engine=innodb;</em>   innodb_table_monitor：create table innodb_table_monitor(x int) engine=innodb;*   innodb_tablespace_monitor：create table innodb_tablespace_monitor(x int) engine=innodb;  </li>
+</ul>
+<p>根据我在5.1.36版本中实际观察到的结果，innodb_monitor/innodb_lock_monitor开启后的执行周期是<strong>16s</strong>（<a href="http://dev.mysql.com/doc/refman/5.1/en/innodb-monitors.html" target="_blank" rel="external">参考手册</a>上说是15s），而innodb_table_monitor/innodb_tablespace_monitor的执行周期是<strong>64s</strong>。开启monitor后因为是持续周期性的运行的，在不需要的时候一定要记得drop相关表来停止monitor。如果在开启monitor的中间服务器有重启，monitor不会自动重启，并且在下次启动monitor之前，必须先执行停止操作。</p>
+<p>其中innodb_monitor/innodb_lock_monitor两种监视器的输出结果基本类似，后者会有更多关于锁的信息，而前一 个实际上就是show innodb status。innodb_table_monitor则会将系统中所有innodb的表的一些结构和内部信息输出，而 innodb_tablespace_monitor则输出的是tablespace的信息，注意该monitor输出的只是共享表空间的信息，如果使用 innodb_file_per_table为每个表使用独立的表空间，则这些表空间的信息是不会包含在输出中的。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
   </section>
 
   
@@ -2406,7 +2417,7 @@ kill -HUP `cat /etc/nginx/logs/nginx.pid`</pre>
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">167</span>
+                <span class="site-state-item-count">166</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>

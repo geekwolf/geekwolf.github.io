@@ -339,188 +339,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2012/12/05/mysql-5-15-5-windows-remote-r00t-mysqljackpot-e9-aa-8c-e8-af-81-windows-e4-b8-8bmysql-e6-8f-90-e6-9d-83.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Geekwolf">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/wolf.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Geekwolf's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2012/12/05/mysql-5-15-5-windows-remote-r00t-mysqljackpot-e9-aa-8c-e8-af-81-windows-e4-b8-8bmysql-e6-8f-90-e6-9d-83.html" itemprop="url">MySQL 5.1/5.5 WiNDOWS REMOTE R00T (mysqljackpot) 验证--windows下mysql提权</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2012-12-05T05:14:23+08:00">
-                2012-12-05
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/系统安全/" itemprop="url" rel="index">
-                    <span itemprop="name">系统安全</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2012/12/05/mysql-5-15-5-windows-remote-r00t-mysqljackpot-e9-aa-8c-e8-af-81-windows-e4-b8-8bmysql-e6-8f-90-e6-9d-83.html" class="leancloud_visitors" data-flag-title="MySQL 5.1/5.5 WiNDOWS REMOTE R00T (mysqljackpot) 验证--windows下mysql提权">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长</span>
-                
-                <span title="阅读时长">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>2月2日mysql爆出windows下5.1/5.5mysql账号可以提权至系统权限</p>
-<p>见<a href="http://www.exploit-db.com/exploits/23073/" target="_blank" rel="external">http://www.exploit-db.com/exploits/23073/</a></p>
-<p>下面将我的测试步骤记录下来：</p>
-<p>1、首先找到一台linux机器，我在上面已经安装了mysql，安装目录在/usr/local/mysql</p>
-<p>2、下载poc程序，解压缩，然后编译mysqljackpot.c</p>
-<p>gcc -o mysqljackpot mysqljackpot.c -I /usr/local/mysql/include -L /usr/local/mysql/lib/mysql/ -lmysqlclient</p>
-<p>3、由于需要反向shell，需要借助payload.dll，这个文件需要在windows下编译，首先得安装MinGW，在MinGW下进行编译（需要修改payload.c中的ip为我们的反向shell所在的机器ip）</p>
-<p>set PATH=%PATH%;c:MinGWbin<br>gcc -c payload.c<br>gcc -shared -o payload.dll payload.o -lws2_32</p>
-<p>4、在linux机器上执行程序，效果如下：</p>
-<p><img src="http://pic002.cnblogs.com/images/2012/418678/2012120317335096.jpg" alt=""></p>
-<p>由上图可见，在已知mysql密码的情况下即可获取对方机器的系统权限！</p>
-<p>&nbsp;</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2012/12/03/linux-e6-9c-8d-e5-8a-a1-e5-99-a8-e5-89-8d-e5-8f-b0-e5-b8-b8-e5-87-ba-e7-8e-b0-e7-9a-84-e9-94-99-e8-af-af-e6-8f-90-e7-a4-ba-e5-8f-8a-e5-90-ab-e6-84-8f.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2182,6 +2000,181 @@
 
 
     
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2012/11/09/ssh-e5-af-86-e9-92-a5-e8-ae-a4-e8-af-81-e5-8e-9f-e7-90-86.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Geekwolf">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/wolf.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Geekwolf's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2012/11/09/ssh-e5-af-86-e9-92-a5-e8-ae-a4-e8-af-81-e5-8e-9f-e7-90-86.html" itemprop="url">ssh密钥认证原理</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2012-11-09T15:16:24+08:00">
+                2012-11-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux运维/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux运维</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2012/11/09/ssh-e5-af-86-e9-92-a5-e8-ae-a4-e8-af-81-e5-8e-9f-e7-90-86.html" class="leancloud_visitors" data-flag-title="ssh密钥认证原理">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  2
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>所谓的密钥认证，实际上是使用一对加密字符串，一个称为公钥(public key)， 任何人都可以看到其内容，用于加密；另一个称为密钥(private key)，只有拥有者才能看到，用于解密。 通过公钥加密过的密文使用密钥可以轻松解密，但根据公钥来猜测密钥却十分困难。</p>
+<p>ssh 的密钥认证就是使用了这一特性。服务器和客户端都各自拥有自己的公钥和密钥。 为了说明方便，以下将使用这些符号。<br>Ac 客户端公钥<br>Bc 客户端密钥<br>As 服务器公钥<br>Bs 服务器密钥</p>
+<p>在认证之前，客户端需要通过某种方法将公钥 Ac 登录到服务器上。</p>
+<p>认证过程分为两个步骤。</p>
+<p>1. 会话密 钥(session key)生成<br>1. 客户端 请求连接服务器，服务器将 As 发送给客户端。<br>2. 服务器生成会话ID(session id)，设为 p，发送给客户端。<br>3. 客户端生成会话密钥(session key)，设为 q，并计算 r = p xor q。<br>4. 客户端将 r 用 As 进行加密，结果发送给服务器。<br>5. 服务器用 Bs 进行解密，获得 r。<br>6. 服务器进行 r xor p 的运算，获得 q。<br>7. 至此服务器和客户端都知道了会话密钥q，以后的传输都将被 q 加密。<br>2. 认证<br>1. 服务器 生成随机数 x，并用 Ac 加密后生成结果 S(x)，发送给客户端<br>2. 客户端使用 Bc 解密 S(x) 得到 x<br>3. 客户端计算 q + x 的 md5 值 n(q+x)，q为上一步得到的会话密钥<br>4. 服务器计算 q + x 的 md5 值 m(q+x)<br>5. 客户端将 n(q+x) 发送给服务器<br>6. 服务器比较 m(q+x) 和 n(q+x)，两者相同则认证成功</p>
+<div></div><br><div></div><br><div></div><br><div></div><br><div><br><div><br><div></div><br></div><br></div>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
   </section>
 
   
@@ -2232,7 +2225,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">167</span>
+                <span class="site-state-item-count">166</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
