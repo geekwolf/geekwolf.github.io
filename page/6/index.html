@@ -339,7 +339,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2014/08/20/sql-e5-9f-ba-e7-a1-80-e6-93-8d-e4-bd-9c-e6-80-bb-e7-bb-93.html">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2013/12/14/centos-install-opennebula.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Geekwolf">
@@ -358,2581 +358,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2014/08/20/sql-e5-9f-ba-e7-a1-80-e6-93-8d-e4-bd-9c-e6-80-bb-e7-bb-93.html" itemprop="url">Sql基础操作总结</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-08-20T10:02:44+08:00">
-                2014-08-20
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/MySQL数据库/" itemprop="url" rel="index">
-                    <span itemprop="name">MySQL数据库</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2014/08/20/sql-e5-9f-ba-e7-a1-80-e6-93-8d-e4-bd-9c-e6-80-bb-e7-bb-93.html" class="leancloud_visitors" data-flag-title="Sql基础操作总结">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长</span>
-                
-                <span title="阅读时长">
-                  5
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>本文主要根据自己的学习过程总结的文章，可能并不全面，牛人请绕过~<br>show create table user \G; 查看创建user表的sql<br><strong>修改表结构：</strong></p>
-<pre><code>alter  table tablename modify[culumn] column_definition [first|after col_name]
-例子：
-修改emp的字段数据类型
-alter table  emp modify ename varchar(20);
-表首增加字段
-alter table emp add column id int(10) first;
-删除字段
-alter table emp drop [column]  id;
-字段改名 
-alter table tablename change [column] old_name column_definition [first/after col_name]
-更改表名
-alter table emp rename [to] test;
-`&lt;/pre&gt;
-
-**注释：** modify只能修改字段数据类型，不能修改字段名称，first/after 表示修改字段的顺序
-
-**插入操作:**
-
-&lt;pre style=&quot;color: #93a1a1;&quot;&gt;`insert into table emp(f1,f2,f3) values(v1,v2,v3);
-insert into table  emp values(v1,v2,v3);
-一次插入多条记录
-insert into table emp(f1,f2,f3)
-values
-(r1_v1,r2_v1,r3_v1),
-(r1_v2,r2_v2,r3_v3);
-`&lt;/pre&gt;
-
-**查询：**
-1.查询不重复记录 distinct
-
-&lt;pre style=&quot;color: #93a1a1;&quot;&gt;`select distinct deptno from emp;
-`&lt;/pre&gt;
-
-2.条件查询 where
-where字段比较 &amp;gt;、&amp;lt;、&amp;gt;=、&amp;lt;=、!= 等，多条件用or、and等 3.排序和限制 order by 排序关键字（默认是升序排列）：
-DESC 表示按照字段进行降序排列
-ASC 表所升序排列
-limit n显示前N条记录 4.聚合操作
-
-&lt;pre style=&quot;color: #93a1a1;&quot;&gt;`语法： select [fidled1,field2,...,fieldn] fun_name
-from  tablename
-[where where_contition]
-[group by  field1,field2,...fieldn]
-[with rollup]
-[having where_contition]
-
-fun_name :表示做聚合操作的函数，比如：sum、count（*）、max、min
-group by  :表示要进行分类聚合的字段
-with follup ：可选，表示是否对分类聚合后的结果进行在汇总
-having  ：表示在对分类后的结果在进行条件的过滤
-`&lt;/pre&gt;
-
-having和where的区别:
-having是对聚合后的结果进行条件的过滤，而where是在聚合前就对记录进行过滤，如果逻辑允许，我们尽可能用where先过滤记录，这样因为结果集减小，将对聚合的效率大大提高，最后在根据逻辑看是否用having进行再过滤
-
-&lt;pre style=&quot;color: #93a1a1;&quot;&gt;`例如：
- 统计各个部门的人数：
- select deptno,count(1) from emp group by deptno;
- 统计各个部门的人数，又要统计总人数:
- select deptno,count(1) from emp group by deptno with rollup;
- 统计人数大于1的部门：
- select deptno,count(1) from emp group by deptno having count(1)&amp;gt;1;
- 统计公司所有员工的薪水总额、最高和最低薪水
- select sum(sal),max(sal),min(sal) from emp;
-`&lt;/pre&gt;
-
-3.表连接
-表连接分为：内连接和外连接；内连接：仅选出两张表中互相匹配的记录；外连接：选出其他不匹配的记录
-
-&lt;pre style=&quot;color: #93a1a1;&quot;&gt;`例如：
- 查询雇员的名字和所在部门名称（雇员和部门分属于两个表）
- select ename,deptname from emp,dept where emp.deptno=dept.deptno;
-   外连接分为： 
-   左连接：包含所有的左边表中的记录甚至是右边表中没有和它匹配的记录
-   右连接：包含所有的右边表中的记录甚至是左边表中没有和它匹配的记录
-
-例如：查询emp中所有用户和所在部门名称
-select ename,deptname from dept right join emp on dept.deptno=emp.deptno;
-或可用左连接代替
-select ename,deptname from emp left join dept on emp.deptno=dept.deptno;
-`&lt;/pre&gt;
-表连接的好文章： [http://coolshell.cn/articles/3463.html](http://coolshell.cn/articles/3463.html)
-MySQL的联结（Join）语法：
-[http://www.blogjava.net/chenpengyi/archive/2005/10/17/15747.html](http://www.blogjava.net/chenpengyi/archive/2005/10/17/15747.html)
-
-4.子查询 用于子查询的关键字包括in、not in、=、!=、exits、not exits等
-例如：
-&lt;pre style=&quot;color: #93a1a1;&quot;&gt;`从emp表中查询出所有部门在dept表中的所有记录
-select * from emp where deptno in(select deptno from dept);
-可以使用表连接替换：
-select emp.*  from emp,dept where emp.deptno=dept.deptno;
-
-查询记录数唯一，可用=代替in
-select * from emp where deptno = (select deptno from dept limit 1);
-`&lt;/pre&gt;
-5.记录联合（union、union all） 场景：将两个表的数据按照一定的查询条件查询出来后，在合并显示 union和union all的区别在于union all把结果集直接合并在一起，而union是将union all后的结果进行了去重DISTINCT后的结果
-
-[![unionall](http://www.simlinux.com/wp-content/uploads/2014/08/unionall1.png)](http://www.simlinux.com/wp-content/uploads/2014/08/unionall1.png)
-
-**查看帮助：**
-
-&lt;pre style=&quot;color: #93a1a1;&quot;&gt;`显示可供查询的分类
-mysql&amp;gt;? contents
-
-针对某个分类查看帮助
-mysql&amp;gt;? data types
-
-查看int数据类型介绍
-mysql&amp;gt;? int
-
-查看关键字的语法
-mysql&amp;gt;? show
-mysql&amp;gt;? create table
-</code></pre>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2014/08/19/mysql-e4-ba-8b-e4-bb-b6-e8-b0-83-e5-ba-a6-e5-99-a8event-scheduler.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Geekwolf">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/wolf.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Geekwolf's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2014/08/19/mysql-e4-ba-8b-e4-bb-b6-e8-b0-83-e5-ba-a6-e5-99-a8event-scheduler.html" itemprop="url">Mysql事件调度器(Event Scheduler)</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-08-19T20:59:37+08:00">
-                2014-08-19
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/MySQL数据库/" itemprop="url" rel="index">
-                    <span itemprop="name">MySQL数据库</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2014/08/19/mysql-e4-ba-8b-e4-bb-b6-e8-b0-83-e5-ba-a6-e5-99-a8event-scheduler.html" class="leancloud_visitors" data-flag-title="Mysql事件调度器(Event Scheduler)">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长</span>
-                
-                <span title="阅读时长">
-                  7
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <pre><code>Mysql中的事件调度器Event Scheduler类似于linux下的crontab计划任务的功能,它是由一个特殊的时间调度线程执行的
-</code></pre><h4 id="一、查看当前是否开启了event-scheduler三种方法"><a href="#一、查看当前是否开启了event-scheduler三种方法" class="headerlink" title="一、查看当前是否开启了event scheduler三种方法"></a><span id="t1" style="font-weight: inherit; font-style: inherit;">一、查看当前是否开启了event scheduler三种方法</span></h4><p>1) SHOW VARIABLES LIKE ‘event_scheduler’;<br>2) SELECT @@event_scheduler;<br>3) SHOW PROCESSLIST;(是否有State为：Waiting for next activation的进程，User为event_scheduler)</p>
-<h4 id="二、启动关闭event-scheduler方法"><a href="#二、启动关闭event-scheduler方法" class="headerlink" title="二、启动关闭event scheduler方法"></a><span id="t2" style="font-weight: inherit; font-style: inherit;">二、启动关闭event scheduler方法</span></h4><p>时间调度器是否开启由全局变量event_scheduler决定，它有三个可以设定的值： – OFF : 事件调度器是关闭的，调度线程并没有运行，并且在SHOW PROCESSLIST中不显示，默认值是OFF – ON ：事件调度器是开启的，调度线程并没有运行，并且执行所有的调度事件，通过SHOW PROCESSLIST可以查看Waiting for next activation的进程 – DISABLED : 设定这个值表示Event Scheduler是被禁止的，无法在Mysql运行状态下改变其值</p>
-<p><strong>注：</strong>在Mysql启动时如果在my.cnf设置了event_scheduler=ON（OFF or 1 or 0）时，就不能在运行时修改撑DISABLED，如果设置event_scheduler=DISABLED时，就不能在运行时修改其值为ON （ OFF or 1 or 0）</p>
-<pre><code>mysql&amp;gt; SELECT @@event_scheduler;
-+-------------------+
-| @@event_scheduler |
-+-------------------+
-| DISABLED |
-+-------------------+
-1 row in set (0.00 sec)
-mysql&amp;gt; SET @@global.event_scheduler = 1; 
-ERROR 1290 (HY000): The MySQL server is running with the --event-scheduler=DISABLED or --skip-grant-tables option so it cannot execute this statement
-
-在mysql运行时开启Event（4种方法均可）：
-SET GLOBAL event_scheduler = ON;
-SET @@global.event_scheduler = ON;
-SET GLOBAL event_scheduler = 1;
-SET @@global.event_scheduler = 1;
-
-在mysql运行时关闭Event（4种方法均可）：
-SET GLOBAL event_scheduler = OFF;
-SET @@global.event_scheduler = OFF;
-SET GLOBAL event_scheduler = 0;
-SET @@global.event_scheduler = 0;
-`&lt;/pre&gt;
-
-#### &lt;span id=&quot;t3&quot; style=&quot;font-weight: inherit; font-style: inherit;&quot;&gt;三、创建Event&lt;/span&gt;
-
-&lt;pre style=&quot;color: #93a1a1;&quot;&gt;`语法：
-CREATE
-    [DEFINER = { user | CURRENT_USER }]
-    EVENT
-    [IF NOT EXISTS]
-    event_name
-    ON SCHEDULE schedule
-    [ON COMPLETION [NOT] PRESERVE]
-    [ENABLE | DISABLE | DISABLE ON SLAVE]
-    [COMMENT &apos;comment&apos;]
-    DO event_body;
-
-schedule:
-    AT timestamp [+ INTERVAL interval] ...
-  | EVERY interval
-    [STARTS timestamp [+ INTERVAL interval] ...]
-    [ENDS timestamp [+ INTERVAL interval] ...]
-interval:
-    quantity {YEAR | QUARTER | MONTH | DAY | HOUR | MINUTE |
-             WEEK | SECOND | YEAR_MONTH | DAY_HOUR | DAY_MINUTE |
-             DAY_SECOND | HOUR_MINUTE | HOUR_SECOND | MINUTE_SECOND}
-`&lt;/pre&gt;
-
-**说明：**
-
-  DEFINER默认是CREATE EVENT的用户,可以理解为DEFINER=CURRENT_USER,指该event的用户，服务器在执行该事件时，使用该用户来检查权限；如果设置语法:‘user_name’@‘host_name’，如果当前CREATE EVENT用户没有supser权限，则无法将该event指派给其他用户；如果有super权限，则可以指定任意存在的用户，若不存在，时间执行时报错
-IF NOT EXISTS ： 如果在同一个schema创建一个已经存在的event_name时不会做任何操作，也不会出错，但会出现warings：该event已经存在；如果不增加此关键词已经存在的话提示ERROR： 1537 (HY000): Event ‘countsum’ already exists
-ON SCHEDULE ：用于设置什么时间执行，执行的频率及执行多久的问题
-AT timestamp ：表示在给定的datetime或者timestamp的时间执行一次
-+ INTERVAL interval：表示从AT timestamp多久之后执行
-EVERY interval ：有规律的重复执行
-[ENABLE | DISABLE]可是设置该事件创建后状态是否开启或关闭，默认为ENABLE
-[COMMENT ‘comment’]可以给该事件加上注释。
-
-&lt;pre style=&quot;color: #93a1a1;&quot;&gt;`event创建时间的3周2天后：
-AT  CURRENT_TIMESTAMP + INTERVAL 3 WEEK + INTERVAL 2 DAY
-
-2分钟10秒： 
-+ INTERVAL &apos;2:10&apos; MINUTE_SECOND
-
-每6周：
-EVERY 6 WEEK
-
-从现在开始30分钟后每12小时执行一次到从现在到4周后结束执行：
-EVERY 12 HOUR STARTS CURRENT_TIMESTAMP + INTERVAL 30 MINUTE ENDS CURRENT_TIMESTAMP + INTERVAL 4 WEEK 
-`&lt;/pre&gt;
-
-**实例：**
-前提：创建EVENT的用户需要只少对应schema的EVENT权限
-最基本的create event只需要三个部分：
-1\. create event关键字以及一个event名称
-2\. on schedule子句
-3\. do子句
-
-&lt;pre style=&quot;color: #93a1a1;&quot;&gt;`1\. 在创建事件myevent1小时后执行，执行一条更新
-
-CREATE EVENT myevent
-    ON SCHEDULE AT CURRENT_TIMESTAMP + INTERVAL 1 HOUR
-DO
-  UPDATE myschema.mytable SET mycol = mycol + 1;
-
-2.2014年3月20日12点整清空test表：
-
-CREATE EVENT e_test
-    ON SCHEDULE AT TIMESTAMP &apos;2014-03-20 12:00:00&apos;
-    DO TRUNCATE TABLE test.aaa;
-
-3.5天后开启每天定时清空test表：
-
-CREATE EVENT e_test
-    ON SCHEDULE EVERY 1 DAY
-    STARTS CURRENT_TIMESTAMP + INTERVAL 5 DAY
-    DO TRUNCATE TABLE test.aaa;
-
-4.每天定时清空test表，5天后停止执行
-
-CREATE EVENT e_test
-    ON SCHEDULE EVERY 1 DAY
-    ENDS CURRENT_TIMESTAMP + INTERVAL 5 DAY
-    DO TRUNCATE TABLE test.aaa;
-
-5.5天后开启每天定时清空test表，一个月后停止执行：
-
-CREATE EVENT e_test
-    ON SCHEDULE EVERY 1 DAY
-    STARTS CURRENT_TIMESTAMP + INTERVAL 5 DAY
-    ENDS CURRENT_TIMESTAMP + INTERVAL 1 MONTH
-    DO TRUNCATE TABLE test.aaa;
-
-6.每天定时清空test表(只执行一次，任务完成后就终止该事件)：
-
-CREATE EVENT e_test
-    ON SCHEDULE EVERY 1 DAY
-    ON COMPLETION NOT PRESERVE
-    DO TRUNCATE TABLE test.aaa;
-
-[ON COMPLETION [NOT] PRESERVE]可以设置这个事件是执行一次还是持久执行，默认为NOT PRESERVE。
-`&lt;/pre&gt;
-
-#### &lt;span id=&quot;t4&quot; style=&quot;font-weight: inherit; font-style: inherit;&quot;&gt;四、修改Event&lt;/span&gt;
-
-&lt;pre style=&quot;color: #93a1a1;&quot;&gt;`ALTER
-   [DEFINER = { user | CURRENT_USER }]
-   EVENT event_name
-   [ON SCHEDULE schedule]
-   [ON COMPLETION [NOT] PRESERVE]
-   [RENAME TO new_event_name]
-   [ENABLE | DISABLE | DISABLE ON SLAVE]
-   [COMMENT &apos;comment&apos;]
-   [DO event_body]
-`&lt;/pre&gt;
-
-**说明：**
-对于任何一个拥有定义在database里面事件的event权限的用户都可以修改event，并且成功需改后，那个用户就会成为此event的definer
-
-&lt;pre style=&quot;color: #93a1a1;&quot;&gt;`实例：
-CREATE EVENT myevent
-    ON SCHEDULE
-      EVERY 6 HOUR
-    COMMENT &apos;A sample comment.&apos;
-    DO
-      UPDATE myschema.mytable SET mycol = mycol + 1;
-
-将上面的event从开始之后每6个小时执行一次改为从开始4个小时后每12小时执行一次
-
-只修改schedule
-ALTER EVENT myevent
-    ON SCHEDULE
-      EVERY 12 HOUR
-    STARTS CURRENT_TIMESTAMP + INTERVAL 4 HOUR;
-同时修改schedule和body
-ALTER EVENT myevent
-    ON SCHEDULE
-      AT CURRENT_TIMESTAMP + INTERVAL 1 DAY
-    DO
-      TRUNCATE TABLE myschema.mytable;
-`&lt;/pre&gt;
-
-关闭、启动、别名、移动、删除event：
-
-&lt;pre style=&quot;color: #93a1a1;&quot;&gt;`临时关闭某个event
-ALTER EVENT myevent DISABLE;
-
-开启某个event
-ALTER EVENT myevent ENABLE;
-
-别名某个event
-ALTER EVENT olddb.myevent
-RENAME TO newdb.myevent;
-
-将myevent从olddb库移动到newdb库
-ALTER EVENT olddb.myevent
-RENAME TO newdb.myevent;
-
-删除event
-DROP EVENT [IF EXISTS] event_name
-</code></pre><h4 id="五、查询Event信息"><a href="#五、查询Event信息" class="headerlink" title="五、查询Event信息"></a><span id="t5" style="font-weight: inherit; font-style: inherit;">五、查询Event信息</span></h4><p>Event信息相关表：<br>information_schema.events<br>mysql.event</p>
-<p>查看事件的创建信息<br>show create event countsum \G</p>
-<p>查看sem库的events信息<br>USE sem；<br>SHOW EVENTS \G</p>
-<p>SHOW EVENTS FROM sem;</p>
-<p><strong>参考资料</strong>:<a href="https://dev.mysql.com/doc/refman/5.5/en/events.html" target="_blank" rel="external">https://dev.mysql.com/doc/refman/5.5/en/events.html</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2014/08/19/innodb-e7-b4-a2-e5-bc-95-e5-8e-9f-e7-90-86-e5-92-8cb-e6-a0-91.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Geekwolf">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/wolf.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Geekwolf's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2014/08/19/innodb-e7-b4-a2-e5-bc-95-e5-8e-9f-e7-90-86-e5-92-8cb-e6-a0-91.html" itemprop="url">Innodb索引原理和B+树</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-08-19T20:40:14+08:00">
-                2014-08-19
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/MySQL数据库/" itemprop="url" rel="index">
-                    <span itemprop="name">MySQL数据库</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2014/08/19/innodb-e7-b4-a2-e5-bc-95-e5-8e-9f-e7-90-86-e5-92-8cb-e6-a0-91.html" class="leancloud_visitors" data-flag-title="Innodb索引原理和B+树">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长</span>
-                
-                <span title="阅读时长">
-                  21
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h4 id="一、innodb存储引擎索引概述"><a href="#一、innodb存储引擎索引概述" class="headerlink" title="一、innodb存储引擎索引概述"></a><span id="t1" style="font-weight: inherit; font-style: inherit;">一、innodb存储引擎索引概述</span></h4><pre><code>innodb存储引擎支持两种常见的索引：B+树索引和哈希索引。
-</code></pre><p>innodb支持哈希索引是自适应的，innodb会根据表的使用情况自动生成哈希索引<br>B+树索引就是传统意义上的索引，是关系型数据库中最常用最有效的索引。B+树是从最早的平衡二叉树演变而来，但是B+树不是一个二叉树。B+中的B不代表二叉(Binary),而是代表平衡(Balance)</p>
-<p><strong>注意</strong>：B+树索引并不能找到一个键值对应的具体行。b+树索引只能查到被查找数据行所在的页，然后数据库通过把页读入内存，再在内存中查找，最后得到结果</p>
-<h4 id="二、理解B-树算法"><a href="#二、理解B-树算法" class="headerlink" title="二、理解B+树算法"></a><span id="t2" style="font-weight: inherit; font-style: inherit;">二、理解B+树算法</span></h4><pre><code>B+树是为磁盘及其他存储辅助设备而设计一种平衡查找树（不是二叉树）。B+树中，所有记录的节点按大小顺序存放在同一层的叶节点中，各叶节点用指针进行连接。
-</code></pre><p>下面演示一个B+数结构，高度为2，每页可放4条记录，扇出(fan out)为5。从下图1可以看出，所有记录都在页节点中，并且为顺序存放，我们从最左边的叶节点开始遍历，可以得到所有键值的顺序排序：5、10、15、20、25、30、50、55、60、65、75、80、85、90</p>
-<p><a href="http://www.simlinux.com/wp-content/uploads/2014/08/1.png"><img src="http://www.simlinux.com/wp-content/uploads/2014/08/1.png" alt="1"></a></p>
-<p><span id="t3" style="color: #222222;">（1） B+树的插入操作</span><span style="color: #222222;"> B+树的插入必须保证插入后叶节点的记录依然排序。同时要考虑插入B+树的三种情况，每种情况都可能导致不同的插入算法。如下表所示：</span></p>
-<p><a href="http://www.simlinux.com/wp-content/uploads/2014/08/2.png"><img src="http://www.simlinux.com/wp-content/uploads/2014/08/2.png" alt="2"></a></p>
-<p>   我们实例分析B+树的插入，在图1的B+树中，我们需要插入28这个值。因为Leaf Page和Index page都没有满，我们直接将记录插入叶节点就可以了。如下图2所示：</p>
-<p><img src="http://simlinux.com/images/mysql/3.png" alt=""><br>图2 插入键值28<br>下面我们再插入70这个值，这时Leaf Page已经满了，但是Index Page还没有满，符合上面的第二种情况。这时插入Leaf Page的情况为 50、55、60、65、70.我们根据中间的值60拆分叶节点，可得到下图3所示（双项链表指针依然存在，没有画出） <img src="http://simlinux.com/images/mysql/4.png" alt=""><br>图3 插入键值70<br>最后我们再插入95，这个Leaf Page和Index Page都满了，符合上面第三种情况。需要做2次拆分，如下图4所示：<br><img src="http://simlinux.com/images/mysql/5.png" alt=""><br>图4 插入键值95<br>可以看到，不管怎么变化，B+树总会保持平衡。但是为了保持平衡，对于新插入的键值可能需要做大量的拆分页操作。B+树主要用于磁盘，拆分意味着磁盘的操作，应该在可能的情况下尽量减少页的拆分。因此，B+树提供了旋转功能。旋转发生在Leaf Page已经满了，但是左右兄弟节点没有满的情况下。这时B+树并不是急着做页的拆分，而是旋转。旋转结果如图5所示，可以看到旋转操作使B+树减少了一次页的拆分操作，高度仍然为2.<br><img src="http://simlinux.com/images/mysql/6.png" alt="">                 图5 B+树的旋转操作</p>
-<p><span id="t4" style="font-weight: inherit; font-style: inherit;">(2) B+树的删除操作</span> B+树使用填充因子来控制数的删除变化。填充因子可以设置的最小值为50%。B+树的删除操作同样保证删除后叶节点的记录依然排序。 根据填充因子的变化，B+树删除依然需要考虑三种情况，如下表所示：<br><img src="http://simlinux.com/images/mysql/7.png" alt=""></p>
-<p>根据图4的B+树，我们进行删除操作，首先删除键值为70的这条记录，该记录符合上表第一种情况，删除后如下图6所示： <img src="http://simlinux.com/images/mysql/8.png" alt="">                 图6 删除键值70</p>
-<p>接着我们删除键值为25的记录，这也是属于上表第一种情况，不同的是该值还是index page中的值。因此在删除Leaf Page中的25后，还需要将25的右兄弟节点28更新到Index Page中，如下图7所示（图中有两个笔误，红色为修正值）：<br><img src="http://simlinux.com/images/mysql/9.png" alt="">                 图7 删除键值28<br>最后我们删除键值为60的记录。删除Leaf page键值为60的记录后，其填充因子小于50%。需要做合并操作。同样在删除Index page中相关记录后需要做Index Page的合并操作。</p>
-<h4 id="三、B-树索引介绍"><a href="#三、B-树索引介绍" class="headerlink" title="三、B+树索引介绍"></a><span id="t5" style="font-weight: inherit; font-style: inherit;">三、B+树索引介绍</span></h4><p>B+树索引的本质是B+树在数据库中的实现。但是B+树索引有一个特点是高扇出性，因此在数据库中，B+树的高度一般在2到3层。也就是说查找某一键值的记录，最多只需要2到3次IO开销。按磁盘每秒100次IO来计算，查询时间只需0.0.2到0.03秒。</p>
-<p>数据库中B+树索引分为聚集索引（clustered index）和非聚集索引（secondary index）.这两种索引的共同点是内部都是B+树，高度都是平衡的，叶节点存放着所有数据。不同点是叶节点是否存放着一整行数据。</p>
-<p><span id="t6" style="font-weight: inherit; font-style: inherit;">(1) 聚集索引</span><br>Innodb存储引擎表是索引组织表，即表中数据按主键顺序存放。而聚集索引就是按每张表的主键构造一颗B+树。并且叶节点存放整张表的行记录数据。每张表只能有一个聚集索引（一个主键）。<br>聚集索引的另一个好处是它对于主键的排序查找和范围的速度非常快。叶节点的数据就是我们要找的数据。</p>
-<pre><code>主键排序查找：例如我们要找出最新的10条团购订单，由于B+树是双项链表，我们可以迅速找到最后一个页，并取出10条记录，我们用Explain进行分析：
-12:41:32 tuangou&amp;gt; explain select * from groupon_so order by id desc limit 10\G
-id: 1
-select_type: SIMPLE
-    table: groupon_so
-     type: index
-     possible_keys: NULL
-      key: PRIMARY
-  key_len: 8
-      ref: NULL
-     rows: 10
-    Extra: 
-
-1 row in set (0.00 sec)
-
-主键范围查找：如果要通过主键查找某一范围内的数据，通过叶节点的上层中间节点就能得到页的范围，之后直接读取数据页即可：
-12:50:19 tuangou&amp;gt; explain select * from groupon_so where id&amp;gt;10000000 and id&amp;lt;12000000\G
-       id: 1
-select_type: SIMPLE
-    table: groupon_so
-     type: range
-     possible_keys: PRIMARY
-      key: PRIMARY
-  key_len: 8
-      ref: NULL
-     rows: 4301486
-    Extra: Using where
-1 row in set (0.00 sec)
-`&lt;/pre&gt;
-
-&lt;span id=&quot;t7&quot; style=&quot;font-weight: inherit; font-style: inherit;&quot;&gt;(2) 辅助索引&lt;/span&gt;
-辅助索引（也称非聚集索引）。叶级别不包含行的全部数据，叶级别除了包含行的键值以外，每个索引行还包含了一个书签（bookmark），该书签告诉innodb存储引擎，哪里可以找到与索引对应的数据。
-辅助索引的存在并不影响数据再聚集索引中的组织，因此一个表可以有多个辅助索引。当通过辅助索引查找数据时，innodb会遍历辅助索引并通过叶级别的指针获得指向主键索引的主键。然后再通过主键索引找到一行完整的数据。
-
-&lt;span id=&quot;t8&quot; style=&quot;font-weight: inherit; font-style: inherit;&quot;&gt;(3) B+树索引的管理&lt;/span&gt;
-索引的创建和删除可以用两种方式。一种是alter table,另一种是create/drop index
-
-&lt;pre style=&quot;color: #93a1a1;&quot;&gt;`alter table 创建和删除索引的语法为：
-ALTER [ONLINE | OFFLINE] [IGNORE] TABLE tbl_name
-| ADD {INDEX|KEY} [index_name]
-    [index_type] (index_col_name,…) [index_option] …
-
-ALTER [ONLINE | OFFLINE] [IGNORE] TABLE tbl_name
-| DROP PRIMARY KEY
-| DROP {INDEX|KEY} index_name
-
-create/drop index的语法为：
-CREATE [ONLINE|OFFLINE] [UNIQUE|FULLTEXT|SPATIAL] INDEX index_name
-[index_type]
-ON tbl_name (index_col_name,…)
-
-DROP [ONLINE|OFFLINE] INDEX index_name ON tbl_name
-`&lt;/pre&gt;
-
-MySQL索引注意的问题：对于MySQL索引的添加和删除操作，MySQL先是创建一张加好索引的临时表，然后把数据导入临时表，再删除原表，把临时表重命名为原表。
-Innodb存储引擎从Innodb Plugin版本开始，支持一种快速创建索引的方法（只限于辅助索引，主键索引仍需要建临时表）。首先对表加S锁，在创建的过程中不需要重建表，但是由于上了S锁，在创建索引的过程中只能进行查询操作，不能更新数据。
-
-#### &lt;span id=&quot;t9&quot; style=&quot;font-weight: inherit; font-style: inherit;&quot;&gt;四、B+树索引的使用&lt;/span&gt;
-
-(1).什么时候使用B+索引
-
-当查询表中很少一部分数据时，B+索引才有意义。对于性别，地区类型字段，他们取值范围很小，即低选择性。这时加B+索引是没有必要的。相反，某个字段取值范围很广，如姓名，几乎没有重复，即高选择性，则使用B+索引是比较合适的。因此。当访问高选择性字段并取出很少一部分数据时，该字段加B+索引是非常有效的。但是当取出的数据行占表中大部分数据时，数据库就不会使用B+索引了。
-
-举例说明下，看下面这个团购订单表groupon_so的部分索引：
-
-&lt;pre style=&quot;color: #93a1a1;&quot;&gt;`    14:08:34 tuangou&amp;gt; show index from groupon_so\G
-*************************** 1\. row ***************************
-Table: groupon_so
-Non_unique: 0
- Key_name: PRIMARY
- Seq_in_index: 1
- Column_name: id
- Collation: A
- Cardinality: 10088342
- Sub_part: NULL
-   Packed: NULL
-     Null: 
-Index_type: BTREE
-  Comment: 
-Index_comment: 
-*************************** 2\. row ***************************
-Table: groupon_so
-Non_unique: 1
-Key_name: idx_groupon_so_order_id
-Seq_in_index: 1
-Column_name: order_id
-Collation: A
-Cardinality: 10088342
-Sub_part: NULL
-   Packed: NULL
-     Null: 
-Index_type: BTREE
-  Comment: 
-Index_comment: 
-*************************** 3\. row ***************************
-Table: groupon_so
-Non_unique: 1
- Key_name: idx_groupon_so_order_code
- Seq_in_index: 1
- Column_name: order_code
- Collation: A
- Cardinality: 10088342
- Sub_part: NULL
-   Packed: NULL
-   Null: 
-Index_type: BTREE
-   Comment: 
-Index_comment: 
-*************************** 4\. row ***************************
-    Table: groupon_so
-    Non_unique: 1
- Key_name: idx_groupon_so_end_user_id
- Seq_in_index: 1
- Column_name: end_user_id
- Collation: A
- Cardinality: 10088342
- Sub_part: NULL
-   Packed: NULL
-   Null: YES
-Index_type: BTREE
-   Comment: 
-Index_comment: 
-*************************** 5\. row ***************************
-Table: groupon_so
-Non_unique: 1
-Key_name: idx_groupon_so_groupon_id
-Seq_in_index: 1
-Column_name: groupon_id
-Collation: A
-Cardinality: 148357
-Sub_part: NULL
-Packed: NULL
-  Null: 
-Index_type: BTREE
-   Comment: 
-Index_comment:
-
-其中有一个索引 idx_groupon_so_order_id,这个索引里面字段订单号的值都是不重复的，是高选择性的字段。
-我们查找order_id为 99165590 的这条记录，执行计划如下：
-
-14:31:50 tuangou&amp;gt; explain select * from groupon_so where order_id=99165590\G
-*************************** 1\. row ***************************
-       id: 1
-    select_type: SIMPLE
-    table: groupon_so
-     type: ref
-possible_keys: idx_groupon_so_order_id
-      key: idx_groupon_so_order_id
-  key_len: 8
-      ref: const
-     rows: 1
-    Extra: 
-1 row in set (0.00 sec)
-可以看到使用了idx_groupon_so_order_id这个索引，符合高选择性，取少部分数据这个特性。
-
-但是如果执行下面这条语句：
-14:32:33 tuangou&amp;gt; explain select * from groupon_so where order_id&amp;gt;99165590\G
-*************************** 1\. row ***************************
-       id: 1
-    select_type: SIMPLE
-    table: groupon_so
-    type: ALL
-possible_keys: idx_groupon_so_order_id
-    key: NULL
-key_len: NULL
-    ref: NULL
-   rows: 10092839
-  Extra: Using where
-1 row in set (0.00 sec)
-
-可以看到possible_keys依然是idx_groupon_so_order_code，但是索引优化使用的索引keys显示的是NULL，因为虽然这个字段是高选择性的，但是我们取出了表中的大部分数据，索引没有用到索引。
-
-14:34:11 tuangou&amp;gt; select @a:=count(id) from groupon_so where order_id&amp;gt;99165590;
-+—————+
-| @a:=count(id) |
-+—————+
-|       8684424 |
-+—————+
-1 row in set (2.48 sec)
-
-14:34:26 tuangou&amp;gt; select @a:=count(id) from groupon_so;
-+—————+
-| @a:=count(id) |
-+—————+
-|       9858135 |
-+—————+
-1 row in set (1.86 sec)
-
-14:37:25 tuangou&amp;gt; select 8684424/9858135;
-+—————–+
-| 8684424/9858135 |
-+—————–+
-|          0.8809 |
-+—————–+
-1 row in set (0.00 sec)
-可以看到我们取出了表中88%的数据，索引没有用到索引。
-`&lt;/pre&gt;
-
-&lt;span id=&quot;t11&quot; style=&quot;font-weight: inherit; font-style: inherit;&quot;&gt;(2)顺序读、随机读与预读取&lt;/span&gt;
-顺序读是指顺序的读取磁盘上的块，随机读是指访问的块是不连续的，需要磁盘的磁头不断移动。随机读的性能是远远低于顺序读的。
-在数据库中，顺序读根据索引的叶节点就能顺序的读取所需的行数据，这个顺序读只是逻辑的顺序读，在磁盘上可能还是随机读。随机读是指访问辅助索引叶节点不能完全得到结果，需要根据辅助索引页节点中的主键去寻找实际数据行。对于一些取表里很大部分数据的查询，正式因为读取是随机读，而随机读的性能会远低于顺序读。所以优化器才会选择全部扫描顺序读，而不使用索引。
-innodb存储引擎有两个预读取方法，随机预读取和线性预读取。随机预读取是指当一个区（共64个连续页）中有13个页在缓冲区中并被频繁访问时，innodb存储引擎会将这个区中剩余的页预读到缓冲区。线性预读取基于缓冲池中页的访问方式，而不是数量。如果一个区中有24个页被顺序访问了，则innodb会读取下一个区的所有页到缓冲区。但是innodb预读取经过测试后性能比较差，经过TPCC测试发现禁用预读取比启用预读取提高了10%的性能。在新版本innodb中，mysql禁用了随机预读取，仅保留了线性预读取，并且加入了innodb_read_ahead_threshold参数，当连续访问页超过该值时才启用预读取，默认值为56。
-
-&lt;pre style=&quot;color: #93a1a1;&quot;&gt;`15:02:16 tuangou&amp;gt; show variables like ‘innodb_read_ahead_threshold%’;
-+—————————–+——-+
-| Variable_name               | Value |
-+—————————–+——-+
-| innodb_read_ahead_threshold | 56    |
-+—————————–+——-+
-1 row in set (0.00 sec)
-`&lt;/pre&gt;
-
-3)&lt;span id=&quot;t12&quot; style=&quot;font-weight: inherit; font-style: inherit;&quot;&gt;辅助索引的优化&lt;/span&gt;
-通过前面可知，辅助索引的页节点包含主键，但是辅助索引的叶节点并不包含完整的行数据信息，因此，innodb存储引擎总是会从辅助索引的叶节点判断是否能得到数据。让我们看一个例子：
-
-&lt;pre style=&quot;color: #93a1a1;&quot;&gt;`mysql&amp;gt; create table t ( a int not null, b varchar(20), primary key(a),key(b));
-Query OK, 0 rows affected (0.18 sec)
-
-mysql&amp;gt; insert into t select  1,’kangaroo’;
-Query OK, 1 row affected (0.00 sec)
-Records: 1  Duplicates: 0  Warnings: 0
-
-mysql&amp;gt; insert into t select  2,’dolphin’;
-Query OK, 1 row affected (0.01 sec)
-Records: 1  Duplicates: 0  Warnings: 0
-
-mysql&amp;gt; insert into t select  3,’dragon’;
-Query OK, 1 row affected (0.01 sec)
-Records: 1  Duplicates: 0  Warnings: 0
-
-mysql&amp;gt; insert into t select  4,’anteloge’;
-Query OK, 1 row affected (0.01 sec)
-Records: 1  Duplicates: 0  Warnings: 0
-
-如果执行select * from t很多人认为应该是如下结果：
-mysql&amp;gt; select * from t order by a\G;
-*************************** 1\. row ***************************
-a: 1
-b: kangaroo
-*************************** 2\. row ***************************
-a: 2
-b: dolphin
-*************************** 3\. row ***************************
-a: 3
-b: dragon
-*************************** 4\. row ***************************
-a: 4
-b: anteloge
-
-4 rows in set (0.00 sec)
-
-但是实际执行结果确是：
-mysql&amp;gt; select * from t\G;
-*************************** 1\. row ***************************
-a: 4
-b: anteloge
-*************************** 2\. row **************************
-a: 2
-b: dolphin
-*************************** 3\. row ***************************
-a: 3
-b: dragon
-*************************** 4\. row ***************************
-a: 1
-b: kangaroo
-4 rows in set (0.00 sec)
-
-因为辅助索引包含了主键a的值，因此访问b列上的辅助索引就可以得到a的值，这样就可以得到表中所有的数据。我们看这条语句的执行计划：
-mysql&amp;gt; explain select * from t\G;
-*************************** 1\. row ***************************
-id: 1
-select_type: SIMPLE
-table: t
-type: index
-possible_keys: NULL         
-      key: b
-  key_len: 23
-      ref: NULL
-     rows: 4
-    Extra: Using index
-1 row in set (0.00 sec)
-
-可以看到优化器最终走的索引b,如果想对a列进行排序，则需要进行order by操作：
-mysql&amp;gt; explain select * from t order by a\G;
-*************************** 1\. row ***************************
-id: 1
-select_type: SIMPLE
-    table: t
-     type: index
-possible_keys: NULL
-      key: PRIMARY
-  key_len: 4
-      ref: NULL
-     rows: 4
-    Extra: NULL
-1 row in set (0.00 sec)
-
-mysql&amp;gt; select * from t order by a\G;
-*************************** 1\. row ***************************
-a: 1
-b: kangaroo
-*************************** 2\. row ***************************
-a: 2
-b: dolphin
-*************************** 3\. row ***************************
-a: 3
-b: dragon
-*************************** 4\. row ***************************
-a: 4
-b: anteloge
-
-或者使用主键强制得到结果：
-mysql&amp;gt; select * from t force index(PRIMARY)\G;
-*************************** 1\. row ***************************
-a: 1
-b: kangaroo
-*************************** 2\. row ***************************
-a: 2
-b: dolphin
-*************************** 3\. row ***************************
-a: 3
-b: dragon
-*************************** 4\. row ***************************
-a: 4
-b: anteloge
-
-4 rows in set (0.00 sec)
-`&lt;/pre&gt;
-
-&lt;span id=&quot;t13&quot; style=&quot;font-weight: inherit; font-style: inherit;&quot;&gt;(4)联合索引&lt;/span&gt;
-联合索引是指对表上的多个列做索引，联合索引的创建方法和之前的一样，如下：
-
-&lt;pre style=&quot;color: #93a1a1;&quot;&gt;`mysql&amp;gt; alter table t add key idx_a_b(a,b);
-Query OK, 0 rows affected (0.17 sec)
-Records: 0  Duplicates: 0  Warnings: 0
-`&lt;/pre&gt;
-
-联合索引还是一个B+树，不同的是联合索引键值的数量不是1，而是大于等于2.
-下面我们讨论一个两个整形列组成的联合索引，假定两个键值的名称分别为a和b，如下图8所示，每个节点上有两个键值，(1,1),(1,2),(2,1),(2,4),(3,1),(3,2), 数据按(a,b)顺序进行排列
-
-![](http://www.ruzuojun.com/wp-content/uploads/2013/09/8.png)
-
-              图8 多个键值的B+树
-
-因此，对于查询select * from t where a=xxx and b=xxx,显然可以使用(a,b)这个联合索引。对于单个a列查询 select * from t where a=xxx也是可以使用(a,b)这个索引。但是对于b列的查询select * from t where b=xxx是用不到这颗B+树索引。可以看到叶节点上b的值为1、2、1、4、1、2.显然不是排序的，因此b列的查询使用不到(a,b)索引。
-
-联合索引的第二个好处，可以对第二键值进行排序。例如很多情况下我们需要查询某个用户的购物情况，并按照时间排序，取出最近3次的购买记录，这时使用联合索引可以避免多一次的排序操作。因为索引本身在叶节点中已经排序了。看下面示例:
-
-&lt;pre style=&quot;color: #93a1a1;&quot;&gt;`mysql&amp;gt; create table buy_log(userid int unsigned not null, buy_date date);
-Query OK, 0 rows affected (0.09 sec)
-
-mysql&amp;gt; insert into buy_log values(1,’2013-01-01′);
-Query OK, 1 row affected (0.01 sec)
-
-mysql&amp;gt; insert into buy_log values(2,’2013-01-01′);
-Query OK, 1 row affected (0.01 sec)
-
-mysql&amp;gt; insert into buy_log values(3,’2013-01-01′);
-Query OK, 1 row affected (0.01 sec)
-
-mysql&amp;gt; insert into buy_log values(1,’2013-02-01′);
-Query OK, 1 row affected (0.01 sec)
-
-mysql&amp;gt; insert into buy_log values(3,’2013-02-01′);
-Query OK, 1 row affected (0.00 sec)
-
-mysql&amp;gt; insert into buy_log values(1,’2013-03-01′);
-Query OK, 1 row affected (0.01 sec)
-
-mysql&amp;gt; insert into buy_log values(1,’2013-04-01′);
-Query OK, 1 row affected (0.01 sec)
-
-mysql&amp;gt; alter table buy_log add key(userid);
-Query OK, 0 rows affected (0.07 sec)
-Records: 0  Duplicates: 0  Warnings: 0
-
-mysql&amp;gt; alter table buy_log add key(userid,buy_date);
-Query OK, 0 rows affected (0.11 sec)
-Records: 0  Duplicates: 0  Warnings: 0
-上面我们建立了测试表和数据，建立了2个索引来比较。两个索引都包含了userid字段。如果只对于userid查询，优化器的选择是：
-
-mysql&amp;gt; explain select * from buy_log where userid=2\G;
-*************************** 1\. row ***************************
-id: 1
-select_type: SIMPLE
-table: buy_log
-     type: ref
-possible_keys: userid,userid_2
-      key: userid
-  key_len: 4
-      ref: const
-     rows: 1
-    Extra: NULL
-1 row in set (0.00 sec)
-可以看到possible_keys里面两个索引都可以使用，分别是单个的userid索引和userid,buy_date的联合索引。但是优化器最终选择的是userid，因为该叶节点包含单个键值，因此一个页存放的记录应该更多。
-
-接下来看以下的查询，假定要取出userid=1最近的3次购买记录，分别使用单个索引和联合索引的区别：
-mysql&amp;gt; explain select * from buy_log where userid=1 order by buy_date desc limit 3\G;
-*************************** 1\. row ***************************
-id: 1
-select_type: SIMPLE
-    table: buy_log
-     type: ref
-possible_keys: userid,userid_2
-      key: userid_2
-  key_len: 4
-      ref: const
-     rows: 4
-    Extra: Using where; Using index
-1 row in set (0.00 sec)
-
-同样对于上述SQL，两个索引都可使用，但是查询优化器使用了userid和buy_date组成的联合索引userid_2.因为这个联合索引中buy_date已经排序好了，可以减少一次排序操作。
-
-如果我们强制使用user_id单个索引，可以看到如下情况：
-mysql&amp;gt; explain select * from buy_log force index(userid) where userid=1 order by buy_date desc limit 3\G;
-*************************** 1\. row ***************************
-id: 1
-select_type: SIMPLE
-table: buy_log
-     type: ref
-possible_keys: userid
-      key: userid
-  key_len: 4
-      ref: const
-     rows: 4
-    Extra: Using where; Using filesort
-1 row in set (0.00 sec)
-在Extra这里可以看到Using filesort，Using filesort指排序，但不一定是在文件中完成。
-</code></pre><blockquote>
-<p>本文出自<a href="http://www.ruzuojun.com/" target="_blank" rel="external">http://www.ruzuojun.com</a></p>
-<p>参考资料《MySQL技术内幕Innodb存储引擎》<br>&nbsp;</p>
-</blockquote>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2014/08/19/mysql-e5-88-86-e5-8c-ba-e7-ae-a1-e7-90-86-2.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Geekwolf">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/wolf.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Geekwolf's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2014/08/19/mysql-e5-88-86-e5-8c-ba-e7-ae-a1-e7-90-86-2.html" itemprop="url">Mysql分区管理</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-08-19T20:23:43+08:00">
-                2014-08-19
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/MySQL数据库/" itemprop="url" rel="index">
-                    <span itemprop="name">MySQL数据库</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2014/08/19/mysql-e5-88-86-e5-8c-ba-e7-ae-a1-e7-90-86-2.html" class="leancloud_visitors" data-flag-title="Mysql分区管理">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长</span>
-                
-                <span title="阅读时长">
-                  15
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h4 id="初探"><a href="#初探" class="headerlink" title="初探"></a>初探</h4><p>很长时间没写博客了，这两天一直在学习Mysql分区，总结下:<br>Mysql支持水平分区，并不支持垂直分区;<br><strong>水平分区</strong>：指将同一表中不同行的记录分配到不同的物理文件中；<br><strong>垂直分区</strong>：指将同一表中不同列的记录分配到不同的物理文件中；<br>其中CSV、FEDORATED、MERGE等引擎不支持分区，MYISAM、InnoDB、NDB等引擎支持分区</p>
-<h4 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h4><p>将一个表或索引分解为多个更小、更可管理的部分，从逻辑上讲，只有一个表或者索引，但是物理上这个表或者索引可能由数十个物理分区组成；没个分区都是独立的对象，可以独自处理，也可以作为一个更大对象的一部分进行处理（如果分区表很大，亦可以将分区分配到不同的磁盘上去）；在执行查询的时候，优化器会根据分区定义过滤哪些没有我们需要数据的分区，这样查询就无须全表扫描所有分区，只查找包含需要数据的分区即可</p>
-<h4 id="适用场景"><a href="#适用场景" class="headerlink" title="适用场景"></a>适用场景</h4><p>1、表非常大以至于无法全部都放到内存，或者只在表的最后部分有热点数据，其他均为历史数据 2、分区表数据更容易维护（可独立对分区进行优化、检查、修复及批量删除大数据可以采用drop分区的形式等） 3、分区表的数据可以分布在不同的物理设备上，从而高效地利用多个硬件设备 4、分区表可以避免某些特殊的瓶颈（ps: InnoDB的单个索引的互斥访问、ext3文件系统的inode锁竞争等） 5、可以备份和恢复独立的分区，非常适用于大数据集的场景</p>
-<h4 id="分区表限制"><a href="#分区表限制" class="headerlink" title="分区表限制"></a>分区表限制</h4><ol>
-<li>单表最多支持1024个分区</li>
-<li>MySQL5.1只能对数据表的整型列进行分区，或者数据列可以通过分区函数转化成整型列;MySQL5.5的RANGE LIST类型可以直接使用列进行分区</li>
-<li>如果分区字段中有主键或唯一索引的列，那么所有的主键列和唯一索引列都必须包含进来</li>
-<li>分区表无法使用外键约束</li>
-<li>分区必须使用相同的Engine</li>
-<li>对于MyISAM分区表，不能在使用LOAD INDEX INTO CACHE操作</li>
-<li>对于MyISAM分区表，使用时会打开更多的文件描述符（单个分区是一个独立的文件）</li>
-</ol>
-<h4 id="分区策略"><a href="#分区策略" class="headerlink" title="分区策略"></a>分区策略</h4><ol>
-<li>全量扫描数据，不需要任何索引：通过where条件大概定位哪个分区，必须将查询所需要扫描的分区个数限制在很小的数量</li>
-<li>建立分区索引，分离热点：如将明显的热点数据分离到一个分区，使其尽量缓存到内存中，这样就能充分使用索引和缓存<br><strong>注意</strong>：以上策略均以查询得到过滤，丢掉额外的分区，分区本身不产生额外的代价为准则】</li>
-</ol>
-<h5 id="分区表使用过程的坑坑"><a href="#分区表使用过程的坑坑" class="headerlink" title="分区表使用过程的坑坑"></a>分区表使用过程的坑坑</h5><p>1.NULL值会使分区过滤无效:<br>分表的表达式的值可以是NULL，第一个分区为特殊分区存放NULL或者非法值<br>如： PARTITION BY RANGE YEAR(order_date)进行分区，那么order_date为NULL或者非法值，记录存放在第一个分区:<br>WHERE order_date BETWEEN ‘2014-01-01’ AND ‘2014-01-31’查询时会检查两个分区：<br>第一个分区及1月份分区，避免第一分区数据过大时造成查询代价过高，可以使用：建立第一分区专门存放order_date为NULL和非法值记录 PARTITION p_nulls VALUES LESS THAN(0)<br>MySQL5.5以后可以才用一下语法解决问题： PARTITION BY RANGE COLUMNS(order_date)</p>
-<p>2.分区列和索引列不匹配<br>此种情况下查询无法进行分区过滤，分区失效除非查询中包含了可以过滤分区的条件</p>
-<p>3.RANGE类型分区随着分区数量增加会对MYSQL额外增加查询分区定义列表（符合条件行在哪个分区）的压力，尽量限制适当的分区数量;key和hash类型分区不存在此问题</p>
-<p>4.重组分区或者类似alter语句可能会造成很大的开销<br>新建或者删除分区操作很快，重组分区或者类似ALTER语句操作会先创建一个临时的分区，将数据复制其中，然后在删除原分区</p>
-<h4 id="分区表类型"><a href="#分区表类型" class="headerlink" title="分区表类型"></a>分区表类型</h4><p>1.RANGE分区：行数据基于属于一个给定连续区间的列值被放入分区<br>MySQL5.5开始支持RANGE COLUMNS的分区（引入Columns分区解决了MySQL 5.5版本之前RANGE分区和LIST分区只支持整数分区，从而导致需要额外的函数计算得到整数或者通过额外的转换表来转换为整数再分区的问题。Columns分区可以细分为RANGE Columns分区和LIST Columns分区，RANGE Columns分区和LIST Columns分区都支持整数、日期时间、字符串三大数据类型）</p>
-<p>2.LIST分区：类似于按RANGE分区，区别在于LIST分区是基于列值匹配一个离散值集合中的某个值来进行选择。<br>MySQL5.5开始支持RANGE COLUMNS的分区</p>
-<p>3.HASH分区：根据用户自定义的表达式的返回值来进行分区，返回值不能为负数 4.KEY分区：根据MySQLS数据库提供的哈希函数来进行分区 【注：无论创建何种类型的分区，如果表中存在主键或唯一索引时，分区列必须是唯一索引的一个组成部分】</p>
-<h4 id="分区表相关操作"><a href="#分区表相关操作" class="headerlink" title="分区表相关操作"></a>分区表相关操作</h4><h4 id="分区相关查询"><a href="#分区相关查询" class="headerlink" title="分区相关查询"></a>分区相关查询</h4><pre class="lang:pgsql decode:true">查看当前数据库是否支持分区
-mysql&gt; show variables like '%partition%';
-+---------------------------------------+-------+
-| Variable_name | Value |
-+---------------------------------------+-------+
-| have_partitioning | YES |
-| innodb_adaptive_hash_index_partitions | 1 |
-+---------------------------------------+-------+
-2 rows in set
-
-查看创建分区表的CREATE语句
-
-mysql&gt;show create table operation_log;
-
-查看表是否为分区表(Create_options)
-mysql&gt;show table status(当前库所有表状态)
-mysql&gt;show table status from lockrank like '%operation_log%';(lockrank库operation_log表状态)
-*************************** 1\. row ***************************
-Table: operation_log
-Create Table: CREATE TABLE `operation_log` (
-  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `cid` mediumint(7) unsigned NOT NULL,
-  `accountid` mediumint(8) NOT NULL DEFAULT '0' ,
-  `flag` tinyint(1) unsigned NOT NULL DEFAULT '0',
-  `addtime` int(11) unsigned NOT NULL,
-  `device` tinyint(1) unsigned NOT NULL DEFAULT '1' ,
-  PRIMARY KEY (`id`,`addtime`),
-  KEY `idx_accountid_addtime` (`accountid`,`addtime`),
-  KEY `idx_accountid_flag` (`accountid`,`flag`),
-) ENGINE=InnoDB AUTO_INCREMENT=50951039 DEFAULT CHARSET=utf8 COMMENT='操作记录'
-/*!50100 PARTITION BY RANGE (addtime)
-(PARTITION `2013-05` VALUES LESS THAN (1370016000) ENGINE = InnoDB,
- PARTITION `2013-06` VALUES LESS THAN (1372608000) ENGINE = InnoDB,
- PARTITION `2013-07` VALUES LESS THAN (1375286400) ENGINE = InnoDB,
- PARTITION `2013-08` VALUES LESS THAN (1377964800) ENGINE = InnoDB,
- PARTITION `2013-09` VALUES LESS THAN (1380556800) ENGINE = InnoDB,
- PARTITION `2013-10` VALUES LESS THAN (1383235200) ENGINE = InnoDB,
- PARTITION `2013-11` VALUES LESS THAN (1385827200) ENGINE = InnoDB,
- PARTITION `2013-12` VALUES LESS THAN (1388505600) ENGINE = InnoDB,
- PARTITION `2014-01` VALUES LESS THAN (1391184000) ENGINE = InnoDB,
- PARTITION `2014-02` VALUES LESS THAN (1393603200) ENGINE = InnoDB,
- PARTITION `2014-03` VALUES LESS THAN (1396281600) ENGINE = InnoDB,
- PARTITION `2014-04` VALUES LESS THAN (1398873600) ENGINE = InnoDB,
- PARTITION `2014-05` VALUES LESS THAN (1401552000) ENGINE = InnoDB,
- PARTITION `2014-06` VALUES LESS THAN (1404144000) ENGINE = InnoDB,
- PARTITION `2014-07` VALUES LESS THAN (1406822400) ENGINE = InnoDB,
- PARTITION `2014-08` VALUES LESS THAN (1409500800) ENGINE = InnoDB,
- PARTITION `2014-09` VALUES LESS THAN MAXVALUE ENGINE = InnoDB) */
-1 row in set (0.00 sec)
-
-查看select如何使用分区
-mysql&gt; explain partitions select id,accountid,cid,flag from operation_log where addtime="1369362524" \G ;
- *************************** 1\. row ***************************
-   id: 1
-  select_type: SIMPLE
-table: operation_log
-   partitions: 2013-05
- type: ALL
-possible_keys: NULL
-  key: NULL
-  key_len: NULL
-  ref: NULL
- rows: 4384356
-Extra: Using where
-1 row in set (0.00 sec)
-``
-分区表元数据统计表：INFORMATION_SCHEMA.PARTITIONS
-查看分区表operation_log的分区信息
-mysql&gt; SELECT partition_name part, partition_expression expr, partition_description descr, table_rows FROM INFORMATION_SCHEMA.partitions WHERE TABLE_SCHEMA = schema() AND TABLE_NAME='operation_log';
-+---------+---------+------------+------------+
-| part| expr| descr | table_rows |
-+---------+---------+------------+------------+
-| 2013-05 | addtime | 1370016000 | 5999642 |
-| 2013-06 | addtime | 1372608000 | 4579263 |
-| 2013-07 | addtime | 1375286400 | 3223772 |
-| 2013-08 | addtime | 1377964800 | 1995058 |
-| 2013-09 | addtime | 1380556800 | 2497406 |
-| 2013-10 | addtime | 1383235200 | 4106974 |
-| 2013-11 | addtime | 1385827200 | 6209559 |
-| 2013-12 | addtime | 1388505600 | 6415349 |
-| 2014-01 | addtime | 1391184000 | 3953594 |
-| 2014-02 | addtime | 1393603200 | 0 |
-| 2014-03 | addtime | 1396281600 | 0 |
-| 2014-04 | addtime | 1398873600 | 0 |
-| 2014-05 | addtime | 1401552000 | 0 |
-| 2014-06 | addtime | 1404144000 | 0 |
-| 2014-07 | addtime | 1406822400 | 0 |
-| 2014-08 | addtime | 1409500800 | 0 |
-| 2014-09 | addtime | MAXVALUE | 0 |
-+---------+---------+------------+------------+
-17 rows in set (1.48 sec)</pre>
-
-<h5 id="创建分区操作"><a href="#创建分区操作" class="headerlink" title="创建分区操作"></a>创建分区操作</h5><pre class="lang:mysql decode:true">RANGE分区：
-mysql&gt; CREATE TABLE `operation_log` (
- -&gt;  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
- -&gt; `cid` mediumint(7) unsigned NOT NULL,
- -&gt; `accountid` mediumint(8) NOT NULL DEFAULT '0' ,
- -&gt;  `flag` tinyint(1) unsigned NOT NULL DEFAULT '0',
- -&gt;  `addtime` int(11) unsigned NOT NULL,
- -&gt; `device` tinyint(1) unsigned NOT NULL DEFAULT '1' ,
- -&gt;  PRIMARY KEY (`id`,`addtime`),
- -&gt; KEY `idx_accountid_addtime` (`accountid`,`addtime`),
- -&gt;  KEY `idx_accountid_flag` (`accountid`,`flag`),
- -&gt;) ENGINE=InnoDB AUTO_INCREMENT=50951039 DEFAULT CHARSET=utf8 COMMENT='操作记录'
- -&gt;/*!50100 PARTITION BY RANGE (addtime)
- -&gt;(PARTITION `2013-05` VALUES LESS THAN (1370016000) ENGINE = InnoDB,
- -&gt; PARTITION `2013-06` VALUES LESS THAN (1372608000) ENGINE = InnoDB,
- -&gt; PARTITION `2013-07` VALUES LESS THAN (1375286400) ENGINE = InnoDB,
- -&gt; PARTITION `2013-08` VALUES LESS THAN (1377964800) ENGINE = InnoDB,
- -&gt; PARTITION `2013-09` VALUES LESS THAN MAXVALUE ENGINE = InnoDB) */；
-1 row in set (0.00 sec)
-（ LESS THAN MAXVALUE考虑到可能的最大值）
-
-list分区
-//这种方式失败
-mysql&gt; CREATE TABLE IF NOT EXISTS `list_part` (
- -&gt;   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '用户ID',
- -&gt;   `province_id` int(2) NOT NULL DEFAULT 0 COMMENT '省',
- -&gt;   `name` varchar(50) NOT NULL DEFAULT '' COMMENT '名称',
- -&gt;   `sex` int(1) NOT NULL DEFAULT '0' COMMENT '0为男，1为女',
- -&gt;   PRIMARY KEY (`id`)
- -&gt; ) ENGINE=INNODB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1
- -&gt; PARTITION BY LIST (province_id) (
- -&gt; PARTITION p0 VALUES IN (1,2,3,4,5,6,7,8),
- -&gt; PARTITION p1 VALUES IN (9,10,11,12,16,21),
- -&gt; PARTITION p2 VALUES IN (13,14,15,19),
- -&gt; PARTITION p3 VALUES IN (17,18,20,22,23,24)
- -&gt; );
-ERROR 1503 (HY000): A PRIMARY KEY must include all columns in the table's partitioning function
-
-//这种方式成功
-mysql&gt; CREATE TABLE IF NOT EXISTS `list_part` (
- -&gt;   `id` int(11) NOT NULL  COMMENT '用户ID',
- -&gt;   `province_id` int(2) NOT NULL DEFAULT 0 COMMENT '省',
- -&gt;   `name` varchar(50) NOT NULL DEFAULT '' COMMENT '名称',
- -&gt;   `sex` int(1) NOT NULL DEFAULT '0' COMMENT '0为男，1为女'
- -&gt; ) ENGINE=INNODB  DEFAULT CHARSET=utf8
- -&gt; PARTITION BY LIST (province_id) (
- -&gt; PARTITION p0 VALUES IN (1,2,3,4,5,6,7,8),
- -&gt; PARTITION p1 VALUES IN (9,10,11,12,16,21),
- -&gt; PARTITION p2 VALUES IN (13,14,15,19),
- -&gt; PARTITION p3 VALUES IN (17,18,20,22,23,24)
- -&gt; );
-Query OK, 0 rows affected (0.33 sec)
-上面的这个创建list分区时，如果有主銉的话，分区时主键必须在其中，不然就会报错。如果我不用主键，分区就创建成功了，一般情况下，一个张表肯定会有一个主键，这算是一个分区的局限性
-
-hash分区
-mysql&gt; CREATE TABLE IF NOT EXISTS `hash_part` (
- -&gt;   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '评论ID',
- -&gt;   `comment` varchar(1000) NOT NULL DEFAULT '' COMMENT '评论',
- -&gt;   `ip` varchar(25) NOT NULL DEFAULT '' COMMENT '来源IP',
- -&gt;   PRIMARY KEY (`id`)
- -&gt; ) ENGINE=INNODB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1
- -&gt; PARTITION BY HASH(id)
- -&gt; PARTITIONS 3;
-Query OK, 0 rows affected (0.06 sec)
-
-key分区 
-mysql&gt; CREATE TABLE IF NOT EXISTS `key_part` (
- -&gt;   `news_id` int(11) NOT NULL  COMMENT '新闻ID',
- -&gt;   `content` varchar(1000) NOT NULL DEFAULT '' COMMENT '新闻内容',
- -&gt;   `u_id` varchar(25) NOT NULL DEFAULT '' COMMENT '来源IP',
- -&gt;   `create_time` DATE NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '时间'
- -&gt; ) ENGINE=INNODB  DEFAULT CHARSET=utf8
- -&gt; PARTITION BY LINEAR HASH(YEAR(create_time))
- -&gt; PARTITIONS 3;
-Query OK, 0 rows affected (0.07 sec)</pre>
-
-<h5 id="增加子分区操作"><a href="#增加子分区操作" class="headerlink" title="增加子分区操作"></a><strong>增加子分区操作</strong></h5><pre><code>子分区是分区表中每个分区的再次分割，子分区既可以使用HASH希分区，也可以使用KEY分区。这 也被称为复合分区（composite partitioning）
-</code></pre><pre class="lang:mysql decode:true ">1\. 如果一个分区中创建了子分区，其他分区也要有子分区
-2\. 如果创建了了分区，每个分区中的子分区数必有相同
-3\. 同一分区内的子分区，名字不相同，不同分区内的子分区名子可以相同（5.1.50不适用）
-
- mysql&gt; CREATE TABLE IF NOT EXISTS `sub_part` (
- -&gt;   `news_id` int(11) NOT NULL  COMMENT '新闻ID',
- -&gt;   `content` varchar(1000) NOT NULL DEFAULT '' COMMENT '新闻内容',
- -&gt;   `u_id` int(11) NOT NULL DEFAULT 0s COMMENT '来源IP',
- -&gt;   `create_time` DATE NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '时间'
- -&gt; ) ENGINE=INNODB  DEFAULT CHARSET=utf8
- -&gt; PARTITION BY RANGE(YEAR(create_time))
- -&gt; SUBPARTITION BY HASH(TO_DAYS(create_time))(
- -&gt; PARTITION p0 VALUES LESS THAN (1990)(SUBPARTITION s0,SUBPARTITION s1,SUBPARTITION s2),
- -&gt; PARTITION p1 VALUES LESS THAN (2000)(SUBPARTITION s3,SUBPARTITION s4,SUBPARTITION good),
- -&gt; PARTITION p2 VALUES LESS THAN MAXVALUE(SUBPARTITION tank0,SUBPARTITION tank1,SUBPARTITION tank3)
- -&gt; );
-Query OK, 0 rows affected (0.07 sec)</pre>
-
-<h5 id="分区管理"><a href="#分区管理" class="headerlink" title="分区管理"></a><strong>分区管理</strong></h5><pre class="lang:mysql decode:true ">增加分区操作（针对设置MAXVALUE）
- range添加分区
-mysql&gt;alter table operation_log add  partition(partition `2013-10` values less than (1383235200));  ---&gt;适用于没有设置MAXVALUE的分区添加
-   ERROR 1481 (HY000):MAXVALUE can only be used in last partition definition
-mysql&gt;alter table operation_log REORGANIZE partition `2013-09` into (partition `2013-09` values less than (1380556800),partition `2013-10` values less than (1383235200),partition `2013-11` values less than maxvalue);
-
- list添加分区
-mysql&gt; alter table list_part add partition(partition p4 values in (25,26,28));
-Query OK, 0 rows affected (0.01 sec)
-Records: 0  Duplicates: 0  Warnings: 0
-
- hash重新分区
-mysql&gt; alter table list_part add partition(partition p4 values in (25,26,28));
-Query OK, 0 rows affected (0.01 sec)
-Records: 0  Duplicates: 0  Warnings: 0
-
- key重新分区
-mysql&gt; alter table key_part add partition partitions 4;
-Query OK, 1 row affected (0.06 sec)//有数据也会被重新分配
-Records: 1  Duplicates: 0  Warnings: 0
-
-子分区添加新分区，虽然我没有指定子分区，但是系统会给子分区命名的
-mysql&gt; alter table sub1_part add partition(partition p3 values less than MAXVALUE);
-Query OK, 0 rows affected (0.02 sec)
-Records: 0  Duplicates: 0  Warnings: 0</pre>
-
-<h5 id="删除分区操作"><a href="#删除分区操作" class="headerlink" title="删除分区操作"></a><strong>删除分区操作</strong></h5><pre class="lang:php decode:true ">alter table user drop partition `2013-05`;</pre>
-
-<h4 id="分区表其他操作"><a href="#分区表其他操作" class="headerlink" title="分区表其他操作"></a>分区表其他操作</h4><p><pre class="lang:mysql decode:true ">重建分区(官方：与先drop所有记录然后reinsert是一样的效果；用于整理表碎片)<br>alter table operation_log rebuild partition <code>2014-01</code>;<br>重建多个分区<br>alter table operation_log rebuild partition <code>2014-01</code>,<code>2014-02</code>;<br>过程如下：</pre></p>
-<p>pro<br>优化分区（如果删除了一个分区的大量记录或者对一个分区的varchar blob text数据类型的字段做了许多更新，此时可以对分区进行优化以回收未使用的空间和整理分区数据文件）<br>alter table operation_log  optimize  partition <code>2014-01</code>;</p>
-<p>优化的操作相当于check partition,analyze partition 和repair patition</p>
-<p>分析分区<br>alter table operation_log  analyze partition  <code>2014-01</code>;</p>
-<p>修复分区<br>alter table operation_log repair partition   <code>2014-01</code>;</p>
-<p>检查分区<br>alter table operation_log check  partition   <code>2014-01</code>;<br><strong>注释：</strong></p>
-<ol>
-<li>mysqlcheck、myisamchk并不支持分区表，analyze,check,optimize,rebuild,repair,truncate不支持子分区操作</li>
-<li>在MySQL5.6中，可以使用清空一个分区数据：alter table operation_log truncate partition <code>2014-01</code>;</li>
-<li>清空该分区表所有分区数据：alter table operation_log truncate partition all;</li>
-</ol>
-<p><strong>参考文档：</strong></p>
-<p><a href="http://blog.51yip.com/mysql/1013.html" target="_blank" rel="external">http://blog.51yip.com/mysql/1013.html</a><br><a href="https://dev.mysql.com/doc/refman/5.6/en/partitioning-maintenance.html" target="_blank" rel="external">https://dev.mysql.com/doc/refman/5.6/en/partitioning-maintenance.html</a><br><a href="http://dev.mysql.com/doc/refman/5.6/en/index.html" target="_blank" rel="external">http://dev.mysql.com/doc/refman/5.6/en/index.html</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2014/08/19/infobright-e6-95-b0-e6-8d-ae-e4-bb-93-e5-ba-93-e5-ae-89-e8-a3-85-e5-8f-8a-e5-8f-82-e6-95-b0-e4-bc-98-e5-8c-96.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Geekwolf">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/wolf.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Geekwolf's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2014/08/19/infobright-e6-95-b0-e6-8d-ae-e4-bb-93-e5-ba-93-e5-ae-89-e8-a3-85-e5-8f-8a-e5-8f-82-e6-95-b0-e4-bc-98-e5-8c-96.html" itemprop="url">Infobright数据仓库安装及参数优化</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-08-19T19:43:30+08:00">
-                2014-08-19
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/MySQL数据库/" itemprop="url" rel="index">
-                    <span itemprop="name">MySQL数据库</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2014/08/19/infobright-e6-95-b0-e6-8d-ae-e4-bb-93-e5-ba-93-e5-ae-89-e8-a3-85-e5-8f-8a-e5-8f-82-e6-95-b0-e4-bc-98-e5-8c-96.html" class="leancloud_visitors" data-flag-title="Infobright数据仓库安装及参数优化">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长</span>
-                
-                <span title="阅读时长">
-                  2
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><strong>一、认知Infobright数据仓库</strong></p>
-<ol>
-<li>Infobright是开源的DATA Warehouse，可以作为Mysql的存储引擎（BRIGHTHOUSE）使用，select查询与Mysql无区别</li>
-<li>适用于基于Mysql架构下的OLAP，区分为ICE（社区版免费）和IEE（企业版商业授权）</li>
-<li>千万级的查询性能比MyISAM、InnoDB等快5-60倍，且数据量很大时，查询性能基本在同一个数量级，适合聚合查询（SUM,COUNT，AVG，GROUP BY）</li>
-<li>列式存储，无需建索引和分区，高压缩比40:1（官方数字）</li>
-<li>ICE和IEE版本的区别和限制<br><a href="https://www.infobright.org/index.php/Learn-More/ICE_IEE_Comparison/" target="_blank" rel="external">https://www.infobright.org/index.php/Learn-More/ICE_IEE_Comparison/</a></li>
-</ol>
-<p><strong>二、Infobright基本安装初始化</strong></p>
-<p><pre class="lang:php decode:true"> wget <a href="http://www.infobright.org/downloads/ice/infobright-4.0.7-0-x86_64-ice.rpm" target="_blank" rel="external">http://www.infobright.org/downloads/ice/infobright-4.0.7-0-x86_64-ice.rpm</a><br> rpm -ivh infobright-4.0.7-0-x86_64-ice.rpm –prefix=/usr/local/</pre></p>
-<p> A.初始化数据库：<br> /usr/local/infobright/scripts/mysql_install_db –datadir=/data/data/ –basedir=/usr/local/infobright-4.0.7-x86_64/ –force<br>   安装之后会生成<br>  /etc/my-ib.cnf.inactive （主配置文件，下面两个暂不讨论）</p>
-<p><pre class="lang:php decode:true">/etc/my-ib-master.cnf<br>  /etc/my-ib-slave.cnf<br>  /etc/rc.d/init.d/mysqld-ib（启动脚本）<br>  mv  /etc/my-ib.cnf.inactive /etc/my-ib.cnf<br>  修改/etc/rc.d/init.d/mysqld-ib /etc/my-ib.cnf  的datadir basedir参数到指定位置<br>  修改权限chown mysql.mysql /etc/my-ib*  /data/data /ibcache/cachedata</pre></p>
-<p> B.修改warehouse引擎配置文件<br>  /data/data/brighthouse.ini<br> C.参数优化<br>   CacheFolder = /ibcache/cachedata/<br>   ServerMainHeapSize = 28000<br>   ServerCompressedHeapSize = 4000<br>   LoaderMainHeapSize = 800<br>   ControlMessages = 3<br>   KNFolder = BH_RSI_Repository<br>   AllowMySQLQueryPath = 0<br><strong>注释：</strong></p>
-<p>CacheFolder 临时数据目录，用于缓存处理查询的中间结果集，与Datadir相异为宜，可用空间大于20G<br>ServerMainHeapSize IB主线程内存，一般设置为物理内存一半；若可能尽量增加<br>ServerCompressedHeapSize 服务进程的压缩堆栈空间，存放压缩数据<br>LoaderMainHeapSize Bhloader数据导入缓冲区，随目标表的列数增加而调整，loader进程的堆栈空间，一般最大不超过800M<br>ControlMessages 控制盒查询日志的信息量级别（1-3之间）<br>KNFolder 知识网络目录，默认在datadir目录下<br>AllowMySQLQueryPath 是否支持Mysql原生的SQL查询，支持修改为1，否则0<br>启动infobright：service mysqld-ib start</p>
-<p><strong>ICE版本导入数据方式：
-</strong>BRIGHTHOUSE<br>load data infile ‘/data/data.txt’ into table t fields terminated by ‘ ’;</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2014/03/12/linux-e7-b3-bb-e7-bb-9f-e7-9b-91-e6-8e-a7-e5-ae-9e-e7-94-a8-e5-b7-a5-e5-85-b7glances.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Geekwolf">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/wolf.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Geekwolf's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2014/03/12/linux-e7-b3-bb-e7-bb-9f-e7-9b-91-e6-8e-a7-e5-ae-9e-e7-94-a8-e5-b7-a5-e5-85-b7glances.html" itemprop="url">Linux系统监控实用工具Glances</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-03-12T15:02:50+08:00">
-                2014-03-12
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/系统监控/" itemprop="url" rel="index">
-                    <span itemprop="name">系统监控</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2014/03/12/linux-e7-b3-bb-e7-bb-9f-e7-9b-91-e6-8e-a7-e5-ae-9e-e7-94-a8-e5-b7-a5-e5-85-b7glances.html" class="leancloud_visitors" data-flag-title="Linux系统监控实用工具Glances">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长</span>
-                
-                <span title="阅读时长">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h4 id="Linux系统监控实用工具Glances"><a href="#Linux系统监控实用工具Glances" class="headerlink" title="Linux系统监控实用工具Glances"></a>Linux系统监控实用工具Glances</h4><ul>
-<li><h5 id="Glances安装"><a href="#Glances安装" class="headerlink" title="Glances安装"></a>Glances安装</h5><p><a href="http://nicolargo.github.io/glances/" target="_blank" rel="external">Glances</a>安装要求:python &gt;= 2.6 和 psutil &gt;= 0.4.1</p>
-<pre># pip install psutil
-# pip install pysensors
-# pip install hddtemp
-# git clone https://github.com/nicolargo/glances.git
-# cd glances
-# python setup.py install</pre>
-</li>
-<li><h5 id="Glances的使用"><a href="#Glances的使用" class="headerlink" title="Glances的使用"></a>Glances的使用</h5><p><pre># glances -h<br>Glances version 1.7a with PsUtil 0.7.1<br>Usage: glances [opt]<br>with opt:<br>-b        Display network rate in Byte per second<br>-B @IP|host    Bind server to the given IP or host NAME<br>-c @IP|host    Connect to a Glances server<br>-C file        Path to the configuration file<br>-d        Disable disk I/O module<br>-e        Enable the sensors module (Linux-only)<br>-f file        Set the output folder (HTML) or file (CSV)<br>-h        Display the syntax and exit<br>-m        Disable mount module<br>-n        Disable network module<br>-o output    Define additional output (available: HTML or CSV)<br>-p PORT        Define the client or server TCP port (default: 61209)<br>-P password    Client/server password<br>-r        Do not list processes (significant CPU use reduction)<br>-s        Run Glances in server mode<br>-t sec        Set the refresh time in seconds (default: 3)<br>-v        Display the version and exit<br>-y        Enable the hddtemp module (needs running hddtemp daemon)<br>-z        Do not use the bold color attribute<br>-1        Start Glances in per CPU mode</pre><br><div><a href="http://www.simlinux.com/old/wp-content/uploads/2014/03/glances.png"><img src="http://www.simlinux.com/old/wp-content/uploads/2014/03/glances-300x156.png" alt="glances"></a></div><br>&nbsp;</p>
-</li>
-</ul>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2014/03/04/e8-ae-be-e7-bd-aesnmp-e8-be-93-e5-87-ba-e5-88-b0message-e7-9a-84-e6-97-a5-e5-bf-97-e7-ba-a7-e5-88-ab.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Geekwolf">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/wolf.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Geekwolf's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2014/03/04/e8-ae-be-e7-bd-aesnmp-e8-be-93-e5-87-ba-e5-88-b0message-e7-9a-84-e6-97-a5-e5-bf-97-e7-ba-a7-e5-88-ab.html" itemprop="url">设置snmp输出到message的日志级别</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-03-04T09:37:10+08:00">
-                2014-03-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux运维/" itemprop="url" rel="index">
-                    <span itemprop="name">Linux运维</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2014/03/04/e8-ae-be-e7-bd-aesnmp-e8-be-93-e5-87-ba-e5-88-b0message-e7-9a-84-e6-97-a5-e5-bf-97-e7-ba-a7-e5-88-ab.html" class="leancloud_visitors" data-flag-title="设置snmp输出到message的日志级别">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长</span>
-                
-                <span title="阅读时长">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><strong>修改snmp服务的启动脚本</strong><br>vim /etc/rc.d/init.d/snmpd<br>将<br>OPTIONS=”-LS0-6d -Lf /dev/null -p /var/run/snmpd.pid “<br>改成<br>OPTIONS=”-Ls3d -Lf /dev/null -p /var/run/snmpd.pid”<br>services snmpd restart</p>
-<p><strong>snmpd日志等级的定义:</strong><br>0 或 ! —- LOG_EMERG<br>1 或 a —- LOG_ALERT<br>2 或 c —- LOG_CRIT<br>3 或 e —- LOG_ERR<br>4 或 w —- LOG_WARNING<br>5 或 n —- LOG_NOTICE<br>6 或 i —- LOG_INFO<br>7 或 d —- LOG_DEBUG</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2013/12/26/linux-e4-b8-8b-e4-bd-bf-e7-94-a8minicom-e9-85-8d-e7-bd-ae-e4-ba-a4-e6-8d-a2-e6-9c-ba-2.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Geekwolf">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/wolf.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Geekwolf's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2013/12/26/linux-e4-b8-8b-e4-bd-bf-e7-94-a8minicom-e9-85-8d-e7-bd-ae-e4-ba-a4-e6-8d-a2-e6-9c-ba-2.html" itemprop="url">linux下使用minicom配置交换机</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2013-12-26T14:14:50+08:00">
-                2013-12-26
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux运维/" itemprop="url" rel="index">
-                    <span itemprop="name">Linux运维</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2013/12/26/linux-e4-b8-8b-e4-bd-bf-e7-94-a8minicom-e9-85-8d-e7-bd-ae-e4-ba-a4-e6-8d-a2-e6-9c-ba-2.html" class="leancloud_visitors" data-flag-title="linux下使用minicom配置交换机">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长</span>
-                
-                <span title="阅读时长">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><strong>前提</strong>：正确将com线连接好<br>1.安装minicom<br>安装epel源，yum -y install minicom</p>
-<p>2.配置minicom<br>[root@localhost ~]#  minicom -s<br><a href="http://www.simlinux.com/old/wp-content/uploads/2013/12/c.png"><img src="http://www.simlinux.com/old/wp-content/uploads/2013/12/c.png" alt="c"></a></p>
-<p><a href="http://www.simlinux.com/old/wp-content/uploads/2013/12/D.png"><img src="http://www.simlinux.com/old/wp-content/uploads/2013/12/D.png" alt="D"></a></p>
-<p>&nbsp;</p>
-<p>配置好后回车，这里选择Save setup as dfl  然后Exit 即将连接com</p>
-<p><a href="http://www.simlinux.com/old/wp-content/uploads/2013/12/e.png"><img src="http://www.simlinux.com/old/wp-content/uploads/2013/12/e.png" alt="e"></a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2013/12/17/centos6-4-e4-b8-8b-e9-83-a8-e7-bd-b2openvpn-e6-9c-8d-e5-8a-a1-e5-8f-8a-e4-bd-bf-e7-94-a8-e6-96-b9-e6-b3-95.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Geekwolf">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/wolf.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Geekwolf's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2013/12/17/centos6-4-e4-b8-8b-e9-83-a8-e7-bd-b2openvpn-e6-9c-8d-e5-8a-a1-e5-8f-8a-e4-bd-bf-e7-94-a8-e6-96-b9-e6-b3-95.html" itemprop="url">CentOS6.4下部署OpenVpn服务及使用方法</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2013-12-17T14:05:03+08:00">
-                2013-12-17
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/系统安全/" itemprop="url" rel="index">
-                    <span itemprop="name">系统安全</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2013/12/17/centos6-4-e4-b8-8b-e9-83-a8-e7-bd-b2openvpn-e6-9c-8d-e5-8a-a1-e5-8f-8a-e4-bd-bf-e7-94-a8-e6-96-b9-e6-b3-95.html" class="leancloud_visitors" data-flag-title="CentOS6.4下部署OpenVpn服务及使用方法">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长</span>
-                
-                <span title="阅读时长">
-                  5
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <div><strong><span style="font-family: 'Microsoft Yahei';">环境说明：</span></strong></div><br><div><span style="font-family: 'Microsoft Yahei';">vpn服务器：<strong>eth0</strong>:120.3.243.54（外网IP）  <strong>eth1：</strong>192.168.5.253（私网IP）</span></div><br><div><span style="font-family: 'Microsoft Yahei';">客户端地址：201.1.36.111 </span></div><br><div><span style="font-family: 'Microsoft Yahei';">软件版本：服务端OpenVPN 2.3.2  </span></div><br><div><span style="font-family: 'Microsoft Yahei';">实现：访问公司内网及授权vpn地址访问的网段，其他地址均走客户端本地上网</span></div><br><div><strong><span style="font-family: 'Microsoft Yahei';">安装步骤：</span></strong></div><br><div><span style="font-family: 'Microsoft Yahei';">设置EPEL源</span></div><br><div><span style="font-family: 'Microsoft Yahei';">rpm -Uvh <a href="http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm" target="_blank" rel="external">http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm</a></span></div><br><div><span style="font-family: 'Microsoft Yahei';">rpm –import /etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-6</span></div><br><div><span style="font-family: 'Microsoft Yahei';"> </span></div><br><div><span style="font-family: 'Microsoft Yahei';"> </span></div><br><div><span style="font-family: 'Microsoft Yahei';">翻墙下载源码：</span></div><br><div><a href="http://swupdate.openvpn.org/community/releases/openvpn-2.3.2.tar.gz" target="_blank" rel="external"><span style="font-family: 'Microsoft Yahei';">http://swupdate.openvpn.org/community/releases/openvpn-2.3.2.tar.gz</span></a></div><br><div><span style="font-family: 'Microsoft Yahei';">./configure &amp;&amp; make &amp;&amp; make install</span></div><br><div><span style="font-family: 'Microsoft Yahei';"> </span></div><br><div><span style="font-family: 'Microsoft Yahei';">证书生成工具</span></div><br><div><br><br>yum -y install easy-rsa<br>配置OpenVpn：<br>mkdir /etc/openvpn/etc -p<br>cp -R /usr/share/easy-rsa/ /etc/openvpn/<br>源码目录：<br>cp sample/sample-config-files/server.conf /etc/openvpn/server.conf<br><br></div><br><div><span style="font-family: 'Microsoft Yahei';">生成证书</span></div><br><div><span style="font-family: 'Microsoft Yahei';">cd /etc/openvpn/easy-rsa/2.0</span></div><br><div><span style="font-family: 'Microsoft Yahei';">. vars</span></div><br><div><span style="font-family: 'Microsoft Yahei';">./clean-all</span></div><br><div><span style="font-family: 'Microsoft Yahei';">./build-ca</span></div><br><div><span style="font-family: 'Microsoft Yahei';"> </span></div><br><div><span style="font-family: 'Microsoft Yahei';">创建vpn server的key</span></div><br><div><span style="font-family: 'Microsoft Yahei';">./build-key-server server</span></div><br><div><span style="font-family: 'Microsoft Yahei';">创建用户秘钥</span></div><br><div><span style="font-family: 'Microsoft Yahei';">./build-key geekwolf</span></div><br><div><span style="font-family: 'Microsoft Yahei';">创建Diffie Hellman，用于增强安全性</span></div><br><div><span style="font-family: 'Microsoft Yahei';">./build-dh</span></div><br><div><span style="font-family: 'Microsoft Yahei';">默认情况所创建的文件会生成在/etc/openvpn/easy-rsa/2.0/keys目录下</span></div><br><div><span style="font-family: 'Microsoft Yahei';"> </span></div><br><div><strong><span style="font-family: 'Microsoft Yahei';">配置server.conf文件</span></strong></div><br><div><span style="font-family: 'Microsoft Yahei';"><strong>方法1:</strong>采用秘钥认证</span></div><br><div><span style="font-family: 'Microsoft Yahei';">local 120.3.243.54 </span></div><br><div><span style="font-family: 'Microsoft Yahei';">port 9001</span></div><br><div><span style="font-family: 'Microsoft Yahei';">proto tcp</span></div><br><div><span style="font-family: 'Microsoft Yahei';">dev tun</span></div><br><div><span style="font-family: 'Microsoft Yahei';">ca /etc/openvpn/easy-rsa/2.0/keys/ca.crt</span></div><br><div><span style="font-family: 'Microsoft Yahei';">cert /etc/openvpn/easy-rsa/2.0/keys/server.crt</span></div><br><div><span style="font-family: 'Microsoft Yahei';">key /etc/openvpn/easy-rsa/2.0/keys/server.key # This file should be kept secret</span></div><br><div><span style="font-family: 'Microsoft Yahei';">dh /etc/openvpn/easy-rsa/2.0/keys/dh1024.pem</span></div><br><div><span style="font-family: 'Microsoft Yahei';">server 10.8.0.0 255.255.255.0</span></div><br><div><span style="font-family: 'Microsoft Yahei';">ifconfig-pool-persist ipp.txt</span></div><br><div><span style="font-family: 'Microsoft Yahei';">push “route 192.168.0.0 255.255.0.0”</span></div><br><div><span style="font-family: 'Microsoft Yahei';">push “route 10</span><span style="font-family: 'Microsoft Yahei';">4</span><span style="font-family: 'Microsoft Yahei';">.</span><span style="font-family: 'Microsoft Yahei';">172.0.0 255.255.0.0”</span></div><br><div><span style="font-family: 'Microsoft Yahei';">keepalive 10 120</span></div><br><div><span style="font-family: 'Microsoft Yahei';">comp-lzo</span></div><br><div><span style="font-family: 'Microsoft Yahei';">persist-key</span></div><br><div><span style="font-family: 'Microsoft Yahei';">persist-tun</span></div><br><div><span style="font-family: 'Microsoft Yahei';">status openvpn-status.log</span></div><br><div><span style="font-family: 'Microsoft Yahei';">verb 3</span></div><br><div><span style="font-family: 'Microsoft Yahei';"> </span></div><br><div><span style="font-family: 'Microsoft Yahei';"><strong>方法2：</strong>采用用户密码认证</span></div><br><div><span style="font-family: 'Microsoft Yahei';">A.额外在上面配置文件后面添加[基于PAM身份认证]</span></div><br><div><span style="font-family: 'Microsoft Yahei';">plugin /usr/lib/openvpn/openvpn-auth-pam.so login</span></div><br><div><span style="font-family: 'Microsoft Yahei';">client-cert-not-required</span></div><br><div><span style="font-family: 'Microsoft Yahei';">username-as-common-name</span></div><br><div><span style="font-family: 'Microsoft Yahei';">服务端本地创建用户</span></div><br><div><span style="font-family: 'Microsoft Yahei';">useradd -s /sbin/nologin geekwolf</span></div><br><div><span style="font-family: 'Microsoft Yahei';">passwd geekwolf </span></div><br><div><span style="font-family: 'Microsoft Yahei';"> </span></div><br><div><span style="font-family: 'Microsoft Yahei';">B.额外在上面配置文件后面添加[基于脚本的身份认证]</span></div><br><div><span style="font-family: 'Microsoft Yahei';"> </span></div><br><div><span style="font-family: 'Microsoft Yahei';">auth-user-pass-verify /usr/local/openvpn/etc/checkpsw.sh via-env</span></div><br><div><span style="font-family: 'Microsoft Yahei';">client-cert-not-required</span></div><br><div><span style="font-family: 'Microsoft Yahei';">username-as-common-name</span></div><br><div><span style="font-family: 'Microsoft Yahei';"> </span></div><br><div><span style="font-family: 'Microsoft Yahei';">wget <a href="http://openvpn.se/files/other/checkpsw.sh" target="_blank" rel="external">http://openvpn.se/files/other/checkpsw.sh</a> -O /usr/local/openvpn/etc/checkpsw.sh</span></div><br><div><span style="font-family: 'Microsoft Yahei';">chmod +x checkpsw.sh</span></div><br><div><span style="font-family: 'Microsoft Yahei';">修改脚本PASSFILE和LOG_FILE参数文件位置</span></div><br><div><span style="font-family: 'Microsoft Yahei';">PASSFILE=/etc/openvpn/etc/psw-file</span></div><br><div><span style="font-family: 'Microsoft Yahei';">LOG_FILE=/etc/openvpn/etc/openvpn-password.log</span></div><br><div><span style="font-family: 'Microsoft Yahei';"> </span></div><br><div><span style="font-family: 'Microsoft Yahei';">用户名和密码文件格式：</span></div><br><div><span style="font-family: 'Microsoft Yahei';">/etc/openvpn/etc/psw-file(用户和密码之间用空格或者tab隔开)</span></div><br><div><span style="font-family: 'Microsoft Yahei';">geekwolf geekwolf</span></div><br><div><span style="font-family: 'Microsoft Yahei';"> </span></div><br><div><span style="font-family: 'Microsoft Yahei';"><strong>Windows 7 客户端配置</strong></span></div><br><div><span style="font-family: 'Microsoft Yahei';">下载 <span style="color: #5566dd;"><a href="http://swupdate.openvpn.org/community/releases/openvpn-install-2.3.2-I001-x86_64.exe" target="_blank" rel="external">http://swupdate.openvpn.org/community/releases/openvpn-install-2.3.2-I001-x86_64.exe</a>（或者</span></span>OpenVPN Client官网下载）</div><br><div><span style="font-family: 'Microsoft Yahei';">安装后桌面会生成<img src="file:///C:/Users/20130416/AppData/Local/YNote/Data/geekwolf%40163.com/2c01bb4baab24e9f990a595cf3f1325f/clipboard.png" alt="">，属性设置<img src="file:///C:/Users/20130416/AppData/Local/YNote/Data/geekwolf%40163.com/a8aa7d6809e64962a367e17f3847ff40/clipboard.png" alt=""></span></div><br><div><span style="font-family: 'Microsoft Yahei';"> </span></div><br><div><span style="font-family: 'Microsoft Yahei';">A.若采用秘钥方式认证</span></div><br><div><span style="font-family: 'Microsoft Yahei';">客户端做一下事情：</span></div><br><div><span style="font-family: 'Microsoft Yahei';"> 拷贝服务端ca.crt  用户秘钥geekwolf.crt geekwolf.key 到OpenVpn客户端安装根目录下下的config目录内</span></div><br><div><span style="font-family: 'Microsoft Yahei';"> 增加客户端配置文件client.ovpn：</span></div><br><div><span style="font-family: 'Microsoft Yahei';">client</span></div><br><div><span style="font-family: 'Microsoft Yahei';">dev tun</span></div><br><div><span style="font-family: 'Microsoft Yahei';">proto tcp</span></div><br><div><span style="font-family: 'Microsoft Yahei';">remote 120.3.243.54 9001</span></div><br><div><span style="font-family: 'Microsoft Yahei';">resolv-retry infinite</span></div><br><div><span style="font-family: 'Microsoft Yahei';">nobind</span></div><br><div><span style="font-family: 'Microsoft Yahei';">persist-key</span></div><br><div><span style="font-family: 'Microsoft Yahei';">persist-tun</span></div><br><div><span style="font-family: 'Microsoft Yahei';">ca ca.crt</span></div><br><div><span style="font-family: 'Microsoft Yahei';">cert geekwolf.crt</span></div><br><div><span style="font-family: 'Microsoft Yahei';">key geekwolf.key</span></div><br><div><span style="font-family: 'Microsoft Yahei';">comp-lzo</span></div><br><div><span style="font-family: 'Microsoft Yahei';">verb 3</span></div><br><div><span style="font-family: 'Microsoft Yahei';">最后以管理员身份运行OpenVPN GUI程序，即可连接使用vpn</span></div><br><div><span style="font-family: 'Microsoft Yahei';"> </span></div><br><div><span style="font-family: 'Microsoft Yahei';">A.若采用用户密码认证（pam认证）</span></div><br><div><span style="font-family: 'Microsoft Yahei';">注释掉用户cert和keys，配置文件增加密码询问auth-user-pass</span></div><br><div><span style="font-family: 'Microsoft Yahei';">既：</span></div><br><div><br><div><span style="font-family: 'Microsoft Yahei';">client</span></div><br><div><span style="font-family: 'Microsoft Yahei';">dev tun</span></div><br><div><span style="font-family: 'Microsoft Yahei';">proto tcp</span></div><br><div><span style="font-family: 'Microsoft Yahei';">remote 120.3.243.54 9001</span></div><br><div><span style="font-family: 'Microsoft Yahei';">resolv-retry infinite</span></div><br><div><span style="font-family: 'Microsoft Yahei';">nobind</span></div><br><div><span style="font-family: 'Microsoft Yahei';">persist-key</span></div><br><div><span style="font-family: 'Microsoft Yahei';">persist-tun</span></div><br><div><span style="font-family: 'Microsoft Yahei';">ca ca.crt</span></div><br><div><span style="font-family: 'Microsoft Yahei';">；cert geekwolf.crt</span></div><br><div><span style="font-family: 'Microsoft Yahei';">；key geekwolf.key</span></div><br><div><span style="font-family: 'Microsoft Yahei';">comp-lzo</span></div><br><div><span style="font-family: 'Microsoft Yahei';">verb 3 </span></div><br></div><br><div><span style="font-family: 'Microsoft Yahei';">auth-user-pass</span></div><br><div><span style="font-family: 'Microsoft Yahei';">（免输入账号密码方法：auth-user-pass passwd.txt）</span></div><br><div><span style="font-family: 'Microsoft Yahei';">passwd.txt 格式</span></div><br><div><span style="font-family: 'Microsoft Yahei';">账号</span></div><br><div><span style="font-family: 'Microsoft Yahei';">密码</span></div><br><div><span style="font-family: 'Microsoft Yahei';"> </span></div><br><div><strong><span style="font-family: 'Microsoft Yahei';">防火墙配置</span></strong></div><br><div><span style="font-family: 'Microsoft Yahei';">可参考源码下的配置：</span></div><br><div><span style="font-family: 'Microsoft Yahei';">sample/sample-config-files/firewall.sh</span></div><br><div><span style="font-family: 'Microsoft Yahei';">本测试的规则为：</span></div><br><div><span style="font-family: 'Microsoft Yahei';">-A INPUT -i tun+ -j ACCEPT</span></div><br><div><span style="font-family: 'Microsoft Yahei';">-A FORWARD -i tun+ -o eth1 -j ACCEPT</span></div><br><div><span style="font-family: 'Microsoft Yahei';">-A FORWARD -i eth1 -o tun+ -j ACCEPT</span></div><br><div><span style="font-family: 'Microsoft Yahei';">-A OUTPUT -o tun+ -j ACCEPT </span></div><br><div><span style="font-family: 'Microsoft Yahei';">-A POSTROUTING -s 10.8.0.0/24 -o eth1 -j MASQUERADE</span></div><br><div><span style="font-family: 'Microsoft Yahei';">-A POSTROUTING -d 104.172.0.0/255.255.255.0     -o eth0 -j MASQUERADE</span></div><br><div><span style="font-family: 'Microsoft Yahei';"> </span></div><br><div><span style="font-family: 'Microsoft Yahei';"> </span></div><br><div><span style="font-family: 'Microsoft Yahei';"><strong>通过以上配置实现了：</strong></span></div><br><div><span style="font-family: 'Microsoft Yahei';">访问公司内网192.168.0.0 走vpn的eth1出口，访问104.172.0.0等走vpn的eth0出口，访问其他地址均走客户端本地</span></div><br><div><span style="font-family: 'Microsoft Yahei';"> </span></div><br><div><strong> </strong></div><br><div><span style="font-family: 'Microsoft Yahei';"><strong>参考资料：</strong></span></div><br><div><header><br><div><span style="font-family: 'Microsoft Yahei';">深入OpenVPN的配置 </span></div><br><div><span style="font-family: 'Microsoft Yahei';"><a href="http://www.linuxfly.org/post/86/" target="_blank" rel="external">http://www.linuxfly.org/post/86/</a></span></div><br><div><span style="font-family: 'Microsoft Yahei';"> </span></div><br></header></div>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2013/12/14/centos-6-4-e4-b8-8b-e9-83-a8-e7-bd-b2opennebula4-4.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Geekwolf">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/wolf.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Geekwolf's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2013/12/14/centos-6-4-e4-b8-8b-e9-83-a8-e7-bd-b2opennebula4-4.html" itemprop="url">Centos 6.4 下 部署OpenNebula4.4</a></h1>
+                <a class="post-title-link" href="/2013/12/14/centos-install-opennebula.html" itemprop="url">Centos 6.4 下 部署OpenNebula4.4</a></h1>
         
 
         <div class="post-meta">
@@ -2984,7 +410,7 @@ Records: 0  Duplicates: 0  Warnings: 0</pre>
 
           
           
-             <span id="/2013/12/14/centos-6-4-e4-b8-8b-e9-83-a8-e7-bd-b2opennebula4-4.html" class="leancloud_visitors" data-flag-title="Centos 6.4 下 部署OpenNebula4.4">
+             <span id="/2013/12/14/centos-install-opennebula.html" class="leancloud_visitors" data-flag-title="Centos 6.4 下 部署OpenNebula4.4">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -3035,21 +461,1631 @@ Records: 0  Duplicates: 0  Warnings: 0</pre>
       
         
           
-            <p><strong>安装部署</strong><br><strong>1.环境说明</strong><br>Front:192.168.10.101 Centos6.4 x 64 NF5120<br>Node1:192.168.10.102 Centos6.4 x 64 NF5120<br><strong>2.部署OpenNebula4.4</strong><br>下载相应版本 <a href="http://www.opennebula.org/software:software#from_official_repository_of_linux_distributions" target="_blank" rel="external">http://www.opennebula.org/software:software#from_official_repository_of_linux_distributions</a><br>CentOS-6-opennebula-4.4.0-1<br>安装Epel源<br>rpm -ivh <a href="http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm" target="_blank" rel="external">http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm</a><br>cd opennebula-4.4.0-1<br>yum -y localinstall *.rpm<br>Front控制器在此也作为节点使用，在计算节点上安装 kvm 和 opennebula-node-kvm：</p>
-<p>yum localinstall opennebula-node-kvm-4.0.0-1.x86_64.rpm<br>yum install qemu-kvm qemu-kvm-tools libvirt<br>/etc/init.d/libvirtd start</p>
-<p>以上OpenNebula的控制节点和计算节点所需软件包均以安装完，下面进行简单的配置( 事先关闭iptables和selinux，后续讲如何加固)<br>a. 更改Opennebula的front，即OpenNebula-sunstone服务的监听地址<br>sed -i ‘s#127.0.0.1#192.168.10.101#g’ /etc/one/sunstone-server.conf<br>b. 默认会生成用户名和随机密码<br>cat /var/lib/one/.one/one_auth<br>oneadmin:6696d237e58221ae1eb39fdf3a01335f<br>访问<a href="http://192.168.10.101:9869" target="_blank" rel="external">http://192.168.10.101:9869</a> 输入账号密码<br>c. 更改opennebula数据存储方式为mysql<br>vim /etc/one/oned.conf<br>修改仓库路径：<br>DATASTORE_BASE_PATH = /data/datastoress(注意目录权限为oneadmin)<br>注释DB = [ backend = “sqlite” ]<br>打开注释：<br>DB = [ backend = “mysql”,<br>server = “localhost”,<br>port = 0,<br>user = “oneadmin”,<br>passwd = “oneadmin”,<br>db_name = “opennebula” ]<br>（相关授权略）<br>d. 添加环境变量<br>export ONE_XMLRPC=<a href="http://localhost:2633/RPC2" target="_blank" rel="external">http://localhost:2633/RPC2</a><br>export ONE_AUTH=$HOME/.one/one_auth<br>export PATH=$ONE_LOCATION/bin:$PATH<br>e. 为初次部署方便暂使用网络桥接模式<br>母机桥接配置：<br>ifcfg-eth0:</p>
-<p>DEVICE=eth0<br>TYPE=Ethernet<br>UUID=200f14a6-c347-4d4a-9564-257ccf4ebe8a<br>ONBOOT=yes<br>NM_CONTROLLED=yes<br>BOOTPROTO=none<br>HWADDR=00:E0:81:DE:6C:CA<br>BRIDGE=”br0”</p>
-<p>ifcfg-br0:<br>DEVICE=”br0”<br>TYPE=”Bridge”<br>BOOTPROTO=”static”<br>ONBOOT=”yes”<br>IPADDR=192.168.10.102<br>NETMASK=255.255.240.0<br>DNS1=114.114.114.114<br>brctl show 可查询现有桥接的网络<br>bridge name bridge id STP enabled interfaces<br>br0 8000.00e081de6cca no eth0<br>重启网卡</p>
-<p>f. 确定计算节点权限（Front安装时会自动配置）<br>/etc/libvirt/qemu.conf<br>user = “oneadmin”<br>group = “oneadmin”<br>dynamic_ownership = 0</p>
-<p>/etc/libvirt/libvirtd.conf<br>listen_tcp = 1<br>listen_tls = 0<br>mdns_adv = 0<br>unix_sock_group = “oneadmin”<br>unix_sock_ro_perms = “0777”<br>unix_sock_rw_perms = “0777”<br>auth_unix_ro = “none”<br>auth_unix_rw = “none”</p>
-<p>/etc/sysconfig/libvirtd(修改监听地址)<br>LIBVIRTD_ARGS=”–listen”</p>
-<p>/etc/sudoers<br>添加oneadmin ALL=(root)NOPASSWD:ALL<br>注释#Defaults requiretty</p>
-<p>ln -s /usr/libexec/qemu-kvm /usr/bin/kvm<br>将Front的oneadmin的公钥拷贝到计算节点oneadmin下实现无密码认证</p>
-<p>g .以上OpenNebula的部署已经完成，下面启动服务器进行简单操作<br>service OpenNebula start<br>service OpenNebula-sunstone start</p>
+            <h4 id="安装部署"><a href="#安装部署" class="headerlink" title="安装部署"></a>安装部署</h4><h5 id="环境说明"><a href="#环境说明" class="headerlink" title="环境说明"></a>环境说明</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Front:192.168.10.101 Centos6.4 x 64 NF5120</div><div class="line">Node1:192.168.10.102 Centos6.4 x 64 NF5120</div></pre></td></tr></table></figure>
+<h5 id="部署OpenNebula4-4"><a href="#部署OpenNebula4-4" class="headerlink" title="部署OpenNebula4.4"></a>部署OpenNebula4.4</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">下载相应版本 http://www.opennebula.org/software:software#from_official_repository_of_linux_distributions</div><div class="line">CentOS-6-opennebula-4.4.0-1</div><div class="line">安装Epel源</div><div class="line">rpm -ivh http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm</div><div class="line">cd opennebula-4.4.0-1</div><div class="line">yum -y localinstall *.rpm</div><div class="line">Front控制器在此也作为节点使用，在计算节点上安装 kvm 和 opennebula-node-kvm：</div><div class="line"></div><div class="line">yum localinstall opennebula-node-kvm-4.0.0-1.x86_64.rpm</div><div class="line">yum install qemu-kvm qemu-kvm-tools libvirt</div><div class="line">/etc/init.d/libvirtd start</div><div class="line"></div><div class="line">以上OpenNebula的控制节点和计算节点所需软件包均以安装完，下面进行简单的配置( 事先关闭iptables和selinux，后续讲如何加固)</div></pre></td></tr></table></figure>
+<p>a. 更改Opennebula的front，即OpenNebula-sunstone服务的监听地址</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sed -i &apos;s#127.0.0.1#192.168.10.101#g&apos; /etc/one/sunstone-server.conf</div></pre></td></tr></table></figure>
+<p>b. 默认会生成用户名和随机密码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">cat /var/lib/one/.one/one_auth</div><div class="line">oneadmin:6696d237e58221ae1eb39fdf3a01335f</div><div class="line">访问http://192.168.10.101:9869 输入账号密码</div></pre></td></tr></table></figure>
+<p>c. 更改opennebula数据存储方式为mysql</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">vim /etc/one/oned.conf</div><div class="line">修改仓库路径：</div><div class="line">DATASTORE_BASE_PATH = /data/datastoress(注意目录权限为oneadmin)</div><div class="line">注释DB = [ backend = &quot;sqlite&quot; ]</div><div class="line">打开注释：</div><div class="line">DB = [ backend = &quot;mysql&quot;,</div><div class="line">server = &quot;localhost&quot;,</div><div class="line">port = 0,</div><div class="line">user = &quot;oneadmin&quot;,</div><div class="line">passwd = &quot;oneadmin&quot;,</div><div class="line">db_name = &quot;opennebula&quot; ]</div><div class="line">（相关授权略）</div></pre></td></tr></table></figure>
+<p>d. 添加环境变量</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">export ONE_XMLRPC=http://localhost:2633/RPC2</div><div class="line">export ONE_AUTH=$HOME/.one/one_auth</div><div class="line">export PATH=$ONE_LOCATION/bin:$PATH</div></pre></td></tr></table></figure>
+<p>e. 为初次部署方便暂使用网络桥接模式<br>母机桥接配置：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">ifcfg-eth0:</div><div class="line"></div><div class="line">DEVICE=eth0</div><div class="line">TYPE=Ethernet</div><div class="line">UUID=200f14a6-c347-4d4a-9564-257ccf4ebe8a</div><div class="line">ONBOOT=yes</div><div class="line">NM_CONTROLLED=yes</div><div class="line">BOOTPROTO=none</div><div class="line">HWADDR=00:E0:81:DE:6C:CA</div><div class="line">BRIDGE=&quot;br0&quot;</div><div class="line"></div><div class="line">ifcfg-br0:</div><div class="line">DEVICE=&quot;br0&quot;</div><div class="line">TYPE=&quot;Bridge&quot;</div><div class="line">BOOTPROTO=&quot;static&quot;</div><div class="line">ONBOOT=&quot;yes&quot;</div><div class="line">IPADDR=192.168.10.102</div><div class="line">NETMASK=255.255.240.0</div><div class="line">DNS1=114.114.114.114</div><div class="line">brctl show 可查询现有桥接的网络</div><div class="line">bridge name bridge id STP enabled interfaces</div><div class="line">br0 8000.00e081de6cca no eth0</div><div class="line">重启网卡</div></pre></td></tr></table></figure>
+<p>f. 确定计算节点权限（Front安装时会自动配置）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">/etc/libvirt/qemu.conf</div><div class="line">user = &quot;oneadmin&quot;</div><div class="line">group = &quot;oneadmin&quot;</div><div class="line">dynamic_ownership = 0</div><div class="line"></div><div class="line">/etc/libvirt/libvirtd.conf</div><div class="line">listen_tcp = 1</div><div class="line">listen_tls = 0</div><div class="line">mdns_adv = 0</div><div class="line">unix_sock_group = &quot;oneadmin&quot;</div><div class="line">unix_sock_ro_perms = &quot;0777&quot;</div><div class="line">unix_sock_rw_perms = &quot;0777&quot;</div><div class="line">auth_unix_ro = &quot;none&quot;</div><div class="line">auth_unix_rw = &quot;none&quot;</div><div class="line"></div><div class="line">/etc/sysconfig/libvirtd(修改监听地址)</div><div class="line">LIBVIRTD_ARGS=&quot;--listen&quot;</div><div class="line"></div><div class="line">/etc/sudoers</div><div class="line">添加oneadmin ALL=(root)NOPASSWD:ALL</div><div class="line">注释#Defaults requiretty</div><div class="line"></div><div class="line">ln -s /usr/libexec/qemu-kvm /usr/bin/kvm</div><div class="line">将Front的oneadmin的公钥拷贝到计算节点oneadmin下实现无密码认证</div></pre></td></tr></table></figure>
+<p>g .以上OpenNebula的部署已经完成，下面启动服务器进行简单操作</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">service OpenNebula start</div><div class="line">service OpenNebula-sunstone start</div></pre></td></tr></table></figure>
 <p><a href="http://www.simlinux.com/old/wp-content/uploads/2013/12/s2.jpg"><img src="http://www.simlinux.com/old/wp-content/uploads/2013/12/s2-1024x573.jpg" alt="s"></a></p>
-<p>下篇预告：</p>
-<p>  关于OpenNebula镜像压缩传输及本地镜像缓存</p>
-<p>&nbsp;</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2013/09/09/svn-force-add-comments.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Geekwolf">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/wolf.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Geekwolf's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2013/09/09/svn-force-add-comments.html" itemprop="url">svn强制要求添加并允许修改注释信息</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2013-09-09T10:59:55+08:00">
+                2013-09-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux运维/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux运维</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2013/09/09/svn-force-add-comments.html" class="leancloud_visitors" data-flag-title="svn强制要求添加并允许修改注释信息">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="SVN强制添加注释信息"><a href="#SVN强制添加注释信息" class="headerlink" title="SVN强制添加注释信息"></a>SVN强制添加注释信息</h4><p>hooks目录 编辑pre-commit 文件内容，找到下面3行，用#注释掉<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$SVNLOOK log -t &quot;$TXN&quot; &quot;$REPOS&quot; | </div><div class="line"> grep &quot;[a-zA-Z0-9]&quot; &gt; /dev/null || exit 1</div><div class="line"> commit-access-control.pl &quot;$REPOS&quot; &quot;$TXN&quot; commit-access-control.cfg || exit 1</div></pre></td></tr></table></figure></p>
+<p>然后再修改处下面增加一下内容<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">LOGMSG=`$SVNLOOK log -t &quot;$TXN&quot; &quot;$REPOS&quot; | grep &quot;[a-zA-Z0-9]&quot; | wc -c`</div><div class="line">if [ &quot;$LOGMSG&quot; -lt 5 ];#........5.........</div><div class="line">then</div><div class="line"> echo -e &quot;nLog message cann&apos;t be empty! you must input more than 5 chars as comment!.&quot; 1&gt;&amp;2</div><div class="line">exit 1</div><div class="line">fi</div></pre></td></tr></table></figure></p>
+<p>保存退出。 设置pre-commit文件权限可执行 使用如下命令chomd +x pre-commit</p>
+<h4 id="允许用户修改注释信息"><a href="#允许用户修改注释信息" class="headerlink" title="允许用户修改注释信息"></a>允许用户修改注释信息</h4><p>用户修改注释信息的动作，对应的是pre-revpos-change。将hooks目录下的pre-revpos-change.tmpl改名为pre-revpos-change<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">#!/bin/sh</div><div class="line">REPOS=&quot;$1&quot;</div><div class="line">REV=&quot;$2&quot;</div><div class="line">USER=&quot;$3&quot;</div><div class="line">PROPNAME=&quot;$4&quot;</div><div class="line">ACTION=&quot;$5&quot;</div><div class="line"></div><div class="line">if [ &quot;$ACTION&quot; = &quot;M&quot; -a &quot;$PROPNAME&quot; = &quot;svn:log&quot; ];</div><div class="line">then</div><div class="line">    exit 0;</div><div class="line">fi</div><div class="line"></div><div class="line">echo &quot;Changing revision properties other than svn:log is prohibited&quot; &gt;&amp;2</div><div class="line">exit 1</div></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2013/09/05/smokeping-install.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Geekwolf">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/wolf.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Geekwolf's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2013/09/05/smokeping-install.html" itemprop="url">smokeping网络质量监控部署</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2013-09-05T10:08:58+08:00">
+                2013-09-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/系统监控/" itemprop="url" rel="index">
+                    <span itemprop="name">系统监控</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2013/09/05/smokeping-install.html" class="leancloud_visitors" data-flag-title="smokeping网络质量监控部署">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  4
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="前提条件"><a href="#前提条件" class="headerlink" title="前提条件"></a>前提条件</h4><p>smokeping依赖于LNMP或者LAMP及rrdtool</p>
+<h4 id="安装rrdtool支持"><a href="#安装rrdtool支持" class="headerlink" title="安装rrdtool支持"></a>安装rrdtool支持</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">yum -y install libxml2-devel libpng-devel glib pango pango-devel  freetypefreetype-devel fontconfig cairo cairo-devel libart_lgpl libart_lgpl-devel perl perl-Net-Telnet perl-Net-DNSperl-LDAP perl-libwww-perl perl-RadiusPerl perl-IO-Socket-SSL perl-Socket6perl-CGI-SpeedyCGI rrdtool-per</div><div class="line"></div><div class="line">wget http://oss.oetiker.ch/rrdtool/pub/rrdtool-1.4.7.tar.gz</div><div class="line">cd rrdtool-1.4.7</div><div class="line">./configure --prefix=/usr/local/rrdtool</div><div class="line">make &amp;&amp; make install</div></pre></td></tr></table></figure>
+<p><strong>问题</strong>：<a href="http://www.simlinux.com/old/wp-content/uploads/2013/09/c2.png"><img src="http://www.simlinux.com/old/wp-content/uploads/2013/09/c2.png" alt="c"></a> <a href="http://www.simlinux.com/old/wp-content/uploads/2013/09/c1.png">1</a><br><strong>解决</strong>：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum -y install perl-ExtUtils-CBuilder perl-ExtUtils-MakeMaker</div></pre></td></tr></table></figure></p>
+<h4 id="安装-smokeping-依赖的软件"><a href="#安装-smokeping-依赖的软件" class="headerlink" title="安装 smokeping 依赖的软件"></a>安装 smokeping 依赖的软件</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">wget http://down1.chinaunix.net/distfiles/cgilib-0.5.tar.gz</div><div class="line">tar xzvf cgilib-0.5.tar.gz</div><div class="line">cd cgilib-0.5</div><div class="line">make</div><div class="line">cp libcgi.a  /usr/local/lib</div><div class="line">cp cgi.h /usr/include/</div><div class="line"></div><div class="line">http://fping.org/dist/fping-3.4.tar.gz</div><div class="line">./configure –prefix=/usr/local/fping</div><div class="line">make &amp;&amp; make install</div><div class="line">whereis fping</div><div class="line">fping: /usr/local/fping</div><div class="line">ln -s /usr/local/fping/sbin/fping  /usr/sbin/fping</div><div class="line">这个链接是对应/usr/local/smokeping/etc/config里面的probe fping</div><div class="line"></div><div class="line">wget http://ncu.dl.sourceforge.net/project/echoping/echoping/6.0.2/echoping-6.0.2.tar.gz</div><div class="line">tar xzvf echoping-6.0.2.tar.gz</div><div class="line">cd echoping-6.0.2</div><div class="line">./configure</div><div class="line">make &amp;&amp; make install</div></pre></td></tr></table></figure>
+<p><strong>问题</strong>： <a href="http://www.simlinux.com/old/wp-content/uploads/2013/09/cc3.png"><img src="http://www.simlinux.com/old/wp-content/uploads/2013/09/cc3.png" alt="cc"></a><br><strong>解决</strong>：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">下载popt-1.14.tar.gz</div><div class="line">wget http://downloads.sourceforge.net/project/kanapi/sources/RELEASES/popt-1.14.tar.gz?r=http%3A%2F%2Fen.sourceforge.jp%2Fprojects%2Fsfnet_kanapi%2Fdownloads%2Fsources%2FRELEASES%2Fpopt-1.14.tar.gz%2F&amp;ts=1368433312&amp;use_mirror=jaist</div><div class="line"></div><div class="line">./configure </div><div class="line">make &amp;&amp; make install</div><div class="line"></div><div class="line">wget http://ftp.gnu.org/gnu/gettext/gettext-0.18.tar.gz</div><div class="line">tar zxvf gettext-0.18.tar.gz</div><div class="line">cd gettext-0.18</div><div class="line">./configure </div><div class="line">make &amp;&amp; make install</div><div class="line">cd ..</div></pre></td></tr></table></figure></p>
+<h4 id="安装配置Smokeping"><a href="#安装配置Smokeping" class="headerlink" title="安装配置Smokeping"></a>安装配置Smokeping</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div></pre></td><td class="code"><pre><div class="line">wget http://oss.oetiker.ch/smokeping/pub/smokeping-2.6.8.tar.gz</div><div class="line">tar zxvf smokeping-2.6.8.tar.gz</div><div class="line">cd smokeping-2.6.8</div><div class="line">./configure –prefix=/usr/local/smokeping</div><div class="line">./setup/build-perl-modules.sh /usr/local/smokeping/thirdparty</div><div class="line">./configure –prefix=/usr/local/smokeping </div><div class="line"></div><div class="line">gmake install </div><div class="line">安装完毕，下面修改配置文件。</div><div class="line">进入 bin 目录，修改 smokeping 文件</div><div class="line">#vim smokeping</div><div class="line">第八行：  use lib qw(); # PERL5LIB</div><div class="line">修改为：     use lib qw(/usr/local/rrdtool/lib/perl);</div><div class="line">进入 htdocs 目录</div><div class="line"># mv smokeping.fcgi.dist smokeping.fcgi</div><div class="line">进入 etc 目录</div><div class="line">cp config.dist config</div><div class="line">修改 config 文件</div><div class="line"></div><div class="line">创建存放数据文件的目录</div><div class="line">mkdir  c/usr/local/smokeping/data  /usr/local/smokeping/var </div><div class="line">/usr/local/smokeping/cache</div><div class="line">修改 smokeping 的目录为 nginx 运行用户的属主、组</div><div class="line">chown -R daemon.daemon smokeping/</div><div class="line">chmod 600 /usr/local/smokeping/etc/smokeping_secrets.dist</div><div class="line">chmod  –R  777  /usr/local/smokeping/cache  /usr/local/smokeping/data </div><div class="line">/usr/local/smokeping/var</div><div class="line">创建 smokeping 的 log 文件</div><div class="line">touch /var/log/smokeping.log</div><div class="line">chown daemon.daemon /var/log/smokeping.log</div><div class="line">启动 smokeping</div><div class="line">perl /usr/local/smokeping/bin/smokeping --logfile=/var/log/smokeping.log</div><div class="line">建立 smokeping 启动脚本，方便启动</div><div class="line">vim /etc/init.d/smokeping</div><div class="line">添加为以下内容：</div><div class="line">#!/bin/bash</div><div class="line">#</div><div class="line"># chkconfig: 2345 80 05</div><div class="line"># Description: Smokeping init.d script</div><div class="line"># Hacked by : YunVN - http://www.yunvn.com</div><div class="line"># Get function from functions library</div><div class="line">. /etc/init.d/functions</div><div class="line"># Start the service Smokeping</div><div class="line">start() &#123;</div><div class="line">echo -n &quot;Starting Smokeping: &quot;</div><div class="line">/usr/local/smokeping/bin/smokeping &gt;/dev/null 2&gt;&amp;1</div><div class="line">### Create the lock file ### </div><div class="line">touch /var/lock/subsys/smokeping</div><div class="line">success $&quot;Smokeping startup&quot;</div><div class="line">echo</div><div class="line">&#125;</div><div class="line"># Restart the service Smokeping</div><div class="line">stop() &#123;</div><div class="line">echo -n &quot;Stopping Smokeping: &quot;</div><div class="line">kill -9 `ps ax | grep &quot;/usr/local/smokeping/bin/smokeping&quot; | grep -v grep | awk </div><div class="line">&apos;&#123; print $1 &#125;&apos;` &gt;/dev/null 2&gt;&amp;1</div><div class="line">### Now, delete the lock file ###</div><div class="line">rm -f /var/lock/subsys/smokeping</div><div class="line">success $&quot;Smokeping shutdown&quot;</div><div class="line">echo</div><div class="line">&#125;</div><div class="line">### main logic ###</div><div class="line">case &quot;$1&quot; in</div><div class="line">start)</div><div class="line">start</div><div class="line">;;</div><div class="line">stop)</div><div class="line">stop</div><div class="line">;;</div><div class="line">status)</div><div class="line">status Smokeping</div><div class="line">;;</div><div class="line">restart|reload|condrestart)</div><div class="line">stop</div><div class="line">start</div><div class="line">;;</div><div class="line">*)</div><div class="line">echo $&quot;Usage: $0 &#123;start|stop|restart|reload|status&#125;&quot;</div><div class="line">exit 1</div><div class="line">esac</div><div class="line">exit 0</div></pre></td></tr></table></figure>
+<p>给脚本有可执行权限</p>
+<h1 id="chmod-755-etc-rc-d-init-d-smokeping"><a href="#chmod-755-etc-rc-d-init-d-smokeping" class="headerlink" title="chmod 755 /etc/rc.d/init.d/smokeping"></a>chmod 755 /etc/rc.d/init.d/smokeping</h1><p>设置开机启动 smokeping </p>
+<p><strong>问题：</strong><br>启动时出现问题： <a href="http://www.simlinux.com/old/wp-content/uploads/2013/09/ccc2.png"><img src="http://www.simlinux.com/old/wp-content/uploads/2013/09/ccc2.png" alt="ccc"></a> 解决：yum -y install rrdtool-perl</p>
+<p><strong>解决：</strong><br><a href="https://github.com/geekwolf/sa-scripts/tree/master/config" target="_blank" rel="external">https://github.com/geekwolf/sa-scripts/tree/master/config</a></p>
+<p>注释：ping的节点可以适当做些调整</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2013/08/03/lvm-base.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Geekwolf">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/wolf.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Geekwolf's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2013/08/03/lvm-base.html" itemprop="url">LVM简单配置总结</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2013-08-03T08:40:08+08:00">
+                2013-08-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux运维/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux运维</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2013/08/03/lvm-base.html" class="leancloud_visitors" data-flag-title="LVM简单配置总结">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>lvm  操作步骤：<br>1、找块空的硬盘 ，分区sdd1和sdd2。用t 改变system  id ，为8e，（lvm），w保持退出。<br>2、pvscan<br>3、pvcreate  /dev/sdd1   生成pv<br>4、vgcreate  vg1   /dev/sdd1  把pv（dev/sdd1）创建为一个vg1的卷组<br>5、lvcreate   －L  10M  -n  lv1  vg1   把vg1里面的10M的空间划分出来创建lv1。<br>6、格式化lv1   mkfs.ext3  /dev/vg1/lv1<br>7、挂载lv1    mount  /dev/vg1/lv1   /mnt/lv1<br>8、可以正常使用lv1<br>改变lv的大小<br>方法一：在未使用lv的时候，可以通过lvextend  扩展，需要先卸载，再扩展，再格式化，最后重新挂载。<br>lvextend  -L  +20M  /dev/vg1/lv1  增加20M<br>lvreduce  -L  -10M  /dev/vg1/lv1   减少10M<br>方法二：在已使用lv的时候，可以通过resize2fs  无损扩展，无需重新挂载，无需格式化。<br>lvresize  -L  200M  /dev/vg1/lv1<br>先设定大小为200M<br>lvresize  －L   ＋10M  /dev/vg1/lv1<br>带＋  意思是在原有基础上面增加10M<br>resize2fs  /dev/vg1/lv1<br>这条命令是执行重定义尺寸操作</p>
+<p>将逻辑卷data扩容20M,注意有+和没+的区别，有+是将逻辑卷增加了20M,没+是将逻辑卷增加到20M，区别很大</p>
+<p>改变vg大小<br>通过增加pv到vg中，来增加vg的总容量<br>步骤：<br>1、pvcreate  /dev/sdd2<br>2、vgextend  vg1   /dev/sdd2</p>
+<p>上面是我个人总结实验的基本步骤，现在给一张拓扑图 ，便于理解操作！<br><img src="http://img1.51cto.com/attachment/200908/200908301251618386095.jpg" alt=""></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2013/04/02/cacti-performance.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Geekwolf">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/wolf.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Geekwolf's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2013/04/02/cacti-performance.html" itemprop="url">Cacti的优化</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2013-04-02T09:42:30+08:00">
+                2013-04-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/系统监控/" itemprop="url" rel="index">
+                    <span itemprop="name">系统监控</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2013/04/02/cacti-performance.html" class="leancloud_visitors" data-flag-title="Cacti的优化">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  3
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="优化schema-Index"><a href="#优化schema-Index" class="headerlink" title="优化schema/Index"></a>优化schema/Index</h4><p>cacti默认的cacti.sql建立的数据库模型，竟然一个Index都没有建。每次执行poller.php的时候，主要的时间，都花费在数据库*查询上。使用下面的sql语句，建立一系列索引，弥补默认的cacti.sql中缺乏index的缺点。可以有效的提高poller.php执行的效率，缩短更新RRD文件所需的时间</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">CREATE INDEX `data_template_data_id` ON `data_input_data` (`data_template_data_id`);</div><div class="line">CREATE INDEX `host_id_snmp_query_id_snmp_index` ON data_local (`host_id`,`snmp_query_id`,`snmp_index`);</div><div class="line">CREATE INDEX `local_data_id_data_source_name` ON data_template_rrd (`local_data_id`,`data_source_name`);</div><div class="line">CREATE INDEX `graph_template_id_local_graph_id` ON graph_templates_item (`graph_template_id`,`local_graph_id`);</div><div class="line">CREATE INDEX `local_graph_template_item_id` ON graph_templates_item (`local_graph_template_item_id`);</div><div class="line">CREATE INDEX `host_id_snmp_query_id_snmp_index` ON host_snmp_cache (`host_id`,`snmp_query_id`,`snmp_index`);</div><div class="line">CREATE INDEX `local_data_id_rrd_path` ON poller_item (`local_data_id`,`rrd_path`);</div><div class="line">CREATE INDEX `host_id_rrd_next_step` ON poller_item (`host_id`,`rrd_next_step`);</div><div class="line">CREATE INDEX host_id_snmp_query_id ON host_snmp_cache (host_id,snmp_query_id);</div><div class="line">CREATE INDEX host_id_snmp_port ON poller_item (host_id,snmp_port);</div><div class="line">CREATE INDEX data_source_path ON data_template_data (data_source_path);</div><div class="line">show index from table； 查看索引</div></pre></td></tr></table></figure>
+<h4 id="重构RRA文件"><a href="#重构RRA文件" class="headerlink" title="重构RRA文件"></a>重构RRA文件</h4><p>首先在crontab里禁用poller.php，然后执行cacti_install_dir/cli目录下的 structure_rra_paths.php，</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">php  structure_rra_paths.php --proceed</div></pre></td></tr></table></figure>
+<p>它会将所有的RRD文件按照device重新分配目录，并修改<strong>数据库</strong>中的RRD路径，成功执行后，再恢复poller.php的crontab就可以了。<br>按照上面3个步骤，710台服务器，24000个RRD文件，完成一次poller.php的时间，缩短到50 seconds。实现了最初的目的。</p>
+<h4 id="TODO"><a href="#TODO" class="headerlink" title="TODO:"></a>TODO:</h4><p>在执行poller.php的时候, 监控服务器的load达到了3，通过vmstat查看，显示负载主要在I/O。在目前的情况，如果再出现瓶颈，可以考虑安装Boost插件来进一步提供性能。</p>
+<p>cacti主要通过snmp来采集数据，可以引入collected等客户端，提供数据采集的可靠性。</p>
+<p>使用spine替代默认的cmd.php来采集数据 见上一章</p>
+<h5 id="使用Spine"><a href="#使用Spine" class="headerlink" title="使用Spine"></a>使用Spine</h5><p>关于spine插件的安装，这里就不讲了<br>访问：<a href="http://cacti_host_ipaddress/cacti" target="_blank" rel="external">http://cacti_host_ipaddress/cacti</a><br>Settings -&gt; Paths -&gt; “Spine Poller File Path” -&gt; spine程序的位置<br>Settings -&gt; Poller -&gt; “Poller Type” -&gt; spine</p>
+<h5 id="进程调整"><a href="#进程调整" class="headerlink" title="进程调整"></a>进程调整</h5><p>对于进程和线程的调整有利于缩短采集时间，可以进行大量的采集。在CU论坛上看有人说cacti能够同时采集1k服务，这样的性能没有测试过，但是有人测试过同时采集200台服务器的，占用的内容只有几百兆，cpu的利用率也很低，说明一台的普通的机器排除网络链路延时采集的性能是相当强悍的</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Settings -&gt; Poller -&gt; &quot;Maximum Concurrent Poller Processes&quot;（最大并发轮询器进程），修改该值</div><div class="line">Settings -&gt; Poller -&gt; &quot;Maximum Threads per Process&quot;（每进程最大线程数），修改该值</div><div class="line">Settings -&gt; Poller -&gt; &quot;Number of PHP Script Servers&quot;（PHP脚本服务程序数），修改该值</div><div class="line">通过修改这三个参数，可以提高一部分的性能</div></pre></td></tr></table></figure>
+<h5 id="优化PHP内存"><a href="#优化PHP内存" class="headerlink" title="优化PHP内存"></a>优化PHP内存</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">vi /etc/php.ini</div><div class="line">memory_limit = 256M （预设是128MB，根据内存的使用情况，可以改大一点）</div></pre></td></tr></table></figure>
+<h5 id="定期优化Cacti库"><a href="#定期优化Cacti库" class="headerlink" title="定期优化Cacti库"></a>定期优化Cacti库</h5><p>cacti 的 poller_output 会不明原因的长大，大到数据越写越慢，直到无法更新。每隔一段时间手动 “Truncate poller_output table” 后，就会继续正常运作；所以我们可以利用crontab定期清除数据</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">vi /etc/cron.d/truncate_poller</div><div class="line">0 0 * * 0  root  /usr/local/mysql/bin/mysql --user=cacti --password=2010 cacti -e ‘truncate table poller_output;’</div><div class="line">#chkconfig --level 3 crond on &amp;amp;&amp;amp; service crond start</div></pre></td></tr></table></figure>
+<h5 id="修改mysql的最大连接数"><a href="#修改mysql的最大连接数" class="headerlink" title="修改mysql的最大连接数"></a>修改mysql的最大连接数</h5><p>一般默认安装的时候没有调整最大连接数的话，当需要并发量的时候可以出图就会断断续续的<br>mysql&gt; set GLOBAL max_connections=2000；<br>或者直接修改my.cnf配置文件，增加：max_connections = 2000；</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2013/03/31/linux-monitor-iftop.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Geekwolf">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/wolf.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Geekwolf's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2013/03/31/linux-monitor-iftop.html" itemprop="url">Linux流量监控工具iftop</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2013-03-31T12:57:32+08:00">
+                2013-03-31
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux运维/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux运维</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2013/03/31/linux-monitor-iftop.html" class="leancloud_visitors" data-flag-title="Linux流量监控工具iftop">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  5
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>在类Unix系统中可以使用top查看系统资源、进程、内存占用等信息。查看网络状态可以使用netstat、nmap等工具。若要查看实时的网络流量，监控TCP/IP连接等，则可以使用<a href="http://www.vpser.net/manage/iftop.html" target="_blank" rel="external">iftop</a>。</p>
+</blockquote>
+<h4 id="一、iftop是什么？"><a href="#一、iftop是什么？" class="headerlink" title="一、iftop是什么？"></a>一、iftop是什么？</h4><p><a href="http://www.vpser.net/manage/iftop.html" target="_blank" rel="external">iftop</a>是类似于top的实时流量监控工具。</p>
+<p>官方网站：<a href="http://www.ex-parrot.com/~pdw/iftop/" target="_blank" rel="external">http://www.ex-parrot.com/~pdw/iftop/</a></p>
+<h4 id="二、iftop有什么用？"><a href="#二、iftop有什么用？" class="headerlink" title="二、iftop有什么用？"></a>二、iftop有什么用？</h4><p><a href="http://www.vpser.net/manage/iftop.html" target="_blank" rel="external">iftop</a>可以用来监控网卡的实时流量（可以指定网段）、反向解析IP、显示端口信息等，详细的将会在后面的使用参数中说明。<img src="http://www.vpser.net/wp-includes/js/tinymce/plugins/wordpress/img/trans.gif" alt="" title="更多..."></p>
+<h4 id="三、安装iftop"><a href="#三、安装iftop" class="headerlink" title="三、安装iftop"></a>三、安装iftop</h4><p><strong>安装方法1、</strong>编译安装</p>
+<p>如果采用编译安装可以到<a href="http://www.ex-parrot.com/~pdw/iftop/" target="_blank" rel="external">iftop官网</a>下载最新的源码包。</p>
+<p>安装前需要已经安装好基本的编译所需的环境，比如make、gcc、autoconf等。安装iftop还需要安装libpcap和libcurses。</p>
+<p><strong>CentOS上安装所需依赖包：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum install flex byacc  libpcap ncurses ncurses-devel</div></pre></td></tr></table></figure></p>
+<p><strong>Debian上安装所需依赖包：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">apt-get install flex byacc  libpcap0.8 libncurses5</div></pre></td></tr></table></figure></p>
+<p>下载iftop</p>
+<p>wget <a href="http://www.ex-parrot.com/pdw/iftop/download/iftop-0.17.tar.gz" target="_blank" rel="external">http://www.ex-parrot.com/pdw/iftop/download/iftop-0.17.tar.gz</a><br>tar zxvf iftop-0.17.tar.gz<br>cd iftop-0.17<br>./configure<br>make &amp;&amp; make install</p>
+<p><strong>安装方法2：(懒人办法，最简单)</strong></p>
+<p>直接省略上面的步骤</p>
+<p>CentOS系统运行：yum install iftop<br>Debian系统 运行：apt-get install iftop</p>
+<h4 id="四、运行iftop"><a href="#四、运行iftop" class="headerlink" title="四、运行iftop"></a>四、运行iftop</h4><p>直接运行： iftop<br>效果如下图：</p>
+<p><a href="http://www.simlinux.com/old/wp-content/uploads/2013/03/iftop-interface.jpg"><img src="http://www.simlinux.com/old/wp-content/uploads/2013/03/iftop-interface.jpg" alt="iftop-interface"></a></p>
+<h4 id="五、相关参数及说明"><a href="#五、相关参数及说明" class="headerlink" title="五、相关参数及说明"></a>五、相关参数及说明</h4><p>1、iftop界面相关说明<br>界面上面显示的是类似刻度尺的刻度范围，为显示流量图形的长条作标尺用的。</p>
+<p>中间的&lt;= =&gt;;这两个左右箭头，表示的是流量的方向。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">TX：发送流量</div><div class="line">RX：接收流量</div><div class="line">TOTAL：总流量</div><div class="line">Cumm：运行iftop到目前时间的总流量</div><div class="line">peak：流量峰值</div><div class="line">rates：分别表示过去 2s 10s 40s 的平均流量</div></pre></td></tr></table></figure></p>
+<p>2、iftop相关参数</p>
+<p>常用的参数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">-i设定监测的网卡，如：# iftop -i eth1</div><div class="line">-B 以bytes为单位显示流量(默认是bits)，如：# iftop -B</div><div class="line">-n使host信息默认直接都显示IP，如：# iftop -n</div><div class="line">-N使端口信息默认直接都显示端口号，如: # iftop -N</div><div class="line">-F显示特定网段的进出流量，如# iftop -F 10.10.1.0/24或# iftop -F 10.10.1.0/255.255.255.0</div><div class="line">-h（display this message），帮助，显示参数信息</div><div class="line">-p使用这个参数后，中间的列表显示的本地主机信息，出现了本机以外的IP信息;</div><div class="line">-b使流量图形条默认就显示;</div><div class="line">-f这个暂时还不太会用，过滤计算包用的;</div><div class="line">-P使host信息及端口信息默认就都显示;</div><div class="line">-m设置界面最上边的刻度的最大值，刻度分五个大段显示，例：# iftop -m 100M</div></pre></td></tr></table></figure></p>
+<p>进入iftop画面后的一些操作命令(注意大小写)<br>```<br>按h切换是否显示帮助;<br>按n切换显示本机的IP或主机名;<br>按s切换是否显示本机的host信息;<br>按d切换是否显示远端目标主机的host信息;<br>按t切换显示格式为2行/1行/只显示发送流量/只显示接收流量;<br>按N切换显示端口号或端口服务名称;<br>按S切换是否显示本机的端口信息;<br>按D切换是否显示远端目标主机的端口信息;<br>按p切换是否显示端口信息;<br>按P切换暂停/继续显示;<br>按b切换是否显示平均流量图形条;<br>按B切换计算2秒或10秒或40秒内的平均流量;<br>按T切换是否显示每个连接的总流量;<br>按l打开屏幕过滤功能，输入要过滤的字符，比如ip,按回车后，屏幕就只显示这个IP相关的流量信息;<br>按L切换显示画面上边的刻度;刻度不同，流量图形条会有变化;<br>按j或按k可以向上或向下滚动屏幕显示的连接记录;<br>按1或2或3可以根据右侧显示的三列流量数据进行排序;<br>按&lt;根据左边的本机名或IP排序;<br>按&gt;根据远端目标主机的主机名或IP排序;<br>按o切换是否固定只显示当前的连接;<br>按f可以编辑过滤代码，这是翻译过来的说法，我还没用过这个！<br>按!可以使用shell命令，这个没用过！没搞明白啥命令在这好用呢！<br>按q退出监控。</p>
+<h4 id="六、常见问题"><a href="#六、常见问题" class="headerlink" title="六、常见问题"></a>六、常见问题</h4><p>1、make: yacc: Command not found<br>make: <em>*</em> [grammar.c] Error 127</p>
+<p>解决方法：apt-get install byacc   /   yum install byacc</p>
+<p>2、configure: error: Curses! Foiled again!<br>(Can’t find a curses library supporting mvchgat.)<br>Consider installing ncurses.</p>
+<p>解决方法：apt-get install libncurses5-dev  /    yum  install ncurses-devel</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2013/03/01/pssh-try-install-usage.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Geekwolf">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/wolf.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Geekwolf's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2013/03/01/pssh-try-install-usage.html" itemprop="url">PSSH 批量管理服务器</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2013-03-01T08:50:59+08:00">
+                2013-03-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux运维/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux运维</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2013/03/01/pssh-try-install-usage.html" class="leancloud_visitors" data-flag-title="PSSH 批量管理服务器">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  2
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>想找一个轻量的批量管理机器的工具，网上搜了一下发现有介绍pssh这个工具，用python写的，python版本大于2.4即可，于是下载试了一下。</p>
+<p>1 下载wget </p>
+<p><a href="http://parallel-ssh.googlecode.com/files/pssh-2.3.1.tar.gz" target="_blank" rel="external">http://parallel-ssh.googlecode.com/files/pssh-2.3.1.tar.gz</a></p>
+<p>2 安装</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">tar zxvf pssh-2.3.1.tar.gz    </div><div class="line">cd pssh-2.3.1/    </div><div class="line">python setup.py install    </div><div class="line">chmod 755 /usr/local/bin/pnuke </div><div class="line">chmod 755 /usr/local/bin/pscp  </div><div class="line">chmod 755 /usr/local/bin/pslurp</div><div class="line">chmod 755 /usr/local/bin/pssh  </div><div class="line">chmod 755 /usr/local/bin/pssh-askpass    </div><div class="line">chmod 755 /usr/local/bin/prsync</div></pre></td></tr></table></figure>
+<p>3 介绍pssh参数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">-h 执行命令的远程主机列表或者 -H user@ip:port 文件内容格式[user@]host[:port]</div><div class="line">-l 远程机器的用户名</div><div class="line">-p 一次最大允许多少连接</div><div class="line">-o 输出内容重定向到一个文件</div><div class="line">-e 执行错误重定向到一个文件</div><div class="line">-t 设置命令执行的超时时间</div><div class="line">-A 提示输入密码并且把密码传递给ssh</div><div class="line">-O 设置ssh参数的具体配置，参照ssh_config配置文件</div><div class="line">-x 传递多个SSH 命令，多个命令用空格分开，用引号括起来</div><div class="line">-X 同-x 但是一次只能传递一个命令</div><div class="line">-i 显示标准输出和标准错误在每台host执行完毕后</div><div class="line">-I 读取每个输入命令，并传递给ssh进程 允许命令脚本传送到标准输入</div></pre></td></tr></table></figure>
+<p>4 介绍软件包内其他命令</p>
+<p>pscp 传输文件到多个hosts，他的特性和scp差不多<br>pslurp 从多台远程机器拷贝文件<br>pnuke kill远程机器的进程</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2013/01/22/nginx-chinese-domain.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Geekwolf">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/wolf.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Geekwolf's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2013/01/22/nginx-chinese-domain.html" itemprop="url">nginx配置中文域名</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2013-01-22T09:23:06+08:00">
+                2013-01-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux运维/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux运维</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2013/01/22/nginx-chinese-domain.html" class="leancloud_visitors" data-flag-title="nginx配置中文域名">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>当在浏览器中敲入www.明月博客.com时，浏览器会转为www.xn–9kRq6Qw2Iu2A.com<br>其实中文域名就是一个经过编码的英文域名（中文域名–&gt;punycode编码–&gt;英文域名）<br>在线转换地址<a href="http://www.webmasterhome.cn/tool/punycode.asp" target="_blank" rel="external">http://www.webmasterhome.cn/tool/punycode.asp</a><br>配置：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">listen 80;   </div><div class="line">server_name www.xn--9kRq6Qw2Iu2A.com;   </div><div class="line">index index.html;</div></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2012/12/16/rpm-package.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Geekwolf">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/wolf.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Geekwolf's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2012/12/16/rpm-package.html" itemprop="url">简单介绍RPM包制作方法</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2012-12-16T14:25:35+08:00">
+                2012-12-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux运维/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux运维</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2012/12/16/rpm-package.html" class="leancloud_visitors" data-flag-title="简单介绍RPM包制作方法">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  3
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>“<br>RPM是RedHat Package Manager（RedHat软件包管理工具）的缩写,是一种用于互联网下载包的打包及安装工具，它包含在某些Linux分发版中。它生成具有.RPM扩展名的文件。使用rpm安装软件和管理软件非常的方便。而这节我们不是介绍如何使用rpm安装或管理软件，而是如何把源码制作成rpm包。<br>“<br>下面我们以制作nginx的rpm开始介绍其制作方法。以下操作在centos-5 32系统进行。<br>制作nginx的rpm例子</p>
+<h4 id="建立目录结构"><a href="#建立目录结构" class="headerlink" title="建立目录结构"></a>建立目录结构</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">/usr/src/redhat/SOURCES — 存放源代码，补丁，图标等文件。</div><div class="line">/usr/src/redhat/SPECS — 存放用于管理rpm制作进程的spec文件。</div><div class="line">/usr/src/redhat/BUILD — 解压后的文件存放在这里。</div><div class="line">/usr/src/redhat/RPMS — 存放由rpmbuild制作好的二进制包。</div><div class="line">/usr/src/redhat/SRPMS —存放由rpmbuild制作好的源码包。</div><div class="line"></div><div class="line">mkdir -p /usr/src/redhat</div><div class="line">cd /usr/src/redhat</div><div class="line">mkdir SOURCES SPECS BUILD RPMS SRPMS</div></pre></td></tr></table></figure>
+<h4 id="下载源码包"><a href="#下载源码包" class="headerlink" title="下载源码包"></a>下载源码包</h4><p>下载源码包到SOURCES目录，不需要解压。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cd /usr/src/redhat/SOURCES</div><div class="line">wget http://nginx.org/download/nginx-1.2.1.tar.gz</div></pre></td></tr></table></figure></p>
+<h4 id="创建Spec文件"><a href="#创建Spec文件" class="headerlink" title="创建Spec文件"></a>创建Spec文件</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line">cd /usr/src/redhat/SPECS</div><div class="line">vi nginx.spec</div><div class="line">内容如下：</div><div class="line"></div><div class="line">#</div><div class="line"># Example spec file for nginx</div><div class="line">#</div><div class="line">Summary: high performance web server</div><div class="line">Name: nginx</div><div class="line">Version: 1.2.1</div><div class="line">Release: 1.el5.ngx</div><div class="line">License: 2-clause BSD-like license</div><div class="line">Group: Applications/Server</div><div class="line">Source: http://nginx.org/download/nginx-1.2.1.tar.gz</div><div class="line">URL: http://nginx.org/</div><div class="line">Distribution: Linux</div><div class="line">Packager: geekwolf &lt;admin@simlinuxc.om&gt;;</div><div class="line"></div><div class="line">%description</div><div class="line">nginx [engine x] is a HTTP and reverse proxy server, as well as</div><div class="line">a mail proxy server</div><div class="line">%prep</div><div class="line">rm -rf $RPM_BUILD_DIR/nginx-1.2.1</div><div class="line">zcat $RPM_SOURCE_DIR/nginx-1.2.1.tar.gz | tar -xvf -</div><div class="line">%build</div><div class="line">cd nginx-1.2.1</div><div class="line">./configure --prefix=/usr/local/nginx</div><div class="line">make</div><div class="line">%install</div><div class="line">cd nginx-1.2.1</div><div class="line">make install</div><div class="line">%preun</div><div class="line">if [ -z &quot;`ps aux | grep nginx | grep -v grep`&quot; ];then</div><div class="line">killall nginx &gt;/dev/null</div><div class="line">exit 0</div><div class="line">fi</div><div class="line">%files</div><div class="line">/usr/local/nginx</div></pre></td></tr></table></figure>
+<h4 id="开始RPM制作"><a href="#开始RPM制作" class="headerlink" title="开始RPM制作"></a>开始RPM制作</h4><p>在制作RPM包之前需要安装必要的工具，如rpmbuild,gcc等。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">yum install gcc rpm-build pcre-devel</div><div class="line">cd /usr/src/redhat/SPECS/</div><div class="line">rpmbuild -bb nginx.spec</div><div class="line">一切顺利的话，会生成nginx的rpm包，/usr/src/redhat/RPMS/i386/nginx-1.2.1-1.el5.ngx.i386.rpm。</div></pre></td></tr></table></figure></p>
+<h4 id="测试rpm包"><a href="#测试rpm包" class="headerlink" title="测试rpm包"></a>测试rpm包</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">rpm -ivh /usr/src/redhat/RPMS/i386/nginx-1.2.1-1.el5.ngx.i386.rpm</div><div class="line">spec文件解释</div><div class="line">从以上的简单例子可以看出，制作rpm包最重要的还是spec文件，下面解释一下例子所用到的指令。</div><div class="line">#:以#开头是注释，rpm会忽略它。</div><div class="line">Summary：简单描述软件。</div><div class="line">Name ：定义rpm的名称。</div><div class="line">Version: 定义软件版本</div><div class="line">Release: 发行版本</div><div class="line">License: 定义许可证</div><div class="line">Group: 软件分类</div><div class="line">Source: 源码下载地址</div><div class="line">URL: 源码相关网站</div><div class="line">Distribution: 发行版系列</div><div class="line">Packager: 打包人的信息</div><div class="line"></div><div class="line">%description:软件详细描述，可多行</div><div class="line">%prep ：软件编译之前的处理，如解压。</div><div class="line">%build ：开始编译软件，如make</div><div class="line">%install :开始安装软件，如make install</div><div class="line">%files :指定哪些文件需要被打包，如/usr/local/nginx</div><div class="line">%preun :定义卸载之前的动作，如杀掉进程。</div><div class="line">这里只介绍了几个常用的tag，更详细的请参考：http://www.rpm.org/max-rpm/ch-rpm-inside.html</div></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2012/12/16/linux-often-use.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Geekwolf">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/wolf.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Geekwolf's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2012/12/16/linux-often-use.html" itemprop="url">系统管理及debug常用命令</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2012-12-16T06:33:12+08:00">
+                2012-12-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux运维/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux运维</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2012/12/16/linux-often-use.html" class="leancloud_visitors" data-flag-title="系统管理及debug常用命令">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  3
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>系统连接状态篇：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">1. 查看TCP连接状态 netstat -nat |awk &apos;&#123;print $6&#125;&apos;|sort|uniq -c|sort -rn</div><div class="line">netstat -n | awk &apos;/^tcp/ &#123;++S[$NF]&#125;;END &#123;for(a in S) print a, S[a]&#125;&apos; 或 netstat -n | awk &apos;/^tcp/ &#123;++state[$NF]&#125;; END &#123;for(key in state) print key,&quot;t&quot;,state[key]&#125;&apos; netstat -n | awk &apos;/^tcp/ &#123;++arr[$NF]&#125;;END &#123;for(k in arr) print k,&quot;t&quot;,arr[k]&#125;&apos;</div><div class="line">netstat -n |awk &apos;/^tcp/ &#123;print $NF&#125;&apos;|sort|uniq -c|sort -rn</div><div class="line">netstat -ant | awk &apos;&#123;print $NF&#125;&apos; | grep -v &apos;[a-z]&apos; | sort | uniq -c</div><div class="line">2. 查找请求数请20个IP（常用于查找攻来源）： netstat -anlp|grep 80|grep tcp|awk &apos;&#123;print $5&#125;&apos;|awk -F: &apos;&#123;print $1&#125;&apos;|sort|uniq -c|sort -nr|head -n20</div><div class="line">netstat -ant |awk &apos;/:80/&#123;split($5,ip,&quot;:&quot;);++A[ip[1]]&#125;END&#123;for(i in A) print A[i],i&#125;&apos; |sort -rn|head -n20</div><div class="line">3. 用tcpdump嗅探80端口的访问看看谁最高 tcpdump -i eth0 -tnn dst port 80 -c 1000 | awk -F&quot;.&quot; &apos;&#123;print $1&quot;.&quot;$2&quot;.&quot;$3&quot;.&quot;$4&#125;&apos; | sort | uniq -c | sort -nr |head -20</div><div class="line">4. 查找较多time_wait连接 netstat -n|grep TIME_WAIT|awk &apos;&#123;print $5&#125;&apos;|sort|uniq -c|sort -rn|head -n20</div><div class="line">5. 找查较多的SYN连接 netstat -an | grep SYN | awk &apos;&#123;print $5&#125;&apos; | awk -F: &apos;&#123;print $1&#125;&apos; | sort | uniq -c | sort -nr | more</div><div class="line">6. 根据端口列进程 netstat -ntlp | grep 80 | awk &apos;&#123;print $7&#125;&apos; | cut -d/ -f1</div></pre></td></tr></table></figure></p>
+<p>网站日志分析篇1（Apache）：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">1. 获得访问前10位的ip地址 cat access.log|awk &apos;&#123;print $1&#125;&apos;|sort|uniq -c|sort -nr|head -10 cat access.log|awk &apos;&#123;counts[$(11)]+=1&#125;; END &#123;for(url in counts) print counts[url], url&#125;&apos;</div><div class="line">2. 访问次数最多的文件或页面,取前20 cat access.log|awk &apos;&#123;print $11&#125;&apos;|sort|uniq -c|sort -nr|head -20</div><div class="line">3. 列出传输最大的几个exe文件（分析下载站的时候常用） cat access.log |awk &apos;($7~/.exe/)&#123;print $10 &quot; &quot; $1 &quot; &quot; $4 &quot; &quot; $7&#125;&apos;|sort -nr|head -20</div><div class="line">4. 列出输出大于200000byte(约200kb)的exe文件以及对应文件发生次数 cat access.log |awk &apos;($10 &gt; 200000 &amp;&amp; $7~/.exe/)&#123;print $7&#125;&apos;|sort -n|uniq -c|sort -nr|head -100</div><div class="line">5. 如果日志最后一列记录的是页面文件传输时间，则有列出到客户端最耗时的页面 cat access.log |awk  &apos;($7~/.php/)&#123;print $NF &quot; &quot; $1 &quot; &quot; $4 &quot; &quot; $7&#125;&apos;|sort -nr|head -100</div><div class="line">6. 列出最最耗时的页面(超过60秒的)的以及对应页面发生次数 cat access.log |awk &apos;($NF &gt; 60 &amp;&amp; $7~/.php/)&#123;print $7&#125;&apos;|sort -n|uniq -c|sort -nr|head -100</div><div class="line">7. 列出传输时间超过 30 秒的文件 cat access.log |awk &apos;($NF &gt; 30)&#123;print $7&#125;&apos;|sort -n|uniq -c|sort -nr|head -20</div><div class="line">8. 统计网站流量（G) cat access.log |awk &apos;&#123;sum+=$10&#125; END &#123;print sum/1024/1024/1024&#125;&apos;</div><div class="line">9. 统计404的连接 awk &apos;($9 ~/404/)&apos; access.log | awk &apos;&#123;print $9,$7&#125;&apos; | sort</div><div class="line">10. 统计http status. cat access.log |awk &apos;&#123;counts[$(9)]+=1&#125;; END &#123;for(code in counts) print code, counts[code]&#125;&apos; cat access.log |awk &apos;&#123;print $9&#125;&apos;|sort|uniq -c|sort -rn</div><div class="line">10.蜘蛛分析 查看是哪些蜘蛛在抓取内容。 /usr/sbin/tcpdump -i eth0 -l -s 0 -w - dst port 80 | strings | grep -i user-agent | grep -i -E &apos;bot|crawler|slurp|spider&apos;</div></pre></td></tr></table></figure></p>
 
           
         
@@ -3089,7 +2125,7 @@ Records: 0  Duplicates: 0  Warnings: 0</pre>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/5/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><a class="extend next" rel="next" href="/page/7/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/5/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/7/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -3135,7 +2171,7 @@ Records: 0  Duplicates: 0  Warnings: 0</pre>
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">166</span>
+                <span class="site-state-item-count">83</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -3146,7 +2182,7 @@ Records: 0  Duplicates: 0  Warnings: 0</pre>
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-count">10</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -3157,7 +2193,7 @@ Records: 0  Duplicates: 0  Warnings: 0</pre>
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">105</span>
+                <span class="site-state-item-count">60</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

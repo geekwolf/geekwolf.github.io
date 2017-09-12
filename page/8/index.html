@@ -339,7 +339,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2013/04/08/e8-99-9a-e6-8b-9f-e5-8c-96-e6-8a-80-e6-9c-af-e5-ad-a6-e4-b9-a0-ef-bc-88-e4-ba-8c-ef-bc-89-e4-b9-8b-e4-ba-91-e8-ae-a1-e7-ae-97-e7-89-b9-e7-82-b9-e5-8f-8a-e6-a8-a1-e5-bc-8f.html">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2012/08/02/dmidecode-usage.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Geekwolf">
@@ -358,7 +358,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2013/04/08/e8-99-9a-e6-8b-9f-e5-8c-96-e6-8a-80-e6-9c-af-e5-ad-a6-e4-b9-a0-ef-bc-88-e4-ba-8c-ef-bc-89-e4-b9-8b-e4-ba-91-e8-ae-a1-e7-ae-97-e7-89-b9-e7-82-b9-e5-8f-8a-e6-a8-a1-e5-bc-8f.html" itemprop="url">虚拟化技术学习（二）之云计算特点及模式</a></h1>
+                <a class="post-title-link" href="/2012/08/02/dmidecode-usage.html" itemprop="url">linux 查看内存插槽数、最大容量和频率</a></h1>
         
 
         <div class="post-meta">
@@ -370,8 +370,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2013-04-08T14:44:40+08:00">
-                2013-04-08
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2012-08-02T04:33:28+08:00">
+                2012-08-02
               </time>
             
 
@@ -410,7 +410,7 @@
 
           
           
-             <span id="/2013/04/08/e8-99-9a-e6-8b-9f-e5-8c-96-e6-8a-80-e6-9c-af-e5-ad-a6-e4-b9-a0-ef-bc-88-e4-ba-8c-ef-bc-89-e4-b9-8b-e4-ba-91-e8-ae-a1-e7-ae-97-e7-89-b9-e7-82-b9-e5-8f-8a-e6-a8-a1-e5-bc-8f.html" class="leancloud_visitors" data-flag-title="虚拟化技术学习（二）之云计算特点及模式">
+             <span id="/2012/08/02/dmidecode-usage.html" class="leancloud_visitors" data-flag-title="linux 查看内存插槽数、最大容量和频率">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -438,7 +438,7 @@
                   <span class="post-meta-item-text">阅读时长</span>
                 
                 <span title="阅读时长">
-                  2
+                  1
                 </span>
               
             </div>
@@ -461,101 +461,13 @@
       
         
           
-            <div><br>  <div><br>    <strong>云计算的特点：</strong><br>  </div>
+            <blockquote>
+<p>我们通过free命令查看机器空闲内存时，会发现free的值很小。这主要是因为，在linux中有这么一种思想，内存不用白不用，因此它尽可能的cache 和buffer一些数据，下面是查看内存的命令供大家参考</p>
+</blockquote>
+<p><strong>1.Linux 查看内存的插槽数,已经使用多少插槽.每条内存多大，已使用内存多大</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">dmidecode|grep  -P  -A5  &quot;Memorys+Device&quot;|grep Size|grep -v Range </div><div class="line">Size:2048MB </div><div class="line">Size:2048MB </div><div class="line">Size:NoModuleInstalled </div><div class="line">Size:NoModuleInstalled </div><div class="line">Size:NoModuleInstalled </div><div class="line">Size:NoModuleInstalled </div><div class="line">Size:NoModuleInstalled </div><div class="line">Size:NoModuleInstalled</div></pre></td></tr></table></figure></p>
+<p><strong>2.Linux 查看内存支持的最大内存容量</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">dmidecode|grep -P  &apos;Maximums+Capacity&apos;</div><div class="line">MaximumCapacity:64GB</div></pre></td></tr></table></figure></p>
+<p><strong>3.Linux 查看内存的频率</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">dmidecode|grep -A16 &quot;MemoryDevice&quot; </div><div class="line">dmidecode|grep -A16 &quot;MemoryDevice&quot;|grep &apos;Speed&apos; </div><div class="line">Speed:667MHz(1.5ns) </div><div class="line">Speed:667MHz(1.5ns) </div><div class="line">Speed:667MHz(1.5ns) </div><div class="line">Speed:667MHz(1.5ns) </div><div class="line">Speed:667MHz(1.5ns) </div><div class="line">Speed:667MHz(1.5ns) </div><div class="line">Speed:667MHz(1.5ns) </div><div class="line">Speed:667MHz(1.5ns)</div></pre></td></tr></table></figure></p>
 
-  <div><br>  </div>
-
-  <div><br>    1.基于互联网络<br>  </div>
-
-  <div><br>    2.按需服务<br>  </div>
-
-  <div><br>    3.资源池化<br>  </div>
-
-  <div><br>    4.高可用<br>  </div>
-
-  <div><br>    5.资源可控<br>  </div>
-
-  <div><br>  </div>
-
-  <div><br>    以上从字面意思便可理解，这里不再废话！<br>  </div>
-
-  <div><br>  </div>
-
-  <div><br>    <strong>云计算的体系架构：</strong><br>  </div>
-
-  <div><br>  </div>
-
-  <div><br>    业界通常认为云计算体系分为3个层次，即：<br>  </div>
-
-  <div><br>    Iaas      Infrastructure as a Service  基础设施即是服务<br>  </div>
-
-  <div><br>    Paas     Platform as a  Service  平台即服务<br>  </div>
-
-  <div><br>    Saas     Software as a Service  软件即服务<br>  </div>
-
-  <div><br>  </div>
-
-  <div><br>    以上三层对用户来讲是相互独立的，因为每层提供的服务各不相同，从技术角度讲是相互依赖的，但不相互依存<br>  </div><br></div>
-
-<div><br>  <span style="font-size: medium;"> </span><br></div>
-
-<div><br>  <span style="font-size: medium;"> <a href="http://www.simlinux.com/old/wp-content/uploads/2013/04/clipboard.png"><img src="http://www.simlinux.com/old/wp-content/uploads/2013/04/clipboard.png" alt="clipboard"></a></span><br></div>
-
-<div><br>  <img src="file:///C:/Users/geekwolf/AppData/Local/youdao/ynote/images/0471BA417352490DB29FA91A3CCB0B9E/clipboard.png" alt=""><br></div>
-
-<div><br>  <span style="font-size: medium;"> </span><br></div>
-
-<div><br>  <div><br>    若此图还不能帮助理解，请百度吧！<br>  </div>
-
-  <div><br>  </div>
-
-  <div><br>    <strong> </strong><br>  </div>
-
-  <div><br>    <strong>云计算的模式：</strong><br>  </div>
-
-  <div><br>    <strong> </strong><br>  </div>
-
-  <div><br>    1.公有云<br>  </div>
-
-  <div><br>      通常是指第三方提供商为用户提供的能够使用的云，或者企业通过自己的基础设施直接向外部用户提供服务的云。<br>  </div>
-
-  <div><br>    例子：微软的Windows  Azrue、Google的Apps、Amazon的AWS；<br>  </div>
-
-  <div><br>      特点：费用较低，灵活性高，可大规模应用等优点<br>  </div>
-
-  <div><br>  </div>
-
-  <div><br>    2.私有云<br>  </div>
-
-  <div><br>      通常是指用户自己开发或者使用云计算产品自己搭建（也可由云提供商进行构建）云计算环境并只为自己提供服务的云计算；是为单独使用而构建的，因而可提供对数据、安全性和服务质量的最有效控制<br>  </div>
-
-  <div><br>      特点：具有数据安全性高、能充分利用资源、服务质量高等有点<br>  </div>
-
-  <div><br>  </div>
-
-  <div><br>    3.混合云<br>  </div>
-
-  <div><br>      对于信息控制、可扩展性、突发需求以及故障转移需求来说，只有将公有云和私有云相结合才可满足，这种两者结合起来的云就是混合云。<br>  </div>
-
-  <div><br>     特点：用户可以享受接近私有云的私密性和接近公有云的成本，并且能快速地介入大量位于公有云的计算能力<br>  </div>
-
-  <div><br>  </div>
-
-  <div><br>    4.行业云<br>  </div>
-
-  <div><br>        是由国内著名的商用IT解决方案提供商浪潮提出的。行业云就是由行业内或某个区域内起主导作用或者掌握关键资源的组织建立和维护，以公开或者半公开的方式，向行业内部或相关组织和公众提供有偿或无偿服务的云平台。目前浪潮已将其定义为浪潮云计算业务的战略市场。<br>  </div>
-
-  <div><br>  </div>
-
-  <div><br>       笔记种提到的云概念的定义部分来自百度百科，但内容完全摘抄马博峰《VMware、Citrix和Microsoft虚拟化技术详解与应用实践》，<strong><span style="color: #ff0000;">学习总会在不断总结和推敲中进步！</span></strong>希望能和各位Geek一起探讨！<br>  </div>
-
-  <div><br>  </div>
-
-  <div><br>    上一篇<br>  </div>
-
-  <div><br>    <a href="http://www.simlinux.com/old/?p=1015">虚拟化技术学习（一）之虚拟化与云计算概念</a><br>  </div>
-
-  <div><br>    <a href="http://www.simlinux.com/old/?p=1015">http://www.simlinux.com/old/?p=1015</a><br>  </div><br></div>
           
         
       
@@ -603,7 +515,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2013/04/02/cacti-e7-9a-84-e4-bc-98-e5-8c-96.html">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2012/07/29/mysql-mysqlsla.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Geekwolf">
@@ -622,7 +534,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2013/04/02/cacti-e7-9a-84-e4-bc-98-e5-8c-96.html" itemprop="url">Cacti的优化</a></h1>
+                <a class="post-title-link" href="/2012/07/29/mysql-mysqlsla.html" itemprop="url">mysql慢日志分析工具之mysqlsla学习笔记</a></h1>
         
 
         <div class="post-meta">
@@ -634,8 +546,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2013-04-02T09:42:30+08:00">
-                2013-04-02
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2012-07-29T03:25:07+08:00">
+                2012-07-29
               </time>
             
 
@@ -657,8 +569,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/系统监控/" itemprop="url" rel="index">
-                    <span itemprop="name">系统监控</span>
+                  <a href="/categories/MySQL数据库/" itemprop="url" rel="index">
+                    <span itemprop="name">MySQL数据库</span>
                   </a>
                 </span>
 
@@ -674,7 +586,7 @@
 
           
           
-             <span id="/2013/04/02/cacti-e7-9a-84-e4-bc-98-e5-8c-96.html" class="leancloud_visitors" data-flag-title="Cacti的优化">
+             <span id="/2012/07/29/mysql-mysqlsla.html" class="leancloud_visitors" data-flag-title="mysql慢日志分析工具之mysqlsla学习笔记">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -725,37 +637,15 @@
       
         
           
-            <p>1，<strong>优化数据库schema，建立合理的索引</strong></p>
-<p>cacti默认的cacti.sql建立的数据库模型，竟然一个Index都没有建。每次执行poller.php的时候，主要的时间，都花费在<strong>数据库</strong>查询上。使用下面的sql语句，建立一系列索引，弥补默认的<strong>cacti</strong>.sql中缺乏index的缺点。可以有效的提高poller.php执行的效率，缩短更新RRD文件所需的时间</p>
-<p>CREATE INDEX <code>data_template_data_id</code> ON <code>data_input_data</code> (<code>data_template_data_id</code>);</p>
-<p>CREATE INDEX <code>host_id_snmp_query_id_snmp_index</code> ON data_local (<code>host_id</code>,<code>snmp_query_id</code>,<code>snmp_index</code>);</p>
-<p>CREATE INDEX <code>local_data_id_data_source_name</code> ON data_template_rrd (<code>local_data_id</code>,<code>data_source_name</code>);</p>
-<p>CREATE INDEX <code>graph_template_id_local_graph_id</code> ON graph_templates_item (<code>graph_template_id</code>,<code>local_graph_id</code>);<br>CREATE INDEX <code>local_graph_template_item_id</code> ON graph_templates_item (<code>local_graph_template_item_id</code>);</p>
-<p>CREATE INDEX <code>host_id_snmp_query_id_snmp_index</code> ON host_snmp_cache (<code>host_id</code>,<code>snmp_query_id</code>,<code>snmp_index</code>);</p>
-<p>CREATE INDEX <code>local_data_id_rrd_path</code> ON poller_item (<code>local_data_id</code>,<code>rrd_path</code>);<br>CREATE INDEX <code>host_id_rrd_next_step</code> ON poller_item (<code>host_id</code>,<code>rrd_next_step</code>);</p>
-<p>CREATE INDEX host_id_snmp_query_id ON host_snmp_cache (host_id,snmp_query_id);</p>
-<p>CREATE INDEX host_id_snmp_port ON poller_item (host_id,snmp_port);</p>
-<p>CREATE INDEX data_source_path ON data_template_data (data_source_path);</p>
-<p>show index from table； 查看索引</p>
-<p><strong>2, 重构rra文件的目录结构，为每个device建立单独的rra目录</strong></p>
-<p>首先在crontab里禁用poller.php，然后执行cacti_install_dir/cli目录下的 structure_rra_paths.php，</p>
-<p>php  structure_rra_paths.php –proceed</p>
-<p>它会将所有的RRD文件按照device重新分配目录，并修改<strong>数据库</strong>中的RRD路径，成功执行后，再恢复poller.php的crontab就可以了。</p>
-<p>按照上面3个步骤，710台服务器，24000个RRD文件，完成一次poller.php的时间，缩短到50 seconds。实现了最初的目的。</p>
-<p>TODO:</p>
-<p>在执行poller.php的时候, <strong>监控</strong>服务器的load达到了3，通过vmstat查看，显示负载主要在I/O。在目前的情况，如果再出现瓶颈，可以考虑安装Boost插件来进一步提供性能。</p>
-<p>cacti主要通过snmp来采集数据，可以引入collected等客户端，提供数据采集的可靠性。</p>
-<p><strong>3</strong>，<strong>使用spine替代默认的cmd.php来采集数据 见上一章</strong></p>
-<p><strong>1、让Cacti使用Spine插件，并进行相关设置</strong><br>关于spine插件的安装，这里就不讲了<br>访问：<a href="http://cacti_host_ipaddress/cacti" target="_blank" rel="external">http://cacti_host_ipaddress/cacti</a><br>Settings -&gt; Paths -&gt; “Spine Poller File Path” -&gt; spine程序的位置<br>Settings -&gt; Poller -&gt; “Poller Type” -&gt; spine</p>
-<p><strong>2、进程调整</strong></p>
-<p>对于进程和线程的调整有利于缩短采集时间，可以进行大量的采集。在CU论坛上看有人说cacti能够同时采集1k服务，这样的性能没有测试过，但是有人测试过同时采集200台服务器的，占用的内容只有几百兆，cpu的利用率也很低，说明一台的普通的机器排除网络链路延时采集的性能是相当强悍的</p>
-<p>Settings -&gt; Poller -&gt; “Maximum Concurrent Poller Processes”（最大并发轮询器进程），修改该值<br>Settings -&gt; Poller -&gt; “Maximum Threads per Process”（每进程最大线程数），修改该值<br>Settings -&gt; Poller -&gt; “Number of PHP Script Servers”（PHP脚本服务程序数），修改该值<br>通过修改这三个参数，可以提高一部分的性能</p>
-<p><strong>3、增加php 的内存使用的上限值</strong></p>
-<h1 id="vi-etc-php-ini"><a href="#vi-etc-php-ini" class="headerlink" title="vi /etc/php.ini"></a>vi /etc/php.ini</h1><p>memory_limit = 256M （预设是128MB，根据内存的使用情况，可以改大一点）</p>
-<p><strong>4、定期 optimize cacti 数据库</strong><br>cacti 的 poller_output 会不明原因的长大，大到数据越写越慢，直到无法更新。每隔一段时间手动 “Truncate poller_output table” 后，就会继续正常运作；所以我们可以利用crontab定期清除数据</p>
-<p>#vi /etc/cron.d/truncate_poller<br>0 0 <em> </em> 0  root  /usr/local/mysql/bin/mysql –user=cacti –password=2010 cacti -e ‘truncate table poller_output;’</p>
-<p>#chkconfig –level 3 crond on &amp;&amp; service crond start<br><strong><br>5、修改mysql的最大连接数</strong><br>一般默认安装的时候没有调整最大连接数的话，当需要并发量的时候可以出图就会断断续续的<br>mysql&gt; set GLOBAL max_connections=2000；<br>或者直接修改my.cnf配置文件，增加：max_connections = 2000；</p>
-<p>&nbsp;</p>
+            <p>一：安装<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"> shell&gt; wget [http://hackmysql.com/scripts/mysqlsla-2.03.tar.gz](http://hackmysql.com/scripts/mysqlsla-2.03.tar.gz)  </div><div class="line"> shell&gt; tar zvxf mysqlsla-2.03.tar.gz  </div><div class="line"> shell&gt; cd mysqlsla-2.03  </div><div class="line"> shell&gt; perl Makefile.PL  </div><div class="line"> shell&gt; make  </div><div class="line"> shell&gt; make install </div><div class="line"> shell&gt; mysqlsla /data/mysql/slow.log</div></pre></td></tr></table></figure></p>
+<p>mysqlsla会自动判断日志类型，为了方便可以建立一个配置文件“~/.mysqlsla” ,在文件里写上：top=100，这样会打印出前100条结果。</p>
+<p>【统计参数说明】<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"> queries total: 总查询次数  </div><div class="line"> unique:去重后的sql数量  </div><div class="line"> sorted by : 输出报表的内容排序 最重大的慢sql统计信息, 包括 平均执行时间, 等待锁时间, 结果行的总数, 扫描的行总数.  </div><div class="line"> Count: sql的执行次数及占总的slow log数量的百分比.  </div><div class="line"> Time: 执行时间, 包括总时间, 平均时间, 最小, 最大时间, 时间占到总慢sql时间的百分比.  </div><div class="line"> 95% of Time: 去除最快和最慢的sql, 覆盖率占95%的sql的执行时间.  </div><div class="line"> Lock Time: 等待锁的时间.  </div><div class="line"> 95% of Lock: 95%的慢sql等待锁时间.  </div><div class="line"> Rows sent: 结果行统计数量, 包括平均, 最小, 最大数量.  </div><div class="line"> Rows examined: 扫描的行数量.  </div><div class="line"> Database: 属于哪个数据库. </div><div class="line"> Users: 哪个用户,IP, 占到所有用户执行的sql百分比. </div><div class="line"> Query abstract: 抽象后的sql语句. </div><div class="line"> Query sample: sql语句.</div></pre></td></tr></table></figure></p>
+<p>二：日志分析<br>常用参数说明：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">-log-type (-lt) type logs:</div><div class="line"> 通过这个参数来制定log的类型，主要有slow, general, binary, msl, udl,分析slow log时通过制定为slow.</div><div class="line">-sort:</div><div class="line"> 制定使用什么参数来对分析结果进行排序，默认是按照t_sum来进行排序。</div><div class="line"> t_sum按总时间排序， c_sum按总次数排序</div><div class="line">-top:显示sql的数量，默认是10,表示取按规则排序的前多少条</div><div class="line">–statement-filter (-sf) [+-][TYPE]:</div><div class="line"> 过滤sql语句的类型，比如select、update、drop.</div><div class="line"> [TYPE]有SELECT, CREATE, DROP, UPDATE, INSERT，例如&quot;+SELECT,INSERT&quot;，不出现的默认是-，即不包括。</div><div class="line">db：要处理哪个库的日志：</div><div class="line">基本用法：</div><div class="line">shell&gt; mysqlsla -lt slow slow.log -sf &quot;+select&quot; -db web -top 100 -sort t_su</div><div class="line"> Count : 2.92k (17.43%) //出现的次数和占所有慢查的比例（按排序规则算） Connection ID : 424 Database : db //哪个数据库的SQL Users : [cacti@localhost](mailto:cacti@localhost) : 100.00% (2920) of query, 57.46% (9625) of all users //哪个用户产生的SQL EXPLAIN : Not a SELECT statement //如果启用-ex，会产生EXPLAIN。 Query abstract: INSERT INTO table(local_data_id, rrd_name, time, output) VALUES (N, &apos;S&apos;, &apos;S&apos;, &apos;S&apos;) Query sample: insert into table(local_data_id, rrd_name, time, output) values (8, &apos;users&apos;, &apos;2009-12-10 10:30:01&apos;, &apos;1&apos;)</div></pre></td></tr></table></figure></p>
+<p>注意事项：</p>
+<ol>
+<li>安装工具后，若运行时出现如下提示：# mysqlsla -lt slow slow.log Can’t locate DBI.pm in @INC (@INC contains: /usr/lib/perl5/site_perl/5.8.8/i386-linux-thread-multi /usr/lib/perl5/site_perl/5.8.8 /usr/lib/perl5/site_perl /usr/lib/perl5/vendor_perl/5.8.8/i386-linux-thread-multi /usr/lib/perl5/vendor_perl/5.8.8 /usr/lib/perl5/vendor_perl /usr/lib/perl5/5.8.8/i386-linux-thread-multi /usr/lib/perl5/5.8.8 .) at /usr/local/bin/mysqlsla line 2095.BEGIN failed–compilation aborted at /usr/local/bin/mysqlsla line 2095.原因:在于相关模块没有安装解决办法：shell&gt; perl -MCPAN -e ‘install DBI’ </li>
+<li>相关错误信息解决方案可以查看：<a href="http://www.517sou.net/Article/mysqlsla.aspx" target="_blank" rel="external">http://www.517sou.net/Article/mysqlsla.aspx</a></li>
+</ol>
 
           
         
@@ -804,7 +694,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2013/03/31/linux-e6-b5-81-e9-87-8f-e7-9b-91-e6-8e-a7-e5-b7-a5-e5-85-b7iftop.html">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2012/07/26/nginx-error-custom.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Geekwolf">
@@ -823,7 +713,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2013/03/31/linux-e6-b5-81-e9-87-8f-e7-9b-91-e6-8e-a7-e5-b7-a5-e5-85-b7iftop.html" itemprop="url">Linux流量监控工具iftop</a></h1>
+                <a class="post-title-link" href="/2012/07/26/nginx-error-custom.html" itemprop="url">nginx自定义错误页面（补充）</a></h1>
         
 
         <div class="post-meta">
@@ -835,8 +725,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2013-03-31T12:57:32+08:00">
-                2013-03-31
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2012-07-26T10:03:07+08:00">
+                2012-07-26
               </time>
             
 
@@ -875,7 +765,7 @@
 
           
           
-             <span id="/2013/03/31/linux-e6-b5-81-e9-87-8f-e7-9b-91-e6-8e-a7-e5-b7-a5-e5-85-b7iftop.html" class="leancloud_visitors" data-flag-title="Linux流量监控工具iftop">
+             <span id="/2012/07/26/nginx-error-custom.html" class="leancloud_visitors" data-flag-title="nginx自定义错误页面（补充）">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -903,7 +793,7 @@
                   <span class="post-meta-item-text">阅读时长</span>
                 
                 <span title="阅读时长">
-                  5
+                  1
                 </span>
               
             </div>
@@ -926,72 +816,12 @@
       
         
           
-            <p>在类Unix系统中可以使用top查看系统资源、进程、内存占用等信息。查看网络状态可以使用netstat、nmap等工具。若要查看实时的网络流量，监控TCP/IP连接等，则可以使用<a href="http://www.vpser.net/manage/iftop.html" target="_blank" rel="external">iftop</a>。</p>
-<h2 id="一、iftop是什么？"><a href="#一、iftop是什么？" class="headerlink" title="一、iftop是什么？"></a>一、iftop是什么？</h2><p><a href="http://www.vpser.net/manage/iftop.html" target="_blank" rel="external">iftop</a>是类似于top的实时流量监控工具。</p>
-<p>官方网站：<a href="http://www.ex-parrot.com/~pdw/iftop/" target="_blank" rel="external">http://www.ex-parrot.com/~pdw/iftop/</a></p>
-<h2 id="二、iftop有什么用？"><a href="#二、iftop有什么用？" class="headerlink" title="二、iftop有什么用？"></a>二、iftop有什么用？</h2><p><a href="http://www.vpser.net/manage/iftop.html" target="_blank" rel="external">iftop</a>可以用来监控网卡的实时流量（可以指定网段）、反向解析IP、显示端口信息等，详细的将会在后面的使用参数中说明。<img src="http://www.vpser.net/wp-includes/js/tinymce/plugins/wordpress/img/trans.gif" alt="" title="更多..."></p>
-<h2 id="三、安装iftop"><a href="#三、安装iftop" class="headerlink" title="三、安装iftop"></a>三、安装iftop</h2><h3 id="安装方法1、编译安装"><a href="#安装方法1、编译安装" class="headerlink" title="安装方法1、编译安装"></a><strong>安装方法1、</strong>编译安装</h3><p>如果采用编译安装可以到<a href="http://www.ex-parrot.com/~pdw/iftop/" target="_blank" rel="external">iftop官网</a>下载最新的源码包。</p>
-<p>安装前需要已经安装好基本的编译所需的环境，比如make、gcc、autoconf等。安装iftop还需要安装libpcap和libcurses。</p>
-<p><strong>CentOS上安装所需依赖包：</strong></p>
-<p>yum install flex byacc  libpcap ncurses ncurses-devel</p>
-<p><strong>Debian上安装所需依赖包：</strong></p>
-<p>apt-get install flex byacc  libpcap0.8 libncurses5</p>
-<p>下载iftop</p>
-<blockquote>
-<p>wget <a href="http://www.ex-parrot.com/pdw/iftop/download/iftop-0.17.tar.gz" target="_blank" rel="external">http://www.ex-parrot.com/pdw/iftop/download/iftop-0.17.tar.gz</a></p>
-<p>tar zxvf iftop-0.17.tar.gz</p>
-<p>cd iftop-0.17</p>
-<p>./configure</p>
-<p>make &amp;&amp; make install</p>
-</blockquote>
-<h3 id="安装方法2：-懒人办法，最简单"><a href="#安装方法2：-懒人办法，最简单" class="headerlink" title="安装方法2：(懒人办法，最简单)"></a>安装方法2：(懒人办法，最简单)</h3><p>直接省略上面的步骤</p>
-<p>CentOS系统运行：yum install iftop</p>
-<p>Debian系统 运行：apt-get install iftop</p>
-<h2 id="四、运行iftop"><a href="#四、运行iftop" class="headerlink" title="四、运行iftop"></a>四、运行iftop</h2><p>直接运行： iftop</p>
-<p>效果如下图：</p>
-<p><a href="http://www.simlinux.com/old/wp-content/uploads/2013/03/iftop-interface.jpg"><img src="http://www.simlinux.com/old/wp-content/uploads/2013/03/iftop-interface.jpg" alt="iftop-interface"></a></p>
-<h2 id="五、相关参数及说明"><a href="#五、相关参数及说明" class="headerlink" title="五、相关参数及说明"></a>五、相关参数及说明</h2><h3 id="1、iftop界面相关说明"><a href="#1、iftop界面相关说明" class="headerlink" title="1、iftop界面相关说明"></a>1、iftop界面相关说明</h3><p>界面上面显示的是类似刻度尺的刻度范围，为显示流量图形的长条作标尺用的。</p>
-<p>中间的&lt;= =&gt;这两个左右箭头，表示的是流量的方向。</p>
-<p>TX：发送流量<br>RX：接收流量<br>TOTAL：总流量<br>Cumm：运行iftop到目前时间的总流量<br>peak：流量峰值<br>rates：分别表示过去 2s 10s 40s 的平均流量</p>
-<h3 id="2、iftop相关参数"><a href="#2、iftop相关参数" class="headerlink" title="2、iftop相关参数"></a>2、iftop相关参数</h3><h3 id="常用的参数"><a href="#常用的参数" class="headerlink" title="常用的参数"></a>常用的参数</h3><p>-i设定监测的网卡，如：# iftop -i eth1</p>
-<p>-B 以bytes为单位显示流量(默认是bits)，如：# iftop -B</p>
-<p>-n使host信息默认直接都显示IP，如：# iftop -n</p>
-<p>-N使端口信息默认直接都显示端口号，如: # iftop -N</p>
-<p>-F显示特定网段的进出流量，如# iftop -F 10.10.1.0/24或# iftop -F 10.10.1.0/255.255.255.0</p>
-<p>-h（display this message），帮助，显示参数信息</p>
-<p>-p使用这个参数后，中间的列表显示的本地主机信息，出现了本机以外的IP信息;</p>
-<p>-b使流量图形条默认就显示;</p>
-<p>-f这个暂时还不太会用，过滤计算包用的;</p>
-<p>-P使host信息及端口信息默认就都显示;</p>
-<p>-m设置界面最上边的刻度的最大值，刻度分五个大段显示，例：# iftop -m 100M</p>
-<h3 id="进入iftop画面后的一些操作命令-注意大小写"><a href="#进入iftop画面后的一些操作命令-注意大小写" class="headerlink" title="进入iftop画面后的一些操作命令(注意大小写)"></a>进入iftop画面后的一些操作命令(注意大小写)</h3><p>按h切换是否显示帮助;</p>
-<p>按n切换显示本机的IP或主机名;</p>
-<p>按s切换是否显示本机的host信息;</p>
-<p>按d切换是否显示远端目标主机的host信息;</p>
-<p>按t切换显示格式为2行/1行/只显示发送流量/只显示接收流量;</p>
-<p>按N切换显示端口号或端口服务名称;</p>
-<p>按S切换是否显示本机的端口信息;</p>
-<p>按D切换是否显示远端目标主机的端口信息;</p>
-<p>按p切换是否显示端口信息;</p>
-<p>按P切换暂停/继续显示;</p>
-<p>按b切换是否显示平均流量图形条;</p>
-<p>按B切换计算2秒或10秒或40秒内的平均流量;</p>
-<p>按T切换是否显示每个连接的总流量;</p>
-<p>按l打开屏幕过滤功能，输入要过滤的字符，比如ip,按回车后，屏幕就只显示这个IP相关的流量信息;</p>
-<p>按L切换显示画面上边的刻度;刻度不同，流量图形条会有变化;</p>
-<p>按j或按k可以向上或向下滚动屏幕显示的连接记录;</p>
-<p>按1或2或3可以根据右侧显示的三列流量数据进行排序;</p>
-<p>按&lt;根据左边的本机名或IP排序;</p>
-<p>按&gt;根据远端目标主机的主机名或IP排序;</p>
-<p>按o切换是否固定只显示当前的连接;</p>
-<p>按f可以编辑过滤代码，这是翻译过来的说法，我还没用过这个！</p>
-<p>按!可以使用shell命令，这个没用过！没搞明白啥命令在这好用呢！</p>
-<p>按q退出监控。</p>
-<h2 id="六、常见问题"><a href="#六、常见问题" class="headerlink" title="六、常见问题"></a>六、常见问题</h2><p>1、make: yacc: Command not found<br>make: <em>*</em> [grammar.c] Error 127</p>
-<p>解决方法：apt-get install byacc   /   yum install byacc</p>
-<p>2、configure: error: Curses! Foiled again!<br>(Can’t find a curses library supporting mvchgat.)<br>Consider installing ncurses.</p>
-<p>解决方法：apt-get install libncurses5-dev  /    yum  install ncurses-devel</p>
-<p>转载收藏</p>
+            <p>自定义nginx 404错误页面是提高用户体验的一个细节，如果是正规站，我们就必须做好它。你可以对每个网站的错误页面分别设置，也可以设置一个全局的404页面。</p>
+<p>为指定位置设定一个404页面</p>
+<p>location /my_blog {<br>    error_page    404 = /article_not_found.html;<br>}<br>整个网站的404页面</p>
+<p>server {<br>listen 80;<br>    error_page  404  /page_not_found.html;<br>    …<br>你可以用单个错误页面一起来处理多个错误代码</p>
+<p>location /my_blog {<br> error_page 500 502 503 504 = /server_error.html<br>}<br>重定向到一个完全不同的服务器，假设你在http区域定义有一个上游服务器server2：</p>
+<p>upstream server2 {<br>    server 10.0.0.1:80;<br>}<br>server {<br>    location /my_blog {<br>       error_page    404 = @try_server2;<br>    }<br>    location @try_server2 {<br>        proxy_pass <a href="http://server2" target="_blank" rel="external">http://server2</a>;<br>    }<br>这个功能可以用在Nginx前端+Apache后端的服务器架构中。</p>
 
           
         
@@ -1040,7 +870,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2013/03/30/e8-99-9a-e6-8b-9f-e5-8c-96-e4-b8-8e-e4-ba-91-e8-ae-a1-e7-ae-97-e6-a6-82-e5-bf-b5.html">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2012/07/13/vi-manual.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Geekwolf">
@@ -1059,7 +889,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2013/03/30/e8-99-9a-e6-8b-9f-e5-8c-96-e4-b8-8e-e4-ba-91-e8-ae-a1-e7-ae-97-e6-a6-82-e5-bf-b5.html" itemprop="url">虚拟化技术学习（一）之虚拟化与云计算概念</a></h1>
+                <a class="post-title-link" href="/2012/07/13/vi-manual.html" itemprop="url">vi编辑替换字符笔记</a></h1>
         
 
         <div class="post-meta">
@@ -1071,8 +901,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2013-03-30T10:01:53+08:00">
-                2013-03-30
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2012-07-13T06:16:17+08:00">
+                2012-07-13
               </time>
             
 
@@ -1094,8 +924,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux运维/" itemprop="url" rel="index">
-                    <span itemprop="name">Linux运维</span>
+                  <a href="/categories/脚本开发/" itemprop="url" rel="index">
+                    <span itemprop="name">脚本开发</span>
                   </a>
                 </span>
 
@@ -1111,7 +941,7 @@
 
           
           
-             <span id="/2013/03/30/e8-99-9a-e6-8b-9f-e5-8c-96-e4-b8-8e-e4-ba-91-e8-ae-a1-e7-ae-97-e6-a6-82-e5-bf-b5.html" class="leancloud_visitors" data-flag-title="虚拟化技术学习（一）之虚拟化与云计算概念">
+             <span id="/2012/07/13/vi-manual.html" class="leancloud_visitors" data-flag-title="vi编辑替换字符笔记">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -1139,7 +969,7 @@
                   <span class="post-meta-item-text">阅读时长</span>
                 
                 <span title="阅读时长">
-                  2
+                  3
                 </span>
               
             </div>
@@ -1162,9 +992,7 @@
       
         
           
-            <p><strong>背景：</strong>基于 马博峰《VMWARE CITRIX和Microsoft 虚拟化技术详解与应用实战》，整理的笔记，此笔记有些参考了互联网上的资料，和书上部分内容有差别！此后将继续把我的学习笔记共享出来，没两天或者三天发一篇！希望能和大家一起交流学习！</p>
-<p><strong><span style="font-size: medium;">虚拟化目的：</span></strong></p>
-<div><span style="font-family: 'Microsoft Yahei';">1.在一个特定的软硬件环境中去虚拟另一个不同的软硬件环境，打破层级依赖的现状</span></div><br><div><span style="font-family: 'Microsoft Yahei';">2.提高计算机设备的利用率<br></span></div><br><div><span style="font-family: 'Microsoft Yahei';">3.不同的物理机器之间会存在兼容性问题<br></span></div><br><div><span style="font-family: 'Microsoft Yahei';">4.节约成本</span></div><br><strong><span style="font-family: 'Microsoft Yahei'; font-size: medium;">虚拟化的分类：</span></strong><br><div>1.平台虚拟化（Platform V irtualization）</div><br><div><span style="font-family: 'Microsoft Yahei';">针对服务器和操作系统的虚拟化，主要包括服务器虚拟化和桌面虚拟化</span></div><br><div><span style="font-family: 'Microsoft Yahei';">服务器虚拟化是将一个操作系统的物理实例分割到虚拟实例或者虚拟机中，分为软件虚拟化和硬件虚拟化<br></span></div><br><div><span style="font-family: 'Microsoft Yahei';">软件虚拟化指一个虚拟化平台上运行虚拟化操作系统，而这个虚拟化平台运行在现有的操作系统上，属于寄居架构</span></div><br><div><span style="font-family: 'Microsoft Yahei';">硬件虚拟化指虚拟化平台直接运行在物理硬件上；这个虚拟层（Virtualization layer）平台称为Hypervisior</span></div><br><div><span style="font-family: 'Microsoft Yahei';">  </span></div><br><div> <a href="http://www.simlinux.com/old/wp-content/uploads/2013/03/clipboard.png"><img src="http://www.simlinux.com/old/wp-content/uploads/2013/03/clipboard.png" alt="clipboard"></a></div><br><div></div><br><div>                                                                                                  <a href="file:///C:/Documents%20and%20Settings/Administrator/Local%20Settings/Application%20Data/youdao/ynote/editor/web/&amp;nbsp;http://en.wikipedia.org/wiki/Hypervisor" target="_blank" rel="external"> http://en.wikipedia.org/wiki/Hypervisor</a></div><br><div></div><br><div>2.资源虚拟化（Resource Virtualization）</div><br><div>主要是虚拟计算机中使用的资源，包括存储虚拟化和网络虚拟化</div><br><div> 存储虚拟化是对存储硬件资源进行抽象化表现，用于合并多个设备中的物理存储，使其表现为一个单一的存储池</div><br><div></div><br><div><a href="http://www.simlinux.com/old/wp-content/uploads/2013/03/1618152.jpeg"><img src="http://www.simlinux.com/old/wp-content/uploads/2013/03/1618152.jpeg" alt="1618152"></a></div><br><div></div><br><div>网络虚拟化       比如：VLAN</div><br><div></div><br><div>3.用程序虚拟化（Application Virtualization）</div><br><div>基于软件的服务虚拟化是将应用程序从操作系统中分离出来，使应用程序运行在操作系统中，但是又不依赖于操作系统。</div><br><div></div><br><div>4.表示层虚拟化（Present Virtualization）</div><br><div>用户在使用应用程序时，其应用程序并不是运行在本地操作系统之上，而是运行在服务器上面的，客户机只显示成胥的界面和用户的操作，服务器仅向用户提供表示层，这种虚拟化就是表示层虚拟化</div><br><div></div><br><div><strong>实例：</strong></div><br><div></div><br><div><a href="http://www.simlinux.com/old/wp-content/uploads/2013/03/2.png"><img src="http://www.simlinux.com/old/wp-content/uploads/2013/03/2.png" alt="2"></a></div><br><div></div><br><div>下一篇</div><br><div><a href="http://www.simlinux.com/old/?p=1101">虚拟化技术学习（二）之云计算特点及模式</a></div><br><div><a href="http://www.simlinux.com/old/?p=1101">http://www.simlinux.com/old/?p=1101</a></div>
+            <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div></pre></td><td class="code"><pre><div class="line">vi/vim 中可以使用 :s 命令来替换字符串。</div><div class="line"></div><div class="line">　　:s/vivian/sky/ 替换当前行第一个 vivian 为 sky</div><div class="line"></div><div class="line">　　:s/vivian/sky/g 替换当前行所有 vivian 为 sky</div><div class="line"></div><div class="line">　　:n,$s/vivian/sky/ 替换第 n 行开始到最后一行中每一行的第一个 vivian 为 sky</div><div class="line"></div><div class="line">　　:n,$s/vivian/sky/g 替换第 n 行开始到最后一行中每一行所有 vivian 为 sky</div><div class="line"></div><div class="line">　　n 为数字，若 n 为 .，表示从当前行开始到最后一行</div><div class="line"></div><div class="line">　　:%s/vivian/sky/(等同于 :g/vivian/s//sky/) 替换每一行的第一个 vivian 为 sky</div><div class="line"></div><div class="line">　　:%s/vivian/sky/g(等同于 :g/vivian/s//sky/g) 替换每一行中所有 vivian 为 sky</div><div class="line"></div><div class="line">　　可以使用 # 作为分隔符，此时中间出现的 / 不会作为分隔符</div><div class="line"></div><div class="line">　　:s#vivian/#sky/# 替换当前行第一个 vivian/ 为 sky/</div><div class="line"></div><div class="line">　　:%s+/oradata/apras/+/user01/apras1+ (使用+ 来 替换 / )： /oradata/apras/替换成/user01/apras1/</div><div class="line"></div><div class="line">　　* ************************************</div><div class="line"></div><div class="line">　　1.:s/vivian/sky/ 替换当前行第一个 vivian 为 sky</div><div class="line"></div><div class="line">　　:s/vivian/sky/g 替换当前行所有 vivian 为 sky</div><div class="line"></div><div class="line">　　2. :n,$s/vivian/sky/ 替换第 n 行开始到最后一行中每一行的第一个 vivian 为 sky</div><div class="line"></div><div class="line">　　:n,$s/vivian/sky/g 替换第 n 行开始到最后一行中每一行所有 vivian 为 sky</div><div class="line"></div><div class="line">　　(n 为数字，若 n 为 .，表示从当前行开始到最后一行)</div><div class="line"></div><div class="line">　　3. :%s/vivian/sky/(等同于 :g/vivian/s//sky/) 替换每一行的第一个 vivian 为 sky</div><div class="line"></div><div class="line">　　:%s/vivian/sky/g(等同于 :g/vivian/s//sky/g) 替换每一行中所有 vivian 为 sky</div><div class="line"></div><div class="line">　　4. 可以使用 # 作为分隔符，此时中间出现的 / 不会作为分隔符</div><div class="line"></div><div class="line">　　:s#vivian/#sky/# 替换当前行第一个 vivian/ 为 sky/</div><div class="line"></div><div class="line">　　5. 删除文本中的^M</div><div class="line"></div><div class="line">　　问题描述：对于换行,window下用回车换行(0A0D)来表示，[Linux](http://net.zdnet.com.cn/files/list-0-0-102937-1-1.htm)下是回车(0A)来表示。这样，将window上的文件拷到unix上用时，总会有个^M.请写个用在unix下的过滤windows文件的换行符(0D)的shell或c程序。</div><div class="line"></div><div class="line">　　· 使用命令：cat filename1 | tr -d “^V^M” &amp;gt;newfile;</div><div class="line"></div><div class="line">　　· 使用命令：sed -e “s/^V^M//” filename &amp;gt;outputfilename。需要注意的是在1、2两种方法中，^V和^M指的是Ctrl+V和Ctrl+M。你必须要手工进行输入，而不是粘贴。</div><div class="line"></div><div class="line">　　· 在vi中处理：首先使用vi打开文件，然后按ESC键，接着输入命令：%s/^V^M//。</div><div class="line"></div><div class="line">　　· :%s/^M$//g</div><div class="line"></div><div class="line">　　如果上述方法无用，则正确的解决办法是：</div><div class="line"></div><div class="line">　　· tr -d &quot;r&quot; &amp;lt;src &amp;gt;dest</div><div class="line"></div><div class="line">　　· tr -d &quot;5&quot; dest</div><div class="line"></div><div class="line">　　· strings A&amp;gt;B</div><div class="line"></div><div class="line">　　6. 其它</div><div class="line"></div><div class="line">　　利用 :s 命令可以实现字符串的替换。具体的用法包括：</div><div class="line"></div><div class="line">　　:s/str1/str2/ 用字符串 str2 替换行中首次出现的字符串 str1</div><div class="line"></div><div class="line">　　:s/str1/str2/g 用字符串 str2 替换行中所有出现的字符串 str1</div><div class="line"></div><div class="line">　　:.,$ s/str1/str2/g 用字符串 str2 替换正文当前行到末尾所有出现的字符串 str1</div><div class="line"></div><div class="line">　　:1,$ s/str1/str2/g 用字符串 str2 替换正文中所有出现的字符串 str1</div><div class="line"></div><div class="line">　　:g/str1/s//str2/g 功能同上</div><div class="line"></div><div class="line">　　从上述替换命令可以看到：g 放在命令末尾，表示对搜索字符串的每次出现进行替换;不加 g，表示只对搜索</div><div class="line"></div><div class="line">　　字符串的首次出现进行替换;g 放在命令开头，表示对正文中所有包含搜索字符串的行进行替换操作。</div></pre></td></tr></table></figure>
           
         
       
@@ -1212,7 +1040,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2013/03/20/filezilla-server-e5-ae-89-e8-a3-85-e5-8f-8a-e4-bd-bf-e7-94-a8-2.html">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2012/07/13/mysql-select-all-proc.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Geekwolf">
@@ -1231,7 +1059,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2013/03/20/filezilla-server-e5-ae-89-e8-a3-85-e5-8f-8a-e4-bd-bf-e7-94-a8-2.html" itemprop="url">FileZilla Server 安装及使用</a></h1>
+                <a class="post-title-link" href="/2012/07/13/mysql-select-all-proc.html" itemprop="url">mysql查看所有存储过程查询</a></h1>
         
 
         <div class="post-meta">
@@ -1243,240 +1071,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2013-03-20T06:32:37+08:00">
-                2013-03-20
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux运维/" itemprop="url" rel="index">
-                    <span itemprop="name">Linux运维</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2013/03/20/filezilla-server-e5-ae-89-e8-a3-85-e5-8f-8a-e4-bd-bf-e7-94-a8-2.html" class="leancloud_visitors" data-flag-title="FileZilla Server 安装及使用">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长</span>
-                
-                <span title="阅读时长">
-                  2
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>一．安装过程</p>
-<p>1.打开FileZilla Server的exe文件，选择下一步：</p>
-<p><a href="http://www.idc945.com/wp-content/uploads/2012/11/wps_clip_image-13233.png" target="_blank" rel="external"><img src="http://www.simlinux.com/old/wp-content/uploads/2013/03/wps_clip_image3040.png" alt="wps_clip_image-3040" title="wps_clip_image-3040"></a></p>
-<p>2.选择同意条款，点击下一步：</p>
-<p><a href="http://www.idc945.com/wp-content/uploads/2012/11/wps_clip_image-15135.png" target="_blank" rel="external"><img src="http://www.simlinux.com/old/wp-content/uploads/2013/03/wps_clip_image12198.png" alt="wps_clip_image-12198" title="wps_clip_image-12198"></a></p>
-<p>3. FileZilla Server的软件信息介绍，选择下一步：</p>
-<p><a href="http://www.idc945.com/wp-content/uploads/2012/11/wps_clip_image-23683.png" target="_blank" rel="external"><img src="http://www.simlinux.com/old/wp-content/uploads/2013/03/wps_clip_image9759.png" alt="wps_clip_image-9759" title="wps_clip_image-9759"></a></p>
-<p>4.选择FileZilla Server的安装路径，选择下一步：</p>
-<p><a href="http://www.idc945.com/wp-content/uploads/2012/11/wps_clip_image-13755.png" target="_blank" rel="external"><img src="http://www.simlinux.com/old/wp-content/uploads/2013/03/wps_clip_image18437.png" alt="wps_clip_image-18437" title="wps_clip_image-18437"></a></p>
-<p>5.选择需要安装的程序组件，一般我们保持默认，选择下一步：</p>
-<p><a href="http://www.idc945.com/wp-content/uploads/2012/11/wps_clip_image-1173.png" target="_blank" rel="external"><img src="http://www.simlinux.com/old/wp-content/uploads/2013/03/wps_clip_image4692.png" alt="wps_clip_image-4692" title="wps_clip_image-4692"></a></p>
-<p>6.选择FileZilla Server的启动方式：</p>
-<p><a href="http://www.idc945.com/wp-content/uploads/2012/11/wps_clip_image-4212.png" target="_blank" rel="external"><img src="http://www.simlinux.com/old/wp-content/uploads/2013/03/wps_clip_image9106.png" alt="wps_clip_image-9106" title="wps_clip_image-9106"></a></p>
-<p><a href="http://www.idc945.com/wp-content/uploads/2012/11/wps_clip_image-11202.png" target="_blank" rel="external"><img src="http://www.simlinux.com/old/wp-content/uploads/2013/03/wps_clip_image24268.png" alt="wps_clip_image-24268" title="wps_clip_image-24268"></a></p>
-<p>7.全部勾掉，不进行安装：</p>
-<p><a href="http://www.idc945.com/wp-content/uploads/2012/11/wps_clip_image-25736.png" target="_blank" rel="external"><img src="http://www.simlinux.com/old/wp-content/uploads/2013/03/wps_clip_image25070.png" alt="wps_clip_image-25070" title="wps_clip_image-25070"></a></p>
-<p>8.准备开始安装：</p>
-<p><a href="http://www.idc945.com/wp-content/uploads/2012/11/wps_clip_image-19430.png" target="_blank" rel="external"><img src="http://www.simlinux.com/old/wp-content/uploads/2013/03/wps_clip_image29955.png" alt="wps_clip_image-29955" title="wps_clip_image-29955"></a></p>
-<p>9.安装完成：</p>
-<p><a href="http://www.idc945.com/wp-content/uploads/2012/11/wps_clip_image-14566.png" target="_blank" rel="external"><img src="http://www.simlinux.com/old/wp-content/uploads/2013/03/wps_clip_image30087.png" alt="wps_clip_image-30087" title="wps_clip_image-30087"></a></p>
-<p>10.安装完成后，出现下面的界面，保持默认即可：</p>
-<p><a href="http://www.idc945.com/wp-content/uploads/2012/11/wps_clip_image-15594.png" target="_blank" rel="external"><img src="http://www.simlinux.com/old/wp-content/uploads/2013/03/wps_clip_image22820.png" alt="wps_clip_image-22820" title="wps_clip_image-22820"></a></p>
-<p>11. FileZilla Server的状态模式界面：</p>
-<p><a href="http://www.idc945.com/wp-content/uploads/2012/11/wps_clip_image-16514.png" target="_blank" rel="external"></a></p>
-<p>二．FileZilla Server的简单使用</p>
-<p>1.点击红色标记部分的头像图表，开始添加用户：</p>
-<p><a href="http://www.idc945.com/wp-content/uploads/2012/11/wps_clip_image-29891.png" target="_blank" rel="external"><img src="http://www.simlinux.com/old/wp-content/uploads/2013/03/wps_clip_image1918.png" alt="wps_clip_image-1918" title="wps_clip_image-1918"></a></p>
-<p>2.添加用户的界面，选择红色标记部分的添加按钮：</p>
-<p><a href="http://www.idc945.com/wp-content/uploads/2012/11/wps_clip_image-4377.png" target="_blank" rel="external"><img src="http://www.simlinux.com/old/wp-content/uploads/2013/03/wps_clip_image5837.png" alt="wps_clip_image-5837" title="wps_clip_image-5837"></a></p>
-<p>3.添加用户账户，添加完成后，选择确定：</p>
-<p><a href="http://www.idc945.com/wp-content/uploads/2012/11/wps_clip_image-28220.png" target="_blank" rel="external"><img src="http://www.simlinux.com/old/wp-content/uploads/2013/03/wps_clip_image26617.png" alt="wps_clip_image-26617" title="wps_clip_image-26617"></a></p>
-<p>4.用户添加完成后，勾选红色标记部分的密码选项，输入密码：</p>
-<p><a href="http://www.idc945.com/wp-content/uploads/2012/11/wps_clip_image-26638.png" target="_blank" rel="external"><img src="http://www.simlinux.com/old/wp-content/uploads/2013/03/wps_clip_image19617.png" alt="wps_clip_image-19617" title="wps_clip_image-19617"></a></p>
-<p>5.选择左边红色标记部分中的共享文件夹，点击添加按钮：</p>
-<p><a href="http://www.idc945.com/wp-content/uploads/2012/11/wps_clip_image-4048.png" target="_blank" rel="external"><img src="http://www.simlinux.com/old/wp-content/uploads/2013/03/wps_clip_image21971.png" alt="wps_clip_image-21971" title="wps_clip_image-21971"></a></p>
-<p>6.选择您所需要的FTP主目录，红色标记部分是新建的FTP用户对该FTP主目录及其文件的权限设置：</p>
-<p><a href="http://www.idc945.com/wp-content/uploads/2012/11/wps_clip_image-15892.png" target="_blank" rel="external"><img src="http://www.simlinux.com/old/wp-content/uploads/2013/03/wps_clip_image5547.png" alt="wps_clip_image-5547" title="wps_clip_image-5547"></a></p>
-<p>7.在速度限制选项中，可以对FTP用户的下载和上传速度进行限制：</p>
-<p><a href="http://www.idc945.com/wp-content/uploads/2012/11/wps_clip_image-21276.png" target="_blank" rel="external"><img src="http://www.simlinux.com/old/wp-content/uploads/2013/03/wps_clip_image268.png" alt="wps_clip_image-268" title="wps_clip_image-268"></a></p>
-<p>8.在IP过滤选项中，可以限制IP连接该FTP服务器：</p>
-<p><a href="http://www.idc945.com/wp-content/uploads/2012/11/wps_clip_image-17210.png" target="_blank" rel="external"><img src="http://www.simlinux.com/old/wp-content/uploads/2013/03/wps_clip_image18083.png" alt="wps_clip_image-18083" title="wps_clip_image-18083"></a></p>
-<p>9.在浏览器输入框中，输入ftp://您的FTP服务器IP地址：</p>
-<p><a href="http://www.simlinux.com/old/wp-content/uploads/2013/03/wps_clip_image1375.png"><img src="http://www.simlinux.com/old/wp-content/uploads/2013/03/wps_clip_image1375_thumb.png" alt="wps_clip_image-1375" title="wps_clip_image-1375"></a></p>
-<p>10.输入完成后，进行登录测试：</p>
-<p><a href="http://www.idc945.com/wp-content/uploads/2012/11/wps_clip_image-18557.png" target="_blank" rel="external"><img src="http://www.simlinux.com/old/wp-content/uploads/2013/03/wps_clip_image26258.png" alt="wps_clip_image-26258" title="wps_clip_image-26258"></a></p>
-<p>登录之后，您可以使用该FTP用户进行上传下载及其他方面的操作。</p>
-<p>注意：如果在安装过程中windows自带的系统防火墙开启或是在安装完成后打开windows自带的系统防火墙，FileZilla Server中建立的用户将无法连接到FTP服务器，这时，我们需要在系统防火墙中将FileZilla Server添加到例外选项。具体操作见下面的图示：</p>
-<p>1.右键网络连接中的本地连接，选择属性按钮：</p>
-<p><a href="http://www.idc945.com/wp-content/uploads/2012/11/wps_clip_image-14956.png" target="_blank" rel="external"><img src="http://www.simlinux.com/old/wp-content/uploads/2013/03/wps_clip_image18158.png" alt="wps_clip_image-18158" title="wps_clip_image-18158"></a></p>
-<p>2.在本地连接属性中，选择高级，点击设置按钮：</p>
-<p><a href="http://www.idc945.com/wp-content/uploads/2012/11/wps_clip_image-27367.png" target="_blank" rel="external"><img src="http://www.simlinux.com/old/wp-content/uploads/2013/03/wps_clip_image17775.png" alt="wps_clip_image-17775" title="wps_clip_image-17775"></a></p>
-<p>3.下图显示的是系统防火墙开启的界面：</p>
-<p><a href="http://www.idc945.com/wp-content/uploads/2012/11/wps_clip_image-5520.png" target="_blank" rel="external"><img src="http://www.simlinux.com/old/wp-content/uploads/2013/03/wps_clip_image10465.png" alt="wps_clip_image-10465" title="wps_clip_image-10465"></a></p>
-<p>4.在windows防火墙选项中，选择例外，点击添加程序按钮：</p>
-<p><a href="http://www.idc945.com/wp-content/uploads/2012/11/wps_clip_image-13428.png" target="_blank" rel="external"><img src="http://www.simlinux.com/old/wp-content/uploads/2013/03/wps_clip_image26779.png" alt="wps_clip_image-26779" title="wps_clip_image-26779"></a></p>
-<p>5.在添加程序的目录下，FileZilla Server的主程序有可能不在下面的列表中，这时需要我们手动浏览到FileZilla Server的安装目录，将FileZilla Server的主程序添加进来：</p>
-<p><a href="http://www.idc945.com/wp-content/uploads/2012/11/wps_clip_image-16796.png" target="_blank" rel="external"><img src="http://www.simlinux.com/old/wp-content/uploads/2013/03/wps_clip_image5738.png" alt="wps_clip_image-5738" title="wps_clip_image-5738"></a></p>
-<p>6.在FileZilla Server的安装目录中，将下面的两个程序都添加进去：</p>
-<p><a href="http://www.idc945.com/wp-content/uploads/2012/11/wps_clip_image-18777.png" target="_blank" rel="external"><img src="http://www.simlinux.com/old/wp-content/uploads/2013/03/wps_clip_image1143.png" alt="wps_clip_image-1143" title="wps_clip_image-1143"></a></p>
-<p>7.添加完成后的界面如下图显示：</p>
-<p>.<a href="http://www.simlinux.com/old/wp-content/uploads/2013/03/wps_clip_image22676.png"><img src="http://www.simlinux.com/old/wp-content/uploads/2013/03/wps_clip_image22676_thumb.png" alt="wps_clip_image-22676" title="wps_clip_image-22676"></a><a href="http://www.idc945.com/wp-content/uploads/2012/11/wps_clip_image-7795.png" target="_blank" rel="external"></a></p>
-<p>添加完成后，点确定，然后输入<a href="ftp://您的FTP服务器IP地址" target="_blank" rel="external">ftp://您的FTP服务器IP地址</a>&#160; 进行测试。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2013/03/12/mysql-e9-85-8d-e7-bd-ae-e5-bc-80-e5-90-af-e6-85-a2-e6-9f-a5-e8-af-a2-e5-92-8c-e6-9f-a5-e7-9c-8b-e6-85-a2-e6-9f-a5-e8-af-a2-e7-9a-84-e6-96-b9-e6-b3-95.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Geekwolf">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/wolf.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Geekwolf's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2013/03/12/mysql-e9-85-8d-e7-bd-ae-e5-bc-80-e5-90-af-e6-85-a2-e6-9f-a5-e8-af-a2-e5-92-8c-e6-9f-a5-e7-9c-8b-e6-85-a2-e6-9f-a5-e8-af-a2-e7-9a-84-e6-96-b9-e6-b3-95.html" itemprop="url">mysql配置开启慢查询和查看慢查询的方法</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2013-03-12T09:18:05+08:00">
-                2013-03-12
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2012-07-13T06:02:47+08:00">
+                2012-07-13
               </time>
             
 
@@ -1515,7 +1111,7 @@
 
           
           
-             <span id="/2013/03/12/mysql-e9-85-8d-e7-bd-ae-e5-bc-80-e5-90-af-e6-85-a2-e6-9f-a5-e8-af-a2-e5-92-8c-e6-9f-a5-e7-9c-8b-e6-85-a2-e6-9f-a5-e8-af-a2-e7-9a-84-e6-96-b9-e6-b3-95.html" class="leancloud_visitors" data-flag-title="mysql配置开启慢查询和查看慢查询的方法">
+             <span id="/2012/07/13/mysql-select-all-proc.html" class="leancloud_visitors" data-flag-title="mysql查看所有存储过程查询">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -1543,7 +1139,7 @@
                   <span class="post-meta-item-text">阅读时长</span>
                 
                 <span title="阅读时长">
-                  5
+                  1
                 </span>
               
             </div>
@@ -1566,51 +1162,12 @@
       
         
           
-            <p><strong>1，配置开启     
-</strong></p>
-<p>Linux:</p>
-<p>在mysql配置文件my.cnf中增加</p>
-<p>log-slow-queries=/var/lib/mysql/slowquery.log (指定日志文件存放位置，可以为空，系统会给一个缺省的文件host_name-slow.log)<br>long_query_time=2 (记录超过的时间，默认为10s)<br>log-queries-not-using-indexes (log下来没有使用索引的query,可以根据情况决定是否开启)<br>log-long-format (如果设置了，所有没有使用索引的查询也将被记录)</p>
-<p>Windows:</p>
-<p>在my.ini的[mysqld]添加如下语句：<br>log-slow-queries = E:webmysqllogmysqlslowquery.log<br>long_query_time = 2(其他参数如上)</p>
-<p><strong>2,查看方式</strong></p>
-<p>Linux:</p>
-<p>使用mysql自带命令mysqldumpslow查看</p>
-<p>常用命令<br>-s ORDER what to sort by (t, at, l, al, r, ar etc), ‘at’ is default<br>-t NUM just show the top n queries<br>-g PATTERN grep: only consider stmts that include this string</p>
-<p>eg:<br>s，是order的顺序，说明写的不够详细，俺用下来，包括看了代码，主要有 c,t,l,r和ac,at,al,ar，分别是按照query次数，时间，lock的时间和返回的记录数来排序，前面加了a的时倒序 -t，是top n的意思，即为返回前面多少条的数据 -g，后边可以写一个正则匹配模式，大小写不敏感的</p>
-<p>mysqldumpslow -s c -t 20 host-slow.log<br>mysqldumpslow -s r -t 20 host-slow.log<br>上述命令可以看出访问次数最多的20个sql语句和返回记录集最多的20个sql。</p>
-<p>mysqldumpslow -t 10 -s t -g “left join” host-slow.log这个是按照时间返回前10条里面含有左连接的sql语句。</p>
-<p>mysql慢查询日志对于跟踪有问题的查询非常有用,可以分析出当前程序里有很耗费资源的sql语句,那如何打开mysql的慢查询日志记录呢?<br>其实打开mysql的慢查询日志很简单,只需要在mysql的配置文件里(windows系统是my.ini,linux系统是my.cnf)的[mysqld]下面加上如下代码：</p>
-<p><code>log-slow-queries=/var/lib/mysql/slowquery.log</code><br><code>long_query_time=2</code></p>
-<p>注:<br>log-slow-queries 设置把<strong>日志</strong>写在那里，为空的时候，系统会给慢查询日志赋予主机名，并被附加slow.log. /var/lib/mysql/slowquery.log为日志存放的文件的位置,一般这个目录要有mysql的运行帐号的可写权限,一般都将这个目录设置为mysql的数据存放目录</p>
-<p>long_query_time=2中的2表示查询超过两秒才记录.</p>
-<p>如果设置了参数log-long-format，那么所有没有使用索引的查询也将被记录。在文件my.cnf或my.ini中加入下面这一行可以记录这些查询</p>
-<p>这是一个有用的日志。它对于性能的影响不大（假设所有查询都很快），并且强调了那些最需要注意的查询（丢失了索引或索引没有得到最佳应用）</p>
-<h1 id="Time-070927-8-08-52"><a href="#Time-070927-8-08-52" class="headerlink" title="Time: 070927 8:08:52"></a>Time: 070927 8:08:52</h1><h1 id="User-Host-root-root-192-168-0-20"><a href="#User-Host-root-root-192-168-0-20" class="headerlink" title="User@Host: root[root] @ [192.168.0.20]"></a>User@Host: root[root] @ [192.168.0.20]</h1><h1 id="Query-time-372-Lock-time-136-Rows-sent-152-Rows-examined-263630"><a href="#Query-time-372-Lock-time-136-Rows-sent-152-Rows-examined-263630" class="headerlink" title="Query_time: 372 Lock_time: 136 Rows_sent: 152 Rows_examined: 263630"></a>Query_time: 372 Lock_time: 136 Rows_sent: 152 Rows_examined: 263630</h1><p>select id, name from manager where id in (66,10135);<br>这是慢查询日志中的一条，用了372秒，锁了136秒，返回152行，一共查了263630行</p>
-<p>如果日志内容很多，用眼睛一条一条去看会累死，mysql自带了分析的工具，使用方法如下：<br>命令行下，进入mysql/bin目录，输入mysqldumpslow –help或–help可以看到这个工具的参数，主要有<br>Usage: mysqldumpslow [ OPTS… ] [ LOGS… ]</p>
-<p>Parse and summarize the MySQL slow query log. Options are</p>
-<p>–verbose&#160;&#160;&#160; verbose</p>
-<p>–debug&#160;&#160;&#160;&#160;&#160; debug</p>
-<p>–help&#160;&#160;&#160;&#160;&#160;&#160; write this text to standard output</p>
-<p>-v&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; verbose</p>
-<p>-d&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; debug</p>
-<p>-s ORDER&#160;&#160;&#160;&#160; what to sort by (t, at, l, al, r, ar etc), ‘at’ is default</p>
-<p>-r&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; reverse the sort order (largest last instead of first)</p>
-<p>-t NUM&#160;&#160;&#160;&#160;&#160;&#160; just show the top n queries</p>
-<p>-a&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; don’t abstract all numbers to N and strings to ‘S’</p>
-<p>-n NUM&#160;&#160;&#160;&#160;&#160;&#160; abstract numbers with at least n digits within names</p>
-<p>-g PATTERN&#160;&#160; grep: only consider stmts that include this string</p>
-<p>-h HOSTNAME hostname of db server for *-slow.log filename (can be wildcard),</p>
-<p>default is ‘*’, i.e. match all</p>
-<p>-i NAME&#160;&#160;&#160;&#160;&#160; name of server instance (if using mysql.server startup scrīpt)</p>
-<p>-l&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; don’t subtract lock time from total time</p>
-<p>-s，是order的顺序，说明写的不够详细，俺用下来，包括看了代码，主要有<br>c,t,l,r和ac,at,al,ar，分别是按照query次数，时间，lock的时间和返回的记录数来排序，前面加了a的时倒叙<br>-t，是top n的意思，即为返回前面多少条的数据<br>-g，后边可以写一个正则匹配模式，大小写不敏感的</p>
-<p>mysqldumpslow -s c -t 20 host-slow.log<br>mysqldumpslow -s r -t 20 host-slow.log</p>
-<p>上述命令可以看出访问次数最多的20个sql语句和返回记录集最多的20个sql。<br>mysqldumpslow -t 10 -s t -g “left join” host-slow.log<br>这个是按照时间返回前10条里面含有左连接的sql语句。</p>
-<p>Windows:</p>
-<p>当你是第一次开启mysql的慢查询，会在你指定的目录下创建这个记录文件，本文就是mysqlslowquery.log，这个文件的内容大致如下(第一次开启MYSQL慢查询的情况下)<br>E:webmysqlbinmysqld, Version: 5.4.3-beta-community-log (MySQL Community Server (GPL)). started with:<br>TCP Port: 3306, Named Pipe: (null)<br>Time Id Command Argument</p>
-<p>可以通过如下的命令来查看慢查询的记录数：</p>
-<p>mysql&gt; show global status like ‘%slow%’;<br>+———————+——-+<br>| Variable_name | Value |<br>+———————+——-+<br>| Slow_launch_threads | 0 |<br>| Slow_queries | 0 |<br>+———————+——-+</p>
+            <p>查询数据库中的存储过程</p>
+<p>方法一：<br><code>select</code>name<code>from mysql.proc where db = &#39;your_db_name&#39; and</code>type<code>= &#39;PROCEDURE&#39;;</code></p>
+<p>方法二：<br><code>show procedure status;</code></p>
+<p>查看存储过程或函数的创建代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">show create procedure proc_name;</div><div class="line">show create function func_name;</div></pre></td></tr></table></figure></p>
+<p>方法三：使用Navicat客户端工具</p>
+<p>查看在某个库下创建的存储过程，就去查看函数选项即可，支持编辑修改！</p>
 
           
         
@@ -1659,7 +1216,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2013/03/01/743.html">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2012/07/09/mysql-slave-duplicate-primary.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Geekwolf">
@@ -1678,7 +1235,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2013/03/01/743.html" itemprop="url">PSSH 批量管理服务器</a></h1>
+                <a class="post-title-link" href="/2012/07/09/mysql-slave-duplicate-primary.html" itemprop="url">mysql slave不能同步Error 'Duplicate entry '1438019' for key 'PRIMARY'' on query</a></h1>
         
 
         <div class="post-meta">
@@ -1690,8 +1247,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2013-03-01T08:50:59+08:00">
-                2013-03-01
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2012-07-09T06:54:07+08:00">
+                2012-07-09
               </time>
             
 
@@ -1713,8 +1270,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux运维/" itemprop="url" rel="index">
-                    <span itemprop="name">Linux运维</span>
+                  <a href="/categories/MySQL数据库/" itemprop="url" rel="index">
+                    <span itemprop="name">MySQL数据库</span>
                   </a>
                 </span>
 
@@ -1730,7 +1287,7 @@
 
           
           
-             <span id="/2013/03/01/743.html" class="leancloud_visitors" data-flag-title="PSSH 批量管理服务器">
+             <span id="/2012/07/09/mysql-slave-duplicate-primary.html" class="leancloud_visitors" data-flag-title="mysql slave不能同步Error 'Duplicate entry '1438019' for key 'PRIMARY'' on query">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -1781,32 +1338,10 @@
       
         
           
-            <p>想找一个轻量的批量管理机器的工具，网上搜了一下发现有介绍pssh这个工具，用python写的，python版本大于2.4即可，于是下载试了一下。</p>
-<p>&#160;</p>
-<p>&#160;&#160;&#160;&#160;&#160; 1 下载wget <a href="http://parallel-ssh.googlecode.com/files/pssh-2.3.1.tar.gz" target="_blank" rel="external">http://parallel-ssh.googlecode.com/files/pssh-2.3.1.tar.gz</a><br>&#160;&#160;&#160;&#160;&#160; 2 安装tar zxvf pssh-2.3.1.tar.gz<br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; cd pssh-2.3.1/<br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; python setup.py install<br>&#160;&#160;&#160;&#160;&#160; 3.安装结果changing mode of /usr/local/bin/pnuke to 755<br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; changing mode of /usr/local/bin/pscp to 755<br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; changing mode of /usr/local/bin/pslurp to 755<br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; changing mode of /usr/local/bin/pssh to 755<br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; changing mode of /usr/local/bin/pssh-askpass to 755<br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; changing mode of /usr/local/bin/prsync to 755安装完后最后面几行会显示如上结果，显示安装了几个命令，分别安装在哪里。</p>
-<p>&#160;</p>
-<p>&#160;&#160;&#160; 4 介绍pssh参数</p>
-<p>&#160;&#160;&#160;&#160;&#160;&#160; -h 执行命令的远程主机列表&#160; 或者 -H user@ip:port&#160; 文件内容格式[user@]host[:port]</p>
-<p>&#160;&#160;&#160;&#160;&#160;&#160; -l 远程机器的用户名</p>
-<p>&#160;&#160;&#160;&#160;&#160;&#160; -p 一次最大允许多少连接</p>
-<p>&#160;&#160;&#160;&#160;&#160;&#160; -o 输出内容重定向到一个文件</p>
-<p>&#160;&#160;&#160;&#160;&#160;&#160; -e 执行错误重定向到一个文件</p>
-<p>&#160;&#160;&#160;&#160;&#160;&#160; -t 设置命令执行的超时时间</p>
-<p>&#160;&#160;&#160;&#160;&#160;&#160; -A 提示输入密码并且把密码传递给ssh</p>
-<p>&#160;&#160;&#160;&#160;&#160;&#160; -O 设置ssh参数的具体配置，参照ssh_config配置文件</p>
-<p>&#160;&#160;&#160;&#160;&#160;&#160; -x 传递多个SSH 命令，多个命令用空格分开，用引号括起来</p>
-<p>&#160;&#160;&#160;&#160;&#160;&#160; -X 同-x 但是一次只能传递一个命令</p>
-<p>&#160;&#160;&#160;&#160;&#160;&#160; -i 显示标准输出和标准错误在每台host执行完毕后</p>
-<p>&#160;&#160;&#160;&#160;&#160;&#160; -I 读取每个输入命令，并传递给ssh进程 允许命令脚本传送到标准输入</p>
-<p>&#160;&#160;&#160;&#160; 5 介绍软件包内其他命令</p>
-<p>&#160;&#160;&#160;&#160;&#160;&#160;&#160; pscp&#160;&#160; 传输文件到多个hosts，他的特性和scp差不多</p>
-<p>&#160;&#160;&#160;&#160;&#160;&#160;&#160; pslurp&#160;&#160; 从多台远程机器拷贝文件</p>
-<p>&#160;&#160;&#160;&#160;&#160;&#160;&#160; pnuke&#160;&#160;&#160; kill远程机器的进程</p>
-<p>&#160;&#160;&#160;&#160; 6 试用pssh</p>
-<p>&#160;&#160;&#160;&#160;&#160;&#160;&#160; 在ip.txt 输入你需要执行命令的远程机器，格式：user@ip:port</p>
-<p>&#160;&#160;&#160;&#160;&#160;&#160;&#160; 结果如下，注意两个参数-i -P 显示结果的差别</p>
-<p><a href="http://static.oschina.net/uploads/space/2012/0529/103245_cjjH_123777.jpg" target="_blank" rel="external"><img src="http://static.oschina.net/uploads/space/2012/0529/103245_cjjH_123777.jpg" alt=""></a></p>
-<p>转自oschina</p>
+            <h4 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div></pre></td><td class="code"><pre><div class="line">mysql&gt; show slave statusG;</div><div class="line">*************************** 1. row ***************************</div><div class="line">               Slave_IO_State: Waiting for master to send event</div><div class="line">                  Master_Host: 192.168.10.100</div><div class="line">                  Master_User: slave_user</div><div class="line">                  Master_Port: 3306</div><div class="line">                  Connect_Retry: 60</div><div class="line">                  Master_Log_File: mysql-bin.000773</div><div class="line">                  Read_Master_Log_Pos: 63325</div><div class="line">                  Relay_Log_File: server122-relay-bin.000002</div><div class="line">                  Relay_Log_Pos: 165661</div><div class="line">                  Relay_Master_Log_File: mysql-bin.000771</div><div class="line">                  Slave_IO_Running: Yes</div><div class="line">                  Slave_SQL_Running: No</div><div class="line">                  Replicate_Do_DB:</div><div class="line">                  Replicate_Ignore_DB:</div><div class="line">                  Replicate_Do_Table:</div><div class="line">                  Replicate_Ignore_Table:</div><div class="line">                  Replicate_Wild_Do_Table:</div><div class="line">                  Replicate_Wild_Ignore_Table:</div><div class="line">                   Last_Errno: 1062</div><div class="line">                   Last_Error: Error &apos;Duplicate entry &apos;1438019&apos; for key &apos;PRIMARY&apos;&apos; on query. Default database: &apos;otrs&apos;. Query: &apos;INSERT INTO ticket (tn, title, create_time_unix, queue_id, ticket_lock_id,  user_id, group_id, ticket_priority_id, ticket_state_id, ticket_answered,  escalation_start_time, timeout, valid_id, create_time, create_by, change_time, change_by)  VALUES (&apos;2012061310001851&apos;, &apos;Your order  ORD201205A000016 was bounced back&apos;, 1339585744, 44, 1, 43,  1, 3, 4,  0, 1339585744, 0, 1,  current_timestamp, 43, current_timestamp, 43)&apos;</div><div class="line">                 Skip_Counter: 0</div><div class="line">                 Exec_Master_Log_Pos: 41969067</div><div class="line">                 Relay_Log_Space: 625695</div><div class="line">                 Until_Condition: None</div><div class="line">                 Until_Log_File:</div><div class="line">                 Until_Log_Pos: 0</div><div class="line">                 Master_SSL_Allowed: No</div><div class="line">                 Master_SSL_CA_File:</div><div class="line">                 Master_SSL_CA_Path:</div><div class="line">                 Master_SSL_Cert:</div><div class="line">                 Master_SSL_Cipher:</div><div class="line">                 Master_SSL_Key:</div><div class="line">                 Seconds_Behind_Master: NULL</div><div class="line">                 Master_SSL_Verify_Server_Cert: No</div><div class="line">                Last_IO_Errno: 0</div><div class="line">                Last_IO_Error:</div><div class="line">                Last_SQL_Errno: 1062</div><div class="line">                Last_SQL_Error: Error &apos;Duplicate entry &apos;1438019&apos; for key &apos;PRIMARY&apos;&apos; on query. Default database: &apos;otrs&apos;. Query: &apos;INSERT INTO ticket (tn, title, create_time_unix, queue_id, ticket_lock_id,  user_id, group_id, ticket_priority_id, ticket_state_id, ticket_answered,  escalation_start_time, timeout, valid_id, create_time, create_by, change_time, change_by)  VALUES (&apos;2012061310001851&apos;, &apos;Your order  ORD201205A000016 was bounced back&apos;, 1339585744, 44, 1, 43,  1, 3, 4,  0, 1339585744, 0, 1,  current_timestamp, 43, current_timestamp, 43)&apos;</div><div class="line">1 row in set (0.00 sec)</div></pre></td></tr></table></figure>
+<h4 id="分析原因"><a href="#分析原因" class="headerlink" title="分析原因"></a>分析原因</h4><p>重复插入相同的记录，造成的主键冲突问题</p>
+<h4 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h4><p>如果较少的错误可以手动解决<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">slave stop;</div><div class="line">set global sql_slave_skip_counter=n; \ n=正整数，，看你的错误有几条，就跳过几条  </div><div class="line">slave start;</div></pre></td></tr></table></figure></p>
+<p>较多的情况下增加slave_skip_errors = 1062 参数<br>my.cnf 中增加slave_skip_errors = 1062 参数，忽略1062错误，若忽略多个错误，中间用逗号隔开，忽略所有用all</p>
 
           
         
@@ -1855,7 +1390,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2013/02/27/e5-85-b3-e4-ba-8ecurl-setopt-a-hreffunction-curl-setoptfunction-curl-setopta-curlopt-followlocation-cannot-be-activated-when-safe-mode-is-enabled-or-an-open-basedir-is-set.html">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2012/07/06/mysql-binlog-format.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Geekwolf">
@@ -1874,7 +1409,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2013/02/27/e5-85-b3-e4-ba-8ecurl-setopt-a-hreffunction-curl-setoptfunction-curl-setopta-curlopt-followlocation-cannot-be-activated-when-safe-mode-is-enabled-or-an-open-basedir-is-set.html" itemprop="url">关于curl_setopt() [function.curl-setopt]: CURLOPT_FOLLOWLOCATION</a></h1>
+                <a class="post-title-link" href="/2012/07/06/mysql-binlog-format.html" itemprop="url">MySQL binlog_format (Mixed,Statement,Row)区别和使用场合</a></h1>
         
 
         <div class="post-meta">
@@ -1886,8 +1421,210 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2013-02-27T07:13:07+08:00">
-                2013-02-27
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2012-07-06T09:27:10+08:00">
+                2012-07-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/MySQL数据库/" itemprop="url" rel="index">
+                    <span itemprop="name">MySQL数据库</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2012/07/06/mysql-binlog-format.html" class="leancloud_visitors" data-flag-title="MySQL binlog_format (Mixed,Statement,Row)区别和使用场合">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  8
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>MySQL 5.5 中对于二进制日志 (binlog) 有 3 种不同的格式可选：Mixed,Statement,Row，默认格式是 Statement。总结一下这三种格式日志的优缺点。</p>
+<p>MySQL Replication 复制可以是基于一条语句 (Statement Level) ，也可以是基于一条记录 (Row Level)，可以在 MySQL 的配置参数中设定这个复制级别，不同复制级别的设置会影响到 Master 端的 bin-log 日志格式。</p>
+<h4 id="Row"><a href="#Row" class="headerlink" title="Row"></a>Row</h4><p>日志中会记录成每一行数据被修改的形式，然后在 slave 端再对相同的数据进行修改。</p>
+<p><strong>优点</strong>：在 row 模式下，bin-log 中可以不记录执行的 SQL 语句的上下文相关的信息，仅仅只需要记录那一条记录被修改了，修改成什么样了。所以 row 的日志内容会非常清楚的记录下每一行数据修改的细节，非常容易理解。而且不会出现某些特定情况下的存储过程或 function ，以及 trigger 的调用和触发无法被正确复制的问题。</p>
+<p><strong>缺点</strong>：在 row 模式下，所有的执行的语句当记录到日志中的时候，都将以每行记录的修改来记录，这样可能会产生大量的日志内容，比如有这样一条 update 语句：</p>
+<p><code>UPDATE product SET owner_member_id = &#39;b&#39; WHERE owner_member_id = &#39;a&#39;</code></p>
+<p>执行之后，日志中记录的不是这条 update 语句所对应的事件 (MySQL 以事件的形式来记录 bin-log 日志) ，而是这条语句所更新的每一条记录的变化情况，这样就记录成很多条记录被更新的很多个事件。自然，bin-log 日志的量就会很大。尤其是当执行 alter table 之类的语句的时候，产生的日志量是惊人的。因为 MySQL 对于 alter table 之类的表结构变更语句的处理方式是整个表的每一条记录都需要变动，实际上就是重建了整个表。那么该表的每一条记录都会被记录到日志中。</p>
+<h4 id="Statement"><a href="#Statement" class="headerlink" title="Statement"></a>Statement</h4><p>每一条会修改数据的 SQL 都会记录到 master 的 bin-log 中。slave 在复制的时候 SQL 进程会解析成和原来 master 端执行过的相同的 SQL 再次执行。</p>
+<p><strong>优点</strong>：在 statement 模式下，首先就是解决了 row 模式的缺点，不需要记录每一行数据的变化，减少了 bin-log 日志量，节省 I/O 以及存储资源，提高性能。因为他只需要记录在 master 上所执行的语句的细节，以及执行语句时候的上下文的信息。</p>
+<p><strong>缺点</strong>：在 statement 模式下，由于他是记录的执行语句，所以，为了让这些语句在 slave 端也能正确执行，那么他还必须记录每条语句在执行的时候的一些相关信息，也就是上下文信息，以保证所有语句在 slave 端杯执行的时候能够得到和在 master 端执行时候相同的结果。另外就是，由于 MySQL 现在发展比较快，很多的新功能不断的加入，使 MySQL 的复制遇到了不小的挑战，自然复制的时候涉及到越复杂的内容，bug 也就越容易出现。在 statement 中，目前已经发现的就有不少情况会造成 MySQL 的复制出现问题，主要是修改数据的时候使用了某些特定的函数或者功能的时候会出现，比如：sleep() 函数在有些版本中就不能被正确复制，在存储过程中使用了 last_insert_id() 函数，可能会使 slave 和 master 上得到不一致的 id 等等。由于 row 是基于每一行来记录的变化，所以不会出现类似的问题。</p>
+<h4 id="Mixed"><a href="#Mixed" class="headerlink" title="Mixed"></a>Mixed</h4><p>从官方文档中看到，之前的 MySQL 一直都只有基于 statement 的复制模式，直到 5.1.5 版本的 MySQL 才开始支持 row 复制。从 5.0 开始，MySQL 的复制已经解决了大量老版本中出现的无法正确复制的问题。但是由于存储过程的出现，给 MySQL Replication 又带来了更大的新挑战。另外，看到官方文档说，从 5.1.8 版本开始，MySQL 提供了除 Statement 和 Row 之外的第三种复制模式：Mixed，实际上就是前两种模式的结合。在 Mixed 模式下，MySQL 会根据执行的每一条具体的 SQL 语句来区分对待记录的日志形式，也就是在 statement 和 row 之间选择一种。新版本中的 statment 还是和以前一样，仅仅记录执行的语句。而新版本的 MySQL 中对 row 模式也被做了优化，并不是所有的修改都会以 row 模式来记录，比如遇到表结构变更的时候就会以 statement 模式来记录，如果 SQL 语句确实就是 update 或者 delete 等修改数据的语句，那么还是会记录所有行的变更。</p>
+<p><strong>其他参考信息</strong></p>
+<p><strong>除以下几种情况外，在运行时可以动态改变 binlog 的格式</strong>：<br>. 存储流程或者触发器中间；<br>. 启用了 NDB；<br>. 当前会话使用 row 模式，并且已打开了临时表；</p>
+<p><strong>如果 binlog 采用了 Mixed 模式，那么在以下几种情况下会自动将 binlog 的模式由 statement 模式变为 row 模式</strong>：<br>. 当 DML 语句更新一个 NDB 表时；<br>. 当函数中包含 UUID() 时；<br>. 2 个及以上包含 AUTO_INCREMENT 字段的表被更新时；<br>. 执行 INSERT DELAYED 语句时；<br>. 用 UDF 时；<br>. 视图中必须要求运用 row 时，例如建立视图时使用了 UUID() 函数；</p>
+<p><strong>设定主从复制模式</strong>：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">log-bin=mysql-bin</div><div class="line">#binlog_format=&quot;STATEMENT&quot;</div><div class="line">#binlog_format=&quot;ROW&quot;</div><div class="line">binlog_format=&quot;MIXED&quot;</div></pre></td></tr></table></figure></p>
+<p><strong>也可以在运行时动态修改 binlog 的格式。例如</strong>：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">mysql&gt; SET SESSION binlog_format = &apos;STATEMENT&apos;;</div><div class="line">mysql&gt; SET SESSION binlog_format = &apos;ROW&apos;;</div><div class="line">mysql&gt; SET SESSION binlog_format = &apos;MIXED&apos;;</div><div class="line">mysql&gt; SET GLOBAL binlog_format = &apos;STATEMENT&apos;;</div><div class="line">mysql&gt; SET GLOBAL binlog_format = &apos;ROW&apos;;</div><div class="line">mysql&gt; SET GLOBAL binlog_format = &apos;MIXED&apos;;&lt;/pre&gt;</div></pre></td></tr></table></figure></p>
+<p><strong>两种模式的对比</strong>：<br><strong>Statement 优点</strong><br>历史悠久，技术成熟；<br>产生的 binlog 文件较小；<br>binlog 中包含了所有数据库修改信息，可以据此来审核数据库的安全等情况；<br>binlog 可以用于实时的还原，而不仅仅用于复制；<br>主从版本可以不一样，从服务器版本可以比主服务器版本高；</p>
+<p><strong>Statement 缺点</strong>：<br>不是所有的 UPDATE 语句都能被复制，尤其是包含不确定操作的时候；<br>调用具有不确定因素的 UDF 时复制也可能出现问题；<br>运用以下函数的语句也不能被复制：</p>
+<ul>
+<li>LOAD_FILE()</li>
+<li>UUID()</li>
+<li>USER()</li>
+<li>FOUND_ROWS()</li>
+<li>SYSDATE() (除非启动时启用了 –sysdate-is-now 选项)<br>INSERT … SELECT 会产生比 RBR 更多的行级锁；<br>复制须要执行全表扫描 (WHERE 语句中没有运用到索引) 的 UPDATE 时，须要比 row 请求更多的行级锁；<br>对于有 AUTO_INCREMENT 字段的 InnoDB 表而言，INSERT 语句会阻塞其他 INSERT 语句；<br>对于一些复杂的语句，在从服务器上的耗资源情况会更严重，而 row 模式下，只会对那个发生变化的记录产生影响；<br>存储函数(不是存储流程 )在被调用的同时也会执行一次 NOW() 函数，这个可以说是坏事也可能是好事；<br>确定了的 UDF 也须要在从服务器上执行；<br>数据表必须几乎和主服务器保持一致才行，否则可能会导致复制出错；<br>执行复杂语句如果出错的话，会消耗更多资源；</li>
+</ul>
+<p><strong>Row 优点</strong><br>任何情况都可以被复制，这对复制来说是最安全可靠的；<br>和其他大多数数据库系统的复制技能一样；<br>多数情况下，从服务器上的表如果有主键的话，复制就会快了很多；<br>复制以下几种语句时的行锁更少：</p>
+<ul>
+<li>INSERT … SELECT</li>
+<li>包含 AUTO_INCREMENT 字段的 INSERT</li>
+<li>没有附带条件或者并没有修改很多记录的 UPDATE 或 DELETE 语句<br>执行 INSERT，UPDATE，DELETE 语句时锁更少；<br>从服务器上采用多线程来执行复制成为可能；</li>
+</ul>
+<p><strong>Row 缺点</strong><br>生成的 binlog 日志体积大了很多；<br>复杂的回滚时 binlog 中会包含大量的数据；<br>主服务器上执行 UPDATE 语句时，所有发生变化的记录都会写到 binlog 中，而 statement 只会写一次，这会导致频繁发生 binlog 的写并发请求；<br>UDF 产生的大 BLOB 值会导致复制变慢；<br>不能从 binlog 中看到都复制了写什么语句(加密过的)；<br>当在非事务表上执行一段堆积的 SQL 语句时，最好采用 statement 模式，否则很容易导致主从服务器的数据不一致情况发生；<br>另外，针对系统库 MySQL 里面的表发生变化时的处理准则如下：<br>如果是采用 INSERT，UPDATE，DELETE 直接操作表的情况，则日志格式根据 binlog_format 的设定而记录；<br>如果是采用 GRANT，REVOKE，SET PASSWORD 等管理语句来做的话，那么无论如何都要使用 statement 模式记录；<br>使用 statement 模式后，能处理很多原先出现的主键重复问题；</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2012/06/28/libltdl-error.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Geekwolf">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/wolf.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Geekwolf's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2012/06/28/libltdl-error.html" itemprop="url">/usr/local/lib/libltdl.a(ltdl.o): could not read symbols: Bad value</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2012-06-28T09:12:08+08:00">
+                2012-06-28
               </time>
             
 
@@ -1926,7 +1663,7 @@
 
           
           
-             <span id="/2013/02/27/e5-85-b3-e4-ba-8ecurl-setopt-a-hreffunction-curl-setoptfunction-curl-setopta-curlopt-followlocation-cannot-be-activated-when-safe-mode-is-enabled-or-an-open-basedir-is-set.html" class="leancloud_visitors" data-flag-title="关于curl_setopt() [function.curl-setopt]: CURLOPT_FOLLOWLOCATION">
+             <span id="/2012/06/28/libltdl-error.html" class="leancloud_visitors" data-flag-title="/usr/local/lib/libltdl.a(ltdl.o): could not read symbols: Bad value">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -1977,13 +1714,8 @@
       
         
           
-            <p><strong>问题描述：</strong>公司内部系统上测试环境，发现登录页面第一次登录时报</p>
-<p>curl_setopt() [&lt;a href=’function.curl-setopt’&gt;function.curl-setopt&lt;/a&gt;]: CURLOPT_FOLLOWLOCATION cannot be activated when safe_mode is enabled or an open_basedir is set 错误，刷新后正常</p>
-<p>其实很多问题都是由于code不当产生的，检查了一下php的配置safe_mode的确是关闭的，open_basedir将需要的目录加进去了，问题依然出现，做运维的没办法，开发非要说是服务端问题，可我认为是代码问题；先安coders们的说法做吧，把php的配置拷贝到了开发环境没有出现此类问题；好吧，我也说不准确到底是什么条件触发这个，因为我是一个伪coder；按照抛出的异常修改php代码吧，只好这样！so do it！</p>
-<p>将curl_setopt ( $this-&gt;ch, $key, $value );替换</p>
-<p>if (ini_get(‘open_basedir’) == ‘’ &amp;&amp; ini_get(‘safe_mode’ == ‘Off’))<br>&#160;&#160;&#160;&#160; curl_setopt($curl, CURLOPT_FOLLOWLOCATION, 1); // 使用自动跳转</p>
-<p>问题得到了解决！</p>
-<p>也有可能是配置问题，但是没有找到原因，望资深攻城湿指点！</p>
+            <h4 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h4><p>在编译libmcrypt软件包时出现问题<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">/libltdl.a(ltdl.o): relocation R_X86_64_32S against `a local symbol&apos; can not be used when making a shared object; recompile with -fPIC</div><div class="line">/usr/local/lib/libltdl.a(ltdl.o): could not read symbols: Bad value</div><div class="line">collect2: ld returned 1 exit status</div><div class="line">make: *** [libphp4.la] Error 1</div></pre></td></tr></table></figure></p>
+<h4 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">yum install libtool-ltdl-devel</div><div class="line">//PHP_LDFLAGS=-L/usr/lib64 ./build php n</div></pre></td></tr></table></figure>
 
           
         
@@ -2032,7 +1764,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2013/02/25/e5-95-8ad-e6-89-ab-e5-86-85-e7-bd-91-e5-bc-b1-e5-8f-a3-e4-bb-a4-ef-bc-8c-e9-80-9a-e8-bf-87ipc-e7-a7-8d-e6-a4-8d-e6-9c-a8-e9-a9-ac.html">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2012/06/25/centos56-kernel-crash.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Geekwolf">
@@ -2051,7 +1783,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2013/02/25/e5-95-8ad-e6-89-ab-e5-86-85-e7-bd-91-e5-bc-b1-e5-8f-a3-e4-bb-a4-ef-bc-8c-e9-80-9a-e8-bf-87ipc-e7-a7-8d-e6-a4-8d-e6-9c-a8-e9-a9-ac.html" itemprop="url">啊D扫内网弱口令，通过$IPC 种植木马</a></h1>
+                <a class="post-title-link" href="/2012/06/25/centos56-kernel-crash.html" itemprop="url">启动 centos5.6出现下面提示 Memory for crash kernel (0x0 to 0x0 notwithin permissible range)</a></h1>
         
 
         <div class="post-meta">
@@ -2063,187 +1795,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2013-02-25T05:10:41+08:00">
-                2013-02-25
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/系统安全/" itemprop="url" rel="index">
-                    <span itemprop="name">系统安全</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2013/02/25/e5-95-8ad-e6-89-ab-e5-86-85-e7-bd-91-e5-bc-b1-e5-8f-a3-e4-bb-a4-ef-bc-8c-e9-80-9a-e8-bf-87ipc-e7-a7-8d-e6-a4-8d-e6-9c-a8-e9-a9-ac.html" class="leancloud_visitors" data-flag-title="啊D扫内网弱口令，通过$IPC 种植木马">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长</span>
-                
-                <span title="阅读时长">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><a href="http://www.simlinux.com/old/wp-content/uploads/2013/02/image.png"><img src="http://www.simlinux.com/old/wp-content/uploads/2013/02/image_thumb.png" alt="image" title="image"></a> </p>
-<p>种植木马</p>
-<p><a href="http://www.simlinux.com/old/wp-content/uploads/2013/02/image1.png"><img src="http://www.simlinux.com/old/wp-content/uploads/2013/02/image_thumb1.png" alt="image" title="image"></a> </p>
-<p>由于对端没有开启3389，so&#160; 开启telnet 来的更直接 更不容易被普通用户发现</p>
-<p>&#160;</p>
-<p><a href="http://www.simlinux.com/old/wp-content/uploads/2013/02/image2.png"><img src="http://www.simlinux.com/old/wp-content/uploads/2013/02/image_thumb2.png" alt="image" title="image"></a> </p>
-<p>&#160;</p>
-<p>ok，此刻 可以telnet登录了！ 就这么简单；希望搞运维的朋友 没事多检测下自个服务器的安全性，</p>
-<p>多看看关于安全，多聚焦安全新闻；以攻击思想来防范！Good bye！</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2013/01/22/nginx-e9-85-8d-e7-bd-ae-e4-b8-ad-e6-96-87-e5-9f-9f-e5-90-8d.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Geekwolf">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/wolf.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Geekwolf's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2013/01/22/nginx-e9-85-8d-e7-bd-ae-e4-b8-ad-e6-96-87-e5-9f-9f-e5-90-8d.html" itemprop="url">nginx配置中文域名</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2013-01-22T09:23:06+08:00">
-                2013-01-22
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2012-06-25T11:53:02+08:00">
+                2012-06-25
               </time>
             
 
@@ -2282,7 +1835,197 @@
 
           
           
-             <span id="/2013/01/22/nginx-e9-85-8d-e7-bd-ae-e4-b8-ad-e6-96-87-e5-9f-9f-e5-90-8d.html" class="leancloud_visitors" data-flag-title="nginx配置中文域名">
+             <span id="/2012/06/25/centos56-kernel-crash.html" class="leancloud_visitors" data-flag-title="启动 centos5.6出现下面提示 Memory for crash kernel (0x0 to 0x0 notwithin permissible range)">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  4
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h4><p>启动 centos5.6出现下面提示 Memory for crash kernel (0x0 to 0x0 notwithin permissible range)</p>
+<h4 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h4><p>kexec是一个快速启动机制，允许通过已经运行的内核的上下文启动一个Linux内核，不需要经过BIOS。BIOS可能会消耗很多时间，特别是带有众多数量的外设的大型服务器。这种办法可以为经常启动机器的开发者节省很多时间。<br>kdump是一个新的，而且非常可信赖的内核崩溃转储机制。崩溃转储数据可以从一个新启动的内核的上下文中获取，而不是从已经崩溃的内核的上下文。当系统崩溃时，kdump使用kexec启动到第二个内核。第二个内核通常叫做捕获内核（capture kernel），以很小内存启动，并且捕获转储镜像。<br>第一个内核保留了内存的一部分，第二个内核可以用来启动。注意，在启动时，kdump保留了一定数量的重要的内存，这改变了紅帽企业Linux 5最小内存需求。为了计算系统需要的真正最小内存，可以参看 [url]<a href="http://www.redhat.com/rhel/details/limits/[/url" target="_blank" rel="external">http://www.redhat.com/rhel/details/limits/[/url</a>] 上列出的最小内存需求，加上kdump使用的内存数量，以决定真正的最小内存的需求。</p>
+<p>因为第一内核的内存内容已经被保留，所以kexec可以不经过BIOS，启动捕获内核。这是内核崩溃转储的根本。</p>
+<h5 id="怎样配置kdump"><a href="#怎样配置kdump" class="headerlink" title="怎样配置kdump"></a>怎样配置kdump</h5><ol>
+<li><p>确认kexec-tools已经安装：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">#rpm -q kexec-tools</div></pre></td></tr></table></figure>
+</li>
+<li><p>配置/etc/kdump.conf文件，指定vmcore将被转储的路径。可以通过scp拷贝到另一个服务器，也可以是裸设备，或者本地的文件系统。</p>
+</li>
+<li><p>修改一些启动参数，为捕获很保留一块内存。对于i386和x86_64架构，编辑/etc/grub.conf，在内核行的末尾添加 crashkernel=128@16M。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">下面是一个带有kdump选项的/etc/grub.conf文件：</div><div class="line"></div><div class="line"># grub.conf generated by anaconda</div><div class="line">#</div><div class="line"># Note that you do not have to rerun grub after making changes to this file</div><div class="line"># NOTICE:  You do not have a /boot partition.  This means that</div><div class="line">#          all kernel and initrd paths are relative to /, eg.</div><div class="line">#          root (hd0,0)</div><div class="line">#          kernel /boot/vmlinuz-version ro root=/dev/hda1</div><div class="line">#          initrd /boot/initrd-version.img</div><div class="line">#boot=/dev/hda</div><div class="line">default=0</div><div class="line">timeout=5</div><div class="line">splashimage=(hd0,0)/boot/grub/splash.xpm.gz</div><div class="line">hiddenmenu</div><div class="line">title Red Hat Enterprise Linux Client (2.6.17-1.2519.4.21.el5)</div><div class="line">        root (hd0,0)</div><div class="line">        kernel /boot/vmlinuz-2.6.17-1.2519.4.21.el5 ro root=LABEL=/ rhgb quiet crashkernel=128M@16M</div><div class="line">        initrd /boot/initrd-2.6.17-1.2519.4.21.el5.img</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>4.修改之后，重启系统。128M内存（从16M开始）不被正常的系统使用，为捕获内核保留。注意，free -m的输出会显示内存比不加参数时少了128M，这就是我们所期望的。</p>
+<p>注意：可以使用小于128M，但是只使用64M做测试被证实是不可靠的。</p>
+<p>5.现在，保留内存已经设置了，打开kdump初始脚本，启动服务：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#  chkconfig kdump on</div><div class="line">#  service kdump start</div></pre></td></tr></table></figure></p>
+<p>6.可以通过kexec加载内核镜像，让系统准备捕获一个崩溃时产生的vmcore。可以通过sysrq强制系统崩溃：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"># echo &quot;c&quot; &amp;gt; /proc/sysrq-trigger</div></pre></td></tr></table></figure></p>
+<p>这造成kernel panic，紧跟着系统重启kdump内核。当启动进程进入到启动kdump服务器时，vmcore将会被拷贝到你在/etc/kdump.conf文件中指定的位置。</p>
+<p>注意：</p>
+<p>终端frame-buffer和X将运行不正常。在运行一些类似于在内核配置上添加了”vga=791”或者运行X的系统，在通过kexec启动内核时，终端显示将不清楚。记住，kdump内核仍旧能够创建转储。当系统重启，显示将会恢复到正常状态。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2012/06/15/oracle-sql.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Geekwolf">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/wolf.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Geekwolf's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2012/06/15/oracle-sql.html" itemprop="url">Oracle常用查询sql</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2012-06-15T08:39:16+08:00">
+                2012-06-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux运维/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux运维</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2012/06/15/oracle-sql.html" class="leancloud_visitors" data-flag-title="Oracle常用查询sql">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -2333,8 +2076,7 @@
       
         
           
-            <p>当在浏览器中敲入www.明月博客.com时，浏览器会转为www.xn–9kRq6Qw2Iu2A.com<br>其实中文域名就是一个经过编码的英文域名（中文域名–&gt;punycode编码–&gt;英文域名）<br>在线转换地址<a href="http://www.webmasterhome.cn/tool/punycode.asp" target="_blank" rel="external">http://www.webmasterhome.cn/tool/punycode.asp</a><br>配置：<br>listen 80;<br>server_name www.xn–9kRq6Qw2Iu2A.com;<br>index index.html;  </p>
-
+            <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line">select * from v$version;                查看服务器版本</div><div class="line">select * from all_users;                ##查看所有用户</div><div class="line">select name from v$database;            ##查看当前数据库</div><div class="line">database test;                          ##进入test数据库</div><div class="line">select * from v$instance;               ##查看所有的数据库实例</div><div class="line">shutdown immediate                      ##关闭数据库</div><div class="line">alter user sys identified by new_password;        ##更改用户密码</div><div class="line">select username,password from dba_users;          ##查看当实例中的用户和密码</div><div class="line">show parameter control_files;                     ## 查看控制文件;</div><div class="line">select member from v$logfile;                     ##查看日志文件</div><div class="line">show parameter ;                                  ## 查看数据库参数</div><div class="line">select * from user_role_privs;                    ##查看当前用户的角色</div><div class="line">select username,default_tablespace from user_users; ##查看当前用户的缺省表空间</div><div class="line">alter user system identified by [password]        ##修改用户的密码</div><div class="line">ALTER USER &quot;SCOTT&quot; ACCOUNT UNLOCK                 ##解锁SCOTT用户</div><div class="line">show parameter processes;                         ##查看最大会话数</div><div class="line"></div><div class="line">select username,sid,serial# from v$session;  查看当前会话连接</div><div class="line"></div><div class="line">select * from all_tables;                         ##查看当前库的所有数据表</div><div class="line"></div><div class="line">查看表结构：desc all_tables;</div><div class="line"></div><div class="line">创建用户并赋予权限</div><div class="line">###----------------------------创建用户并赋予权限------------------------------------####-</div><div class="line">create user mpss</div><div class="line">    identified by &quot;mpss12&quot;</div><div class="line">    default tablespace TS_MPSS_DATA</div><div class="line">    temporary tablespace TEMP;</div><div class="line"></div><div class="line">给用户赋予权限</div><div class="line">grant connect to mpss;</div><div class="line">grant resource,create session to mpss;  开发角色</div><div class="line">grant create procedure to dbuser；＃这些权限足够用于开发及生产环境</div><div class="line"></div><div class="line">给用户授权</div><div class="line">grant dba to spms;--授予DBA权限</div><div class="line">grant unlimited tablespace to lxg;--授予不限制的表空间</div><div class="line">grant select any table to lxg;--授予查询任何表</div><div class="line">grant select any dictionary to lxg;--授予 查询任何字典</div></pre></td></tr></table></figure>
           
         
       
@@ -2373,7 +2115,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/7/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><a class="extend next" rel="next" href="/page/9/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/7/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/9/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -2419,7 +2161,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">166</span>
+                <span class="site-state-item-count">83</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -2430,7 +2172,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-count">10</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -2441,7 +2183,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">105</span>
+                <span class="site-state-item-count">60</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

@@ -763,7 +763,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2017/09/06/django-e6-a8-a1-e6-9d-bf-e6-97-a0-e6-b3-95-e4-bd-bf-e7-94-a8perms-e5-8f-98-e9-87-8f-e9-97-ae-e9-a2-98.html">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2017/09/06/django-perms.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Geekwolf">
@@ -782,7 +782,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/09/06/django-e6-a8-a1-e6-9d-bf-e6-97-a0-e6-b3-95-e4-bd-bf-e7-94-a8perms-e5-8f-98-e9-87-8f-e9-97-ae-e9-a2-98.html" itemprop="url">Django模板无法使用perms变量问题</a></h1>
+                <a class="post-title-link" href="/2017/09/06/django-perms.html" itemprop="url">Django模板无法使用perms变量问题</a></h1>
         
 
         <div class="post-meta">
@@ -834,7 +834,7 @@
 
           
           
-             <span id="/2017/09/06/django-e6-a8-a1-e6-9d-bf-e6-97-a0-e6-b3-95-e4-bd-bf-e7-94-a8perms-e5-8f-98-e9-87-8f-e9-97-ae-e9-a2-98.html" class="leancloud_visitors" data-flag-title="Django模板无法使用perms变量问题">
+             <span id="/2017/09/06/django-perms.html" class="leancloud_visitors" data-flag-title="Django模板无法使用perms变量问题">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -885,79 +885,14 @@
       
         
           
-            <p>首先,在使用Django内置权限管理系统时,settings.py文件要添加</p>
-<pre><code>INSTALLED_APPS添加:
-&apos;django.contrib.auth&apos;,
-
-MIDDLEWARE添加:
-&apos;django.contrib.auth.middleware.AuthenticationMiddleware&apos;,
-
-&apos;django.contrib.auth.context_processors.auth&apos;,
-TEMPLATES = [
-    {
-        &apos;BACKEND&apos;: &apos;django.template.backends.django.DjangoTemplates&apos;,
-        &apos;DIRS&apos;: [os.path.join(BASE_DIR, &apos;templates&apos;)],
-        &apos;APP_DIRS&apos;: True,
-        &apos;OPTIONS&apos;: {
-            &apos;context_processors&apos;: [
-                &apos;django.template.context_processors.debug&apos;,
-                &apos;django.template.context_processors.i18n&apos;,
-                &apos;django.template.context_processors.media&apos;,
-                &apos;django.template.context_processors.static&apos;,
-                &apos;django.template.context_processors.tz&apos;,
-                &apos;django.contrib.messages.context_processors.messages&apos;,
-                &apos;django.template.context_processors.request&apos;,
-                &apos;django.contrib.auth.context_processors.auth&apos;,
-            ],
-        },
-    },
-]
-`&lt;/pre&gt;
-
-如何在模板进行权限检查呢？
-根据官网说明 https://docs.djangoproject.com/en/1.11/topics/auth/default/#permissions ,已登录用户权限保存在模板{{ perms }}变量中,是权限模板代理django.contrib.auth.context_processors.PermWrapper的一个实例，
-具体可以查看django/contrib/auth/context_processors.py源码
-
-测试用例:
-
-![](http://www.simlinux.com/wp-content/uploads/2017/09/codeexample.jpg)
-
-测试过程中,发现{{ perms }}变量压根不存在,没有任何输出;好吧,只能取Debug Django的源码了
-
-&lt;pre&gt;`def auth(request):
-    &quot;&quot;&quot;
-    Returns context variables required by apps that use Django&apos;s authentication
-    system.
-
-    If there is no &apos;user&apos; attribute in the request, uses AnonymousUser (from
-    django.contrib.auth).
-    &quot;&quot;&quot;
-    if hasattr(request, &apos;user&apos;):
-        user = request.user
-    else:
-        from django.contrib.auth.models import AnonymousUser
-        user = AnonymousUser()
-    print(user, PermWrapper(user), &apos;-----------------------&apos;)
-    return {
-        &apos;user&apos;: user,
-        &apos;perms&apos;: PermWrapper(user),
-    }
-
-`&lt;/pre&gt;
-
-测试访问接口,发现有的接口有打印权限信息,有的没有，似乎恍然醒悟
-
-&lt;pre&gt;`可以打印权限信息的接口返回:
- return render(request, &apos;fms/fms_add.html&apos;, {&apos;request&apos;: request, &apos;form&apos;: form, &apos;error&apos;: error})
-不能打印权限新的接口返回:
- return render_to_response( &apos;fms/fms.html&apos;, data)
-`&lt;/pre&gt;
-
-render和render_to_response区别
-render是比render_to_reponse更便捷渲染模板的方法,会自动使用RequestContext,而后者需要手动添加:
-
-&lt;pre&gt;`return render_to_response(request, &apos;fms/fms_add.html&apos;, {&apos;request&apos;: request, &apos;form&apos;: form, &apos;error&apos;: error},context_instance=RequestContext(request))
-</code></pre><p>其中RequestContext是django.template.Context的子类.接受request和context_processors,从而将上下文填充渲染到模板<br>问题已经很明确，由于使用了render_to_response方法,没有手动添加context_instance=RequestContext(request)导致模板不能使用变量</p>
+            <p>首先,在使用Django内置权限管理系统时,settings.py文件要添加<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">INSTALLED_APPS添加:</div><div class="line">&apos;django.contrib.auth&apos;,</div><div class="line"></div><div class="line">MIDDLEWARE添加:</div><div class="line">&apos;django.contrib.auth.middleware.AuthenticationMiddleware&apos;,</div><div class="line"></div><div class="line">&apos;django.contrib.auth.context_processors.auth&apos;,</div><div class="line">TEMPLATES = [</div><div class="line">    &#123;</div><div class="line">        &apos;BACKEND&apos;: &apos;django.template.backends.django.DjangoTemplates&apos;,</div><div class="line">        &apos;DIRS&apos;: [os.path.join(BASE_DIR, &apos;templates&apos;)],</div><div class="line">        &apos;APP_DIRS&apos;: True,</div><div class="line">        &apos;OPTIONS&apos;: &#123;</div><div class="line">            &apos;context_processors&apos;: [</div><div class="line">                &apos;django.template.context_processors.debug&apos;,</div><div class="line">                &apos;django.template.context_processors.i18n&apos;,</div><div class="line">                &apos;django.template.context_processors.media&apos;,</div><div class="line">                &apos;django.template.context_processors.static&apos;,</div><div class="line">                &apos;django.template.context_processors.tz&apos;,</div><div class="line">                &apos;django.contrib.messages.context_processors.messages&apos;,</div><div class="line">                &apos;django.template.context_processors.request&apos;,</div><div class="line">                &apos;django.contrib.auth.context_processors.auth&apos;,</div><div class="line">            ],</div><div class="line">        &#125;,</div><div class="line">    &#125;,</div><div class="line">]</div></pre></td></tr></table></figure></p>
+<p>如何在模板进行权限检查呢？<br>根据官网说明 <a href="https://docs.djangoproject.com/en/1.11/topics/auth/default/#permissions" target="_blank" rel="external">https://docs.djangoproject.com/en/1.11/topics/auth/default/#permissions</a> ,已登录用户权限保存在模板变量中,是权限模板代理django.contrib.auth.context_processors.PermWrapper的一个实例，<br>具体可以查看django/contrib/auth/context_processors.py源码</p>
+<p>测试用例:</p>
+<p><img src="http://www.simlinux.com/wp-content/uploads/2017/09/codeexample.jpg" alt=""></p>
+<p>测试过程中,发现变量压根不存在,没有任何输出;好吧,只能取Debug Django的源码了<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">def auth(request):</div><div class="line">    &quot;&quot;&quot;</div><div class="line">    Returns context variables required by apps that use Django&apos;s authentication</div><div class="line">    system.</div><div class="line"></div><div class="line">    If there is no &apos;user&apos; attribute in the request, uses AnonymousUser (from</div><div class="line">    django.contrib.auth).</div><div class="line">    &quot;&quot;&quot;</div><div class="line">    if hasattr(request, &apos;user&apos;):</div><div class="line">        user = request.user</div><div class="line">    else:</div><div class="line">        from django.contrib.auth.models import AnonymousUser</div><div class="line">        user = AnonymousUser()</div><div class="line">    print(user, PermWrapper(user), &apos;-----------------------&apos;)</div><div class="line">    return &#123;</div><div class="line">        &apos;user&apos;: user,</div><div class="line">        &apos;perms&apos;: PermWrapper(user),</div><div class="line">    &#125;</div></pre></td></tr></table></figure></p>
+<p>测试访问接口,发现有的接口有打印权限信息,有的没有，似乎恍然醒悟<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">可以打印权限信息的接口返回:</div><div class="line">return render(request, &apos;fms/fms_add.html&apos;, &#123;&apos;request&apos;: request, &apos;form&apos;: form, &apos;error&apos;: error&#125;)</div><div class="line">不能打印权限新的接口返回:</div><div class="line">return render_to_response( &apos;fms/fms.html&apos;, data)</div></pre></td></tr></table></figure></p>
+<p>render和render_to_response区别<br>render是比render_to_reponse更便捷渲染模板的方法,会自动使用RequestContext,而后者需要手动添加:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">return render_to_response(request, &apos;fms/fms_add.html&apos;, &#123;&apos;request&apos;: request, &apos;form&apos;: form, &apos;error&apos;: error&#125;,context_instance=RequestContext(request))</div></pre></td></tr></table></figure></p>
+<p>其中RequestContext是django.template.Context的子类.接受request和context_processors,从而将上下文填充渲染到模板<br>问题已经很明确，由于使用了render_to_response方法,没有手动添加context_instance=RequestContext(request)导致模板不能使用变量</p>
 
           
         
@@ -1006,7 +941,7 @@ render是比render_to_reponse更便捷渲染模板的方法,会自动使用Reque
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2017/08/05/e4-bc-81-e4-b8-9a-e7-ba-a7docker-e7-a7-81-e6-9c-89-e4-bb-93-e5-ba-93-e9-83-a8-e7-bd-b2https.html">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2017/08/05/docker-harbor-https.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Geekwolf">
@@ -1025,7 +960,7 @@ render是比render_to_reponse更便捷渲染模板的方法,会自动使用Reque
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/08/05/e4-bc-81-e4-b8-9a-e7-ba-a7docker-e7-a7-81-e6-9c-89-e4-bb-93-e5-ba-93-e9-83-a8-e7-bd-b2https.html" itemprop="url">企业级Docker私有仓库部署(https)</a></h1>
+                <a class="post-title-link" href="/2017/08/05/docker-harbor-https.html" itemprop="url">企业级Docker私有仓库部署(https)</a></h1>
         
 
         <div class="post-meta">
@@ -1077,7 +1012,7 @@ render是比render_to_reponse更便捷渲染模板的方法,会自动使用Reque
 
           
           
-             <span id="/2017/08/05/e4-bc-81-e4-b8-9a-e7-ba-a7docker-e7-a7-81-e6-9c-89-e4-bb-93-e5-ba-93-e9-83-a8-e7-bd-b2https.html" class="leancloud_visitors" data-flag-title="企业级Docker私有仓库部署(https)">
+             <span id="/2017/08/05/docker-harbor-https.html" class="leancloud_visitors" data-flag-title="企业级Docker私有仓库部署(https)">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -1141,38 +1076,22 @@ render是比render_to_reponse更便捷渲染模板的方法,会自动使用Reque
 <h5 id="支持HTTPS"><a href="#支持HTTPS" class="headerlink" title="支持HTTPS"></a>支持HTTPS</h5><p>生产环境最好由权威CA机构签发证书(免费的推荐StartSSL,可参考<a href="https://www.wosign.com/Support/Nginx.html),这里为了测试方便使用自签发的证书" target="_blank" rel="external">https://www.wosign.com/Support/Nginx.html),这里为了测试方便使用自签发的证书</a></p>
 <ul>
 <li><p>创建CA证书</p>
-<pre><code>openssl req  -newkey rsa:4096 -nodes -sha256 -keyout ca.key -x509 -days 365 -out ca.crt
-</code></pre><p> `</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">openssl req  -newkey rsa:4096 -nodes -sha256 -keyout ca.key -x509 -days 365 -out ca.crt</div></pre></td></tr></table></figure>
 </li>
 <li><p>生成CSR公钥</p>
-<pre>`  openssl req  -newkey rsa:4096 -nodes -sha256 -keyout hub.wow.key  -out hub.wow.csr
-`</pre>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">openssl req  -newkey rsa:4096 -nodes -sha256 -keyout hub.wow.key  -out hub.wow.csr</div></pre></td></tr></table></figure>
 </li>
-<li><p>颁发证书<br>*</p>
-<pre>`  openssl x509 -req -days 365 -in hub.wow.csr -CA ca.crt -CAkey ca.key -CAcreateserial -out hub.wow.crt
-
-`</pre>
+<li><p>颁发证书</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">openssl x509 -req -days 365 -in hub.wow.csr -CA ca.crt -CAkey ca.key -CAcreateserial -out hub.wow.crt</div></pre></td></tr></table></figure>
 </li>
 <li><p>部署证书</p>
-<pre>`cp hub.wow.crt hub.wow.key   /data/harbor/keys/
-vim /data/harbor/harbor.cfg
-  hostname = hub.wow
-  ui_url_protocol = https
-  ssl_cert = /data/harbor/keys/hub.wow.crt
-  ssl_cert_key = /data/harbor/keys/hub.wow.key
-
-    cd /data/harbor
-    ./prepare  重新生成配置文件
-    docker-compose down
-    docker-compose up
-`</pre>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">cp hub.wow.crt hub.wow.key   /data/harbor/keys/</div><div class="line">vim /data/harbor/harbor.cfg</div><div class="line">  hostname = hub.wow</div><div class="line">  ui_url_protocol = https</div><div class="line">  ssl_cert = /data/harbor/keys/hub.wow.crt</div><div class="line">  ssl_cert_key = /data/harbor/keys/hub.wow.key</div><div class="line"></div><div class="line">    cd /data/harbor</div><div class="line">    ./prepare  重新生成配置文件</div><div class="line">    docker-compose down</div><div class="line">    docker-compose up</div></pre></td></tr></table></figure>
 </li>
 <li><p>通过HTTPS访问私有仓库</p>
-<p><pre>`WebUI: <a href="https://how.wow" target="_blank" rel="external">https://how.wow</a><br>Docker Client:</pre></p>
-<p>[root@hub ~]# docker login -u admin -p Harbor12345 hub.wow<br>Login Succeeded</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">WebUI: https://how.wow</div><div class="line">Docker Client:</div><div class="line"></div><div class="line">[root@hub ~]# docker login -u admin -p Harbor12345 hub.wow</div><div class="line">Login Succeeded</div></pre></td></tr></table></figure>
 </li>
 </ul>
-<p><strong>问题</strong> ：<br>docker login时提示x509: certificate signed by unknown authority<br>解决方法: 自签名的证书不被系统信任,需要cp ca.crt /etc/docker/certs.d/hub.wow/,  无需重启docker</p>
+<h4 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h4><p>docker login时提示x509: certificate signed by unknown authority<br><strong>解决方法</strong>: 自签名的证书不被系统信任,需要cp ca.crt /etc/docker/certs.d/hub.wow/,  无需重启docker</p>
 
           
         
@@ -1221,7 +1140,7 @@ vim /data/harbor/harbor.cfg
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2017/08/04/e4-bc-81-e4-b8-9a-e7-ba-a7docker-e7-a7-81-e6-9c-89-e4-bb-93-e5-ba-93-e4-b9-8bharbor-e9-83-a8-e7-bd-b2http.html">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2017/08/04/docker-harbor-http.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Geekwolf">
@@ -1240,7 +1159,7 @@ vim /data/harbor/harbor.cfg
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/08/04/e4-bc-81-e4-b8-9a-e7-ba-a7docker-e7-a7-81-e6-9c-89-e4-bb-93-e5-ba-93-e4-b9-8bharbor-e9-83-a8-e7-bd-b2http.html" itemprop="url">企业级Docker私有仓库之Harbor部署(http)</a></h1>
+                <a class="post-title-link" href="/2017/08/04/docker-harbor-http.html" itemprop="url">企业级Docker私有仓库之Harbor部署(http)</a></h1>
         
 
         <div class="post-meta">
@@ -1292,7 +1211,7 @@ vim /data/harbor/harbor.cfg
 
           
           
-             <span id="/2017/08/04/e4-bc-81-e4-b8-9a-e7-ba-a7docker-e7-a7-81-e6-9c-89-e4-bb-93-e5-ba-93-e4-b9-8bharbor-e9-83-a8-e7-bd-b2http.html" class="leancloud_visitors" data-flag-title="企业级Docker私有仓库之Harbor部署(http)">
+             <span id="/2017/08/04/docker-harbor-http.html" class="leancloud_visitors" data-flag-title="企业级Docker私有仓库之Harbor部署(http)">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -1349,59 +1268,12 @@ vim /data/harbor/harbor.cfg
 <li>docker-compose-1.15.0</li>
 <li>Python-2.7.5(系统默认)</li>
 </ul>
-<h4 id="Docker及Docker-compose安装"><a href="#Docker及Docker-compose安装" class="headerlink" title="Docker及Docker-compose安装"></a>Docker及Docker-compose安装</h4><pre><code> yum install -y yum-utils device-mapper-persistent-data lvm2
- yum-config-manager \
-    --add-repo \
-    https://download.docker.com/linux/centos/docker-ce.repo
- yum-config-manager --enable docker-ce-edge
- yum makecache fast
- systemctl start docker 
- systemctl enable docker
-
-curl -L https://github.com/docker/compose/releases/download/1.15.0/docker-compose-`uname -s`-`uname -m` &amp;gt; /usr/local/bin/docker-compose
-chmod +x /usr/local/bin/docker-compose
-`&lt;/pre&gt;
-
-#### Habor部署配置
-
-&lt;pre&gt;`wget https://github.com/vmware/harbor/releases/download/v1.1.2/harbor-offline-installer-v1.1.2.tgz
-tar xf harbor-offline-installer-v1.1.2.tgz
-cd harbor/
-
-vim harbor.cfg
-hostname = hub.wow
-其他默认(http协议)
-
-./install.sh
-安装成功后，可以通过http://hub.wow/访问
-`&lt;/pre&gt;
-
-![](http://www.simlinux.com/wp-content/uploads/2017/08/harborui.jpg)
-
-#### Docker客户端使用
-
-由于Harbor默认使用的http协议,故需要在Docker client上的Dockerd服务增加--insecure-registry hub.wow
-Centos7修改方式为:
-
-&lt;pre&gt;`vim /lib/systemd/system/docker.service
-ExecStart=/usr/bin/dockerd  --insecure-registry hub.wow
-
-systemctl daemon-reload
-systemctl reload docker
-`&lt;/pre&gt;
-
-&lt;pre&gt;`[root@localhost harbor]# docker login -u admin -p Harbor12345 hub.wow
-官方仓库下载busybox镜像
-[root@localhost harbor]# docker pull busybox 
-[root@localhost harbor]# docker images
-REPOSITORY                  TAG                 IMAGE ID            CREATED             SIZE
-busybox                     latest              efe10ee6727f        2 weeks ago         1.13MB
-本地基于busybox:latest创建标记hub.wow/busybox:latest
-[root@localhost harbor]# docker tag busybox:latest hub.wow/project_name/busybox:latest
-推送本地镜像busybox:latest 到hub.wow私有仓库
-[root@localhost harbor]# docker push hub.wow/project_name/busybox:latest
-</code></pre><h4 id="Harbor服务管理"><a href="#Harbor服务管理" class="headerlink" title="Harbor服务管理"></a>Harbor服务管理</h4><p>cd harbor/<br> docker-compose -f ./docker-compose.yml  [ up|down|ps|stop|start ]</p>
-
+<h4 id="Docker及Docker-compose安装"><a href="#Docker及Docker-compose安装" class="headerlink" title="Docker及Docker-compose安装"></a>Docker及Docker-compose安装</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"> yum install -y yum-utils device-mapper-persistent-data lvm2</div><div class="line"> yum-config-manager \</div><div class="line">    --add-repo \</div><div class="line">    https://download.docker.com/linux/centos/docker-ce.repo</div><div class="line"> yum-config-manager --enable docker-ce-edge</div><div class="line"> yum makecache fast</div><div class="line"> systemctl start docker </div><div class="line"> systemctl enable docker</div><div class="line"></div><div class="line">curl -L https://github.com/docker/compose/releases/download/1.15.0/docker-compose-`uname -s`-`uname -m` &gt; /usr/local/bin/docker-compose</div><div class="line">chmod +x /usr/local/bin/docker-compose</div></pre></td></tr></table></figure>
+<h4 id="Habor部署配置"><a href="#Habor部署配置" class="headerlink" title="Habor部署配置"></a>Habor部署配置</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">wget https://github.com/vmware/harbor/releases/download/v1.1.2/harbor-offline-installer-v1.1.2.tgz</div><div class="line">tar xf harbor-offline-installer-v1.1.2.tgz</div><div class="line">cd harbor/</div><div class="line"></div><div class="line">vim harbor.cfg</div><div class="line">hostname = hub.wow</div><div class="line">其他默认(http协议)</div><div class="line"></div><div class="line">./install.sh</div><div class="line">安装成功后，可以通过http://hub.wow/访问</div></pre></td></tr></table></figure>
+<p><img src="http://www.simlinux.com/wp-content/uploads/2017/08/harborui.jpg" alt=""></p>
+<h4 id="Docker客户端使用"><a href="#Docker客户端使用" class="headerlink" title="Docker客户端使用"></a>Docker客户端使用</h4><p>由于Harbor默认使用的http协议,故需要在Docker client上的Dockerd服务增加–insecure-registry hub.wow<br>Centos7修改方式为:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">vim /lib/systemd/system/docker.service</div><div class="line">ExecStart=/usr/bin/dockerd  --insecure-registry hub.wow</div><div class="line"></div><div class="line">systemctl daemon-reload</div><div class="line">systemctl reload docker</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">[root@localhost harbor]# docker login -u admin -p Harbor12345 hub.wow</div><div class="line">官方仓库下载busybox镜像</div><div class="line">[root@localhost harbor]# docker pull busybox </div><div class="line">[root@localhost harbor]# docker images</div><div class="line">REPOSITORY                  TAG                 IMAGE ID            CREATED             SIZE</div><div class="line">busybox                     latest              efe10ee6727f        2 weeks ago         1.13MB</div><div class="line">本地基于busybox:latest创建标记hub.wow/busybox:latest</div><div class="line">[root@localhost harbor]# docker tag busybox:latest hub.wow/project_name/busybox:latest</div><div class="line">推送本地镜像busybox:latest 到hub.wow私有仓库</div><div class="line">[root@localhost harbor]# docker push hub.wow/project_name/busybox:latest</div></pre></td></tr></table></figure>
+<h4 id="Harbor服务管理"><a href="#Harbor服务管理" class="headerlink" title="Harbor服务管理"></a>Harbor服务管理</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cd harbor/</div><div class="line">docker-compose -f ./docker-compose.yml  [ up|down|ps|stop|start ]</div></pre></td></tr></table></figure>
           
         
       
@@ -1449,7 +1321,7 @@ busybox                     latest              efe10ee6727f        2 weeks ago 
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2017/08/04/e4-bc-81-e4-b8-9a-e7-ba-a7docker-e7-a7-81-e6-9c-89-e4-bb-93-e5-ba-93-e4-b9-8bharbor.html">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2017/08/04/docker-harbor.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Geekwolf">
@@ -1468,7 +1340,7 @@ busybox                     latest              efe10ee6727f        2 weeks ago 
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/08/04/e4-bc-81-e4-b8-9a-e7-ba-a7docker-e7-a7-81-e6-9c-89-e4-bb-93-e5-ba-93-e4-b9-8bharbor.html" itemprop="url">企业级Docker私有仓库之Harbor</a></h1>
+                <a class="post-title-link" href="/2017/08/04/docker-harbor.html" itemprop="url">企业级Docker私有仓库之Harbor</a></h1>
         
 
         <div class="post-meta">
@@ -1520,7 +1392,7 @@ busybox                     latest              efe10ee6727f        2 weeks ago 
 
           
           
-             <span id="/2017/08/04/e4-bc-81-e4-b8-9a-e7-ba-a7docker-e7-a7-81-e6-9c-89-e4-bb-93-e5-ba-93-e4-b9-8bharbor.html" class="leancloud_visitors" data-flag-title="企业级Docker私有仓库之Harbor">
+             <span id="/2017/08/04/docker-harbor.html" class="leancloud_visitors" data-flag-title="企业级Docker私有仓库之Harbor">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -1571,7 +1443,7 @@ busybox                     latest              efe10ee6727f        2 weeks ago 
       
         
           
-            <h4 id="Harbor特性"><a href="#Harbor特性" class="headerlink" title="Harbor特性"></a><strong>Harbor特性</strong></h4><ul>
+            <h4 id="Harbor特性"><a href="#Harbor特性" class="headerlink" title="Harbor特性"></a>Harbor特性</h4><ul>
 <li>基于角色的访问控制: 用户与Docker镜像仓库通过“项目”进行组织管理，一个用户可以对多个镜像仓库在同一命名空间（project）里有不同的权限</li>
 <li>基于策略的镜像复制: 镜像可以在不同的Registry实例之间复制,尤其适合LB，HA，多数据中心，混合云和多云的场景</li>
 <li>支持LDAP/AD</li>
@@ -1582,7 +1454,7 @@ busybox                     latest              efe10ee6727f        2 weeks ago 
 <li>支持RESTful API</li>
 <li>在Harbor1.2中支持Clair</li>
 </ul>
-<h4 id="Harbor主要组件"><a href="#Harbor主要组件" class="headerlink" title="Harbor主要组件"></a><strong>Harbor主要组件</strong></h4><p>Harbor系统由七个容器组成：Proxy(Nginx)、Jobservice、UI、Adminserver、Registry、Database(MySQL)、Log</p>
+<h4 id="Harbor主要组件"><a href="#Harbor主要组件" class="headerlink" title="Harbor主要组件"></a>Harbor主要组件</h4><p>Harbor系统由七个容器组成：Proxy(Nginx)、Jobservice、UI、Adminserver、Registry、Database(MySQL)、Log</p>
 <ul>
 <li>Proxy(Nginx): 提供反向代理、用户的不同请求由Proxy分发到后端UI、Registry等</li>
 <li>Jobservice(harbor-jobservice): 负责处理不同Harbor实例间镜像的复制</li>
@@ -1598,41 +1470,10 @@ busybox                     latest              efe10ee6727f        2 weeks ago 
 <li>Docker-compose1.6.0+</li>
 <li>Python2.7+</li>
 </ul>
-<h4 id="配置参数"><a href="#配置参数" class="headerlink" title="配置参数"></a>配置参数</h4><p>配置文件harbor.cfg中的参数有两类:<br>1. 必选参数(更新harbor.cfg,重新安装harbor后生效)<br>2. 可选参数(一般安装时默认设置,安装后通过WebUI配置，且优先级高，会忽略harbor.cfg中的配置),HarborV1.1.2新增AdminServer服务用于管理配置<br> <strong>注</strong>：在注册或者创建harbor用户前，必须正确设置auth&#95;mode;系统中除了默认的admin用户外，其他用户的auth_mode不能更改</p>
-<h5 id="必选参数"><a href="#必选参数" class="headerlink" title="必选参数"></a>必选参数</h5><pre><code>hostname: 设置除localhost/127.0.0.1外的IP或者域名.用于访问WebUI和registry服务
-ui_url_protocol： (http/https,默认http),用于访问WebUI和token/notification服务的协议，如果Notary启用，则需要设置成https
-db_password： MySQL数据库密码
-max_job_workers： 默认3，在job服务里面最大并发复制进程数(将镜像的所有tag同步到远端实例)
-customize_crt： on or off,默认on,将会创建私钥和根证书用于生成和校验token
-ssl_cert： 证书路径,开启https时生效
-ssl_cert_key： 秘钥路径，开启https时生效
-secretkey_path： 用于在复制过程过程中加解密远程实例密码的秘钥路径
-`&lt;/pre&gt;
-
-##### 可选参数
-
-&lt;pre&gt;`邮箱设置：用于发送重置密码邮件给用户
-email_server = smtp.mydomain.com
-email_server_port = 25
-email_identity =
-email_username = sample_admin@mydomain.com
-email_password = abc    
-email_from = admin sample_admin@mydomain.com
-email_ssl = false
-harbor_admin_password: 第一次登录Harbor WebUI的初始管理员密码admin/Harbor12345
-auth_mode: 用户登录认证方式，默认db_auth;也可通过ldap_auth(在升级harbor时要确保和旧的harbor认证方式一致)
-ldap_url: LDAP URL，如ldaps://ldap.mydomain.com，当auth_mode设置成ldap_auth时生效
-ldap_searchdn: LDAP搜索域如uid=admin,ou=people,dc=mydomain,dc=com
-ldap_search_pwd: 指定ldap_searchdn密码
-ldap_basedn: LDAP根域如ou=people,dc=mydomain,dc=com
-ldap_filter: 搜索过滤如objectClass=person
-ldap_uid: 通过指定属性匹配用户，如uid、cn、email和其他属性
-ldap_scope: 搜索用户范围1-LDAP_SCOPE_BASE, 2-LDAP_SCOPE_ONELEVEL, 3-LDAP_SCOPE_SUBTREE,默认3
-self_registration： on or off，关闭时，新用户只能通过该admin用户在Harbor后台添加；启用时，用户可以自己注册;当auth_mode是ldap_auth时，注册功能是关闭的
-token_expiration： token service生成的token有效期,默认30分钟(单位:分)
-project_creation_restriction： 创建项目限制；默认所有用户都可以创建项目,设置为adminonly时，只有admin用户可以创建
-verify_remote_cert: on or off,默认on;Harbor和远端registry实例通信时是否校验SSL/TLS证书；通常远端实例自己签发或者不信任的证书时，设置off
-</code></pre><h4 id="配置Harbor后端存储"><a href="#配置Harbor后端存储" class="headerlink" title="配置Harbor后端存储"></a>配置Harbor后端存储</h4><p>默认Harbor会将镜像存储在本地文件系统，也支持S3、Openstack Swift、Ceph等，可以通过修改common/templates/registry/config.yml文件进行配置,可参考 <a href="https://docs.docker.com/registry/configuration/" target="_blank" rel="external">https://docs.docker.com/registry/configuration/</a></p>
+<h4 id="配置参数"><a href="#配置参数" class="headerlink" title="配置参数"></a>配置参数</h4><p>配置文件harbor.cfg中的参数有两类:<br>1. 必选参数(更新harbor.cfg,重新安装harbor后生效)<br>2. 可选参数(一般安装时默认设置,安装后通过WebUI配置，且优先级高，会忽略harbor.cfg中的配置),HarborV1.1.2新增AdminServer服务用于管理配置<br> 注：在注册或者创建harbor用户前，必须正确设置auth&#95;mode;系统中除了默认的admin用户外，其他用户的auth_mode不能更改</p>
+<h5 id="必选参数"><a href="#必选参数" class="headerlink" title="必选参数"></a>必选参数</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">hostname: 设置除localhost/127.0.0.1外的IP或者域名.用于访问WebUI和registry服务</div><div class="line">ui_url_protocol： (http/https,默认http),用于访问WebUI和token/notification服务的协议，如果Notary启用，则需要设置成https</div><div class="line">db_password： MySQL数据库密码</div><div class="line">max_job_workers： 默认3，在job服务里面最大并发复制进程数(将镜像的所有tag同步到远端实例)</div><div class="line">customize_crt： on or off,默认on,将会创建私钥和根证书用于生成和校验token</div><div class="line">ssl_cert： 证书路径,开启https时生效</div><div class="line">ssl_cert_key： 秘钥路径，开启https时生效</div><div class="line">secretkey_path： 用于在复制过程过程中加解密远程实例密码的秘钥路径</div></pre></td></tr></table></figure>
+<h5 id="可选参数"><a href="#可选参数" class="headerlink" title="可选参数"></a>可选参数</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">邮箱设置：用于发送重置密码邮件给用户</div><div class="line">email_server = smtp.mydomain.com</div><div class="line">email_server_port = 25</div><div class="line">email_identity =</div><div class="line">email_username = sample_admin@mydomain.com</div><div class="line">email_password = abc    </div><div class="line">email_from = admin sample_admin@mydomain.com</div><div class="line">email_ssl = false</div><div class="line">harbor_admin_password: 第一次登录Harbor WebUI的初始管理员密码admin/Harbor12345</div><div class="line">auth_mode: 用户登录认证方式，默认db_auth;也可通过ldap_auth(在升级harbor时要确保和旧的harbor认证方式一致)</div><div class="line">ldap_url: LDAP URL，如ldaps://ldap.mydomain.com，当auth_mode设置成ldap_auth时生效</div><div class="line">ldap_searchdn: LDAP搜索域如uid=admin,ou=people,dc=mydomain,dc=com</div><div class="line">ldap_search_pwd: 指定ldap_searchdn密码</div><div class="line">ldap_basedn: LDAP根域如ou=people,dc=mydomain,dc=com</div><div class="line">ldap_filter: 搜索过滤如objectClass=person</div><div class="line">ldap_uid: 通过指定属性匹配用户，如uid、cn、email和其他属性</div><div class="line">ldap_scope: 搜索用户范围1-LDAP_SCOPE_BASE, 2-LDAP_SCOPE_ONELEVEL, 3-LDAP_SCOPE_SUBTREE,默认3</div><div class="line">self_registration： on or off，关闭时，新用户只能通过该admin用户在Harbor后台添加；启用时，用户可以自己注册;当auth_mode是ldap_auth时，注册功能是关闭的</div><div class="line">token_expiration： token service生成的token有效期,默认30分钟(单位:分)</div><div class="line">project_creation_restriction： 创建项目限制；默认所有用户都可以创建项目,设置为adminonly时，只有admin用户可以创建</div><div class="line">verify_remote_cert: on or off,默认on;Harbor和远端registry实例通信时是否校验SSL/TLS证书；通常远端实例自己签发或者不信任的证书时，设置off</div></pre></td></tr></table></figure>
+<h4 id="配置Harbor后端存储"><a href="#配置Harbor后端存储" class="headerlink" title="配置Harbor后端存储"></a>配置Harbor后端存储</h4><p>默认Harbor会将镜像存储在本地文件系统，也支持S3、Openstack Swift、Ceph等，可以通过修改common/templates/registry/config.yml文件进行配置,可参考 <a href="https://docs.docker.com/registry/configuration/" target="_blank" rel="external">https://docs.docker.com/registry/configuration/</a></p>
 
           
         
@@ -1681,7 +1522,7 @@ verify_remote_cert: on or off,默认on;Harbor和远端registry实例通信时是
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2017/04/19/e4-bd-bf-e7-94-a8zabbix-lld-e5-ae-9e-e7-8e-b0-e8-bf-9b-e7-a8-8b-e6-95-b0-e7-9b-91-e6-8e-a7.html">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2017/04/19/zabbix-proccess-lld.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Geekwolf">
@@ -1700,7 +1541,7 @@ verify_remote_cert: on or off,默认on;Harbor和远端registry实例通信时是
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/04/19/e4-bd-bf-e7-94-a8zabbix-lld-e5-ae-9e-e7-8e-b0-e8-bf-9b-e7-a8-8b-e6-95-b0-e7-9b-91-e6-8e-a7.html" itemprop="url">使用Zabbix LLD实现进程数监控</a></h1>
+                <a class="post-title-link" href="/2017/04/19/zabbix-proccess-lld.html" itemprop="url">使用Zabbix LLD实现进程数监控</a></h1>
         
 
         <div class="post-meta">
@@ -1752,7 +1593,7 @@ verify_remote_cert: on or off,默认on;Harbor和远端registry实例通信时是
 
           
           
-             <span id="/2017/04/19/e4-bd-bf-e7-94-a8zabbix-lld-e5-ae-9e-e7-8e-b0-e8-bf-9b-e7-a8-8b-e6-95-b0-e7-9b-91-e6-8e-a7.html" class="leancloud_visitors" data-flag-title="使用Zabbix LLD实现进程数监控">
+             <span id="/2017/04/19/zabbix-proccess-lld.html" class="leancloud_visitors" data-flag-title="使用Zabbix LLD实现进程数监控">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -1803,16 +1644,16 @@ verify_remote_cert: on or off,默认on;Harbor和远端registry实例通信时是
       
         
           
-            <h3 id="目的"><a href="#目的" class="headerlink" title="目的"></a><strong>目的</strong></h3><ul>
+            <h4 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h4><ul>
 <li>针对特定进程数量做监控报警</li>
 </ul>
-<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a><strong>思路</strong></h3><ol>
+<h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><ol>
 <li>通过Zabbix LLD自动发现：每台机器都跑了什么服务、每个服务应该跑多少进程</li>
 <li>Zabbix Agent 30s将当前机器跑了哪些服务、每个服务进程数上报Zabbix Server</li>
 <li>开发给定配置文件proccessInfo.txt:  IP 服务名称 进程数量,此配置作为监控依据</li>
 <li>proccessInfo.txt配置文件需在每次变更配置时，自动生成最新</li>
 </ol>
-<h3 id="配置流程"><a href="#配置流程" class="headerlink" title="配置流程"></a><strong>配置流程</strong></h3><ol>
+<h4 id="配置流程"><a href="#配置流程" class="headerlink" title="配置流程"></a>配置流程</h4><ol>
 <li>LLD自动发现脚本</li>
 <li>数据采集脚本</li>
 <li>Agent添加Key</li>
@@ -1821,126 +1662,16 @@ verify_remote_cert: on or off,默认on;Harbor和远端registry实例通信时是
 <li>添加当前进程数监控项(通过Zabbix Trapper方式，由Agent端)</li>
 <li>定义报警内容</li>
 </ol>
-<h3 id="具体步骤"><a href="#具体步骤" class="headerlink" title="具体步骤"></a><strong>具体步骤</strong></h3><h4 id="LLD自动发现脚本"><a href="#LLD自动发现脚本" class="headerlink" title="LLD自动发现脚本"></a><strong>LLD自动发现脚本</strong></h4><pre><code>LLD自动发现,将进程名称及进程总数上报Zabbix Server：
-/usr/bin/python services.py services_list
-
-{
-    &quot;data&quot;: [
-        {
-            &quot;{#SERVICENAME}&quot;: &quot;192.168.1.2-p_q1_server&quot;, 
-            &quot;{#TRIGGER_VALUE}&quot;: 3
-        }, 
-        {
-            &quot;{#SERVICENAME}&quot;: &quot;192.168.1.2-p_world_d2_server&quot;, 
-            &quot;{#TRIGGER_VALUE}&quot;: 1
-        }, 
-        {
-            &quot;{#SERVICENAME}&quot;: &quot;192.168.1.2-p_gate_server&quot;, 
-            &quot;{#TRIGGER_VALUE}&quot;: 2
-        }, 
-        {
-            &quot;{#SERVICENAME}&quot;: &quot;192.168.1.2-p_world_d1_server&quot;, 
-            &quot;{#TRIGGER_VALUE}&quot;: 1
-        }
-    ]
-}
-
-数据采集上报： /usr/bin/python services.py {HOST.HOST}
-`&lt;/pre&gt;
-
-&lt;pre&gt;`# -*- coding: utf-8 -*-
-
-import json
-import commands
-import subprocess
-import re
-import sys
-
-class services_monitor:
-
-        def __init__(self):
-
-            self.zabbix_server_ip = &apos;192.168.1.1&apos;
-            self.info_path = &apos;/home/proccessInfo.txt&apos;
-            self.data_path = &apos;/tmp/.process_number_monitor.log&apos;
-
-        def ip(self):
-            ipstr = &apos;([0-9]{1,3}\.){3}[0-9]{1,3}&apos;
-            ipconfig_process = subprocess.Popen(&quot;ifconfig&quot;, stdout=subprocess.PIPE)
-            output = ipconfig_process.stdout.read()
-            ip_pattern = re.compile(&apos;(inet addr:%s)&apos; % ipstr)
-            pattern = re.compile(ipstr)
-            iplist = []
-            for ipaddr in re.finditer(ip_pattern, str(output)):
-                ip = pattern.search(ipaddr.group())
-                if ip.group() != &quot;127.0.0.1&quot;:
-                    iplist.append(ip.group())
-            ip = &apos;|&apos;.join(iplist)
-            return ip
-
-        def check_proc(self,proc_name):
-
-            cmd = &apos;ps -ef |grep  %s|grep -v grep|wc -l&apos; % proc_name
-            proccess_info = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE)
-
-            # list=proccess_info.stdout.read().strip().split(&apos;\n&apos;)
-            procss_num = proccess_info.communicate()[0]
-            return procss_num
-
-        def get_info(self,ip):
-
-            service = []
-            status, result = commands.getstatusoutput(&quot;grep -E &apos;%s&apos; %s&quot; % (str(ip),self.info_path))
-            result = result.split(&apos;\n&apos;)
-            for i in result:
-                i = list(i.split(&apos; &apos;))
-                service.append({&quot;{#SERVICENAME}&quot;: i[0].strip() + &quot;-&quot; + i[1].strip(), &quot;{#TRIGGER_VALUE}&quot;:int(i[2].strip())})
-            data = json.dumps({&apos;data&apos;: service}, sort_keys=True, indent=4)
-            return data
-
-        def collect_data(self,data):
-            data = json.loads(data)[&quot;data&quot;]
-            commands.getstatusoutput(&apos;cat /dev/null &amp;gt;%s&apos; % self.data_path)
-            f = open(self.data_path,&apos;a&apos;)
-            for i  in data:
-                name = i[&apos;{#SERVICENAME}&apos;].split(&apos;-&apos;)
-                ip = name[0]
-                proc_name =  name[1]
-                f.write(&apos;%s\tproc_num[%s]\t%s&apos; %(ip,i[&apos;{#SERVICENAME}&apos;],self.check_proc(proc_name)))
-            f.close()
-
-        def send_data(self,data_path):
-            status,output = commands.getstatusoutput(&apos;/bin/bash -c &quot;zabbix_sender -z  %s  -i  %s &amp;amp;&amp;gt;/dev/null&quot;&apos; % (self.zabbix_server_ip,self.data_path))
-            print status,output
-
-if __name__ == &apos;__main__&apos;:
-
-    services = services_monitor()
-    ip = services.ip()
-    data = services.get_info(ip)
-    try:
-        argv = sys.argv[1]
-        if argv == &quot;services_list&quot;:
-            print data
-        else:
-            services.collect_data(data)
-            services.send_data(services.data_path)
-    except IndexError:
-        print data
-
-`&lt;/pre&gt;
-
-#### **Agent添加Key**
-
-&lt;pre&gt;`vim /usr/local/etc/zabbix_agentd.conf
-UserParameter=dzpt.service.process.discovery,/usr/bin/python /home/opt/scripts/services.py services_list
-UserParameter=dzpt.service.process.exec[*],/usr/bin/python /home/opt/scripts/services.py  $1
-</code></pre><h4 id="创建自动发现规则-监控项Trapper方式、报警触发器"><a href="#创建自动发现规则-监控项Trapper方式、报警触发器" class="headerlink" title="创建自动发现规则(监控项Trapper方式、报警触发器)"></a><strong>创建自动发现规则(监控项Trapper方式、报警触发器)</strong></h4><p><img src="http://www.simlinux.com/wp-content/uploads/2017/04/rules.jpg" alt=""></p>
+<h4 id="具体步骤"><a href="#具体步骤" class="headerlink" title="具体步骤"></a>具体步骤</h4><h4 id="LLD自动发现脚本"><a href="#LLD自动发现脚本" class="headerlink" title="LLD自动发现脚本"></a>LLD自动发现脚本</h4><p>LLD自动发现,将进程名称及进程总数上报Zabbix Server：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">/usr/bin/python services.py services_list</div><div class="line"></div><div class="line">&#123;</div><div class="line">    &quot;data&quot;: [</div><div class="line">        &#123;</div><div class="line">            &quot;&#123;#SERVICENAME&#125;&quot;: &quot;192.168.1.2-p_q1_server&quot;, </div><div class="line">            &quot;&#123;#TRIGGER_VALUE&#125;&quot;: 3</div><div class="line">        &#125;, </div><div class="line">        &#123;</div><div class="line">            &quot;&#123;#SERVICENAME&#125;&quot;: &quot;192.168.1.2-p_world_d2_server&quot;, </div><div class="line">            &quot;&#123;#TRIGGER_VALUE&#125;&quot;: 1</div><div class="line">        &#125;, </div><div class="line">        &#123;</div><div class="line">            &quot;&#123;#SERVICENAME&#125;&quot;: &quot;192.168.1.2-p_gate_server&quot;, </div><div class="line">            &quot;&#123;#TRIGGER_VALUE&#125;&quot;: 2</div><div class="line">        &#125;, </div><div class="line">        &#123;</div><div class="line">            &quot;&#123;#SERVICENAME&#125;&quot;: &quot;192.168.1.2-p_world_d1_server&quot;, </div><div class="line">            &quot;&#123;#TRIGGER_VALUE&#125;&quot;: 1</div><div class="line">        &#125;</div><div class="line">    ]</div><div class="line">&#125;</div><div class="line">数据采集上报： /usr/bin/python services.py &#123;HOST.HOST&#125;</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div></pre></td><td class="code"><pre><div class="line"># -*- coding: utf-8 -*-</div><div class="line"></div><div class="line">import json</div><div class="line">import commands</div><div class="line">import subprocess</div><div class="line">import re</div><div class="line">import sys</div><div class="line"></div><div class="line">class services_monitor:</div><div class="line"></div><div class="line">        def __init__(self):</div><div class="line"></div><div class="line">            self.zabbix_server_ip = &apos;192.168.1.1&apos;</div><div class="line">            self.info_path = &apos;/home/proccessInfo.txt&apos;</div><div class="line">            self.data_path = &apos;/tmp/.process_number_monitor.log&apos;</div><div class="line"></div><div class="line">        def ip(self):</div><div class="line">            ipstr = &apos;([0-9]&#123;1,3&#125;\.)&#123;3&#125;[0-9]&#123;1,3&#125;&apos;</div><div class="line">            ipconfig_process = subprocess.Popen(&quot;ifconfig&quot;, stdout=subprocess.PIPE)</div><div class="line">            output = ipconfig_process.stdout.read()</div><div class="line">            ip_pattern = re.compile(&apos;(inet addr:%s)&apos; % ipstr)</div><div class="line">            pattern = re.compile(ipstr)</div><div class="line">            iplist = []</div><div class="line">            for ipaddr in re.finditer(ip_pattern, str(output)):</div><div class="line">                ip = pattern.search(ipaddr.group())</div><div class="line">                if ip.group() != &quot;127.0.0.1&quot;:</div><div class="line">                    iplist.append(ip.group())</div><div class="line">            ip = &apos;|&apos;.join(iplist)</div><div class="line">            return ip</div><div class="line"></div><div class="line">        def check_proc(self,proc_name):</div><div class="line"></div><div class="line">            cmd = &apos;ps -ef |grep  %s|grep -v grep|wc -l&apos; % proc_name</div><div class="line">            proccess_info = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE)</div><div class="line"></div><div class="line">            # list=proccess_info.stdout.read().strip().split(&apos;\n&apos;)</div><div class="line">            procss_num = proccess_info.communicate()[0]</div><div class="line">            return procss_num</div><div class="line"></div><div class="line">        def get_info(self,ip):</div><div class="line"></div><div class="line">            service = []</div><div class="line">            status, result = commands.getstatusoutput(&quot;grep -E &apos;%s&apos; %s&quot; % (str(ip),self.info_path))</div><div class="line">            result = result.split(&apos;\n&apos;)</div><div class="line">            for i in result:</div><div class="line">                i = list(i.split(&apos; &apos;))</div><div class="line">                service.append(&#123;&quot;&#123;#SERVICENAME&#125;&quot;: i[0].strip() + &quot;-&quot; + i[1].strip(), &quot;&#123;#TRIGGER_VALUE&#125;&quot;:int(i[2].strip())&#125;)</div><div class="line">            data = json.dumps(&#123;&apos;data&apos;: service&#125;, sort_keys=True, indent=4)</div><div class="line">            return data</div><div class="line"></div><div class="line">        def collect_data(self,data):</div><div class="line">            data = json.loads(data)[&quot;data&quot;]</div><div class="line">            commands.getstatusoutput(&apos;cat /dev/null &amp;gt;%s&apos; % self.data_path)</div><div class="line">            f = open(self.data_path,&apos;a&apos;)</div><div class="line">            for i  in data:</div><div class="line">                name = i[&apos;&#123;#SERVICENAME&#125;&apos;].split(&apos;-&apos;)</div><div class="line">                ip = name[0]</div><div class="line">                proc_name =  name[1]</div><div class="line">                f.write(&apos;%s\tproc_num[%s]\t%s&apos; %(ip,i[&apos;&#123;#SERVICENAME&#125;&apos;],self.check_proc(proc_name)))</div><div class="line">            f.close()</div><div class="line"></div><div class="line">        def send_data(self,data_path):</div><div class="line">            status,output = commands.getstatusoutput(&apos;/bin/bash -c &quot;zabbix_sender -z  %s  -i  %s &amp;amp;&amp;gt;/dev/null&quot;&apos; % (self.zabbix_server_ip,self.data_path))</div><div class="line">            print status,output</div><div class="line"></div><div class="line">if __name__ == &apos;__main__&apos;:</div><div class="line"></div><div class="line">    services = services_monitor()</div><div class="line">    ip = services.ip()</div><div class="line">    data = services.get_info(ip)</div><div class="line">    try:</div><div class="line">        argv = sys.argv[1]</div><div class="line">        if argv == &quot;services_list&quot;:</div><div class="line">            print data</div><div class="line">        else:</div><div class="line">            services.collect_data(data)</div><div class="line">            services.send_data(services.data_path)</div><div class="line">    except IndexError:</div><div class="line">        print data</div></pre></td></tr></table></figure>
+<h4 id="Agent添加Key"><a href="#Agent添加Key" class="headerlink" title="Agent添加Key"></a>Agent添加Key</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">vim /usr/local/etc/zabbix_agentd.conf</div><div class="line">UserParameter=dzpt.service.process.discovery,/usr/bin/python /home/opt/scripts/services.py services_list</div><div class="line">UserParameter=dzpt.service.process.exec[*],/usr/bin/python /home/opt/scripts/services.py  $1</div></pre></td></tr></table></figure>
+<h4 id="创建自动发现规则"><a href="#创建自动发现规则" class="headerlink" title="创建自动发现规则"></a>创建自动发现规则</h4><p>(监控项Trapper方式、报警触发器)</p>
+<p><img src="http://www.simlinux.com/wp-content/uploads/2017/04/rules.jpg" alt=""></p>
 <p><img src="http://www.simlinux.com/wp-content/uploads/2017/04/roles-items.jpg" alt=""></p>
 <p><img src="http://www.simlinux.com/wp-content/uploads/2017/04/roles-triggers.jpg" alt=""></p>
-<h4 id="添加当前进程数监控项"><a href="#添加当前进程数监控项" class="headerlink" title="添加当前进程数监控项"></a><strong>添加当前进程数监控项</strong></h4><p><img src="http://www.simlinux.com/wp-content/uploads/2017/04/process-stat.jpg" alt=""></p>
-<h4 id="定义报警内容"><a href="#定义报警内容" class="headerlink" title="定义报警内容"></a><strong>定义报警内容</strong></h4><p>Action中定义(此处略)</p>
-<h4 id="将定义好的模板链接到主机或者其他模板即可"><a href="#将定义好的模板链接到主机或者其他模板即可" class="headerlink" title="将定义好的模板链接到主机或者其他模板即可"></a><strong>将定义好的模板链接到主机或者其他模板即可</strong></h4><h3 id="最后"><a href="#最后" class="headerlink" title="最后"></a><strong>最后</strong></h3><p>使用Zabbix LLD之后，可以设定多久更新一次监控项及监控阀值；当配置文件变更时，无需人为调整阀值和监控项</p>
+<h4 id="添加当前进程数监控项"><a href="#添加当前进程数监控项" class="headerlink" title="添加当前进程数监控项"></a>添加当前进程数监控项</h4><p><img src="http://www.simlinux.com/wp-content/uploads/2017/04/process-stat.jpg" alt=""></p>
+<h4 id="定义报警内容"><a href="#定义报警内容" class="headerlink" title="定义报警内容"></a>定义报警内容</h4><p>Action中定义(此处略)</p>
+<h4 id="将定义好的模板链接到主机或者其他模板即可"><a href="#将定义好的模板链接到主机或者其他模板即可" class="headerlink" title="将定义好的模板链接到主机或者其他模板即可"></a>将定义好的模板链接到主机或者其他模板即可</h4><h4 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h4><p>使用Zabbix LLD之后，可以设定多久更新一次监控项及监控阀值；当配置文件变更时，无需人为调整阀值和监控项</p>
 
           
         
@@ -1989,7 +1720,7 @@ UserParameter=dzpt.service.process.exec[*],/usr/bin/python /home/opt/scripts/ser
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2017/04/13/e6-9e-b6-e6-9e-84-e5-ad-a6-e4-b9-a0-e4-b9-8b-e8-b7-af-e9-ab-98-e5-8f-af-e7-94-a8-e9-ab-98-e5-b9-b6-e5-8f-91-e7-b3-bb-e7-bb-9f-e8-ae-be-e8-ae-a1-e5-8e-9f-e5-88-99.html">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2017/04/13/arc-ha-summary.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Geekwolf">
@@ -2008,7 +1739,7 @@ UserParameter=dzpt.service.process.exec[*],/usr/bin/python /home/opt/scripts/ser
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/04/13/e6-9e-b6-e6-9e-84-e5-ad-a6-e4-b9-a0-e4-b9-8b-e8-b7-af-e9-ab-98-e5-8f-af-e7-94-a8-e9-ab-98-e5-b9-b6-e5-8f-91-e7-b3-bb-e7-bb-9f-e8-ae-be-e8-ae-a1-e5-8e-9f-e5-88-99.html" itemprop="url">架构学习之路-高可用高并发系统设计原则</a></h1>
+                <a class="post-title-link" href="/2017/04/13/arc-ha-summary.html" itemprop="url">架构学习之路-高可用高并发系统设计原则</a></h1>
         
 
         <div class="post-meta">
@@ -2060,7 +1791,7 @@ UserParameter=dzpt.service.process.exec[*],/usr/bin/python /home/opt/scripts/ser
 
           
           
-             <span id="/2017/04/13/e6-9e-b6-e6-9e-84-e5-ad-a6-e4-b9-a0-e4-b9-8b-e8-b7-af-e9-ab-98-e5-8f-af-e7-94-a8-e9-ab-98-e5-b9-b6-e5-8f-91-e7-b3-bb-e7-bb-9f-e8-ae-be-e8-ae-a1-e5-8e-9f-e5-88-99.html" class="leancloud_visitors" data-flag-title="架构学习之路-高可用高并发系统设计原则">
+             <span id="/2017/04/13/arc-ha-summary.html" class="leancloud_visitors" data-flag-title="架构学习之路-高可用高并发系统设计原则">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -2185,8 +1916,8 @@ UserParameter=dzpt.service.process.exec[*],/usr/bin/python /home/opt/scripts/ser
 </blockquote>
 <ul>
 <li><p>用户层:</p>
-<pre><code>*   DNS缓存
-</code></pre><ul>
+<ul>
+<li>DNS缓存</li>
 <li>浏览器DNS缓存</li>
 <li>操作系统DNS缓存</li>
 <li>本地DNS服务商缓存</li>
@@ -2196,36 +1927,40 @@ UserParameter=dzpt.service.process.exec[*],/usr/bin/python /home/opt/scripts/ser
 </ul>
 </li>
 <li><p>代理层：</p>
-<pre><code>*   CDN缓存(一般基于ATS、Varnish、Nginx、Squid等构建,边缘节点-二级节点-中心节点-源站)
-</code></pre></li>
+<ul>
+<li>CDN缓存(一般基于ATS、Varnish、Nginx、Squid等构建,边缘节点-二级节点-中心节点-源站)</li>
+</ul>
+</li>
 <li><p>接入层：</p>
-<pre><code>*   Nginx为例：
-
-    *   Proxy_cache： 代理缓存,可以存储到/dev/shm或者SSD
-*   FastCGI Cache
-*   Nginx+Lua+Redis: 业务数据缓存
-</code></pre><ul>
-<li><p>PHP为例：</p>
-<pre><code>*   Opcache： 缓存PHP的Opcodes
-</code></pre></li>
+<ul>
+<li><p>Nginx为例：</p>
+</li>
+<li><p>Proxy_cache： 代理缓存,可以存储到/dev/shm或者SSD</p>
+</li>
+<li>FastCGI Cache</li>
+<li>Nginx+Lua+Redis: 业务数据缓存</li>
+<li>PHP为例：<ul>
+<li>Opcache： 缓存PHP的Opcodes</li>
+</ul>
+</li>
 </ul>
 </li>
 <li><p>应用层：</p>
-<pre><code>*   页面静态化
-</code></pre><ul>
+<ul>
+<li>页面静态化</li>
 <li>业务数据缓存(Redis/Memcached/本地文件等)</li>
 <li>消息队列</li>
 </ul>
 </li>
 <li><p>数据层：</p>
-<pre><code>*   NoSQL： Redis、Memcache、SSDB等
-</code></pre><ul>
+<ul>
+<li>NoSQL： Redis、Memcache、SSDB等</li>
 <li>MySQL： Innodb/MyISAM等Query Cache、Key Cache、Innodb Buffer Size等</li>
 </ul>
 </li>
 <li><p>系统层：</p>
-<pre><code>*   CPU : L1/L2/L3 Cache/NUMA
-</code></pre><ul>
+<ul>
+<li>CPU : L1/L2/L3 Cache/NUMA</li>
 <li>内存</li>
 <li>磁盘：磁盘本身缓存、dirty_ratio/dirty_background_ratio、阵列卡本身缓存</li>
 </ul>
@@ -2249,8 +1984,8 @@ UserParameter=dzpt.service.process.exec[*],/usr/bin/python /home/opt/scripts/ser
 <ul>
 <li>目的: 防止恶意请求攻击或超出系统峰值</li>
 <li><p>实践：</p>
-<pre><code>*   恶意请求流量只访问到Cache
-</code></pre><ul>
+<ul>
+<li>恶意请求流量只访问到Cache</li>
 <li>穿透后端应用的流量使用Nginx的limit处理</li>
 <li>恶意IP使用Nginx Deny策略或者iptables拒绝</li>
 </ul>
@@ -2262,8 +1997,8 @@ UserParameter=dzpt.service.process.exec[*],/usr/bin/python /home/opt/scripts/ser
 <ul>
 <li>目的：屏蔽故障机器</li>
 <li><p>实践:</p>
-<pre><code>*   DNS: 更改域名解析入口，如DNSPOD可以添加备用IP，正常IP故障时，会自主切换到备用地址;生效实践较慢
-</code></pre><ul>
+<ul>
+<li>DNS: 更改域名解析入口，如DNSPOD可以添加备用IP，正常IP故障时，会自主切换到备用地址;生效实践较慢</li>
 <li>HttpDNS: 为了绕过运营商LocalDNS实现的精准流量调度</li>
 <li>LVS/HaProxy/Nginx: 摘除故障节点</li>
 </ul>
@@ -2334,7 +2069,7 @@ UserParameter=dzpt.service.process.exec[*],/usr/bin/python /home/opt/scripts/ser
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2017/03/24/cpu-e5-b7-a5-e4-bd-9c-e6-a8-a1-e5-bc-8f-e5-8f-8a-e8-b0-83-e9-a2-91.html">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2017/03/24/cpu-model-freq.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Geekwolf">
@@ -2353,7 +2088,7 @@ UserParameter=dzpt.service.process.exec[*],/usr/bin/python /home/opt/scripts/ser
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/03/24/cpu-e5-b7-a5-e4-bd-9c-e6-a8-a1-e5-bc-8f-e5-8f-8a-e8-b0-83-e9-a2-91.html" itemprop="url">CPU工作模式及调频</a></h1>
+                <a class="post-title-link" href="/2017/03/24/cpu-model-freq.html" itemprop="url">CPU工作模式及调频</a></h1>
         
 
         <div class="post-meta">
@@ -2405,7 +2140,7 @@ UserParameter=dzpt.service.process.exec[*],/usr/bin/python /home/opt/scripts/ser
 
           
           
-             <span id="/2017/03/24/cpu-e5-b7-a5-e4-bd-9c-e6-a8-a1-e5-bc-8f-e5-8f-8a-e8-b0-83-e9-a2-91.html" class="leancloud_visitors" data-flag-title="CPU工作模式及调频">
+             <span id="/2017/03/24/cpu-model-freq.html" class="leancloud_visitors" data-flag-title="CPU工作模式及调频">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -2456,73 +2191,42 @@ UserParameter=dzpt.service.process.exec[*],/usr/bin/python /home/opt/scripts/ser
       
         
           
-            <h5 id="安装i7z及cpufrequtils"><a href="#安装i7z及cpufrequtils" class="headerlink" title="安装i7z及cpufrequtils"></a>安装i7z及cpufrequtils</h5><pre><code> apt-get install i7z cpufrequtils
-`&lt;/pre&gt;
-
-##### 常见的CPU工作模式
-
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-  &lt;th&gt;调速器&lt;/th&gt;
-  &lt;th align=&quot;left&quot;&gt;描述&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-  &lt;td&gt;ondemand&lt;/td&gt;
-  &lt;td align=&quot;left&quot;&gt;按需快速动态调整CPU频率， 一有cpu计算量的任务，就会立即达到最大频率运行，等执行完毕就立即回到最低频率（阙值为 95%&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-  &lt;td&gt;performance&lt;/td&gt;
-  &lt;td align=&quot;left&quot;&gt;运行于最大频率&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-  &lt;td&gt;conservative&lt;/td&gt;
-  &lt;td align=&quot;left&quot;&gt;按需快速动态调整CPU频率， 一有cpu计算量的任务，就会立即达到最大频率运行，等执行完毕就立即回到最低频率（阙值为 75%）&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-  &lt;td&gt;powersave&lt;/td&gt;
-  &lt;td align=&quot;left&quot;&gt;运行于最小频率&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-  &lt;td&gt;userspace&lt;/td&gt;
-  &lt;td align=&quot;left&quot;&gt;运行于用户指定的频率&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-
-##### 查看当前CPU工作模式
-
-&lt;pre&gt;`查看CPU当前的工作模式
-cat /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
-
-查看支持的CPU工作模式
-cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_available_governors
-
-`&lt;/pre&gt;
-
-由于在Debian 8下默认使用intel_pstate驱动,只支持performance和powersave模式,不同频率驱动程序支持的模式不同
-具体可以参考：CPU frequency scaling  http://t.cn/R6cQXvp
-
-##### 调整最高性能模式
-
-&lt;pre&gt;`echo &apos;performance&apos; |tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
-`&lt;/pre&gt;
-
-##### CPU调频
-
-&lt;pre&gt;`Usage: cpufreq-set [options] Options:
--c CPU, --cpu CPU       #指定CPU核心号，请注意上图的analyzing CPU数字。
--d FREQ, --min FREQ     #手工指定最小主频速度。（在userspace策略）
--u FREQ, --max FREQ     #手工指定最大主频速度。（在userspace策略）
--g GOV, --governor GOV  #设置工作策略
--f FREQ, --freq FREQ    #设定特定的工作频率（CPU默认档次）
-#请参考上图的available frequency steps
--h, --help            #输出这个帮助信息
-
-cpufreq-set  -d 2.4Ghz -u 2.4Ghz
-</code></pre><h5 id="实时查看频率"><a href="#实时查看频率" class="headerlink" title="实时查看频率"></a>实时查看频率</h5><p>通过i7z命令可实时查看当前CPU的工作频率</p>
+            <h4 id="安装i7z及cpufrequtils"><a href="#安装i7z及cpufrequtils" class="headerlink" title="安装i7z及cpufrequtils"></a>安装i7z及cpufrequtils</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">apt-get install i7z cpufrequtils</div></pre></td></tr></table></figure>
+<h4 id="常见的CPU工作模式"><a href="#常见的CPU工作模式" class="headerlink" title="常见的CPU工作模式"></a>常见的CPU工作模式</h4><table>
+<thead>
+<tr>
+<th style="text-align:left">调速器</th>
+<th style="text-align:right">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">ondemand</td>
+<td style="text-align:right">按需快速动态调整CPU频率， 一有cpu计算量的任务，就会立即达到最大频率运行，等执行完毕就立即回到最低频率（阙值为 95%</td>
+</tr>
+<tr>
+<td style="text-align:left">performance</td>
+<td style="text-align:right">运行于最大频率</td>
+</tr>
+<tr>
+<td style="text-align:left">conservative</td>
+<td style="text-align:right">按需快速动态调整CPU频率， 一有cpu计算量的任务，就会立即达到最大频率运行，等执行完毕就立即回到最低频率（阙值为 75%）</td>
+</tr>
+<tr>
+<td style="text-align:left">powersave</td>
+<td style="text-align:right">运行于最小频率</td>
+</tr>
+<tr>
+<td style="text-align:left">userspace</td>
+<td style="text-align:right">运行于用户指定的频率</td>
+</tr>
+</tbody>
+</table>
+<h4 id="查看当前CPU工作模式"><a href="#查看当前CPU工作模式" class="headerlink" title="查看当前CPU工作模式"></a>查看当前CPU工作模式</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">查看CPU当前的工作模式</div><div class="line">cat /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor</div><div class="line"></div><div class="line">查看支持的CPU工作模式</div><div class="line">cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_available_governors</div></pre></td></tr></table></figure>
+<p>由于在Debian 8下默认使用intel_pstate驱动,只支持performance和powersave模式,不同频率驱动程序支持的模式不同<br>具体可以参考：CPU frequency scaling  <a href="http://t.cn/R6cQXvp" target="_blank" rel="external">http://t.cn/R6cQXvp</a></p>
+<h4 id="调整最高性能模式"><a href="#调整最高性能模式" class="headerlink" title="调整最高性能模式"></a>调整最高性能模式</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">echo &apos;performance&apos; |tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor</div></pre></td></tr></table></figure>
+<h4 id="CPU调频"><a href="#CPU调频" class="headerlink" title="CPU调频"></a>CPU调频</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">Usage: cpufreq-set [options] Options:</div><div class="line">-c CPU, --cpu CPU       #指定CPU核心号，请注意上图的analyzing CPU数字。</div><div class="line">-d FREQ, --min FREQ     #手工指定最小主频速度。（在userspace策略）</div><div class="line">-u FREQ, --max FREQ     #手工指定最大主频速度。（在userspace策略）</div><div class="line">-g GOV, --governor GOV  #设置工作策略</div><div class="line">-f FREQ, --freq FREQ    #设定特定的工作频率（CPU默认档次）</div><div class="line">#请参考上图的available frequency steps</div><div class="line">-h, --help            #输出这个帮助信息</div><div class="line"></div><div class="line">cpufreq-set  -d 2.4Ghz -u 2.4Ghz</div></pre></td></tr></table></figure>
+<h4 id="实时查看频率"><a href="#实时查看频率" class="headerlink" title="实时查看频率"></a>实时查看频率</h4><p>通过i7z命令可实时查看当前CPU的工作频率</p>
 
           
         
@@ -2571,7 +2275,7 @@ cpufreq-set  -d 2.4Ghz -u 2.4Ghz
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2017/03/01/nginxhaproxy-e4-bd-9c-e4-b8-ba-e5-8f-8d-e5-90-91-e4-bb-a3-e7-90-86-e6-88-96-e8-b4-9f-e8-bd-bd-e5-9d-87-e8-a1-a1-e6-97-b6-e5-a6-82-e4-bd-95-e8-8e-b7-e5-8f-96-e5-ae-a2-e6-88-b7-e7-9c-9f-e5-ae-9eip.html">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2017/03/01/haproxy-proxy-ip.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Geekwolf">
@@ -2590,7 +2294,7 @@ cpufreq-set  -d 2.4Ghz -u 2.4Ghz
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/03/01/nginxhaproxy-e4-bd-9c-e4-b8-ba-e5-8f-8d-e5-90-91-e4-bb-a3-e7-90-86-e6-88-96-e8-b4-9f-e8-bd-bd-e5-9d-87-e8-a1-a1-e6-97-b6-e5-a6-82-e4-bd-95-e8-8e-b7-e5-8f-96-e5-ae-a2-e6-88-b7-e7-9c-9f-e5-ae-9eip.html" itemprop="url">Nginx/Haproxy作为反向代理或负载均衡时如何获取客户真实IP？</a></h1>
+                <a class="post-title-link" href="/2017/03/01/haproxy-proxy-ip.html" itemprop="url">Nginx/Haproxy作为反向代理或负载均衡时如何获取客户真实IP？</a></h1>
         
 
         <div class="post-meta">
@@ -2642,7 +2346,7 @@ cpufreq-set  -d 2.4Ghz -u 2.4Ghz
 
           
           
-             <span id="/2017/03/01/nginxhaproxy-e4-bd-9c-e4-b8-ba-e5-8f-8d-e5-90-91-e4-bb-a3-e7-90-86-e6-88-96-e8-b4-9f-e8-bd-bd-e5-9d-87-e8-a1-a1-e6-97-b6-e5-a6-82-e4-bd-95-e8-8e-b7-e5-8f-96-e5-ae-a2-e6-88-b7-e7-9c-9f-e5-ae-9eip.html" class="leancloud_visitors" data-flag-title="Nginx/Haproxy作为反向代理或负载均衡时如何获取客户真实IP？">
+             <span id="/2017/03/01/haproxy-proxy-ip.html" class="leancloud_visitors" data-flag-title="Nginx/Haproxy作为反向代理或负载均衡时如何获取客户真实IP？">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -2693,39 +2397,11 @@ cpufreq-set  -d 2.4Ghz -u 2.4Ghz
       
         
           
-            <h5 id="Nginx代理配置"><a href="#Nginx代理配置" class="headerlink" title="Nginx代理配置"></a>Nginx代理配置</h5><p>增加如下配置:</p>
-<pre><code>proxy_set_header X-Real-IP $remote_addr;
-proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-proxy_set_header X_FORWARDED_PROTO https;
-proxy_set_header Host $host;
-`&lt;/pre&gt;
-
-##### Haproxy配置
-
-&lt;pre&gt;`option forwardfor
-
-`&lt;/pre&gt;
-
-##### 后端Nginx配置
-
-&lt;pre&gt;`set_real_ip_from  1.1.1.1;  前端Nginx代理或者负载均衡的IP(在后端Nginx日志中显示的)
-real_ip_header  X-Forwarded-For;
-real_ip_recursive  on;
-`&lt;/pre&gt;
-
-##### 后端Nginx访问控制
-
-&lt;pre&gt;`location ~ /test/api/ {
-
-        set $allow false;
-        if ($http_x_forwarded_for ~ &quot;2.2.2.2&quot;) {
-            set $allow false;
-                        }
-        if ($allow = false) { return 403;}
-            proxy_pass  http://web;
-        }
-}
-</code></pre><h5 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h5><blockquote>
+            <h4 id="Nginx代理配置"><a href="#Nginx代理配置" class="headerlink" title="Nginx代理配置"></a>Nginx代理配置</h4><p>增加如下配置:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">proxy_set_header X-Real-IP $remote_addr;</div><div class="line">proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;</div><div class="line">proxy_set_header X_FORWARDED_PROTO https;</div><div class="line">proxy_set_header Host $host;</div></pre></td></tr></table></figure></p>
+<h4 id="Haproxy配置"><a href="#Haproxy配置" class="headerlink" title="Haproxy配置"></a>Haproxy配置</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">option forwardfor</div></pre></td></tr></table></figure>
+<h4 id="后端Nginx配置"><a href="#后端Nginx配置" class="headerlink" title="后端Nginx配置"></a>后端Nginx配置</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">set_real_ip_from  1.1.1.1;  前端Nginx代理或者负载均衡的IP(在后端Nginx日志中显示的)</div><div class="line">real_ip_header  X-Forwarded-For;</div><div class="line">real_ip_recursive  on;</div></pre></td></tr></table></figure>
+<h4 id="后端Nginx访问控制"><a href="#后端Nginx访问控制" class="headerlink" title="后端Nginx访问控制"></a>后端Nginx访问控制</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">location ~ /test/api/ &#123;</div><div class="line"></div><div class="line">    set $allow false;</div><div class="line">    if ($http_x_forwarded_for ~ &quot;2.2.2.2&quot;) &#123;</div><div class="line">        set $allow false;</div><div class="line">                    &#125;</div><div class="line">    if ($allow = false) &#123; return 403;&#125;</div><div class="line">        proxy_pass  http://web;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><blockquote>
 <ul>
 <li><a href="http://www.wkii.org/nginx-cdn-get-user-real-ip.html" target="_blank" rel="external">http://www.wkii.org/nginx-cdn-get-user-real-ip.html</a></li>
 </ul>
@@ -2769,7 +2445,7 @@ real_ip_recursive  on;
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -2815,7 +2491,7 @@ real_ip_recursive  on;
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">166</span>
+                <span class="site-state-item-count">83</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -2826,7 +2502,7 @@ real_ip_recursive  on;
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-count">10</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -2837,7 +2513,7 @@ real_ip_recursive  on;
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">105</span>
+                <span class="site-state-item-count">60</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
