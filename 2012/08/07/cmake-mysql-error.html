@@ -107,12 +107,12 @@
 <meta property="og:site_name" content="Geekwolf&#39;s Blog">
 <meta property="og:description" content="问题描述利用Cmake 编译mysql-5.5.8版本时，出现123-- Could NOT find Curses (missing: CURSES_LIBRARY CURSES_INCLUDE_PATH)   CMake Error at cmake/readline.cmake:82 (MESSAGE):     Curses library not found. Please instal">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://www.simlinux.com/old/wp-content/uploads/2012/08/image_thumb1.png">
-<meta property="og:updated_time" content="2017-09-12T04:37:54.289Z">
+<meta property="og:image" content="http://blog.simlinux.com/old/wp-content/uploads/2012/08/image_thumb1.png">
+<meta property="og:updated_time" content="2017-09-13T02:23:36.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Cmake编译mysql出错Could NOT find Curses  (missing:  CURSES_LIBRARY CURSES_INCLUDE_PATH)">
 <meta name="twitter:description" content="问题描述利用Cmake 编译mysql-5.5.8版本时，出现123-- Could NOT find Curses (missing: CURSES_LIBRARY CURSES_INCLUDE_PATH)   CMake Error at cmake/readline.cmake:82 (MESSAGE):     Curses library not found. Please instal">
-<meta name="twitter:image" content="http://www.simlinux.com/old/wp-content/uploads/2012/08/image_thumb1.png">
+<meta name="twitter:image" content="http://blog.simlinux.com/old/wp-content/uploads/2012/08/image_thumb1.png">
 
 
 
@@ -244,6 +244,16 @@
         </li>
       
         
+        <li class="menu-item menu-item-tips">
+          <a href="/tips/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-gittip"></i> <br />
+            
+            tips
+          </a>
+        </li>
+      
+        
         <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
             
@@ -345,7 +355,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Geekwolf">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/wolf.jpeg">
+      <meta itemprop="image" content="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -459,7 +469,7 @@
 
       
         <h4 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h4><p>利用Cmake 编译mysql-5.5.8版本时，出现<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">-- Could NOT find Curses (missing: CURSES_LIBRARY CURSES_INCLUDE_PATH)   </div><div class="line">CMake Error at cmake/readline.cmake:82 (MESSAGE):    </div><div class="line"> Curses library not found. Please install appropriate package,</div></pre></td></tr></table></figure></p>
-<p><a href="http://www.simlinux.com/old/wp-content/uploads/2012/08/image1.png"><img src="http://www.simlinux.com/old/wp-content/uploads/2012/08/image_thumb1.png" alt="image" title="image"></a></p>
+<p><a href="http://blog.simlinux.com/old/wp-content/uploads/2012/08/image1.png" target="_blank" rel="external"><img src="http://blog.simlinux.com/old/wp-content/uploads/2012/08/image_thumb1.png" alt="image" title="image"></a></p>
 <h4 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h4><p>显示缺少libcurse library,建议安装libncurses5-dev包<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">yum –y install libncures5-*</div><div class="line">如果存在，find / -name libncurses*</div><div class="line">cmake . -DCURSES_LIBRARY=/usr/lib/libncurses.so -DCURSES_INCLUDE_PATH=/usr/include即可解决</div></pre></td></tr></table></figure></p>
 
       
@@ -611,11 +621,11 @@
       <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
-               src="/images/wolf.jpeg"
+               src="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg"
                alt="Geekwolf" />
           <p class="site-author-name" itemprop="name">Geekwolf</p>
            
-              <p class="site-description motion-element" itemprop="description">DevOps | Docker | K8S | MySQL | 运维</p>
+              <p class="site-description motion-element" itemprop="description">DevOps | Docker | Python | k8s</p>
           
         </div>
         <nav class="site-state motion-element">
@@ -623,7 +633,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">83</span>
+                <span class="site-state-item-count">82</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -645,7 +655,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">60</span>
+                <span class="site-state-item-count">61</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -694,6 +704,36 @@
         
 
         
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-block">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://blog.simlinux.com" title="旧版博客" target="_blank">旧版博客</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://nolinux.blog.51cto.com" title="nolinux" target="_blank">nolinux</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://xiaorui.cc" title="峰云就她了" target="_blank">峰云就她了</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://note.gitcloud.cc/blog/bluetom520" title="懒懒的天空" target="_blank">懒懒的天空</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.roddypy.com" title="普拉多VX" target="_blank">普拉多VX</a>
+                </li>
+              
+            </ul>
+          </div>
         
 
         

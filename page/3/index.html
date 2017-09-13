@@ -100,16 +100,16 @@
 
 
 
-<meta name="description" content="DevOps | Docker | K8S | MySQL | 运维">
+<meta name="description" content="DevOps | Docker | Python | k8s">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Geekwolf&#39;s Blog">
 <meta property="og:url" content="http://www.simlinux.com/page/3/index.html">
 <meta property="og:site_name" content="Geekwolf&#39;s Blog">
-<meta property="og:description" content="DevOps | Docker | K8S | MySQL | 运维">
+<meta property="og:description" content="DevOps | Docker | Python | k8s">
 <meta property="og:locale" content="zh-Hans">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Geekwolf&#39;s Blog">
-<meta name="twitter:description" content="DevOps | Docker | K8S | MySQL | 运维">
+<meta name="twitter:description" content="DevOps | Docker | Python | k8s">
 
 
 
@@ -243,6 +243,16 @@
         </li>
       
         
+        <li class="menu-item menu-item-tips">
+          <a href="/tips/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-gittip"></i> <br />
+            
+            tips
+          </a>
+        </li>
+      
+        
         <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
             
@@ -344,7 +354,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Geekwolf">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/wolf.jpeg">
+      <meta itemprop="image" content="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -515,7 +525,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Geekwolf">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/wolf.jpeg">
+      <meta itemprop="image" content="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -637,12 +647,12 @@
 <p>选择合适版本发布到合适的服务器环境（目前分支策略是，提测时创建发布分支release-<code>date  +%Y%m%d-%H%M%S</code>）</p>
 </blockquote>
 <h4 id="安装插件"><a href="#安装插件" class="headerlink" title="安装插件"></a>安装插件</h4><p>Dynamic Parameter Plug-in](<a href="https://wiki.jenkins-ci.org/display/JENKINS/Dynamic+Parameter+Plug-in" target="_blank" rel="external">https://wiki.jenkins-ci.org/display/JENKINS/Dynamic+Parameter+Plug-in</a>)</p>
-<h4 id="设置-参数化构建过程"><a href="#设置-参数化构建过程" class="headerlink" title="设置 参数化构建过程"></a>设置 参数化构建过程</h4><p><a href="http://www.simlinux.com/wp-content/uploads/2015/06/11.png"><img src="http://www.simlinux.com/wp-content/uploads/2015/06/11.png" alt="1"></a><img src="http://www.simlinux.com/wp-content/uploads/2015/06/11.png" alt=""></p>
+<h4 id="设置-参数化构建过程"><a href="#设置-参数化构建过程" class="headerlink" title="设置 参数化构建过程"></a>设置 参数化构建过程</h4><p><a href="http://blog.simlinux.com/wp-content/uploads/2015/06/11.png" target="_blank" rel="external"><img src="http://blog.simlinux.com/wp-content/uploads/2015/06/11.png" alt="1"></a><img src="http://blog.simlinux.com/wp-content/uploads/2015/06/11.png" alt=""></p>
 <h4 id="使用groovy脚本动态获取发布分支"><a href="#使用groovy脚本动态获取发布分支" class="headerlink" title="使用groovy脚本动态获取发布分支"></a>使用groovy脚本动态获取发布分支</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">def ver_keys = [ &apos;bash&apos;, &apos;-c&apos;, &apos;cd /gitrepos/project1; git pull&gt;/dev/null; git branch -a|grep remotes|grep release|cut -d &quot;/&quot; -f3|sort -r |head -10 &apos; ]</div><div class="line">ver_keys.execute().text.tokenize(&apos;\n&apos;)</div></pre></td></tr></table></figure>
 <p>其他方式参考：<a href="http://birdinroom.blog.51cto.com/7740375/1404930" target="_blank" rel="external">http://birdinroom.blog.51cto.com/7740375/1404930</a></p>
-<h4 id="构建脚本"><a href="#构建脚本" class="headerlink" title="构建脚本"></a>构建脚本</h4><p><img src="http://www.simlinux.com/wp-content/uploads/2015/06/21.png" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">echo $release_version</div><div class="line">echo $deploy_server</div><div class="line">case $deploy_server in</div><div class="line">  test)</div><div class="line">       echo &quot;This server is $deploy_server -----test enviroment&quot;</div><div class="line">       cd /gitrepos/project1/</div><div class="line">       git checkout $release_version</div><div class="line">       git pull origin $release_version</div><div class="line">       rsync -avH --delete --progress  --exclude=robots.txt --exclude=.gitignore  --exclude=.git --exclude=.DS_Store --exclude=&quot;*.tar&quot;    /gitrepos/project1/  /gitrepos/project1/               </div><div class="line">         ;;</div><div class="line">  prod)</div><div class="line">       echo &quot;This server is $deploy_server  ------production enviroment&quot;</div><div class="line">       cd  /gitrepos/project1/</div><div class="line">       git checkout $release_version</div><div class="line">       git pull origin $release_version</div><div class="line">       rsync -avH --delete --progress  --exclude=robots.txt --exclude=.gitignore  --exclude=.git --exclude=.DS_Store --exclude=&quot;*.tar&quot;  &apos;-e ssh -p 22000&apos; /gitrepos/project1/  www@node1.simlinux.com:/gitrepos/project1/ </div><div class="line">          ;;</div><div class="line">  *)</div><div class="line">          exit</div><div class="line">          ;;</div><div class="line">esac</div></pre></td></tr></table></figure></p>
-<h4 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h4><p><img src="http://www.simlinux.com/wp-content/uploads/2015/06/31.png" alt=""></p>
-<p><img src="http://www.simlinux.com/wp-content/uploads/2015/06/sdf.png" alt=""></p>
+<h4 id="构建脚本"><a href="#构建脚本" class="headerlink" title="构建脚本"></a>构建脚本</h4><p><img src="http://blog.simlinux.com/wp-content/uploads/2015/06/21.png" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">echo $release_version</div><div class="line">echo $deploy_server</div><div class="line">case $deploy_server in</div><div class="line">  test)</div><div class="line">       echo &quot;This server is $deploy_server -----test enviroment&quot;</div><div class="line">       cd /gitrepos/project1/</div><div class="line">       git checkout $release_version</div><div class="line">       git pull origin $release_version</div><div class="line">       rsync -avH --delete --progress  --exclude=robots.txt --exclude=.gitignore  --exclude=.git --exclude=.DS_Store --exclude=&quot;*.tar&quot;    /gitrepos/project1/  /gitrepos/project1/               </div><div class="line">         ;;</div><div class="line">  prod)</div><div class="line">       echo &quot;This server is $deploy_server  ------production enviroment&quot;</div><div class="line">       cd  /gitrepos/project1/</div><div class="line">       git checkout $release_version</div><div class="line">       git pull origin $release_version</div><div class="line">       rsync -avH --delete --progress  --exclude=robots.txt --exclude=.gitignore  --exclude=.git --exclude=.DS_Store --exclude=&quot;*.tar&quot;  &apos;-e ssh -p 22000&apos; /gitrepos/project1/  www@node1.simlinux.com:/gitrepos/project1/ </div><div class="line">          ;;</div><div class="line">  *)</div><div class="line">          exit</div><div class="line">          ;;</div><div class="line">esac</div></pre></td></tr></table></figure></p>
+<h4 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h4><p><img src="http://blog.simlinux.com/wp-content/uploads/2015/06/31.png" alt=""></p>
+<p><img src="http://blog.simlinux.com/wp-content/uploads/2015/06/sdf.png" alt=""></p>
 
           
         
@@ -696,7 +706,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Geekwolf">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/wolf.jpeg">
+      <meta itemprop="image" content="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -818,10 +828,10 @@
 <h4 id="环境说明"><a href="#环境说明" class="headerlink" title="环境说明"></a>环境说明</h4><p>PHP项目（jenkins安装初始化略）</p>
 </blockquote>
 <h4 id="创建简单的集成项目"><a href="#创建简单的集成项目" class="headerlink" title="创建简单的集成项目"></a>创建简单的集成项目</h4><p>点击<strong>新建</strong> –<strong>Item名称：项目1</strong>– 勾选<strong>构建一个自由风格的软件项目</strong></p>
-<p><img src="http://www.simlinux.com/wp-content/uploads/2015/06/1.png" alt=""><br><strong>添加代码库</strong></p>
-<p><img src="http://www.simlinux.com/wp-content/uploads/2015/06/2.png" alt=""><br><strong>触发构建策略</strong></p>
-<p><img src="http://www.simlinux.com/wp-content/uploads/2015/06/3.png" alt=""><br><strong>添加构建脚本</strong></p>
-<p><img src="http://www.simlinux.com/wp-content/uploads/2015/06/4.png" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">release.sh</div><div class="line">#!/bin/bash</div><div class="line">cd /gitrepos/project1</div><div class="line">git checkout master</div><div class="line">git pull origin master</div><div class="line">rsync -avH  --delete --progress  --exclude=robots.txt --exclude=.gitignore --exclude=database.php  --exclude=.git --exclude=.DS_Store --exclude=&quot;*.tar&quot;  &apos;-e ssh -p 11000&apos;  cd /gitrepos/project1</div><div class="line">www@project1.node1.simlinux.com:/data/wwwroot/project1/</div></pre></td></tr></table></figure></p>
+<p><img src="http://blog.simlinux.com/wp-content/uploads/2015/06/1.png" alt=""><br><strong>添加代码库</strong></p>
+<p><img src="http://blog.simlinux.com/wp-content/uploads/2015/06/2.png" alt=""><br><strong>触发构建策略</strong></p>
+<p><img src="http://blog.simlinux.com/wp-content/uploads/2015/06/3.png" alt=""><br><strong>添加构建脚本</strong></p>
+<p><img src="http://blog.simlinux.com/wp-content/uploads/2015/06/4.png" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">release.sh</div><div class="line">#!/bin/bash</div><div class="line">cd /gitrepos/project1</div><div class="line">git checkout master</div><div class="line">git pull origin master</div><div class="line">rsync -avH  --delete --progress  --exclude=robots.txt --exclude=.gitignore --exclude=database.php  --exclude=.git --exclude=.DS_Store --exclude=&quot;*.tar&quot;  &apos;-e ssh -p 11000&apos;  cd /gitrepos/project1</div><div class="line">www@project1.node1.simlinux.com:/data/wwwroot/project1/</div></pre></td></tr></table></figure></p>
 
           
         
@@ -875,7 +885,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Geekwolf">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/wolf.jpeg">
+      <meta itemprop="image" content="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -997,7 +1007,7 @@
 <p><strong>2.移除nf_conntrack模块</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">[root@git ~]# lsmod | egrep &apos;ip_tables|conntrack&apos;</div><div class="line">nf_conntrack_ipv4       9506  2 </div><div class="line">nf_defrag_ipv4          1483  1 nf_conntrack_ipv4</div><div class="line">nf_conntrack           79758  3 xt_NOTRACK,nf_conntrack_ipv4,xt_state</div><div class="line">ip_tables              17831  2 iptable_raw,iptable_filter</div></pre></td></tr></table></figure></p>
 <p>A.先将/etc/sysconfig/iptables 中包含state的语句移除，service  iptables restart<br>B.移除模块<br>modprobe -r xt_NOTRACK nf_conntrack_netbios_ns nf_conntrack_ipv4 xt_state<br>modprobe -r nf_conntrack</p>
 <p><strong>3.使用raw表对特定端口访问不进行跟踪（推荐）</strong><br>4个表的优先级由高到低的顺序为:raw–&gt;mangle–&gt;nat–&gt;filter</p>
-<p><a href="http://www.simlinux.com/wp-content/uploads/2015/04/iptables.jpg"><img src="http://www.simlinux.com/wp-content/uploads/2015/04/iptables.jpg" alt=""><img src="http://www.simlinux.com/wp-content/uploads/2015/04/iptables.jpg" alt="iptables"></a><a href="http://www.simlinux.com/wp-content/uploads/2015/04/iptables.jpg"><img src="http://www.simlinux.com/wp-content/uploads/2015/04/iptables.jpg" alt="iptables"></a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">iptables -A INPUT -m state --state RELATED,ESTABLISHED, UNTRACKED -j ACCEPT</div><div class="line">iptables -t raw -A PREROUTING -p tcp -m multiport --dports 80,443 -j NOTRACK</div><div class="line">iptables -t raw -A PREROUTING -p tcp -m multiport --sports 80,443 -j NOTRACK</div><div class="line">iptables -t raw -A OUTPUT -p tcp -m multiport --dports 80,443 -j NOTRACK</div><div class="line">iptables -t raw -A OUTPUT -p tcp -m multiport --sports 80,443 -j NOTRACK</div></pre></td></tr></table></figure></p>
+<p><a href="http://blog.simlinux.com/wp-content/uploads/2015/04/iptables.jpg" target="_blank" rel="external"><img src="http://blog.simlinux.com/wp-content/uploads/2015/04/iptables.jpg" alt=""><img src="http://blog.simlinux.com/wp-content/uploads/2015/04/iptables.jpg" alt="iptables"></a><a href="http://blog.simlinux.com/wp-content/uploads/2015/04/iptables.jpg" target="_blank" rel="external"><img src="http://blog.simlinux.com/wp-content/uploads/2015/04/iptables.jpg" alt="iptables"></a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">iptables -A INPUT -m state --state RELATED,ESTABLISHED, UNTRACKED -j ACCEPT</div><div class="line">iptables -t raw -A PREROUTING -p tcp -m multiport --dports 80,443 -j NOTRACK</div><div class="line">iptables -t raw -A PREROUTING -p tcp -m multiport --sports 80,443 -j NOTRACK</div><div class="line">iptables -t raw -A OUTPUT -p tcp -m multiport --dports 80,443 -j NOTRACK</div><div class="line">iptables -t raw -A OUTPUT -p tcp -m multiport --sports 80,443 -j NOTRACK</div></pre></td></tr></table></figure></p>
 <p>通过观察cat /proc/net/nf_conntrack条目来测试是否更改生效</p>
 <p><strong>参考文档：</strong></p>
 <blockquote>
@@ -1056,7 +1066,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Geekwolf">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/wolf.jpeg">
+      <meta itemprop="image" content="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1173,7 +1183,7 @@
       
         
           
-            <p><a href="http://www.simlinux.com/books/FastDFS.pdf">《FastDFS分布式存储实战》</a></p>
+            <p><a href="http://blog.simlinux.com/books/FastDFS.pdf" target="_blank" rel="external">《FastDFS分布式存储实战》</a></p>
 <h4 id="技术选型"><a href="#技术选型" class="headerlink" title="技术选型"></a>技术选型</h4><h4 id="FastDFS相关组件及原理"><a href="#FastDFS相关组件及原理" class="headerlink" title="FastDFS相关组件及原理"></a>FastDFS相关组件及原理</h4><h5 id="FastDFS介绍"><a href="#FastDFS介绍" class="headerlink" title="FastDFS介绍"></a>FastDFS介绍</h5><h5 id="FastDFS架构"><a href="#FastDFS架构" class="headerlink" title="FastDFS架构"></a>FastDFS架构</h5><h5 id="FastDFS工作流程"><a href="#FastDFS工作流程" class="headerlink" title="FastDFS工作流程"></a>FastDFS工作流程</h5><h5 id="上传"><a href="#上传" class="headerlink" title="上传"></a>上传</h5><h5 id="同步机制"><a href="#同步机制" class="headerlink" title="同步机制"></a>同步机制</h5><h5 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h5><h5 id="文件合并原理"><a href="#文件合并原理" class="headerlink" title="文件合并原理"></a>文件合并原理</h5><h4 id="实验环境说明"><a href="#实验环境说明" class="headerlink" title="实验环境说明"></a>实验环境说明</h4><h4 id="FastDFS部署"><a href="#FastDFS部署" class="headerlink" title="FastDFS部署"></a>FastDFS部署</h4><h5 id="初始化系统"><a href="#初始化系统" class="headerlink" title="初始化系统"></a>初始化系统</h5><h5 id="安装libfastcommon和fastdfs"><a href="#安装libfastcommon和fastdfs" class="headerlink" title="安装libfastcommon和fastdfs"></a>安装libfastcommon和fastdfs</h5><h5 id="storage-server安装nginx"><a href="#storage-server安装nginx" class="headerlink" title="storage server安装nginx"></a>storage server安装nginx</h5><h5 id="配置mod-fastdfs-conf"><a href="#配置mod-fastdfs-conf" class="headerlink" title="配置mod_fastdfs.conf"></a>配置mod_fastdfs.conf</h5><h5 id="配置下载网关"><a href="#配置下载网关" class="headerlink" title="配置下载网关"></a>配置下载网关</h5><h5 id="tracker和storage目录结构"><a href="#tracker和storage目录结构" class="headerlink" title="tracker和storage目录结构"></a>tracker和storage目录结构</h5><h5 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h5><h4 id="高级功能"><a href="#高级功能" class="headerlink" title="高级功能"></a>高级功能</h4><h5 id="防盗链"><a href="#防盗链" class="headerlink" title="防盗链"></a>防盗链</h5><h5 id="在线扩容"><a href="#在线扩容" class="headerlink" title="在线扩容"></a>在线扩容</h5><h5 id="增加group"><a href="#增加group" class="headerlink" title="增加group"></a>增加group</h5><h5 id="组内增加storage-server"><a href="#组内增加storage-server" class="headerlink" title="组内增加storage server"></a>组内增加storage server</h5><h5 id="故障磁盘移除"><a href="#故障磁盘移除" class="headerlink" title="故障磁盘移除"></a>故障磁盘移除</h5><h5 id="文件去重存储"><a href="#文件去重存储" class="headerlink" title="文件去重存储"></a>文件去重存储</h5><h5 id="自定义文件名"><a href="#自定义文件名" class="headerlink" title="自定义文件名"></a>自定义文件名</h5><h5 id="拼接url方式"><a href="#拼接url方式" class="headerlink" title="拼接url方式"></a>拼接url方式</h5><h5 id="使用redis"><a href="#使用redis" class="headerlink" title="使用redis"></a>使用redis</h5><h5 id="缩略图"><a href="#缩略图" class="headerlink" title="缩略图"></a>缩略图</h5><h5 id="清除缓存"><a href="#清除缓存" class="headerlink" title="清除缓存"></a>清除缓存</h5><h4 id="FastDFS开发API使用"><a href="#FastDFS开发API使用" class="headerlink" title="FastDFS开发API使用"></a>FastDFS开发API使用</h4><h4 id="性能优化及安全"><a href="#性能优化及安全" class="headerlink" title="性能优化及安全"></a>性能优化及安全</h4><h5 id="系统方面"><a href="#系统方面" class="headerlink" title="系统方面"></a>系统方面</h5><h5 id="FastDFS方面"><a href="#FastDFS方面" class="headerlink" title="FastDFS方面"></a>FastDFS方面</h5><h5 id="安全配置"><a href="#安全配置" class="headerlink" title="安全配置"></a>安全配置</h5><h4 id="监控"><a href="#监控" class="headerlink" title="监控"></a>监控</h4><h4 id="FastDFS常见问题"><a href="#FastDFS常见问题" class="headerlink" title="FastDFS常见问题"></a>FastDFS常见问题</h4>
           
         
@@ -1227,7 +1237,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Geekwolf">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/wolf.jpeg">
+      <meta itemprop="image" content="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1344,7 +1354,7 @@
       
         
           
-            <p><a href="http://www.simlinux.com/wp-content/uploads/2015/01/FastDFS%E8%A7%92%E8%89%B2%E9%85%8D%E7%BD%AE%E5%8F%82%E6%95%B0%E5%AF%BC%E5%9B%BE.jpg"><img src="http://www.simlinux.com/wp-content/uploads/2015/01/FastDFS%E8%A7%92%E8%89%B2%E9%85%8D%E7%BD%AE%E5%8F%82%E6%95%B0%E5%AF%BC%E5%9B%BE.jpg" alt=""></a></p>
+            <p><a href="http://blog.simlinux.com/wp-content/uploads/2015/01/FastDFS%E8%A7%92%E8%89%B2%E9%85%8D%E7%BD%AE%E5%8F%82%E6%95%B0%E5%AF%BC%E5%9B%BE.jpg" target="_blank" rel="external"><img src="http://blog.simlinux.com/wp-content/uploads/2015/01/FastDFS%E8%A7%92%E8%89%B2%E9%85%8D%E7%BD%AE%E5%8F%82%E6%95%B0%E5%AF%BC%E5%9B%BE.jpg" alt=""></a></p>
 
           
         
@@ -1398,7 +1408,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Geekwolf">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/wolf.jpeg">
+      <meta itemprop="image" content="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1529,7 +1539,7 @@
 <li>无法备份视图和触发器</li>
 <li>备份整库时可用备份存储过程和函数，单库备份等情况无法对其进行备份</li>
 </ul>
-<h4 id="mydumper备份机制"><a href="#mydumper备份机制" class="headerlink" title="mydumper备份机制"></a><strong>mydumper备份机制</strong></h4><p><img src="http://www.simlinux.com/wp-content/uploads/2015/01/mydumper.png" alt=""></p>
+<h4 id="mydumper备份机制"><a href="#mydumper备份机制" class="headerlink" title="mydumper备份机制"></a><strong>mydumper备份机制</strong></h4><p><img src="http://blog.simlinux.com/wp-content/uploads/2015/01/mydumper.png" alt=""></p>
 <h5 id="主要步骤概括"><a href="#主要步骤概括" class="headerlink" title="主要步骤概括"></a><strong>主要步骤概括</strong></h5><ol>
 <li>主线程 FLUSH TABLES WITH READ LOCK, 施加全局只读锁，以阻止DML语句写入，保证数据的一致性</li>
 <li>读取当前时间点的二进制日志文件名和日志写入的位置并记录在metadata文件中，以供即使点恢复使用</li>
@@ -1607,7 +1617,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Geekwolf">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/wolf.jpeg">
+      <meta itemprop="image" content="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1724,7 +1734,7 @@
       
         
           
-            <p><a href="http://www.simlinux.com/books/Ansible-notes.pdf" title="Ansible学习笔记">Ansible学习笔记</a> <a href="http://www.simlinux.com/books/Ansible-notes.pdf">http://www.simlinux.com/books/Ansible-notes.pdf</a></p>
+            <p><a href="http://blog.simlinux.com/books/Ansible-notes.pdf" title="Ansible学习笔记" target="_blank" rel="external">Ansible学习笔记</a> <a href="http://blog.simlinux.com/books/Ansible-notes.pdf" target="_blank" rel="external">http://blog.simlinux.com/books/Ansible-notes.pdf</a></p>
 <p>目前只包含Ansible基础使用，下载后可以看到目录便于查看，后续会根据生产使用增加实战内容！</p>
 
           
@@ -1779,7 +1789,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Geekwolf">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/wolf.jpeg">
+      <meta itemprop="image" content="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1983,7 +1993,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Geekwolf">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/wolf.jpeg">
+      <meta itemprop="image" content="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -2193,11 +2203,11 @@
       <section class="site-overview sidebar-panel sidebar-panel-active">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
-               src="/images/wolf.jpeg"
+               src="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg"
                alt="Geekwolf" />
           <p class="site-author-name" itemprop="name">Geekwolf</p>
            
-              <p class="site-description motion-element" itemprop="description">DevOps | Docker | K8S | MySQL | 运维</p>
+              <p class="site-description motion-element" itemprop="description">DevOps | Docker | Python | k8s</p>
           
         </div>
         <nav class="site-state motion-element">
@@ -2205,7 +2215,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">83</span>
+                <span class="site-state-item-count">82</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -2227,7 +2237,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">60</span>
+                <span class="site-state-item-count">61</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -2276,6 +2286,36 @@
         
 
         
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-block">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://blog.simlinux.com" title="旧版博客" target="_blank">旧版博客</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://nolinux.blog.51cto.com" title="nolinux" target="_blank">nolinux</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://xiaorui.cc" title="峰云就她了" target="_blank">峰云就她了</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://note.gitcloud.cc/blog/bluetom520" title="懒懒的天空" target="_blank">懒懒的天空</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.roddypy.com" title="普拉多VX" target="_blank">普拉多VX</a>
+                </li>
+              
+            </ul>
+          </div>
         
 
         

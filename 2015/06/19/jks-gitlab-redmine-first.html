@@ -82,7 +82,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="gitlab,jenkins," />
+  <meta name="keywords" content="jenkins,gitlab," />
 
 
 
@@ -101,22 +101,22 @@
 
 
 <meta name="description" content="用途说明 jenkins：用于自动化测试构建发布gitlab：作为代码托管服务redmine：作为项目管理和bug管理，通过jenkins整合redmine实现自动化发布提醒系列文章只针对jenkins自身使用做详细介绍，gitlab/redmine可使用bitnami stacks一键部署（https://bitnami.com/stack/gitlab、https://bitnami.com/">
-<meta name="keywords" content="gitlab,jenkins">
+<meta name="keywords" content="jenkins,gitlab">
 <meta property="og:type" content="article">
 <meta property="og:title" content="基于jenkins+gitlab+redmine构建持续集成环境（一）">
 <meta property="og:url" content="http://www.simlinux.com/2015/06/19/jks-gitlab-redmine-first.html">
 <meta property="og:site_name" content="Geekwolf&#39;s Blog">
 <meta property="og:description" content="用途说明 jenkins：用于自动化测试构建发布gitlab：作为代码托管服务redmine：作为项目管理和bug管理，通过jenkins整合redmine实现自动化发布提醒系列文章只针对jenkins自身使用做详细介绍，gitlab/redmine可使用bitnami stacks一键部署（https://bitnami.com/stack/gitlab、https://bitnami.com/">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://www.simlinux.com/wp-content/uploads/2015/06/1.png">
-<meta property="og:image" content="http://www.simlinux.com/wp-content/uploads/2015/06/2.png">
-<meta property="og:image" content="http://www.simlinux.com/wp-content/uploads/2015/06/3.png">
-<meta property="og:image" content="http://www.simlinux.com/wp-content/uploads/2015/06/4.png">
-<meta property="og:updated_time" content="2017-09-12T05:26:58.315Z">
+<meta property="og:image" content="http://blog.simlinux.com/wp-content/uploads/2015/06/1.png">
+<meta property="og:image" content="http://blog.simlinux.com/wp-content/uploads/2015/06/2.png">
+<meta property="og:image" content="http://blog.simlinux.com/wp-content/uploads/2015/06/3.png">
+<meta property="og:image" content="http://blog.simlinux.com/wp-content/uploads/2015/06/4.png">
+<meta property="og:updated_time" content="2017-09-13T02:23:36.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="基于jenkins+gitlab+redmine构建持续集成环境（一）">
 <meta name="twitter:description" content="用途说明 jenkins：用于自动化测试构建发布gitlab：作为代码托管服务redmine：作为项目管理和bug管理，通过jenkins整合redmine实现自动化发布提醒系列文章只针对jenkins自身使用做详细介绍，gitlab/redmine可使用bitnami stacks一键部署（https://bitnami.com/stack/gitlab、https://bitnami.com/">
-<meta name="twitter:image" content="http://www.simlinux.com/wp-content/uploads/2015/06/1.png">
+<meta name="twitter:image" content="http://blog.simlinux.com/wp-content/uploads/2015/06/1.png">
 
 
 
@@ -248,6 +248,16 @@
         </li>
       
         
+        <li class="menu-item menu-item-tips">
+          <a href="/tips/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-gittip"></i> <br />
+            
+            tips
+          </a>
+        </li>
+      
+        
         <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
             
@@ -349,7 +359,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Geekwolf">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/wolf.jpeg">
+      <meta itemprop="image" content="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -467,10 +477,10 @@
 <h4 id="环境说明"><a href="#环境说明" class="headerlink" title="环境说明"></a>环境说明</h4><p>PHP项目（jenkins安装初始化略）</p>
 </blockquote>
 <h4 id="创建简单的集成项目"><a href="#创建简单的集成项目" class="headerlink" title="创建简单的集成项目"></a>创建简单的集成项目</h4><p>点击<strong>新建</strong> –<strong>Item名称：项目1</strong>– 勾选<strong>构建一个自由风格的软件项目</strong></p>
-<p><img src="http://www.simlinux.com/wp-content/uploads/2015/06/1.png" alt=""><br><strong>添加代码库</strong></p>
-<p><img src="http://www.simlinux.com/wp-content/uploads/2015/06/2.png" alt=""><br><strong>触发构建策略</strong></p>
-<p><img src="http://www.simlinux.com/wp-content/uploads/2015/06/3.png" alt=""><br><strong>添加构建脚本</strong></p>
-<p><img src="http://www.simlinux.com/wp-content/uploads/2015/06/4.png" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">release.sh</div><div class="line">#!/bin/bash</div><div class="line">cd /gitrepos/project1</div><div class="line">git checkout master</div><div class="line">git pull origin master</div><div class="line">rsync -avH  --delete --progress  --exclude=robots.txt --exclude=.gitignore --exclude=database.php  --exclude=.git --exclude=.DS_Store --exclude=&quot;*.tar&quot;  &apos;-e ssh -p 11000&apos;  cd /gitrepos/project1</div><div class="line">www@project1.node1.simlinux.com:/data/wwwroot/project1/</div></pre></td></tr></table></figure></p>
+<p><img src="http://blog.simlinux.com/wp-content/uploads/2015/06/1.png" alt=""><br><strong>添加代码库</strong></p>
+<p><img src="http://blog.simlinux.com/wp-content/uploads/2015/06/2.png" alt=""><br><strong>触发构建策略</strong></p>
+<p><img src="http://blog.simlinux.com/wp-content/uploads/2015/06/3.png" alt=""><br><strong>添加构建脚本</strong></p>
+<p><img src="http://blog.simlinux.com/wp-content/uploads/2015/06/4.png" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">release.sh</div><div class="line">#!/bin/bash</div><div class="line">cd /gitrepos/project1</div><div class="line">git checkout master</div><div class="line">git pull origin master</div><div class="line">rsync -avH  --delete --progress  --exclude=robots.txt --exclude=.gitignore --exclude=database.php  --exclude=.git --exclude=.DS_Store --exclude=&quot;*.tar&quot;  &apos;-e ssh -p 11000&apos;  cd /gitrepos/project1</div><div class="line">www@project1.node1.simlinux.com:/data/wwwroot/project1/</div></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -535,9 +545,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/gitlab/" rel="tag"># gitlab</a>
-          
             <a href="/tags/jenkins/" rel="tag"># jenkins</a>
+          
+            <a href="/tags/gitlab/" rel="tag"># gitlab</a>
           
         </div>
       
@@ -629,11 +639,11 @@
       <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
-               src="/images/wolf.jpeg"
+               src="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg"
                alt="Geekwolf" />
           <p class="site-author-name" itemprop="name">Geekwolf</p>
            
-              <p class="site-description motion-element" itemprop="description">DevOps | Docker | K8S | MySQL | 运维</p>
+              <p class="site-description motion-element" itemprop="description">DevOps | Docker | Python | k8s</p>
           
         </div>
         <nav class="site-state motion-element">
@@ -641,7 +651,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">83</span>
+                <span class="site-state-item-count">82</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -663,7 +673,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">60</span>
+                <span class="site-state-item-count">61</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -712,6 +722,36 @@
         
 
         
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-block">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://blog.simlinux.com" title="旧版博客" target="_blank">旧版博客</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://nolinux.blog.51cto.com" title="nolinux" target="_blank">nolinux</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://xiaorui.cc" title="峰云就她了" target="_blank">峰云就她了</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://note.gitcloud.cc/blog/bluetom520" title="懒懒的天空" target="_blank">懒懒的天空</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.roddypy.com" title="普拉多VX" target="_blank">普拉多VX</a>
+                </li>
+              
+            </ul>
+          </div>
         
 
         

@@ -107,13 +107,13 @@
 <meta property="og:site_name" content="Geekwolf&#39;s Blog">
 <meta property="og:description" content="查看当前的默认存储引擎show variables like &amp;#39;table_type&amp;#39;; 查看当前数据库支持的引擎show engines \G;show variables like &amp;#39;have%&amp;#39;; 创建表时指定存储引擎create table ai (i bigint(20) not null auto_increment,primary key(i)); 修">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://www.simlinux.com/wp-content/uploads/2014/08/engines.png">
-<meta property="og:image" content="http://www.simlinux.com/wp-content/uploads/2014/08/autoincre.png">
-<meta property="og:updated_time" content="2017-09-12T05:41:14.884Z">
+<meta property="og:image" content="http://blog.simlinux.com/wp-content/uploads/2014/08/engines.png">
+<meta property="og:image" content="http://blog.simlinux.com/wp-content/uploads/2014/08/autoincre.png">
+<meta property="og:updated_time" content="2017-09-13T02:23:36.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="存储引擎介绍及适用场景">
 <meta name="twitter:description" content="查看当前的默认存储引擎show variables like &amp;#39;table_type&amp;#39;; 查看当前数据库支持的引擎show engines \G;show variables like &amp;#39;have%&amp;#39;; 创建表时指定存储引擎create table ai (i bigint(20) not null auto_increment,primary key(i)); 修">
-<meta name="twitter:image" content="http://www.simlinux.com/wp-content/uploads/2014/08/engines.png">
+<meta name="twitter:image" content="http://blog.simlinux.com/wp-content/uploads/2014/08/engines.png">
 
 
 
@@ -245,6 +245,16 @@
         </li>
       
         
+        <li class="menu-item menu-item-tips">
+          <a href="/tips/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-gittip"></i> <br />
+            
+            tips
+          </a>
+        </li>
+      
+        
         <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
             
@@ -346,7 +356,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Geekwolf">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/wolf.jpeg">
+      <meta itemprop="image" content="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -464,7 +474,7 @@
 <p>创建表时指定存储引擎<br><code>create table ai (i bigint(20) not null auto_increment,primary key(i));</code></p>
 <p>修改表引擎<br><code>alter table ai engine=innodb;</code></p>
 <p><strong>常见Mysql数据库引擎对比：</strong></p>
-<p><a href="http://www.simlinux.com/wp-content/uploads/2014/08/engines.png"><img src="http://www.simlinux.com/wp-content/uploads/2014/08/engines.png" alt="engines"></a></p>
+<p><a href="http://blog.simlinux.com/wp-content/uploads/2014/08/engines.png" target="_blank" rel="external"><img src="http://blog.simlinux.com/wp-content/uploads/2014/08/engines.png" alt="engines"></a></p>
 <h4 id="MyISAM引擎特点"><a href="#MyISAM引擎特点" class="headerlink" title="MyISAM引擎特点"></a>MyISAM引擎特点</h4><p>在磁盘存储成3个文件，文件名和表名一样，但扩展名分别为：<br>.frm (存储表定义)<br>.MYD （MYData，存储数据）<br>.MYI （MYIndex，存储索引）<br>其中数据文件和索引文件可以分开在不同目录，平均分布IO</p>
 <p>创建表时指定数据和索引路径：</p>
 <p><code>create table geekwolf (id int,c varchar(10)) data directory=&#39;/data/data/&#39; index directory=&#39;/data/index&#39; engine=&#39;MyISAM&#39;;</code></p>
@@ -474,7 +484,7 @@
 <h4 id="INNODB引擎特点"><a href="#INNODB引擎特点" class="headerlink" title="INNODB引擎特点"></a>INNODB引擎特点</h4><p><strong>1.自动增长列：</strong></p>
 <p>InnoDB表，自动增长列必须是索引，如果是组合索引，必须是组合索引的第一列；&lt;br&gt;<br>对于MyISAM引擎表，自动增长列可以是组合索引的其他列，这样插入记录后，自动增长列是按照组合索引的前面激烈进行排序后递增的<br>创建MyISAM表autoincre_demo<br><code>create table autoincre_demo (d1 smallint not null auto_increment,d2 smallint not null,name varchar(10),index(d2.d1)) engine=myisam;</code></p>
 <p>如图所示：自动增长列是d1作为组合索引的第二列,插入记录后，发现增长列是按照组合索引的第一列d2进行排序后递增的</p>
-<p><a href="http://www.simlinux.com/wp-content/uploads/2014/08/autoincre.png"><img src="http://www.simlinux.com/wp-content/uploads/2014/08/autoincre.png" alt="autoincre"></a></p>
+<p><a href="http://blog.simlinux.com/wp-content/uploads/2014/08/autoincre.png" target="_blank" rel="external"><img src="http://blog.simlinux.com/wp-content/uploads/2014/08/autoincre.png" alt="autoincre"></a></p>
 <p><strong>2.外键约束：</strong><br>Innodb引擎支持外键，在创建外键时，要求父表必须有对应的索引，子表在创建外键的时候也会自动创建对应的索引<br>    外键信息可以通过<br>    show table status like ‘test’ \G;<br>    show create table ‘test’;</p>
 <p><strong>3.存储方式：</strong><br><strong>A.</strong> 使用共享表空间，这种方式创建的表结果保存在.frm文件，数据和索引保存在innodb_data_home_dir innodb_data_file_path定义的表空间中<br><strong>B.</strong>多表空间存储，表结构保存在.frm文件中，但是每个表的数据和索引单独存放在.ibd中；每个分区对于单独的.ibd<br>（需要开启innodb_file_per_table=1）<br>对于使用多表空间的表可以方便进行单表备份恢复，简单复制ibd和frm文件的方法因没有共享表空间的字典信息，而无法使用；多表空间情况，因为Innodb把内部的数据字典和在线重做日志存放在共享表空间里面</p>
 <p><strong>使用此语句删除.ibd文件：</strong><br><code>ALTER TABLE tbl_name DISCARD TABLESPACE;</code><br>要把备份的.ibd文件还原到表中，需把此文件复制到数据库目录中，然后书写此语句：<br><code>ALTER TABLE tbl_name IMPORT TABLESPACE;</code></p>
@@ -635,11 +645,11 @@
       <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
-               src="/images/wolf.jpeg"
+               src="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg"
                alt="Geekwolf" />
           <p class="site-author-name" itemprop="name">Geekwolf</p>
            
-              <p class="site-description motion-element" itemprop="description">DevOps | Docker | K8S | MySQL | 运维</p>
+              <p class="site-description motion-element" itemprop="description">DevOps | Docker | Python | k8s</p>
           
         </div>
         <nav class="site-state motion-element">
@@ -647,7 +657,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">83</span>
+                <span class="site-state-item-count">82</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -669,7 +679,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">60</span>
+                <span class="site-state-item-count">61</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -718,6 +728,36 @@
         
 
         
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-block">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://blog.simlinux.com" title="旧版博客" target="_blank">旧版博客</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://nolinux.blog.51cto.com" title="nolinux" target="_blank">nolinux</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://xiaorui.cc" title="峰云就她了" target="_blank">峰云就她了</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://note.gitcloud.cc/blog/bluetom520" title="懒懒的天空" target="_blank">懒懒的天空</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.roddypy.com" title="普拉多VX" target="_blank">普拉多VX</a>
+                </li>
+              
+            </ul>
+          </div>
         
 
         

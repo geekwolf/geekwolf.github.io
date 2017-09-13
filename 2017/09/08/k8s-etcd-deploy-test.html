@@ -108,7 +108,7 @@
 <meta property="og:site_name" content="Geekwolf&#39;s Blog">
 <meta property="og:description" content="Etcd是什么 Etcd是一个分布式、使用Raft算法维护一致性的kv存储系统，与其类似产品有Zookeeper(老牌经典)、Consul等，Etcd相对ZK，更加轻量、易运维。具体三者之间的对比可参考 https://luyiisme.github.io/2017/04/22/spring-cloud-service-discovery-products/  使用场景和zk、consul等类似，">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-09-12T01:12:15.139Z">
+<meta property="og:updated_time" content="2017-09-13T02:23:36.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="k8s部署之分布式KV存储Etcd">
 <meta name="twitter:description" content="Etcd是什么 Etcd是一个分布式、使用Raft算法维护一致性的kv存储系统，与其类似产品有Zookeeper(老牌经典)、Consul等，Etcd相对ZK，更加轻量、易运维。具体三者之间的对比可参考 https://luyiisme.github.io/2017/04/22/spring-cloud-service-discovery-products/  使用场景和zk、consul等类似，">
@@ -243,6 +243,16 @@
         </li>
       
         
+        <li class="menu-item menu-item-tips">
+          <a href="/tips/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-gittip"></i> <br />
+            
+            tips
+          </a>
+        </li>
+      
+        
         <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
             
@@ -344,7 +354,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Geekwolf">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/wolf.jpeg">
+      <meta itemprop="image" content="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -514,7 +524,7 @@
 <p>三个节点hosts文件添加:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">vim /etc/hosts</div><div class="line">192.168.234.133 etcd1.simlinux.com </div><div class="line">192.168.234.133 etcd2.simlinux.com </div><div class="line">192.168.234.133 etcd3.simlinux.com</div></pre></td></tr></table></figure></p>
 <p><strong>生成etcd证书(用于etcd间、客户端与etcd通信)</strong></p>
 <blockquote>
-<p>由上篇<a href="http://www.simlinux.com/archives/1953.html">k8s部署之使用CFSSL创建证书</a>的CA来生成</p>
+<p>由上篇<a href="http://blog.simlinux.com/archives/1953.html" target="_blank" rel="external">k8s部署之使用CFSSL创建证书</a>的CA来生成</p>
 </blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">cat  etcd.json </div><div class="line">&#123;</div><div class="line">    &quot;CN&quot;: &quot;etcd&quot;,</div><div class="line">    &quot;hosts&quot;: [</div><div class="line">        &quot;127.0.0.1&quot;,</div><div class="line">        &quot;192.168.234.133&quot;,</div><div class="line">        &quot;192.168.234.134&quot;,</div><div class="line">        &quot;192.168.234.135&quot;</div><div class="line">    ],</div><div class="line">    &quot;key&quot;: &#123;</div><div class="line">        &quot;algo&quot;: &quot;ecdsa&quot;,</div><div class="line">        &quot;size&quot;: 256</div><div class="line">    &#125;,</div><div class="line">    &quot;names&quot;: [</div><div class="line">        &#123;</div><div class="line">            &quot;C&quot;: &quot;CN&quot;,</div><div class="line">            &quot;L&quot;: &quot;ShangHai&quot;,</div><div class="line">            &quot;ST&quot;: &quot;ShangHai&quot;,</div><div class="line">            &quot;O&quot;: &quot;K8s&quot;,</div><div class="line">            &quot;OU&quot;: &quot;System&quot;</div><div class="line">        &#125;</div><div class="line">    ]</div><div class="line">&#125;</div><div class="line">cfssl gencert -ca=ca.pem -ca-key=ca-key.pem -config=ca-config.json -profile=peer etcd.json | cfssljson -bare etcd</div><div class="line">将CA和etcd证书拷贝到etcd所有节点:</div><div class="line">cp ca.pem  etcd-key.pem  etcd.pem /etc/etcd/ssl/</div></pre></td></tr></table></figure>
 <h6 id="安装etcd节点-所有节点"><a href="#安装etcd节点-所有节点" class="headerlink" title="安装etcd节点(所有节点)"></a>安装etcd节点(所有节点)</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">wget https://github.com/coreos/etcd/releases/download/v3.2.7/etcd-v3.2.7-linux-amd64.tar.gz</div><div class="line">tar xf etcd-v3.2.7-linux-amd64.tar.gz</div><div class="line">cd etcd-v3.2.7-linux-amd64</div><div class="line">chmod +x etcd*</div><div class="line">cp etcd* /bin</div></pre></td></tr></table></figure>
@@ -614,6 +624,10 @@
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/2017/09/12/devops-fms.html" rel="prev" title="运维故障管理系统FMS">
+                运维故障管理系统FMS <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -679,11 +693,11 @@
       <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
-               src="/images/wolf.jpeg"
+               src="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg"
                alt="Geekwolf" />
           <p class="site-author-name" itemprop="name">Geekwolf</p>
            
-              <p class="site-description motion-element" itemprop="description">DevOps | Docker | K8S | MySQL | 运维</p>
+              <p class="site-description motion-element" itemprop="description">DevOps | Docker | Python | k8s</p>
           
         </div>
         <nav class="site-state motion-element">
@@ -691,7 +705,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">83</span>
+                <span class="site-state-item-count">82</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -713,7 +727,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">60</span>
+                <span class="site-state-item-count">61</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -762,6 +776,36 @@
         
 
         
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-block">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://blog.simlinux.com" title="旧版博客" target="_blank">旧版博客</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://nolinux.blog.51cto.com" title="nolinux" target="_blank">nolinux</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://xiaorui.cc" title="峰云就她了" target="_blank">峰云就她了</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://note.gitcloud.cc/blog/bluetom520" title="懒懒的天空" target="_blank">懒懒的天空</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.roddypy.com" title="普拉多VX" target="_blank">普拉多VX</a>
+                </li>
+              
+            </ul>
+          </div>
         
 
         

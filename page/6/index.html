@@ -100,16 +100,16 @@
 
 
 
-<meta name="description" content="DevOps | Docker | K8S | MySQL | 运维">
+<meta name="description" content="DevOps | Docker | Python | k8s">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Geekwolf&#39;s Blog">
 <meta property="og:url" content="http://www.simlinux.com/page/6/index.html">
 <meta property="og:site_name" content="Geekwolf&#39;s Blog">
-<meta property="og:description" content="DevOps | Docker | K8S | MySQL | 运维">
+<meta property="og:description" content="DevOps | Docker | Python | k8s">
 <meta property="og:locale" content="zh-Hans">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Geekwolf&#39;s Blog">
-<meta name="twitter:description" content="DevOps | Docker | K8S | MySQL | 运维">
+<meta name="twitter:description" content="DevOps | Docker | Python | k8s">
 
 
 
@@ -243,6 +243,16 @@
         </li>
       
         
+        <li class="menu-item menu-item-tips">
+          <a href="/tips/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-gittip"></i> <br />
+            
+            tips
+          </a>
+        </li>
+      
+        
         <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
             
@@ -339,199 +349,12 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2013/12/14/centos-install-opennebula.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Geekwolf">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/wolf.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Geekwolf's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2013/12/14/centos-install-opennebula.html" itemprop="url">Centos 6.4 下 部署OpenNebula4.4</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2013-12-14T11:27:34+08:00">
-                2013-12-14
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux运维/" itemprop="url" rel="index">
-                    <span itemprop="name">Linux运维</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2013/12/14/centos-install-opennebula.html" class="leancloud_visitors" data-flag-title="Centos 6.4 下 部署OpenNebula4.4">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长</span>
-                
-                <span title="阅读时长">
-                  3
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h4 id="安装部署"><a href="#安装部署" class="headerlink" title="安装部署"></a>安装部署</h4><h5 id="环境说明"><a href="#环境说明" class="headerlink" title="环境说明"></a>环境说明</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Front:192.168.10.101 Centos6.4 x 64 NF5120</div><div class="line">Node1:192.168.10.102 Centos6.4 x 64 NF5120</div></pre></td></tr></table></figure>
-<h5 id="部署OpenNebula4-4"><a href="#部署OpenNebula4-4" class="headerlink" title="部署OpenNebula4.4"></a>部署OpenNebula4.4</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">下载相应版本 http://www.opennebula.org/software:software#from_official_repository_of_linux_distributions</div><div class="line">CentOS-6-opennebula-4.4.0-1</div><div class="line">安装Epel源</div><div class="line">rpm -ivh http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm</div><div class="line">cd opennebula-4.4.0-1</div><div class="line">yum -y localinstall *.rpm</div><div class="line">Front控制器在此也作为节点使用，在计算节点上安装 kvm 和 opennebula-node-kvm：</div><div class="line"></div><div class="line">yum localinstall opennebula-node-kvm-4.0.0-1.x86_64.rpm</div><div class="line">yum install qemu-kvm qemu-kvm-tools libvirt</div><div class="line">/etc/init.d/libvirtd start</div><div class="line"></div><div class="line">以上OpenNebula的控制节点和计算节点所需软件包均以安装完，下面进行简单的配置( 事先关闭iptables和selinux，后续讲如何加固)</div></pre></td></tr></table></figure>
-<p>a. 更改Opennebula的front，即OpenNebula-sunstone服务的监听地址</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sed -i &apos;s#127.0.0.1#192.168.10.101#g&apos; /etc/one/sunstone-server.conf</div></pre></td></tr></table></figure>
-<p>b. 默认会生成用户名和随机密码</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">cat /var/lib/one/.one/one_auth</div><div class="line">oneadmin:6696d237e58221ae1eb39fdf3a01335f</div><div class="line">访问http://192.168.10.101:9869 输入账号密码</div></pre></td></tr></table></figure>
-<p>c. 更改opennebula数据存储方式为mysql</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">vim /etc/one/oned.conf</div><div class="line">修改仓库路径：</div><div class="line">DATASTORE_BASE_PATH = /data/datastoress(注意目录权限为oneadmin)</div><div class="line">注释DB = [ backend = &quot;sqlite&quot; ]</div><div class="line">打开注释：</div><div class="line">DB = [ backend = &quot;mysql&quot;,</div><div class="line">server = &quot;localhost&quot;,</div><div class="line">port = 0,</div><div class="line">user = &quot;oneadmin&quot;,</div><div class="line">passwd = &quot;oneadmin&quot;,</div><div class="line">db_name = &quot;opennebula&quot; ]</div><div class="line">（相关授权略）</div></pre></td></tr></table></figure>
-<p>d. 添加环境变量</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">export ONE_XMLRPC=http://localhost:2633/RPC2</div><div class="line">export ONE_AUTH=$HOME/.one/one_auth</div><div class="line">export PATH=$ONE_LOCATION/bin:$PATH</div></pre></td></tr></table></figure>
-<p>e. 为初次部署方便暂使用网络桥接模式<br>母机桥接配置：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">ifcfg-eth0:</div><div class="line"></div><div class="line">DEVICE=eth0</div><div class="line">TYPE=Ethernet</div><div class="line">UUID=200f14a6-c347-4d4a-9564-257ccf4ebe8a</div><div class="line">ONBOOT=yes</div><div class="line">NM_CONTROLLED=yes</div><div class="line">BOOTPROTO=none</div><div class="line">HWADDR=00:E0:81:DE:6C:CA</div><div class="line">BRIDGE=&quot;br0&quot;</div><div class="line"></div><div class="line">ifcfg-br0:</div><div class="line">DEVICE=&quot;br0&quot;</div><div class="line">TYPE=&quot;Bridge&quot;</div><div class="line">BOOTPROTO=&quot;static&quot;</div><div class="line">ONBOOT=&quot;yes&quot;</div><div class="line">IPADDR=192.168.10.102</div><div class="line">NETMASK=255.255.240.0</div><div class="line">DNS1=114.114.114.114</div><div class="line">brctl show 可查询现有桥接的网络</div><div class="line">bridge name bridge id STP enabled interfaces</div><div class="line">br0 8000.00e081de6cca no eth0</div><div class="line">重启网卡</div></pre></td></tr></table></figure>
-<p>f. 确定计算节点权限（Front安装时会自动配置）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">/etc/libvirt/qemu.conf</div><div class="line">user = &quot;oneadmin&quot;</div><div class="line">group = &quot;oneadmin&quot;</div><div class="line">dynamic_ownership = 0</div><div class="line"></div><div class="line">/etc/libvirt/libvirtd.conf</div><div class="line">listen_tcp = 1</div><div class="line">listen_tls = 0</div><div class="line">mdns_adv = 0</div><div class="line">unix_sock_group = &quot;oneadmin&quot;</div><div class="line">unix_sock_ro_perms = &quot;0777&quot;</div><div class="line">unix_sock_rw_perms = &quot;0777&quot;</div><div class="line">auth_unix_ro = &quot;none&quot;</div><div class="line">auth_unix_rw = &quot;none&quot;</div><div class="line"></div><div class="line">/etc/sysconfig/libvirtd(修改监听地址)</div><div class="line">LIBVIRTD_ARGS=&quot;--listen&quot;</div><div class="line"></div><div class="line">/etc/sudoers</div><div class="line">添加oneadmin ALL=(root)NOPASSWD:ALL</div><div class="line">注释#Defaults requiretty</div><div class="line"></div><div class="line">ln -s /usr/libexec/qemu-kvm /usr/bin/kvm</div><div class="line">将Front的oneadmin的公钥拷贝到计算节点oneadmin下实现无密码认证</div></pre></td></tr></table></figure>
-<p>g .以上OpenNebula的部署已经完成，下面启动服务器进行简单操作</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">service OpenNebula start</div><div class="line">service OpenNebula-sunstone start</div></pre></td></tr></table></figure>
-<p><a href="http://www.simlinux.com/old/wp-content/uploads/2013/12/s2.jpg"><img src="http://www.simlinux.com/old/wp-content/uploads/2013/12/s2-1024x573.jpg" alt="s"></a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2013/09/09/svn-force-add-comments.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Geekwolf">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/wolf.jpeg">
+      <meta itemprop="image" content="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -705,7 +528,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Geekwolf">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/wolf.jpeg">
+      <meta itemprop="image" content="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -824,13 +647,13 @@
           
             <h4 id="前提条件"><a href="#前提条件" class="headerlink" title="前提条件"></a>前提条件</h4><p>smokeping依赖于LNMP或者LAMP及rrdtool</p>
 <h4 id="安装rrdtool支持"><a href="#安装rrdtool支持" class="headerlink" title="安装rrdtool支持"></a>安装rrdtool支持</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">yum -y install libxml2-devel libpng-devel glib pango pango-devel  freetypefreetype-devel fontconfig cairo cairo-devel libart_lgpl libart_lgpl-devel perl perl-Net-Telnet perl-Net-DNSperl-LDAP perl-libwww-perl perl-RadiusPerl perl-IO-Socket-SSL perl-Socket6perl-CGI-SpeedyCGI rrdtool-per</div><div class="line"></div><div class="line">wget http://oss.oetiker.ch/rrdtool/pub/rrdtool-1.4.7.tar.gz</div><div class="line">cd rrdtool-1.4.7</div><div class="line">./configure --prefix=/usr/local/rrdtool</div><div class="line">make &amp;&amp; make install</div></pre></td></tr></table></figure>
-<p><strong>问题</strong>：<a href="http://www.simlinux.com/old/wp-content/uploads/2013/09/c2.png"><img src="http://www.simlinux.com/old/wp-content/uploads/2013/09/c2.png" alt="c"></a> <a href="http://www.simlinux.com/old/wp-content/uploads/2013/09/c1.png">1</a><br><strong>解决</strong>：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum -y install perl-ExtUtils-CBuilder perl-ExtUtils-MakeMaker</div></pre></td></tr></table></figure></p>
+<p><strong>问题</strong>：<a href="http://blog.simlinux.com/old/wp-content/uploads/2013/09/c2.png" target="_blank" rel="external"><img src="http://blog.simlinux.com/old/wp-content/uploads/2013/09/c2.png" alt="c"></a> <a href="http://blog.simlinux.com/old/wp-content/uploads/2013/09/c1.png" target="_blank" rel="external">1</a><br><strong>解决</strong>：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum -y install perl-ExtUtils-CBuilder perl-ExtUtils-MakeMaker</div></pre></td></tr></table></figure></p>
 <h4 id="安装-smokeping-依赖的软件"><a href="#安装-smokeping-依赖的软件" class="headerlink" title="安装 smokeping 依赖的软件"></a>安装 smokeping 依赖的软件</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">wget http://down1.chinaunix.net/distfiles/cgilib-0.5.tar.gz</div><div class="line">tar xzvf cgilib-0.5.tar.gz</div><div class="line">cd cgilib-0.5</div><div class="line">make</div><div class="line">cp libcgi.a  /usr/local/lib</div><div class="line">cp cgi.h /usr/include/</div><div class="line"></div><div class="line">http://fping.org/dist/fping-3.4.tar.gz</div><div class="line">./configure –prefix=/usr/local/fping</div><div class="line">make &amp;&amp; make install</div><div class="line">whereis fping</div><div class="line">fping: /usr/local/fping</div><div class="line">ln -s /usr/local/fping/sbin/fping  /usr/sbin/fping</div><div class="line">这个链接是对应/usr/local/smokeping/etc/config里面的probe fping</div><div class="line"></div><div class="line">wget http://ncu.dl.sourceforge.net/project/echoping/echoping/6.0.2/echoping-6.0.2.tar.gz</div><div class="line">tar xzvf echoping-6.0.2.tar.gz</div><div class="line">cd echoping-6.0.2</div><div class="line">./configure</div><div class="line">make &amp;&amp; make install</div></pre></td></tr></table></figure>
-<p><strong>问题</strong>： <a href="http://www.simlinux.com/old/wp-content/uploads/2013/09/cc3.png"><img src="http://www.simlinux.com/old/wp-content/uploads/2013/09/cc3.png" alt="cc"></a><br><strong>解决</strong>：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">下载popt-1.14.tar.gz</div><div class="line">wget http://downloads.sourceforge.net/project/kanapi/sources/RELEASES/popt-1.14.tar.gz?r=http%3A%2F%2Fen.sourceforge.jp%2Fprojects%2Fsfnet_kanapi%2Fdownloads%2Fsources%2FRELEASES%2Fpopt-1.14.tar.gz%2F&amp;ts=1368433312&amp;use_mirror=jaist</div><div class="line"></div><div class="line">./configure </div><div class="line">make &amp;&amp; make install</div><div class="line"></div><div class="line">wget http://ftp.gnu.org/gnu/gettext/gettext-0.18.tar.gz</div><div class="line">tar zxvf gettext-0.18.tar.gz</div><div class="line">cd gettext-0.18</div><div class="line">./configure </div><div class="line">make &amp;&amp; make install</div><div class="line">cd ..</div></pre></td></tr></table></figure></p>
+<p><strong>问题</strong>： <a href="http://blog.simlinux.com/old/wp-content/uploads/2013/09/cc3.png" target="_blank" rel="external"><img src="http://blog.simlinux.com/old/wp-content/uploads/2013/09/cc3.png" alt="cc"></a><br><strong>解决</strong>：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">下载popt-1.14.tar.gz</div><div class="line">wget http://downloads.sourceforge.net/project/kanapi/sources/RELEASES/popt-1.14.tar.gz?r=http%3A%2F%2Fen.sourceforge.jp%2Fprojects%2Fsfnet_kanapi%2Fdownloads%2Fsources%2FRELEASES%2Fpopt-1.14.tar.gz%2F&amp;ts=1368433312&amp;use_mirror=jaist</div><div class="line"></div><div class="line">./configure </div><div class="line">make &amp;&amp; make install</div><div class="line"></div><div class="line">wget http://ftp.gnu.org/gnu/gettext/gettext-0.18.tar.gz</div><div class="line">tar zxvf gettext-0.18.tar.gz</div><div class="line">cd gettext-0.18</div><div class="line">./configure </div><div class="line">make &amp;&amp; make install</div><div class="line">cd ..</div></pre></td></tr></table></figure></p>
 <h4 id="安装配置Smokeping"><a href="#安装配置Smokeping" class="headerlink" title="安装配置Smokeping"></a>安装配置Smokeping</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div></pre></td><td class="code"><pre><div class="line">wget http://oss.oetiker.ch/smokeping/pub/smokeping-2.6.8.tar.gz</div><div class="line">tar zxvf smokeping-2.6.8.tar.gz</div><div class="line">cd smokeping-2.6.8</div><div class="line">./configure –prefix=/usr/local/smokeping</div><div class="line">./setup/build-perl-modules.sh /usr/local/smokeping/thirdparty</div><div class="line">./configure –prefix=/usr/local/smokeping </div><div class="line"></div><div class="line">gmake install </div><div class="line">安装完毕，下面修改配置文件。</div><div class="line">进入 bin 目录，修改 smokeping 文件</div><div class="line">#vim smokeping</div><div class="line">第八行：  use lib qw(); # PERL5LIB</div><div class="line">修改为：     use lib qw(/usr/local/rrdtool/lib/perl);</div><div class="line">进入 htdocs 目录</div><div class="line"># mv smokeping.fcgi.dist smokeping.fcgi</div><div class="line">进入 etc 目录</div><div class="line">cp config.dist config</div><div class="line">修改 config 文件</div><div class="line"></div><div class="line">创建存放数据文件的目录</div><div class="line">mkdir  c/usr/local/smokeping/data  /usr/local/smokeping/var </div><div class="line">/usr/local/smokeping/cache</div><div class="line">修改 smokeping 的目录为 nginx 运行用户的属主、组</div><div class="line">chown -R daemon.daemon smokeping/</div><div class="line">chmod 600 /usr/local/smokeping/etc/smokeping_secrets.dist</div><div class="line">chmod  –R  777  /usr/local/smokeping/cache  /usr/local/smokeping/data </div><div class="line">/usr/local/smokeping/var</div><div class="line">创建 smokeping 的 log 文件</div><div class="line">touch /var/log/smokeping.log</div><div class="line">chown daemon.daemon /var/log/smokeping.log</div><div class="line">启动 smokeping</div><div class="line">perl /usr/local/smokeping/bin/smokeping --logfile=/var/log/smokeping.log</div><div class="line">建立 smokeping 启动脚本，方便启动</div><div class="line">vim /etc/init.d/smokeping</div><div class="line">添加为以下内容：</div><div class="line">#!/bin/bash</div><div class="line">#</div><div class="line"># chkconfig: 2345 80 05</div><div class="line"># Description: Smokeping init.d script</div><div class="line"># Hacked by : YunVN - http://www.yunvn.com</div><div class="line"># Get function from functions library</div><div class="line">. /etc/init.d/functions</div><div class="line"># Start the service Smokeping</div><div class="line">start() &#123;</div><div class="line">echo -n &quot;Starting Smokeping: &quot;</div><div class="line">/usr/local/smokeping/bin/smokeping &gt;/dev/null 2&gt;&amp;1</div><div class="line">### Create the lock file ### </div><div class="line">touch /var/lock/subsys/smokeping</div><div class="line">success $&quot;Smokeping startup&quot;</div><div class="line">echo</div><div class="line">&#125;</div><div class="line"># Restart the service Smokeping</div><div class="line">stop() &#123;</div><div class="line">echo -n &quot;Stopping Smokeping: &quot;</div><div class="line">kill -9 `ps ax | grep &quot;/usr/local/smokeping/bin/smokeping&quot; | grep -v grep | awk </div><div class="line">&apos;&#123; print $1 &#125;&apos;` &gt;/dev/null 2&gt;&amp;1</div><div class="line">### Now, delete the lock file ###</div><div class="line">rm -f /var/lock/subsys/smokeping</div><div class="line">success $&quot;Smokeping shutdown&quot;</div><div class="line">echo</div><div class="line">&#125;</div><div class="line">### main logic ###</div><div class="line">case &quot;$1&quot; in</div><div class="line">start)</div><div class="line">start</div><div class="line">;;</div><div class="line">stop)</div><div class="line">stop</div><div class="line">;;</div><div class="line">status)</div><div class="line">status Smokeping</div><div class="line">;;</div><div class="line">restart|reload|condrestart)</div><div class="line">stop</div><div class="line">start</div><div class="line">;;</div><div class="line">*)</div><div class="line">echo $&quot;Usage: $0 &#123;start|stop|restart|reload|status&#125;&quot;</div><div class="line">exit 1</div><div class="line">esac</div><div class="line">exit 0</div></pre></td></tr></table></figure>
 <p>给脚本有可执行权限</p>
 <h1 id="chmod-755-etc-rc-d-init-d-smokeping"><a href="#chmod-755-etc-rc-d-init-d-smokeping" class="headerlink" title="chmod 755 /etc/rc.d/init.d/smokeping"></a>chmod 755 /etc/rc.d/init.d/smokeping</h1><p>设置开机启动 smokeping </p>
-<p><strong>问题：</strong><br>启动时出现问题： <a href="http://www.simlinux.com/old/wp-content/uploads/2013/09/ccc2.png"><img src="http://www.simlinux.com/old/wp-content/uploads/2013/09/ccc2.png" alt="ccc"></a> 解决：yum -y install rrdtool-perl</p>
+<p><strong>问题：</strong><br>启动时出现问题： <a href="http://blog.simlinux.com/old/wp-content/uploads/2013/09/ccc2.png" target="_blank" rel="external"><img src="http://blog.simlinux.com/old/wp-content/uploads/2013/09/ccc2.png" alt="ccc"></a> 解决：yum -y install rrdtool-perl</p>
 <p><strong>解决：</strong><br><a href="https://github.com/geekwolf/sa-scripts/tree/master/config" target="_blank" rel="external">https://github.com/geekwolf/sa-scripts/tree/master/config</a></p>
 <p>注释：ping的节点可以适当做些调整</p>
 
@@ -886,7 +709,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Geekwolf">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/wolf.jpeg">
+      <meta itemprop="image" content="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1060,7 +883,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Geekwolf">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/wolf.jpeg">
+      <meta itemprop="image" content="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1245,7 +1068,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Geekwolf">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/wolf.jpeg">
+      <meta itemprop="image" content="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1379,7 +1202,7 @@
 <p>直接省略上面的步骤</p>
 <p>CentOS系统运行：yum install iftop<br>Debian系统 运行：apt-get install iftop</p>
 <h4 id="四、运行iftop"><a href="#四、运行iftop" class="headerlink" title="四、运行iftop"></a>四、运行iftop</h4><p>直接运行： iftop<br>效果如下图：</p>
-<p><a href="http://www.simlinux.com/old/wp-content/uploads/2013/03/iftop-interface.jpg"><img src="http://www.simlinux.com/old/wp-content/uploads/2013/03/iftop-interface.jpg" alt="iftop-interface"></a></p>
+<p><a href="http://blog.simlinux.com/old/wp-content/uploads/2013/03/iftop-interface.jpg" target="_blank" rel="external"><img src="http://blog.simlinux.com/old/wp-content/uploads/2013/03/iftop-interface.jpg" alt="iftop-interface"></a></p>
 <h4 id="五、相关参数及说明"><a href="#五、相关参数及说明" class="headerlink" title="五、相关参数及说明"></a>五、相关参数及说明</h4><p>1、iftop界面相关说明<br>界面上面显示的是类似刻度尺的刻度范围，为显示流量图形的长条作标尺用的。</p>
 <p>中间的&lt;= =&gt;;这两个左右箭头，表示的是流量的方向。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">TX：发送流量</div><div class="line">RX：接收流量</div><div class="line">TOTAL：总流量</div><div class="line">Cumm：运行iftop到目前时间的总流量</div><div class="line">peak：流量峰值</div><div class="line">rates：分别表示过去 2s 10s 40s 的平均流量</div></pre></td></tr></table></figure></p>
 <p>2、iftop相关参数</p>
@@ -1442,7 +1265,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Geekwolf">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/wolf.jpeg">
+      <meta itemprop="image" content="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1621,7 +1444,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Geekwolf">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/wolf.jpeg">
+      <meta itemprop="image" content="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1792,7 +1615,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Geekwolf">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/wolf.jpeg">
+      <meta itemprop="image" content="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1967,7 +1790,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Geekwolf">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/wolf.jpeg">
+      <meta itemprop="image" content="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -2121,6 +1944,187 @@
 
 
     
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2012/12/11/apache-mod_bandwidth.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Geekwolf">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Geekwolf's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2012/12/11/apache-mod_bandwidth.html" itemprop="url">Apache模块之mod_bandwidth带宽限制</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2012-12-11T04:04:44+08:00">
+                2012-12-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux运维/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux运维</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2012/12/11/apache-mod_bandwidth.html" class="leancloud_visitors" data-flag-title="Apache模块之mod_bandwidth带宽限制">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  3
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="下载模块-mod-bandwidth"><a href="#下载模块-mod-bandwidth" class="headerlink" title="下载模块 mod_bandwidth"></a>下载模块 mod_bandwidth</h4><p><a href="ftp://ftp.cohprog.com/pub/apache/module/" target="_blank" rel="external">ftp://ftp.cohprog.com/pub/apache/module/</a></p>
+<h4 id="编译和安装"><a href="#编译和安装" class="headerlink" title="编译和安装"></a>编译和安装</h4><h5 id="编译"><a href="#编译" class="headerlink" title="编译"></a>编译</h5><p>由于 apache 是用编译好的包安装的，因此只有采用 apxs 方式编译<br>/usr/local/sbin/apxs -c mod_bandwidth.c -o /usr/local/libexec/apache/mod_bandwidth.so</p>
+<h5 id="创建-mod-bandwidth-运行需要的目录"><a href="#创建-mod-bandwidth-运行需要的目录" class="headerlink" title="创建 mod_bandwidth 运行需要的目录"></a>创建 mod_bandwidth 运行需要的目录</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">mkdir /tmp/apachebw</div><div class="line">mkdir /tmp/apachebw/link</div><div class="line">mkdir /tmp/apachebw/master</div><div class="line">chmod -R 777 /tmp/apachebw</div></pre></td></tr></table></figure>
+<h5 id="修改配置"><a href="#修改配置" class="headerlink" title="修改配置"></a>修改配置</h5><p>/usr/local/etc/apache/httpd.conf：<br>增加下列内容</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">LoadModule bandwidth_module   libexec/apache/mod_bandwidth.so</div><div class="line">AddModule mod_bandwidth.c</div></pre></td></tr></table></figure>
+<p>注意：这两行必须分别加在相应区域的最前面，使得这个模块以最低的优先级运行。</p>
+<p>增加下列内容</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">BandWidthDataDir &quot;/tmp/apachebw/&quot;</div><div class="line">BandWidthModule on</div></pre></td></tr></table></figure>
+<p>修改设置</p>
+<p>不限制局域网内用户的下载速度<br>BandWidth 192.168.0 0<br>限制其他用户的下载速度为每秒 8192 字节<br>BandWidth all 8192<br>….</p>
+<h5 id="重新启动-apache"><a href="#重新启动-apache" class="headerlink" title="重新启动 apache"></a>重新启动 apache</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">apachectl configtest</div><div class="line">apachectl restart</div></pre></td></tr></table></figure>
+<h4 id="选项说明"><a href="#选项说明" class="headerlink" title="选项说明"></a>选项说明</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div></pre></td><td class="code"><pre><div class="line">BandWidthDataDir</div><div class="line">格式： BandWidthDataDir</div><div class="line">默认： &quot;/tmp/apachebw&quot;</div><div class="line">上下文： server config</div><div class="line">设置 mod_bandwidth 保存运行时数据的目录。需要在该目录下创建 ./master</div><div class="line">和 ./link 两个子目录，并设置为权限为 777。</div><div class="line">注意：有些系统会定时清理 /tmp 目录，所以在这些系统上最好把</div><div class="line">BandWidthDataDir 设置到其他地方。</div><div class="line">..............................</div><div class="line">BandWidthModule</div><div class="line">格式： BandWidthModule</div><div class="line">默认： Off</div><div class="line">上下文： per server config</div><div class="line">允许或者禁止模块。</div><div class="line">..............................</div><div class="line">BandWidthPulse</div><div class="line">格式： BandWidthPulse</div><div class="line">默认： 1000</div><div class="line">上下文： per server config</div><div class="line">改变计算带宽的时间间隔，默认为1000毫秒（1秒）。使用更低的间隔可以获得</div><div class="line">更精确的带宽控制，但消耗更多的CPU时间，反之亦然。</div><div class="line">注意：这个选项的详细说明请参考 mod_bandwidth 的文档。</div><div class="line">..............................</div><div class="line">BandWidth</div><div class="line">格式： BandWidth</div><div class="line">默认： 无</div><div class="line">上下文： per directory, .htaccess</div><div class="line">限制这个目录下文件下载的速率。</div><div class="line">domain 指定来自哪个域的连接受到这个设置的影响。</div><div class="line">ip 指定来自哪个ip地址（或者ip段）的连接受到影响。</div><div class="line">all 所有连接都受到影响。</div><div class="line">示例：</div><div class="line"># 来自 dualface.com 的连接不限制下载速度</div><div class="line">BandWidth dualface.com 0</div><div class="line"># 来自 192.168.0.0/16（或者192.168.0） 网段的连接不限制下载速度</div><div class="line">BandWidth 192.168.0.0/16 0</div><div class="line"># 其他连接限制下载速度为每秒1024字节</div><div class="line">BandWidth all 1024</div><div class="line"># 越前面的设置优先权越高</div><div class="line">..............................</div><div class="line">LargeFileLimit</div><div class="line">格式： LargeFileLimit</div><div class="line">默认： 无</div><div class="line">上下文： per directory, .htaccess</div><div class="line">对于超过指定大小的文件，下载时使用的速率。如果速率设置0即不限制速度，</div><div class="line">但下载速度仍然要受到BandWidth设置的影响。如果设置成-1，则完全不受影响。</div><div class="line">通过设置不同的文件大小和速率，可以设置不同大小范围内文件的下载速度。</div><div class="line">示例：</div><div class="line"># 文件尺寸大于等于200千字节的文件，下载速率为每秒3072字节</div><div class="line">LargeFileLimit 200 3072</div><div class="line">LargeFileLimit 1024 2048</div><div class="line">..............................</div><div class="line">MaxConnection</div><div class="line">格式： MaxConnection</div><div class="line">默认： 0 （不限制）</div><div class="line">上下文： per directory, .htaccess</div><div class="line">当超过指定连接数时，拒绝新的连接。</div><div class="line">..............................</div><div class="line">MinBandWidth</div><div class="line">格式： MinBandWidth</div><div class="line">默认： all 256</div><div class="line">上下文： per directory, .htaccess</div><div class="line">设置最小带宽，默认为每秒256字节。根据BandWidth和LargeFileLimit设置的速</div><div class="line">率。mod_bandwidth会计算允许的连接数。例如BandWidth为4096字节，而</div><div class="line">MinBandWidth为1024字节，则最大并发连接数为4。</div><div class="line">注意：这个选项的详细说明请参考 mod_bandwidth 的文档。</div></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
   </section>
 
   
@@ -2159,11 +2163,11 @@
       <section class="site-overview sidebar-panel sidebar-panel-active">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
-               src="/images/wolf.jpeg"
+               src="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg"
                alt="Geekwolf" />
           <p class="site-author-name" itemprop="name">Geekwolf</p>
            
-              <p class="site-description motion-element" itemprop="description">DevOps | Docker | K8S | MySQL | 运维</p>
+              <p class="site-description motion-element" itemprop="description">DevOps | Docker | Python | k8s</p>
           
         </div>
         <nav class="site-state motion-element">
@@ -2171,7 +2175,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">83</span>
+                <span class="site-state-item-count">82</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -2193,7 +2197,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">60</span>
+                <span class="site-state-item-count">61</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -2242,6 +2246,36 @@
         
 
         
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-block">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://blog.simlinux.com" title="旧版博客" target="_blank">旧版博客</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://nolinux.blog.51cto.com" title="nolinux" target="_blank">nolinux</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://xiaorui.cc" title="峰云就她了" target="_blank">峰云就她了</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://note.gitcloud.cc/blog/bluetom520" title="懒懒的天空" target="_blank">懒懒的天空</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.roddypy.com" title="普拉多VX" target="_blank">普拉多VX</a>
+                </li>
+              
+            </ul>
+          </div>
         
 
         

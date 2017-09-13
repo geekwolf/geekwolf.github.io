@@ -107,15 +107,15 @@
 <meta property="og:site_name" content="Geekwolf&#39;s Blog">
 <meta property="og:description" content="目的 针对特定进程数量做监控报警  思路 通过Zabbix LLD自动发现：每台机器都跑了什么服务、每个服务应该跑多少进程 Zabbix Agent 30s将当前机器跑了哪些服务、每个服务进程数上报Zabbix Server 开发给定配置文件proccessInfo.txt:  IP 服务名称 进程数量,此配置作为监控依据 proccessInfo.txt配置文件需在每次变更配置时，自动生成最新">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://www.simlinux.com/wp-content/uploads/2017/04/rules.jpg">
-<meta property="og:image" content="http://www.simlinux.com/wp-content/uploads/2017/04/roles-items.jpg">
-<meta property="og:image" content="http://www.simlinux.com/wp-content/uploads/2017/04/roles-triggers.jpg">
-<meta property="og:image" content="http://www.simlinux.com/wp-content/uploads/2017/04/process-stat.jpg">
-<meta property="og:updated_time" content="2017-09-12T05:06:38.386Z">
+<meta property="og:image" content="http://blog.simlinux.com/wp-content/uploads/2017/04/rules.jpg">
+<meta property="og:image" content="http://blog.simlinux.com/wp-content/uploads/2017/04/roles-items.jpg">
+<meta property="og:image" content="http://blog.simlinux.com/wp-content/uploads/2017/04/roles-triggers.jpg">
+<meta property="og:image" content="http://blog.simlinux.com/wp-content/uploads/2017/04/process-stat.jpg">
+<meta property="og:updated_time" content="2017-09-13T02:23:36.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用Zabbix LLD实现进程数监控">
 <meta name="twitter:description" content="目的 针对特定进程数量做监控报警  思路 通过Zabbix LLD自动发现：每台机器都跑了什么服务、每个服务应该跑多少进程 Zabbix Agent 30s将当前机器跑了哪些服务、每个服务进程数上报Zabbix Server 开发给定配置文件proccessInfo.txt:  IP 服务名称 进程数量,此配置作为监控依据 proccessInfo.txt配置文件需在每次变更配置时，自动生成最新">
-<meta name="twitter:image" content="http://www.simlinux.com/wp-content/uploads/2017/04/rules.jpg">
+<meta name="twitter:image" content="http://blog.simlinux.com/wp-content/uploads/2017/04/rules.jpg">
 
 
 
@@ -247,6 +247,16 @@
         </li>
       
         
+        <li class="menu-item menu-item-tips">
+          <a href="/tips/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-gittip"></i> <br />
+            
+            tips
+          </a>
+        </li>
+      
+        
         <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
             
@@ -348,7 +358,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Geekwolf">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/wolf.jpeg">
+      <meta itemprop="image" content="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -483,10 +493,10 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div></pre></td><td class="code"><pre><div class="line"># -*- coding: utf-8 -*-</div><div class="line"></div><div class="line">import json</div><div class="line">import commands</div><div class="line">import subprocess</div><div class="line">import re</div><div class="line">import sys</div><div class="line"></div><div class="line">class services_monitor:</div><div class="line"></div><div class="line">        def __init__(self):</div><div class="line"></div><div class="line">            self.zabbix_server_ip = &apos;192.168.1.1&apos;</div><div class="line">            self.info_path = &apos;/home/proccessInfo.txt&apos;</div><div class="line">            self.data_path = &apos;/tmp/.process_number_monitor.log&apos;</div><div class="line"></div><div class="line">        def ip(self):</div><div class="line">            ipstr = &apos;([0-9]&#123;1,3&#125;\.)&#123;3&#125;[0-9]&#123;1,3&#125;&apos;</div><div class="line">            ipconfig_process = subprocess.Popen(&quot;ifconfig&quot;, stdout=subprocess.PIPE)</div><div class="line">            output = ipconfig_process.stdout.read()</div><div class="line">            ip_pattern = re.compile(&apos;(inet addr:%s)&apos; % ipstr)</div><div class="line">            pattern = re.compile(ipstr)</div><div class="line">            iplist = []</div><div class="line">            for ipaddr in re.finditer(ip_pattern, str(output)):</div><div class="line">                ip = pattern.search(ipaddr.group())</div><div class="line">                if ip.group() != &quot;127.0.0.1&quot;:</div><div class="line">                    iplist.append(ip.group())</div><div class="line">            ip = &apos;|&apos;.join(iplist)</div><div class="line">            return ip</div><div class="line"></div><div class="line">        def check_proc(self,proc_name):</div><div class="line"></div><div class="line">            cmd = &apos;ps -ef |grep  %s|grep -v grep|wc -l&apos; % proc_name</div><div class="line">            proccess_info = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE)</div><div class="line"></div><div class="line">            # list=proccess_info.stdout.read().strip().split(&apos;\n&apos;)</div><div class="line">            procss_num = proccess_info.communicate()[0]</div><div class="line">            return procss_num</div><div class="line"></div><div class="line">        def get_info(self,ip):</div><div class="line"></div><div class="line">            service = []</div><div class="line">            status, result = commands.getstatusoutput(&quot;grep -E &apos;%s&apos; %s&quot; % (str(ip),self.info_path))</div><div class="line">            result = result.split(&apos;\n&apos;)</div><div class="line">            for i in result:</div><div class="line">                i = list(i.split(&apos; &apos;))</div><div class="line">                service.append(&#123;&quot;&#123;#SERVICENAME&#125;&quot;: i[0].strip() + &quot;-&quot; + i[1].strip(), &quot;&#123;#TRIGGER_VALUE&#125;&quot;:int(i[2].strip())&#125;)</div><div class="line">            data = json.dumps(&#123;&apos;data&apos;: service&#125;, sort_keys=True, indent=4)</div><div class="line">            return data</div><div class="line"></div><div class="line">        def collect_data(self,data):</div><div class="line">            data = json.loads(data)[&quot;data&quot;]</div><div class="line">            commands.getstatusoutput(&apos;cat /dev/null &amp;gt;%s&apos; % self.data_path)</div><div class="line">            f = open(self.data_path,&apos;a&apos;)</div><div class="line">            for i  in data:</div><div class="line">                name = i[&apos;&#123;#SERVICENAME&#125;&apos;].split(&apos;-&apos;)</div><div class="line">                ip = name[0]</div><div class="line">                proc_name =  name[1]</div><div class="line">                f.write(&apos;%s\tproc_num[%s]\t%s&apos; %(ip,i[&apos;&#123;#SERVICENAME&#125;&apos;],self.check_proc(proc_name)))</div><div class="line">            f.close()</div><div class="line"></div><div class="line">        def send_data(self,data_path):</div><div class="line">            status,output = commands.getstatusoutput(&apos;/bin/bash -c &quot;zabbix_sender -z  %s  -i  %s &amp;amp;&amp;gt;/dev/null&quot;&apos; % (self.zabbix_server_ip,self.data_path))</div><div class="line">            print status,output</div><div class="line"></div><div class="line">if __name__ == &apos;__main__&apos;:</div><div class="line"></div><div class="line">    services = services_monitor()</div><div class="line">    ip = services.ip()</div><div class="line">    data = services.get_info(ip)</div><div class="line">    try:</div><div class="line">        argv = sys.argv[1]</div><div class="line">        if argv == &quot;services_list&quot;:</div><div class="line">            print data</div><div class="line">        else:</div><div class="line">            services.collect_data(data)</div><div class="line">            services.send_data(services.data_path)</div><div class="line">    except IndexError:</div><div class="line">        print data</div></pre></td></tr></table></figure>
 <h4 id="Agent添加Key"><a href="#Agent添加Key" class="headerlink" title="Agent添加Key"></a>Agent添加Key</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">vim /usr/local/etc/zabbix_agentd.conf</div><div class="line">UserParameter=dzpt.service.process.discovery,/usr/bin/python /home/opt/scripts/services.py services_list</div><div class="line">UserParameter=dzpt.service.process.exec[*],/usr/bin/python /home/opt/scripts/services.py  $1</div></pre></td></tr></table></figure>
 <h4 id="创建自动发现规则"><a href="#创建自动发现规则" class="headerlink" title="创建自动发现规则"></a>创建自动发现规则</h4><p>(监控项Trapper方式、报警触发器)</p>
-<p><img src="http://www.simlinux.com/wp-content/uploads/2017/04/rules.jpg" alt=""></p>
-<p><img src="http://www.simlinux.com/wp-content/uploads/2017/04/roles-items.jpg" alt=""></p>
-<p><img src="http://www.simlinux.com/wp-content/uploads/2017/04/roles-triggers.jpg" alt=""></p>
-<h4 id="添加当前进程数监控项"><a href="#添加当前进程数监控项" class="headerlink" title="添加当前进程数监控项"></a>添加当前进程数监控项</h4><p><img src="http://www.simlinux.com/wp-content/uploads/2017/04/process-stat.jpg" alt=""></p>
+<p><img src="http://blog.simlinux.com/wp-content/uploads/2017/04/rules.jpg" alt=""></p>
+<p><img src="http://blog.simlinux.com/wp-content/uploads/2017/04/roles-items.jpg" alt=""></p>
+<p><img src="http://blog.simlinux.com/wp-content/uploads/2017/04/roles-triggers.jpg" alt=""></p>
+<h4 id="添加当前进程数监控项"><a href="#添加当前进程数监控项" class="headerlink" title="添加当前进程数监控项"></a>添加当前进程数监控项</h4><p><img src="http://blog.simlinux.com/wp-content/uploads/2017/04/process-stat.jpg" alt=""></p>
 <h4 id="定义报警内容"><a href="#定义报警内容" class="headerlink" title="定义报警内容"></a>定义报警内容</h4><p>Action中定义(此处略)</p>
 <h4 id="将定义好的模板链接到主机或者其他模板即可"><a href="#将定义好的模板链接到主机或者其他模板即可" class="headerlink" title="将定义好的模板链接到主机或者其他模板即可"></a>将定义好的模板链接到主机或者其他模板即可</h4><h4 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h4><p>使用Zabbix LLD之后，可以设定多久更新一次监控项及监控阀值；当配置文件变更时，无需人为调整阀值和监控项</p>
 
@@ -570,8 +580,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/08/04/docker-harbor.html" rel="prev" title="企业级Docker私有仓库之Harbor">
-                企业级Docker私有仓库之Harbor <i class="fa fa-chevron-right"></i>
+              <a href="/2017/08/04/docker-harbor-http.html" rel="prev" title="企业级Docker私有仓库之Harbor部署(http)">
+                企业级Docker私有仓库之Harbor部署(http) <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -639,11 +649,11 @@
       <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
-               src="/images/wolf.jpeg"
+               src="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg"
                alt="Geekwolf" />
           <p class="site-author-name" itemprop="name">Geekwolf</p>
            
-              <p class="site-description motion-element" itemprop="description">DevOps | Docker | K8S | MySQL | 运维</p>
+              <p class="site-description motion-element" itemprop="description">DevOps | Docker | Python | k8s</p>
           
         </div>
         <nav class="site-state motion-element">
@@ -651,7 +661,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">83</span>
+                <span class="site-state-item-count">82</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -673,7 +683,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">60</span>
+                <span class="site-state-item-count">61</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -722,6 +732,36 @@
         
 
         
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-block">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://blog.simlinux.com" title="旧版博客" target="_blank">旧版博客</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://nolinux.blog.51cto.com" title="nolinux" target="_blank">nolinux</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://xiaorui.cc" title="峰云就她了" target="_blank">峰云就她了</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://note.gitcloud.cc/blog/bluetom520" title="懒懒的天空" target="_blank">懒懒的天空</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.roddypy.com" title="普拉多VX" target="_blank">普拉多VX</a>
+                </li>
+              
+            </ul>
+          </div>
         
 
         

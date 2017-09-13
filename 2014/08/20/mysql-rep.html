@@ -107,17 +107,17 @@
 <meta property="og:site_name" content="Geekwolf&#39;s Blog">
 <meta property="og:description" content="一、Mysql复制基本原理  Mysql主库在事务提交时会将数据变更作为Events记录在Binlog中，Mysql主库的sync_binlog参数(默认值为0可参考http://dev.mysql.com/doc/refman/5.6/en/replication-options-binary-log.html#sysvar_sync_binlog)控制Binlog日志刷新到磁盘 主库推送Bin">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://www.simlinux.com/wp-content/uploads/2014/08/fzyl.png">
-<meta property="og:image" content="http://www.simlinux.com/wp-content/uploads/2014/08/ybfz.png">
-<meta property="og:image" content="http://www.simlinux.com/wp-content/uploads/2014/08/btb.png">
-<meta property="og:image" content="http://www.simlinux.com/wp-content/uploads/2014/08/semi.png">
-<meta property="og:image" content="http://www.simlinux.com/wp-content/uploads/2014/08/semion.png">
-<meta property="og:image" content="http://www.simlinux.com/wp-content/uploads/2014/08/fzjg.png">
-<meta property="og:updated_time" content="2017-09-12T09:05:40.277Z">
+<meta property="og:image" content="http://blog.simlinux.com/wp-content/uploads/2014/08/fzyl.png">
+<meta property="og:image" content="http://blog.simlinux.com/wp-content/uploads/2014/08/ybfz.png">
+<meta property="og:image" content="http://blog.simlinux.com/wp-content/uploads/2014/08/btb.png">
+<meta property="og:image" content="http://blog.simlinux.com/wp-content/uploads/2014/08/semi.png">
+<meta property="og:image" content="http://blog.simlinux.com/wp-content/uploads/2014/08/semion.png">
+<meta property="og:image" content="http://blog.simlinux.com/wp-content/uploads/2014/08/fzjg.png">
+<meta property="og:updated_time" content="2017-09-13T02:23:36.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MySQL复制原理与配置">
 <meta name="twitter:description" content="一、Mysql复制基本原理  Mysql主库在事务提交时会将数据变更作为Events记录在Binlog中，Mysql主库的sync_binlog参数(默认值为0可参考http://dev.mysql.com/doc/refman/5.6/en/replication-options-binary-log.html#sysvar_sync_binlog)控制Binlog日志刷新到磁盘 主库推送Bin">
-<meta name="twitter:image" content="http://www.simlinux.com/wp-content/uploads/2014/08/fzyl.png">
+<meta name="twitter:image" content="http://blog.simlinux.com/wp-content/uploads/2014/08/fzyl.png">
 
 
 
@@ -249,6 +249,16 @@
         </li>
       
         
+        <li class="menu-item menu-item-tips">
+          <a href="/tips/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-gittip"></i> <br />
+            
+            tips
+          </a>
+        </li>
+      
+        
         <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
             
@@ -350,7 +360,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Geekwolf">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/wolf.jpeg">
+      <meta itemprop="image" content="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -463,7 +473,7 @@
       
 
       
-        <h5 id="一、Mysql复制基本原理"><a href="#一、Mysql复制基本原理" class="headerlink" title="一、Mysql复制基本原理"></a>一、Mysql复制基本原理</h5><p><a href="http://www.simlinux.com/wp-content/uploads/2014/08/fzyl.png"><img src="http://www.simlinux.com/wp-content/uploads/2014/08/fzyl.png" alt="fzyl"></a></p>
+        <h5 id="一、Mysql复制基本原理"><a href="#一、Mysql复制基本原理" class="headerlink" title="一、Mysql复制基本原理"></a>一、Mysql复制基本原理</h5><p><a href="http://blog.simlinux.com/wp-content/uploads/2014/08/fzyl.png" target="_blank" rel="external"><img src="http://blog.simlinux.com/wp-content/uploads/2014/08/fzyl.png" alt="fzyl"></a></p>
 <ol>
 <li>Mysql主库在事务提交时会将数据变更作为Events记录在Binlog中，Mysql主库的sync_binlog参数(默认值为0<br>可参考<a href="http://dev.mysql.com/doc/refman/5.6/en/replication-options-binary-log.html#sysvar_sync_binlog" target="_blank" rel="external">http://dev.mysql.com/doc/refman/5.6/en/replication-options-binary-log.html#sysvar_sync_binlog</a>)控制Binlog日志刷新到磁盘</li>
 <li>主库推送Binlog中的事件到从库的Relay Log，之后从库根据Relay Log重做DML操作</li>
@@ -477,13 +487,13 @@
 <p><strong>基于Row复制:</strong><br><strong>优点：</strong><br>只记录每一行数据变化的细节，不需要记录上下文信息<br>不会出现某些情况下auto_increment columns,timestamps,.triger、function、procedure无法正常复制的问题<br>新的row格式已经有了优化， CREATE、DROP、ALTER操作只记录原始SQL，而不会记录每行数据的变化到Binlog<br>适用于主从复制要求强一致性的环境</p>
 <p><strong>缺点：</strong><br>update、delete、load data local infile等频繁更新或者删除大量行时会产生大量的binlog日志，会有一定的I/O压力，主从同步产生不必要的流量<br>如：UPDATE products set status=‘sold’ where product_id BETWEEN 30000 and 50000;<br>无法很好的进行数据库审计</p>
 <h6 id="Binlog基本配置"><a href="#Binlog基本配置" class="headerlink" title="Binlog基本配置"></a>Binlog基本配置</h6><p>修改配置文件my.cnf<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">binlog_format=row                               binlog日志格式 </div><div class="line">max_binlog_size = 512M                          每个日志文件大小</div><div class="line">binlog_cache_size=1M                            二进制日志缓冲大小,uncommitted事务产生的日志写在cache，committed的持久化到磁盘binlog里面，此参数不是全局的，是针对session的</div><div class="line">expire_logs_days = 3                            binlog有效期</div><div class="line">log-bin=/datas/mysql/logs/mysql-bin             binlog日志目录</div><div class="line">relay-log=/datas/mysql/logs/relay-bin           从库中继日志目录</div><div class="line">#slave_skip_errors = all</div></pre></td></tr></table></figure></p>
-<h5 id="三、Mysql常见两种复制方式"><a href="#三、Mysql常见两种复制方式" class="headerlink" title="三、Mysql常见两种复制方式"></a>三、Mysql常见两种复制方式</h5><h6 id="异步复制（Asynchronous-Replication）"><a href="#异步复制（Asynchronous-Replication）" class="headerlink" title="异步复制（Asynchronous Replication）"></a>异步复制（Asynchronous Replication）</h6><p><a href="http://www.simlinux.com/wp-content/uploads/2014/08/ybfz.png"><img src="http://www.simlinux.com/wp-content/uploads/2014/08/ybfz.png" alt="ybfz"></a><br>主库执行完Commit后，在主库写入Binlog日志后即可成功返回客户端，无需等等Binlog日志传送给从库</p>
+<h5 id="三、Mysql常见两种复制方式"><a href="#三、Mysql常见两种复制方式" class="headerlink" title="三、Mysql常见两种复制方式"></a>三、Mysql常见两种复制方式</h5><h6 id="异步复制（Asynchronous-Replication）"><a href="#异步复制（Asynchronous-Replication）" class="headerlink" title="异步复制（Asynchronous Replication）"></a>异步复制（Asynchronous Replication）</h6><p><a href="http://blog.simlinux.com/wp-content/uploads/2014/08/ybfz.png" target="_blank" rel="external"><img src="http://blog.simlinux.com/wp-content/uploads/2014/08/ybfz.png" alt="ybfz"></a><br>主库执行完Commit后，在主库写入Binlog日志后即可成功返回客户端，无需等等Binlog日志传送给从库</p>
 <p><strong>异步复制主从配置：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">主 : 192.168.10.216</div><div class="line">从 : 192.168.10.217</div></pre></td></tr></table></figure></p>
 <p><strong>步骤：</strong>主从版本一致—&gt;主库授权复制帐号—&gt;确保开启binlog及主从server_id唯一—&gt;主库只读，记录主binlog名称及偏移量—&gt;拷贝主数据文件到从相应位置—&gt;从库change master to —&gt;slave start—&gt;检查两个yes</p>
 <p><strong>1.主MySQL配置</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">mysql&gt;GRANT REPLICATION SLAVE ON *.* TO &apos;rep&apos;@&apos;192.168.10.217&apos;  IDENTIFIED BY  &apos;geekwolf&apos;;</div><div class="line">mysql&gt;FLUSH TABLES WITH READ LOCK;</div><div class="line">mysql&gt; SHOW MASTER STATUS;</div><div class="line">+------------------+----------+--------------+------------------+-------------------+</div><div class="line">| File | Position | Binlog_Do_DB | Binlog_Ignore_DB | Executed_Gtid_Set |</div><div class="line">+------------------+----------+--------------+------------------+-------------------+</div><div class="line">| mysql-bin.000003 | 120 | | | |</div><div class="line">+------------------+----------+--------------+------------------+-------------------+</div><div class="line">1 row in set (0.00 sec)</div><div class="line">将主库数据文件拷贝到从库对应目录</div><div class="line">mysql&gt;UNLOCK TABLES;</div></pre></td></tr></table></figure></p>
 <p><strong>2.从MySQL配置</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div></pre></td><td class="code"><pre><div class="line">mysql&gt;CHANGE MASTER TO MASTER_HOST=&apos;192.168.10.216&apos;,MASTER_USER=&apos;rep&apos;,MASTER_PASSWORD=&apos;geekwolf&apos;,MASTER_LOG_FILE=&apos;mysql-bin.000003&apos;,MASTER_LOG_POS=120;</div><div class="line">mysql&gt;START  SLAVE;</div><div class="line">mysql&gt; SHOW SLAVE STATUS \G;</div><div class="line">*************************** 1\. row ***************************</div><div class="line">   Slave_IO_State: Waiting for master to send event</div><div class="line">  Master_Host: 192.168.10.216</div><div class="line">  Master_User: rep</div><div class="line">  Master_Port: 3306</div><div class="line">Connect_Retry: 1</div><div class="line">  Master_Log_File: mysql-bin.000003</div><div class="line">  Read_Master_Log_Pos: 120</div><div class="line">   Relay_Log_File: relay-bin.000002</div><div class="line">Relay_Log_Pos: 283</div><div class="line">Relay_Master_Log_File: mysql-bin.000003</div><div class="line"> Slave_IO_Running: Yes</div><div class="line">Slave_SQL_Running: Yes</div><div class="line">  Replicate_Do_DB:</div><div class="line">  Replicate_Ignore_DB:</div><div class="line">   Replicate_Do_Table:</div><div class="line">   Replicate_Ignore_Table:</div><div class="line">  Replicate_Wild_Do_Table:</div><div class="line">  Replicate_Wild_Ignore_Table:</div><div class="line">   Last_Errno: 0</div><div class="line">   Last_Error:</div><div class="line"> Skip_Counter: 0</div><div class="line">  Exec_Master_Log_Pos: 120</div><div class="line">  Relay_Log_Space: 450</div><div class="line">  Until_Condition: None</div><div class="line">   Until_Log_File:</div><div class="line">Until_Log_Pos: 0</div><div class="line">   Master_SSL_Allowed: No</div><div class="line">   Master_SSL_CA_File:</div><div class="line">   Master_SSL_CA_Path:</div><div class="line">  Master_SSL_Cert:</div><div class="line">Master_SSL_Cipher:</div><div class="line">   Master_SSL_Key:</div><div class="line">Seconds_Behind_Master: 0</div><div class="line">Master_SSL_Verify_Server_Cert: No</div><div class="line">Last_IO_Errno: 0</div><div class="line">Last_IO_Error:</div><div class="line">   Last_SQL_Errno: 0</div><div class="line">   Last_SQL_Error:</div><div class="line">  Replicate_Ignore_Server_Ids:</div><div class="line"> Master_Server_Id: 216</div><div class="line">  Master_UUID: bd2a4c6b-d954-11e3-8c0a-0200c0a80ad8</div><div class="line"> Master_Info_File: /usr/local/mysql/data/master.info</div><div class="line">SQL_Delay: 0</div><div class="line">  SQL_Remaining_Delay: NULL</div><div class="line">  Slave_SQL_Running_State: Slave has read all relay log; waiting for the slave I/O thread to update it</div><div class="line">   Master_Retry_Count: 86400</div><div class="line">  Master_Bind:</div><div class="line">  Last_IO_Error_Timestamp:</div><div class="line"> Last_SQL_Error_Timestamp:</div><div class="line">   Master_SSL_Crl:</div><div class="line">   Master_SSL_Crlpath:</div><div class="line">   Retrieved_Gtid_Set:</div><div class="line">Executed_Gtid_Set:</div><div class="line">Auto_Position: 0</div><div class="line">1 row in set (0.00 sec)</div></pre></td></tr></table></figure></p>
 <p><strong>注:</strong> 异步复制中只要binlog不丢失即可保证数据的完整性；当主宕机，从库未收到binlog时，就会丢失数据（主磁盘正常时可以提取差异binlog在从执行），此时就需要用到半同步复制方式</p>
-<h6 id="半同步复制-Semi-synchroous-Replicaion"><a href="#半同步复制-Semi-synchroous-Replicaion" class="headerlink" title="半同步复制(Semi-synchroous Replicaion)"></a>半同步复制(Semi-synchroous Replicaion)</h6><p><a href="http://www.simlinux.com/wp-content/uploads/2014/08/btb.png"><img src="http://www.simlinux.com/wp-content/uploads/2014/08/btb.png" alt="btb"></a></p>
+<h6 id="半同步复制-Semi-synchroous-Replicaion"><a href="#半同步复制-Semi-synchroous-Replicaion" class="headerlink" title="半同步复制(Semi-synchroous Replicaion)"></a>半同步复制(Semi-synchroous Replicaion)</h6><p><a href="http://blog.simlinux.com/wp-content/uploads/2014/08/btb.png" target="_blank" rel="external"><img src="http://blog.simlinux.com/wp-content/uploads/2014/08/btb.png" alt="btb"></a></p>
 <p>  主库每次事务成功提交时并不及时反馈给前端，而是等待其中一个从库也接收到Binlog事务并成功写入Relay Log之后，才返回Commit操作成功给客户端；如此半同步就保证了事务成功提交后，至少有两份日志记录，一份在主库Binlog上，另一份在从库的Relay Log上，从而进一步保证数据完整性；半同步复制很大程度取决于主从网络RTT（往返时延）；以插件形式存在，</p>
 <p><strong>半同步复制主从配置：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">主 : 192.168.10.216</div><div class="line">从 : 192.168.10.217</div></pre></td></tr></table></figure></p>
 <p><strong>1.判断是否支持动态增加插件</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">mysql&gt; select @@have_dynamic_loading;</div><div class="line">+------------------------+</div><div class="line">| @@have_dynamic_loading |</div><div class="line">+------------------------+</div><div class="line">| YES |</div><div class="line">+------------------------+</div></pre></td></tr></table></figure></p>
@@ -491,12 +501,12 @@
 <p><strong>3.分别在主从打开semi-sync(默认关闭)</strong><br><strong>主：</strong><br>修改my.cnf<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">rpl_semi_sync_master_enabled=1</div><div class="line">rpl_semi_sync_master_timeout=30000(毫秒)   从库宕机或网络故障导致binlog没有及时传送到从库，此时主库上的事务需要等待的时间；此时间内没恢复，MySQL自动调整复制为异步复制模式</div><div class="line">mysql&gt; set global rpl_semi_sync_master_enabled=1; </div><div class="line">Query OK, 0 rows affected (0.00 sec)</div><div class="line">mysql&gt; set global rpl_semi_sync_master_timeout=30000;</div><div class="line">Query OK, 0 rows affected (0.00 sec)</div></pre></td></tr></table></figure></p>
 <p><strong>从:</strong><br>修改my.cnf<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">rpl_semi_sync_master_enabled=1</div><div class="line">mysql&gt; set global rpl_semi_sync_master_enabled=1; </div><div class="line">Query OK, 0 rows affected (0.00 sec)</div><div class="line">由于之前配置的复制是异步的，所以需要重启下从库I/O线程(或者直接重启主从stop slave;start slave;)：</div><div class="line"></div><div class="line">mysql&gt; STOP SLAVE  IO_THREAD;</div><div class="line">Query OK, 0 rows affected (0.04 sec)</div><div class="line">mysql&gt; START SLAVE  IO_THREAD;</div><div class="line">Query OK, 0 rows affected (0.00 sec)</div></pre></td></tr></table></figure></p>
 <p><strong>4.验证</strong><br><strong>主：</strong><br><code>mysql&gt; show status like &#39;%semi_sync%&#39;;</code></p>
-<p><a href="http://www.simlinux.com/wp-content/uploads/2014/08/semi.png"><img src="http://www.simlinux.com/wp-content/uploads/2014/08/semi.png" alt="semi"></a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">Rpl_semi_sync_master_clients: 值为2，表示有2个semi-sync的备库</div><div class="line">Rpl_semi_sync_master_net_avg_wait_time: 表示事务提交后，等待备库响应的平均时间</div><div class="line">Rpl_semi_sync_master_no_times: 表示有几次从半同步切换到异步复制</div><div class="line">Rpl_semi_sync_master_status : 值为ON，表示半同步复制处于打开状态</div><div class="line">Rpl_semi_sync_master_tx_avg_wait_time ：开启Semi-sync，事务返回需要等待的平均时间</div><div class="line">Rpl_semi_sync_master_wait_sessions：当前有几个线程在等备库响应</div><div class="line">Rpl_semi_sync_master_yes_tx : 值为1054，表示主库有1054个事务是通过半同步复制到从库</div><div class="line">Rpl_semi_sync_master_no_tx  : 值为0，表示当前有0个事务不是通过半同步模式同步到从库的</div></pre></td></tr></table></figure></p>
+<p><a href="http://blog.simlinux.com/wp-content/uploads/2014/08/semi.png" target="_blank" rel="external"><img src="http://blog.simlinux.com/wp-content/uploads/2014/08/semi.png" alt="semi"></a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">Rpl_semi_sync_master_clients: 值为2，表示有2个semi-sync的备库</div><div class="line">Rpl_semi_sync_master_net_avg_wait_time: 表示事务提交后，等待备库响应的平均时间</div><div class="line">Rpl_semi_sync_master_no_times: 表示有几次从半同步切换到异步复制</div><div class="line">Rpl_semi_sync_master_status : 值为ON，表示半同步复制处于打开状态</div><div class="line">Rpl_semi_sync_master_tx_avg_wait_time ：开启Semi-sync，事务返回需要等待的平均时间</div><div class="line">Rpl_semi_sync_master_wait_sessions：当前有几个线程在等备库响应</div><div class="line">Rpl_semi_sync_master_yes_tx : 值为1054，表示主库有1054个事务是通过半同步复制到从库</div><div class="line">Rpl_semi_sync_master_no_tx  : 值为0，表示当前有0个事务不是通过半同步模式同步到从库的</div></pre></td></tr></table></figure></p>
 <p><strong>从：</strong></p>
 <p>检查半同步是否开启<br><code>show status like &#39;%semi_sync%&#39;;</code></p>
-<p><a href="http://www.simlinux.com/wp-content/uploads/2014/08/semion.png"><img src="http://www.simlinux.com/wp-content/uploads/2014/08/semion.png" alt="semion"></a><br>检查复制是否正常<br><code>show slave status \G;</code></p>
+<p><a href="http://blog.simlinux.com/wp-content/uploads/2014/08/semion.png" target="_blank" rel="external"><img src="http://blog.simlinux.com/wp-content/uploads/2014/08/semion.png" alt="semion"></a><br>检查复制是否正常<br><code>show slave status \G;</code></p>
 <h5 id="四、提升主从复制性能的方法"><a href="#四、提升主从复制性能的方法" class="headerlink" title="四、提升主从复制性能的方法"></a>四、提升主从复制性能的方法</h5><p><strong>方案1：</strong>多级主从架构，将不同库分开复制到不同从上</p>
-<p><a href="http://www.simlinux.com/wp-content/uploads/2014/08/fzjg.png"><img src="http://www.simlinux.com/wp-content/uploads/2014/08/fzjg.png" alt="fzjg"></a></p>
+<p><a href="http://blog.simlinux.com/wp-content/uploads/2014/08/fzjg.png" target="_blank" rel="external"><img src="http://blog.simlinux.com/wp-content/uploads/2014/08/fzjg.png" alt="fzjg"></a></p>
 <p><strong>注意事项：</strong><br>M2上打开log-slave-updates配置，保证M1传送的binlog能够被记录在M2的RelayLog和Binlog；M2可以选择BLACKHOLE引擎降低M2的I/O；并且Binlog日志的过滤可以在M2去做<br>BLACKHOLE引擎的使用测试参考:   <a href="http://jroller.com/dschneller/entry/mysql_replication_using_blackhole_engine" target="_blank" rel="external">http://jroller.com/dschneller/entry/mysql_replication_using_blackhole_engine</a><br><a href="http://blog.csdn.net/kylinbl/article/details/8903336" target="_blank" rel="external">http://blog.csdn.net/kylinbl/article/details/8903336</a></p>
 <p><strong>方案2：多线程复制（MySQL5.6+）</strong><br>多线程复制是基于库的，允许从库并行更新，若单库压力大，此处的多线程复制没有意义；从库设置slave_parallel_workers=4表示MySQL从库在复制时启动4个SQL线程<br>MySQL5.6一下版本可以尝试Transfer补丁<a href="http://dinglin.iteye.com/blog/1888640" target="_blank" rel="external">http://dinglin.iteye.com/blog/1888640</a></p>
 <h5 id="五、Mysql复制遇到的一些问题"><a href="#五、Mysql复制遇到的一些问题" class="headerlink" title="五、Mysql复制遇到的一些问题"></a>五、Mysql复制遇到的一些问题</h5><p><strong>1. 指定特定的数据库或者表</strong></p>
@@ -660,11 +670,11 @@
       <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
-               src="/images/wolf.jpeg"
+               src="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg"
                alt="Geekwolf" />
           <p class="site-author-name" itemprop="name">Geekwolf</p>
            
-              <p class="site-description motion-element" itemprop="description">DevOps | Docker | K8S | MySQL | 运维</p>
+              <p class="site-description motion-element" itemprop="description">DevOps | Docker | Python | k8s</p>
           
         </div>
         <nav class="site-state motion-element">
@@ -672,7 +682,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">83</span>
+                <span class="site-state-item-count">82</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -694,7 +704,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">60</span>
+                <span class="site-state-item-count">61</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -743,6 +753,36 @@
         
 
         
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-block">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://blog.simlinux.com" title="旧版博客" target="_blank">旧版博客</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://nolinux.blog.51cto.com" title="nolinux" target="_blank">nolinux</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://xiaorui.cc" title="峰云就她了" target="_blank">峰云就她了</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://note.gitcloud.cc/blog/bluetom520" title="懒懒的天空" target="_blank">懒懒的天空</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.roddypy.com" title="普拉多VX" target="_blank">普拉多VX</a>
+                </li>
+              
+            </ul>
+          </div>
         
 
         

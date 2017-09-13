@@ -100,16 +100,16 @@
 
 
 
-<meta name="description" content="DevOps | Docker | K8S | MySQL | 运维">
+<meta name="description" content="DevOps | Docker | Python | k8s">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Geekwolf&#39;s Blog">
 <meta property="og:url" content="http://www.simlinux.com/page/4/index.html">
 <meta property="og:site_name" content="Geekwolf&#39;s Blog">
-<meta property="og:description" content="DevOps | Docker | K8S | MySQL | 运维">
+<meta property="og:description" content="DevOps | Docker | Python | k8s">
 <meta property="og:locale" content="zh-Hans">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Geekwolf&#39;s Blog">
-<meta name="twitter:description" content="DevOps | Docker | K8S | MySQL | 运维">
+<meta name="twitter:description" content="DevOps | Docker | Python | k8s">
 
 
 
@@ -243,6 +243,16 @@
         </li>
       
         
+        <li class="menu-item menu-item-tips">
+          <a href="/tips/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-gittip"></i> <br />
+            
+            tips
+          </a>
+        </li>
+      
+        
         <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
             
@@ -344,7 +354,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Geekwolf">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/wolf.jpeg">
+      <meta itemprop="image" content="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -462,7 +472,7 @@
         
           
             <p>大部分情况下，使用用Percona XtraBackup进行整库的备份和恢复比较容易，此处略去；<br>对于单表的恢复略有不同，而且对数据库版本和Percona XtraBackup的版本都有限制<br><strong>局限性：</strong><br>1.源库MySQL版本无要求，但启用了innodb_file_per_table=1<br>2.目的库开启innodb_file_per_table=1，Percona XtraDB或者MySQL5.6<br>官方要求开启下面的两个参数，但发现5.6没有这样的变量，没去修改：innodb_expand_import=1（大于5.5.10-20.1版本）或innodb_import_table_from_xtrabackup=1（小于5.5.10-20.1版本）选项</p>
-<p><a href="http://www.simlinux.com/wp-content/uploads/2014/09/qy.png"><img src="http://www.simlinux.com/wp-content/uploads/2014/09/qy.png" alt="qy"></a></p>
+<p><a href="http://blog.simlinux.com/wp-content/uploads/2014/09/qy.png" target="_blank" rel="external"><img src="http://blog.simlinux.com/wp-content/uploads/2014/09/qy.png" alt="qy"></a></p>
 <h4 id="环境说明"><a href="#环境说明" class="headerlink" title="环境说明"></a>环境说明</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">源库 ：Percona-Server-5.5.28-rel29.3-388</div><div class="line">目的库：Percona-Server-5.6.16-rel64.2-569</div><div class="line">备份工具 : percona-xtrabackup-2.2.4-5004</div></pre></td></tr></table></figure>
 <h4 id="备份恢复步骤"><a href="#备份恢复步骤" class="headerlink" title="备份恢复步骤"></a>备份恢复步骤</h4><h5 id="备份表"><a href="#备份表" class="headerlink" title="备份表"></a>备份表</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">innobackupex --user=root --password=simlinux.com   --defaults-file=/etc/my.cnf --include=&apos;se.searchaccount&apos; --slave-info --safe-slave-backup --stream=tar /data/backup &gt; /data/backup/searchaccount.tar.gz</div></pre></td></tr></table></figure>
 <h5 id="导出表"><a href="#导出表" class="headerlink" title="导出表"></a>导出表</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">[root@simlinux ~]#tar -ixf searchaccount.tar.gz -C /data/databak/</div><div class="line">[root@simlinux ~]#innobackupex --apply-log --export /data/databak</div><div class="line"></div><div class="line">[root@simlinux ~]#ll /data/databak/se</div><div class="line">-rw-r--r-- 1   root  root     3382    9月  13 13:57 searchaccount.cfg</div><div class="line">-rw-r--r-- 1   root  root    16384   9月  13 13:57 searchaccount.exp</div><div class="line">-rw-rw---- 1  root  root   23968    9月  13 13:40 searchaccount.frm</div><div class="line">-rw-rw---- 1  root  root  2097152 9月   13 13:40 searchaccount.ibd</div></pre></td></tr></table></figure>
@@ -519,198 +529,12 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2014/08/27/openswan-ipsec-vpn.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Geekwolf">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/wolf.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Geekwolf's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2014/08/27/openswan-ipsec-vpn.html" itemprop="url">如何使用Openswan创建点对点的IPsec VPN隧道</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-08-27T19:23:57+08:00">
-                2014-08-27
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux运维/" itemprop="url" rel="index">
-                    <span itemprop="name">Linux运维</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2014/08/27/openswan-ipsec-vpn.html" class="leancloud_visitors" data-flag-title="如何使用Openswan创建点对点的IPsec VPN隧道">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长</span>
-                
-                <span title="阅读时长">
-                  4
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>在Internet中，通常使用VPN隧道来互联两个物理隔离的网络的内部通信；例如：VPN隧道可以用来连接两个经过NAT之后分支机构的网络，此文将针对使用Openswan来实现点对点的VPN隧道测试</p>
-<h4 id="拓扑结构"><a href="#拓扑结构" class="headerlink" title="拓扑结构"></a>拓扑结构</h4><p><a href="http://www.simlinux.com/wp-content/uploads/2014/08/14821245117_3f677e4d58_z.jpg"><img src="http://www.simlinux.com/wp-content/uploads/2014/08/15004668831_fd260b7f1e_z.jpg" alt="ipsec1"></a> <a href="http://www.simlinux.com/wp-content/uploads/2014/08/15004668821_36e02ab8b0_z.jpg"><img src="http://www.simlinux.com/wp-content/uploads/2014/08/15004668821_36e02ab8b0_z.jpg" alt="ipsec2"><img src="http://www.simlinux.com/wp-content/uploads/2014/08/14821245117_3f677e4d58_z.jpg" alt="ipsec3"></a></p>
-<h4 id="安装配置VPN服务器"><a href="#安装配置VPN服务器" class="headerlink" title="安装配置VPN服务器"></a>安装配置VPN服务器</h4><p>一般情况下，我们只能管理A站点，如果也想管理B站点，这时就需要建立VPN隧道<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">yum install openswan lsof</div><div class="line">禁止VPN重定向</div><div class="line">for vpn in /proc/sys/net/ipv4/conf/*;</div><div class="line">do </div><div class="line">echo 0 &gt; $vpn/accept_redirects;</div><div class="line">echo 0 &gt; $vpn/send_redirects;</div><div class="line">done</div><div class="line">修改内核参数启用转发和禁止重定向</div><div class="line">vim /etc/sysctl.conf</div><div class="line">net.ipv4.ip_forward = 1</div><div class="line">net.ipv4.conf.all.accept_redirects = 0</div><div class="line">net.ipv4.conf.all.send_redirects = 0</div><div class="line">sysctl –p</div><div class="line"></div><div class="line">放行openswan服务端口和NAT规则</div><div class="line">iptables -A INPUT -p udp --dport 500 -j ACCEPT</div><div class="line">iptables -A INPUT -p tcp --dport 4500 -j ACCEPT</div><div class="line">iptables -A INPUT -p udp --dport 4500 -j ACCEPT</div><div class="line">iptables -t nat -A POSTROUTING -s site-A-private-subnet -d site-B-private-subnet -j SNAT --to site-A-Public-IP</div></pre></td></tr></table></figure></p>
-<h4 id="修改配置"><a href="#修改配置" class="headerlink" title="修改配置"></a>修改配置</h4><p><strong>Site-A VPN Server:</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div></pre></td><td class="code"><pre><div class="line">vim /etc/ipsec.conf</div><div class="line">## general configuration parameters ##</div><div class="line">config setup</div><div class="line">        plutodebug=all</div><div class="line">        plutostderrlog=/var/log/pluto.log</div><div class="line">        protostack=netkey</div><div class="line">        nat_traversal=yes</div><div class="line">        virtual_private=%v4:10.0.0.0/8,%v4:192.168.0.0/16,%v4:172.16.0.0/16</div><div class="line">        ## disable opportunistic encryption in Red Hat ##</div><div class="line">        oe=off</div><div class="line">## disable opportunistic encryption in Debian ##</div><div class="line">## Note: this is a separate declaration statement ##</div><div class="line">include /etc/ipsec.d/examples/no_oe.conf </div><div class="line">## connection definition in Red Hat ##</div><div class="line">conn demo-connection-redhat</div><div class="line">        authby=secret</div><div class="line">        auto=start</div><div class="line">        ike=3des-md5</div><div class="line">        ## phase 1 ##</div><div class="line">        keyexchange=ike</div><div class="line">        ## phase 2 ##</div><div class="line">        phase2=esp</div><div class="line">        phase2alg=3des-md5</div><div class="line">        compress=no</div><div class="line">        pfs=yes</div><div class="line">        type=tunnel</div><div class="line">        left=&lt;siteA-public-IP&gt;</div><div class="line">        leftsourceip=&lt;siteA-public-IP&gt;</div><div class="line">        leftsubnet=&lt;siteA-private-subnet&gt;/netmask</div><div class="line">        ## for direct routing ##</div><div class="line">        leftsubnet=&lt;siteA-public-IP&gt;/32</div><div class="line">        leftnexthop=%defaultroute</div><div class="line">        right=&lt;siteB-public-IP&gt;</div><div class="line">        rightsubnet=&lt;siteB-private-subnet&gt;/netmask</div><div class="line">## connection definition in Debian ##</div><div class="line">conn demo-connection-debian</div><div class="line">        authby=secret</div><div class="line">        auto=start</div><div class="line">        ## phase 1 ##</div><div class="line">        keyexchange=ike</div><div class="line">        ## phase 2 ##</div><div class="line">        esp=3des-md5</div><div class="line">        pfs=yes</div><div class="line">        type=tunnel</div><div class="line">        left=&lt;siteA-public-IP&gt;</div><div class="line">        leftsourceip=&lt;siteA-public-IP&gt;</div><div class="line">        leftsubnet=&lt;siteA-private-subnet&gt;/netmask</div><div class="line">        ## for direct routing ##</div><div class="line">        leftsubnet=&lt;siteA-public-IP&gt;/32</div><div class="line">        leftnexthop=%defaultroute</div><div class="line">        right=&lt;siteB-public-IP&gt;</div><div class="line">        rightsubnet=&lt;siteB-private-subnet&gt;/netmask</div></pre></td></tr></table></figure></p>
-<p>身份验证可以通过几种不同的方式,此处使用pre-shared方式<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">vim /etc/ipsec.secrets</div><div class="line">siteA-public-IP  siteB-public-IP:  PSK  &quot;pre-shared-key&quot;</div><div class="line">## in case of multiple sites ##</div><div class="line">siteA-public-IP  siteC-public-IP:  PSK  &quot;corresponding-pre-shared-key&quot;</div></pre></td></tr></table></figure></p>
-<h4 id="启动服务和排错"><a href="#启动服务和排错" class="headerlink" title="启动服务和排错"></a>启动服务和排错</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">service ipsec restart</div><div class="line">chkconfig ipsec on</div></pre></td></tr></table></figure>
-<p>如果能正常启动，从A端就能ping通B端私网地址<br>在Site-A VPN Server上ip route 就可以查看相关的路由<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">[siteB-private-subnet] via [siteA-gateway] dev eth0 src [siteA-public-IP]</div><div class="line">default via [siteA-gateway] dev eth0</div></pre></td></tr></table></figure></p>
-<p>两边的VPN Server都配置完成后即可互访私网，其他重要命令：</p>
-<p>查看隧道状态<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">service ipsec status</div><div class="line"></div><div class="line">IPsec running  - pluto pid: 20754</div><div class="line">pluto pid 20754</div><div class="line">1 tunnels up</div><div class="line">some eroutes exist</div><div class="line">ipsec auto –status</div><div class="line">## output truncated ##</div><div class="line">000 &quot;demo-connection-debian&quot;:     myip=&lt;siteA-public-IP&gt;; hisip=unset;</div><div class="line">000 &quot;demo-connection-debian&quot;:   ike_life: 3600s; ipsec_life: 28800s; rekey_margin: 540s; rekey_fuzz: 100%; keyingtries: 0; nat_keepalive: yes</div><div class="line">000 &quot;demo-connection-debian&quot;:   policy: PSK+ENCRYPT+TUNNEL+PFS+UP+IKEv2ALLOW+SAREFTRACK+lKOD+rKOD; prio: 32,28; interface: eth0;</div><div class="line"></div><div class="line">## output truncated ##</div><div class="line">000 #184: &quot;demo-connection-debian&quot;:500 STATE_QUICK_R2 (IPsec SA established); EVENT_SA_REPLACE in 1653s; newest IPSEC; eroute owner; isakmp#183; idle; import:not set</div><div class="line"></div><div class="line">## output truncated ##</div><div class="line">000 #183: &quot;demo-connection-debian&quot;:500 STATE_MAIN_I4 (ISAKMP SA established); EVENT_SA_REPLACE in 1093s; newest ISAKMP; lastdpd=-1s(seq in:0 out:0); idle; import:not set</div></pre></td></tr></table></figure></p>
-<p>相关日志文件(记录了认证、Key交换信息等，可用于排错):<br>/var/log/pluto.log</p>
-<h4 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h4><ol>
-<li>运营商可能会屏蔽端口，通过telent命令测试确保运营商允许使用UDP 500, TCP/UDP 4500 端口</li>
-<li>确保防火墙放行相关端口</li>
-<li>确保终端服务器pre-shared密钥是相同的</li>
-<li>遇到NAT问题，尝试使用SNAT 替代MASQUERADING</li>
-</ol>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2014/08/22/linux-httpry.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Geekwolf">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/wolf.jpeg">
+      <meta itemprop="image" content="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -831,11 +655,11 @@
 <h4 id="安装httpry"><a href="#安装httpry" class="headerlink" title="安装httpry"></a>安装httpry</h4><p>基于Debian(Ubuntu or Linux Mint)，基础库并没有httpry包，我们用源码来安装<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$ sudo apt-get install gcc make git libpcap0.8-dev</div><div class="line">$ git clone https://github.com/jbittel/httpry.git</div><div class="line">$ cd httpry</div><div class="line">$ make</div><div class="line">$ sudo make install</div></pre></td></tr></table></figure></p>
 <p>基于Fedora，CentOS or RHEL可以使用EPEL来yum安装<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo yum install httpry</div></pre></td></tr></table></figure></p>
 <p>也可以通过源码安装<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$ sudo yum install gcc make git libpcap-devel</div><div class="line">$ git clone https://github.com/jbittel/httpry.git</div><div class="line">$ cd httpry</div><div class="line">$ make</div><div class="line">$ sudo make install</div></pre></td></tr></table></figure></p>
-<h4 id="httpry的基本使用"><a href="#httpry的基本使用" class="headerlink" title="httpry的基本使用"></a>httpry的基本使用</h4><p>httpry通过监听网卡接口来实时嗅探HTTP的请求和响应<br>$ sudo httpry -i <network-interface><br><a href="http://www.simlinux.com/wp-content/uploads/2014/08/ryeth0.png"><img src="http://www.simlinux.com/wp-content/uploads/2014/08/ryeth0-1024x469.png" alt="ryeth0"></a><br>将HTTP 数据包保存为二进制文件<br>$ sudo httpry -i eth0 -b output.dump</network-interface></p>
+<h4 id="httpry的基本使用"><a href="#httpry的基本使用" class="headerlink" title="httpry的基本使用"></a>httpry的基本使用</h4><p>httpry通过监听网卡接口来实时嗅探HTTP的请求和响应<br>$ sudo httpry -i <network-interface><br><a href="http://blog.simlinux.com/wp-content/uploads/2014/08/ryeth0.png" target="_blank" rel="external"><img src="http://blog.simlinux.com/wp-content/uploads/2014/08/ryeth0-1024x469.png" alt="ryeth0"></a><br>将HTTP 数据包保存为二进制文件<br>$ sudo httpry -i eth0 -b output.dump</network-interface></p>
 <p>重放HTTP数据包</p>
 <p><pre class="lang:php decode:true ">$ sudo httpry -r output.dump<br>将HTTP 数据包保存为文本文件<br>$ sudo httpry -i eth0 -o output.txt</pre></p>
 <h4 id="httpry的高级应用"><a href="#httpry的高级应用" class="headerlink" title="httpry的高级应用"></a>httpry的高级应用</h4><p>监控特定的HTTP请求方式(GET,POST,PUT,HEAD,CONNECT等),使用-m参数</p>
-<p><a href="http://www.simlinux.com/wp-content/uploads/2014/08/get.png"><img src="http://www.simlinux.com/wp-content/uploads/2014/08/get-1024x333.png" alt="get"></a><br>如果你httpry下载的源代码,你会发现有一组Perl脚本的源代码,帮助分析httpry的输出<br>这些脚本httpry /scripts/plugins目录中找到。如果你想编写一个自定义解析器httpry的输出,这些脚本是很好的例子.他们的一些功能:</p>
+<p><a href="http://blog.simlinux.com/wp-content/uploads/2014/08/get.png" target="_blank" rel="external"><img src="http://blog.simlinux.com/wp-content/uploads/2014/08/get-1024x333.png" alt="get"></a><br>如果你httpry下载的源代码,你会发现有一组Perl脚本的源代码,帮助分析httpry的输出<br>这些脚本httpry /scripts/plugins目录中找到。如果你想编写一个自定义解析器httpry的输出,这些脚本是很好的例子.他们的一些功能:</p>
 <ul>
 <li>hostnames: 显示主机名列表.</li>
 <li>find_proxies: 测web代理</li>
@@ -847,7 +671,7 @@
 </li>
 </ul>
 <p>执行之后httpry/scripts目录下生成txt/xml文件，例如log_summary.txt</p>
-<p><a href="http://www.simlinux.com/wp-content/uploads/2014/08/summary.jpg"><img src="http://www.simlinux.com/wp-content/uploads/2014/08/summary.jpg" alt="summary"></a></p>
+<p><a href="http://blog.simlinux.com/wp-content/uploads/2014/08/summary.jpg" target="_blank" rel="external"><img src="http://blog.simlinux.com/wp-content/uploads/2014/08/summary.jpg" alt="summary"></a></p>
 <h4 id="相关工具"><a href="#相关工具" class="headerlink" title="相关工具"></a>相关工具</h4><p><code>ngxtop</code></p>
 <h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><blockquote>
 <p><a href="http://xmodulo.com/2014/06/monitor-nginx-web-server-command-line-real-time.html" target="_blank" rel="external">http://xmodulo.com/2014/06/monitor-nginx-web-server-command-line-real-time.html</a><br><a href="http://www.ttlsa.com/nginx/nginx-modules-ngxtop-ttlsa/" target="_blank" rel="external">http://dumpsterventures.com/jason/httpry/</a><br><a href="http://www.ttlsa.com/nginx/nginx-modules-ngxtop-ttlsa/" target="_blank" rel="external">http://www.ttlsa.com/nginx/nginx-modules-ngxtop-ttlsa/</a></p>
@@ -905,7 +729,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Geekwolf">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/wolf.jpeg">
+      <meta itemprop="image" content="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1028,7 +852,7 @@
 <h4 id="安装icinga监控工具"><a href="#安装icinga监控工具" class="headerlink" title="安装icinga监控工具"></a>安装icinga监控工具</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">wget http://packages.icinga.org/epel/ICINGA-release.repo -O /etc/yum.repod/icinga.repo</div><div class="line">rpm --import http://packages.icinga.org/icinga.key</div><div class="line">yum  -y install icinga icinga-doc icinga-gui</div><div class="line">htpasswd -cm /etc/icinga/passwd  geekwolf</div><div class="line">systemctl start icinga</div><div class="line">systemctl start httpd</div></pre></td></tr></table></figure>
 <h4 id="安装Nagios插件"><a href="#安装Nagios插件" class="headerlink" title="安装Nagios插件"></a>安装Nagios插件</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">rpm -Uvh http://ftp.ines.lug.ro/fedora/epel/beta/7/x86_64/epel-release-7-0.2.noarch.rpm</div><div class="line">yum -y install nagios-plugins nagios-plugins-all</div><div class="line">配置文件路径/etc/icinga，配置方式和nagios一样</div><div class="line"></div><div class="line">vim  /etc/icinga/cgi.cfg</div><div class="line">authorized_for_system_information=geekwolf</div><div class="line">authorized_for_configuration_information=geekwolf</div><div class="line">authorized_for_full_command_resolution=geekwolf</div><div class="line">authorized_for_system_commands=geekwolf</div><div class="line">authorized_for_all_services=geekwolf</div><div class="line">authorized_for_all_hosts=geekwolf</div><div class="line">authorized_for_all_service_commands=geekwolf</div><div class="line">authorized_for_all_host_commands=geekwolf</div></pre></td></tr></table></figure>
 <p>访问Web:<a href="http://192.168.117.129/icinga" target="_blank" rel="external">http://192.168.117.129/icinga</a></p>
-<p><a href="http://www.simlinux.com/wp-content/uploads/2014/08/icingam.png"><img src="http://www.simlinux.com/wp-content/uploads/2014/08/icingam.png" alt="icingam"></a></p>
+<p><a href="http://blog.simlinux.com/wp-content/uploads/2014/08/icingam.png" target="_blank" rel="external"><img src="http://blog.simlinux.com/wp-content/uploads/2014/08/icingam.png" alt="icingam"></a></p>
 <h4 id="相关资源"><a href="#相关资源" class="headerlink" title="相关资源"></a>相关资源</h4><blockquote>
 <p>Icinga官方文档 :<a href="http://docs.icinga.org/" target="_blank" rel="external">http://docs.icinga.org</a><br>Icinga EPEL :<a href="http://packages.icinga.org/epel" target="_blank" rel="external">http://packages.icinga.org/epel</a><br>Icinga安装包及vagrant box下载 ：<a href="https://www.icinga.org/download" target="_blank" rel="external">https://www.icinga.org/download</a><br>Centos7网络配置和服务管理参考: <a href="http://simlinux.com/blog/2014/08/12/centos7wang-luo-pei-zhi-he-fu-wu-guan-li/" target="_blank" rel="external">http://simlinux.com/blog/2014/08/12/centos7wang-luo-pei-zhi-he-fu-wu-guan-li/</a></p>
 </blockquote>
@@ -1085,7 +909,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Geekwolf">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/wolf.jpeg">
+      <meta itemprop="image" content="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1265,7 +1089,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Geekwolf">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/wolf.jpeg">
+      <meta itemprop="image" content="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1383,52 +1207,52 @@
         
           
             <p><strong>1. <a href="http://explainshell.com/" target="_blank" rel="external">ExplainShell.com</a> 命令解释</strong></p>
-<p><a href="http://www.simlinux.com/wp-content/uploads/2014/08/explainshell.jpg"><img src="http://www.simlinux.com/wp-content/uploads/2014/08/explainshell.jpg" alt="explainshell"></a></p>
+<p><a href="http://blog.simlinux.com/wp-content/uploads/2014/08/explainshell.jpg" target="_blank" rel="external"><img src="http://blog.simlinux.com/wp-content/uploads/2014/08/explainshell.jpg" alt="explainshell"></a></p>
 <p>  对于Linux用户来说每天都会写各种命令和脚本，那么你可以使用这个网站工具来查看命令式如何工作的,这样可以避免不必要的错误出现；也是一个很好的学习命令的方式</p>
 <p><strong>2. <a href="http://simlinux.com/BashrcGenerator.com/" target="_blank" rel="external">BashrcGenerator.com</a> 定制个性命令提示符</strong></p>
-<p><a href="http://www.simlinux.com/wp-content/uploads/2014/08/generator.jpg"><img src="http://www.simlinux.com/wp-content/uploads/2014/08/generator.jpg" alt="generator"></a></p>
+<p><a href="http://blog.simlinux.com/wp-content/uploads/2014/08/generator.jpg" target="_blank" rel="external"><img src="http://blog.simlinux.com/wp-content/uploads/2014/08/generator.jpg" alt="generator"></a></p>
 <p>  简单说就是个性化生成命令提示符，可将生成的代码写入到用户家目录的.bashrc或者可以设置全局变量文件/etc/profile对所有用户生效<br>可参考：<a href="http://stackoverflow.com/questions/4133904/ps1-line-with-git-current-branch-and-colors" target="_blank" rel="external">http://stackoverflow.com/questions/4133904/ps1-line-with-git-current-branch-and-colors</a></p>
 <p><strong>3. <a href="http://vim-adventures.com/" target="_blank" rel="external">Vim-adventures.com</a> 通过RPG游戏练习VIM使用</strong></p>
-<p><a href="http://www.simlinux.com/wp-content/uploads/2014/08/vim.jpg"><img src="http://www.simlinux.com/wp-content/uploads/2014/08/vim.jpg" alt="vim"></a></p>
+<p><a href="http://blog.simlinux.com/wp-content/uploads/2014/08/vim.jpg" target="_blank" rel="external"><img src="http://blog.simlinux.com/wp-content/uploads/2014/08/vim.jpg" alt="vim"></a></p>
 <p>  通过RPG游戏练习VIM编辑器的使用，使用h,j,k,l字符移动人物来获得新的命令能力和搜集钥匙，查看帮助可使用:help;赶脚这个非常cool!</p>
 <p><strong>4. <a href="https://try.github.io/levels/1/challenges/2" target="_blank" rel="external">Try Github</a> 在线学习Git版本控制</strong></p>
-<p><a href="http://www.simlinux.com/wp-content/uploads/2014/08/trygit.jpg"><img src="http://www.simlinux.com/wp-content/uploads/2014/08/trygit.jpg" alt="trygit"></a></p>
+<p><a href="http://blog.simlinux.com/wp-content/uploads/2014/08/trygit.jpg" target="_blank" rel="external"><img src="http://blog.simlinux.com/wp-content/uploads/2014/08/trygit.jpg" alt="trygit"></a></p>
 <p>  十五分钟学会Git，很明显这个网站模拟了一个控制台，以很时尚的界面让人对Git不再望而生畏</p>
 <p><strong>5. <a href="http://shortcutfoo.com/" target="_blank" rel="external">Shortcutfoo.com</a></strong></p>
-<p><a href="http://www.simlinux.com/wp-content/uploads/2014/08/shortcutfoo.jpg"><img src="http://www.simlinux.com/wp-content/uploads/2014/08/shortcutfoo.jpg" alt="shortcutfoo"></a></p>
+<p><a href="http://blog.simlinux.com/wp-content/uploads/2014/08/shortcutfoo.jpg" target="_blank" rel="external"><img src="http://blog.simlinux.com/wp-content/uploads/2014/08/shortcutfoo.jpg" alt="shortcutfoo"></a></p>
 <p>  是一个练习快捷键的好地方，涵盖了vim、sublime、emacs、git等软件的快捷使用方式和友好的说明</p>
 <p><strong>6. <a href="https://github.com/geekwolf/free-programming-books" target="_blank" rel="external">GitHub Free Programming Books</a> 免费编程书籍</strong></p>
-<p><a href="http://www.simlinux.com/wp-content/uploads/2014/08/freebooks.jpg"><img src="http://www.simlinux.com/wp-content/uploads/2014/08/freebooks.jpg" alt="freebooks"></a></p>
+<p><a href="http://blog.simlinux.com/wp-content/uploads/2014/08/freebooks.jpg" target="_blank" rel="external"><img src="http://blog.simlinux.com/wp-content/uploads/2014/08/freebooks.jpg" alt="freebooks"></a></p>
 <p>  以Github管理的方式搜集了免费的编程和系统管理等书籍，给作者点1024个赞~~，另外连接是fork原作者，后续增加中文书籍</p>
 <p><strong>7. <a href="http://collabedit.com/" target="_blank" rel="external">Collabedit.com</a> 实时文本交互聊天</strong></p>
-<p><a href="http://www.simlinux.com/wp-content/uploads/2014/08/coolabedit.jpg"><img src="http://www.simlinux.com/wp-content/uploads/2014/08/coolabedit.jpg" alt="coolabedit"></a></p>
+<p><a href="http://blog.simlinux.com/wp-content/uploads/2014/08/coolabedit.jpg" target="_blank" rel="external"><img src="http://blog.simlinux.com/wp-content/uploads/2014/08/coolabedit.jpg" alt="coolabedit"></a></p>
 <p>   先说下使用，你可以创建一个文档<code>http://collabedit.com/yb22u</code>填写相关的用户名和选择语言；然后可以将此文档地址发给另一个人，那么互相之间就可以实时看到对方的输入，有高亮语法；使用场合嘛，比如通过collabedit可以考量对方编程能力等</p>
 <p><strong>8. <a href="http://cpp.sh/" target="_blank" rel="external">Cpp.sh</a> 在线编写运行分享C++代码编辑器</strong></p>
-<p><a href="http://www.simlinux.com/wp-content/uploads/2014/08/cpp.jpg"><img src="http://www.simlinux.com/wp-content/uploads/2014/08/cpp.jpg" alt="cpp"></a></p>
+<p><a href="http://blog.simlinux.com/wp-content/uploads/2014/08/cpp.jpg" target="_blank" rel="external"><img src="http://blog.simlinux.com/wp-content/uploads/2014/08/cpp.jpg" alt="cpp"></a></p>
 <p>  可在线编辑运行C++代码，亦可Ctrl+Z生成url分享给好友</p>
 <p><strong>9. <a href="http://copy.sh/v24/" target="_blank" rel="external">Copy.sh</a> 浏览器运行虚拟机</strong></p>
-<p><a href="http://www.simlinux.com/wp-content/uploads/2014/08/copy.jpg"><img src="http://www.simlinux.com/wp-content/uploads/2014/08/copy.jpg" alt="copy"></a></p>
+<p><a href="http://blog.simlinux.com/wp-content/uploads/2014/08/copy.jpg" target="_blank" rel="external"><img src="http://blog.simlinux.com/wp-content/uploads/2014/08/copy.jpg" alt="copy"></a></p>
 <p>  又一个非常crazy的工具，在线运行虚拟机，可以选择下载虚拟机镜像也可以上传自己的iso，copy.sh在线运行虚拟机源码：<a href="https://github.com/copy/v86" target="_blank" rel="external">https://github.com/copy/v86</a>；</p>
 <p><strong>10. <a href="http://commandlinefu.com/" target="_blank" rel="external">Commandlinefu.com</a> 命令或记录网站</strong></p>
-<p><a href="http://www.simlinux.com/wp-content/uploads/2014/08/commandlinefu.jpg"><img src="http://www.simlinux.com/wp-content/uploads/2014/08/commandlinefu.jpg" alt="commandlinefu"></a></p>
+<p><a href="http://blog.simlinux.com/wp-content/uploads/2014/08/commandlinefu.jpg" target="_blank" rel="external"><img src="http://blog.simlinux.com/wp-content/uploads/2014/08/commandlinefu.jpg" alt="commandlinefu"></a></p>
 <p>  做运维的应该都知道这个网站，可以分享自己的CLI库，也可以学习借鉴别人的命令脚本</p>
 <p><strong>11. <a href="http://alias.sh/" target="_blank" rel="external">Alias.sh</a> 命令别名数据库</strong></p>
-<p><a href="http://www.simlinux.com/wp-content/uploads/2014/08/alias.jpg"><img src="http://www.simlinux.com/wp-content/uploads/2014/08/alias.jpg" alt="alias"></a></p>
+<p><a href="http://blog.simlinux.com/wp-content/uploads/2014/08/alias.jpg" target="_blank" rel="external"><img src="http://blog.simlinux.com/wp-content/uploads/2014/08/alias.jpg" alt="alias"></a></p>
 <p>  有点类似commandlinefu了，可以通过这个网站借鉴获取和分享有用的命令别名<br>比如lr别名定义了显示目录树</p>
 <pre><code>alias lr=&apos;ls -R | grep &quot;:$&quot; | sed -e &apos;\&apos;&apos;s/:$//&apos;\&apos;&apos; -e &apos;\&apos;&apos;s/[^-][^\/]*\//--/g&apos;\&apos;&apos; -e &apos;\&apos;&apos;s/^/   /&apos;\&apos;&apos; -e &apos;\&apos;&apos;s/-/|/&apos;\&apos;&apos;&apos;
 </code></pre><p><strong>12. <a href="http://distrowatch.com/" target="_blank" rel="external">Distrowatch.com</a> 提供了Linux发行版的详细信息</strong></p>
-<p><a href="http://www.simlinux.com/wp-content/uploads/2014/08/distrowatch.jpg"><img src="http://www.simlinux.com/wp-content/uploads/2014/08/distrowatch.jpg" alt="distrowatch"></a></p>
+<p><a href="http://blog.simlinux.com/wp-content/uploads/2014/08/distrowatch.jpg" target="_blank" rel="external"><img src="http://blog.simlinux.com/wp-content/uploads/2014/08/distrowatch.jpg" alt="distrowatch"></a></p>
 <p>  通过Distrowath不仅可以精确的查看互联网都有哪些流行的Linux发行版，还可以查看每个发行版的相关信息如默认桌面环境、默认应用程序及镜像的下载链接；堪称Linux的数据库</p>
 <p><strong>13. <a href="http://linuxmanpages.com/" target="_blank" rel="external">Linuxmanpages.com</a> 在线查看命令帮助</strong></p>
-<p><a href="http://www.simlinux.com/wp-content/uploads/2014/08/manpages.jpg"><img src="http://www.simlinux.com/wp-content/uploads/2014/08/manpages.jpg" alt="manpages"></a></p>
+<p><a href="http://blog.simlinux.com/wp-content/uploads/2014/08/manpages.jpg" target="_blank" rel="external"><img src="http://blog.simlinux.com/wp-content/uploads/2014/08/manpages.jpg" alt="manpages"></a></p>
 <p>  相当于系统内部的man、help、info等的综合吧</p>
 <p><strong>14. <a href="http://awesomecow.com/" target="_blank" rel="external">AwesomeCow.com</a> 适用Linux环境的软件搜索引擎</strong></p>
-<p><a href="http://www.simlinux.com/wp-content/uploads/2014/08/awe.jpg"><img src="http://www.simlinux.com/wp-content/uploads/2014/08/awe.jpg" alt="awe"></a></p>
+<p><a href="http://blog.simlinux.com/wp-content/uploads/2014/08/awe.jpg" target="_blank" rel="external"><img src="http://blog.simlinux.com/wp-content/uploads/2014/08/awe.jpg" alt="awe"></a></p>
 <p>  如果有款win下好用的软件想在linux下使用，或许可以通过AwesomeCow找到与其类似或者一样的软件，或者通过WINE</p>
 <p><strong>15. <a href="http://penguspy.com/" target="_blank" rel="external">PenguSpy.com</a> Linux好玩游戏合集</strong></p>
-<p><a href="http://www.simlinux.com/wp-content/uploads/2014/08/pengu.jpg"><img src="http://www.simlinux.com/wp-content/uploads/2014/08/pengu.jpg" alt="pengu"></a></p>
+<p><a href="http://blog.simlinux.com/wp-content/uploads/2014/08/pengu.jpg" target="_blank" rel="external"><img src="http://blog.simlinux.com/wp-content/uploads/2014/08/pengu.jpg" alt="pengu"></a></p>
 <p><strong>16. <a href="http://lxr.free-electrons.com/" target="_blank" rel="external">Linux Cross Reference by Free Electrons</a> 在线查看内核代码及不同版本的差异</strong></p>
-<p><a href="http://www.simlinux.com/wp-content/uploads/2014/08/cross.jpg"><img src="http://www.simlinux.com/wp-content/uploads/2014/08/cross.jpg" alt="cross"></a></p>
+<p><a href="http://blog.simlinux.com/wp-content/uploads/2014/08/cross.jpg" target="_blank" rel="external"><img src="http://blog.simlinux.com/wp-content/uploads/2014/08/cross.jpg" alt="cross"></a></p>
 <p>对于内核开发者或许有很大的帮助</p>
 
           
@@ -1483,7 +1307,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Geekwolf">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/wolf.jpeg">
+      <meta itemprop="image" content="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1656,7 +1480,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Geekwolf">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/wolf.jpeg">
+      <meta itemprop="image" content="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1776,7 +1600,7 @@
             <pre><code>通常磁盘的读写影响是由磁头到柱面移动造成了延迟，解决这种延迟内核主要采用两种策略：缓存和IO调度算法来进行弥补
 </code></pre><p><strong>Caching：</strong>IO请求被缓存在大页和buffer<br>caches里面，读请求会预先从缓存读取，写请求会先写进缓存，然后在保存到磁盘</p>
 <p><strong>四种IO调度算法：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cat /sys/block/sda/queue/scheduler</div><div class="line">noop anticipatory deadline [cfq] (当前是cfq)</div></pre></td></tr></table></figure></p>
-<p><a href="http://www.simlinux.com/wp-content/uploads/2014/08/io1.png"><img src="http://www.simlinux.com/wp-content/uploads/2014/08/io1.png" alt="io"></a></p>
+<p><a href="http://blog.simlinux.com/wp-content/uploads/2014/08/io1.png" target="_blank" rel="external"><img src="http://blog.simlinux.com/wp-content/uploads/2014/08/io1.png" alt="io"></a></p>
 <p><strong>noop：</strong>noop调度算法不会对I/O请求排序操作，除了合并外也不会做任何其他优化，直接以类似FIFO的顺序提交I/O请求；对于SSD、虚拟机或者存储设备可能会更加高效<br><strong>anticipatory(as)：</strong>基于预测的IO算法，类似DeadLine，也维护了三个请求对列；区别在于当它处理完一个I/O请求后并不会直接返回处理下一个请求，而是等待6ms(默认),如果这时候有新来的针对当前扇区相邻扇区的请求，那么会直接处理它，当等待时间结束后，调度器才返回处理下一个对列请求<br>试想一下，如果系统有频繁的针对邻近扇区的I/O请求，那么这种预测算法必然大幅提高整体的吞吐量，毕竟节约了那么多寻道时间<br><strong>deadline：</strong>DEADLINE 在CFQ的基础上，解决了IO请求饿死的极端情况。除了CFQ本身具有的IO排序队列之外，DEADLINE额外分别为读IO和写IO提供了FIFO队 列。读FIFO队列的最大等待时间为500ms，写FIFO队列的最大等待时间为5s。FIFO队列内的IO请求优先级要比CFQ队列中的高，，而读 FIFO队列的优先级又比写FIFO队列的优先级高。优先级可以表示如下：<br>FIFO(Read) &gt; FIFO(Write) &gt; CFQ<br>deadline 算法保证对于既定的 IO 请求以最小的延迟时间，从这一点理解，对于 DSS 应用应该会是很适合的<br><strong>cfq(2.6.18+内核默认CFQ)：</strong>该算法的特点是按照IO请求的地址进行排序，而不是按照先来后到的顺序来进行响应。在传统的SAS盘上，磁盘寻道花去了绝大多数的IO响应时间。CFQ的出发点是对IO地址进行排序，以尽量少的磁盘旋转次数来满足尽可能多的IO请求。在 CFQ算法下，SAS盘的吞吐量大大提高了。但是相比于NOOP的缺点是，先来的IO请求并不一定能被满足，可能会出现饿死的情况；</p>
 <p><strong>调度算法适用场合：</strong><br>在传统的SAS盘上，CFQ、DEADLINE、ANTICIPATORY都是不错的选择；对于专属的数据库服务器和文件服务器，DEADLINE的吞吐量和响应时间都表现良好，适用于大量IO操作的环境</p>
 <p>在SSD、Fusion IO上，最简单的NOOP反而可能是最好的算法，因为其他三个算法的优化是基于缩短寻道时间的，而固态硬盘没有所谓的寻道时间且IO响应时间非常短。<br>ANTICIPATORY通常更适用于大量持续读的环境，并不适用于DB Server<br>CFQ 适用于有大量来自不同进程的并发读写的环境如桌面环境等</p>
@@ -1837,7 +1661,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Geekwolf">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/wolf.jpeg">
+      <meta itemprop="image" content="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -2030,7 +1854,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Geekwolf">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/wolf.jpeg">
+      <meta itemprop="image" content="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -2184,12 +2008,218 @@
 <p>从复制跳过已经丢失的binlog，继续复制或者重新做主从（可以参考上面的操作）</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line">主MySQL：</div><div class="line">mysql&gt; show global variables like &apos;%gtid_executed%&apos;;</div><div class="line">+---------------+-----------------------------------------------+</div><div class="line">| Variable_name | Value |</div><div class="line">+---------------+-----------------------------------------------+</div><div class="line">| gtid_executed | 21ad8db5-f038-11e3-a14a-0200c0a80ad8:1-223937 |</div><div class="line">+---------------+-----------------------------------------------+</div><div class="line">1 row in set (0.00 sec)</div><div class="line"></div><div class="line">从MySQL：</div><div class="line">mysql&gt; set global GTID_PURGED=&quot;21ad8db5-f038-11e3-a14a-0200c0a80ad8:1-223937&quot;;</div><div class="line">ERROR 1840 (HY000): @@GLOBAL.GTID_PURGED can only be set when @@GLOBAL.GTID_EXECUTED is empty.</div><div class="line"></div><div class="line">mysql&gt; reset master;</div><div class="line">Query OK, 0 rows affected (0.19 sec)</div><div class="line">mysql&gt; show global variables like &apos;GTID_EXECUTED&apos;;</div><div class="line">+---------------+-----------------------------------------------+</div><div class="line">| Variable_name | Value |</div><div class="line">+---------------+-----------------------------------------------+</div><div class="line">| gtid_executed |  |</div><div class="line">+---------------+-----------------------------------------------+</div><div class="line">1 row in set (0.00 sec)</div><div class="line"></div><div class="line">mysql&gt; stop slave;</div><div class="line">Query OK, 0 rows affected, 1 warning (0.00 sec)</div><div class="line"></div><div class="line">mysql&gt; set global GTID_PURGED=&quot;21ad8db5-f038-11e3-a14a-0200c0a80ad8:1-223937&quot;;</div><div class="line">Query OK, 0 rows affected (0.13 sec)</div><div class="line"></div><div class="line">mysql&gt; start slave;</div><div class="line">Query OK, 0 rows affected (0.04 sec)</div><div class="line"></div><div class="line">mysql&gt; show slave status\G</div><div class="line">[...]</div><div class="line">Slave_IO_Running: Yes</div><div class="line">Slave_SQL_Running: Yes</div><div class="line">[...]</div></pre></td></tr></table></figure>
 <p><strong>注意事项：
-</strong>使用基于GTID复制时，不需要再关心master_log_file和master_log_os，替代的是只需要知道master上的GTID，并且配置在从上即可；<br>记录GTID的有两个全局变量：gtid_executed和gtid_purged<br><strong>与GTID复制相关的参数：</strong><br><a href="http://www.simlinux.com/wp-content/uploads/2014/08/gtid1.png"><img src="http://www.simlinux.com/wp-content/uploads/2014/08/gtid1.png" alt="gtid"></a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">GTID_EXECUTED ：表示已经在该实例上执行过的事务；执行RESET MASTER可以置空该参数；也可以设置GTID_NEXT执行一个空事务来影响GTID_EXECUTED</div><div class="line">GTID_NEXT ：是SESSION级别参数，表示下一个事务被执行使用的GTID（show variables like ‘gtid_%’;）</div><div class="line">GTID_PURGED ：表示被删除的binlog事务GTID，它是GTID_EXCUTED的子集，MySQL5.6.9，该参数无法被设置</div><div class="line">GTID_OWENED ：表示正在执行的事务的GTID以及对应的线程ID</div><div class="line"></div><div class="line">如果设置MASTER_AUTO_POSITION = 1表示主从复制连接使用基于GTID的方式复制</div><div class="line">CHANGE MASTER TO MASTER_HOST=&apos;192.168.10.216&apos;,MASTER_USER=&apos;rep&apos;,MASTER_PASSWORD=&apos;geekwolf&apos;,MASTER_AUTO_POSITION=1;</div></pre></td></tr></table></figure></p>
+</strong>使用基于GTID复制时，不需要再关心master_log_file和master_log_os，替代的是只需要知道master上的GTID，并且配置在从上即可；<br>记录GTID的有两个全局变量：gtid_executed和gtid_purged<br><strong>与GTID复制相关的参数：</strong><br><a href="http://blog.simlinux.com/wp-content/uploads/2014/08/gtid1.png" target="_blank" rel="external"><img src="http://blog.simlinux.com/wp-content/uploads/2014/08/gtid1.png" alt="gtid"></a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">GTID_EXECUTED ：表示已经在该实例上执行过的事务；执行RESET MASTER可以置空该参数；也可以设置GTID_NEXT执行一个空事务来影响GTID_EXECUTED</div><div class="line">GTID_NEXT ：是SESSION级别参数，表示下一个事务被执行使用的GTID（show variables like ‘gtid_%’;）</div><div class="line">GTID_PURGED ：表示被删除的binlog事务GTID，它是GTID_EXCUTED的子集，MySQL5.6.9，该参数无法被设置</div><div class="line">GTID_OWENED ：表示正在执行的事务的GTID以及对应的线程ID</div><div class="line"></div><div class="line">如果设置MASTER_AUTO_POSITION = 1表示主从复制连接使用基于GTID的方式复制</div><div class="line">CHANGE MASTER TO MASTER_HOST=&apos;192.168.10.216&apos;,MASTER_USER=&apos;rep&apos;,MASTER_PASSWORD=&apos;geekwolf&apos;,MASTER_AUTO_POSITION=1;</div></pre></td></tr></table></figure></p>
 <p>如果在GTID复制模式下想要使用基于文件的复制协议需要MASTER_AUTO_POSITION=0（至少指定其中MASTER_LOG_FILE、MASTER_LOG_POSITION一个）</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">CHANGE MASTER TO MASTER_HOST=&apos;192.168.10.216&apos;,MASTER_USER=&apos;rep&apos;,MASTER_PASSWORD=&apos;geekwolf&apos;,MASTER_LOG_FILE=&apos;mysql-bin.000002&apos;,MASTER_LOG_POS=120,MASTER_AUTO_POSITION=0;</div></pre></td></tr></table></figure>
 <h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><blockquote>
 <p><a href="http://dev.mysql.com/doc/refman/5.6/en/replication-gtids-restrictions.html" target="_blank" rel="external">MYSQL 5.6 GTID-based Replication</a><br><a href="http://www.woqutech.com/?p=1108" target="_blank" rel="external">MYSQL 5.6 GTID模式下手工删除日志导致备库数据丢失</a><br><a href="http://www.mysqlperformanceblog.com/2013/05/09/how-to-create-a-new-or-repair-a-broken-gtid-based-slave-with-percona-xtrabackup/" target="_blank" rel="external">How to create a new (or repair a broken) GTID based slave with Percona XtraBackup</a></p>
 </blockquote>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2014/08/20/first-puppet.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Geekwolf">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Geekwolf's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2014/08/20/first-puppet.html" itemprop="url">初认识Puppet</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-08-20T10:59:23+08:00">
+                2014-08-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/自动化运维/" itemprop="url" rel="index">
+                    <span itemprop="name">自动化运维</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2014/08/20/first-puppet.html" class="leancloud_visitors" data-flag-title="初认识Puppet">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  4
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="自动化运维都有哪些开源软件"><a href="#自动化运维都有哪些开源软件" class="headerlink" title="自动化运维都有哪些开源软件"></a>自动化运维都有哪些开源软件</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">初始化：Kickstart、Cobbler、 Rpmbuild/Xen、Kvm、Lxc、Docker/Openstack、Cloudstack、Opennebula、Eucalyplus</div><div class="line">配置类工具：Chef、Puppet、Func、Cfengine</div><div class="line">命令和控制类工具: Fabric、Salstack、Ansible、Capistrano、Pssh、Dsh、Expect</div><div class="line">监控类工具：Cacti、Nagios、Zabbix、Ganglia</div></pre></td></tr></table></figure>
+<h4 id="什么是Puppet"><a href="#什么是Puppet" class="headerlink" title="什么是Puppet"></a>什么是Puppet</h4><p>puppet是一种Linux、Unix平台的集中配置管理系统，使用ruby语言，可管理配置文件、用户、cron任务、软件包、系统服务等。puppet把这些系统实体称之为资源，puppet的设计目标是简化对这些资源的管理以及妥善处理资源间的依赖关系</p>
+<h4 id="Puppet都有哪些特性"><a href="#Puppet都有哪些特性" class="headerlink" title="Puppet都有哪些特性"></a>Puppet都有哪些特性</h4><ul>
+<li>可自动化重复任务、快速部署关键性应用及本地或者云端完成主动管理变更和快速扩展架构规模等</li>
+<li>遵循GPL协议，基于ruby开发，2.7.0以后使用Apache 2.0 License</li>
+<li>对于sa来讲是抽象的，只依赖于ruby与facter</li>
+<li>基于C/S架构，配置master和agent</li>
+<li>默认agent每30分钟连接到puppet master</li>
+<li>能管理多达40多种资源，如：file、user 、group、host、packeage、service、cron、exec、yumrepo等，适合整个软件生命周期的管理</li>
+</ul>
+<h4 id="puppet的整个生命周期"><a href="#puppet的整个生命周期" class="headerlink" title="puppet的整个生命周期"></a>puppet的整个生命周期</h4><p>供应（provisioning:包安装）—&gt;配置（configuration）—&gt;联动(orchestration)—&gt;报告(reporting)</p>
+<h4 id="Puppet适用于哪些场合"><a href="#Puppet适用于哪些场合" class="headerlink" title="Puppet适用于哪些场合"></a>Puppet适用于哪些场合</h4><ul>
+<li>初始化配置、修复、升级、审计</li>
+<li>统一安装、配置管理软件</li>
+<li>统一配置系统优化参数</li>
+<li>定期检测服务是否运行</li>
+<li>快速替换集群时设备的角色</li>
+</ul>
+<h4 id="Puppet社区版和企业版本功能上有什么差别"><a href="#Puppet社区版和企业版本功能上有什么差别" class="headerlink" title="Puppet社区版和企业版本功能上有什么差别"></a>Puppet社区版和企业版本功能上有什么差别</h4><p><a href="http://blog.simlinux.com/wp-content/uploads/2014/08/cb.png" target="_blank" rel="external"><img src="http://blog.simlinux.com/wp-content/uploads/2014/08/cb.png" alt="cb"></a></p>
+<p>请参考：<a href="http://puppetlabs.com/puppet/enterprise-vs-open-source" target="_blank" rel="external">http://puppetlabs.com/puppet/enterprise-vs-open-source</a></p>
+<h4 id="Puppet支持哪些系统"><a href="#Puppet支持哪些系统" class="headerlink" title="Puppet支持哪些系统"></a>Puppet支持哪些系统</h4><p><a href="http://blog.simlinux.com/wp-content/uploads/2014/08/zcos.png" target="_blank" rel="external"><img src="http://blog.simlinux.com/wp-content/uploads/2014/08/zcos.png" alt="zcos"></a></p>
+<h4 id="Puppet架构是怎样的"><a href="#Puppet架构是怎样的" class="headerlink" title="Puppet架构是怎样的"></a>Puppet架构是怎样的</h4><p><a href="http://blog.simlinux.com/wp-content/uploads/2014/08/ppjg.png" target="_blank" rel="external"><img src="http://blog.simlinux.com/wp-content/uploads/2014/08/ppjg.png" alt="ppjg"></a></p>
+<h4 id="Puppet如何工作的"><a href="#Puppet如何工作的" class="headerlink" title="Puppet如何工作的"></a>Puppet如何工作的</h4><p><a href="http://blog.simlinux.com/wp-content/uploads/2014/08/yl.png" target="_blank" rel="external"><img src="http://blog.simlinux.com/wp-content/uploads/2014/08/yl.png" alt="yl"></a></p>
+<p>  所有配置信息为实现其通用性，在master端通常被定义为modules—class—resource（管理和被管理的对象）<br>资源组成类，类封装成模块<br>puppet只定义目标状态，不用关心实现过程；<br>module(class(resource))—&gt;node ‘FQDN’ {class1,class2}—&gt;agent(facter)报告facter给master —&gt;master根据facter信息生成相应的catalog结果—&gt;agent 应用catalog</p>
+<h5 id="流程简述"><a href="#流程简述" class="headerlink" title="流程简述"></a>流程简述</h5><ol>
+<li>客户端puppetd向master发起认证请求。</li>
+<li>Puppet Master告诉client是合法的。</li>
+<li>客户端puppetd开始调用facter，facter可以探测出主机的一些变量，例如主机名，内存大小，IP地址等。pupppetd 把这些信息通过ssl连接发送到服务器端。</li>
+<li>服务器端的puppet Master 检测客户端的主机名，然后找到manifest里面对应的node配置， 并对该部分内容进行解析，解析分为几个阶段，语法检查，如果语法错误就报错。如果语法没错，就继续解析，解析的结果会生成一个中间的“伪代码”(catalog)，然后把伪代码发给客户端。</li>
+<li>客户端接收到“伪代码”，并且执行。</li>
+<li>客户端在执行时判断有没有file文件，如果有就向Fileserver发起请求。</li>
+<li>客户端继续判断有没有配置Report。如果配置，就把执行结果发送给服务器。</li>
+<li>服务器端把客户端的执行结果写入日志。并可以发送给报告系统(DashBoard)</li>
+</ol>
+<h4 id="Puppet组织结构是怎样的"><a href="#Puppet组织结构是怎样的" class="headerlink" title="Puppet组织结构是怎样的"></a>Puppet组织结构是怎样的</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">Puppet的目录结构描述如下： </div><div class="line">|— puppet.conf # 主配置配置文件</div><div class="line">|— fileserver.conf #文件服务器配置文件</div><div class="line">|— auth.conf #认证配置文件 (只允许域内认证)</div><div class="line">|— autosign.conf #自动验证配置文件</div><div class="line">|— tagmail.conf # 邮件配置文件（将错误信息发送）</div><div class="line">|— manifests # 文件存储目录(puppet会先读取该目录的.pp文件site.pp)</div><div class="line">|— nodes</div><div class="line">| | | puppetclient.pp #puppet解析主配置文件所有的模块和节点都在此文件里include</div><div class="line">| |— site.pp # 定义puppet相关的变量和默认配置</div><div class="line">| |— modules.pp # 加载class类模块文件（include nginx）</div><div class="line">|— modules # 定义模块</div><div class="line">| —nginx # 以nginx为例</div><div class="line">| |— file</div><div class="line">| |— manifests</div><div class="line">| | |— init.pp #类的定义，类名必须与模块名相同</div><div class="line">| |—– templates # 模块配置目录，可以被模块的manifests引用</div><div class="line">| | |— nginx.erb #erb模板</div></pre></td></tr></table></figure>
+<h4 id="学习Puppet去哪里"><a href="#学习Puppet去哪里" class="headerlink" title="学习Puppet去哪里"></a>学习Puppet去哪里</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">Puppet相关文档：[http://docs.puppetlabs.com/](http://docs.puppetlabs.com/)</div><div class="line">常用模块下载地址： [https://forge.puppetlabs.com/](https://forge.puppetlabs.com/)</div><div class="line">PuppetDashboard下载地址：[https://downloads.puppetlabs.com/dashboard/](https://downloads.puppetlabs.com/dashboard/)</div><div class="line">PuppetDashboard帮助文档：[http://docs.puppetlabs.com/dashboard/](http://docs.puppetlabs.com/dashboard/)</div><div class="line">Puppet中文wiki：[http://puppet.wikidot.com/](http://puppet.wikidot.com/)</div><div class="line">Puppet中文论坛：[http://www.puppetfans.com/](http://www.puppetfans.com/)</div><div class="line">Puppet运维自动化文档：[http://pan.baidu.com/s/1c0hBMgg](http://pan.baidu.com/s/1c0hBMgg)</div><div class="line">Puppet简单安装可以参考：[http://www.chenshake.com/puppet-study-notes/#i-3](http://www.chenshake.com/puppet-study-notes/#i-3)</div></pre></td></tr></table></figure>
 
           
         
@@ -2263,11 +2293,11 @@
       <section class="site-overview sidebar-panel sidebar-panel-active">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
-               src="/images/wolf.jpeg"
+               src="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg"
                alt="Geekwolf" />
           <p class="site-author-name" itemprop="name">Geekwolf</p>
            
-              <p class="site-description motion-element" itemprop="description">DevOps | Docker | K8S | MySQL | 运维</p>
+              <p class="site-description motion-element" itemprop="description">DevOps | Docker | Python | k8s</p>
           
         </div>
         <nav class="site-state motion-element">
@@ -2275,7 +2305,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">83</span>
+                <span class="site-state-item-count">82</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -2297,7 +2327,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">60</span>
+                <span class="site-state-item-count">61</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -2346,6 +2376,36 @@
         
 
         
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-block">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://blog.simlinux.com" title="旧版博客" target="_blank">旧版博客</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://nolinux.blog.51cto.com" title="nolinux" target="_blank">nolinux</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://xiaorui.cc" title="峰云就她了" target="_blank">峰云就她了</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://note.gitcloud.cc/blog/bluetom520" title="懒懒的天空" target="_blank">懒懒的天空</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.roddypy.com" title="普拉多VX" target="_blank">普拉多VX</a>
+                </li>
+              
+            </ul>
+          </div>
         
 
         

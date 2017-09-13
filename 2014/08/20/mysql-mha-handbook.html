@@ -108,13 +108,13 @@
 <meta property="og:site_name" content="Geekwolf&#39;s Blog">
 <meta property="og:description" content="MHA特性 主服务器的自动监控和故障转移MHA监控复制架构的主服务器，一旦检测到主服务器故障，就会自动进行故障转移。即使有些从服务器没有收到最新的relay log，MHA自动从最新的从服务器上识别差异的relay log并把这些日志应用到其他从服务器上，因此所有的从服务器保持一致性了。MHA通常在几秒内完成故障转移，9-12秒可以检测出主服务器故障，7-10秒内关闭故障的主服务器以避免脑裂，几秒">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://www.simlinux.com/wp-content/uploads/2014/08/ar.png">
-<meta property="og:image" content="http://www.simlinux.com/wp-content/uploads/2014/08/mhaq.jpg">
-<meta property="og:updated_time" content="2017-09-12T08:40:44.829Z">
+<meta property="og:image" content="http://blog.simlinux.com/wp-content/uploads/2014/08/ar.png">
+<meta property="og:image" content="http://blog.simlinux.com/wp-content/uploads/2014/08/mhaq.jpg">
+<meta property="og:updated_time" content="2017-09-13T02:23:36.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MHA高可用部署及测试">
 <meta name="twitter:description" content="MHA特性 主服务器的自动监控和故障转移MHA监控复制架构的主服务器，一旦检测到主服务器故障，就会自动进行故障转移。即使有些从服务器没有收到最新的relay log，MHA自动从最新的从服务器上识别差异的relay log并把这些日志应用到其他从服务器上，因此所有的从服务器保持一致性了。MHA通常在几秒内完成故障转移，9-12秒可以检测出主服务器故障，7-10秒内关闭故障的主服务器以避免脑裂，几秒">
-<meta name="twitter:image" content="http://www.simlinux.com/wp-content/uploads/2014/08/ar.png">
+<meta name="twitter:image" content="http://blog.simlinux.com/wp-content/uploads/2014/08/ar.png">
 
 
 
@@ -246,6 +246,16 @@
         </li>
       
         
+        <li class="menu-item menu-item-tips">
+          <a href="/tips/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-gittip"></i> <br />
+            
+            tips
+          </a>
+        </li>
+      
+        
         <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
             
@@ -347,7 +357,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Geekwolf">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/wolf.jpeg">
+      <meta itemprop="image" content="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -468,7 +478,7 @@
 </ol>
 <h4 id="MHA工作机制"><a href="#MHA工作机制" class="headerlink" title="MHA工作机制"></a>MHA工作机制</h4><p>MHA自动Failover过程解析<br><a href="http://www.mysqlsystems.com/2012/03/figure-out-process-of-autofailover-on-mha.html" target="_blank" rel="external">http://www.mysqlsystems.com/2012/03/figure-out-process-of-autofailover-on-mha.html</a><br><a href="https://code.google.com/p/mysql-master-ha/wiki/Sequences_of_MHA" target="_blank" rel="external">https://code.google.com/p/mysql-master-ha/wiki/Sequences_of_MHA</a></p>
 <h4 id="MHA适用的主从架构"><a href="#MHA适用的主从架构" class="headerlink" title="MHA适用的主从架构"></a>MHA适用的主从架构</h4><p><a href="https://code.google.com/p/mysql-master-ha/wiki/UseCases" target="_blank" rel="external">https://code.google.com/p/mysql-master-ha/wiki/UseCases</a></p>
-<h4 id="MHA高可用环境的构建"><a href="#MHA高可用环境的构建" class="headerlink" title="MHA高可用环境的构建"></a>MHA高可用环境的构建</h4><h4 id="实验环境"><a href="#实验环境" class="headerlink" title="实验环境"></a>实验环境</h4><p><a href="http://www.simlinux.com/wp-content/uploads/2014/08/ar.png"><img src="http://www.simlinux.com/wp-content/uploads/2014/08/ar.png" alt="ar"></a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">Node1:192.168.10.216 (主)</div><div class="line">Node2:192.168.10.217 (从,主故障切换的备主)</div><div class="line">Node3:192.168.10.218 (从,兼MHA管理节点)</div><div class="line">VIP : 192.168.10.219</div><div class="line">Mysql:Percona-Server-5.6.16-rel64.2-569</div><div class="line">以上节点系统均为CentOS6.5 x64</div></pre></td></tr></table></figure></p>
+<h4 id="MHA高可用环境的构建"><a href="#MHA高可用环境的构建" class="headerlink" title="MHA高可用环境的构建"></a>MHA高可用环境的构建</h4><h4 id="实验环境"><a href="#实验环境" class="headerlink" title="实验环境"></a>实验环境</h4><p><a href="http://blog.simlinux.com/wp-content/uploads/2014/08/ar.png" target="_blank" rel="external"><img src="http://blog.simlinux.com/wp-content/uploads/2014/08/ar.png" alt="ar"></a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">Node1:192.168.10.216 (主)</div><div class="line">Node2:192.168.10.217 (从,主故障切换的备主)</div><div class="line">Node3:192.168.10.218 (从,兼MHA管理节点)</div><div class="line">VIP : 192.168.10.219</div><div class="line">Mysql:Percona-Server-5.6.16-rel64.2-569</div><div class="line">以上节点系统均为CentOS6.5 x64</div></pre></td></tr></table></figure></p>
 <h4 id="实验大概步骤"><a href="#实验大概步骤" class="headerlink" title="实验大概步骤"></a>实验大概步骤</h4><ol>
 <li>三节点配置epel的yum源，安装相关依赖包</li>
 <li>建立主从复制关系</li>
@@ -515,7 +525,7 @@
 <h4 id="部署过程遇到的问题"><a href="#部署过程遇到的问题" class="headerlink" title="部署过程遇到的问题"></a>部署过程遇到的问题</h4><p><strong>问题1：</strong> [root@node1 mha4mysql-node-0.56]# perl Makefile.PL<br>Can’t locate ExtUtils/MakeMaker.pm in @INC (@INC contains: inc /usr/local/lib64/perl5 /usr/local/share/perl5 /usr/lib64/perl5/vendor_perl /usr/share/perl5/vendor_perl /usr/lib64/perl5 /usr/share/perl5 .) at inc/Module/Install/Makefile.pm line 4.<br>BEGIN failed—compilation aborted at inc/Module/Install/Makefile.pm line 4. Compilation failed in require at inc/Module/Install.pm line 283.<br>Can’t locate ExtUtils/MakeMaker.pm in @INC (@INC contains: inc /usr/local/lib64/perl5 /usr/local/share/perl5 /usr/lib64/perl5/vendor_perl /usr/share/perl5/<br>vendor_perl /usr/lib64/perl5 /usr/share/perl5 .) at inc/Module/Install/Can.pm line 6.<br>BEGIN failed—compilation aborted at inc/Module/Install/Can.pm line 6.<br>Compilation failed in require at inc/Module/Install.pm line 283.<br>Can’t locate ExtUtils/MM_Unix.pm in @INC (@INC contains: inc /usr/local/lib64/<br>perl5 /usr/local/share/perl5 /usr/lib64/perl5/vendor_perl /usr/share/perl5/vendor_perl /usr/lib64/perl5 /usr/share/perl5 .) at inc/Module/Install/<br>Metadata.pm line 349.<br><strong>解决办法：</strong><br>yum -y install perl-CPAN perl-devel perl-DBD-MySQL</p>
 <p><strong>问题2：</strong><br>Can’t locate Time/HiRes.pm in @INC (@INC contains: /usr/local/lib64/perl5 /usr/local/share/perl5 /usr/lib64/perl5/vendor_perl /usr/share/perl5/vendor_perl /usr/lib64/perl5 /usr/share/perl5 .) at /usr/local/share/perl5/MHA/SSHCheck.pm line 28.<br>BEGIN failed—compilation aborted at /usr/local/share/perl5/MHA/SSHCheck.pm line 28.<br>Compilation failed in require at /usr/local/bin/masterha_check_ssh line 25. BEGIN failed—compilation aborted at /usr/local/bin/masterha_check_ssh line 25.<br><strong>解决办法</strong>：<br>yum -y install perl-Time-HiRes</p>
 <p><strong>问题3：</strong></p>
-<p><a href="http://www.simlinux.com/wp-content/uploads/2014/08/mhaq.jpg"><img src="http://www.simlinux.com/wp-content/uploads/2014/08/mhaq.jpg" alt="mhaq"></a></p>
+<p><a href="http://blog.simlinux.com/wp-content/uploads/2014/08/mhaq.jpg" target="_blank" rel="external"><img src="http://blog.simlinux.com/wp-content/uploads/2014/08/mhaq.jpg" alt="mhaq"></a></p>
 <p><strong>解决办法:</strong><br>每个节点都做好mysql命令的软链<br>ln -s /usr/local/mysql/bin/* /usr/local/bin/</p>
 <h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><blockquote>
 <p><a href="https://code.google.com/p/mysql-master-ha" target="_blank" rel="external">https://code.google.com/p/mysql-master-ha</a><br><a href="http://blog.chinaunix.net/uid-28437434-id-3476641.html" target="_blank" rel="external">http://blog.chinaunix.net/uid-28437434-id-3476641.html</a></p>
@@ -678,11 +688,11 @@
       <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
-               src="/images/wolf.jpeg"
+               src="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg"
                alt="Geekwolf" />
           <p class="site-author-name" itemprop="name">Geekwolf</p>
            
-              <p class="site-description motion-element" itemprop="description">DevOps | Docker | K8S | MySQL | 运维</p>
+              <p class="site-description motion-element" itemprop="description">DevOps | Docker | Python | k8s</p>
           
         </div>
         <nav class="site-state motion-element">
@@ -690,7 +700,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">83</span>
+                <span class="site-state-item-count">82</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -712,7 +722,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">60</span>
+                <span class="site-state-item-count">61</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -761,6 +771,36 @@
         
 
         
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-block">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://blog.simlinux.com" title="旧版博客" target="_blank">旧版博客</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://nolinux.blog.51cto.com" title="nolinux" target="_blank">nolinux</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://xiaorui.cc" title="峰云就她了" target="_blank">峰云就她了</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://note.gitcloud.cc/blog/bluetom520" title="懒懒的天空" target="_blank">懒懒的天空</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.roddypy.com" title="普拉多VX" target="_blank">普拉多VX</a>
+                </li>
+              
+            </ul>
+          </div>
         
 
         

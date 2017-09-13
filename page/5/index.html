@@ -100,16 +100,16 @@
 
 
 
-<meta name="description" content="DevOps | Docker | K8S | MySQL | 运维">
+<meta name="description" content="DevOps | Docker | Python | k8s">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Geekwolf&#39;s Blog">
 <meta property="og:url" content="http://www.simlinux.com/page/5/index.html">
 <meta property="og:site_name" content="Geekwolf&#39;s Blog">
-<meta property="og:description" content="DevOps | Docker | K8S | MySQL | 运维">
+<meta property="og:description" content="DevOps | Docker | Python | k8s">
 <meta property="og:locale" content="zh-Hans">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Geekwolf&#39;s Blog">
-<meta name="twitter:description" content="DevOps | Docker | K8S | MySQL | 运维">
+<meta name="twitter:description" content="DevOps | Docker | Python | k8s">
 
 
 
@@ -243,6 +243,16 @@
         </li>
       
         
+        <li class="menu-item menu-item-tips">
+          <a href="/tips/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-gittip"></i> <br />
+            
+            tips
+          </a>
+        </li>
+      
+        
         <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
             
@@ -339,218 +349,12 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2014/08/20/first-puppet.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Geekwolf">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/wolf.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Geekwolf's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2014/08/20/first-puppet.html" itemprop="url">初认识Puppet</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-08-20T10:59:23+08:00">
-                2014-08-20
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/自动化运维/" itemprop="url" rel="index">
-                    <span itemprop="name">自动化运维</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2014/08/20/first-puppet.html" class="leancloud_visitors" data-flag-title="初认识Puppet">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长</span>
-                
-                <span title="阅读时长">
-                  4
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h4 id="自动化运维都有哪些开源软件"><a href="#自动化运维都有哪些开源软件" class="headerlink" title="自动化运维都有哪些开源软件"></a>自动化运维都有哪些开源软件</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">初始化：Kickstart、Cobbler、 Rpmbuild/Xen、Kvm、Lxc、Docker/Openstack、Cloudstack、Opennebula、Eucalyplus</div><div class="line">配置类工具：Chef、Puppet、Func、Cfengine</div><div class="line">命令和控制类工具: Fabric、Salstack、Ansible、Capistrano、Pssh、Dsh、Expect</div><div class="line">监控类工具：Cacti、Nagios、Zabbix、Ganglia</div></pre></td></tr></table></figure>
-<h4 id="什么是Puppet"><a href="#什么是Puppet" class="headerlink" title="什么是Puppet"></a>什么是Puppet</h4><p>puppet是一种Linux、Unix平台的集中配置管理系统，使用ruby语言，可管理配置文件、用户、cron任务、软件包、系统服务等。puppet把这些系统实体称之为资源，puppet的设计目标是简化对这些资源的管理以及妥善处理资源间的依赖关系</p>
-<h4 id="Puppet都有哪些特性"><a href="#Puppet都有哪些特性" class="headerlink" title="Puppet都有哪些特性"></a>Puppet都有哪些特性</h4><ul>
-<li>可自动化重复任务、快速部署关键性应用及本地或者云端完成主动管理变更和快速扩展架构规模等</li>
-<li>遵循GPL协议，基于ruby开发，2.7.0以后使用Apache 2.0 License</li>
-<li>对于sa来讲是抽象的，只依赖于ruby与facter</li>
-<li>基于C/S架构，配置master和agent</li>
-<li>默认agent每30分钟连接到puppet master</li>
-<li>能管理多达40多种资源，如：file、user 、group、host、packeage、service、cron、exec、yumrepo等，适合整个软件生命周期的管理</li>
-</ul>
-<h4 id="puppet的整个生命周期"><a href="#puppet的整个生命周期" class="headerlink" title="puppet的整个生命周期"></a>puppet的整个生命周期</h4><p>供应（provisioning:包安装）—&gt;配置（configuration）—&gt;联动(orchestration)—&gt;报告(reporting)</p>
-<h4 id="Puppet适用于哪些场合"><a href="#Puppet适用于哪些场合" class="headerlink" title="Puppet适用于哪些场合"></a>Puppet适用于哪些场合</h4><ul>
-<li>初始化配置、修复、升级、审计</li>
-<li>统一安装、配置管理软件</li>
-<li>统一配置系统优化参数</li>
-<li>定期检测服务是否运行</li>
-<li>快速替换集群时设备的角色</li>
-</ul>
-<h4 id="Puppet社区版和企业版本功能上有什么差别"><a href="#Puppet社区版和企业版本功能上有什么差别" class="headerlink" title="Puppet社区版和企业版本功能上有什么差别"></a>Puppet社区版和企业版本功能上有什么差别</h4><p><a href="http://www.simlinux.com/wp-content/uploads/2014/08/cb.png"><img src="http://www.simlinux.com/wp-content/uploads/2014/08/cb.png" alt="cb"></a></p>
-<p>请参考：<a href="http://puppetlabs.com/puppet/enterprise-vs-open-source" target="_blank" rel="external">http://puppetlabs.com/puppet/enterprise-vs-open-source</a></p>
-<h4 id="Puppet支持哪些系统"><a href="#Puppet支持哪些系统" class="headerlink" title="Puppet支持哪些系统"></a>Puppet支持哪些系统</h4><p><a href="http://www.simlinux.com/wp-content/uploads/2014/08/zcos.png"><img src="http://www.simlinux.com/wp-content/uploads/2014/08/zcos.png" alt="zcos"></a></p>
-<h4 id="Puppet架构是怎样的"><a href="#Puppet架构是怎样的" class="headerlink" title="Puppet架构是怎样的"></a>Puppet架构是怎样的</h4><p><a href="http://www.simlinux.com/wp-content/uploads/2014/08/ppjg.png"><img src="http://www.simlinux.com/wp-content/uploads/2014/08/ppjg.png" alt="ppjg"></a></p>
-<h4 id="Puppet如何工作的"><a href="#Puppet如何工作的" class="headerlink" title="Puppet如何工作的"></a>Puppet如何工作的</h4><p><a href="http://www.simlinux.com/wp-content/uploads/2014/08/yl.png"><img src="http://www.simlinux.com/wp-content/uploads/2014/08/yl.png" alt="yl"></a></p>
-<p>  所有配置信息为实现其通用性，在master端通常被定义为modules—class—resource（管理和被管理的对象）<br>资源组成类，类封装成模块<br>puppet只定义目标状态，不用关心实现过程；<br>module(class(resource))—&gt;node ‘FQDN’ {class1,class2}—&gt;agent(facter)报告facter给master —&gt;master根据facter信息生成相应的catalog结果—&gt;agent 应用catalog</p>
-<h5 id="流程简述"><a href="#流程简述" class="headerlink" title="流程简述"></a>流程简述</h5><ol>
-<li>客户端puppetd向master发起认证请求。</li>
-<li>Puppet Master告诉client是合法的。</li>
-<li>客户端puppetd开始调用facter，facter可以探测出主机的一些变量，例如主机名，内存大小，IP地址等。pupppetd 把这些信息通过ssl连接发送到服务器端。</li>
-<li>服务器端的puppet Master 检测客户端的主机名，然后找到manifest里面对应的node配置， 并对该部分内容进行解析，解析分为几个阶段，语法检查，如果语法错误就报错。如果语法没错，就继续解析，解析的结果会生成一个中间的“伪代码”(catalog)，然后把伪代码发给客户端。</li>
-<li>客户端接收到“伪代码”，并且执行。</li>
-<li>客户端在执行时判断有没有file文件，如果有就向Fileserver发起请求。</li>
-<li>客户端继续判断有没有配置Report。如果配置，就把执行结果发送给服务器。</li>
-<li>服务器端把客户端的执行结果写入日志。并可以发送给报告系统(DashBoard)</li>
-</ol>
-<h4 id="Puppet组织结构是怎样的"><a href="#Puppet组织结构是怎样的" class="headerlink" title="Puppet组织结构是怎样的"></a>Puppet组织结构是怎样的</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">Puppet的目录结构描述如下： </div><div class="line">|— puppet.conf # 主配置配置文件</div><div class="line">|— fileserver.conf #文件服务器配置文件</div><div class="line">|— auth.conf #认证配置文件 (只允许域内认证)</div><div class="line">|— autosign.conf #自动验证配置文件</div><div class="line">|— tagmail.conf # 邮件配置文件（将错误信息发送）</div><div class="line">|— manifests # 文件存储目录(puppet会先读取该目录的.pp文件site.pp)</div><div class="line">|— nodes</div><div class="line">| | | puppetclient.pp #puppet解析主配置文件所有的模块和节点都在此文件里include</div><div class="line">| |— site.pp # 定义puppet相关的变量和默认配置</div><div class="line">| |— modules.pp # 加载class类模块文件（include nginx）</div><div class="line">|— modules # 定义模块</div><div class="line">| —nginx # 以nginx为例</div><div class="line">| |— file</div><div class="line">| |— manifests</div><div class="line">| | |— init.pp #类的定义，类名必须与模块名相同</div><div class="line">| |—– templates # 模块配置目录，可以被模块的manifests引用</div><div class="line">| | |— nginx.erb #erb模板</div></pre></td></tr></table></figure>
-<h4 id="学习Puppet去哪里"><a href="#学习Puppet去哪里" class="headerlink" title="学习Puppet去哪里"></a>学习Puppet去哪里</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">Puppet相关文档：[http://docs.puppetlabs.com/](http://docs.puppetlabs.com/)</div><div class="line">常用模块下载地址： [https://forge.puppetlabs.com/](https://forge.puppetlabs.com/)</div><div class="line">PuppetDashboard下载地址：[https://downloads.puppetlabs.com/dashboard/](https://downloads.puppetlabs.com/dashboard/)</div><div class="line">PuppetDashboard帮助文档：[http://docs.puppetlabs.com/dashboard/](http://docs.puppetlabs.com/dashboard/)</div><div class="line">Puppet中文wiki：[http://puppet.wikidot.com/](http://puppet.wikidot.com/)</div><div class="line">Puppet中文论坛：[http://www.puppetfans.com/](http://www.puppetfans.com/)</div><div class="line">Puppet运维自动化文档：[http://pan.baidu.com/s/1c0hBMgg](http://pan.baidu.com/s/1c0hBMgg)</div><div class="line">Puppet简单安装可以参考：[http://www.chenshake.com/puppet-study-notes/#i-3](http://www.chenshake.com/puppet-study-notes/#i-3)</div></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2014/08/20/mysql-rep.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Geekwolf">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/wolf.jpeg">
+      <meta itemprop="image" content="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -667,7 +471,7 @@
       
         
           
-            <h5 id="一、Mysql复制基本原理"><a href="#一、Mysql复制基本原理" class="headerlink" title="一、Mysql复制基本原理"></a>一、Mysql复制基本原理</h5><p><a href="http://www.simlinux.com/wp-content/uploads/2014/08/fzyl.png"><img src="http://www.simlinux.com/wp-content/uploads/2014/08/fzyl.png" alt="fzyl"></a></p>
+            <h5 id="一、Mysql复制基本原理"><a href="#一、Mysql复制基本原理" class="headerlink" title="一、Mysql复制基本原理"></a>一、Mysql复制基本原理</h5><p><a href="http://blog.simlinux.com/wp-content/uploads/2014/08/fzyl.png" target="_blank" rel="external"><img src="http://blog.simlinux.com/wp-content/uploads/2014/08/fzyl.png" alt="fzyl"></a></p>
 <ol>
 <li>Mysql主库在事务提交时会将数据变更作为Events记录在Binlog中，Mysql主库的sync_binlog参数(默认值为0<br>可参考<a href="http://dev.mysql.com/doc/refman/5.6/en/replication-options-binary-log.html#sysvar_sync_binlog" target="_blank" rel="external">http://dev.mysql.com/doc/refman/5.6/en/replication-options-binary-log.html#sysvar_sync_binlog</a>)控制Binlog日志刷新到磁盘</li>
 <li>主库推送Binlog中的事件到从库的Relay Log，之后从库根据Relay Log重做DML操作</li>
@@ -681,13 +485,13 @@
 <p><strong>基于Row复制:</strong><br><strong>优点：</strong><br>只记录每一行数据变化的细节，不需要记录上下文信息<br>不会出现某些情况下auto_increment columns,timestamps,.triger、function、procedure无法正常复制的问题<br>新的row格式已经有了优化， CREATE、DROP、ALTER操作只记录原始SQL，而不会记录每行数据的变化到Binlog<br>适用于主从复制要求强一致性的环境</p>
 <p><strong>缺点：</strong><br>update、delete、load data local infile等频繁更新或者删除大量行时会产生大量的binlog日志，会有一定的I/O压力，主从同步产生不必要的流量<br>如：UPDATE products set status=‘sold’ where product_id BETWEEN 30000 and 50000;<br>无法很好的进行数据库审计</p>
 <h6 id="Binlog基本配置"><a href="#Binlog基本配置" class="headerlink" title="Binlog基本配置"></a>Binlog基本配置</h6><p>修改配置文件my.cnf<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">binlog_format=row                               binlog日志格式 </div><div class="line">max_binlog_size = 512M                          每个日志文件大小</div><div class="line">binlog_cache_size=1M                            二进制日志缓冲大小,uncommitted事务产生的日志写在cache，committed的持久化到磁盘binlog里面，此参数不是全局的，是针对session的</div><div class="line">expire_logs_days = 3                            binlog有效期</div><div class="line">log-bin=/datas/mysql/logs/mysql-bin             binlog日志目录</div><div class="line">relay-log=/datas/mysql/logs/relay-bin           从库中继日志目录</div><div class="line">#slave_skip_errors = all</div></pre></td></tr></table></figure></p>
-<h5 id="三、Mysql常见两种复制方式"><a href="#三、Mysql常见两种复制方式" class="headerlink" title="三、Mysql常见两种复制方式"></a>三、Mysql常见两种复制方式</h5><h6 id="异步复制（Asynchronous-Replication）"><a href="#异步复制（Asynchronous-Replication）" class="headerlink" title="异步复制（Asynchronous Replication）"></a>异步复制（Asynchronous Replication）</h6><p><a href="http://www.simlinux.com/wp-content/uploads/2014/08/ybfz.png"><img src="http://www.simlinux.com/wp-content/uploads/2014/08/ybfz.png" alt="ybfz"></a><br>主库执行完Commit后，在主库写入Binlog日志后即可成功返回客户端，无需等等Binlog日志传送给从库</p>
+<h5 id="三、Mysql常见两种复制方式"><a href="#三、Mysql常见两种复制方式" class="headerlink" title="三、Mysql常见两种复制方式"></a>三、Mysql常见两种复制方式</h5><h6 id="异步复制（Asynchronous-Replication）"><a href="#异步复制（Asynchronous-Replication）" class="headerlink" title="异步复制（Asynchronous Replication）"></a>异步复制（Asynchronous Replication）</h6><p><a href="http://blog.simlinux.com/wp-content/uploads/2014/08/ybfz.png" target="_blank" rel="external"><img src="http://blog.simlinux.com/wp-content/uploads/2014/08/ybfz.png" alt="ybfz"></a><br>主库执行完Commit后，在主库写入Binlog日志后即可成功返回客户端，无需等等Binlog日志传送给从库</p>
 <p><strong>异步复制主从配置：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">主 : 192.168.10.216</div><div class="line">从 : 192.168.10.217</div></pre></td></tr></table></figure></p>
 <p><strong>步骤：</strong>主从版本一致—&gt;主库授权复制帐号—&gt;确保开启binlog及主从server_id唯一—&gt;主库只读，记录主binlog名称及偏移量—&gt;拷贝主数据文件到从相应位置—&gt;从库change master to —&gt;slave start—&gt;检查两个yes</p>
 <p><strong>1.主MySQL配置</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">mysql&gt;GRANT REPLICATION SLAVE ON *.* TO &apos;rep&apos;@&apos;192.168.10.217&apos;  IDENTIFIED BY  &apos;geekwolf&apos;;</div><div class="line">mysql&gt;FLUSH TABLES WITH READ LOCK;</div><div class="line">mysql&gt; SHOW MASTER STATUS;</div><div class="line">+------------------+----------+--------------+------------------+-------------------+</div><div class="line">| File | Position | Binlog_Do_DB | Binlog_Ignore_DB | Executed_Gtid_Set |</div><div class="line">+------------------+----------+--------------+------------------+-------------------+</div><div class="line">| mysql-bin.000003 | 120 | | | |</div><div class="line">+------------------+----------+--------------+------------------+-------------------+</div><div class="line">1 row in set (0.00 sec)</div><div class="line">将主库数据文件拷贝到从库对应目录</div><div class="line">mysql&gt;UNLOCK TABLES;</div></pre></td></tr></table></figure></p>
 <p><strong>2.从MySQL配置</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div></pre></td><td class="code"><pre><div class="line">mysql&gt;CHANGE MASTER TO MASTER_HOST=&apos;192.168.10.216&apos;,MASTER_USER=&apos;rep&apos;,MASTER_PASSWORD=&apos;geekwolf&apos;,MASTER_LOG_FILE=&apos;mysql-bin.000003&apos;,MASTER_LOG_POS=120;</div><div class="line">mysql&gt;START  SLAVE;</div><div class="line">mysql&gt; SHOW SLAVE STATUS \G;</div><div class="line">*************************** 1\. row ***************************</div><div class="line">   Slave_IO_State: Waiting for master to send event</div><div class="line">  Master_Host: 192.168.10.216</div><div class="line">  Master_User: rep</div><div class="line">  Master_Port: 3306</div><div class="line">Connect_Retry: 1</div><div class="line">  Master_Log_File: mysql-bin.000003</div><div class="line">  Read_Master_Log_Pos: 120</div><div class="line">   Relay_Log_File: relay-bin.000002</div><div class="line">Relay_Log_Pos: 283</div><div class="line">Relay_Master_Log_File: mysql-bin.000003</div><div class="line"> Slave_IO_Running: Yes</div><div class="line">Slave_SQL_Running: Yes</div><div class="line">  Replicate_Do_DB:</div><div class="line">  Replicate_Ignore_DB:</div><div class="line">   Replicate_Do_Table:</div><div class="line">   Replicate_Ignore_Table:</div><div class="line">  Replicate_Wild_Do_Table:</div><div class="line">  Replicate_Wild_Ignore_Table:</div><div class="line">   Last_Errno: 0</div><div class="line">   Last_Error:</div><div class="line"> Skip_Counter: 0</div><div class="line">  Exec_Master_Log_Pos: 120</div><div class="line">  Relay_Log_Space: 450</div><div class="line">  Until_Condition: None</div><div class="line">   Until_Log_File:</div><div class="line">Until_Log_Pos: 0</div><div class="line">   Master_SSL_Allowed: No</div><div class="line">   Master_SSL_CA_File:</div><div class="line">   Master_SSL_CA_Path:</div><div class="line">  Master_SSL_Cert:</div><div class="line">Master_SSL_Cipher:</div><div class="line">   Master_SSL_Key:</div><div class="line">Seconds_Behind_Master: 0</div><div class="line">Master_SSL_Verify_Server_Cert: No</div><div class="line">Last_IO_Errno: 0</div><div class="line">Last_IO_Error:</div><div class="line">   Last_SQL_Errno: 0</div><div class="line">   Last_SQL_Error:</div><div class="line">  Replicate_Ignore_Server_Ids:</div><div class="line"> Master_Server_Id: 216</div><div class="line">  Master_UUID: bd2a4c6b-d954-11e3-8c0a-0200c0a80ad8</div><div class="line"> Master_Info_File: /usr/local/mysql/data/master.info</div><div class="line">SQL_Delay: 0</div><div class="line">  SQL_Remaining_Delay: NULL</div><div class="line">  Slave_SQL_Running_State: Slave has read all relay log; waiting for the slave I/O thread to update it</div><div class="line">   Master_Retry_Count: 86400</div><div class="line">  Master_Bind:</div><div class="line">  Last_IO_Error_Timestamp:</div><div class="line"> Last_SQL_Error_Timestamp:</div><div class="line">   Master_SSL_Crl:</div><div class="line">   Master_SSL_Crlpath:</div><div class="line">   Retrieved_Gtid_Set:</div><div class="line">Executed_Gtid_Set:</div><div class="line">Auto_Position: 0</div><div class="line">1 row in set (0.00 sec)</div></pre></td></tr></table></figure></p>
 <p><strong>注:</strong> 异步复制中只要binlog不丢失即可保证数据的完整性；当主宕机，从库未收到binlog时，就会丢失数据（主磁盘正常时可以提取差异binlog在从执行），此时就需要用到半同步复制方式</p>
-<h6 id="半同步复制-Semi-synchroous-Replicaion"><a href="#半同步复制-Semi-synchroous-Replicaion" class="headerlink" title="半同步复制(Semi-synchroous Replicaion)"></a>半同步复制(Semi-synchroous Replicaion)</h6><p><a href="http://www.simlinux.com/wp-content/uploads/2014/08/btb.png"><img src="http://www.simlinux.com/wp-content/uploads/2014/08/btb.png" alt="btb"></a></p>
+<h6 id="半同步复制-Semi-synchroous-Replicaion"><a href="#半同步复制-Semi-synchroous-Replicaion" class="headerlink" title="半同步复制(Semi-synchroous Replicaion)"></a>半同步复制(Semi-synchroous Replicaion)</h6><p><a href="http://blog.simlinux.com/wp-content/uploads/2014/08/btb.png" target="_blank" rel="external"><img src="http://blog.simlinux.com/wp-content/uploads/2014/08/btb.png" alt="btb"></a></p>
 <p>  主库每次事务成功提交时并不及时反馈给前端，而是等待其中一个从库也接收到Binlog事务并成功写入Relay Log之后，才返回Commit操作成功给客户端；如此半同步就保证了事务成功提交后，至少有两份日志记录，一份在主库Binlog上，另一份在从库的Relay Log上，从而进一步保证数据完整性；半同步复制很大程度取决于主从网络RTT（往返时延）；以插件形式存在，</p>
 <p><strong>半同步复制主从配置：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">主 : 192.168.10.216</div><div class="line">从 : 192.168.10.217</div></pre></td></tr></table></figure></p>
 <p><strong>1.判断是否支持动态增加插件</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">mysql&gt; select @@have_dynamic_loading;</div><div class="line">+------------------------+</div><div class="line">| @@have_dynamic_loading |</div><div class="line">+------------------------+</div><div class="line">| YES |</div><div class="line">+------------------------+</div></pre></td></tr></table></figure></p>
@@ -695,12 +499,12 @@
 <p><strong>3.分别在主从打开semi-sync(默认关闭)</strong><br><strong>主：</strong><br>修改my.cnf<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">rpl_semi_sync_master_enabled=1</div><div class="line">rpl_semi_sync_master_timeout=30000(毫秒)   从库宕机或网络故障导致binlog没有及时传送到从库，此时主库上的事务需要等待的时间；此时间内没恢复，MySQL自动调整复制为异步复制模式</div><div class="line">mysql&gt; set global rpl_semi_sync_master_enabled=1; </div><div class="line">Query OK, 0 rows affected (0.00 sec)</div><div class="line">mysql&gt; set global rpl_semi_sync_master_timeout=30000;</div><div class="line">Query OK, 0 rows affected (0.00 sec)</div></pre></td></tr></table></figure></p>
 <p><strong>从:</strong><br>修改my.cnf<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">rpl_semi_sync_master_enabled=1</div><div class="line">mysql&gt; set global rpl_semi_sync_master_enabled=1; </div><div class="line">Query OK, 0 rows affected (0.00 sec)</div><div class="line">由于之前配置的复制是异步的，所以需要重启下从库I/O线程(或者直接重启主从stop slave;start slave;)：</div><div class="line"></div><div class="line">mysql&gt; STOP SLAVE  IO_THREAD;</div><div class="line">Query OK, 0 rows affected (0.04 sec)</div><div class="line">mysql&gt; START SLAVE  IO_THREAD;</div><div class="line">Query OK, 0 rows affected (0.00 sec)</div></pre></td></tr></table></figure></p>
 <p><strong>4.验证</strong><br><strong>主：</strong><br><code>mysql&gt; show status like &#39;%semi_sync%&#39;;</code></p>
-<p><a href="http://www.simlinux.com/wp-content/uploads/2014/08/semi.png"><img src="http://www.simlinux.com/wp-content/uploads/2014/08/semi.png" alt="semi"></a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">Rpl_semi_sync_master_clients: 值为2，表示有2个semi-sync的备库</div><div class="line">Rpl_semi_sync_master_net_avg_wait_time: 表示事务提交后，等待备库响应的平均时间</div><div class="line">Rpl_semi_sync_master_no_times: 表示有几次从半同步切换到异步复制</div><div class="line">Rpl_semi_sync_master_status : 值为ON，表示半同步复制处于打开状态</div><div class="line">Rpl_semi_sync_master_tx_avg_wait_time ：开启Semi-sync，事务返回需要等待的平均时间</div><div class="line">Rpl_semi_sync_master_wait_sessions：当前有几个线程在等备库响应</div><div class="line">Rpl_semi_sync_master_yes_tx : 值为1054，表示主库有1054个事务是通过半同步复制到从库</div><div class="line">Rpl_semi_sync_master_no_tx  : 值为0，表示当前有0个事务不是通过半同步模式同步到从库的</div></pre></td></tr></table></figure></p>
+<p><a href="http://blog.simlinux.com/wp-content/uploads/2014/08/semi.png" target="_blank" rel="external"><img src="http://blog.simlinux.com/wp-content/uploads/2014/08/semi.png" alt="semi"></a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">Rpl_semi_sync_master_clients: 值为2，表示有2个semi-sync的备库</div><div class="line">Rpl_semi_sync_master_net_avg_wait_time: 表示事务提交后，等待备库响应的平均时间</div><div class="line">Rpl_semi_sync_master_no_times: 表示有几次从半同步切换到异步复制</div><div class="line">Rpl_semi_sync_master_status : 值为ON，表示半同步复制处于打开状态</div><div class="line">Rpl_semi_sync_master_tx_avg_wait_time ：开启Semi-sync，事务返回需要等待的平均时间</div><div class="line">Rpl_semi_sync_master_wait_sessions：当前有几个线程在等备库响应</div><div class="line">Rpl_semi_sync_master_yes_tx : 值为1054，表示主库有1054个事务是通过半同步复制到从库</div><div class="line">Rpl_semi_sync_master_no_tx  : 值为0，表示当前有0个事务不是通过半同步模式同步到从库的</div></pre></td></tr></table></figure></p>
 <p><strong>从：</strong></p>
 <p>检查半同步是否开启<br><code>show status like &#39;%semi_sync%&#39;;</code></p>
-<p><a href="http://www.simlinux.com/wp-content/uploads/2014/08/semion.png"><img src="http://www.simlinux.com/wp-content/uploads/2014/08/semion.png" alt="semion"></a><br>检查复制是否正常<br><code>show slave status \G;</code></p>
+<p><a href="http://blog.simlinux.com/wp-content/uploads/2014/08/semion.png" target="_blank" rel="external"><img src="http://blog.simlinux.com/wp-content/uploads/2014/08/semion.png" alt="semion"></a><br>检查复制是否正常<br><code>show slave status \G;</code></p>
 <h5 id="四、提升主从复制性能的方法"><a href="#四、提升主从复制性能的方法" class="headerlink" title="四、提升主从复制性能的方法"></a>四、提升主从复制性能的方法</h5><p><strong>方案1：</strong>多级主从架构，将不同库分开复制到不同从上</p>
-<p><a href="http://www.simlinux.com/wp-content/uploads/2014/08/fzjg.png"><img src="http://www.simlinux.com/wp-content/uploads/2014/08/fzjg.png" alt="fzjg"></a></p>
+<p><a href="http://blog.simlinux.com/wp-content/uploads/2014/08/fzjg.png" target="_blank" rel="external"><img src="http://blog.simlinux.com/wp-content/uploads/2014/08/fzjg.png" alt="fzjg"></a></p>
 <p><strong>注意事项：</strong><br>M2上打开log-slave-updates配置，保证M1传送的binlog能够被记录在M2的RelayLog和Binlog；M2可以选择BLACKHOLE引擎降低M2的I/O；并且Binlog日志的过滤可以在M2去做<br>BLACKHOLE引擎的使用测试参考:   <a href="http://jroller.com/dschneller/entry/mysql_replication_using_blackhole_engine" target="_blank" rel="external">http://jroller.com/dschneller/entry/mysql_replication_using_blackhole_engine</a><br><a href="http://blog.csdn.net/kylinbl/article/details/8903336" target="_blank" rel="external">http://blog.csdn.net/kylinbl/article/details/8903336</a></p>
 <p><strong>方案2：多线程复制（MySQL5.6+）</strong><br>多线程复制是基于库的，允许从库并行更新，若单库压力大，此处的多线程复制没有意义；从库设置slave_parallel_workers=4表示MySQL从库在复制时启动4个SQL线程<br>MySQL5.6一下版本可以尝试Transfer补丁<a href="http://dinglin.iteye.com/blog/1888640" target="_blank" rel="external">http://dinglin.iteye.com/blog/1888640</a></p>
 <h5 id="五、Mysql复制遇到的一些问题"><a href="#五、Mysql复制遇到的一些问题" class="headerlink" title="五、Mysql复制遇到的一些问题"></a>五、Mysql复制遇到的一些问题</h5><p><strong>1. 指定特定的数据库或者表</strong></p>
@@ -767,7 +571,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Geekwolf">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/wolf.jpeg">
+      <meta itemprop="image" content="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -892,7 +696,7 @@
 </ol>
 <h4 id="MHA工作机制"><a href="#MHA工作机制" class="headerlink" title="MHA工作机制"></a>MHA工作机制</h4><p>MHA自动Failover过程解析<br><a href="http://www.mysqlsystems.com/2012/03/figure-out-process-of-autofailover-on-mha.html" target="_blank" rel="external">http://www.mysqlsystems.com/2012/03/figure-out-process-of-autofailover-on-mha.html</a><br><a href="https://code.google.com/p/mysql-master-ha/wiki/Sequences_of_MHA" target="_blank" rel="external">https://code.google.com/p/mysql-master-ha/wiki/Sequences_of_MHA</a></p>
 <h4 id="MHA适用的主从架构"><a href="#MHA适用的主从架构" class="headerlink" title="MHA适用的主从架构"></a>MHA适用的主从架构</h4><p><a href="https://code.google.com/p/mysql-master-ha/wiki/UseCases" target="_blank" rel="external">https://code.google.com/p/mysql-master-ha/wiki/UseCases</a></p>
-<h4 id="MHA高可用环境的构建"><a href="#MHA高可用环境的构建" class="headerlink" title="MHA高可用环境的构建"></a>MHA高可用环境的构建</h4><h4 id="实验环境"><a href="#实验环境" class="headerlink" title="实验环境"></a>实验环境</h4><p><a href="http://www.simlinux.com/wp-content/uploads/2014/08/ar.png"><img src="http://www.simlinux.com/wp-content/uploads/2014/08/ar.png" alt="ar"></a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">Node1:192.168.10.216 (主)</div><div class="line">Node2:192.168.10.217 (从,主故障切换的备主)</div><div class="line">Node3:192.168.10.218 (从,兼MHA管理节点)</div><div class="line">VIP : 192.168.10.219</div><div class="line">Mysql:Percona-Server-5.6.16-rel64.2-569</div><div class="line">以上节点系统均为CentOS6.5 x64</div></pre></td></tr></table></figure></p>
+<h4 id="MHA高可用环境的构建"><a href="#MHA高可用环境的构建" class="headerlink" title="MHA高可用环境的构建"></a>MHA高可用环境的构建</h4><h4 id="实验环境"><a href="#实验环境" class="headerlink" title="实验环境"></a>实验环境</h4><p><a href="http://blog.simlinux.com/wp-content/uploads/2014/08/ar.png" target="_blank" rel="external"><img src="http://blog.simlinux.com/wp-content/uploads/2014/08/ar.png" alt="ar"></a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">Node1:192.168.10.216 (主)</div><div class="line">Node2:192.168.10.217 (从,主故障切换的备主)</div><div class="line">Node3:192.168.10.218 (从,兼MHA管理节点)</div><div class="line">VIP : 192.168.10.219</div><div class="line">Mysql:Percona-Server-5.6.16-rel64.2-569</div><div class="line">以上节点系统均为CentOS6.5 x64</div></pre></td></tr></table></figure></p>
 <h4 id="实验大概步骤"><a href="#实验大概步骤" class="headerlink" title="实验大概步骤"></a>实验大概步骤</h4><ol>
 <li>三节点配置epel的yum源，安装相关依赖包</li>
 <li>建立主从复制关系</li>
@@ -939,7 +743,7 @@
 <h4 id="部署过程遇到的问题"><a href="#部署过程遇到的问题" class="headerlink" title="部署过程遇到的问题"></a>部署过程遇到的问题</h4><p><strong>问题1：</strong> [root@node1 mha4mysql-node-0.56]# perl Makefile.PL<br>Can’t locate ExtUtils/MakeMaker.pm in @INC (@INC contains: inc /usr/local/lib64/perl5 /usr/local/share/perl5 /usr/lib64/perl5/vendor_perl /usr/share/perl5/vendor_perl /usr/lib64/perl5 /usr/share/perl5 .) at inc/Module/Install/Makefile.pm line 4.<br>BEGIN failed—compilation aborted at inc/Module/Install/Makefile.pm line 4. Compilation failed in require at inc/Module/Install.pm line 283.<br>Can’t locate ExtUtils/MakeMaker.pm in @INC (@INC contains: inc /usr/local/lib64/perl5 /usr/local/share/perl5 /usr/lib64/perl5/vendor_perl /usr/share/perl5/<br>vendor_perl /usr/lib64/perl5 /usr/share/perl5 .) at inc/Module/Install/Can.pm line 6.<br>BEGIN failed—compilation aborted at inc/Module/Install/Can.pm line 6.<br>Compilation failed in require at inc/Module/Install.pm line 283.<br>Can’t locate ExtUtils/MM_Unix.pm in @INC (@INC contains: inc /usr/local/lib64/<br>perl5 /usr/local/share/perl5 /usr/lib64/perl5/vendor_perl /usr/share/perl5/vendor_perl /usr/lib64/perl5 /usr/share/perl5 .) at inc/Module/Install/<br>Metadata.pm line 349.<br><strong>解决办法：</strong><br>yum -y install perl-CPAN perl-devel perl-DBD-MySQL</p>
 <p><strong>问题2：</strong><br>Can’t locate Time/HiRes.pm in @INC (@INC contains: /usr/local/lib64/perl5 /usr/local/share/perl5 /usr/lib64/perl5/vendor_perl /usr/share/perl5/vendor_perl /usr/lib64/perl5 /usr/share/perl5 .) at /usr/local/share/perl5/MHA/SSHCheck.pm line 28.<br>BEGIN failed—compilation aborted at /usr/local/share/perl5/MHA/SSHCheck.pm line 28.<br>Compilation failed in require at /usr/local/bin/masterha_check_ssh line 25. BEGIN failed—compilation aborted at /usr/local/bin/masterha_check_ssh line 25.<br><strong>解决办法</strong>：<br>yum -y install perl-Time-HiRes</p>
 <p><strong>问题3：</strong></p>
-<p><a href="http://www.simlinux.com/wp-content/uploads/2014/08/mhaq.jpg"><img src="http://www.simlinux.com/wp-content/uploads/2014/08/mhaq.jpg" alt="mhaq"></a></p>
+<p><a href="http://blog.simlinux.com/wp-content/uploads/2014/08/mhaq.jpg" target="_blank" rel="external"><img src="http://blog.simlinux.com/wp-content/uploads/2014/08/mhaq.jpg" alt="mhaq"></a></p>
 <p><strong>解决办法:</strong><br>每个节点都做好mysql命令的软链<br>ln -s /usr/local/mysql/bin/* /usr/local/bin/</p>
 <h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><blockquote>
 <p><a href="https://code.google.com/p/mysql-master-ha" target="_blank" rel="external">https://code.google.com/p/mysql-master-ha</a><br><a href="http://blog.chinaunix.net/uid-28437434-id-3476641.html" target="_blank" rel="external">http://blog.chinaunix.net/uid-28437434-id-3476641.html</a></p>
@@ -997,7 +801,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Geekwolf">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/wolf.jpeg">
+      <meta itemprop="image" content="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1119,7 +923,7 @@
 <p>创建表时指定存储引擎<br><code>create table ai (i bigint(20) not null auto_increment,primary key(i));</code></p>
 <p>修改表引擎<br><code>alter table ai engine=innodb;</code></p>
 <p><strong>常见Mysql数据库引擎对比：</strong></p>
-<p><a href="http://www.simlinux.com/wp-content/uploads/2014/08/engines.png"><img src="http://www.simlinux.com/wp-content/uploads/2014/08/engines.png" alt="engines"></a></p>
+<p><a href="http://blog.simlinux.com/wp-content/uploads/2014/08/engines.png" target="_blank" rel="external"><img src="http://blog.simlinux.com/wp-content/uploads/2014/08/engines.png" alt="engines"></a></p>
 <h4 id="MyISAM引擎特点"><a href="#MyISAM引擎特点" class="headerlink" title="MyISAM引擎特点"></a>MyISAM引擎特点</h4><p>在磁盘存储成3个文件，文件名和表名一样，但扩展名分别为：<br>.frm (存储表定义)<br>.MYD （MYData，存储数据）<br>.MYI （MYIndex，存储索引）<br>其中数据文件和索引文件可以分开在不同目录，平均分布IO</p>
 <p>创建表时指定数据和索引路径：</p>
 <p><code>create table geekwolf (id int,c varchar(10)) data directory=&#39;/data/data/&#39; index directory=&#39;/data/index&#39; engine=&#39;MyISAM&#39;;</code></p>
@@ -1129,7 +933,7 @@
 <h4 id="INNODB引擎特点"><a href="#INNODB引擎特点" class="headerlink" title="INNODB引擎特点"></a>INNODB引擎特点</h4><p><strong>1.自动增长列：</strong></p>
 <p>InnoDB表，自动增长列必须是索引，如果是组合索引，必须是组合索引的第一列；&lt;br&gt;<br>对于MyISAM引擎表，自动增长列可以是组合索引的其他列，这样插入记录后，自动增长列是按照组合索引的前面激烈进行排序后递增的<br>创建MyISAM表autoincre_demo<br><code>create table autoincre_demo (d1 smallint not null auto_increment,d2 smallint not null,name varchar(10),index(d2.d1)) engine=myisam;</code></p>
 <p>如图所示：自动增长列是d1作为组合索引的第二列,插入记录后，发现增长列是按照组合索引的第一列d2进行排序后递增的</p>
-<p><a href="http://www.simlinux.com/wp-content/uploads/2014/08/autoincre.png"><img src="http://www.simlinux.com/wp-content/uploads/2014/08/autoincre.png" alt="autoincre"></a></p>
+<p><a href="http://blog.simlinux.com/wp-content/uploads/2014/08/autoincre.png" target="_blank" rel="external"><img src="http://blog.simlinux.com/wp-content/uploads/2014/08/autoincre.png" alt="autoincre"></a></p>
 <p><strong>2.外键约束：</strong><br>Innodb引擎支持外键，在创建外键时，要求父表必须有对应的索引，子表在创建外键的时候也会自动创建对应的索引<br>    外键信息可以通过<br>    show table status like ‘test’ \G;<br>    show create table ‘test’;</p>
 <p><strong>3.存储方式：</strong><br><strong>A.</strong> 使用共享表空间，这种方式创建的表结果保存在.frm文件，数据和索引保存在innodb_data_home_dir innodb_data_file_path定义的表空间中<br><strong>B.</strong>多表空间存储，表结构保存在.frm文件中，但是每个表的数据和索引单独存放在.ibd中；每个分区对于单独的.ibd<br>（需要开启innodb_file_per_table=1）<br>对于使用多表空间的表可以方便进行单表备份恢复，简单复制ibd和frm文件的方法因没有共享表空间的字典信息，而无法使用；多表空间情况，因为Innodb把内部的数据字典和在线重做日志存放在共享表空间里面</p>
 <p><strong>使用此语句删除.ibd文件：</strong><br><code>ALTER TABLE tbl_name DISCARD TABLESPACE;</code><br>要把备份的.ibd文件还原到表中，需把此文件复制到数据库目录中，然后书写此语句：<br><code>ALTER TABLE tbl_name IMPORT TABLESPACE;</code></p>
@@ -1193,7 +997,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Geekwolf">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/wolf.jpeg">
+      <meta itemprop="image" content="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1382,7 +1186,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Geekwolf">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/wolf.jpeg">
+      <meta itemprop="image" content="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1607,7 +1411,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Geekwolf">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/wolf.jpeg">
+      <meta itemprop="image" content="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1790,7 +1594,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Geekwolf">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/wolf.jpeg">
+      <meta itemprop="image" content="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1961,7 +1765,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Geekwolf">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/wolf.jpeg">
+      <meta itemprop="image" content="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -2079,10 +1883,10 @@
         
           
             <p><strong>前提</strong>：正确将com线连接好<br>1.安装minicom<br>安装epel源，yum -y install minicom</p>
-<p>2.配置minicom<br>[root@localhost ~]#  minicom -s<br><a href="http://www.simlinux.com/old/wp-content/uploads/2013/12/c.png"><img src="http://www.simlinux.com/old/wp-content/uploads/2013/12/c.png" alt="c"></a></p>
-<p><a href="http://www.simlinux.com/old/wp-content/uploads/2013/12/D.png"><img src="http://www.simlinux.com/old/wp-content/uploads/2013/12/D.png" alt="D"></a></p>
+<p>2.配置minicom<br>[root@localhost ~]#  minicom -s<br><a href="http://blog.simlinux.com/old/wp-content/uploads/2013/12/c.png" target="_blank" rel="external"><img src="http://blog.simlinux.com/old/wp-content/uploads/2013/12/c.png" alt="c"></a></p>
+<p><a href="http://blog.simlinux.com/old/wp-content/uploads/2013/12/D.png" target="_blank" rel="external"><img src="http://blog.simlinux.com/old/wp-content/uploads/2013/12/D.png" alt="D"></a></p>
 <p>配置好后回车，这里选择Save setup as dfl  然后Exit 即将连接com</p>
-<p><a href="http://www.simlinux.com/old/wp-content/uploads/2013/12/e.png"><img src="http://www.simlinux.com/old/wp-content/uploads/2013/12/e.png" alt="e"></a></p>
+<p><a href="http://blog.simlinux.com/old/wp-content/uploads/2013/12/e.png" target="_blank" rel="external"><img src="http://blog.simlinux.com/old/wp-content/uploads/2013/12/e.png" alt="e"></a></p>
 
           
         
@@ -2136,7 +1940,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Geekwolf">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/wolf.jpeg">
+      <meta itemprop="image" content="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -2298,6 +2102,193 @@
 
 
     
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2013/12/14/centos-install-opennebula.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Geekwolf">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Geekwolf's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2013/12/14/centos-install-opennebula.html" itemprop="url">Centos 6.4 下 部署OpenNebula4.4</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2013-12-14T11:27:34+08:00">
+                2013-12-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux运维/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux运维</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2013/12/14/centos-install-opennebula.html" class="leancloud_visitors" data-flag-title="Centos 6.4 下 部署OpenNebula4.4">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  3
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="安装部署"><a href="#安装部署" class="headerlink" title="安装部署"></a>安装部署</h4><h5 id="环境说明"><a href="#环境说明" class="headerlink" title="环境说明"></a>环境说明</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Front:192.168.10.101 Centos6.4 x 64 NF5120</div><div class="line">Node1:192.168.10.102 Centos6.4 x 64 NF5120</div></pre></td></tr></table></figure>
+<h5 id="部署OpenNebula4-4"><a href="#部署OpenNebula4-4" class="headerlink" title="部署OpenNebula4.4"></a>部署OpenNebula4.4</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">下载相应版本 http://www.opennebula.org/software:software#from_official_repository_of_linux_distributions</div><div class="line">CentOS-6-opennebula-4.4.0-1</div><div class="line">安装Epel源</div><div class="line">rpm -ivh http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm</div><div class="line">cd opennebula-4.4.0-1</div><div class="line">yum -y localinstall *.rpm</div><div class="line">Front控制器在此也作为节点使用，在计算节点上安装 kvm 和 opennebula-node-kvm：</div><div class="line"></div><div class="line">yum localinstall opennebula-node-kvm-4.0.0-1.x86_64.rpm</div><div class="line">yum install qemu-kvm qemu-kvm-tools libvirt</div><div class="line">/etc/init.d/libvirtd start</div><div class="line"></div><div class="line">以上OpenNebula的控制节点和计算节点所需软件包均以安装完，下面进行简单的配置( 事先关闭iptables和selinux，后续讲如何加固)</div></pre></td></tr></table></figure>
+<p>a. 更改Opennebula的front，即OpenNebula-sunstone服务的监听地址</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sed -i &apos;s#127.0.0.1#192.168.10.101#g&apos; /etc/one/sunstone-server.conf</div></pre></td></tr></table></figure>
+<p>b. 默认会生成用户名和随机密码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">cat /var/lib/one/.one/one_auth</div><div class="line">oneadmin:6696d237e58221ae1eb39fdf3a01335f</div><div class="line">访问http://192.168.10.101:9869 输入账号密码</div></pre></td></tr></table></figure>
+<p>c. 更改opennebula数据存储方式为mysql</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">vim /etc/one/oned.conf</div><div class="line">修改仓库路径：</div><div class="line">DATASTORE_BASE_PATH = /data/datastoress(注意目录权限为oneadmin)</div><div class="line">注释DB = [ backend = &quot;sqlite&quot; ]</div><div class="line">打开注释：</div><div class="line">DB = [ backend = &quot;mysql&quot;,</div><div class="line">server = &quot;localhost&quot;,</div><div class="line">port = 0,</div><div class="line">user = &quot;oneadmin&quot;,</div><div class="line">passwd = &quot;oneadmin&quot;,</div><div class="line">db_name = &quot;opennebula&quot; ]</div><div class="line">（相关授权略）</div></pre></td></tr></table></figure>
+<p>d. 添加环境变量</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">export ONE_XMLRPC=http://localhost:2633/RPC2</div><div class="line">export ONE_AUTH=$HOME/.one/one_auth</div><div class="line">export PATH=$ONE_LOCATION/bin:$PATH</div></pre></td></tr></table></figure>
+<p>e. 为初次部署方便暂使用网络桥接模式<br>母机桥接配置：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">ifcfg-eth0:</div><div class="line"></div><div class="line">DEVICE=eth0</div><div class="line">TYPE=Ethernet</div><div class="line">UUID=200f14a6-c347-4d4a-9564-257ccf4ebe8a</div><div class="line">ONBOOT=yes</div><div class="line">NM_CONTROLLED=yes</div><div class="line">BOOTPROTO=none</div><div class="line">HWADDR=00:E0:81:DE:6C:CA</div><div class="line">BRIDGE=&quot;br0&quot;</div><div class="line"></div><div class="line">ifcfg-br0:</div><div class="line">DEVICE=&quot;br0&quot;</div><div class="line">TYPE=&quot;Bridge&quot;</div><div class="line">BOOTPROTO=&quot;static&quot;</div><div class="line">ONBOOT=&quot;yes&quot;</div><div class="line">IPADDR=192.168.10.102</div><div class="line">NETMASK=255.255.240.0</div><div class="line">DNS1=114.114.114.114</div><div class="line">brctl show 可查询现有桥接的网络</div><div class="line">bridge name bridge id STP enabled interfaces</div><div class="line">br0 8000.00e081de6cca no eth0</div><div class="line">重启网卡</div></pre></td></tr></table></figure>
+<p>f. 确定计算节点权限（Front安装时会自动配置）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">/etc/libvirt/qemu.conf</div><div class="line">user = &quot;oneadmin&quot;</div><div class="line">group = &quot;oneadmin&quot;</div><div class="line">dynamic_ownership = 0</div><div class="line"></div><div class="line">/etc/libvirt/libvirtd.conf</div><div class="line">listen_tcp = 1</div><div class="line">listen_tls = 0</div><div class="line">mdns_adv = 0</div><div class="line">unix_sock_group = &quot;oneadmin&quot;</div><div class="line">unix_sock_ro_perms = &quot;0777&quot;</div><div class="line">unix_sock_rw_perms = &quot;0777&quot;</div><div class="line">auth_unix_ro = &quot;none&quot;</div><div class="line">auth_unix_rw = &quot;none&quot;</div><div class="line"></div><div class="line">/etc/sysconfig/libvirtd(修改监听地址)</div><div class="line">LIBVIRTD_ARGS=&quot;--listen&quot;</div><div class="line"></div><div class="line">/etc/sudoers</div><div class="line">添加oneadmin ALL=(root)NOPASSWD:ALL</div><div class="line">注释#Defaults requiretty</div><div class="line"></div><div class="line">ln -s /usr/libexec/qemu-kvm /usr/bin/kvm</div><div class="line">将Front的oneadmin的公钥拷贝到计算节点oneadmin下实现无密码认证</div></pre></td></tr></table></figure>
+<p>g .以上OpenNebula的部署已经完成，下面启动服务器进行简单操作</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">service OpenNebula start</div><div class="line">service OpenNebula-sunstone start</div></pre></td></tr></table></figure>
+<p><a href="http://blog.simlinux.com/old/wp-content/uploads/2013/12/s2.jpg" target="_blank" rel="external"><img src="http://blog.simlinux.com/old/wp-content/uploads/2013/12/s2-1024x573.jpg" alt="s"></a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
   </section>
 
   
@@ -2336,11 +2327,11 @@
       <section class="site-overview sidebar-panel sidebar-panel-active">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
-               src="/images/wolf.jpeg"
+               src="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg"
                alt="Geekwolf" />
           <p class="site-author-name" itemprop="name">Geekwolf</p>
            
-              <p class="site-description motion-element" itemprop="description">DevOps | Docker | K8S | MySQL | 运维</p>
+              <p class="site-description motion-element" itemprop="description">DevOps | Docker | Python | k8s</p>
           
         </div>
         <nav class="site-state motion-element">
@@ -2348,7 +2339,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">83</span>
+                <span class="site-state-item-count">82</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -2370,7 +2361,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">60</span>
+                <span class="site-state-item-count">61</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -2419,6 +2410,36 @@
         
 
         
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-block">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://blog.simlinux.com" title="旧版博客" target="_blank">旧版博客</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://nolinux.blog.51cto.com" title="nolinux" target="_blank">nolinux</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://xiaorui.cc" title="峰云就她了" target="_blank">峰云就她了</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://note.gitcloud.cc/blog/bluetom520" title="懒懒的天空" target="_blank">懒懒的天空</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.roddypy.com" title="普拉多VX" target="_blank">普拉多VX</a>
+                </li>
+              
+            </ul>
+          </div>
         
 
         

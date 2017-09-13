@@ -107,12 +107,12 @@
 <meta property="og:site_name" content="Geekwolf&#39;s Blog">
 <meta property="og:description" content="问题背景游戏网关高峰期时出网络丢包,CPU0软中断%sys高达90% 预备知识什么是中断?由于接收来自外围硬件(相对于CPU和内存)的异步信号或者来自软件的同步信号，而进行相应的硬件、软件处理；发出这样的信号称为进行中断请求(interrupt request, IRQ) 硬中断与软中断? 硬中断：外围硬件发给CPU或者内存的异步信号就称之为硬中断 软中断：由软件系统本身发给操作系统内核的中断信号">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://www.simlinux.com/wp-content/uploads/2017/02/net_stack.jpg">
-<meta property="og:updated_time" content="2017-09-12T06:43:58.758Z">
+<meta property="og:image" content="http://blog.simlinux.com/wp-content/uploads/2017/02/net_stack.jpg">
+<meta property="og:updated_time" content="2017-09-13T02:23:36.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="网卡软中断过高问题优化总结">
 <meta name="twitter:description" content="问题背景游戏网关高峰期时出网络丢包,CPU0软中断%sys高达90% 预备知识什么是中断?由于接收来自外围硬件(相对于CPU和内存)的异步信号或者来自软件的同步信号，而进行相应的硬件、软件处理；发出这样的信号称为进行中断请求(interrupt request, IRQ) 硬中断与软中断? 硬中断：外围硬件发给CPU或者内存的异步信号就称之为硬中断 软中断：由软件系统本身发给操作系统内核的中断信号">
-<meta name="twitter:image" content="http://www.simlinux.com/wp-content/uploads/2017/02/net_stack.jpg">
+<meta name="twitter:image" content="http://blog.simlinux.com/wp-content/uploads/2017/02/net_stack.jpg">
 
 
 
@@ -244,6 +244,16 @@
         </li>
       
         
+        <li class="menu-item menu-item-tips">
+          <a href="/tips/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-gittip"></i> <br />
+            
+            tips
+          </a>
+        </li>
+      
+        
         <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
             
@@ -345,7 +355,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Geekwolf">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/wolf.jpeg">
+      <meta itemprop="image" content="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -499,7 +509,7 @@
 <h5 id="配置RFS"><a href="#配置RFS" class="headerlink" title="配置RFS"></a>配置RFS</h5><p>RFS扩展了RPS的性能以增加CPU缓存命中率，减少网络延迟,默认是禁用的<br>/proc/sys/net/core/rps_sock_flow_entries<br>设置此文件至同时活跃连接数的最大预期值。对于中等服务器负载，推荐值为 32768 。所有输入的值四舍五入至最接近的2的幂<br>/sys/class/net/device/queues/rx-queue/rps_flow_cnt<br>将 device 改为想要配置的网络设备名称（例如，eth0），将 rx-queue 改为想要配置的接收队列名称（例如，rx-0）。<br>将此文件的值设为 rps_sock_flow_entries 除以 N，其中 N 是设备中接收队列的数量。例如，如果 rps_flow_entries 设为 32768，并且有 16 个配置接收队列，那么 rps_flow_cnt 就应设为 2048。对于单一队列的设备，rps_flow_cnt 的值和 rps_sock_flow_entries 的值是一样的`</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">ls /sys/class/net/eth0/queues/rx-*|grep queues|wc -l</div><div class="line">8</div><div class="line">rps_flow_cnt=32768/8=4096</div><div class="line">echo 32768 &gt;/proc/sys/net/core/rps_sock_flow_entries</div><div class="line">for rxdir in /sys/class/net/eth0/queues/rx-*</div><div class="line">do</div><div class="line">echo $rps_cpus &gt;$rxdir/rps_cpus</div><div class="line">echo $rps_flow_cnt &gt;$rxdir/rps_flow_cnt</div><div class="line">done</div><div class="line"></div><div class="line">echo 32768 &gt;/proc/sys/net/core/rps_sock_flow_entries</div></pre></td></tr></table></figure>
 <p>优化脚本可参考: <a href="https://github.com/geekwolf/sa-scripts/blob/master/ops-scripts/performance_tuning/set_rps.sh" target="_blank" rel="external">https://github.com/geekwolf/sa-scripts/blob/master/ops-scripts/performance_tuning/set_rps.sh</a></p>
-<h4 id="网卡常规优化方案"><a href="#网卡常规优化方案" class="headerlink" title="网卡常规优化方案"></a>网卡常规优化方案</h4><p><img src="http://www.simlinux.com/wp-content/uploads/2017/02/net_stack.jpg" alt=""><br>关于发包的优化XPS 还未做测试，有时间在做补充！</p>
+<h4 id="网卡常规优化方案"><a href="#网卡常规优化方案" class="headerlink" title="网卡常规优化方案"></a>网卡常规优化方案</h4><p><img src="http://blog.simlinux.com/wp-content/uploads/2017/02/net_stack.jpg" alt=""><br>关于发包的优化XPS 还未做测试，有时间在做补充！</p>
 <h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><blockquote>
 <ul>
 <li>TCP/UDP压测工具netperf <a href="https://sanwen8.cn/p/P8bHgn.html" target="_blank" rel="external">https://sanwen8.cn/p/P8bHgn.html</a></li>
@@ -659,11 +669,11 @@
       <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
-               src="/images/wolf.jpeg"
+               src="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg"
                alt="Geekwolf" />
           <p class="site-author-name" itemprop="name">Geekwolf</p>
            
-              <p class="site-description motion-element" itemprop="description">DevOps | Docker | K8S | MySQL | 运维</p>
+              <p class="site-description motion-element" itemprop="description">DevOps | Docker | Python | k8s</p>
           
         </div>
         <nav class="site-state motion-element">
@@ -671,7 +681,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">83</span>
+                <span class="site-state-item-count">82</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -693,7 +703,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">60</span>
+                <span class="site-state-item-count">61</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -742,6 +752,36 @@
         
 
         
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-block">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://blog.simlinux.com" title="旧版博客" target="_blank">旧版博客</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://nolinux.blog.51cto.com" title="nolinux" target="_blank">nolinux</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://xiaorui.cc" title="峰云就她了" target="_blank">峰云就她了</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://note.gitcloud.cc/blog/bluetom520" title="懒懒的天空" target="_blank">懒懒的天空</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.roddypy.com" title="普拉多VX" target="_blank">普拉多VX</a>
+                </li>
+              
+            </ul>
+          </div>
         
 
         

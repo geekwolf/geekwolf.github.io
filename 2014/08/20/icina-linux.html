@@ -108,12 +108,12 @@
 <meta property="og:site_name" content="Geekwolf&#39;s Blog">
 <meta property="og:description" content="“其实Icinga是Nagios监控的一个分支，有两个分支版本Icinga1和Icinga2；Icinga除了完全兼容Nagios的插件和扩展甚至配置文件，在web接口和报告上有很大的改进，并且简化了插件的开发；Icinga1和Nagios的基础监控类似，增加了一些新的特性和修复了Nagios的一些bug“详细可参考：https://www.icinga.org/icinga/icinga-1/f">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://www.simlinux.com/wp-content/uploads/2014/08/icingam.png">
-<meta property="og:updated_time" content="2017-09-12T05:44:05.644Z">
+<meta property="og:image" content="http://blog.simlinux.com/wp-content/uploads/2014/08/icingam.png">
+<meta property="og:updated_time" content="2017-09-13T02:23:36.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="开源Linux监控系统:Icinga">
 <meta name="twitter:description" content="“其实Icinga是Nagios监控的一个分支，有两个分支版本Icinga1和Icinga2；Icinga除了完全兼容Nagios的插件和扩展甚至配置文件，在web接口和报告上有很大的改进，并且简化了插件的开发；Icinga1和Nagios的基础监控类似，增加了一些新的特性和修复了Nagios的一些bug“详细可参考：https://www.icinga.org/icinga/icinga-1/f">
-<meta name="twitter:image" content="http://www.simlinux.com/wp-content/uploads/2014/08/icingam.png">
+<meta name="twitter:image" content="http://blog.simlinux.com/wp-content/uploads/2014/08/icingam.png">
 
 
 
@@ -245,6 +245,16 @@
         </li>
       
         
+        <li class="menu-item menu-item-tips">
+          <a href="/tips/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-gittip"></i> <br />
+            
+            tips
+          </a>
+        </li>
+      
+        
         <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
             
@@ -346,7 +356,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Geekwolf">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/wolf.jpeg">
+      <meta itemprop="image" content="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -465,7 +475,7 @@
 <h4 id="安装icinga监控工具"><a href="#安装icinga监控工具" class="headerlink" title="安装icinga监控工具"></a>安装icinga监控工具</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">wget http://packages.icinga.org/epel/ICINGA-release.repo -O /etc/yum.repod/icinga.repo</div><div class="line">rpm --import http://packages.icinga.org/icinga.key</div><div class="line">yum  -y install icinga icinga-doc icinga-gui</div><div class="line">htpasswd -cm /etc/icinga/passwd  geekwolf</div><div class="line">systemctl start icinga</div><div class="line">systemctl start httpd</div></pre></td></tr></table></figure>
 <h4 id="安装Nagios插件"><a href="#安装Nagios插件" class="headerlink" title="安装Nagios插件"></a>安装Nagios插件</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">rpm -Uvh http://ftp.ines.lug.ro/fedora/epel/beta/7/x86_64/epel-release-7-0.2.noarch.rpm</div><div class="line">yum -y install nagios-plugins nagios-plugins-all</div><div class="line">配置文件路径/etc/icinga，配置方式和nagios一样</div><div class="line"></div><div class="line">vim  /etc/icinga/cgi.cfg</div><div class="line">authorized_for_system_information=geekwolf</div><div class="line">authorized_for_configuration_information=geekwolf</div><div class="line">authorized_for_full_command_resolution=geekwolf</div><div class="line">authorized_for_system_commands=geekwolf</div><div class="line">authorized_for_all_services=geekwolf</div><div class="line">authorized_for_all_hosts=geekwolf</div><div class="line">authorized_for_all_service_commands=geekwolf</div><div class="line">authorized_for_all_host_commands=geekwolf</div></pre></td></tr></table></figure>
 <p>访问Web:<a href="http://192.168.117.129/icinga" target="_blank" rel="external">http://192.168.117.129/icinga</a></p>
-<p><a href="http://www.simlinux.com/wp-content/uploads/2014/08/icingam.png"><img src="http://www.simlinux.com/wp-content/uploads/2014/08/icingam.png" alt="icingam"></a></p>
+<p><a href="http://blog.simlinux.com/wp-content/uploads/2014/08/icingam.png" target="_blank" rel="external"><img src="http://blog.simlinux.com/wp-content/uploads/2014/08/icingam.png" alt="icingam"></a></p>
 <h4 id="相关资源"><a href="#相关资源" class="headerlink" title="相关资源"></a>相关资源</h4><blockquote>
 <p>Icinga官方文档 :<a href="http://docs.icinga.org/" target="_blank" rel="external">http://docs.icinga.org</a><br>Icinga EPEL :<a href="http://packages.icinga.org/epel" target="_blank" rel="external">http://packages.icinga.org/epel</a><br>Icinga安装包及vagrant box下载 ：<a href="https://www.icinga.org/download" target="_blank" rel="external">https://www.icinga.org/download</a><br>Centos7网络配置和服务管理参考: <a href="http://simlinux.com/blog/2014/08/12/centos7wang-luo-pei-zhi-he-fu-wu-guan-li/" target="_blank" rel="external">http://simlinux.com/blog/2014/08/12/centos7wang-luo-pei-zhi-he-fu-wu-guan-li/</a></p>
 </blockquote>
@@ -629,11 +639,11 @@
       <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
-               src="/images/wolf.jpeg"
+               src="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg"
                alt="Geekwolf" />
           <p class="site-author-name" itemprop="name">Geekwolf</p>
            
-              <p class="site-description motion-element" itemprop="description">DevOps | Docker | K8S | MySQL | 运维</p>
+              <p class="site-description motion-element" itemprop="description">DevOps | Docker | Python | k8s</p>
           
         </div>
         <nav class="site-state motion-element">
@@ -641,7 +651,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">83</span>
+                <span class="site-state-item-count">82</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -663,7 +673,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">60</span>
+                <span class="site-state-item-count">61</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -712,6 +722,36 @@
         
 
         
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-block">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://blog.simlinux.com" title="旧版博客" target="_blank">旧版博客</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://nolinux.blog.51cto.com" title="nolinux" target="_blank">nolinux</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://xiaorui.cc" title="峰云就她了" target="_blank">峰云就她了</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://note.gitcloud.cc/blog/bluetom520" title="懒懒的天空" target="_blank">懒懒的天空</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.roddypy.com" title="普拉多VX" target="_blank">普拉多VX</a>
+                </li>
+              
+            </ul>
+          </div>
         
 
         

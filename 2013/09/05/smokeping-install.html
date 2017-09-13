@@ -108,14 +108,14 @@
 <meta property="og:site_name" content="Geekwolf&#39;s Blog">
 <meta property="og:description" content="前提条件smokeping依赖于LNMP或者LAMP及rrdtool 安装rrdtool支持123456yum -y install libxml2-devel libpng-devel glib pango pango-devel  freetypefreetype-devel fontconfig cairo cairo-devel libart_lgpl libart_lgpl-devel">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://www.simlinux.com/old/wp-content/uploads/2013/09/c2.png">
-<meta property="og:image" content="http://www.simlinux.com/old/wp-content/uploads/2013/09/cc3.png">
-<meta property="og:image" content="http://www.simlinux.com/old/wp-content/uploads/2013/09/ccc2.png">
-<meta property="og:updated_time" content="2017-09-12T06:12:31.349Z">
+<meta property="og:image" content="http://blog.simlinux.com/old/wp-content/uploads/2013/09/c2.png">
+<meta property="og:image" content="http://blog.simlinux.com/old/wp-content/uploads/2013/09/cc3.png">
+<meta property="og:image" content="http://blog.simlinux.com/old/wp-content/uploads/2013/09/ccc2.png">
+<meta property="og:updated_time" content="2017-09-13T02:23:36.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="smokeping网络质量监控部署">
 <meta name="twitter:description" content="前提条件smokeping依赖于LNMP或者LAMP及rrdtool 安装rrdtool支持123456yum -y install libxml2-devel libpng-devel glib pango pango-devel  freetypefreetype-devel fontconfig cairo cairo-devel libart_lgpl libart_lgpl-devel">
-<meta name="twitter:image" content="http://www.simlinux.com/old/wp-content/uploads/2013/09/c2.png">
+<meta name="twitter:image" content="http://blog.simlinux.com/old/wp-content/uploads/2013/09/c2.png">
 
 
 
@@ -247,6 +247,16 @@
         </li>
       
         
+        <li class="menu-item menu-item-tips">
+          <a href="/tips/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-gittip"></i> <br />
+            
+            tips
+          </a>
+        </li>
+      
+        
         <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
             
@@ -348,7 +358,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Geekwolf">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/wolf.jpeg">
+      <meta itemprop="image" content="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -463,13 +473,13 @@
       
         <h4 id="前提条件"><a href="#前提条件" class="headerlink" title="前提条件"></a>前提条件</h4><p>smokeping依赖于LNMP或者LAMP及rrdtool</p>
 <h4 id="安装rrdtool支持"><a href="#安装rrdtool支持" class="headerlink" title="安装rrdtool支持"></a>安装rrdtool支持</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">yum -y install libxml2-devel libpng-devel glib pango pango-devel  freetypefreetype-devel fontconfig cairo cairo-devel libart_lgpl libart_lgpl-devel perl perl-Net-Telnet perl-Net-DNSperl-LDAP perl-libwww-perl perl-RadiusPerl perl-IO-Socket-SSL perl-Socket6perl-CGI-SpeedyCGI rrdtool-per</div><div class="line"></div><div class="line">wget http://oss.oetiker.ch/rrdtool/pub/rrdtool-1.4.7.tar.gz</div><div class="line">cd rrdtool-1.4.7</div><div class="line">./configure --prefix=/usr/local/rrdtool</div><div class="line">make &amp;&amp; make install</div></pre></td></tr></table></figure>
-<p><strong>问题</strong>：<a href="http://www.simlinux.com/old/wp-content/uploads/2013/09/c2.png"><img src="http://www.simlinux.com/old/wp-content/uploads/2013/09/c2.png" alt="c"></a> <a href="http://www.simlinux.com/old/wp-content/uploads/2013/09/c1.png">1</a><br><strong>解决</strong>：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum -y install perl-ExtUtils-CBuilder perl-ExtUtils-MakeMaker</div></pre></td></tr></table></figure></p>
+<p><strong>问题</strong>：<a href="http://blog.simlinux.com/old/wp-content/uploads/2013/09/c2.png" target="_blank" rel="external"><img src="http://blog.simlinux.com/old/wp-content/uploads/2013/09/c2.png" alt="c"></a> <a href="http://blog.simlinux.com/old/wp-content/uploads/2013/09/c1.png" target="_blank" rel="external">1</a><br><strong>解决</strong>：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum -y install perl-ExtUtils-CBuilder perl-ExtUtils-MakeMaker</div></pre></td></tr></table></figure></p>
 <h4 id="安装-smokeping-依赖的软件"><a href="#安装-smokeping-依赖的软件" class="headerlink" title="安装 smokeping 依赖的软件"></a>安装 smokeping 依赖的软件</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">wget http://down1.chinaunix.net/distfiles/cgilib-0.5.tar.gz</div><div class="line">tar xzvf cgilib-0.5.tar.gz</div><div class="line">cd cgilib-0.5</div><div class="line">make</div><div class="line">cp libcgi.a  /usr/local/lib</div><div class="line">cp cgi.h /usr/include/</div><div class="line"></div><div class="line">http://fping.org/dist/fping-3.4.tar.gz</div><div class="line">./configure –prefix=/usr/local/fping</div><div class="line">make &amp;&amp; make install</div><div class="line">whereis fping</div><div class="line">fping: /usr/local/fping</div><div class="line">ln -s /usr/local/fping/sbin/fping  /usr/sbin/fping</div><div class="line">这个链接是对应/usr/local/smokeping/etc/config里面的probe fping</div><div class="line"></div><div class="line">wget http://ncu.dl.sourceforge.net/project/echoping/echoping/6.0.2/echoping-6.0.2.tar.gz</div><div class="line">tar xzvf echoping-6.0.2.tar.gz</div><div class="line">cd echoping-6.0.2</div><div class="line">./configure</div><div class="line">make &amp;&amp; make install</div></pre></td></tr></table></figure>
-<p><strong>问题</strong>： <a href="http://www.simlinux.com/old/wp-content/uploads/2013/09/cc3.png"><img src="http://www.simlinux.com/old/wp-content/uploads/2013/09/cc3.png" alt="cc"></a><br><strong>解决</strong>：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">下载popt-1.14.tar.gz</div><div class="line">wget http://downloads.sourceforge.net/project/kanapi/sources/RELEASES/popt-1.14.tar.gz?r=http%3A%2F%2Fen.sourceforge.jp%2Fprojects%2Fsfnet_kanapi%2Fdownloads%2Fsources%2FRELEASES%2Fpopt-1.14.tar.gz%2F&amp;ts=1368433312&amp;use_mirror=jaist</div><div class="line"></div><div class="line">./configure </div><div class="line">make &amp;&amp; make install</div><div class="line"></div><div class="line">wget http://ftp.gnu.org/gnu/gettext/gettext-0.18.tar.gz</div><div class="line">tar zxvf gettext-0.18.tar.gz</div><div class="line">cd gettext-0.18</div><div class="line">./configure </div><div class="line">make &amp;&amp; make install</div><div class="line">cd ..</div></pre></td></tr></table></figure></p>
+<p><strong>问题</strong>： <a href="http://blog.simlinux.com/old/wp-content/uploads/2013/09/cc3.png" target="_blank" rel="external"><img src="http://blog.simlinux.com/old/wp-content/uploads/2013/09/cc3.png" alt="cc"></a><br><strong>解决</strong>：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">下载popt-1.14.tar.gz</div><div class="line">wget http://downloads.sourceforge.net/project/kanapi/sources/RELEASES/popt-1.14.tar.gz?r=http%3A%2F%2Fen.sourceforge.jp%2Fprojects%2Fsfnet_kanapi%2Fdownloads%2Fsources%2FRELEASES%2Fpopt-1.14.tar.gz%2F&amp;ts=1368433312&amp;use_mirror=jaist</div><div class="line"></div><div class="line">./configure </div><div class="line">make &amp;&amp; make install</div><div class="line"></div><div class="line">wget http://ftp.gnu.org/gnu/gettext/gettext-0.18.tar.gz</div><div class="line">tar zxvf gettext-0.18.tar.gz</div><div class="line">cd gettext-0.18</div><div class="line">./configure </div><div class="line">make &amp;&amp; make install</div><div class="line">cd ..</div></pre></td></tr></table></figure></p>
 <h4 id="安装配置Smokeping"><a href="#安装配置Smokeping" class="headerlink" title="安装配置Smokeping"></a>安装配置Smokeping</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div></pre></td><td class="code"><pre><div class="line">wget http://oss.oetiker.ch/smokeping/pub/smokeping-2.6.8.tar.gz</div><div class="line">tar zxvf smokeping-2.6.8.tar.gz</div><div class="line">cd smokeping-2.6.8</div><div class="line">./configure –prefix=/usr/local/smokeping</div><div class="line">./setup/build-perl-modules.sh /usr/local/smokeping/thirdparty</div><div class="line">./configure –prefix=/usr/local/smokeping </div><div class="line"></div><div class="line">gmake install </div><div class="line">安装完毕，下面修改配置文件。</div><div class="line">进入 bin 目录，修改 smokeping 文件</div><div class="line">#vim smokeping</div><div class="line">第八行：  use lib qw(); # PERL5LIB</div><div class="line">修改为：     use lib qw(/usr/local/rrdtool/lib/perl);</div><div class="line">进入 htdocs 目录</div><div class="line"># mv smokeping.fcgi.dist smokeping.fcgi</div><div class="line">进入 etc 目录</div><div class="line">cp config.dist config</div><div class="line">修改 config 文件</div><div class="line"></div><div class="line">创建存放数据文件的目录</div><div class="line">mkdir  c/usr/local/smokeping/data  /usr/local/smokeping/var </div><div class="line">/usr/local/smokeping/cache</div><div class="line">修改 smokeping 的目录为 nginx 运行用户的属主、组</div><div class="line">chown -R daemon.daemon smokeping/</div><div class="line">chmod 600 /usr/local/smokeping/etc/smokeping_secrets.dist</div><div class="line">chmod  –R  777  /usr/local/smokeping/cache  /usr/local/smokeping/data </div><div class="line">/usr/local/smokeping/var</div><div class="line">创建 smokeping 的 log 文件</div><div class="line">touch /var/log/smokeping.log</div><div class="line">chown daemon.daemon /var/log/smokeping.log</div><div class="line">启动 smokeping</div><div class="line">perl /usr/local/smokeping/bin/smokeping --logfile=/var/log/smokeping.log</div><div class="line">建立 smokeping 启动脚本，方便启动</div><div class="line">vim /etc/init.d/smokeping</div><div class="line">添加为以下内容：</div><div class="line">#!/bin/bash</div><div class="line">#</div><div class="line"># chkconfig: 2345 80 05</div><div class="line"># Description: Smokeping init.d script</div><div class="line"># Hacked by : YunVN - http://www.yunvn.com</div><div class="line"># Get function from functions library</div><div class="line">. /etc/init.d/functions</div><div class="line"># Start the service Smokeping</div><div class="line">start() &#123;</div><div class="line">echo -n &quot;Starting Smokeping: &quot;</div><div class="line">/usr/local/smokeping/bin/smokeping &gt;/dev/null 2&gt;&amp;1</div><div class="line">### Create the lock file ### </div><div class="line">touch /var/lock/subsys/smokeping</div><div class="line">success $&quot;Smokeping startup&quot;</div><div class="line">echo</div><div class="line">&#125;</div><div class="line"># Restart the service Smokeping</div><div class="line">stop() &#123;</div><div class="line">echo -n &quot;Stopping Smokeping: &quot;</div><div class="line">kill -9 `ps ax | grep &quot;/usr/local/smokeping/bin/smokeping&quot; | grep -v grep | awk </div><div class="line">&apos;&#123; print $1 &#125;&apos;` &gt;/dev/null 2&gt;&amp;1</div><div class="line">### Now, delete the lock file ###</div><div class="line">rm -f /var/lock/subsys/smokeping</div><div class="line">success $&quot;Smokeping shutdown&quot;</div><div class="line">echo</div><div class="line">&#125;</div><div class="line">### main logic ###</div><div class="line">case &quot;$1&quot; in</div><div class="line">start)</div><div class="line">start</div><div class="line">;;</div><div class="line">stop)</div><div class="line">stop</div><div class="line">;;</div><div class="line">status)</div><div class="line">status Smokeping</div><div class="line">;;</div><div class="line">restart|reload|condrestart)</div><div class="line">stop</div><div class="line">start</div><div class="line">;;</div><div class="line">*)</div><div class="line">echo $&quot;Usage: $0 &#123;start|stop|restart|reload|status&#125;&quot;</div><div class="line">exit 1</div><div class="line">esac</div><div class="line">exit 0</div></pre></td></tr></table></figure>
 <p>给脚本有可执行权限</p>
 <h1 id="chmod-755-etc-rc-d-init-d-smokeping"><a href="#chmod-755-etc-rc-d-init-d-smokeping" class="headerlink" title="chmod 755 /etc/rc.d/init.d/smokeping"></a>chmod 755 /etc/rc.d/init.d/smokeping</h1><p>设置开机启动 smokeping </p>
-<p><strong>问题：</strong><br>启动时出现问题： <a href="http://www.simlinux.com/old/wp-content/uploads/2013/09/ccc2.png"><img src="http://www.simlinux.com/old/wp-content/uploads/2013/09/ccc2.png" alt="ccc"></a> 解决：yum -y install rrdtool-perl</p>
+<p><strong>问题：</strong><br>启动时出现问题： <a href="http://blog.simlinux.com/old/wp-content/uploads/2013/09/ccc2.png" target="_blank" rel="external"><img src="http://blog.simlinux.com/old/wp-content/uploads/2013/09/ccc2.png" alt="ccc"></a> 解决：yum -y install rrdtool-perl</p>
 <p><strong>解决：</strong><br><a href="https://github.com/geekwolf/sa-scripts/tree/master/config" target="_blank" rel="external">https://github.com/geekwolf/sa-scripts/tree/master/config</a></p>
 <p>注释：ping的节点可以适当做些调整</p>
 
@@ -628,11 +638,11 @@
       <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
-               src="/images/wolf.jpeg"
+               src="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg"
                alt="Geekwolf" />
           <p class="site-author-name" itemprop="name">Geekwolf</p>
            
-              <p class="site-description motion-element" itemprop="description">DevOps | Docker | K8S | MySQL | 运维</p>
+              <p class="site-description motion-element" itemprop="description">DevOps | Docker | Python | k8s</p>
           
         </div>
         <nav class="site-state motion-element">
@@ -640,7 +650,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">83</span>
+                <span class="site-state-item-count">82</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -662,7 +672,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">60</span>
+                <span class="site-state-item-count">61</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -711,6 +721,36 @@
         
 
         
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-block">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://blog.simlinux.com" title="旧版博客" target="_blank">旧版博客</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://nolinux.blog.51cto.com" title="nolinux" target="_blank">nolinux</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://xiaorui.cc" title="峰云就她了" target="_blank">峰云就她了</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://note.gitcloud.cc/blog/bluetom520" title="懒懒的天空" target="_blank">懒懒的天空</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.roddypy.com" title="普拉多VX" target="_blank">普拉多VX</a>
+                </li>
+              
+            </ul>
+          </div>
         
 
         

@@ -108,12 +108,12 @@
 <meta property="og:site_name" content="Geekwolf&#39;s Blog">
 <meta property="og:description" content="下载安装123456yum -y install cmake glib2 pcre pcre-devel mysql-develwget [https://launchpad.net/mydumper/0.6/0.6.2/+download/mydumper-0.6.2.tar.gz](https://launchpad.net/mydumper/0.6/0.6.2/+download/mydum">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://www.simlinux.com/wp-content/uploads/2015/01/mydumper.png">
-<meta property="og:updated_time" content="2017-09-12T09:08:42.861Z">
+<meta property="og:image" content="http://blog.simlinux.com/wp-content/uploads/2015/01/mydumper.png">
+<meta property="og:updated_time" content="2017-09-13T02:23:36.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MySQL多线程逻辑备份工具之mydumper">
 <meta name="twitter:description" content="下载安装123456yum -y install cmake glib2 pcre pcre-devel mysql-develwget [https://launchpad.net/mydumper/0.6/0.6.2/+download/mydumper-0.6.2.tar.gz](https://launchpad.net/mydumper/0.6/0.6.2/+download/mydum">
-<meta name="twitter:image" content="http://www.simlinux.com/wp-content/uploads/2015/01/mydumper.png">
+<meta name="twitter:image" content="http://blog.simlinux.com/wp-content/uploads/2015/01/mydumper.png">
 
 
 
@@ -245,6 +245,16 @@
         </li>
       
         
+        <li class="menu-item menu-item-tips">
+          <a href="/tips/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-gittip"></i> <br />
+            
+            tips
+          </a>
+        </li>
+      
+        
         <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
             
@@ -346,7 +356,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Geekwolf">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/wolf.jpeg">
+      <meta itemprop="image" content="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -473,7 +483,7 @@
 <li>无法备份视图和触发器</li>
 <li>备份整库时可用备份存储过程和函数，单库备份等情况无法对其进行备份</li>
 </ul>
-<h4 id="mydumper备份机制"><a href="#mydumper备份机制" class="headerlink" title="mydumper备份机制"></a><strong>mydumper备份机制</strong></h4><p><img src="http://www.simlinux.com/wp-content/uploads/2015/01/mydumper.png" alt=""></p>
+<h4 id="mydumper备份机制"><a href="#mydumper备份机制" class="headerlink" title="mydumper备份机制"></a><strong>mydumper备份机制</strong></h4><p><img src="http://blog.simlinux.com/wp-content/uploads/2015/01/mydumper.png" alt=""></p>
 <h5 id="主要步骤概括"><a href="#主要步骤概括" class="headerlink" title="主要步骤概括"></a><strong>主要步骤概括</strong></h5><ol>
 <li>主线程 FLUSH TABLES WITH READ LOCK, 施加全局只读锁，以阻止DML语句写入，保证数据的一致性</li>
 <li>读取当前时间点的二进制日志文件名和日志写入的位置并记录在metadata文件中，以供即使点恢复使用</li>
@@ -656,11 +666,11 @@
       <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
-               src="/images/wolf.jpeg"
+               src="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg"
                alt="Geekwolf" />
           <p class="site-author-name" itemprop="name">Geekwolf</p>
            
-              <p class="site-description motion-element" itemprop="description">DevOps | Docker | K8S | MySQL | 运维</p>
+              <p class="site-description motion-element" itemprop="description">DevOps | Docker | Python | k8s</p>
           
         </div>
         <nav class="site-state motion-element">
@@ -668,7 +678,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">83</span>
+                <span class="site-state-item-count">82</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -690,7 +700,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">60</span>
+                <span class="site-state-item-count">61</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -739,6 +749,36 @@
         
 
         
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-block">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://blog.simlinux.com" title="旧版博客" target="_blank">旧版博客</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://nolinux.blog.51cto.com" title="nolinux" target="_blank">nolinux</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://xiaorui.cc" title="峰云就她了" target="_blank">峰云就她了</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://note.gitcloud.cc/blog/bluetom520" title="懒懒的天空" target="_blank">懒懒的天空</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.roddypy.com" title="普拉多VX" target="_blank">普拉多VX</a>
+                </li>
+              
+            </ul>
+          </div>
         
 
         
