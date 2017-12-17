@@ -1,0 +1,2918 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Geekwolf,DevOps,Docker,k8s,MySQL,PaaS" />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Geekwolf's Blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="DevOps | Docker | Python | k8s">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Geekwolf&#39;s Blog">
+<meta property="og:url" content="http://www.simlinux.com/page/3/index.html">
+<meta property="og:site_name" content="Geekwolf&#39;s Blog">
+<meta property="og:description" content="DevOps | Docker | Python | k8s">
+<meta property="og:locale" content="zh-Hans">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Geekwolf&#39;s Blog">
+<meta name="twitter:description" content="DevOps | Docker | Python | k8s">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.simlinux.com/page/3/"/>
+
+
+
+
+
+  <title>Geekwolf's Blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="//s13.cnzz.com/z_stat.php?id=1264375041&web_id=1264375041" language="JavaScript"></script>
+  </div>
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left 
+   page-home 
+ ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Geekwolf's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Quick notes</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tips">
+          <a href="/tips/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-gittip"></i> <br />
+            
+            tips
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />
+            
+            站点地图
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+  <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2015/08/18/phantomjs-capture.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Geekwolf">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Geekwolf's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2015/08/18/phantomjs-capture.html" itemprop="url">使用PhantomJS网页截图字体显示问题</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-08-18T16:42:15+08:00">
+                2015-08-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux运维/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux运维</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2015/08/18/phantomjs-capture.html" class="leancloud_visitors" data-flag-title="使用PhantomJS网页截图字体显示问题">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="PhantomJS介绍"><a href="#PhantomJS介绍" class="headerlink" title="PhantomJS介绍"></a>PhantomJS介绍</h4><p>PhantomJS(<a href="http://phantomjs.org/" target="_blank" rel="external">http://phantomjs.org</a>是一个无界面的Webkit内核浏览器，内置JavaScript API,对DOM操作,CSS选择器,JSON,Canvas,SVG有非常快和原生的支持，可以用于页面自动化测试，网络监测，网页截图等,下载地址<a href="http://npm.taobao.org/mirrors/phantomjs" target="_blank" rel="external">http://npm.taobao.org/mirrors/phantomjs</a><br>在使用phantomjs截图过程中，发现没有文字信息，由于项目使用了微软雅黑，解决方法如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">yum -y install bitmap-fonts bitmap-fonts-cjk mkfontscale fontconfig </div><div class="line">mkdir /usr/share/fonts/win/ </div><div class="line">下载微软雅黑字体: </div><div class="line">wget https://nipao.googlecode.com/files/msyh.ttf -O /usr/share/fonts/win/msyh.ttf </div><div class="line">建立字体索引，更新字体缓存: </div><div class="line">cd /usr/share/fonts/win/ </div><div class="line">mkfontscale </div><div class="line">mkfontdir </div><div class="line">fc-cache</div></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2015/06/19/jks-dynamic-parameters.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Geekwolf">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Geekwolf's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2015/06/19/jks-dynamic-parameters.html" itemprop="url">基于jenkins动态化参数化构建</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-06-19T16:01:51+08:00">
+                2015-06-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux运维/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux运维</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2015/06/19/jks-dynamic-parameters.html" class="leancloud_visitors" data-flag-title="基于jenkins动态化参数化构建">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>由于上一篇是通过触发git操作来实现自动化构建和发布，回滚和发布不太可控，可以采用动态参数获取发布分支的方式方便发布和回滚</p>
+<h4 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h4><blockquote>
+<p>选择合适版本发布到合适的服务器环境（目前分支策略是，提测时创建发布分支release-<code>date  +%Y%m%d-%H%M%S</code>）</p>
+</blockquote>
+<h4 id="安装插件"><a href="#安装插件" class="headerlink" title="安装插件"></a>安装插件</h4><p>Dynamic Parameter Plug-in](<a href="https://wiki.jenkins-ci.org/display/JENKINS/Dynamic+Parameter+Plug-in" target="_blank" rel="external">https://wiki.jenkins-ci.org/display/JENKINS/Dynamic+Parameter+Plug-in</a>)</p>
+<h4 id="设置-参数化构建过程"><a href="#设置-参数化构建过程" class="headerlink" title="设置 参数化构建过程"></a>设置 参数化构建过程</h4><p><a href="http://ow1schdt5.bkt.clouddn.com/2015/06/11.png" target="_blank" rel="external"><img src="http://ow1schdt5.bkt.clouddn.com/2015/06/11.png" alt="1"></a><img src="http://ow1schdt5.bkt.clouddn.com/2015/06/11.png" alt=""></p>
+<h4 id="使用groovy脚本动态获取发布分支"><a href="#使用groovy脚本动态获取发布分支" class="headerlink" title="使用groovy脚本动态获取发布分支"></a>使用groovy脚本动态获取发布分支</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">def ver_keys = [ &apos;bash&apos;, &apos;-c&apos;, &apos;cd /gitrepos/project1; git pull&gt;/dev/null; git branch -a|grep remotes|grep release|cut -d &quot;/&quot; -f3|sort -r |head -10 &apos; ]</div><div class="line">ver_keys.execute().text.tokenize(&apos;\n&apos;)</div></pre></td></tr></table></figure>
+<p>其他方式参考：<a href="http://birdinroom.blog.51cto.com/7740375/1404930" target="_blank" rel="external">http://birdinroom.blog.51cto.com/7740375/1404930</a></p>
+<h4 id="构建脚本"><a href="#构建脚本" class="headerlink" title="构建脚本"></a>构建脚本</h4><p><img src="http://ow1schdt5.bkt.clouddn.com/2015/06/21.png" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">echo $release_version</div><div class="line">echo $deploy_server</div><div class="line">case $deploy_server in</div><div class="line">  test)</div><div class="line">       echo &quot;This server is $deploy_server -----test enviroment&quot;</div><div class="line">       cd /gitrepos/project1/</div><div class="line">       git checkout $release_version</div><div class="line">       git pull origin $release_version</div><div class="line">       rsync -avH --delete --progress  --exclude=robots.txt --exclude=.gitignore  --exclude=.git --exclude=.DS_Store --exclude=&quot;*.tar&quot;    /gitrepos/project1/  /gitrepos/project1/               </div><div class="line">         ;;</div><div class="line">  prod)</div><div class="line">       echo &quot;This server is $deploy_server  ------production enviroment&quot;</div><div class="line">       cd  /gitrepos/project1/</div><div class="line">       git checkout $release_version</div><div class="line">       git pull origin $release_version</div><div class="line">       rsync -avH --delete --progress  --exclude=robots.txt --exclude=.gitignore  --exclude=.git --exclude=.DS_Store --exclude=&quot;*.tar&quot;  &apos;-e ssh -p 22000&apos; /gitrepos/project1/  www@node1.simlinux.com:/gitrepos/project1/ </div><div class="line">          ;;</div><div class="line">  *)</div><div class="line">          exit</div><div class="line">          ;;</div><div class="line">esac</div></pre></td></tr></table></figure></p>
+<h4 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h4><p><img src="http://ow1schdt5.bkt.clouddn.com/2015/06/31.png" alt=""></p>
+<p><img src="http://ow1schdt5.bkt.clouddn.com/2015/06/sdf.png" alt=""></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2015/06/19/jks-gitlab-redmine-first.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Geekwolf">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Geekwolf's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2015/06/19/jks-gitlab-redmine-first.html" itemprop="url">基于jenkins+gitlab+redmine构建持续集成环境（一）</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-06-19T11:55:18+08:00">
+                2015-06-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux运维/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux运维</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2015/06/19/jks-gitlab-redmine-first.html" class="leancloud_visitors" data-flag-title="基于jenkins+gitlab+redmine构建持续集成环境（一）">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="用途说明"><a href="#用途说明" class="headerlink" title="用途说明"></a>用途说明</h4><blockquote>
+<p>jenkins：用于自动化测试构建发布<br>gitlab：作为代码托管服务<br>redmine：作为项目管理和bug管理，通过jenkins整合redmine实现自动化发布提醒<br>系列文章只针对jenkins自身使用做详细介绍，gitlab/redmine可使用bitnami stacks一键部署（<a href="https://bitnami.com/stack/gitlab、https://bitnami.com/stack/redmine）或者使用docker容器来部署环境（后期文章将对其详细介绍）" target="_blank" rel="external">https://bitnami.com/stack/gitlab、https://bitnami.com/stack/redmine）或者使用docker容器来部署环境（后期文章将对其详细介绍）</a></p>
+<h4 id="环境说明"><a href="#环境说明" class="headerlink" title="环境说明"></a>环境说明</h4><p>PHP项目（jenkins安装初始化略）</p>
+</blockquote>
+<h4 id="创建简单的集成项目"><a href="#创建简单的集成项目" class="headerlink" title="创建简单的集成项目"></a>创建简单的集成项目</h4><p>点击<strong>新建</strong> –<strong>Item名称：项目1</strong>– 勾选<strong>构建一个自由风格的软件项目</strong></p>
+<p><img src="http://ow1schdt5.bkt.clouddn.com/2015/06/1.png" alt=""><br><strong>添加代码库</strong></p>
+<p><img src="http://ow1schdt5.bkt.clouddn.com/2015/06/2.png" alt=""><br><strong>触发构建策略</strong></p>
+<p><img src="http://ow1schdt5.bkt.clouddn.com/2015/06/3.png" alt=""><br><strong>添加构建脚本</strong></p>
+<p><img src="http://ow1schdt5.bkt.clouddn.com/2015/06/4.png" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">release.sh</div><div class="line">#!/bin/bash</div><div class="line">cd /gitrepos/project1</div><div class="line">git checkout master</div><div class="line">git pull origin master</div><div class="line">rsync -avH  --delete --progress  --exclude=robots.txt --exclude=.gitignore --exclude=database.php  --exclude=.git --exclude=.DS_Store --exclude=&quot;*.tar&quot;  &apos;-e ssh -p 11000&apos;  cd /gitrepos/project1</div><div class="line">www@project1.node1.simlinux.com:/data/wwwroot/project1/</div></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2015/04/14/conntrack-table-full.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Geekwolf">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Geekwolf's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2015/04/14/conntrack-table-full.html" itemprop="url">解决nf_conntrack: table full问题方法</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-04-14T12:03:32+08:00">
+                2015-04-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux运维/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux运维</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2015/04/14/conntrack-table-full.html" class="leancloud_visitors" data-flag-title="解决nf_conntrack: table full问题方法">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  2
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>在web服务器上经常会出现nf_conntrack: table full的问题，解决方法有三个：</p>
+<p><strong>1.优化nf_conntrack模块相关内核参数（可作为临时解决办法，治标不治本）</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">#加大 ip_conntrack_max 值</div><div class="line">net.ipv4.ip_conntrack_max = 393216</div><div class="line">net.ipv4.netfilter.ip_conntrack_max = 393216</div><div class="line">#降低 ip_conntrack timeout时间</div><div class="line">net.ipv4.netfilter.ip_conntrack_tcp_timeout_established = 300</div><div class="line">net.ipv4.netfilter.ip_conntrack_tcp_timeout_time_wait = 120</div><div class="line">net.ipv4.netfilter.ip_conntrack_tcp_timeout_close_wait = 60</div><div class="line">net.ipv4.netfilter.ip_conntrack_tcp_timeout_fin_wait = 120</div></pre></td></tr></table></figure></p>
+<p><strong>2.移除nf_conntrack模块</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">[root@git ~]# lsmod | egrep &apos;ip_tables|conntrack&apos;</div><div class="line">nf_conntrack_ipv4       9506  2 </div><div class="line">nf_defrag_ipv4          1483  1 nf_conntrack_ipv4</div><div class="line">nf_conntrack           79758  3 xt_NOTRACK,nf_conntrack_ipv4,xt_state</div><div class="line">ip_tables              17831  2 iptable_raw,iptable_filter</div></pre></td></tr></table></figure></p>
+<p>A.先将/etc/sysconfig/iptables 中包含state的语句移除，service  iptables restart<br>B.移除模块<br>modprobe -r xt_NOTRACK nf_conntrack_netbios_ns nf_conntrack_ipv4 xt_state<br>modprobe -r nf_conntrack</p>
+<p><strong>3.使用raw表对特定端口访问不进行跟踪（推荐）</strong><br>4个表的优先级由高到低的顺序为:raw–&gt;mangle–&gt;nat–&gt;filter</p>
+<p><a href="http://ow1schdt5.bkt.clouddn.com/2015/04/iptables.jpg" target="_blank" rel="external"><img src="http://ow1schdt5.bkt.clouddn.com/2015/04/iptables.jpg" alt=""><img src="http://ow1schdt5.bkt.clouddn.com/2015/04/iptables.jpg" alt="iptables"></a><a href="http://ow1schdt5.bkt.clouddn.com/2015/04/iptables.jpg" target="_blank" rel="external"><img src="http://ow1schdt5.bkt.clouddn.com/2015/04/iptables.jpg" alt="iptables"></a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">iptables -A INPUT -m state --state RELATED,ESTABLISHED, UNTRACKED -j ACCEPT</div><div class="line">iptables -t raw -A PREROUTING -p tcp -m multiport --dports 80,443 -j NOTRACK</div><div class="line">iptables -t raw -A PREROUTING -p tcp -m multiport --sports 80,443 -j NOTRACK</div><div class="line">iptables -t raw -A OUTPUT -p tcp -m multiport --dports 80,443 -j NOTRACK</div><div class="line">iptables -t raw -A OUTPUT -p tcp -m multiport --sports 80,443 -j NOTRACK</div></pre></td></tr></table></figure></p>
+<p>通过观察cat /proc/net/nf_conntrack条目来测试是否更改生效</p>
+<p><strong>参考文档：</strong></p>
+<blockquote>
+<p><a href="http://www.361way.com/%E5%86%8D%E7%9C%8Bnf_conntrack-table-full%E9%97%AE%E9%A2%98/2404.html" target="_blank" rel="external">http://www.361way.com/%E5%86%8D%E7%9C%8Bnf_conntrack-table-full%E9%97%AE%E9%A2%98/2404.html</a><br><a href="https://wiki.khnet.info/index.php/Conntrack_tuning" target="_blank" rel="external">https://wiki.khnet.info/index.php/Conntrack_tuning</a><br><a href="https://timanovsky.wordpress.com/2009/04/10/tuning-linux-firewall-connection-tracker-ip_conntrack/" target="_blank" rel="external">https://timanovsky.wordpress.com/2009/04/10/tuning-linux-firewall-connection-tracker-ip_conntrack/</a></p>
+</blockquote>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2015/02/09/fastdfs-best-practice.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Geekwolf">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Geekwolf's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2015/02/09/fastdfs-best-practice.html" itemprop="url">FastDFS分布式存储实战</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-02-09T11:16:29+08:00">
+                2015-02-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux运维/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux运维</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2015/02/09/fastdfs-best-practice.html" class="leancloud_visitors" data-flag-title="FastDFS分布式存储实战">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><a href="http://blog.simlinux.com/books/FastDFS.pdf" target="_blank" rel="external">《FastDFS分布式存储实战》</a></p>
+<h4 id="技术选型"><a href="#技术选型" class="headerlink" title="技术选型"></a>技术选型</h4><h4 id="FastDFS相关组件及原理"><a href="#FastDFS相关组件及原理" class="headerlink" title="FastDFS相关组件及原理"></a>FastDFS相关组件及原理</h4><h5 id="FastDFS介绍"><a href="#FastDFS介绍" class="headerlink" title="FastDFS介绍"></a>FastDFS介绍</h5><h5 id="FastDFS架构"><a href="#FastDFS架构" class="headerlink" title="FastDFS架构"></a>FastDFS架构</h5><h5 id="FastDFS工作流程"><a href="#FastDFS工作流程" class="headerlink" title="FastDFS工作流程"></a>FastDFS工作流程</h5><h5 id="上传"><a href="#上传" class="headerlink" title="上传"></a>上传</h5><h5 id="同步机制"><a href="#同步机制" class="headerlink" title="同步机制"></a>同步机制</h5><h5 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h5><h5 id="文件合并原理"><a href="#文件合并原理" class="headerlink" title="文件合并原理"></a>文件合并原理</h5><h4 id="实验环境说明"><a href="#实验环境说明" class="headerlink" title="实验环境说明"></a>实验环境说明</h4><h4 id="FastDFS部署"><a href="#FastDFS部署" class="headerlink" title="FastDFS部署"></a>FastDFS部署</h4><h5 id="初始化系统"><a href="#初始化系统" class="headerlink" title="初始化系统"></a>初始化系统</h5><h5 id="安装libfastcommon和fastdfs"><a href="#安装libfastcommon和fastdfs" class="headerlink" title="安装libfastcommon和fastdfs"></a>安装libfastcommon和fastdfs</h5><h5 id="storage-server安装nginx"><a href="#storage-server安装nginx" class="headerlink" title="storage server安装nginx"></a>storage server安装nginx</h5><h5 id="配置mod-fastdfs-conf"><a href="#配置mod-fastdfs-conf" class="headerlink" title="配置mod_fastdfs.conf"></a>配置mod_fastdfs.conf</h5><h5 id="配置下载网关"><a href="#配置下载网关" class="headerlink" title="配置下载网关"></a>配置下载网关</h5><h5 id="tracker和storage目录结构"><a href="#tracker和storage目录结构" class="headerlink" title="tracker和storage目录结构"></a>tracker和storage目录结构</h5><h5 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h5><h4 id="高级功能"><a href="#高级功能" class="headerlink" title="高级功能"></a>高级功能</h4><h5 id="防盗链"><a href="#防盗链" class="headerlink" title="防盗链"></a>防盗链</h5><h5 id="在线扩容"><a href="#在线扩容" class="headerlink" title="在线扩容"></a>在线扩容</h5><h5 id="增加group"><a href="#增加group" class="headerlink" title="增加group"></a>增加group</h5><h5 id="组内增加storage-server"><a href="#组内增加storage-server" class="headerlink" title="组内增加storage server"></a>组内增加storage server</h5><h5 id="故障磁盘移除"><a href="#故障磁盘移除" class="headerlink" title="故障磁盘移除"></a>故障磁盘移除</h5><h5 id="文件去重存储"><a href="#文件去重存储" class="headerlink" title="文件去重存储"></a>文件去重存储</h5><h5 id="自定义文件名"><a href="#自定义文件名" class="headerlink" title="自定义文件名"></a>自定义文件名</h5><h5 id="拼接url方式"><a href="#拼接url方式" class="headerlink" title="拼接url方式"></a>拼接url方式</h5><h5 id="使用redis"><a href="#使用redis" class="headerlink" title="使用redis"></a>使用redis</h5><h5 id="缩略图"><a href="#缩略图" class="headerlink" title="缩略图"></a>缩略图</h5><h5 id="清除缓存"><a href="#清除缓存" class="headerlink" title="清除缓存"></a>清除缓存</h5><h4 id="FastDFS开发API使用"><a href="#FastDFS开发API使用" class="headerlink" title="FastDFS开发API使用"></a>FastDFS开发API使用</h4><h4 id="性能优化及安全"><a href="#性能优化及安全" class="headerlink" title="性能优化及安全"></a>性能优化及安全</h4><h5 id="系统方面"><a href="#系统方面" class="headerlink" title="系统方面"></a>系统方面</h5><h5 id="FastDFS方面"><a href="#FastDFS方面" class="headerlink" title="FastDFS方面"></a>FastDFS方面</h5><h5 id="安全配置"><a href="#安全配置" class="headerlink" title="安全配置"></a>安全配置</h5><h4 id="监控"><a href="#监控" class="headerlink" title="监控"></a>监控</h4><h4 id="FastDFS常见问题"><a href="#FastDFS常见问题" class="headerlink" title="FastDFS常见问题"></a>FastDFS常见问题</h4>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2015/01/29/fastdfs-xmind.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Geekwolf">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Geekwolf's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2015/01/29/fastdfs-xmind.html" itemprop="url">FastDFS角色配置参数思维导图</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-01-29T14:43:10+08:00">
+                2015-01-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux运维/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux运维</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2015/01/29/fastdfs-xmind.html" class="leancloud_visitors" data-flag-title="FastDFS角色配置参数思维导图">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><a href="http://ow1schdt5.bkt.clouddn.com/2015/01/FastDFS%E8%A7%92%E8%89%B2%E9%85%8D%E7%BD%AE%E5%8F%82%E6%95%B0%E5%AF%BC%E5%9B%BE.jpg" target="_blank" rel="external"><img src="http://ow1schdt5.bkt.clouddn.com/2015/01/FastDFS%E8%A7%92%E8%89%B2%E9%85%8D%E7%BD%AE%E5%8F%82%E6%95%B0%E5%AF%BC%E5%9B%BE.jpg" alt=""></a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2015/01/15/mysqldumper.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Geekwolf">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Geekwolf's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2015/01/15/mysqldumper.html" itemprop="url">MySQL多线程逻辑备份工具之mydumper</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-01-15T09:58:18+08:00">
+                2015-01-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/MySQL数据库/" itemprop="url" rel="index">
+                    <span itemprop="name">MySQL数据库</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2015/01/15/mysqldumper.html" class="leancloud_visitors" data-flag-title="MySQL多线程逻辑备份工具之mydumper">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  6
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="下载安装"><a href="#下载安装" class="headerlink" title="下载安装"></a><strong>下载安装</strong></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">yum -y install cmake glib2 pcre pcre-devel mysql-devel</div><div class="line">wget [https://launchpad.net/mydumper/0.6/0.6.2/+download/mydumper-0.6.2.tar.gz](https://launchpad.net/mydumper/0.6/0.6.2/+download/mydumper-0.6.2.tar.gz)</div><div class="line">tar xf  mydumper-0.6.2.tar.gz</div><div class="line">cd mydumper-0.6.2</div><div class="line">cmake .</div><div class="line">make &amp;&amp; make install</div></pre></td></tr></table></figure>
+<p>注释：如果只要帮助可以这样编译make doc_html<br>安装之后生成两个二进制命令/usr/local/bin/mydumper（备份）和/usr/local/bin/myloader（恢复）</p>
+<h4 id="mydumper特性"><a href="#mydumper特性" class="headerlink" title="mydumper特性"></a><strong>mydumper特性</strong></h4><ul>
+<li>多线程备份，生成多个备份文件</li>
+<li>针对MyISAM表加读锁，会阻塞DML语句</li>
+<li>保证备份数据一致性</li>
+<li>支持文件压缩和导出binlog</li>
+<li>支持多线程恢复</li>
+<li>支持守护进程模式，定时快照和连续二进制日志</li>
+<li>支持正则匹配</li>
+<li>恢复支持是否启用binlog及指定事物的大小(多少insert)</li>
+<li>无法备份视图和触发器</li>
+<li>备份整库时可用备份存储过程和函数，单库备份等情况无法对其进行备份</li>
+</ul>
+<h4 id="mydumper备份机制"><a href="#mydumper备份机制" class="headerlink" title="mydumper备份机制"></a><strong>mydumper备份机制</strong></h4><p><img src="http://ow1schdt5.bkt.clouddn.com/2015/01/mydumper.png" alt=""></p>
+<h5 id="主要步骤概括"><a href="#主要步骤概括" class="headerlink" title="主要步骤概括"></a><strong>主要步骤概括</strong></h5><ol>
+<li>主线程 FLUSH TABLES WITH READ LOCK, 施加全局只读锁，以阻止DML语句写入，保证数据的一致性</li>
+<li>读取当前时间点的二进制日志文件名和日志写入的位置并记录在metadata文件中，以供即使点恢复使用</li>
+<li>N个（线程数可以指定，默认是4）dump线程 START TRANSACTION WITH CONSISTENT SNAPSHOT; 开启读一致的事物</li>
+<li>dump non-InnoDB tables, 首先导出非事物引擎的表</li>
+<li>主线程 UNLOCK TABLES 非事物引擎备份完后，释放全局只读锁</li>
+<li>dump InnoDB tables, 基于事物导出InnoDB表</li>
+<li>事物结束</li>
+</ol>
+<h5 id="备份所生成的文件"><a href="#备份所生成的文件" class="headerlink" title="备份所生成的文件"></a><strong>备份所生成的文件</strong></h5><ol>
+<li>所有的备份文件在一个目录中，目录可以自己指定</li>
+<li><p>目录中包含一个metadata文件<br>记录了备份数据库在备份时间点的二进制日志文件名，日志的写入位置，<br>如果是在从库进行备份，还会记录备份时同步至从库的二进制日志文件及写入位置</p>
+</li>
+<li><p>每个表有两个备份文件：</p>
+</li>
+</ol>
+<p>database.table-schema.sql 表结构文件<br>database.table.sql 表数据文件<br>如果对表文件分片，将生成多个备份数据文件，可以指定行数或指定大小分片</p>
+<h4 id="mydumper参数详解"><a href="#mydumper参数详解" class="headerlink" title="mydumper参数详解"></a><strong>mydumper参数详解</strong></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line">-B, --database              要备份的数据库，不指定则备份所有库</div><div class="line">-T, --tables-list           需要备份的表，名字用逗号隔开</div><div class="line">-o, --outputdir             备份文件输出的目录</div><div class="line">-s, --statement-size        生成的insert语句的字节数，默认1000000</div><div class="line">-r, --rows                  将表按行分块时，指定的块行数，指定这个选项会关闭 --chunk-filesize</div><div class="line">-F, --chunk-filesize        将表按大小分块时，指定的块大小，单位是 MB</div><div class="line">-c, --compress              压缩输出文件</div><div class="line">-e, --build-empty-files     如果表数据是空，还是产生一个空文件（默认无数据则只有表结构文件）</div><div class="line">-x, --regex                 是同正则表达式匹配 &apos;db.table&apos;</div><div class="line">-i, --ignore-engines        忽略的存储引擎，用逗号分割</div><div class="line">-m, --no-schemas            不备份表结构</div><div class="line">-k, --no-locks              不使用临时共享只读锁，使用这个选项会造成数据不一致</div><div class="line">--less-locking              减少对InnoDB表的锁施加时间（这种模式的机制下文详解）</div><div class="line">-l, --long-query-guard      设定阻塞备份的长查询超时时间，单位是秒，默认是60秒（超时后默认mydumper将会退出）</div><div class="line">--kill-long-queries         杀掉长查询 (不退出)</div><div class="line">-b, --binlogs               导出binlog</div><div class="line">-D, --daemon                启用守护进程模式，守护进程模式以某个间隔不间断对数据库进行备份</div><div class="line">-I, --snapshot-interval     dump快照间隔时间，默认60s，需要在daemon模式下</div><div class="line">-L, --logfile               使用的日志文件名(mydumper所产生的日志), 默认使用标准输出</div><div class="line">--tz-utc                    跨时区是使用的选项，不解释了</div><div class="line">--skip-tz-utc               同上</div><div class="line">--use-savepoints            使用savepoints来减少采集metadata所造成的锁时间，需要 SUPER 权限</div><div class="line">--success-on-1146           Not increment error count and Warning instead of Critical in case of table doesn&apos;t exist</div><div class="line">-h, --host                  连接的主机名</div><div class="line">-u, --user                  备份所使用的用户</div><div class="line">-p, --password              密码</div><div class="line">-P, --port                  端口</div><div class="line">-S, --socket                使用socket通信时的socket文件</div><div class="line">-t, --threads               开启的备份线程数，默认是4</div><div class="line">-C, --compress-protocol     压缩与mysql通信的数据</div><div class="line">-V, --version               显示版本号</div><div class="line">-v, --verbose               输出信息模式, 0 = silent, 1 = errors, 2 = warnings, 3 = info, 默认为 2&lt;/pre&gt;</div></pre></td></tr></table></figure>
+<h4 id="myloader参数详解"><a href="#myloader参数详解" class="headerlink" title="myloader参数详解"></a><strong>myloader参数详解</strong></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">-d, --directory                   备份文件的目录</div><div class="line">-q, --queries-per-transaction     每次事物执行的查询数量，默认是1000</div><div class="line">-o, --overwrite-tables            如果要恢复的表存在，则先drop掉该表，使用该参数，需要备份时候要备份表结构</div><div class="line">-B, --database                    需要还原的数据库</div><div class="line">-e, --enable-binlog               启用还原数据的二进制日志</div><div class="line">-h, --host                        主机</div><div class="line">-u, --user                        还原的用户</div><div class="line">-p, --password                    密码</div><div class="line">-P, --port                        端口</div><div class="line">-S, --socket                      socket文件</div><div class="line">-t, --threads                     还原所使用的线程数，默认是4</div><div class="line">-C, --compress-protocol           压缩协议</div><div class="line">-V, --version                     显示版本</div><div class="line">-v, --verbose                     输出模式, 0 = silent, 1 = errors, 2 = warnings, 3 = info, 默认为2&lt;/pre&gt;</div></pre></td></tr></table></figure>
+<h4 id="使用案例"><a href="#使用案例" class="headerlink" title="使用案例"></a>使用案例</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">1.导出test库下面的table1和table2表结构和数据</div><div class="line">/usr/local/bin/mydumper  -h 10.1.1.1 -u root -p root -B test1 -T table1,table2  -t 8 -r 100000 -c --less-locking  -v 3 -D -L /var/log/mydumper.log   -o /geekwolf/test_table1_table2/</div><div class="line">若只导出数据增加-m参数</div><div class="line">2.将导出的数据导入到10.1.1.2服务器的test2库中</div><div class="line">/usr/local/bin/myloader   -h 10.1.1.2 -u root -p root  -B test2 -e -t 8  -d /geekwolf/test_table1_table2/ --overwrite-tables -v 3&lt;/pre&gt;</div><div class="line">**注释**:后台记录导出导入的时间</div><div class="line">输入screen命令</div><div class="line">然后(time myloader   -h 10.1.1.2 -u user  -p &apos;ap&apos; -B mnew_gz -e -t 8  -d /geekwolf/m_members/ --overwrite-tables -v 3) 2&gt;/geekwolf/im.log</div><div class="line">最后Ctrl+A+D</div></pre></td></tr></table></figure>
+<p>最后其他备份工具如:mysqldump/mysqlhotcopy/MySQLDumper 、mk-parallel-dump/mk-parallel-restore 、Xtrabackup/LVM Snapshot 暂时想到这么多，以后再想到再补充吧，也欢迎各位大拿fork工具库提交 <a href="https://github.com/geekwolf/sa-scripts/blob/master/devops.md%20" target="_blank" rel="external">https://github.com/geekwolf/sa-scripts/blob/master/devops.md </a></p>
+<h4 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h4><blockquote>
+<p><a href="http://my.oschina.net/anthonyyau/blog/299794" target="_blank" rel="external">http://my.oschina.net/anthonyyau/blog/299794</a><br><a href="http://www.tuicool.com/articles/BvUBVv" target="_blank" rel="external">http://www.tuicool.com/articles/BvUBVv</a><br><a href="http://centminmod.com/mydumper.html" target="_blank" rel="external">http://centminmod.com/mydumper.html</a><br><a href="http://www.cnblogs.com/linuxnote/p/3817698.html" target="_blank" rel="external">http://www.cnblogs.com/linuxnote/p/3817698.html</a><br><a href="https://launchpad.net/mydumper" target="_blank" rel="external">https://launchpad.net/mydumper</a></p>
+</blockquote>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2014/12/05/ansible-handbook.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Geekwolf">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Geekwolf's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2014/12/05/ansible-handbook.html" itemprop="url">Ansible学习笔记</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-12-05T17:44:09+08:00">
+                2014-12-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/自动化运维/" itemprop="url" rel="index">
+                    <span itemprop="name">自动化运维</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2014/12/05/ansible-handbook.html" class="leancloud_visitors" data-flag-title="Ansible学习笔记">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><a href="http://blog.simlinux.com/books/Ansible-notes.pdf" title="Ansible学习笔记" target="_blank" rel="external">Ansible学习笔记</a> <a href="http://blog.simlinux.com/books/Ansible-notes.pdf" target="_blank" rel="external">http://blog.simlinux.com/books/Ansible-notes.pdf</a></p>
+<p>目前只包含Ansible基础使用，下载后可以看到目录便于查看，后续会根据生产使用增加实战内容！</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2014/11/06/mysql-flashcache.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Geekwolf">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Geekwolf's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2014/11/06/mysql-flashcache.html" itemprop="url">Flashcache基本使用及注意事项</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-11-06T16:55:21+08:00">
+                2014-11-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/MySQL数据库/" itemprop="url" rel="index">
+                    <span itemprop="name">MySQL数据库</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2014/11/06/mysql-flashcache.html" class="leancloud_visitors" data-flag-title="Flashcache基本使用及注意事项">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  6
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><strong>环境：</strong>Centos6.5 x64 minal</p>
+<h4 id="安装方法"><a href="#安装方法" class="headerlink" title="安装方法"></a>安装方法</h4><p>1.rpm安装<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">rpm --import http://elrepo.org/RPM-GPG-KEY-elrepo.org</div><div class="line">rpm -Uvh http://elrepo.org/elrepo-release-6-5.el6.elrepo.noarch.rpm</div><div class="line">yum install flashcache-utils kmod-flashcache</div></pre></td></tr></table></figure></p>
+<p>2.源码安装<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">rpm -ivh http://mirrors.ustc.edu.cn/centos/6.5/os/x86_64/Packages/kernel-headers-2.6.32-431.el6.x86_64.rpm</div><div class="line">rpm -ivh http://mirrors.ustc.edu.cn/centos/6.5/os/x86_64/Packages/kernel-devel-2.6.32-431.el6.x86_64.rpm</div><div class="line">wget https://github.com/facebook/flashcache/archive/3.1.2.tar.gz</div><div class="line">tar xf 3.1.2.tar.gz</div><div class="line">cd flashcache-3.1.2</div><div class="line">make &amp;&amp; make install</div></pre></td></tr></table></figure></p>
+<h4 id="自动加载模块"><a href="#自动加载模块" class="headerlink" title="自动加载模块"></a>自动加载模块</h4><p>开机自动加载模块配置：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">vim /etc/sysconfig/modules/flashcache.modules</div><div class="line">#! /bin/sh</div><div class="line">/sbin/modinfo -F filename flashcache &gt; /dev/null 2&gt;&amp;1 </div><div class="line">if [ $? -eq 0 ]; then</div><div class="line">    /sbin/modprobe flashcache</div><div class="line">fi </div><div class="line">chmod +x  /etc/sysconfig/modules/flashcache.modules</div></pre></td></tr></table></figure></p>
+<p>模块的自动加载最好不要采用写入/etc/rc.local的方式</p>
+<h4 id="加载flashcache模块"><a href="#加载flashcache模块" class="headerlink" title="加载flashcache模块"></a>加载flashcache模块</h4><p><code>modprobe flashcache</code>                   </p>
+<h4 id="查看flashcache模块是否加载"><a href="#查看flashcache模块是否加载" class="headerlink" title="查看flashcache模块是否加载"></a>查看flashcache模块是否加载</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">[root@localhost ~]# lsmod |grep flashcache </div><div class="line">flashcache 92068 0 </div><div class="line">dm_mod 84209 14 flashcache,dm_mirror,dm_log</div></pre></td></tr></table></figure>
+<h4 id="删除flashcache模块"><a href="#删除flashcache模块" class="headerlink" title="删除flashcache模块"></a>删除flashcache模块</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">rmmod flashcache</div></pre></td></tr></table></figure>
+<h4 id="创建Flashcache"><a href="#创建Flashcache" class="headerlink" title="创建Flashcache"></a>创建Flashcache</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">SSD:/dev/sdc</div><div class="line">SAS:/dev/sdb2</div><div class="line">创建设备名为cachedev的flashcache</div><div class="line">flashcache_create -p back -b 4k cachedev /dev/sdc /dev/sdb2</div><div class="line">生成/dev/mapper/cachedev设备</div><div class="line">指定flashcache的block大小与Percona的page大小相同,一般默认</div></pre></td></tr></table></figure>
+<p><strong>flashcache_create相关参数说明：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">-p:缓存模式 writeback(数据先写到SSD，随后写到普通硬盘)，</div><div class="line">            writethrough(数据同时写到SSD和普通硬盘)，</div><div class="line">            writearound（数据绕过SSD，直接写到普通硬盘）三种，三种模式的所有读都会被缓存到flashcache可以通过dev.flashcache.&lt;cachedev&gt;.cache_all参数调整</div><div class="line">-s：缓存大小，可选项，如果未指定则整个SSD设备被用于缓存，默认的计数单位是扇区（sectors）,但是可以接受k/m/g单位。</div><div class="line">-b：指定块大小，可选项，默认为4KB，必须为2的指数。默认单位为扇区。也可以用K作为单位，一般选4KB。</div><div class="line">-f：强制创建，不进行检查</div><div class="line">-m：设备元数据块大小，只有writeback需要存储metadata块，默认4K</div></pre></td></tr></table></figure></p>
+<p><strong>查看帮助</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">[root@localhost ~]# flashcache_create</div><div class="line">Usage: flashcache_create [-v] [-p back|thru|around] [-b block size] [-m md block size] [-s cache size] [-a associativity] cachedev ssd_devname disk_devname</div><div class="line">Usage : flashcache_create Cache Mode back|thru|around is required argument</div><div class="line">Usage : flashcache_create Default units for -b, -m, -s are sectors, or specify in k/M/G. Default associativity is 512</div></pre></td></tr></table></figure></p>
+<p>其他帮助参考flashcache源码目录下的man目录</p>
+<h4 id="加载缓存设备"><a href="#加载缓存设备" class="headerlink" title="加载缓存设备"></a><strong>加载缓存设备</strong></h4><p>flashcache_load /dev/sdc  cachedev (系统重启时使用来加载已经创建过的缓存设备cachedev<br>加载已存在的flashcache操作仅用于writeback模式，writethrough和writearound模式重启机器后需要重新使用flashcache_create创建</p>
+<h4 id="使用Flashcache"><a href="#使用Flashcache" class="headerlink" title="使用Flashcache"></a><strong>使用Flashcache</strong></h4><p>创建好的flashcache设备是块设备，可格式文件系统后挂在使用,也可以继续对其分区等<br><code>mount /dev/mapper/cachedev /data</code></p>
+<h4 id="销毁Flashcache"><a href="#销毁Flashcache" class="headerlink" title="销毁Flashcache"></a><strong>销毁Flashcache</strong></h4><p><code>flashcache_destroy /dev/sdc</code></p>
+<p>这种方式删除writeback模式的flashcache时会将SSD上的所有数据删除包括脏数据<br>建议使用dmsetup命令（device-mapper软件包）删除，会自动将脏数据写入磁盘<br>dmsetup remove cachedev</p>
+<h4 id="Flashcache参数优化"><a href="#Flashcache参数优化" class="headerlink" title="Flashcache参数优化"></a><strong>Flashcache参数优化</strong></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">[root@localhost ]#sysctl dev.flashcache</div><div class="line">dev.flashcache.sdc+sdb2.io_latency_hist = 0</div><div class="line">dev.flashcache.sdc+sdb2.do_sync = 0</div><div class="line">dev.flashcache.sdc+sdb2.stop_sync = 0</div><div class="line">dev.flashcache.sdc+sdb2.dirty_thresh_pct = 20</div><div class="line">dev.flashcache.sdc+sdb2.max_clean_ios_total = 4</div><div class="line">dev.flashcache.sdc+sdb2.max_clean_ios_set = 2</div><div class="line">dev.flashcache.sdc+sdb2.do_pid_expiry = 0</div><div class="line">dev.flashcache.sdc+sdb2.max_pids = 100</div><div class="line">dev.flashcache.sdc+sdb2.pid_expiry_secs = 60</div><div class="line">dev.flashcache.sdc+sdb2.reclaim_policy = 0</div><div class="line">dev.flashcache.sdc+sdb2.zero_stats = 0</div><div class="line">dev.flashcache.sdc+sdb2.fast_remove = 0</div><div class="line">dev.flashcache.sdc+sdb2.cache_all = 1</div><div class="line">dev.flashcache.sdc+sdb2.fallow_clean_speed = 2</div><div class="line">dev.flashcache.sdc+sdb2.fallow_delay = 900</div><div class="line">dev.flashcache.sdc+sdb2.skip_seq_thresh_kb = 0</div><div class="line">dev.flashcache.sdc+sdb2.clean_on_read_miss = 0</div><div class="line">dev.flashcache.sdc+sdb2.clean_on_write_miss = 0</div><div class="line">dev.flashcache.sdc+sdb2.lru_promote_thresh = 2</div><div class="line">dev.flashcache.sdc+sdb2.lru_hot_pct = 75</div><div class="line">dev.flashcache.sdc+sdb2.new_style_write_merge = 0</div></pre></td></tr></table></figure>
+<p><strong>参数介绍参考：</strong><a href="https://github.com/facebook/flashcache/blob/master/doc/flashcache-sa-guide.txt" target="_blank" rel="external">https://github.com/facebook/flashcache/blob/master/doc/flashcache-sa-guide.txt</a></p>
+<p>针对MySQL作此优化<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">dev.flashcache.sdc+sdb2.cache_all = 1   默认值1表示缓存所有，0都不缓存，另外通过进程黑白名单控制</div><div class="line">dev.flashcache.sdc+sdb2.reclaim_policy = 1  缓存回收策略，0：FIFO，1：LRU，可动态调整</div><div class="line">dev.flashcache.sdbc+sdb2.fast_remove = 1  0表示不同步脏块到磁盘，1表示同步脏块到磁盘</div><div class="line">dev.flashcache.sdc+sdb2.dirty_thresh_pct = 90  每组脏块占有的百分比，过低会减少块覆盖，增加磁盘写操作和读缓存</div><div class="line">dev.flashcache.sdc+sdb2.new_style_write_merge = 1 打开写入合并，提升写磁盘的性能(旧版本dev.flashcache.sdc+sdb2.write_merge)</div><div class="line">dev.flashcache.sdb1+sda6.skip_seq_thresh_kb = 256  表示不缓存超过256kb的顺序IO(由于SSD的随机读写比SAS好，但顺序读写相差不大，故作此优化)&lt;/pre&gt;</div></pre></td></tr></table></figure></p>
+<h4 id="Flashcache开机启动"><a href="#Flashcache开机启动" class="headerlink" title="Flashcache开机启动"></a><strong>Flashcache开机启动</strong></h4><p>flashcache模块自动加载–flashcache设备自动加载flashcache_load /dev/sdc  cachedev</p>
+<p>A.模块自动加载请参考安装部分</p>
+<p>B.开机自动加载已创建的缓存设备及挂载<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">cd /usr/src/flashcache-3.1.2/utils</div><div class="line">cp flashcache /etc/init.d/</div><div class="line">chmod +x /etc/init.d/flashcache </div><div class="line">修改/etc/init.d/flashcache</div><div class="line">SSD_DISK= /dev/sdc</div><div class="line">BACKEND_DISK= /dev/sdb2</div><div class="line">CACHEDEV_NAME= cachedev</div><div class="line">MOUNTPOINT= /data</div><div class="line">FLASHCACHE_NAME=sdc+sdb2</div><div class="line">chkconfig flashcache on</div></pre></td></tr></table></figure></p>
+<h4 id="Flashcache状态监控"><a href="#Flashcache状态监控" class="headerlink" title="Flashcache状态监控"></a><strong>Flashcache状态监控</strong></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">dmsetup status cachedev</div><div class="line">dmsetup table  cachedev</div><div class="line">错误日志报告 </div><div class="line">/proc/flashcache/sdc+sdb2/flashcache_errors</div><div class="line"></div><div class="line">状态报告</div><div class="line">/proc/flashcache/sdc+sdb2/flashcache_stats</div><div class="line">亦可使用flashstat命令实时查看</div></pre></td></tr></table></figure>
+<p>到此flashcache的基本使用就是这样，看了网上很多资料都是各种抄袭，不凡错误的，最后还是读了官方的帮助，总结出自己的以便以后使用；</p>
+<p>后续要做的就是增加了SSD缓存后，要观察SSD的使用情况及缓存命中率等在逐渐调试优化，下一篇增加MySQL数据库从系统/MySQL方面的一些优化总结和大家分享，请继续关注</p>
+<p><strong>推荐IO测试工具</strong></p>
+<p>fio、iozone 更多参考<a href="https://github.com/geekwolf/sa-scripts/blob/master/devops.md" target="_blank" rel="external">https://github.com/geekwolf/sa-scripts/blob/master/devops.md</a></p>
+<p><strong>注意事项：</strong></p>
+<p>flashcache_create创建了缓存设备之后挂载即可使用，如创建之后使用flashcache_load /dev/sdc  cachedev会提示Invalid Flashcache superblock的错误</p>
+<p><strong>参考文档</strong></p>
+<blockquote>
+<p><a href="http://blog.163.com/digoal%40126/blog/static/163877040201463101652528/" target="_blank" rel="external">http://blog.163.com/digoal%40126/blog/static/163877040201463101652528/</a></p>
+<p><a href="https://github.com/facebook/flashcache/blob/master/doc/flashcache-sa-guide.txt" target="_blank" rel="external">https://github.com/facebook/flashcache/blob/master/doc/flashcache-sa-guide.txt</a></p>
+</blockquote>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2014/10/30/mysql-rep-checksum.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Geekwolf">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Geekwolf's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2014/10/30/mysql-rep-checksum.html" itemprop="url">主从一致性检查和修复</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-10-30T16:18:26+08:00">
+                2014-10-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/MySQL数据库/" itemprop="url" rel="index">
+                    <span itemprop="name">MySQL数据库</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2014/10/30/mysql-rep-checksum.html" class="leancloud_visitors" data-flag-title="主从一致性检查和修复">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  6
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="环境说明"><a href="#环境说明" class="headerlink" title="环境说明"></a>环境说明</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">主： 192.168.1.96</div><div class="line">从： 192.168.1.68</div></pre></td></tr></table></figure>
+<h4 id="基本步骤"><a href="#基本步骤" class="headerlink" title="基本步骤"></a>基本步骤</h4><h5 id="授权主从一致性检查和同步账号"><a href="#授权主从一致性检查和同步账号" class="headerlink" title="授权主从一致性检查和同步账号"></a>授权主从一致性检查和同步账号</h5><p>主库：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">mysql&gt; GRANT update,insert,delete,SELECT,PROCESS, SUPER, REPLICATION SLAVE ON *.* TO &apos;geekwolf&apos;@&apos;192.168.1.%&apos; IDENTIFIED BY &apos;geekwolf&apos;;</div><div class="line">mysql&gt; flush privileges;</div></pre></td></tr></table></figure>
+<h5 id="创建检查信息表和dsns从库连接信息表（此处创建在test库）"><a href="#创建检查信息表和dsns从库连接信息表（此处创建在test库）" class="headerlink" title="创建检查信息表和dsns从库连接信息表（此处创建在test库）"></a>创建检查信息表和dsns从库连接信息表（此处创建在test库）</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">mysql&gt; CREATE TABLE checksums (</div><div class="line">   db             char(64)     NOT NULL,</div><div class="line">   tbl            char(64)     NOT NULL,</div><div class="line">   chunk          int          NOT NULL,</div><div class="line">   chunk_time     float            NULL,</div><div class="line">   chunk_index    varchar(200)     NULL,</div><div class="line">   lower_boundary text             NULL,</div><div class="line">   upper_boundary text             NULL,</div><div class="line">   this_crc       char(40)     NOT NULL,</div><div class="line">   this_cnt       int          NOT NULL,</div><div class="line">   master_crc     char(40)         NULL,</div><div class="line">   master_cnt     int              NULL,</div><div class="line">   ts             timestamp    NOT NULL,</div><div class="line">   PRIMARY KEY (db, tbl, chunk),</div><div class="line">   INDEX ts_db_tbl (ts, db, tbl)</div><div class="line">) ENGINE=InnoDB;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">mysql&gt; CREATE TABLE `dsns` (</div><div class="line">  `id` int(11) NOT NULL AUTO_INCREMENT,</div><div class="line">  `parent_id` int(11) DEFAULT NULL,</div><div class="line">  `dsn` varchar(255) NOT NULL,</div><div class="line">  PRIMARY KEY (`id`)</div><div class="line">);</div></pre></td></tr></table></figure>
+<h5 id="插入从库连接信息"><a href="#插入从库连接信息" class="headerlink" title="插入从库连接信息"></a>插入从库连接信息</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mysql&gt; insert into dsns values(1,1,&apos;192.168.1.68,u=geekwolf,p=geekwolf,P=3306&apos;);</div></pre></td></tr></table></figure>
+<h5 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h5><p>主库<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">mysql&gt; use test</div><div class="line"> mysql&gt; create table now(id int,name vachar(10));</div><div class="line"> mysql&gt; nsert into now values(1,&apos;terry&apos;),(2,&apos;honey&apos;),(3,&apos;geekwolf&apos;);</div></pre></td></tr></table></figure></p>
+<p>从库<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">mysql&gt; update test.now set name=&apos;john&apos; where id=1;</div><div class="line"> mysql&gt; delete  from test.now where id=2;</div><div class="line"> mysql&gt; insert  into test.now values(4,&apos;test&apos;);</div></pre></td></tr></table></figure></p>
+<h5 id="检查库test数据是否一致并修复"><a href="#检查库test数据是否一致并修复" class="headerlink" title="检查库test数据是否一致并修复"></a>检查库test数据是否一致并修复</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">[root@master ~]# pt-table-checksum h=&apos;192.168.1.96&apos;,u=&apos;geekwolf&apos;,p=&apos;geekwolf&apos;,P=3306 --databases test --nocheck-replication-filters --replicate=test.checksums --no-check-binlog-format </div><div class="line">Cannot connect to P=3306,h=192.168.1.78,p=...,u=geekwolf </div><div class="line">TS ERRORS DIFFS ROWS CHUNKS SKIPPED TIME TABLE </div><div class="line">10-30T14:56:32 0 0 1 1 0 0.015 test.dsns </div><div class="line">10-30T14:56:32 0 0 0 1 0 0.019 test.keyword_setting </div><div class="line">10-30T14:56:32 0 1 3 1 0 0.014 test.now </div><div class="line">10-30T14:56:32 0 0 0 1 0 0.020 test.searchkeyword </div><div class="line">10-30T14:56:32 0 0 0 1 0 0.012 test.sms</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">TS ：完成检查的时间</div><div class="line">ERRORS ：检查时候发生错误和警告的数量</div><div class="line">DIFFS ：0表示一致，1表示不一致。当指定–no-replicate-check时，会一直为0，当指定–replicate-check-only会显示不同的信息</div><div class="line">ROWS ：表的行数</div><div class="line">CHUNKS ：被划分到表中的块的数目</div><div class="line">SKIPPED ：由于错误或警告或过大，则跳过块的数目</div><div class="line">TIME ：执行的时间</div><div class="line">TABLE ：被检查的表名</div></pre></td></tr></table></figure>
+<p><strong>注释</strong>：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">--check-replication-filters 检查复制中是否设置了过滤条件，如果设置了，程序将退出;可以使用--no-check-replication-filters禁用</div><div class="line">--no-check-binlog-format 不对binlog的格式进行检查</div><div class="line">--replicate-check-only  只显示主从不一致部分,此参数不会生成新的checksums数据，只会根据checksums表已经有的数据来显示</div><div class="line">--databases test   指定检查的库，多库用逗号隔开</div><div class="line">--tables    now    指定检查的表</div><div class="line">--no-check-binlog-format 不对binlog的格式进行检查</div><div class="line">具体主从一致性检查涉及影响性能的参数：--max-load、--chunk-size、--chunk-size-limit等参考官网介绍</div><div class="line">http://www.percona.com/doc/percona-toolkit/2.1/pt-table-checksum.html</div></pre></td></tr></table></figure></p>
+<h5 id="将主库一致性同步到从库"><a href="#将主库一致性同步到从库" class="headerlink" title="将主库一致性同步到从库"></a>将主库一致性同步到从库</h5><p>将从库192.168.1.68的test库的now表与主库192.168.1.96同步，并打印出相关SQL<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">[root@master ~]# pt-table-sync --replicate=test.checksums --databases=test --tables=now h=192.168.1.96,P=3306,u=geekwolf,p=geekwolf h=192.168.1.68,P=3306,u=geekwolf,p=geekwolf --execute --print</div><div class="line"></div><div class="line">REPLACE INTO `test`.`now`(`id`, `name`) VALUES (&apos;1&apos;, &apos;terry&apos;) /*percona-toolkit src_db:test src_tbl:now src_dsn:P=3306,h=192.168.1.96,p=...,u=geekwolf dst_db:test dst_tbl:now dst_dsn:P=3306,h=192.168.1.68,p=...,u=geekwolf lock:1 transaction:1 changing_src:test.checksums replicate:test.checksums bidirectional:0 pid:7279 user:root host:master*/;</div><div class="line">REPLACE INTO `test`.`now`(`id`, `name`) VALUES (&apos;2&apos;, &apos;honey&apos;) /*percona-toolkit src_db:test src_tbl:now src_dsn:P=3306,h=192.168.1.96,p=...,u=geekwolf dst_db:test dst_tbl:now dst_dsn:P=3306,h=192.168.1.68,p=...,u=geekwolf lock:1 transaction:1 changing_src:test.checksums replicate:test.checksums bidirectional:0 pid:7279 user:root host:master*/;</div><div class="line">DELETE FROM `test`.`now` WHERE `id`=&apos;4&apos; LIMIT 1 /*percona-toolkit src_db:test src_tbl:now src_dsn:P=3306,h=192.168.1.96,p=...,u=geekwolf dst_db:test dst_tbl:now dst_dsn:P=3306,h=192.168.1.68,p=...,u=geekwolf lock:1 transaction:1 changing_src:test.checksums replicate:test.checksums bidirectional:0 pid:7282 user:root host:master*/;</div></pre></td></tr></table></figure></p>
+<p>另外,只显示同步时要进行的SQL操作，并不执行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pt-table-sync --print --sync-to-master --databases test h=192.168.1.68,P=3306,u=geekwolf,p=geekwolf</div></pre></td></tr></table></figure></p>
+<p><strong>注意：</strong><br>      在规范的操作中，从库是要做只读操作的（set global read_only=1  或者my.cnf添加read_only=1 只对普通用户有效）；但如果从库做了写操作造成的数据差异，在主库上同步数据时会和主库保持一致，从库多余的会被删除，变化的会被更新，没有的会被插入，通过上面的命令就可以看到相关的SQL操作</p>
+<h4 id="推荐工具"><a href="#推荐工具" class="headerlink" title="推荐工具"></a>推荐工具</h4><blockquote>
+<p><a href="http://www.percona.com/doc/percona-toolkit/2.2/" target="_blank" rel="external">Percona-toolkit</a><br><a href="http://www.maatkit.org/" target="_blank" rel="external">Maatkit</a></p>
+</blockquote>
+<h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><blockquote>
+<p>pt-table-checksum原理分析 <a href="http://nettedfish.sinaapp.com/blog/2013/06/04/check-replication-consistency-by-pt-table-checksum/" target="_blank" rel="external">http://nettedfish.sinaapp.com/blog/2013/06/04/check-replication-consistency-by-pt-table-checksum/</a><br><a href="http://www.cnblogs.com/zhoujinyi/archive/2013/05/09/3067045.html" target="_blank" rel="external">http://www.cnblogs.com/zhoujinyi/archive/2013/05/09/3067045.html</a></p>
+</blockquote>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+  </section>
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right"></i></a>
+  </nav>
+
+
+
+          </div>
+          
+
+
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg"
+               alt="Geekwolf" />
+          <p class="site-author-name" itemprop="name">Geekwolf</p>
+           
+              <p class="site-description motion-element" itemprop="description">DevOps | Docker | Python | k8s</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">82</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">59</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/geekwolf" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                    
+                      GitHub
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/geekwolf" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                    
+                      Weibo
+                    
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-block">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://blog.simlinux.com" title="旧版博客" target="_blank">旧版博客</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://nolinux.blog.51cto.com" title="nolinux" target="_blank">nolinux</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://xiaorui.cc" title="峰云就她了" target="_blank">峰云就她了</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://note.gitcloud.cc/blog/bluetom520" title="懒懒的天空" target="_blank">懒懒的天空</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.roddypy.com" title="普拉多VX" target="_blank">普拉多VX</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://blog.opskumu.com" title="枯木磊" target="_blank">枯木磊</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2012 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Geekwolf</span>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  
+    <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('-1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("qms5kJ0y2CItrIVFivKxxPsR-gzGzoHsz", "Cn3w20futtphxpaDSP5tHjzy");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,1439 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Geekwolf,DevOps,Docker,k8s,MySQL,PaaS" />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Geekwolf's Blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="前言　　多渠道主要目的是为了统计各个应用市场用户数据分析(比如活跃数，崩溃率等)，收集用户信息，这时需要唯一标识来区分这些渠道，本文主要针对多渠道(几百个渠道甚至更多的情况)如何快速打包? 目的  Jenkins集成Gradle实现打包自动化 通过Jenkins参数化构建实现自定义环境和渠道打包，签名 测试包自动上传fir并通过钉钉发送通知 正式包按版本归档到OSS，发布时拷贝包到发布目录 自动刷">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android多渠道打包这样做才酸爽！？">
+<meta property="og:url" content="http://www.simlinux.com/2016/04/21/android-pack-deploy.html">
+<meta property="og:site_name" content="Geekwolf&#39;s Blog">
+<meta property="og:description" content="前言　　多渠道主要目的是为了统计各个应用市场用户数据分析(比如活跃数，崩溃率等)，收集用户信息，这时需要唯一标识来区分这些渠道，本文主要针对多渠道(几百个渠道甚至更多的情况)如何快速打包? 目的  Jenkins集成Gradle实现打包自动化 通过Jenkins参数化构建实现自定义环境和渠道打包，签名 测试包自动上传fir并通过钉钉发送通知 正式包按版本归档到OSS，发布时拷贝包到发布目录 自动刷">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://ow1schdt5.bkt.clouddn.com/2016/04/android-test.png">
+<meta property="og:image" content="http://ow1schdt5.bkt.clouddn.com/2016/04/android-test-choice.png">
+<meta property="og:image" content="http://ow1schdt5.bkt.clouddn.com/2016/04/android-archive.png">
+<meta property="og:image" content="http://ow1schdt5.bkt.clouddn.com/2016/04/android-archive-channel.png">
+<meta property="og:updated_time" content="2017-12-17T01:55:01.604Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android多渠道打包这样做才酸爽！？">
+<meta name="twitter:description" content="前言　　多渠道主要目的是为了统计各个应用市场用户数据分析(比如活跃数，崩溃率等)，收集用户信息，这时需要唯一标识来区分这些渠道，本文主要针对多渠道(几百个渠道甚至更多的情况)如何快速打包? 目的  Jenkins集成Gradle实现打包自动化 通过Jenkins参数化构建实现自定义环境和渠道打包，签名 测试包自动上传fir并通过钉钉发送通知 正式包按版本归档到OSS，发布时拷贝包到发布目录 自动刷">
+<meta name="twitter:image" content="http://ow1schdt5.bkt.clouddn.com/2016/04/android-test.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.simlinux.com/2016/04/21/android-pack-deploy.html"/>
+
+
+
+
+
+  <title>Android多渠道打包这样做才酸爽！？ | Geekwolf's Blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="//s13.cnzz.com/z_stat.php?id=1264375041&web_id=1264375041" language="JavaScript"></script>
+  </div>
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Geekwolf's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Quick notes</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tips">
+          <a href="/tips/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-gittip"></i> <br />
+            
+            tips
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />
+            
+            站点地图
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2016/04/21/android-pack-deploy.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Geekwolf">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Geekwolf's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Android多渠道打包这样做才酸爽！？</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-04-21T16:51:16+08:00">
+                2016-04-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CI-CD/" itemprop="url" rel="index">
+                    <span itemprop="name">CI/CD</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2016/04/21/android-pack-deploy.html" class="leancloud_visitors" data-flag-title="Android多渠道打包这样做才酸爽！？">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  13
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>　　多渠道主要目的是为了统计各个应用市场用户数据分析(比如活跃数，崩溃率等)，收集用户信息，这时需要唯一标识来区分这些渠道，本文主要针对多渠道(几百个渠道甚至更多的情况)如何快速打包?</p>
+<h4 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h4><blockquote>
+<ul>
+<li>Jenkins集成Gradle实现打包自动化</li>
+<li>通过Jenkins参数化构建实现自定义环境和渠道打包，签名</li>
+<li>测试包自动上传fir并通过钉钉发送通知</li>
+<li>正式包按版本归档到OSS，发布时拷贝包到发布目录</li>
+<li>自动刷新CDN</li>
+</ul>
+</blockquote>
+<h4 id="环境说明"><a href="#环境说明" class="headerlink" title="环境说明"></a>环境说明</h4><blockquote>
+<ul>
+<li>系统 : Centos6.5 x64</li>
+<li>jdk-7u79-linux-x64</li>
+<li>android-sdk_r24.4.1-linux</li>
+<li>gradle-2.2.1</li>
+<li>Python-2.7.10(操作DingTalk和OSS API)</li>
+<li>Jenkins2.0/Tomcat-7.0.65</li>
+</ul>
+</blockquote>
+<h4 id="配置环境"><a href="#配置环境" class="headerlink" title="配置环境"></a>配置环境</h4><p>1.安装JDK</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">wget &apos;http://download.oracle.com/otn-pub/java/jdk/7u79-b15/jdk-7u79-linux-x64.tar.gz?AuthParam=1460974294_526e0f8471004294cb163c9c730ba4f9&apos; -O jdk1.7.0_79.tar.gz</div><div class="line">tar xf jdk-7u79-linux-x64.tar.gz -C /usr/local/jdk1.7.0_79</div></pre></td></tr></table></figure>
+<p>2.安装Python2.7.10</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">wget https://www.python.org/ftp/python/2.7.10/Python-2.7.10.tgz</div><div class="line">tar xf Python-2.7.10.tgz</div><div class="line">cd Python-2.7.10</div><div class="line">./configure </div><div class="line">make -j4</div><div class="line">make install</div><div class="line">sed -i &apos;s#python/python2.6#g&apos; /usr/bin/yum</div></pre></td></tr></table></figure>
+<p>3.安装Android的SDK</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">wget http://dl.google.com/android/android-sdk_r24.4.1-linux.tgz</div><div class="line">tar xf android-sdk_r24.4.1-linux.tgz -C /usr/local/android-sdk-linux</div></pre></td></tr></table></figure>
+<p>4.安装tomcat和jenkins</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">yum -y install tomcat</div><div class="line">wget http://mirrors.jenkins-ci.org/war-rc/2.0/jenkins.war -O /usr/share/tomcat/webapps/jenkins.war</div></pre></td></tr></table></figure>
+<p>5.配置环境变量，启动服务</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">vim /etc/profile</div><div class="line">export ANDROID_HOME=/usr/local/android-sdk-linux</div><div class="line">export JAVA_HOME=/usr/local/jdk1.7.0_80</div><div class="line">export PATH=$PATH:$JAVA_HOME/bin:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools</div><div class="line">source /etc/profile</div><div class="line">service tomcat start</div><div class="line">Jenkins访问地址:http://192.168.2.2:8080/jenkins/</div></pre></td></tr></table></figure>
+<p>6.安装Android SDK依赖包</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">由于Android SDK工具基于32位在64位系统上需要安装32位必须安装的i386依赖库</div><div class="line">yum install -y glibc.i686 glibc-devel.i686 libstdc++.i686 zlib-devel.i686 ncurses-devel.i686 libX11-devel.i686 libXrender.i686 libXrandr.i686</div></pre></td></tr></table></figure>
+<p>####安装更新对应版本的SDK</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line">由于国内直接解析访问dl.google.com,dl-ssl.google.com域名较慢，可以通过更改hosts方式解决:</div><div class="line">dig dl.google.com dl-ssl.google.com</div><div class="line">将获得IP写入/etc/hosts,例如:</div><div class="line">203.208.43.110 dl.google.com</div><div class="line">74.125.23.91 dl-ssl.google.com</div><div class="line">查看SDK相关列表</div><div class="line">android  list sdk --all</div><div class="line">Packages available for installation or update: 150</div><div class="line">alias: archives/1689.html</div><div class="line">alias: archives/1689.html</div><div class="line">   1- Android SDK Tools, revision 25.1.1</div><div class="line">   2- Android SDK Tools, revision 25.1.3 rc1</div><div class="line">   3- Android SDK Platform-tools, revision 23.1</div><div class="line">   4- Android SDK Platform-tools, revision 24 rc2</div><div class="line">   5- Android SDK Build-tools, revision 24 rc3</div><div class="line">   6- Android SDK Build-tools, revision 23.0.3</div><div class="line">   7- Android SDK Build-tools, revision 23.0.2</div><div class="line">   8- Android SDK Build-tools, revision 23.0.1</div><div class="line">   9- Android SDK Build-tools, revision 23 (Obsolete)</div><div class="line">  10- Android SDK Build-tools, revision 22.0.1</div><div class="line">  11- Android SDK Build-tools, revision 22 (Obsolete)</div><div class="line">  12- Android SDK Build-tools, revision 21.1.2</div><div class="line">  13- Android SDK Build-tools, revision 21.1.1 (Obsolete)</div><div class="line">  14- Android SDK Build-tools, revision 21.1 (Obsolete)</div><div class="line">  15- Android SDK Build-tools, revision 21.0.2 (Obsolete)</div><div class="line">  16- Android SDK Build-tools, revision 21.0.1 (Obsolete)</div><div class="line">  17- Android SDK Build-tools, revision 21 (Obsolete)</div><div class="line">  18- Android SDK Build-tools, revision 20</div><div class="line">  19- Android SDK Build-tools, revision 19.1</div><div class="line">  20- Android SDK Build-tools, revision 19.0.3 (Obsolete)</div><div class="line">  21- Android SDK Build-tools, revision 19.0.2 (Obsolete)</div><div class="line">  22- Android SDK Build-tools, revision 19.0.1 (Obsolete)</div><div class="line">  23- Android SDK Build-tools, revision 19 (Obsolete)</div><div class="line">  24- Android SDK Build-tools, revision 18.1.1 (Obsolete)</div><div class="line">  ...</div><div class="line">选择要安装项目的序号</div><div class="line">android  update sdk -u -a -t 5,6,7,31,34,136,137</div></pre></td></tr></table></figure>
+<h4 id="手动编译测试Android项目"><a href="#手动编译测试Android项目" class="headerlink" title="手动编译测试Android项目"></a>手动编译测试Android项目</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">git clone git@git.maka.mobi:android/Android_demo.git</div><div class="line">cd Android_demo</div><div class="line">查看当前项目包含的tasks(此时若无gradle会自动下载安装)</div><div class="line">./gradlew  tasks</div><div class="line">清空build目录</div><div class="line">./gradlew clean</div><div class="line">编译打包所有环境包</div><div class="line">./gradlew assemble</div><div class="line">编译打包Debug包</div><div class="line">./gradlew assembleDebug</div><div class="line">编译打包Release包</div><div class="line">./gradlew assembleRelease</div></pre></td></tr></table></figure>
+<h4 id="多渠道打包项目改造"><a href="#多渠道打包项目改造" class="headerlink" title="多渠道打包项目改造"></a>多渠道打包项目改造</h4><ol>
+<li>包的签名在build.gradle中配置，打包后自动签名</li>
+<li>由于META-INF目录下是存放签名信息的，用来保证apk包的完整性和安全，在生成apk时对文件做校验计算并把结果存放在META-INF目录中，安装apk包时应用管理器会按照同样的算法对包里的文件做校验，如果和META-INF中的内容不一致，则无法安装，通过修改apk包在重新打包基本不可能，以此来保证apk包的安全，因此在打完第一个包时，可以在META-INF目录中添加一个channel_wandoujia空文件,代码匹配这个文件获取渠道名wandoujia，来快速实现多渠道打包的目的</li>
+<li>代码库根目录channel文件存放渠道名</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">apk包解压后目录结构:</div><div class="line">├── AndroidManifest.xml</div><div class="line">├── assets</div><div class="line">├── classes.dex</div><div class="line">├── lib</div><div class="line">├── META-INF</div><div class="line">│   ├── CERT.RSA</div><div class="line">│   ├── CERT.SF</div><div class="line">│   ├── channel_huawei</div><div class="line">│   └── MANIFEST.MF</div><div class="line">├── org</div><div class="line">├── res</div><div class="line">└── resources.arsc</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div></pre></td><td class="code"><pre><div class="line">Gradle(apk通过gradle签名)例子app/build.gradle:</div><div class="line">apply plugin: &apos;com.android.application&apos;</div><div class="line">android &#123;</div><div class="line">    compileSdkVersion 22</div><div class="line">    buildToolsVersion &apos;23.0.2&apos;</div><div class="line">    defaultConfig &#123;</div><div class="line">        applicationId &quot;com.maka.app&quot;</div><div class="line">        minSdkVersion 16</div><div class="line">        targetSdkVersion 22</div><div class="line">        versionCode 16</div><div class="line">        versionName &apos;2.0.0&apos;</div><div class="line"></div><div class="line">        //dex突破65535的限制</div><div class="line">        multiDexEnabled true</div><div class="line">    &#125;</div><div class="line">    dexOptions &#123;</div><div class="line">        jumboMode = true</div><div class="line">        incremental true</div><div class="line">        javaMaxHeapSize &quot;4g&quot;</div><div class="line">        preDexLibraries = false</div><div class="line">        incremental true</div><div class="line">    &#125;</div><div class="line">    signingConfigs &#123;</div><div class="line">        debug &#123;</div><div class="line">            storeFile file(&quot;../key.jks&quot;)</div><div class="line">            storePassword &quot;helloworld&quot;</div><div class="line">            keyAlias &quot;helloworld&quot;</div><div class="line">            keyPassword &quot;helloworld&quot;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">    packagingOptions &#123;</div><div class="line">        exclude &apos;META-INF/LICENCE.txt&apos;</div><div class="line">        exclude &apos;META-INF/LICENSE.txt&apos;</div><div class="line">        exclude &apos;META-INF/NOTICE.txt&apos;</div><div class="line">    &#125;</div><div class="line">    lintOptions &#123;</div><div class="line">        checkReleaseBuilds false</div><div class="line">        // Or, if you prefer, you can continue to check for errors in release builds,</div><div class="line">        // but continue the build even when errors are found:</div><div class="line">        abortOnError false</div><div class="line">    &#125;</div><div class="line">    buildTypes &#123;</div><div class="line">        debug &#123;</div><div class="line">            // 显示Log</div><div class="line">            buildConfigField &quot;boolean&quot;, &quot;LOG_DEBUG&quot;, &quot;true&quot;</div><div class="line">            versionNameSuffix &quot;-debug&quot;</div><div class="line">            minifyEnabled false</div><div class="line">            zipAlignEnabled true</div><div class="line">            shrinkResources false</div><div class="line">            signingConfig signingConfigs.debug</div><div class="line">            manifestPlaceholders = [</div><div class="line">                    UMENG_APP_KEY   : &quot;556ac653162s58e06c0000218&quot;,</div><div class="line">                    UMENG_APP_SECRET: &quot;2a231041d6aa10ec2b2s933003135a7&quot;</div><div class="line">            ]</div><div class="line">            //Server config</div><div class="line">            buildConfigField &quot;boolean&quot;, &quot;SELECT_SERVER&quot;, &quot;true&quot;</div><div class="line">            buildConfigField &quot;String&quot;, &quot;TEST_IP&quot;, &quot;\&quot;http://test.api.simlinux.com/\&quot;&quot;</div><div class="line">            buildConfigField &quot;String&quot;, &quot;TEST_PROJECT_URL&quot;, &quot;\&quot;http://test.viewer.simlinux.com/k/\&quot;&quot;</div><div class="line">            buildConfigField &quot;String&quot;, &quot;TEST_PICTURE_URL&quot;, &quot;\&quot;http://test.img1.simlinux.com/\&quot;&quot;</div><div class="line">            buildConfigField &quot;String&quot;, &quot;TEST_RES_URL&quot;, &quot;\&quot;http://test.res.simlinux.com/\&quot;&quot;</div><div class="line">            buildConfigField &quot;String&quot;, &quot;FORMAL_IP&quot;, &quot;\&quot;http://api.simlinux.com/\&quot;&quot;</div><div class="line">            buildConfigField &quot;String&quot;, &quot;FORMAL_PROJECT_URL&quot;, &quot;\&quot;http://viewer.simlinux.com/k/\&quot;&quot;</div><div class="line">            buildConfigField &quot;String&quot;, &quot;FORMAL_PICTURE_URL&quot;, &quot;\&quot;http://img1.simlinux.com/\&quot;&quot;</div><div class="line">            buildConfigField &quot;String&quot;, &quot;FORMAL_RES_URL&quot;, &quot;\&quot;http://res.simlinux.com/\&quot;&quot;</div><div class="line"></div><div class="line">        &#125;</div><div class="line">        release &#123;</div><div class="line">            // 不显示Log</div><div class="line">            buildConfigField &quot;boolean&quot;, &quot;LOG_DEBUG&quot;, &quot;false&quot;</div><div class="line">            minifyEnabled true</div><div class="line">            zipAlignEnabled true</div><div class="line">            // 移除无用的resource文件</div><div class="line">            shrinkResources true</div><div class="line">            proguardFile &apos;proguard-project.txt&apos;</div><div class="line">            debuggable false</div><div class="line">            shrinkResources false</div><div class="line">            signingConfig signingConfigs.debug</div><div class="line">            manifestPlaceholders = [</div><div class="line">                    UMENG_APP_KEY   : &quot;556ac6s3162358e06c0000218&quot;,</div><div class="line">                    UMENG_APP_SECRET: &quot;2a231041d6aa10ec2b2s933003135a7&quot;</div><div class="line">            ]</div><div class="line">            //Server config</div><div class="line">            buildConfigField &quot;boolean&quot;, &quot;SELECT_SERVER&quot;, &quot;false&quot;</div><div class="line">            buildConfigField &quot;String&quot;, &quot;TEST_IP&quot;, &quot;\&quot;\&quot;&quot;</div><div class="line">            buildConfigField &quot;String&quot;, &quot;TEST_PROJECT_URL&quot;, &quot;\&quot;\&quot;&quot;</div><div class="line">            buildConfigField &quot;String&quot;, &quot;TEST_PICTURE_URL&quot;, &quot;\&quot;\&quot;&quot;</div><div class="line">            buildConfigField &quot;String&quot;, &quot;TEST_RES_URL&quot;, &quot;\&quot;\&quot;&quot;</div><div class="line">            buildConfigField &quot;String&quot;, &quot;FORMAL_IP&quot;, &quot;\&quot;http://api.simlinux.com/\&quot;&quot;</div><div class="line">            buildConfigField &quot;String&quot;, &quot;FORMAL_PROJECT_URL&quot;, &quot;\&quot;http://viewer.simlinux.com/k/\&quot;&quot;</div><div class="line">            buildConfigField &quot;String&quot;, &quot;FORMAL_PICTURE_URL&quot;, &quot;\&quot;http://img1.simlinux.com/\&quot;&quot;</div><div class="line">            buildConfigField &quot;String&quot;, &quot;FORMAL_RES_URL&quot;, &quot;\&quot;http://res.simlinux.com/\&quot;&quot;</div><div class="line"></div><div class="line">        &#125;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">    applicationVariants.all &#123; variant -&amp;gt;</div><div class="line">        variant.outputs.each &#123; output -&amp;gt;</div><div class="line">            def outputFile = output.outputFile</div><div class="line">            if (outputFile != null &amp;amp;&amp;amp; outputFile.name.endsWith(&apos;.apk&apos;)) &#123;</div><div class="line">                def fileName = outputFile.name.replace(&quot;.apk&quot;, &quot;-$&#123;defaultConfig.versionName&#125;.apk&quot;)</div><div class="line">                output.outputFile = new File(outputFile.parent, fileName)</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    productFlavors &#123;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">repositories &#123;</div><div class="line">    flatDir &#123;</div><div class="line">        dirs &apos;libs&apos; //this way we can find the .aar file in libs</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">dependencies &#123;</div><div class="line">    compile &apos;com.google.code.gson:gson:2.3.1&apos;</div><div class="line">    compile &apos;com.github.japgolly.android:svg-android:2.0.6&apos;</div><div class="line">    compile fileTree(dir: &apos;libs&apos;, include: [&apos;*.jar&apos;])</div><div class="line">    compile &apos;com.android.support:appcompat-v7:22.2.0&apos;</div><div class="line">    compile &apos;com.github.rey5137:material:1.2.1&apos;</div><div class="line">    compile &apos;com.squareup.okhttp:okhttp-apache:2.4.0&apos;</div><div class="line">    compile(name: &apos;vds-sdk-release&apos;, ext: &apos;aar&apos;)</div><div class="line">    compile &apos;com.android.support:multidex:1.0.0&apos;</div><div class="line">    compile project(&apos;:PushSDK&apos;)</div><div class="line">    compile &apos;com.google.zxing:core:3.2.1&apos;</div><div class="line">    compile &apos;com.android.support:recyclerview-v7:24.0.0-alpha1&apos;</div><div class="line">    compile &apos;com.rengwuxian.materialedittext:library:2.1.4&apos;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">匹配META-INF/channel_wandoujia文件名读取wandoujia渠道</div><div class="line"></div><div class="line">    public static String readChanel() &#123;</div><div class="line">        ApplicationInfo appInfo = ContextManager.getContext().getApplicationInfo();</div><div class="line">        String sourceDir = appInfo.sourceDir;</div><div class="line">        String ret = &quot;&quot;;</div><div class="line">        ZipFile zipfile = null;</div><div class="line">        Log.i(TAG, &quot;---begin-ret=&quot; + ret);</div><div class="line">        try &#123;</div><div class="line">            zipfile = new ZipFile(sourceDir);</div><div class="line">            Enumeration&amp;lt;?&amp;gt; entries = zipfile.entries();</div><div class="line">            while (entries.hasMoreElements()) &#123;</div><div class="line">                ZipEntry entry = ((ZipEntry) entries.nextElement());</div><div class="line">                String entryName = entry.getName();</div><div class="line">                if (entryName.startsWith(&quot;META-INF/channel&quot;)) &#123;</div><div class="line">                    ret = entryName;</div><div class="line">                    break;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125; catch (IOException e) &#123;</div><div class="line">            e.printStackTrace();</div><div class="line">        &#125; finally &#123;</div><div class="line">            if (zipfile != null) &#123;</div><div class="line">                try &#123;</div><div class="line">                    zipfile.close();</div><div class="line">                &#125; catch (IOException e) &#123;</div><div class="line">                    e.printStackTrace();</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div></pre></td></tr></table></figure>
+<h4 id="Android多渠道打包流程"><a href="#Android多渠道打包流程" class="headerlink" title="Android多渠道打包流程"></a>Android多渠道打包流程</h4><p>基于上述方式实现多渠道打包流程如下:</p>
+<ul>
+<li>执行gradlew clean清除build目录</li>
+<li>执行gradlew assemble编译打包Debug/Release(已自动签名)</li>
+<li>上传Debug包到Fir</li>
+<li>通过DingTalk发送通知信息到QA讨论组(发送提测apk包版本，下载地址及扫描下载二维码)</li>
+<li>提测不通过，修复bug后再次执行前四步</li>
+<li>提测通过后，点击Jenkins打包归档多渠道按钮，将执行生成多渠道包并归档包到本地目录/data/2.0.1/xxx.apk</li>
+<li>可选择此步上传归档文件到OSS</li>
+<li>点击Jenkins发布按钮将最新版本相关渠道归档拷贝至OSS发布目录</li>
+<li>刷新CDN生效</li>
+<li>通过DingTalk发送通知信息到QA讨论组哪些渠道已经发布</li>
+</ul>
+<h4 id="配置步骤"><a href="#配置步骤" class="headerlink" title="配置步骤"></a>配置步骤</h4><h5 id="配置Jenkins"><a href="#配置Jenkins" class="headerlink" title="配置Jenkins"></a>配置Jenkins</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">插件: Dynamic Choice Parameter</div><div class="line">创建打包测试项目:Android-Test</div></pre></td></tr></table></figure>
+<p><img src="http://ow1schdt5.bkt.clouddn.com/2016/04/android-test.png" alt=""><br><img src="http://ow1schdt5.bkt.clouddn.com/2016/04/android-test-choice.png" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">通过Groovy脚本获取分支</div><div class="line">def ver_keys = [ &apos;bash&apos;, &apos;-c&apos;, &apos;cd /usr/share/tomcat/.jenkins/workspace/Android-Test;git branch -a|grep remotes|cut -d &quot;/&quot; -f3|grep -v HEAD|sort&apos; ]</div><div class="line">    ver_keys.execute().text.tokenize(&apos;\n&apos;)</div><div class="line"></div><div class="line">构建脚本</div><div class="line">#!/bin/bash</div><div class="line">PATH=/usr/lib64/qt-3.3/bin:/usr/local/bin:/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/sbin:/usr/local/jdk1.7.0_80/bin:/usr/local/android-sdk-linux/tools:/usr/local/android-sdk-linux/platform-tools:/usr/local/gradle-2.2.1/bin:/usr/share/tomcat/bin</div><div class="line"></div><div class="line">cd $&#123;WORKSPACE&#125;</div><div class="line">git checkout $&#123;BranchToDeploy&#125;</div><div class="line">git pull -f</div><div class="line"></div><div class="line">if [ &quot;$&#123;EnvToDeploy&#125;&quot;  = &quot;All Env&quot; ];then</div><div class="line"></div><div class="line">        $&#123;WORKSPACE&#125;/gradlew clean</div><div class="line">        $&#123;WORKSPACE&#125;/gradlew assemble</div><div class="line"></div><div class="line">else</div><div class="line">        $&#123;WORKSPACE&#125;/gradlew clean</div><div class="line">        $&#123;WORKSPACE&#125;/gradlew assemble$&#123;EnvToDeploy&#125;</div><div class="line"></div><div class="line">fi</div><div class="line">#测试包上传fir，发钉钉通知</div><div class="line">/usr/local/bin/python /usr/share/tomcat/AndroidDeploy/androidtest.py</div></pre></td></tr></table></figure>
+<p><strong>创建多渠道包归档项目:Android-Archive</strong></p>
+<p><img src="http://ow1schdt5.bkt.clouddn.com/2016/04/android-archive.png" alt=""><br><img src="http://ow1schdt5.bkt.clouddn.com/2016/04/android-archive-channel.png" alt=""></p>
+<pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">获取channel列表</div><div class="line">def ver_keys = [ &apos;bash&apos;, &apos;-c&apos;, &apos;echo &quot;All Channels&quot;; cat /usr/share/tomcat/.jenkins/workspace/MAKA-Android-Testing/channels&apos; ]</div><div class="line">ver_keys.execute().text.tokenize(&apos;\n&apos;)</div><div class="line">构建脚本，更改渠道文件，上传OSS，发送钉钉通知</div><div class="line">python /usr/share/tomcat/AndroidDeploy/androidarchive.py</div></pre></td></tr></table></figure>
+</code></pre><p><strong>创建发布多渠道包项目:Android-Deploy</strong></p>
+<pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">构建脚本，通过OSS API拷贝要发布的归档渠道包到发布目录，发送钉钉通知</div><div class="line">python /usr/share/tomcat/AndroidDeploy/androiddeploy.py</div></pre></td></tr></table></figure>
+</code></pre><h4 id="相关脚本"><a href="#相关脚本" class="headerlink" title="相关脚本"></a>相关脚本</h4><pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">├── androidarchive.py       多渠道打包归档脚本</div><div class="line">├── androiddeploy.py        渠道包发布脚本</div><div class="line">├── androidtest.py          测试打包脚本</div><div class="line">└── libs</div><div class="line">    ├── chinanetcenter.py   刷新CDN脚本</div><div class="line">    ├── dingtalk.py         钉钉发送消息,图片，分享脚本</div><div class="line">    ├── fir.py              测试包上传fir脚本</div><div class="line">    ├── __init__.py</div><div class="line">    └── libsoss.py          oss相关操作脚本(上传，拷贝等)</div><div class="line"></div><div class="line">具体代码可根据https://github.com/geekwolf/AppDeployment按照实际业务进行修改</div></pre></td></tr></table></figure>
+</code></pre><h4 id="IOS打包流程"><a href="#IOS打包流程" class="headerlink" title="IOS打包流程"></a>IOS打包流程</h4><ul>
+<li>xcodebuild clean 清理build目录</li>
+<li>xcodebuild archive 选择不同的环境/BundleID/ProvisionProfile/CodeSigningIdentify 编译，签名生成xcarchive文件放到工程根路径下的 build 文件夹里</li>
+<li>xcodebuild -exportArchive 打包生成ipa</li>
+<li>测试包自动上传Fir,生产包手动更新AppStore</li>
+<li>具体可参考脚本 <a href="https://github.com/geekwolf/AppDeployment/blob/master/IOSDeploy.sh" target="_blank" rel="external">https://github.com/geekwolf/AppDeployment/blob/master/IOSDeploy.sh</a></li>
+</ul>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>任何自动化的前提必须先规范化,针对Android多渠道打包渠道命名，apk包命名需要先统一，apk包不要多环境混用(生产环境和测试环境要分离,测试包可自定义切换)；到了这里，会发现我TM乱七八糟搞了这一陀哪里酸爽了？另外一个思路是通过修改apk文件的注释,程序在启动时读取apk文件注释获取渠道名(但是Android系统直到API 19，也就是4.4以上的版本才支持data/app/<package>.apk)<br><strong><em>爽在哪里？</em></strong><br> 1. 打包不再需要开发本地执行(避免中断开发,多人协作时优势更为明显)<br> 2. 多渠道打包时间在于第一个包编译生成和签名的时间,之后的无论多少渠道都只是修改包的META-INF/channel_wandoujia空文件名实现<br> 3. 点下Jenkins按钮无需在等待打包过程，打包完成后发送消息到钉钉会话，这下爽了吗？</package></p>
+<h4 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h4><blockquote>
+<p>Gradle入门  <a href="http://www.androidchina.net/2155.html" target="_blank" rel="external">http://www.androidchina.net/2155.html</a><br>Android签名 <a href="http://www.tuicool.com/articles/2eMZJfu" target="_blank" rel="external">http://www.tuicool.com/articles/2eMZJfu</a></p>
+</blockquote>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创分享，您的支持将鼓励我继续创作</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.png" alt="Geekwolf WeChat Pay"/>
+        <p>微信打赏</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.png" alt="Geekwolf Alipay"/>
+        <p>支付宝打赏</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    Geekwolf
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://www.simlinux.com/2016/04/21/android-pack-deploy.html" title="Android多渠道打包这样做才酸爽！？">http://www.simlinux.com/2016/04/21/android-pack-deploy.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/03/16/startup-company-cicd.html" rel="next" title="初创公司应该如何做好持续集成和部署？">
+                <i class="fa fa-chevron-left"></i> 初创公司应该如何做好持续集成和部署？
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/04/28/grafana-influxdb-collectd.html" rel="prev" title="Grafana+InfluxDB+Collectd构建监控系统">
+                Grafana+InfluxDB+Collectd构建监控系统 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zMDc3Mi83MzI0"></div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg"
+               alt="Geekwolf" />
+          <p class="site-author-name" itemprop="name">Geekwolf</p>
+           
+              <p class="site-description motion-element" itemprop="description">DevOps | Docker | Python | k8s</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">82</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">59</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/geekwolf" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                    
+                      GitHub
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/geekwolf" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                    
+                      Weibo
+                    
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-block">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://blog.simlinux.com" title="旧版博客" target="_blank">旧版博客</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://nolinux.blog.51cto.com" title="nolinux" target="_blank">nolinux</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://xiaorui.cc" title="峰云就她了" target="_blank">峰云就她了</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://note.gitcloud.cc/blog/bluetom520" title="懒懒的天空" target="_blank">懒懒的天空</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.roddypy.com" title="普拉多VX" target="_blank">普拉多VX</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://blog.opskumu.com" title="枯木磊" target="_blank">枯木磊</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#目的"><span class="nav-number">2.</span> <span class="nav-text">目的</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#环境说明"><span class="nav-number">3.</span> <span class="nav-text">环境说明</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#配置环境"><span class="nav-number">4.</span> <span class="nav-text">配置环境</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#手动编译测试Android项目"><span class="nav-number">5.</span> <span class="nav-text">手动编译测试Android项目</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#多渠道打包项目改造"><span class="nav-number">6.</span> <span class="nav-text">多渠道打包项目改造</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Android多渠道打包流程"><span class="nav-number">7.</span> <span class="nav-text">Android多渠道打包流程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#配置步骤"><span class="nav-number">8.</span> <span class="nav-text">配置步骤</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#配置Jenkins"><span class="nav-number">8.1.</span> <span class="nav-text">配置Jenkins</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#相关脚本"><span class="nav-number">9.</span> <span class="nav-text">相关脚本</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#IOS打包流程"><span class="nav-number">10.</span> <span class="nav-text">IOS打包流程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#总结"><span class="nav-number">11.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#参考文档"><span class="nav-number">12.</span> <span class="nav-text">参考文档</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2012 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Geekwolf</span>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('-1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("qms5kJ0y2CItrIVFivKxxPsR-gzGzoHsz", "Cn3w20futtphxpaDSP5tHjzy");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,3008 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Geekwolf,DevOps,Docker,k8s,MySQL,PaaS" />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Geekwolf's Blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="DevOps | Docker | Python | k8s">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Geekwolf&#39;s Blog">
+<meta property="og:url" content="http://www.simlinux.com/page/4/index.html">
+<meta property="og:site_name" content="Geekwolf&#39;s Blog">
+<meta property="og:description" content="DevOps | Docker | Python | k8s">
+<meta property="og:locale" content="zh-Hans">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Geekwolf&#39;s Blog">
+<meta name="twitter:description" content="DevOps | Docker | Python | k8s">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.simlinux.com/page/4/"/>
+
+
+
+
+
+  <title>Geekwolf's Blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="//s13.cnzz.com/z_stat.php?id=1264375041&web_id=1264375041" language="JavaScript"></script>
+  </div>
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left 
+   page-home 
+ ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Geekwolf's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Quick notes</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tips">
+          <a href="/tips/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-gittip"></i> <br />
+            
+            tips
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />
+            
+            站点地图
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+  <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2014/09/13/percona-xtrabackup-info.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Geekwolf">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Geekwolf's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2014/09/13/percona-xtrabackup-info.html" itemprop="url">利用Percona XtraBackup进行单表备份恢复</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-09-13T15:52:53+08:00">
+                2014-09-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/MySQL数据库/" itemprop="url" rel="index">
+                    <span itemprop="name">MySQL数据库</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2014/09/13/percona-xtrabackup-info.html" class="leancloud_visitors" data-flag-title="利用Percona XtraBackup进行单表备份恢复">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  6
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>大部分情况下，使用用Percona XtraBackup进行整库的备份和恢复比较容易，此处略去；<br>对于单表的恢复略有不同，而且对数据库版本和Percona XtraBackup的版本都有限制<br><strong>局限性：</strong><br>1.源库MySQL版本无要求，但启用了innodb_file_per_table=1<br>2.目的库开启innodb_file_per_table=1，Percona XtraDB或者MySQL5.6<br>官方要求开启下面的两个参数，但发现5.6没有这样的变量，没去修改：innodb_expand_import=1（大于5.5.10-20.1版本）或innodb_import_table_from_xtrabackup=1（小于5.5.10-20.1版本）选项</p>
+<p><a href="http://ow1schdt5.bkt.clouddn.com/2014/09/qy.png" target="_blank" rel="external"><img src="http://ow1schdt5.bkt.clouddn.com/2014/09/qy.png" alt="qy"></a></p>
+<h4 id="环境说明"><a href="#环境说明" class="headerlink" title="环境说明"></a>环境说明</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">源库 ：Percona-Server-5.5.28-rel29.3-388</div><div class="line">目的库：Percona-Server-5.6.16-rel64.2-569</div><div class="line">备份工具 : percona-xtrabackup-2.2.4-5004</div></pre></td></tr></table></figure>
+<h4 id="备份恢复步骤"><a href="#备份恢复步骤" class="headerlink" title="备份恢复步骤"></a>备份恢复步骤</h4><h5 id="备份表"><a href="#备份表" class="headerlink" title="备份表"></a>备份表</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">innobackupex --user=root --password=simlinux.com   --defaults-file=/etc/my.cnf --include=&apos;se.searchaccount&apos; --slave-info --safe-slave-backup --stream=tar /data/backup &gt; /data/backup/searchaccount.tar.gz</div></pre></td></tr></table></figure>
+<h5 id="导出表"><a href="#导出表" class="headerlink" title="导出表"></a>导出表</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">[root@simlinux ~]#tar -ixf searchaccount.tar.gz -C /data/databak/</div><div class="line">[root@simlinux ~]#innobackupex --apply-log --export /data/databak</div><div class="line"></div><div class="line">[root@simlinux ~]#ll /data/databak/se</div><div class="line">-rw-r--r-- 1   root  root     3382    9月  13 13:57 searchaccount.cfg</div><div class="line">-rw-r--r-- 1   root  root    16384   9月  13 13:57 searchaccount.exp</div><div class="line">-rw-rw---- 1  root  root   23968    9月  13 13:40 searchaccount.frm</div><div class="line">-rw-rw---- 1  root  root  2097152 9月   13 13:40 searchaccount.ibd</div></pre></td></tr></table></figure>
+<h5 id="还原表"><a href="#还原表" class="headerlink" title="还原表"></a>还原表</h5><p>定义表–删除表空间–拷贝<em>.ibd/</em>.cfg文件–导入表空间<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div></pre></td><td class="code"><pre><div class="line">CREATE TABLE `searchaccount` (</div><div class="line">  `id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,</div><div class="line">  `cid` mediumint(7) unsigned NOT NULL DEFAULT &apos;0&apos;,</div><div class="line">  `siteid` int(10) unsigned NOT NULL DEFAULT &apos;0&apos; COMMENT &apos;账号对应广告监测站点(online.site.id)&apos;,</div><div class="line">  `searchen` tinyint(2) unsigned NOT NULL DEFAULT &apos;0&apos; COMMENT &apos;1: 百度 2: 谷歌 3:搜狗 4:搜搜&apos;,</div><div class="line">  `oid` bigint(10) unsigned NOT NULL DEFAULT &apos;0&apos; COMMENT &apos;对接账号ID（如SOGOU后台取得唯一ID）&apos;,</div><div class="line">  `name` varchar(30) NOT NULL DEFAULT &apos;&apos; COMMENT &apos;账号名称&apos;,</div><div class="line">  `acountname` varchar(100) NOT NULL DEFAULT &apos;&apos; COMMENT &apos;搜索账号用户名/邮箱&apos;,</div><div class="line">  `certifiedname` varchar(50) NOT NULL DEFAULT &apos;&apos; COMMENT &apos;百度V认证名称&apos;,</div><div class="line">  `acountpass` varchar(100) NOT NULL DEFAULT &apos;&apos; COMMENT &apos;搜索账号密码&apos;,</div><div class="line">  `accesstoken` varchar(100) NOT NULL DEFAULT &apos;&apos; COMMENT &apos;360权限代码&apos;,</div><div class="line">  `budgettype` tinyint(1) NOT NULL DEFAULT &apos;1&apos; COMMENT &apos;预算类型 1：日预算 2：周预算 0：不限制预算&apos;,</div><div class="line">  `budget` decimal(12,2) NOT NULL DEFAULT &apos;0.00&apos; COMMENT &apos;帐号预算，google帐号需要用到&apos;,</div><div class="line">  `weeklybudget` varchar(1024) NOT NULL DEFAULT &apos;&apos; COMMENT &apos;周预算存储的值&apos;,</div><div class="line">  `erate` decimal(5,3) NOT NULL DEFAULT &apos;0.000&apos; COMMENT &apos;汇率&apos;,</div><div class="line">  `ispublic` tinyint(1) NOT NULL DEFAULT &apos;1&apos; COMMENT &apos;是否通过审核，0为未通过，1为通过&apos;,</div><div class="line">  `servicerate` decimal(5,2) NOT NULL DEFAULT &apos;0.00&apos; COMMENT &apos;服务费比率&apos;,</div><div class="line">  `krnum` mediumint(6) unsigned NOT NULL DEFAULT &apos;0&apos; COMMENT &apos;百度关键字推荐API配额&apos;,</div><div class="line">  `agent` tinyint(2) NOT NULL DEFAULT &apos;0&apos; COMMENT &apos;代理公司 1：广州 2：深圳&apos;,</div><div class="line">  `authtoken` varchar(500) NOT NULL DEFAULT &apos;&apos; COMMENT &apos;google API authoken值&apos;,</div><div class="line">  `tokenovertime` int(10) unsigned NOT NULL DEFAULT &apos;0&apos; COMMENT &apos;authtoken的过期时间&apos;,</div><div class="line">  `opendomains` varchar(220) NOT NULL DEFAULT &apos;&apos; COMMENT &apos;网站开放域名,多个域名用,分隔&apos;,</div><div class="line">  `excludeip` varchar(512) NOT NULL DEFAULT &apos;&apos; COMMENT &apos;排除IP，以,分隔&apos;,</div><div class="line">  `regions` varchar(2048) NOT NULL DEFAULT &apos;&apos; COMMENT &apos;投放地区&apos;,</div><div class="line">  `regionlevel` tinyint(1) NOT NULL DEFAULT &apos;2&apos; COMMENT &apos;投放地域开通的级别 1级 2级&apos;,</div><div class="line">  `campaigns` smallint(4) unsigned NOT NULL DEFAULT &apos;0&apos;,</div><div class="line">  `groups` smallint(5) unsigned NOT NULL DEFAULT &apos;0&apos;,</div><div class="line">  `creatives` mediumint(6) unsigned NOT NULL DEFAULT &apos;0&apos;,</div><div class="line">  `keywords` mediumint(7) unsigned NOT NULL DEFAULT &apos;0&apos;,</div><div class="line">  `dailyfee` decimal(10,2) NOT NULL DEFAULT &apos;0.00&apos; COMMENT &apos;平均每天消耗&apos;,</div><div class="line">  `costbefore` decimal(10,2) NOT NULL DEFAULT &apos;0.00&apos; COMMENT &apos;账号暂停前的消耗，用于统计帐号暂停前的消耗&apos;,</div><div class="line">  `costpause` decimal(10,2) NOT NULL DEFAULT &apos;0.00&apos; COMMENT &apos;重新签约时，将之前暂停统计到的消费(costbefore)累加到此字段&apos;,</div><div class="line">  `balance` decimal(10,2) NOT NULL DEFAULT &apos;0.00&apos; COMMENT &apos;总账户余额&apos;,</div><div class="line">  `adwordsbalance` decimal(10,2) NOT NULL DEFAULT &apos;0.00&apos; COMMENT &apos;搜索广告余额&apos;,</div><div class="line">  `networkbalance` decimal(10,2) NOT NULL DEFAULT &apos;0.00&apos; COMMENT &apos;网盟余额&apos;,</div><div class="line">  `reapi` tinyint(1) NOT NULL DEFAULT &apos;0&apos; COMMENT &apos;是否需要重新全部同步api, 1全部同步，0不全部&apos;,</div><div class="line">  `errorcode` char(32) NOT NULL DEFAULT &apos;0&apos; COMMENT &apos;百度的错误代码为数字类型;谷歌的为大写字符串&apos;,</div><div class="line">  `syntime` int(10) unsigned NOT NULL DEFAULT &apos;0&apos; COMMENT &apos;同步时间&apos;,</div><div class="line">  `statusrank` tinyint(1) NOT NULL DEFAULT &apos;0&apos; COMMENT &apos;暂停竞价设置 0自动暂停 1保持运行状态&apos;,</div><div class="line">  `status` tinyint(1) unsigned NOT NULL DEFAULT &apos;1&apos; COMMENT &apos;运行状态,1:正常 2:暂停 3:异常 9: 删除&apos;,</div><div class="line">  `createtime` int(10) unsigned NOT NULL DEFAULT &apos;0&apos; COMMENT &apos;创建时间&apos;,</div><div class="line">  `ocreatetime` int(10) NOT NULL DEFAULT &apos;0&apos; COMMENT &apos;暂停时记录客户第一次添加时间&apos;,</div><div class="line">  `stopReason` varchar(20) DEFAULT NULL,</div><div class="line">  `updateTime` int(11) DEFAULT NULL,</div><div class="line">  PRIMARY KEY (`id`),</div><div class="line">  UNIQUE KEY `acountname` (`acountname`,`searchen`),</div><div class="line">  KEY `cid` (`cid`)</div><div class="line">) ENGINE=InnoDB AUTO_INCREMENT=10389 DEFAULT CHARSET=utf8 COMMENT=&apos;搜索营销账号表&apos;；</div><div class="line"></div><div class="line">mysql &gt; ALTER TABLE se.searchaccount DISCARD TABLESPACE;</div><div class="line"></div><div class="line">[root@simlinux ~]#cp /data/databak/se/&#123;searchaccount.ibd,searchaccount.cfg&#125; /usr/local/mysql/data/se/ </div><div class="line"></div><div class="line">[root@simlinux ~]#chown mysql.mysql /usr/local/mysql/data/se/ </div><div class="line"></div><div class="line">mysql &gt; ALTER TABLE se.searchaccount IMPORT TABLESPACE;</div></pre></td></tr></table></figure></p>
+<p><strong> 注：</strong>.cfg文件包含InnoDB字典的特殊存储格式；如果目的库是XtraDB，需要拷贝searchaccount.ibd、searchaccount.exp</p>
+<h4 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h4><blockquote>
+<p><a href="http://www.percona.com/doc/percona-xtrabackup/2.2/innobackupex/restoring_individual_tables_ibk.html" target="_blank" rel="external">http://www.percona.com/doc/percona-xtrabackup/2.2/innobackupex/restoring_individual_tables_ibk.html</a><br><a href="http://xxrenzhe.blog.51cto.com/4036116/1401454" target="_blank" rel="external">http://xxrenzhe.blog.51cto.com/4036116/1401454</a><br><a href="http://wangfeng7399.blog.51cto.com/3518031/1394996" target="_blank" rel="external">http://wangfeng7399.blog.51cto.com/3518031/1394996</a></p>
+</blockquote>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2014/08/22/linux-httpry.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Geekwolf">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Geekwolf's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2014/08/22/linux-httpry.html" itemprop="url">如何在Linux下使用命令行嗅探HTTP流量</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-08-22T09:52:53+08:00">
+                2014-08-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux运维/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux运维</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2014/08/22/linux-httpry.html" class="leancloud_visitors" data-flag-title="如何在Linux下使用命令行嗅探HTTP流量">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  2
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>通常我们在调试Web应用、RESTFUL服务或者排错PAC (proxy auto config) 以及检查是否有恶意访问等会去通过错误日志日志或者嗅探数据包的方式去排错；常见的嗅探数据包软件有tcpdump、wireshark;但是针对HTTP需要对数据包进行过滤，显示格式也更不容易读，Httpry工具就能更方便易读的嗅探HTTP流量</p>
+<h4 id="安装httpry"><a href="#安装httpry" class="headerlink" title="安装httpry"></a>安装httpry</h4><p>基于Debian(Ubuntu or Linux Mint)，基础库并没有httpry包，我们用源码来安装<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$ sudo apt-get install gcc make git libpcap0.8-dev</div><div class="line">$ git clone https://github.com/jbittel/httpry.git</div><div class="line">$ cd httpry</div><div class="line">$ make</div><div class="line">$ sudo make install</div></pre></td></tr></table></figure></p>
+<p>基于Fedora，CentOS or RHEL可以使用EPEL来yum安装<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo yum install httpry</div></pre></td></tr></table></figure></p>
+<p>也可以通过源码安装<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$ sudo yum install gcc make git libpcap-devel</div><div class="line">$ git clone https://github.com/jbittel/httpry.git</div><div class="line">$ cd httpry</div><div class="line">$ make</div><div class="line">$ sudo make install</div></pre></td></tr></table></figure></p>
+<h4 id="httpry的基本使用"><a href="#httpry的基本使用" class="headerlink" title="httpry的基本使用"></a>httpry的基本使用</h4><p>httpry通过监听网卡接口来实时嗅探HTTP的请求和响应<br>$ sudo httpry -i <network-interface><br><a href="http://ow1schdt5.bkt.clouddn.com/2014/08/ryeth0.png" target="_blank" rel="external"><img src="http://ow1schdt5.bkt.clouddn.com/2014/08/ryeth0-1024x469.png" alt="ryeth0"></a><br>将HTTP 数据包保存为二进制文件<br>$ sudo httpry -i eth0 -b output.dump</network-interface></p>
+<p>重放HTTP数据包</p>
+<p><pre class="lang:php decode:true ">$ sudo httpry -r output.dump<br>将HTTP 数据包保存为文本文件<br>$ sudo httpry -i eth0 -o output.txt</pre></p>
+<h4 id="httpry的高级应用"><a href="#httpry的高级应用" class="headerlink" title="httpry的高级应用"></a>httpry的高级应用</h4><p>监控特定的HTTP请求方式(GET,POST,PUT,HEAD,CONNECT等),使用-m参数</p>
+<p><a href="http://ow1schdt5.bkt.clouddn.com/2014/08/get.png" target="_blank" rel="external"><img src="http://ow1schdt5.bkt.clouddn.com/2014/08/get-1024x333.png" alt="get"></a><br>如果你httpry下载的源代码,你会发现有一组Perl脚本的源代码,帮助分析httpry的输出<br>这些脚本httpry /scripts/plugins目录中找到。如果你想编写一个自定义解析器httpry的输出,这些脚本是很好的例子.他们的一些功能:</p>
+<ul>
+<li>hostnames: 显示主机名列表.</li>
+<li>find_proxies: 测web代理</li>
+<li>search_terms: 找在搜索服务里面的搜索词.</li>
+<li>content_analysis: 发现uri包含特定的关键词</li>
+<li>xml_output: 转换为XML格式输出</li>
+<li>log_summary: 生成日志汇总</li>
+<li>db_dump: 日志文件数据转储到一个数据库中<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ cd httpry/scripts</div><div class="line">$ perl parse_log.pl -d ./plugins &lt;httpry-output-file&gt;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>执行之后httpry/scripts目录下生成txt/xml文件，例如log_summary.txt</p>
+<p><a href="http://ow1schdt5.bkt.clouddn.com/2014/08/summary.jpg" target="_blank" rel="external"><img src="http://ow1schdt5.bkt.clouddn.com/2014/08/summary.jpg" alt="summary"></a></p>
+<h4 id="相关工具"><a href="#相关工具" class="headerlink" title="相关工具"></a>相关工具</h4><p><code>ngxtop</code></p>
+<h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><blockquote>
+<p><a href="http://xmodulo.com/2014/06/monitor-nginx-web-server-command-line-real-time.html" target="_blank" rel="external">http://xmodulo.com/2014/06/monitor-nginx-web-server-command-line-real-time.html</a><br><a href="http://www.ttlsa.com/nginx/nginx-modules-ngxtop-ttlsa/" target="_blank" rel="external">http://dumpsterventures.com/jason/httpry/</a><br><a href="http://www.ttlsa.com/nginx/nginx-modules-ngxtop-ttlsa/" target="_blank" rel="external">http://www.ttlsa.com/nginx/nginx-modules-ngxtop-ttlsa/</a></p>
+</blockquote>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2014/08/20/icina-linux.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Geekwolf">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Geekwolf's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2014/08/20/icina-linux.html" itemprop="url">开源Linux监控系统:Icinga</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-08-20T11:45:11+08:00">
+                2014-08-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux运维/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux运维</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2014/08/20/icina-linux.html" class="leancloud_visitors" data-flag-title="开源Linux监控系统:Icinga">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  2
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>“<br>其实Icinga是Nagios监控的一个分支，有两个分支版本Icinga1和Icinga2；Icinga除了完全兼容Nagios的插件和扩展甚至配置文件，在web接口和报告上有很大的改进，并且简化了插件的开发；Icinga1和Nagios的基础监控类似，增加了一些新的特性和修复了Nagios的一些bug<br>“<br>详细可参考：<br><a href="https://www.icinga.org/icinga/icinga-1/features/" target="_blank" rel="external">https://www.icinga.org/icinga/icinga-1/features/</a><br><a href="https://www.icinga.org/icinga/icinga-2/architecture/" target="_blank" rel="external">https://www.icinga.org/icinga/icinga-2/architecture/</a><br>下面基于Centos7来安装Icinga1：</p>
+<h4 id="安装LAMP环境"><a href="#安装LAMP环境" class="headerlink" title="安装LAMP环境"></a>安装LAMP环境</h4><h4 id="安装apache和php"><a href="#安装apache和php" class="headerlink" title="安装apache和php"></a>安装apache和php</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">yum -y install httpd php php-pear php-xmlrpc php-xsl php-soap php-mysql php-pdo php-gd php-mbstring</div><div class="line">防火墙放行httpd服务</div><div class="line">firewall-cmd —add-service=http (临时放行)</div><div class="line">firewall-cmd —permanent —add-service=http（永久放行，写入配置文件，系统重启后依然有效）</div><div class="line">systemctl start http.service</div><div class="line"></div><div class="line">    vim /var/www/html/info.php</div><div class="line">    &lt;?php</div><div class="line">        phpinfo();</div><div class="line">    ?&gt;</div><div class="line">    &lt;br&gt;</div><div class="line">    测试php解析是否正常</div><div class="line">    vim /etc/php.ini</div><div class="line">    date.timezone= PRC</div></pre></td></tr></table></figure>
+<h4 id="安装Mariadb"><a href="#安装Mariadb" class="headerlink" title="安装Mariadb"></a>安装Mariadb</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">yum -y install mariadb-server mariadb</div><div class="line">    mysql_secure_installation</div><div class="line">    systemctl start mariadb</div><div class="line">    systemctl status mariadb</div></pre></td></tr></table></figure>
+<h4 id="安装icinga监控工具"><a href="#安装icinga监控工具" class="headerlink" title="安装icinga监控工具"></a>安装icinga监控工具</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">wget http://packages.icinga.org/epel/ICINGA-release.repo -O /etc/yum.repod/icinga.repo</div><div class="line">rpm --import http://packages.icinga.org/icinga.key</div><div class="line">yum  -y install icinga icinga-doc icinga-gui</div><div class="line">htpasswd -cm /etc/icinga/passwd  geekwolf</div><div class="line">systemctl start icinga</div><div class="line">systemctl start httpd</div></pre></td></tr></table></figure>
+<h4 id="安装Nagios插件"><a href="#安装Nagios插件" class="headerlink" title="安装Nagios插件"></a>安装Nagios插件</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">rpm -Uvh http://ftp.ines.lug.ro/fedora/epel/beta/7/x86_64/epel-release-7-0.2.noarch.rpm</div><div class="line">yum -y install nagios-plugins nagios-plugins-all</div><div class="line">配置文件路径/etc/icinga，配置方式和nagios一样</div><div class="line"></div><div class="line">vim  /etc/icinga/cgi.cfg</div><div class="line">authorized_for_system_information=geekwolf</div><div class="line">authorized_for_configuration_information=geekwolf</div><div class="line">authorized_for_full_command_resolution=geekwolf</div><div class="line">authorized_for_system_commands=geekwolf</div><div class="line">authorized_for_all_services=geekwolf</div><div class="line">authorized_for_all_hosts=geekwolf</div><div class="line">authorized_for_all_service_commands=geekwolf</div><div class="line">authorized_for_all_host_commands=geekwolf</div></pre></td></tr></table></figure>
+<p>访问Web:<a href="http://192.168.117.129/icinga" target="_blank" rel="external">http://192.168.117.129/icinga</a></p>
+<p><a href="http://ow1schdt5.bkt.clouddn.com/2014/08/icingam.png" target="_blank" rel="external"><img src="http://ow1schdt5.bkt.clouddn.com/2014/08/icingam.png" alt="icingam"></a></p>
+<h4 id="相关资源"><a href="#相关资源" class="headerlink" title="相关资源"></a>相关资源</h4><blockquote>
+<p>Icinga官方文档 :<a href="http://docs.icinga.org/" target="_blank" rel="external">http://docs.icinga.org</a><br>Icinga EPEL :<a href="http://packages.icinga.org/epel" target="_blank" rel="external">http://packages.icinga.org/epel</a><br>Icinga安装包及vagrant box下载 ：<a href="https://www.icinga.org/download" target="_blank" rel="external">https://www.icinga.org/download</a><br>Centos7网络配置和服务管理参考: <a href="http://simlinux.com/blog/2014/08/12/centos7wang-luo-pei-zhi-he-fu-wu-guan-li/" target="_blank" rel="external">http://simlinux.com/blog/2014/08/12/centos7wang-luo-pei-zhi-he-fu-wu-guan-li/</a></p>
+</blockquote>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2014/08/20/centos7-network-config.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Geekwolf">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Geekwolf's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2014/08/20/centos7-network-config.html" itemprop="url">CentOS7网络配置和服务管理</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-08-20T11:36:53+08:00">
+                2014-08-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux运维/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux运维</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2014/08/20/centos7-network-config.html" class="leancloud_visitors" data-flag-title="CentOS7网络配置和服务管理">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  2
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="配置网络"><a href="#配置网络" class="headerlink" title="配置网络"></a>配置网络</h4><p>在使用Vmware Workstation10.2测试过程中，发现可能部分物理机100M网卡不能正常识别，换到了1000M网卡上测试能正常识别虚拟网卡<br>Centos7系统的网卡设备命名有所变化，可参考<a href="http://www.pubyun.com/blog/deveops/centos-7%E4%B8%8B%E7%BD%91%E7%BB%9C%E8%AE%BE%E5%A4%87%E5%91%BD%E5%90%8D/" target="_blank" rel="external">CentOS 7下网络设备命名</a>，个人感觉既然学习新系统，完全没必要换成传统的识别名方式，要勇于接受新知识~</p>
+<ol>
+<li><p>通过编辑文件修改网络配置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line">vim   /etc/sysconfig/network-scripts/ifcfg-eno16777736</div><div class="line">HWADDR=00:0c:29:14:34:51</div><div class="line">TYPE=Ethernet</div><div class="line">BOOTPROTO=static</div><div class="line">DEFROUTE=yes</div><div class="line">PEERDNS=yes</div><div class="line">PEERROUTES=yes</div><div class="line">USERCTL=no</div><div class="line">NM_CONTROLLED=no</div><div class="line">IPV4_FAILURE_FATAL=no</div><div class="line">IPV6INIT=yes</div><div class="line">IPV6_AUTOCONF=yes</div><div class="line">IPV6_DEFROUTE=yes</div><div class="line">IPV6_PEERDNS=yes</div><div class="line">IPV6_PEERROUTES=yes</div><div class="line">IPV6_FAILURE_FATAL=no</div><div class="line">NAME=eno16777736</div><div class="line">ONBOOT=yes</div><div class="line">IPADDR=192.168.117.128</div><div class="line">NETMASK=255.255.255.0</div><div class="line">GATEWAY=192.168.117.2</div><div class="line">DNS1=192.168.117.2</div><div class="line">关键配置：</div><div class="line"></div><div class="line">TYPE=Ethernet</div><div class="line">BOOTPROTO=static</div><div class="line">NAME=eno16777736</div><div class="line">ONBOOT=yes</div><div class="line">IPADDR=192.168.117.128</div><div class="line">NETMASK=255.255.255.0</div><div class="line">GATEWAY=192.168.117.2</div><div class="line">DNS1=192.168.117.2</div><div class="line"></div><div class="line">cat /etc/resolv.conf</div><div class="line">nameserver 192.168.117.2</div></pre></td></tr></table></figure>
+</li>
+<li><p>通过文本工具nmtui修改网络配置(RHEL7/CentOS7默认安装,前提需要开启NetworkManager.service才可以使用)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">yum -y install NetworkManager-tui</div><div class="line">    nmtui-edit eno16777736  修改网卡配置</div><div class="line">    nmtui-connect eno16777736</div><div class="line">重启网络</div><div class="line">systemctl  restart network</div><div class="line">systemctl  status network</div><div class="line">修改主机名：</div><div class="line">vim /etc/hostname</div><div class="line">centos7.simlinux.com</div><div class="line">退出重新登录即可生效</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h4 id="关闭不必要的服务"><a href="#关闭不必要的服务" class="headerlink" title="关闭不必要的服务"></a>关闭不必要的服务</h4><p>最小化安装的Centos7系统并没有nano、vim、wget、curl、ifconfig、lsof命令，这里首先安装一下：<br><code>yum -y install nano vim wget curl net-tools lsof</code><br>可以通过netstat和lsof查看系统都运行了哪些服务，将不必要的进行关闭<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">systemctl stop postfix</div><div class="line">systemctl stop avahi-daemon</div><div class="line">systemctl disable postfix</div><div class="line">systemctl disable avahi-daemon</div><div class="line">systemctl list-unit-files    查看正在运行服务的状态报告</div><div class="line">systemctl start httpd.service    启动服务</div><div class="line">systemctl stop  httpd.service    关闭服务</div><div class="line">systemctl restart  httpd.service 重启服务</div><div class="line">systemctl reload   httpd.service 重新加载服务</div><div class="line">systemctl disable  httpd.service 开机不启动</div><div class="line">systemctl enable   httpd.service 开机启动</div><div class="line">systemctl status   httpd.service 查看服务运行状态</div><div class="line">systemctl show     httpd.service 显示服务或任务的属性</div><div class="line">systemctl list-dependencies  httpd.service  检查服务依赖关系</div><div class="line">systemctl is-enabled  httpd.service  检查服务是否开机启动及级别</div><div class="line">systemctl -H 192.168.117.128 start httpd.service   启动192.168.117.128机器上的httpd服务</div></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2014/08/20/16-online-tools.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Geekwolf">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Geekwolf's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2014/08/20/16-online-tools.html" itemprop="url">16个很有用的在线工具</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-08-20T11:35:41+08:00">
+                2014-08-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux运维/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux运维</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2014/08/20/16-online-tools.html" class="leancloud_visitors" data-flag-title="16个很有用的在线工具">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  3
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><strong>1. <a href="http://explainshell.com/" target="_blank" rel="external">ExplainShell.com</a> 命令解释</strong></p>
+<p><a href="http://ow1schdt5.bkt.clouddn.com/2014/08/explainshell.jpg" target="_blank" rel="external"><img src="http://ow1schdt5.bkt.clouddn.com/2014/08/explainshell.jpg" alt="explainshell"></a></p>
+<p>  对于Linux用户来说每天都会写各种命令和脚本，那么你可以使用这个网站工具来查看命令式如何工作的,这样可以避免不必要的错误出现；也是一个很好的学习命令的方式</p>
+<p><strong>2. <a href="http://simlinux.com/BashrcGenerator.com/" target="_blank" rel="external">BashrcGenerator.com</a> 定制个性命令提示符</strong></p>
+<p><a href="http://ow1schdt5.bkt.clouddn.com/2014/08/generator.jpg" target="_blank" rel="external"><img src="http://ow1schdt5.bkt.clouddn.com/2014/08/generator.jpg" alt="generator"></a></p>
+<p>  简单说就是个性化生成命令提示符，可将生成的代码写入到用户家目录的.bashrc或者可以设置全局变量文件/etc/profile对所有用户生效<br>可参考：<a href="http://stackoverflow.com/questions/4133904/ps1-line-with-git-current-branch-and-colors" target="_blank" rel="external">http://stackoverflow.com/questions/4133904/ps1-line-with-git-current-branch-and-colors</a></p>
+<p><strong>3. <a href="http://vim-adventures.com/" target="_blank" rel="external">Vim-adventures.com</a> 通过RPG游戏练习VIM使用</strong></p>
+<p><a href="http://ow1schdt5.bkt.clouddn.com/2014/08/vim.jpg" target="_blank" rel="external"><img src="http://ow1schdt5.bkt.clouddn.com/2014/08/vim.jpg" alt="vim"></a></p>
+<p>  通过RPG游戏练习VIM编辑器的使用，使用h,j,k,l字符移动人物来获得新的命令能力和搜集钥匙，查看帮助可使用:help;赶脚这个非常cool!</p>
+<p><strong>4. <a href="https://try.github.io/levels/1/challenges/2" target="_blank" rel="external">Try Github</a> 在线学习Git版本控制</strong></p>
+<p><a href="http://ow1schdt5.bkt.clouddn.com/2014/08/trygit.jpg" target="_blank" rel="external"><img src="http://ow1schdt5.bkt.clouddn.com/2014/08/trygit.jpg" alt="trygit"></a></p>
+<p>  十五分钟学会Git，很明显这个网站模拟了一个控制台，以很时尚的界面让人对Git不再望而生畏</p>
+<p><strong>5. <a href="http://shortcutfoo.com/" target="_blank" rel="external">Shortcutfoo.com</a></strong></p>
+<p><a href="http://ow1schdt5.bkt.clouddn.com/2014/08/shortcutfoo.jpg" target="_blank" rel="external"><img src="http://ow1schdt5.bkt.clouddn.com/2014/08/shortcutfoo.jpg" alt="shortcutfoo"></a></p>
+<p>  是一个练习快捷键的好地方，涵盖了vim、sublime、emacs、git等软件的快捷使用方式和友好的说明</p>
+<p><strong>6. <a href="https://github.com/geekwolf/free-programming-books" target="_blank" rel="external">GitHub Free Programming Books</a> 免费编程书籍</strong></p>
+<p><a href="http://ow1schdt5.bkt.clouddn.com/2014/08/freebooks.jpg" target="_blank" rel="external"><img src="http://ow1schdt5.bkt.clouddn.com/2014/08/freebooks.jpg" alt="freebooks"></a></p>
+<p>  以Github管理的方式搜集了免费的编程和系统管理等书籍，给作者点1024个赞~~，另外连接是fork原作者，后续增加中文书籍</p>
+<p><strong>7. <a href="http://collabedit.com/" target="_blank" rel="external">Collabedit.com</a> 实时文本交互聊天</strong></p>
+<p><a href="http://ow1schdt5.bkt.clouddn.com/2014/08/coolabedit.jpg" target="_blank" rel="external"><img src="http://ow1schdt5.bkt.clouddn.com/2014/08/coolabedit.jpg" alt="coolabedit"></a></p>
+<p>   先说下使用，你可以创建一个文档<code>http://collabedit.com/yb22u</code>填写相关的用户名和选择语言；然后可以将此文档地址发给另一个人，那么互相之间就可以实时看到对方的输入，有高亮语法；使用场合嘛，比如通过collabedit可以考量对方编程能力等</p>
+<p><strong>8. <a href="http://cpp.sh/" target="_blank" rel="external">Cpp.sh</a> 在线编写运行分享C++代码编辑器</strong></p>
+<p><a href="http://ow1schdt5.bkt.clouddn.com/2014/08/cpp.jpg" target="_blank" rel="external"><img src="http://ow1schdt5.bkt.clouddn.com/2014/08/cpp.jpg" alt="cpp"></a></p>
+<p>  可在线编辑运行C++代码，亦可Ctrl+Z生成url分享给好友</p>
+<p><strong>9. <a href="http://copy.sh/v24/" target="_blank" rel="external">Copy.sh</a> 浏览器运行虚拟机</strong></p>
+<p><a href="http://ow1schdt5.bkt.clouddn.com/2014/08/copy.jpg" target="_blank" rel="external"><img src="http://ow1schdt5.bkt.clouddn.com/2014/08/copy.jpg" alt="copy"></a></p>
+<p>  又一个非常crazy的工具，在线运行虚拟机，可以选择下载虚拟机镜像也可以上传自己的iso，copy.sh在线运行虚拟机源码：<a href="https://github.com/copy/v86" target="_blank" rel="external">https://github.com/copy/v86</a>；</p>
+<p><strong>10. <a href="http://commandlinefu.com/" target="_blank" rel="external">Commandlinefu.com</a> 命令或记录网站</strong></p>
+<p><a href="http://ow1schdt5.bkt.clouddn.com/2014/08/commandlinefu.jpg" target="_blank" rel="external"><img src="http://ow1schdt5.bkt.clouddn.com/2014/08/commandlinefu.jpg" alt="commandlinefu"></a></p>
+<p>  做运维的应该都知道这个网站，可以分享自己的CLI库，也可以学习借鉴别人的命令脚本</p>
+<p><strong>11. <a href="http://alias.sh/" target="_blank" rel="external">Alias.sh</a> 命令别名数据库</strong></p>
+<p><a href="http://ow1schdt5.bkt.clouddn.com/2014/08/alias.jpg" target="_blank" rel="external"><img src="http://ow1schdt5.bkt.clouddn.com/2014/08/alias.jpg" alt="alias"></a></p>
+<p>  有点类似commandlinefu了，可以通过这个网站借鉴获取和分享有用的命令别名<br>比如lr别名定义了显示目录树</p>
+<pre><code>alias lr=&apos;ls -R | grep &quot;:$&quot; | sed -e &apos;\&apos;&apos;s/:$//&apos;\&apos;&apos; -e &apos;\&apos;&apos;s/[^-][^\/]*\//--/g&apos;\&apos;&apos; -e &apos;\&apos;&apos;s/^/   /&apos;\&apos;&apos; -e &apos;\&apos;&apos;s/-/|/&apos;\&apos;&apos;&apos;
+</code></pre><p><strong>12. <a href="http://distrowatch.com/" target="_blank" rel="external">Distrowatch.com</a> 提供了Linux发行版的详细信息</strong></p>
+<p><a href="http://ow1schdt5.bkt.clouddn.com/2014/08/distrowatch.jpg" target="_blank" rel="external"><img src="http://ow1schdt5.bkt.clouddn.com/2014/08/distrowatch.jpg" alt="distrowatch"></a></p>
+<p>  通过Distrowath不仅可以精确的查看互联网都有哪些流行的Linux发行版，还可以查看每个发行版的相关信息如默认桌面环境、默认应用程序及镜像的下载链接；堪称Linux的数据库</p>
+<p><strong>13. <a href="http://linuxmanpages.com/" target="_blank" rel="external">Linuxmanpages.com</a> 在线查看命令帮助</strong></p>
+<p><a href="http://ow1schdt5.bkt.clouddn.com/2014/08/manpages.jpg" target="_blank" rel="external"><img src="http://ow1schdt5.bkt.clouddn.com/2014/08/manpages.jpg" alt="manpages"></a></p>
+<p>  相当于系统内部的man、help、info等的综合吧</p>
+<p><strong>14. <a href="http://awesomecow.com/" target="_blank" rel="external">AwesomeCow.com</a> 适用Linux环境的软件搜索引擎</strong></p>
+<p><a href="http://ow1schdt5.bkt.clouddn.com/2014/08/awe.jpg" target="_blank" rel="external"><img src="http://ow1schdt5.bkt.clouddn.com/2014/08/awe.jpg" alt="awe"></a></p>
+<p>  如果有款win下好用的软件想在linux下使用，或许可以通过AwesomeCow找到与其类似或者一样的软件，或者通过WINE</p>
+<p><strong>15. <a href="http://penguspy.com/" target="_blank" rel="external">PenguSpy.com</a> Linux好玩游戏合集</strong></p>
+<p><a href="http://ow1schdt5.bkt.clouddn.com/2014/08/pengu.jpg" target="_blank" rel="external"><img src="http://ow1schdt5.bkt.clouddn.com/2014/08/pengu.jpg" alt="pengu"></a></p>
+<p><strong>16. <a href="http://lxr.free-electrons.com/" target="_blank" rel="external">Linux Cross Reference by Free Electrons</a> 在线查看内核代码及不同版本的差异</strong></p>
+<p><a href="http://ow1schdt5.bkt.clouddn.com/2014/08/cross.jpg" target="_blank" rel="external"><img src="http://ow1schdt5.bkt.clouddn.com/2014/08/cross.jpg" alt="cross"></a></p>
+<p>对于内核开发者或许有很大的帮助</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2014/08/20/select-partition-info.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Geekwolf">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Geekwolf's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2014/08/20/select-partition-info.html" itemprop="url">查看分区信息</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-08-20T11:24:08+08:00">
+                2014-08-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/MySQL数据库/" itemprop="url" rel="index">
+                    <span itemprop="name">MySQL数据库</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2014/08/20/select-partition-info.html" class="leancloud_visitors" data-flag-title="查看分区信息">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>查看Mysql里都有哪些数据库里面有什么分区表<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">SELECT </div><div class="line">TABLE_SCHEMA, TABLE_NAME, PARTITION_NAME, PARTITION_COMMENT</div><div class="line">FROM</div><div class="line">INFORMATION_SCHEMA.PARTITIONS</div><div class="line">WHERE</div><div class="line">PARTITION_NAME IS NOT NULL;</div></pre></td></tr></table></figure></p>
+<p>查看某个分区表都有哪些分区及使用情况<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">USE LOCKLOG;</div><div class="line">SELECT </div><div class="line">partition_name part,</div><div class="line">partition_expression expr,</div><div class="line">partition_description descr,</div><div class="line">table_rows</div><div class="line">FROM</div><div class="line">INFORMATION_SCHEMA.partitions</div><div class="line">WHERE</div><div class="line">TABLE_SCHEMA = schema()</div><div class="line">AND TABLE_NAME = &apos;lock_log&apos;;</div></pre></td></tr></table></figure></p>
+<p>查看分区表lock_log的创建sql及分区类型<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">SHOW CREATE TABLE lock_log \G;</div></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2014/08/20/io-scheduler.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Geekwolf">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Geekwolf's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2014/08/20/io-scheduler.html" itemprop="url">IO调度算法适用场景</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-08-20T11:13:28+08:00">
+                2014-08-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux运维/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux运维</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2014/08/20/io-scheduler.html" class="leancloud_visitors" data-flag-title="IO调度算法适用场景">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  4
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <pre><code>通常磁盘的读写影响是由磁头到柱面移动造成了延迟，解决这种延迟内核主要采用两种策略：缓存和IO调度算法来进行弥补
+</code></pre><p><strong>Caching：</strong>IO请求被缓存在大页和buffer<br>caches里面，读请求会预先从缓存读取，写请求会先写进缓存，然后在保存到磁盘</p>
+<p><strong>四种IO调度算法：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cat /sys/block/sda/queue/scheduler</div><div class="line">noop anticipatory deadline [cfq] (当前是cfq)</div></pre></td></tr></table></figure></p>
+<p><a href="http://ow1schdt5.bkt.clouddn.com/2014/08/io1.png" target="_blank" rel="external"><img src="http://ow1schdt5.bkt.clouddn.com/2014/08/io1.png" alt="io"></a></p>
+<p><strong>noop：</strong>noop调度算法不会对I/O请求排序操作，除了合并外也不会做任何其他优化，直接以类似FIFO的顺序提交I/O请求；对于SSD、虚拟机或者存储设备可能会更加高效<br><strong>anticipatory(as)：</strong>基于预测的IO算法，类似DeadLine，也维护了三个请求对列；区别在于当它处理完一个I/O请求后并不会直接返回处理下一个请求，而是等待6ms(默认),如果这时候有新来的针对当前扇区相邻扇区的请求，那么会直接处理它，当等待时间结束后，调度器才返回处理下一个对列请求<br>试想一下，如果系统有频繁的针对邻近扇区的I/O请求，那么这种预测算法必然大幅提高整体的吞吐量，毕竟节约了那么多寻道时间<br><strong>deadline：</strong>DEADLINE 在CFQ的基础上，解决了IO请求饿死的极端情况。除了CFQ本身具有的IO排序队列之外，DEADLINE额外分别为读IO和写IO提供了FIFO队 列。读FIFO队列的最大等待时间为500ms，写FIFO队列的最大等待时间为5s。FIFO队列内的IO请求优先级要比CFQ队列中的高，，而读 FIFO队列的优先级又比写FIFO队列的优先级高。优先级可以表示如下：<br>FIFO(Read) &gt; FIFO(Write) &gt; CFQ<br>deadline 算法保证对于既定的 IO 请求以最小的延迟时间，从这一点理解，对于 DSS 应用应该会是很适合的<br><strong>cfq(2.6.18+内核默认CFQ)：</strong>该算法的特点是按照IO请求的地址进行排序，而不是按照先来后到的顺序来进行响应。在传统的SAS盘上，磁盘寻道花去了绝大多数的IO响应时间。CFQ的出发点是对IO地址进行排序，以尽量少的磁盘旋转次数来满足尽可能多的IO请求。在 CFQ算法下，SAS盘的吞吐量大大提高了。但是相比于NOOP的缺点是，先来的IO请求并不一定能被满足，可能会出现饿死的情况；</p>
+<p><strong>调度算法适用场合：</strong><br>在传统的SAS盘上，CFQ、DEADLINE、ANTICIPATORY都是不错的选择；对于专属的数据库服务器和文件服务器，DEADLINE的吞吐量和响应时间都表现良好，适用于大量IO操作的环境</p>
+<p>在SSD、Fusion IO上，最简单的NOOP反而可能是最好的算法，因为其他三个算法的优化是基于缩短寻道时间的，而固态硬盘没有所谓的寻道时间且IO响应时间非常短。<br>ANTICIPATORY通常更适用于大量持续读的环境，并不适用于DB Server<br>CFQ 适用于有大量来自不同进程的并发读写的环境如桌面环境等</p>
+<p><strong>手动临时更改调度算法：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">echo deadline &gt; /sys/block/sda/queue/scheduler</div></pre></td></tr></table></figure></p>
+<p><strong>永久更改：</strong><br><strong>A.使用tuned来修改调度算法</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">比如：vim /etc/tuned-profiles/throughtput-performance/ktune.sysconfig</div><div class="line">ELEVATOR=&quot;deadline&quot;</div><div class="line">ELEVATOR_TUNE_DEVS=&quot;/sys/block/&#123;sd,cciss,dm-,vd&#125;*/queue/scheduler&quot;</div><div class="line">tuned-admin profile throughtput-performance</div><div class="line">chkconfig tuned on</div><div class="line">chkconfig ktune on</div><div class="line">更改调度算法之后/sys/block/sda/quue/iosched/会生成对应的参数文件</div></pre></td></tr></table></figure></p>
+<p><strong>B.通过修改grub.conf来修改调度算法</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">kernel /vmlinuz-2.6.32-358.11.1.el6.x86_64 ro root=UUID=97693d73-443f-438a-90a3-208855faff19 rd_NO_LUKS  KEYBOARDTYPE=pc KEYTABLE=us rd_NO_MD crashkernel=auto LANG=zh_CN.UTF-8 rd_NO_LVM rd_NO_DM elevator=deadline rhgb quiet</div></pre></td></tr></table></figure></p>
+<p><strong>查看调度算法参数的含义：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">yum -y install kernel-doc</div><div class="line">比如:/usr/share/doc/kernel-doc-2.6.32/Documentation/block/deadline-iosched.txt</div></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2014/08/20/centos-puppet-install-test.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Geekwolf">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Geekwolf's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2014/08/20/centos-puppet-install-test.html" itemprop="url">Centos6.5下安装Puppet及测试</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-08-20T11:10:46+08:00">
+                2014-08-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/自动化运维/" itemprop="url" rel="index">
+                    <span itemprop="name">自动化运维</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2014/08/20/centos-puppet-install-test.html" class="leancloud_visitors" data-flag-title="Centos6.5下安装Puppet及测试">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  5
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="安装前注意事项"><a href="#安装前注意事项" class="headerlink" title="安装前注意事项"></a>安装前注意事项</h4><ol>
+<li>Puppet master尽量使用高配置server</li>
+<li>任何官方未支持的系统也可以正常运行puppet，前提是要装合适的版本的ruby环境<br>请参考:<a href="http://docs.puppetlabs.com/puppet/latest/reference/system_requirements.html#basic-requirements" target="_blank" rel="external">http://docs.puppetlabs.com/puppet/latest/reference/system_requirements.html#basic-requirements</a></li>
+<li>master防火墙放行8140端口给agent</li>
+<li>每个节点都必须有一个唯一的主机名，正解析和反解析都被正确配置，如果没有DNS服务，必须在每个节点上配置/etc/hosts<br><strong>注</strong>：默认情况下puppet的master的主机名是puppet</li>
+<li>由于Puppet master同时扮演着CA(认证授权机构)的角色,需要时间同步,启动ntpd服务；</li>
+<li>两种工作模式：Master/Agent、Standatone</li>
+</ol>
+<h4 id="环境说明"><a href="#环境说明" class="headerlink" title="环境说明"></a>环境说明</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">192.168.10.216   Puppet Agent   c1.geekwolf.github.io</div><div class="line">192.168.10.217   Puppet Agent   c2.geekwolf.github.io</div><div class="line">192.168.10.218   Puppet Master  m.geekwolf.github.io</div></pre></td></tr></table></figure>
+<h4 id="安装步骤"><a href="#安装步骤" class="headerlink" title="安装步骤"></a>安装步骤</h4><h5 id="安装puppet"><a href="#安装puppet" class="headerlink" title="安装puppet"></a>安装puppet</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">rpm -ivh [http://yum.puppetlabs.com/puppetlabs-release-el-6.noarch.rpm](http://yum.puppetlabs.com/puppetlabs-release-el-6.noarch.rpm)</div><div class="line">说明:若要测试RC版及相关软件编辑/etc/yum.repos.d/puppetlabs.repo：</div><div class="line"></div><div class="line">[puppetlabs-devel]</div><div class="line">name=Puppet Labs Devel El 6 - $basearch</div><div class="line">baseurl=http://yum.puppetlabs.com/el/6/devel/$basearch</div><div class="line">gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-puppetlabs</div><div class="line">enabled=1</div><div class="line">gpgcheck=1</div><div class="line"></div><div class="line">yum -y install  ntp</div><div class="line">service ntpd start</div><div class="line">chkconfig ntpd on</div></pre></td></tr></table></figure>
+<h5 id="配置puppet"><a href="#配置puppet" class="headerlink" title="配置puppet"></a>配置puppet</h5><p>配置好hostname，并将解析写进hosts同步到所有节点<br><strong>在master:192.168.10.218安装puppet-server</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">yum -y install puppet-server（依赖puppet、facter一起安装）</div><div class="line">生成启动脚本:</div><div class="line">/etc/init.d/puppetmaster </div><div class="line">Master配置文件目录：</div><div class="line">/etc/puppet</div><div class="line"></div><div class="line">chkconfig puppetmaster on</div><div class="line">service puppetmaster start</div><div class="line"></div><div class="line">升级puppet master：</div><div class="line">puppet resource package puppet ensure=latest</div><div class="line">service puppetmaster restart</div></pre></td></tr></table></figure></p>
+<p><strong>在c1 c2 上安装puppet</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">yum -y install puppet</div><div class="line">chkconfig puppet on</div><div class="line">service puppet start</div><div class="line">Agent配置文件目录:</div><div class="line">/etc/sysconfig/puppet.conf</div></pre></td></tr></table></figure></p>
+<p><strong>配置puppet agent c1 c2指定Puppet Master地址</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">vim  /etc/puppet/puppet.conf</div><div class="line">[main]</div><div class="line"># The Puppet log directory.</div><div class="line"># The default value is &apos;$vardir/log&apos;.</div><div class="line">logdir = /var/log/puppet</div><div class="line"># Where Puppet PID files are kept.</div><div class="line"># The default value is &apos;$vardir/run&apos;.</div><div class="line">rundir = /var/run/puppet</div><div class="line"># Where SSL certificates are kept.</div><div class="line"># The default value is &apos;$confdir/ssl&apos;.</div><div class="line">ssldir = $vardir/ssl</div><div class="line">[agent]</div><div class="line"># The file in which puppetd stores a list of the classes</div><div class="line"># associated with the retrieved configuratiion. Can be loaded in</div><div class="line"># the separate ``puppet`` executable using the ``--loadclasses``</div><div class="line"># option.</div><div class="line"># The default value is &apos;$confdir/classes.txt&apos;.</div><div class="line">classfile = $vardir/classes.txt</div><div class="line"># Where puppetd caches the local configuration. An</div><div class="line"># extension indicating the cache format is added automatically.</div><div class="line"># The default value is &apos;$confdir/localconfig&apos;.</div><div class="line">localconfig = $vardir/localconfig</div><div class="line">server = m.geekwolf.github.io</div></pre></td></tr></table></figure>
+<h5 id="证书管理"><a href="#证书管理" class="headerlink" title="证书管理"></a>证书管理</h5><p><strong>A.手动签发证书</strong><br>c1、c2申请证书，由于已经配置了server=m.geekwolf.github.io，故申请时不必在指定server<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">[root@c1 ~]# puppet agent -t</div><div class="line">Info: Creating a new SSL key for c1.geekwolf.github.io</div><div class="line">Info: Caching certificate for ca</div><div class="line">Info: Caching certificate_request for c1.geekwolf.github.io</div><div class="line">Info: Caching certificate for ca</div><div class="line">Exiting; no certificate found and waitforcert is disabled</div></pre></td></tr></table></figure></p>
+<p>在Master上管理证书：<br><strong>签发证书：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">puppet cert list --all                   查看请求签发的证书（+表示已签发，-未签发）</div><div class="line">puppet cert --sign c1.geekwolf.github.io 签发主机c1.geekwolf.github.io的证书</div><div class="line">puppet cert --sign --all                 签发所有请求的主机的证书</div></pre></td></tr></table></figure></p>
+<p><strong>注销证书：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">puppet cert revoke  c1.geekwolf.github.io 注销主机c1.geekwolf.github.io的证书</div><div class="line">puppet cert revoke --all                  注销所有主机的证书（若想在重新签名，需先重启puppetmaster,然后节点在请求申请证书，再签名即可）</div></pre></td></tr></table></figure></p>
+<p><strong>清除证书：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">在master上清除某节点证书,重启puppetmaster后生效</div><div class="line">puppet cert --clean c1.geekwolf.github.io </div><div class="line"></div><div class="line">在agent上删除相关目录,可以重新再申请签名   </div><div class="line">rm -rf /var/lib/puppet/ssl 或者rm -rf /var/lib/puppet/certs/c1.geekwolf.github.io.pem</div></pre></td></tr></table></figure></p>
+<p><strong>B.自动签发证书</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">在Puppet Master创建/etc/puppet/autosign.conf文件</div><div class="line">*.geekwolf.github.io (geekwolf.github.io域的申请会自动签发)</div><div class="line">service puppetmaster restart</div><div class="line">所有节点上执行</div><div class="line">rm -rf /var/lib/puppet/ssl</div><div class="line"></div><div class="line">然后所有的节点申请签名</div><div class="line">puppet agent -t —server m.geekwolf.github.io</div><div class="line"></div><div class="line">在Puppet Master查看签名</div><div class="line">[root@m puppet]# puppet cert list --all</div><div class="line">+ &quot;c1.geekwolf.github.io&quot; (SHA256) 2A:28:96:6C:B0:36:E8:CC:71:80:F4:C6:B5:D8:61:94:A8:59:46:9D:52:A3:58:2A:D9:78:45:A3:57:93:1C:38</div><div class="line">+ &quot;c2.geekwolf.github.io&quot; (SHA256) 09:59:71:9A:CA:AE:92:82:1D:D4:0C:A6:D4:5F:51:C3:D6:E4:EE:80:20:19:CB:B1:71:EE:B3:24:F7:E3:80:71</div><div class="line">+ &quot;m.geekwolf.github.io&quot; (SHA256) 10:F3:28:EA:36:25:38:C5:1C:8A:38:FD:94:EF:F9:77:6B:97:E9:FA:60:18:D5:53:DD:5D:DA:15:88:4F:96:A1 (alt names: &quot;DNS:m.geekwolf.github.io&quot;, &quot;DNS:puppet&quot;, &quot;DNS:puppet.geekwolf.github.io&quot;)</div></pre></td></tr></table></figure></p>
+<h4 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">默认agent（c1，c2）每30分钟连接到puppet master,为测试方便先修改连接时间</div><div class="line">echo &quot;runinterval = 10&quot; &amp;gt;&amp;gt;/etc/puppet/puppet.conf</div><div class="line">service puppet restart</div><div class="line"></div><div class="line">Puppet Master：</div><div class="line">vim /etc/puppet/manifests/site.pp</div><div class="line">file &#123;&quot;/tmp/test.txt&quot; :</div><div class="line">content=&amp;gt;&quot;test from geekwolf!~\n&quot;; &#125; </div><div class="line"></div><div class="line">检查c1 c2是否有/tmp/test.txt文件</div></pre></td></tr></table></figure>
+<h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><blockquote>
+<p><a href="http://docs.puppetlabs.com/puppet/3.6/reference/config_ssl_external_ca.html#option-3-two-intermediate-cas-issued-by-one-root-ca" target="_blank" rel="external">多CA配置</a></p>
+</blockquote>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2014/08/20/mysql-gtid-rep.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Geekwolf">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Geekwolf's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2014/08/20/mysql-gtid-rep.html" itemprop="url">MySQL5.6基于GTID复制配置</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-08-20T11:06:43+08:00">
+                2014-08-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/MySQL数据库/" itemprop="url" rel="index">
+                    <span itemprop="name">MySQL数据库</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2014/08/20/mysql-gtid-rep.html" class="leancloud_visitors" data-flag-title="MySQL5.6基于GTID复制配置">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  7
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="一、什么是GTID？"><a href="#一、什么是GTID？" class="headerlink" title="一、什么是GTID？"></a>一、什么是GTID？</h4><blockquote>
+<p> GTID(Global Transaction Identifiers)是全局事务标识<br>当使用GTIDS时，在主上提交的每一个事务都会被识别和跟踪，并且运用到所有从MySQL，而且配置主从或者主从切换时不再需要指定 master_log_files和master_log_pos；由于GTID-base复制是完全基于事务的，所以能很简单的决定主从复制的一致性；官方建议Binlog采用Row格式</p>
+</blockquote>
+<h4 id="二、GTID的表示方式"><a href="#二、GTID的表示方式" class="headerlink" title="二、GTID的表示方式"></a>二、GTID的表示方式</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">source_id：transaction_id</div><div class="line">source_id：表示执行事务的主库的UUID(server_uuid:Mysql5.6的data目录下启动时会生成auto.cnf文件记录了uuid，重启后uuid不变，删除文件后会重新生成新的uuid)；</div><div class="line">transaction_id：是一个从1开始自增的计数，表示在这个主库上执行的第n个事务；</div><div class="line">由于每台Mysql的uuid是全球唯一的，transaction_id自身唯一，就保证了GTID全局唯一性</div><div class="line"></div><div class="line">mysql&gt; show variables like &apos;server_uuid&apos;; </div><div class="line">+---------------+--------------------------------------+</div><div class="line">| Variable_name | Value |</div><div class="line">+---------------+--------------------------------------+</div><div class="line">| server_uuid | 4468c0e8-ef6f-11e3-9c2c-0200c0a80ad8 |</div><div class="line">+---------------+--------------------------------------+</div><div class="line">1 row in set (0.00 sec)</div></pre></td></tr></table></figure>
+<h4 id="三、基于GTID的复制配置"><a href="#三、基于GTID的复制配置" class="headerlink" title="三、基于GTID的复制配置"></a>三、基于GTID的复制配置</h4><p><strong>master：</strong>192.168.10.216<br><strong>slave ：</strong>192.168.10.217<br><strong>步骤：</strong><br>修改主从my.cnf增加GTID支持—&gt;主只读—&gt;拷贝数据到从数据目录—&gt;重启主从—&gt;在从上进行配置</p>
+<ol>
+<li>修改主从my.cnf增加GTID支持</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">主Mysql配置：</div><div class="line">server-id=216   </div><div class="line">binlog-format=ROW</div><div class="line">gtid-mode=on</div><div class="line">enforce-gtid-consistency=true </div><div class="line">log-bin=mysql-bin</div><div class="line">log-slave-updates=true   slave更新是否记入日志</div><div class="line"></div><div class="line">从Mysql配置：</div><div class="line">server-id=217   同一个复制拓扑中的所有服务器的id号必须惟一</div><div class="line">binlog-format=ROW</div><div class="line">gtid-mode=on  启用gtid类型，否则就是普通的复制架构</div><div class="line">enforce-gtid-consistency=true 强制GTID的一致性</div><div class="line">log-bin=mysql-bin</div><div class="line">log-slave-updates=true   slave更新是否记入日志</div><div class="line">只从库配置：</div><div class="line">slave-paralles-workers 设定从服务器的SQL线程数；0表示关闭多线程复制功能；</div></pre></td></tr></table></figure>
+<ol>
+<li>主只读</li>
+</ol>
+<p><code>mysql&gt; SET @@global.read_only = ON;</code><br>拷贝主数据到从目录</p>
+<ol>
+<li>重启主从Mysql</li>
+<li><p>在从上配置基于GTID的复制</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">mysql&gt; CHANGE MASTER TO </div><div class="line">     &gt; MASTER_HOST = ‘192.168.10.216’,</div><div class="line">     &gt; MASTER_PORT = 3306,</div><div class="line">     &gt; MASTER_USER = &apos;rep&apos;,</div><div class="line">     &gt; MASTER_PASSWORD = &apos;geekwolf&apos;,</div><div class="line">     &gt; MASTER_AUTO_POSITION = 1;</div></pre></td></tr></table></figure>
+</li>
+<li><p>启动从库</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div></pre></td><td class="code"><pre><div class="line">mysql&gt; start slave; </div><div class="line">Query OK, 0 rows affected, 1 warning (0.00 sec)</div><div class="line"></div><div class="line">mysql&gt; show slave status \G</div><div class="line">*************************** 1. row ***************************</div><div class="line">   Slave_IO_State: Waiting for master to send event</div><div class="line">  Master_Host: 192.168.10.216</div><div class="line">  Master_User: rep</div><div class="line">  Master_Port: 3306</div><div class="line">Connect_Retry: 60</div><div class="line">  Master_Log_File: mysql-bin.000002</div><div class="line">  Read_Master_Log_Pos: 41921904</div><div class="line">   Relay_Log_File: relay-bin.000002</div><div class="line">Relay_Log_Pos: 64520</div><div class="line">Relay_Master_Log_File: mysql-bin.000002</div><div class="line"> Slave_IO_Running: Yes</div><div class="line">Slave_SQL_Running: Yes</div><div class="line">  Replicate_Do_DB:</div><div class="line">  Replicate_Ignore_DB:</div><div class="line">   Replicate_Do_Table:</div><div class="line">   Replicate_Ignore_Table:</div><div class="line">  Replicate_Wild_Do_Table:</div><div class="line">  Replicate_Wild_Ignore_Table: mysql.%</div><div class="line">   Last_Errno: 0</div><div class="line">   Last_Error:</div><div class="line"> Skip_Counter: 0</div><div class="line">  Exec_Master_Log_Pos: 41921904</div><div class="line">  Relay_Log_Space: 64718</div><div class="line">  Until_Condition: None</div><div class="line">   Until_Log_File:</div><div class="line">Until_Log_Pos: 0</div><div class="line">   Master_SSL_Allowed: No</div><div class="line">   Master_SSL_CA_File:</div><div class="line">   Master_SSL_CA_Path:</div><div class="line">  Master_SSL_Cert:</div><div class="line">Master_SSL_Cipher:</div><div class="line">   Master_SSL_Key:</div><div class="line">Seconds_Behind_Master: 0</div><div class="line">Master_SSL_Verify_Server_Cert: No</div><div class="line">Last_IO_Errno: 0</div><div class="line">Last_IO_Error:</div><div class="line">   Last_SQL_Errno: 0</div><div class="line">   Last_SQL_Error:</div><div class="line">  Replicate_Ignore_Server_Ids:</div><div class="line"> Master_Server_Id: 216</div><div class="line">  Master_UUID: 21ad8db5-f038-11e3-a14a-0200c0a80ad8</div><div class="line"> Master_Info_File: /usr/local/mysql/data/master.info</div><div class="line">SQL_Delay: 0</div><div class="line">  SQL_Remaining_Delay: NULL</div><div class="line">  Slave_SQL_Running_State: Reading event from the relay log</div><div class="line">   Master_Retry_Count: 86400</div><div class="line">  Master_Bind:</div><div class="line">  Last_IO_Error_Timestamp:</div><div class="line"> Last_SQL_Error_Timestamp:</div><div class="line">   Master_SSL_Crl:</div><div class="line">   Master_SSL_Crlpath:</div><div class="line">   Retrieved_Gtid_Set: 21ad8db5-f038-11e3-a14a-0200c0a80ad8:76793-77026</div><div class="line">Executed_Gtid_Set: 21ad8db5-f038-11e3-a14a-0200c0a80ad8:1-77025</div><div class="line">Auto_Position: 1</div><div class="line">1 row in set (0.00 sec)</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p><strong>注：</strong><br>两个Yes代表复制正常<br>Slave_IO_Running: Yes<br>Slave_SQL_Running: Yes</p>
+<p>基于GTID复制的新特性：<br>Retrieved_Gtid_Set: 21ad8db5-f038-11e3-a14a-0200c0a80ad8:76793-77026<br>Executed_Gtid_Set: 21ad8db5-f038-11e3-a14a-0200c0a80ad8:1-77025</p>
+<p>Retrieved_Gtid_Set项：记录了relay日志从Master获取了binlog日志的位置<br>Executed_Gtid_Set项：记录本机执行的binlog日志位置（如果是从机，包括Master的binlog日志位置和slave本身的binlog日志位置）</p>
+<h4 id="四、基于GTID复制增加新的slav"><a href="#四、基于GTID复制增加新的slav" class="headerlink" title="四、基于GTID复制增加新的slav"></a>四、基于GTID复制增加新的slav</h4><p>备份主MySQL数据，记录主gtid_executed—&gt;将备份数据恢复到从数据目录—&gt;设置从gtid_purged的值为主的gtid_executed值—&gt;启动复制即可</p>
+<ol>
+<li>使用mysqldump备份主数据<br>mysqldump —all-databases —single-transaction —triggers —routines —host=127.0.0.1 —port=3306 —user=root —password=geekwolf &gt; backup.sql<br>亦可以使用xtrabackup也支持GTID：<br>请参考:<a href="http://www.mysqlperformanceblog.com/2013/05/09/how-to-create-a-new-or-repair-a-broken-gtid-based-slave-with-percona-xtrabackup/" target="_blank" rel="external">http://www.mysqlperformanceblog.com/2013/05/09/how-to-create-a-new-or-repair-a-broken-gtid-based-slave-with-percona-xtrabackup/</a></li>
+<li>传到从MySQL，恢复数据<br>由于新版本msqldump会记录并设置GTID_PURGED的值等于主的GTID_EXECUTED，所以只需要将sql导入到从库即可</li>
+<li>启动主从复制</li>
+</ol>
+<p>从库执行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">mysql &gt; CHANGE MASTER TO MASTER_HOST=&apos;127.0.0.1&apos;, MASTER_USER=&apos;root&apos;, MASTER_PASSWORD=geekwolf&apos;, MASTER_PORT=3306, MASTER_AUTO_POSITION = 1;</div><div class="line">mysql &gt; START SLAVE;</div></pre></td></tr></table></figure></p>
+<h4 id="五、基于GTID复制出错的解决办法"><a href="#五、基于GTID复制出错的解决办法" class="headerlink" title="五、基于GTID复制出错的解决办法"></a>五、基于GTID复制出错的解决办法</h4><p><strong>问题:</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Slave_IO_Running: No</div><div class="line">Slave_SQL_Running: Yes</div><div class="line">Last_IO_Error: Got fatal error 1236 from master when reading data from binary log: &apos;The slave is connecting using CHANGE MASTER TO MASTER_AUTO_POSITION = 1, but the master has purged binary logs containing GTIDs that the slave requires.&apos;</div></pre></td></tr></table></figure></p>
+<p><strong>解决思路:</strong></p>
+<p>从复制跳过已经丢失的binlog，继续复制或者重新做主从（可以参考上面的操作）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line">主MySQL：</div><div class="line">mysql&gt; show global variables like &apos;%gtid_executed%&apos;;</div><div class="line">+---------------+-----------------------------------------------+</div><div class="line">| Variable_name | Value |</div><div class="line">+---------------+-----------------------------------------------+</div><div class="line">| gtid_executed | 21ad8db5-f038-11e3-a14a-0200c0a80ad8:1-223937 |</div><div class="line">+---------------+-----------------------------------------------+</div><div class="line">1 row in set (0.00 sec)</div><div class="line"></div><div class="line">从MySQL：</div><div class="line">mysql&gt; set global GTID_PURGED=&quot;21ad8db5-f038-11e3-a14a-0200c0a80ad8:1-223937&quot;;</div><div class="line">ERROR 1840 (HY000): @@GLOBAL.GTID_PURGED can only be set when @@GLOBAL.GTID_EXECUTED is empty.</div><div class="line"></div><div class="line">mysql&gt; reset master;</div><div class="line">Query OK, 0 rows affected (0.19 sec)</div><div class="line">mysql&gt; show global variables like &apos;GTID_EXECUTED&apos;;</div><div class="line">+---------------+-----------------------------------------------+</div><div class="line">| Variable_name | Value |</div><div class="line">+---------------+-----------------------------------------------+</div><div class="line">| gtid_executed |  |</div><div class="line">+---------------+-----------------------------------------------+</div><div class="line">1 row in set (0.00 sec)</div><div class="line"></div><div class="line">mysql&gt; stop slave;</div><div class="line">Query OK, 0 rows affected, 1 warning (0.00 sec)</div><div class="line"></div><div class="line">mysql&gt; set global GTID_PURGED=&quot;21ad8db5-f038-11e3-a14a-0200c0a80ad8:1-223937&quot;;</div><div class="line">Query OK, 0 rows affected (0.13 sec)</div><div class="line"></div><div class="line">mysql&gt; start slave;</div><div class="line">Query OK, 0 rows affected (0.04 sec)</div><div class="line"></div><div class="line">mysql&gt; show slave status\G</div><div class="line">[...]</div><div class="line">Slave_IO_Running: Yes</div><div class="line">Slave_SQL_Running: Yes</div><div class="line">[...]</div></pre></td></tr></table></figure>
+<p><strong>注意事项：
+</strong>使用基于GTID复制时，不需要再关心master_log_file和master_log_os，替代的是只需要知道master上的GTID，并且配置在从上即可；<br>记录GTID的有两个全局变量：gtid_executed和gtid_purged<br><strong>与GTID复制相关的参数：</strong><br><a href="http://ow1schdt5.bkt.clouddn.com/2014/08/gtid1.png" target="_blank" rel="external"><img src="http://ow1schdt5.bkt.clouddn.com/2014/08/gtid1.png" alt="gtid"></a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">GTID_EXECUTED ：表示已经在该实例上执行过的事务；执行RESET MASTER可以置空该参数；也可以设置GTID_NEXT执行一个空事务来影响GTID_EXECUTED</div><div class="line">GTID_NEXT ：是SESSION级别参数，表示下一个事务被执行使用的GTID（show variables like ‘gtid_%’;）</div><div class="line">GTID_PURGED ：表示被删除的binlog事务GTID，它是GTID_EXCUTED的子集，MySQL5.6.9，该参数无法被设置</div><div class="line">GTID_OWENED ：表示正在执行的事务的GTID以及对应的线程ID</div><div class="line"></div><div class="line">如果设置MASTER_AUTO_POSITION = 1表示主从复制连接使用基于GTID的方式复制</div><div class="line">CHANGE MASTER TO MASTER_HOST=&apos;192.168.10.216&apos;,MASTER_USER=&apos;rep&apos;,MASTER_PASSWORD=&apos;geekwolf&apos;,MASTER_AUTO_POSITION=1;</div></pre></td></tr></table></figure></p>
+<p>如果在GTID复制模式下想要使用基于文件的复制协议需要MASTER_AUTO_POSITION=0（至少指定其中MASTER_LOG_FILE、MASTER_LOG_POSITION一个）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">CHANGE MASTER TO MASTER_HOST=&apos;192.168.10.216&apos;,MASTER_USER=&apos;rep&apos;,MASTER_PASSWORD=&apos;geekwolf&apos;,MASTER_LOG_FILE=&apos;mysql-bin.000002&apos;,MASTER_LOG_POS=120,MASTER_AUTO_POSITION=0;</div></pre></td></tr></table></figure>
+<h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><blockquote>
+<p><a href="http://dev.mysql.com/doc/refman/5.6/en/replication-gtids-restrictions.html" target="_blank" rel="external">MYSQL 5.6 GTID-based Replication</a><br><a href="http://www.woqutech.com/?p=1108" target="_blank" rel="external">MYSQL 5.6 GTID模式下手工删除日志导致备库数据丢失</a><br><a href="http://www.mysqlperformanceblog.com/2013/05/09/how-to-create-a-new-or-repair-a-broken-gtid-based-slave-with-percona-xtrabackup/" target="_blank" rel="external">How to create a new (or repair a broken) GTID based slave with Percona XtraBackup</a></p>
+</blockquote>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2014/08/20/first-puppet.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Geekwolf">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Geekwolf's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2014/08/20/first-puppet.html" itemprop="url">初认识Puppet</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-08-20T10:59:23+08:00">
+                2014-08-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/自动化运维/" itemprop="url" rel="index">
+                    <span itemprop="name">自动化运维</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2014/08/20/first-puppet.html" class="leancloud_visitors" data-flag-title="初认识Puppet">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  4
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="自动化运维都有哪些开源软件"><a href="#自动化运维都有哪些开源软件" class="headerlink" title="自动化运维都有哪些开源软件"></a>自动化运维都有哪些开源软件</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">初始化：Kickstart、Cobbler、 Rpmbuild/Xen、Kvm、Lxc、Docker/Openstack、Cloudstack、Opennebula、Eucalyplus</div><div class="line">配置类工具：Chef、Puppet、Func、Cfengine</div><div class="line">命令和控制类工具: Fabric、Salstack、Ansible、Capistrano、Pssh、Dsh、Expect</div><div class="line">监控类工具：Cacti、Nagios、Zabbix、Ganglia</div></pre></td></tr></table></figure>
+<h4 id="什么是Puppet"><a href="#什么是Puppet" class="headerlink" title="什么是Puppet"></a>什么是Puppet</h4><p>puppet是一种Linux、Unix平台的集中配置管理系统，使用ruby语言，可管理配置文件、用户、cron任务、软件包、系统服务等。puppet把这些系统实体称之为资源，puppet的设计目标是简化对这些资源的管理以及妥善处理资源间的依赖关系</p>
+<h4 id="Puppet都有哪些特性"><a href="#Puppet都有哪些特性" class="headerlink" title="Puppet都有哪些特性"></a>Puppet都有哪些特性</h4><ul>
+<li>可自动化重复任务、快速部署关键性应用及本地或者云端完成主动管理变更和快速扩展架构规模等</li>
+<li>遵循GPL协议，基于ruby开发，2.7.0以后使用Apache 2.0 License</li>
+<li>对于sa来讲是抽象的，只依赖于ruby与facter</li>
+<li>基于C/S架构，配置master和agent</li>
+<li>默认agent每30分钟连接到puppet master</li>
+<li>能管理多达40多种资源，如：file、user 、group、host、packeage、service、cron、exec、yumrepo等，适合整个软件生命周期的管理</li>
+</ul>
+<h4 id="puppet的整个生命周期"><a href="#puppet的整个生命周期" class="headerlink" title="puppet的整个生命周期"></a>puppet的整个生命周期</h4><p>供应（provisioning:包安装）—&gt;配置（configuration）—&gt;联动(orchestration)—&gt;报告(reporting)</p>
+<h4 id="Puppet适用于哪些场合"><a href="#Puppet适用于哪些场合" class="headerlink" title="Puppet适用于哪些场合"></a>Puppet适用于哪些场合</h4><ul>
+<li>初始化配置、修复、升级、审计</li>
+<li>统一安装、配置管理软件</li>
+<li>统一配置系统优化参数</li>
+<li>定期检测服务是否运行</li>
+<li>快速替换集群时设备的角色</li>
+</ul>
+<h4 id="Puppet社区版和企业版本功能上有什么差别"><a href="#Puppet社区版和企业版本功能上有什么差别" class="headerlink" title="Puppet社区版和企业版本功能上有什么差别"></a>Puppet社区版和企业版本功能上有什么差别</h4><p><a href="http://ow1schdt5.bkt.clouddn.com/2014/08/cb.png" target="_blank" rel="external"><img src="http://ow1schdt5.bkt.clouddn.com/2014/08/cb.png" alt="cb"></a></p>
+<p>请参考：<a href="http://puppetlabs.com/puppet/enterprise-vs-open-source" target="_blank" rel="external">http://puppetlabs.com/puppet/enterprise-vs-open-source</a></p>
+<h4 id="Puppet支持哪些系统"><a href="#Puppet支持哪些系统" class="headerlink" title="Puppet支持哪些系统"></a>Puppet支持哪些系统</h4><p><a href="http://ow1schdt5.bkt.clouddn.com/2014/08/zcos.png" target="_blank" rel="external"><img src="http://ow1schdt5.bkt.clouddn.com/2014/08/zcos.png" alt="zcos"></a></p>
+<h4 id="Puppet架构是怎样的"><a href="#Puppet架构是怎样的" class="headerlink" title="Puppet架构是怎样的"></a>Puppet架构是怎样的</h4><p><a href="http://ow1schdt5.bkt.clouddn.com/2014/08/ppjg.png" target="_blank" rel="external"><img src="http://ow1schdt5.bkt.clouddn.com/2014/08/ppjg.png" alt="ppjg"></a></p>
+<h4 id="Puppet如何工作的"><a href="#Puppet如何工作的" class="headerlink" title="Puppet如何工作的"></a>Puppet如何工作的</h4><p><a href="http://ow1schdt5.bkt.clouddn.com/2014/08/yl.png" target="_blank" rel="external"><img src="http://ow1schdt5.bkt.clouddn.com/2014/08/yl.png" alt="yl"></a></p>
+<p>  所有配置信息为实现其通用性，在master端通常被定义为modules—class—resource（管理和被管理的对象）<br>资源组成类，类封装成模块<br>puppet只定义目标状态，不用关心实现过程；<br>module(class(resource))—&gt;node ‘FQDN’ {class1,class2}—&gt;agent(facter)报告facter给master —&gt;master根据facter信息生成相应的catalog结果—&gt;agent 应用catalog</p>
+<h5 id="流程简述"><a href="#流程简述" class="headerlink" title="流程简述"></a>流程简述</h5><ol>
+<li>客户端puppetd向master发起认证请求。</li>
+<li>Puppet Master告诉client是合法的。</li>
+<li>客户端puppetd开始调用facter，facter可以探测出主机的一些变量，例如主机名，内存大小，IP地址等。pupppetd 把这些信息通过ssl连接发送到服务器端。</li>
+<li>服务器端的puppet Master 检测客户端的主机名，然后找到manifest里面对应的node配置， 并对该部分内容进行解析，解析分为几个阶段，语法检查，如果语法错误就报错。如果语法没错，就继续解析，解析的结果会生成一个中间的“伪代码”(catalog)，然后把伪代码发给客户端。</li>
+<li>客户端接收到“伪代码”，并且执行。</li>
+<li>客户端在执行时判断有没有file文件，如果有就向Fileserver发起请求。</li>
+<li>客户端继续判断有没有配置Report。如果配置，就把执行结果发送给服务器。</li>
+<li>服务器端把客户端的执行结果写入日志。并可以发送给报告系统(DashBoard)</li>
+</ol>
+<h4 id="Puppet组织结构是怎样的"><a href="#Puppet组织结构是怎样的" class="headerlink" title="Puppet组织结构是怎样的"></a>Puppet组织结构是怎样的</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">Puppet的目录结构描述如下： </div><div class="line">|— puppet.conf # 主配置配置文件</div><div class="line">|— fileserver.conf #文件服务器配置文件</div><div class="line">|— auth.conf #认证配置文件 (只允许域内认证)</div><div class="line">|— autosign.conf #自动验证配置文件</div><div class="line">|— tagmail.conf # 邮件配置文件（将错误信息发送）</div><div class="line">|— manifests # 文件存储目录(puppet会先读取该目录的.pp文件site.pp)</div><div class="line">|— nodes</div><div class="line">| | | puppetclient.pp #puppet解析主配置文件所有的模块和节点都在此文件里include</div><div class="line">| |— site.pp # 定义puppet相关的变量和默认配置</div><div class="line">| |— modules.pp # 加载class类模块文件（include nginx）</div><div class="line">|— modules # 定义模块</div><div class="line">| —nginx # 以nginx为例</div><div class="line">| |— file</div><div class="line">| |— manifests</div><div class="line">| | |— init.pp #类的定义，类名必须与模块名相同</div><div class="line">| |—– templates # 模块配置目录，可以被模块的manifests引用</div><div class="line">| | |— nginx.erb #erb模板</div></pre></td></tr></table></figure>
+<h4 id="学习Puppet去哪里"><a href="#学习Puppet去哪里" class="headerlink" title="学习Puppet去哪里"></a>学习Puppet去哪里</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">Puppet相关文档：[http://docs.puppetlabs.com/](http://docs.puppetlabs.com/)</div><div class="line">常用模块下载地址： [https://forge.puppetlabs.com/](https://forge.puppetlabs.com/)</div><div class="line">PuppetDashboard下载地址：[https://downloads.puppetlabs.com/dashboard/](https://downloads.puppetlabs.com/dashboard/)</div><div class="line">PuppetDashboard帮助文档：[http://docs.puppetlabs.com/dashboard/](http://docs.puppetlabs.com/dashboard/)</div><div class="line">Puppet中文wiki：[http://puppet.wikidot.com/](http://puppet.wikidot.com/)</div><div class="line">Puppet中文论坛：[http://www.puppetfans.com/](http://www.puppetfans.com/)</div><div class="line">Puppet运维自动化文档：[http://pan.baidu.com/s/1c0hBMgg](http://pan.baidu.com/s/1c0hBMgg)</div><div class="line">Puppet简单安装可以参考：[http://www.chenshake.com/puppet-study-notes/#i-3](http://www.chenshake.com/puppet-study-notes/#i-3)</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+  </section>
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/3/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/5/"><i class="fa fa-angle-right"></i></a>
+  </nav>
+
+
+
+          </div>
+          
+
+
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg"
+               alt="Geekwolf" />
+          <p class="site-author-name" itemprop="name">Geekwolf</p>
+           
+              <p class="site-description motion-element" itemprop="description">DevOps | Docker | Python | k8s</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">82</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">59</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/geekwolf" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                    
+                      GitHub
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/geekwolf" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                    
+                      Weibo
+                    
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-block">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://blog.simlinux.com" title="旧版博客" target="_blank">旧版博客</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://nolinux.blog.51cto.com" title="nolinux" target="_blank">nolinux</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://xiaorui.cc" title="峰云就她了" target="_blank">峰云就她了</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://note.gitcloud.cc/blog/bluetom520" title="懒懒的天空" target="_blank">懒懒的天空</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.roddypy.com" title="普拉多VX" target="_blank">普拉多VX</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://blog.opskumu.com" title="枯木磊" target="_blank">枯木磊</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2012 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Geekwolf</span>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  
+    <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('-1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("qms5kJ0y2CItrIVFivKxxPsR-gzGzoHsz", "Cn3w20futtphxpaDSP5tHjzy");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

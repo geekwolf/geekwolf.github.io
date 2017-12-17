@@ -1,0 +1,1411 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="DevOps," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Geekwolf's Blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="持续集成和部署是每一个互联网团队都必须要面对的问题，特别是初创公司业务和技术团队快速增长，技术积累较弱的情况下，一个高效的，可遵循持续的运维规范尤为重要，最近一段时间一直在梳理项目开发流程以及自动化测试和部署规范，作为一个总结和大家分享，希望有所帮助：高效可持续的运维环境需要合理的规范作为支撑:   应用管理规范 权限管理规范 配置变更规范 发布策略规范 日志运维规范 持续集成部署实战">
+<meta name="keywords" content="DevOps">
+<meta property="og:type" content="article">
+<meta property="og:title" content="初创公司应该如何做好持续集成和部署？">
+<meta property="og:url" content="http://www.simlinux.com/2016/03/16/startup-company-cicd.html">
+<meta property="og:site_name" content="Geekwolf&#39;s Blog">
+<meta property="og:description" content="持续集成和部署是每一个互联网团队都必须要面对的问题，特别是初创公司业务和技术团队快速增长，技术积累较弱的情况下，一个高效的，可遵循持续的运维规范尤为重要，最近一段时间一直在梳理项目开发流程以及自动化测试和部署规范，作为一个总结和大家分享，希望有所帮助：高效可持续的运维环境需要合理的规范作为支撑:   应用管理规范 权限管理规范 配置变更规范 发布策略规范 日志运维规范 持续集成部署实战">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://ow1schdt5.bkt.clouddn.com/2016/03/featurebranch.png">
+<meta property="og:image" content="http://ow1schdt5.bkt.clouddn.com/2016/03/tree.png">
+<meta property="og:image" content="http://ow1schdt5.bkt.clouddn.com/2016/03/ansible-dire.png">
+<meta property="og:image" content="http://ow1schdt5.bkt.clouddn.com/2016/03/deploytime.jpg">
+<meta property="og:image" content="http://ow1schdt5.bkt.clouddn.com/2016/03/cicdflow.png">
+<meta property="og:image" content="http://ow1schdt5.bkt.clouddn.com/2016/03/deploymentdire.jpg">
+<meta property="og:updated_time" content="2017-12-17T01:55:01.629Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="初创公司应该如何做好持续集成和部署？">
+<meta name="twitter:description" content="持续集成和部署是每一个互联网团队都必须要面对的问题，特别是初创公司业务和技术团队快速增长，技术积累较弱的情况下，一个高效的，可遵循持续的运维规范尤为重要，最近一段时间一直在梳理项目开发流程以及自动化测试和部署规范，作为一个总结和大家分享，希望有所帮助：高效可持续的运维环境需要合理的规范作为支撑:   应用管理规范 权限管理规范 配置变更规范 发布策略规范 日志运维规范 持续集成部署实战">
+<meta name="twitter:image" content="http://ow1schdt5.bkt.clouddn.com/2016/03/featurebranch.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.simlinux.com/2016/03/16/startup-company-cicd.html"/>
+
+
+
+
+
+  <title>初创公司应该如何做好持续集成和部署？ | Geekwolf's Blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="//s13.cnzz.com/z_stat.php?id=1264375041&web_id=1264375041" language="JavaScript"></script>
+  </div>
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Geekwolf's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Quick notes</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tips">
+          <a href="/tips/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-gittip"></i> <br />
+            
+            tips
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />
+            
+            站点地图
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2016/03/16/startup-company-cicd.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Geekwolf">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Geekwolf's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">初创公司应该如何做好持续集成和部署？</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-03-16T19:11:45+08:00">
+                2016-03-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CI-CD/" itemprop="url" rel="index">
+                    <span itemprop="name">CI/CD</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2016/03/16/startup-company-cicd.html" class="leancloud_visitors" data-flag-title="初创公司应该如何做好持续集成和部署？">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  10
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>　　　 持续集成和部署是每一个互联网团队都必须要面对的问题，特别是初创公司业务和技术团队快速增长，技术积累较弱的情况下，一个高效的，可遵循持续的运维规范尤为重要，最近一段时间一直在梳理项目开发流程以及自动化测试和部署规范，作为一个总结和大家分享，希望有所帮助：<br>高效可持续的运维环境需要合理的规范作为支撑:</p>
+<blockquote>
+<ul>
+<li>应用管理规范</li>
+<li>权限管理规范</li>
+<li>配置变更规范</li>
+<li>发布策略规范</li>
+<li>日志运维规范</li>
+<li>持续集成部署实战</li>
+</ul>
+</blockquote>
+<h3 id="应用管理规范"><a href="#应用管理规范" class="headerlink" title="应用管理规范"></a>应用管理规范</h3><h4 id="应用版本化"><a href="#应用版本化" class="headerlink" title="应用版本化"></a>应用版本化</h4><p>　　　 可以使用SVN,Git对代码进行版本控制，建议使用Git(GitLab)<br>　　　 项目Group命名规范: 按大的原则根据产品域名区分  或者根据前后端业务模块进行分组(小写字母命名,横杠[-]作为连接字符)<br>　　　 比如: MAKA官网<a href="http://www.maka.im对应的Git仓库Group为official" target="_blank" rel="external">http://www.maka.im对应的Git仓库Group为official</a><br>　　　 按照功能模块分组如商城前端对应的Git仓库Group为store<br>项目名命名规范: 小写字母命名,横杠[-]作为连接字符,命名规则[产品名称]-[项目类型]-(自定义名称),如official-store<br><strong>注:</strong> 在创建项目仓库时就要权衡前后端或者大的功能模块的拆分保持低耦合度</p>
+<h4 id="合理的分支策略"><a href="#合理的分支策略" class="headerlink" title="合理的分支策略"></a>合理的分支策略</h4><p>常用的Git工作流：</p>
+<p><strong>集中式工作流</strong>：很多公司使用SVN,Git使用并不熟悉,如果迁移至Git之后可以考虑集中式工作流进行开发，代码库只有master一个分支,所有开发者只有本地master和远端master分支，集中式工作流使用起来虽然简单，但无法充分利用git的优势<br><strong>功能分支工作流</strong>： 与集中式工作流不同的地方在于除了master分支以外有功能分支(按功能需求创建的功能分支如third-party-login-feature)，日常开发在功能分支,提测集成时提交Merge Requests(在Bitbucket中是Pull Request)，此处开发者可以进行讨论审核代码,同意后可以合并至master分支,未同意或者让开发者修改后重新提交可以选择关闭该MR</p>
+<p><img src="http://ow1schdt5.bkt.clouddn.com/2016/03/featurebranch.png" alt=""><br><strong>Gitflow工作流</strong>：两个主干分支master(正式发布的历史)和develop(功能集成分支)，开发者应基于develop分支创建feature功能分支用于开发,开发完成后提交merge requests请求合并进develop分支,此时若到了发布窗口,基于此时的develop分支创建发布分支release用于测试,预发布,发布以避免影响develop分支的正常集成合并功能分支；release分支不再有新的功能合并进来，一旦创建只用于bug修复并将修复cherry-pick到develop分支;发布完成后，release分支合并进master并分配版本号打tag用于存放发布历史;Gitflow工作流方式适用于大型项目<br><strong>Forking工作流</strong>：开发者fork官方的repo到自己的账号空间,对于官方分支只有只读权限，开发者通过pr提交给官方审核是否合并进代码库;开发者通过同步上游官方的repo来使用其他人的代码,分支策略可参考上述三种工作流,适合开源项目</p>
+<p>　　　 针对创业公司参与同一个项目的开发者并不多,过于复杂的分支策略并不能带来便利;可以参考leancloud的分支模式,根据团队的使用情况进行调整</p>
+<p><strong>介绍下我们当前使用的分支策略：</strong><br>　　　 master：主干分支master用于日常开发的基线<br>　　　 userA：   开发者A日常开发所在分支<br>　　　 release-201603091106: master分支集成测试完成后,构建到预发布环境时自动创建release-201603091106用于发布<br>　　　 hotfix-201603091106 基于当前发布之后的release-201603091106分支用于修复bug,在通过提交merge requests方式合并进release-201603091106，并将修复cherry-pick到master分支<br>　　　 日常开发在userA分支操作，然后提交merge requests请求合并至master分支,本地通过git fetch origin master，然后在userA分支git rebase origin/master将master最新commit合并到本地userA分支从而形成闭环开发</p>
+<h4 id="关于代码审核"><a href="#关于代码审核" class="headerlink" title="关于代码审核"></a>关于代码审核</h4><p>　　　三剑客GitLab+Jenkins+Gerrit,Gerrit作为创业公司代码审核的话略显复杂，不足够敏捷;建议使用GitLab的Merge Requests或者Github和Bitbucket中Pull Requests作为代码审核和讨论的工具,也可以选择Facebook的Phabricator(可同时作为代码托管和评审,非常敏捷,由于Phabricator提供的工具集在windows下使用起来不太友好,后来没有选用,后期会分享Phabricator的使用思路和工作流)</p>
+<h4 id="目录结构"><a href="#目录结构" class="headerlink" title="目录结构"></a>目录结构</h4><p>　　　规范的目录结构不仅有利于开发者理解代码结构,更有利于代码的快速部署，以PHP为例目录结构建议将代码配置文件(数据库，Redis，OSS Key，语言开关，日志级别开关等),日志文件,其他文件缓存等独立于代码库之外存放，前端项目src为源码目录,dist为前端经过压缩合并等最终生成的代码目录(发布时可忽略src);<br>　　　每个项目详细写README.md:项目说明,各个环境对应的访问路径,目录说明,构建压缩方式,Nginx配置等,代码仓库中包含额外的test目录存放测试用例(本着谁开发谁写测试用例);</p>
+<p><img src="http://ow1schdt5.bkt.clouddn.com/2016/03/tree.png" alt=""></p>
+<h3 id="权限管理规范"><a href="#权限管理规范" class="headerlink" title="权限管理规范"></a>权限管理规范</h3><p>　　　权限有两类一个是系统权限(包括服务器登陆，数据库/Redis等)另外一个是服务运行时的权限;</p>
+<h4 id="针对系统权限层面"><a href="#针对系统权限层面" class="headerlink" title="针对系统权限层面"></a>针对系统权限层面</h4><p>　　　统一入口，受限访问IP，禁止空密码弱口令，生产环境服务器需要先拨入vpn之后通过跳板机才能连接成功（当然我们使用的是开源当中最好的跳板机Jumpserver），任何人的操作都需要审计;生产数据库及Redis禁止了外网访问,分别使用phpMyAdmin和RedisLive统一访问入口(增加了多主机访问及屏蔽了危险操作如DDL 数据的导入导出等，也需要先拨入vpn才能访问);</p>
+<p>　　　开发测试环境权限控制现对宽松,DEV Leader和QA Leader同时具有开发和测试环境的服务器及数据库权限，便于测试和Debug;生产环境为了便于开发调试生产代码且不影响线上增加了低配的节点，未在线，但环境，代码及后端均和生产一致;</p>
+<h4 id="针对服务权限层面"><a href="#针对服务权限层面" class="headerlink" title="针对服务权限层面"></a>针对服务权限层面</h4><p>　　　以web服务为例:Nginx和php-fpm运行用户和用户组为www-data,代码目录用户为www,这样代码目录默认情况下web服务只读,避免出现文件和目录777权限的情况；日志和缓存目录用户设置www-data，但要禁止访问php等动态文件</p>
+<p>　　　禁止危险函数phpinfo exec eval system等,具体可参考<a href="http://www.sinacloud.com/doc/sae/php/runtime.html,禁止夸目录访问open_basedir，是否开启的性能对比请参考http://blog.simlinux.com/archives/1531.html" target="_blank" rel="external">http://www.sinacloud.com/doc/sae/php/runtime.html,禁止夸目录访问open_basedir，是否开启的性能对比请参考http://blog.simlinux.com/archives/1531.html</a></p>
+<h3 id="配置变更规范"><a href="#配置变更规范" class="headerlink" title="配置变更规范"></a>配置变更规范</h3><h4 id="系统部署"><a href="#系统部署" class="headerlink" title="系统部署"></a>系统部署</h4><p>　　　传统IDC机房可以通过定制镜像或者使用cobbler定制安装，运行的服务也可以定制在镜像中,但建议安装系统时注册puppet/salt agent，再自动化署相关服务<br>　　　公有云中可以在服务器上部署相应环境后创建系统快照制作系统镜像,弹性扩容时可选择该镜像自动化安装   </p>
+<h4 id="日常变更"><a href="#日常变更" class="headerlink" title="日常变更"></a>日常变更</h4><p>　　   日常变更包括服务配置的变更和代码配置的变更,这些操作我们是通过Ansible(对比puppet/salt的好处就是简单方便不用装agent，后面会详细介绍如何基于Ansible做发布回滚)，变更内容使用git进行版本控制制</p>
+<p><img src="http://ow1schdt5.bkt.clouddn.com/2016/03/ansible-dire.png" alt=""></p>
+<h3 id="发布策略规范"><a href="#发布策略规范" class="headerlink" title="发布策略规范"></a>发布策略规范</h3><h4 id="发布时间"><a href="#发布时间" class="headerlink" title="发布时间"></a>发布时间</h4><p><img src="http://ow1schdt5.bkt.clouddn.com/2016/03/deploytime.jpg" alt=""></p>
+<p><strong>注意:</strong>以上请根据自己业务做相应调整,避免在业务高峰期发布(除应急bug外),我们业务高峰期基本在18:00-23:30，低峰期基本在01:00-06:00,这也是微信分享阅读的高峰和低峰时段;无论应急Bug还是日常迭代都必须由QA测试通过和产品经理审核通过后才能上线(曾经出现过开发为了修复线上很急的bug,开发修复后自主上线导致生产出现更严重的问题)</p>
+<h4 id="发布工具的选择"><a href="#发布工具的选择" class="headerlink" title="发布工具的选择"></a>发布工具的选择</h4><p>　　　 无论是自主开发发布系统亦或是使用开源的系统都要本着解决问题的原则,否则只能是重复造轮子,然并卵呀<br>　　　 开源的持续集成和发布里面个人觉得比较好的如:Jenkins,Walle,Spinnaker，go，Gitlab-ci，Bamboo(收费)等，其他参考<a href="https://github.com/geekwolf/sa-scripts/blob/master/devops.md" target="_blank" rel="external">https://github.com/geekwolf/sa-scripts/blob/master/devops.md</a><br>　　　 下面介绍我们基于GitLab+Jenkins+Ansible(Flamingo自动化代码发布工具)实现的自动化代码部署平台，流程如下:</p>
+<p><img src="http://ow1schdt5.bkt.clouddn.com/2016/03/cicdflow.png" alt=""></p>
+<p>　　　<strong>Flamingo</strong>(“火烈鸟”,<a href="https://github.com/geekwolf/flamingo)是基于Ansible的自动化代码发布工具，目的是实现统一的代码发布方式,思路基于Capistrano,并对Ansisrano进行了改造可以通过传入语言环境,主机组(应用组/灰度机组等),项目代码库,分支名称,项目名称等参数来进行自动化打包发布,也可以将Flamingo工具二次打包使用" target="_blank" rel="external">https://github.com/geekwolf/flamingo)是基于Ansible的自动化代码发布工具，目的是实现统一的代码发布方式,思路基于Capistrano,并对Ansisrano进行了改造可以通过传入语言环境,主机组(应用组/灰度机组等),项目代码库,分支名称,项目名称等参数来进行自动化打包发布,也可以将Flamingo工具二次打包使用</a><br>　　　<strong>Flamingo</strong>本者回滚即发布的原则以简化发布流程，回滚时传入要回滚的分支即可，其他参数可参看defaults/main.yml进行了解;(注:依赖Git/rsync/ansible)<br>　　　 例子:</p>
+<pre><code>ansible-playbook deploy.yml  --extra-vars=&apos;flamingo_git_repo=git@github.com:geekwolf/flamingo.git flamingo_product_name=flamingo&apos;
+</code></pre><p>　　　 执行后生成的目录结构如下图(目录定义请参考defaults/main.yml):</p>
+<p><img src="http://ow1schdt5.bkt.clouddn.com/2016/03/deploymentdire.jpg" alt=""></p>
+<h3 id="日志运维规范"><a href="#日志运维规范" class="headerlink" title="日志运维规范"></a>日志运维规范</h3><p>　　　 毫无疑问规范的日志对于运维和开发排查问题有非常大的帮助，例如PHP项目日志格式可以规范为时间,日志级别,日志内容(比如对于连接多个DB时出现连接不上或超时应该把实例地址一同写入日志)，可以参考psr-3的标准: <a href="http://www.php-config.org/psr/psr-3" target="_blank" rel="external">http://www.php-config.org/psr/psr-3</a><br>　　　 通过ELK将业务日志,PHP自身错误日志/慢日志,Nginx慢日志等进行搜集统计并结合Zabbix实现报警,便于及早发现问题</p>
+<h3 id="持续集成部署实战"><a href="#持续集成部署实战" class="headerlink" title="持续集成部署实战"></a>持续集成部署实战</h3><p>　　　 后续篇章会分享针对PHP/JAVA/前端以及Android/ios持续集成和部署实战,敬请关注</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>　　　 以上只是粗略对持续集成和部署过程中遇到的问题进行了总结，可能并不完美，但对于初创公司应该有些帮助,欢迎一起学习讨论！</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创分享，您的支持将鼓励我继续创作</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.png" alt="Geekwolf WeChat Pay"/>
+        <p>微信打赏</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.png" alt="Geekwolf Alipay"/>
+        <p>支付宝打赏</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    Geekwolf
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://www.simlinux.com/2016/03/16/startup-company-cicd.html" title="初创公司应该如何做好持续集成和部署？">http://www.simlinux.com/2016/03/16/startup-company-cicd.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/DevOps/" rel="tag"># DevOps</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/12/14/php-openbasedir.html" rel="next" title=" 记一次Web服务器lstat系统调用严重故障分析">
+                <i class="fa fa-chevron-left"></i>  记一次Web服务器lstat系统调用严重故障分析
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/04/21/android-pack-deploy.html" rel="prev" title="Android多渠道打包这样做才酸爽！？">
+                Android多渠道打包这样做才酸爽！？ <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zMDc3Mi83MzI0"></div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg"
+               alt="Geekwolf" />
+          <p class="site-author-name" itemprop="name">Geekwolf</p>
+           
+              <p class="site-description motion-element" itemprop="description">DevOps | Docker | Python | k8s</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">82</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">59</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/geekwolf" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                    
+                      GitHub
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/geekwolf" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                    
+                      Weibo
+                    
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-block">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://blog.simlinux.com" title="旧版博客" target="_blank">旧版博客</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://nolinux.blog.51cto.com" title="nolinux" target="_blank">nolinux</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://xiaorui.cc" title="峰云就她了" target="_blank">峰云就她了</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://note.gitcloud.cc/blog/bluetom520" title="懒懒的天空" target="_blank">懒懒的天空</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.roddypy.com" title="普拉多VX" target="_blank">普拉多VX</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://blog.opskumu.com" title="枯木磊" target="_blank">枯木磊</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#应用管理规范"><span class="nav-number">1.</span> <span class="nav-text">应用管理规范</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#应用版本化"><span class="nav-number">1.1.</span> <span class="nav-text">应用版本化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#合理的分支策略"><span class="nav-number">1.2.</span> <span class="nav-text">合理的分支策略</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#关于代码审核"><span class="nav-number">1.3.</span> <span class="nav-text">关于代码审核</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#目录结构"><span class="nav-number">1.4.</span> <span class="nav-text">目录结构</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#权限管理规范"><span class="nav-number">2.</span> <span class="nav-text">权限管理规范</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#针对系统权限层面"><span class="nav-number">2.1.</span> <span class="nav-text">针对系统权限层面</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#针对服务权限层面"><span class="nav-number">2.2.</span> <span class="nav-text">针对服务权限层面</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置变更规范"><span class="nav-number">3.</span> <span class="nav-text">配置变更规范</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#系统部署"><span class="nav-number">3.1.</span> <span class="nav-text">系统部署</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#日常变更"><span class="nav-number">3.2.</span> <span class="nav-text">日常变更</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#发布策略规范"><span class="nav-number">4.</span> <span class="nav-text">发布策略规范</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#发布时间"><span class="nav-number">4.1.</span> <span class="nav-text">发布时间</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#发布工具的选择"><span class="nav-number">4.2.</span> <span class="nav-text">发布工具的选择</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#日志运维规范"><span class="nav-number">5.</span> <span class="nav-text">日志运维规范</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#持续集成部署实战"><span class="nav-number">6.</span> <span class="nav-text">持续集成部署实战</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">7.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2012 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Geekwolf</span>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('-1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("qms5kJ0y2CItrIVFivKxxPsR-gzGzoHsz", "Cn3w20futtphxpaDSP5tHjzy");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

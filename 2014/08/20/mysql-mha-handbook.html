@@ -1,0 +1,1430 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="mha,MySQL高可用," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Geekwolf's Blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="MHA特性 主服务器的自动监控和故障转移MHA监控复制架构的主服务器，一旦检测到主服务器故障，就会自动进行故障转移。即使有些从服务器没有收到最新的relay log，MHA自动从最新的从服务器上识别差异的relay log并把这些日志应用到其他从服务器上，因此所有的从服务器保持一致性了。MHA通常在几秒内完成故障转移，9-12秒可以检测出主服务器故障，7-10秒内关闭故障的主服务器以避免脑裂，几秒">
+<meta name="keywords" content="mha,MySQL高可用">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MHA高可用部署及测试">
+<meta property="og:url" content="http://www.simlinux.com/2014/08/20/mysql-mha-handbook.html">
+<meta property="og:site_name" content="Geekwolf&#39;s Blog">
+<meta property="og:description" content="MHA特性 主服务器的自动监控和故障转移MHA监控复制架构的主服务器，一旦检测到主服务器故障，就会自动进行故障转移。即使有些从服务器没有收到最新的relay log，MHA自动从最新的从服务器上识别差异的relay log并把这些日志应用到其他从服务器上，因此所有的从服务器保持一致性了。MHA通常在几秒内完成故障转移，9-12秒可以检测出主服务器故障，7-10秒内关闭故障的主服务器以避免脑裂，几秒">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://ow1schdt5.bkt.clouddn.com/2014/08/ar.png">
+<meta property="og:image" content="http://ow1schdt5.bkt.clouddn.com/2014/08/mhaq.jpg">
+<meta property="og:updated_time" content="2017-12-17T01:55:01.620Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="MHA高可用部署及测试">
+<meta name="twitter:description" content="MHA特性 主服务器的自动监控和故障转移MHA监控复制架构的主服务器，一旦检测到主服务器故障，就会自动进行故障转移。即使有些从服务器没有收到最新的relay log，MHA自动从最新的从服务器上识别差异的relay log并把这些日志应用到其他从服务器上，因此所有的从服务器保持一致性了。MHA通常在几秒内完成故障转移，9-12秒可以检测出主服务器故障，7-10秒内关闭故障的主服务器以避免脑裂，几秒">
+<meta name="twitter:image" content="http://ow1schdt5.bkt.clouddn.com/2014/08/ar.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.simlinux.com/2014/08/20/mysql-mha-handbook.html"/>
+
+
+
+
+
+  <title>MHA高可用部署及测试 | Geekwolf's Blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="//s13.cnzz.com/z_stat.php?id=1264375041&web_id=1264375041" language="JavaScript"></script>
+  </div>
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Geekwolf's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Quick notes</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tips">
+          <a href="/tips/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-gittip"></i> <br />
+            
+            tips
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />
+            
+            站点地图
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2014/08/20/mysql-mha-handbook.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Geekwolf">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Geekwolf's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">MHA高可用部署及测试</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-08-20T10:37:19+08:00">
+                2014-08-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/MySQL数据库/" itemprop="url" rel="index">
+                    <span itemprop="name">MySQL数据库</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2014/08/20/mysql-mha-handbook.html" class="leancloud_visitors" data-flag-title="MHA高可用部署及测试">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  28
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <h4 id="MHA特性"><a href="#MHA特性" class="headerlink" title="MHA特性"></a>MHA特性</h4><ol>
+<li>主服务器的自动监控和故障转移<br>MHA监控复制架构的主服务器，一旦检测到主服务器故障，就会自动进行故障转移。即使有些从服务器没有收到最新的relay log，MHA自动从最新的从服务器上识别差异的relay log并把这些日志应用到其他从服务器上，因此所有的从服务器保持一致性了。MHA通常在几秒内完成故障转移，9-12秒可以检测出主服务器故障，7-10秒内关闭故障的主服务器以避免脑裂，几秒中内应用差异的relay log到新的主服务器上，整个过程可以在10-30s内完成。还可以设置优先级指定其中的一台slave作为master的候选人。由于MHA在slaves之间修复一致性，因此可以将任何slave变成新的master，而不会发生一致性的问题，从而导致复制失败。</li>
+<li>交互式主服务器故障转移<br>  可以只使用MHA的故障转移，而不用于监控主服务器，当主服务器故障时，人工调用MHA来进行故障故障。</li>
+<li>非交互式的主故障转移<br>不监控主服务器，但自动实现故障转移。这种特征适用于已经使用其他软件来监控主服务器状态，比如heartbeat来检测主服务器故障和虚拟IP地址接管，可以使用MHA来实现故障转移和slave服务器晋级为master服务器。</li>
+<li>在线切换主服务器<br>在许多情况下，需要将现有的主服务器迁移到另外一台服务器上。比如主服务器硬件故障，RAID控制卡需要重建，将主服务器移到性能更好的服务器上等等。维护主服务器引起性能下降，导致停机时间至少无法写入数据。另外，阻塞或杀掉当前运行的会话会导致主主之间数据不一致的问题发生。MHA提供快速切换和优雅的阻塞写入，这个切换过程只需要0.5-2s的时间，这段时间内数据是无法写入的。在很多情况下，0.5-2s的阻塞写入是可以接受的。因此切换主服务器不需要计划分配维护时间窗口(呵呵，不需要你在夜黑风高时通宵达旦完成切换主服务器的任务)。</li>
+</ol>
+<h4 id="MHA工作机制"><a href="#MHA工作机制" class="headerlink" title="MHA工作机制"></a>MHA工作机制</h4><p>MHA自动Failover过程解析<br><a href="http://www.mysqlsystems.com/2012/03/figure-out-process-of-autofailover-on-mha.html" target="_blank" rel="external">http://www.mysqlsystems.com/2012/03/figure-out-process-of-autofailover-on-mha.html</a><br><a href="https://code.google.com/p/mysql-master-ha/wiki/Sequences_of_MHA" target="_blank" rel="external">https://code.google.com/p/mysql-master-ha/wiki/Sequences_of_MHA</a></p>
+<h4 id="MHA适用的主从架构"><a href="#MHA适用的主从架构" class="headerlink" title="MHA适用的主从架构"></a>MHA适用的主从架构</h4><p><a href="https://code.google.com/p/mysql-master-ha/wiki/UseCases" target="_blank" rel="external">https://code.google.com/p/mysql-master-ha/wiki/UseCases</a></p>
+<h4 id="MHA高可用环境的构建"><a href="#MHA高可用环境的构建" class="headerlink" title="MHA高可用环境的构建"></a>MHA高可用环境的构建</h4><h4 id="实验环境"><a href="#实验环境" class="headerlink" title="实验环境"></a>实验环境</h4><p><a href="http://ow1schdt5.bkt.clouddn.com/2014/08/ar.png" target="_blank" rel="external"><img src="http://ow1schdt5.bkt.clouddn.com/2014/08/ar.png" alt="ar"></a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">Node1:192.168.10.216 (主)</div><div class="line">Node2:192.168.10.217 (从,主故障切换的备主)</div><div class="line">Node3:192.168.10.218 (从,兼MHA管理节点)</div><div class="line">VIP : 192.168.10.219</div><div class="line">Mysql:Percona-Server-5.6.16-rel64.2-569</div><div class="line">以上节点系统均为CentOS6.5 x64</div></pre></td></tr></table></figure></p>
+<h4 id="实验大概步骤"><a href="#实验大概步骤" class="headerlink" title="实验大概步骤"></a>实验大概步骤</h4><ol>
+<li>三节点配置epel的yum源，安装相关依赖包</li>
+<li>建立主从复制关系</li>
+<li>ssh-keygen实现三台机器之间相互免密钥登录</li>
+<li>三节点安装mha4mysql-node-0.56,node3上安装mha4mysql-manager-0.56</li>
+<li>在node3上管理MHA配置文件</li>
+<li>masterha_check_ssh验证ssh信任登录是否成功,masterha_check_repl验证mysql复制是否成功</li>
+<li>启动MHA manager，并监控日志文件</li>
+<li>测试master(Node1)的mysql宕掉后，是否会自动切换正常<br>9 . 配置VIP，切换后从自动接管主服务，并对客户端透明</li>
+</ol>
+<h4 id="脚本相关说明"><a href="#脚本相关说明" class="headerlink" title="脚本相关说明"></a>脚本相关说明</h4><p>MHA node有三个脚本，依赖perl模块</p>
+<blockquote>
+<p>save_binary_logs：保存和拷贝宕掉的主服务器二进制日志<br>apply_diff_relay_logs:识别差异的relay log事件，并应用到所有从服务器节点<br>purge_relay_logs:清除relay log日志文件</p>
+</blockquote>
+<h4 id="MHA部署过程"><a href="#MHA部署过程" class="headerlink" title="MHA部署过程"></a>MHA部署过程</h4><p><strong>A.</strong>三节点配置epel的yum源，安装相关依赖包<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">rpm -Uvh http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm</div><div class="line">rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-6</div><div class="line">yum  -y install perl-DBD-MySQL  ncftp</div></pre></td></tr></table></figure></p>
+<p><strong>B.</strong> 建立主从复制关系</p>
+<p>在node1上：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">mysql&gt; grant replication slave  on *.* to &apos;rep&apos;@&apos;192.168.10.%&apos; identified by &apos;geekwolf&apos;;</div><div class="line">mysql&gt; grant all on *.* to &apos;root&apos;@&apos;192.168.10.%&apos; identified by &apos;geekwolf&apos;;</div><div class="line">mysql&gt; show master status;</div></pre></td></tr></table></figure></p>
+<p>拷贝node1的data目录同步到node2，node3 在node2 node3上：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">mysql&gt;change master  to  master_host=&apos;192.168.10.216&apos;, master_user=&apos;rep&apos;, master_password=&apos;geekwolf&apos;,master_port=3306, master_log_file=&apos;mysql-in.000006&apos;,master_log_pos=120,master_connect_retry=1;</div><div class="line">mysql&gt;start slave;</div></pre></td></tr></table></figure></p>
+<p>每个节点都做好mysql命令的软链<br><code>ln -s /usr/local/mysql/bin/* /usr/local/bin/</code><br><strong>C.</strong> ssh-keygen实现三台机器之间相互免密钥登录 在node1(在其他两个节点一同)执行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">ssh-keygen -t rsa </div><div class="line">ssh-copy-id -i /root/.ssh/id_rsa.pub root@node1 </div><div class="line">ssh-copy-id -i /root/.ssh/id_rsa.pub root@node2 </div><div class="line">ssh-copy-id -i /root/.ssh/id_rsa.pub root@node3</div></pre></td></tr></table></figure></p>
+<p><strong>D.</strong> 三节点安装mha4mysql-node-0.56,node3上安装mha4mysql-manager-0.56<br>在node1 node2 node3安装mha4mysql-node<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">wget [https://googledrive.com/host/0B1lu97m8-haWeHdGWXp0YVVUSlk/mha4mysql-node-0.56.tar.gz](https://googledrive.com/host/0B1lu97m8-haWeHdGWXp0YVVUSlk/mha4mysql-node-0.56.tar.gz)</div><div class="line">tar xf mha4mysql-node-0.56.tar.gz</div><div class="line">cd mha4mysql-node</div><div class="line">perl Makefile.PL</div><div class="line">make &amp;&amp; make install</div></pre></td></tr></table></figure></p>
+<p>在node3上安装mha4mysql-manager<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">wget [https://googledrive.com/host/0B1lu97m8-haWeHdGWXp0YVVUSlk/mha4mysql-manager-0.56.tar.gz](https://googledrive.com/host/0B1lu97m8-haWeHdGWXp0YVVUSlk/mha4mysql-manager-0.56.tar.gz)</div><div class="line">tar xf mha4mysql-manager-0.56.tar.gz</div><div class="line">cd mha4mysql-manager-0.56</div><div class="line">yum install perl-DBD-MySQL perl-Config-Tiny perl-Log-Dispatch perl-Parallel-ForkManager perl-Config-IniFiles perl-Time-HiRes</div></pre></td></tr></table></figure></p>
+<p><strong>E.</strong> 在node3上管理MHA配置文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">mkdir -p /etc/mha/&#123;app1,scripts&#125;</div><div class="line">cp mha4mysql-manager-0.56/samples/conf/_ /etc/mha/</div><div class="line">cp mha4mysql-manager-0.56/samples/scripts/_ /etc/mha/scripts/</div><div class="line">mv /etc/mha/app1.cnf /etc/mha/app1/</div><div class="line">mv /etc/mha/masterha_default.cnf /etc/masterha_default.cnf</div></pre></td></tr></table></figure></p>
+<p>设置全局配置：<br>vim /etc/mha/masterha_default.cnf<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">[server default]</div><div class="line">user=root</div><div class="line">password=geekwolf</div><div class="line">ssh_user=root</div><div class="line">repl_user=rep</div><div class="line">repl_password=geekwolf</div><div class="line">ping_interval=1</div><div class="line">#shutdown_script=&quot;&quot;</div><div class="line">secondary_check_script = masterha_secondary_check -s node1 -s node2 -s node3 --user=root --master_host=node1 --master_ip=192.168.10.216 --master_port=3306</div><div class="line">#master_ip_failover_script=&quot;/etc/mha/scripts/master_ip_failover&quot;</div><div class="line">#master_ip_online_change_script=&quot;/etc/mha/scripts/master_ip_online_change&quot;</div><div class="line"># shutdown_script= /script/masterha/power_manager</div><div class="line">#report_script=&quot;&quot;</div></pre></td></tr></table></figure></p>
+<p>vim /etc/mha/app1/app1.cnf<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">[server default] </div><div class="line">manager_workdir=/var/log/mha/app1</div><div class="line">manager_log=/var/log/mha/app1/manager.log</div><div class="line">[server1] </div><div class="line">hostname=node1</div><div class="line">master_binlog_dir=&quot;/usr/local/mysql/logs&quot;</div><div class="line">candidate_master=1</div><div class="line">[server2]</div><div class="line">hostname=node2</div><div class="line">master_binlog_dir=&quot;/usr/local/mysql/logs&quot;</div><div class="line">candidate_master=1</div><div class="line">[server3]</div><div class="line">hostname=node3</div><div class="line">master_binlog_dir=&quot;/usr/local/mysql/logs&quot;</div><div class="line">no_master=1</div></pre></td></tr></table></figure></p>
+<p><strong>注释：</strong><br>candidate_master=1 表示该主机优先可被选为new master，当多个[serverX]等设置此参数时，优先级由[serverX]配置的顺序决定<br>secondary_check_script mha强烈建议有两个或多个网络线路检查MySQL主服务器的可用性。默认情况下,只有单一的路线 MHA Manager检查:从Manager to Master,但这是不可取的。MHA实际上可以有两个或两个以上的检查路线通过调用外部脚本定义二次检查脚本参数<br>master_ip_failover_script 在MySQL从服务器提升为新的主服务器时，调用此脚本，因此可以将vip信息写到此配置文件<br>master_ip_online_change_script 使用masterha_master_switch命令手动切换MySQL主服务器时后会调用此脚本，参数和master_ip_failover_script 类似，脚本可以互用   shutdown_script 此脚本(默认samples内的脚本)利用服务器的远程控制IDRAC等，使用ipmitool强制去关机，以避免fence设备重启主服务器，造成脑列现象<br>report_script 当新主服务器切换完成以后通过此脚本发送邮件报告，可参考使用 <a href="http://caspian.dotconf.net/menu/Software/SendEmail/sendEmail-v1.56.tar.gz" target="_blank" rel="external">http://caspian.dotconf.net/menu/Software/SendEmail/sendEmail-v1.56.tar.gz</a><br>以上涉及到的脚本可以从mha4mysql-manager-0.56/samples/scripts/*拷贝进行修改使用<br>其他manager详细配置参数<a href="https://code.google.com/p/mysql-master-ha/wiki/Parameters" target="_blank" rel="external">https://code.google.com/p/mysql-master-ha/wiki/Parameters</a></p>
+<p><strong>F.</strong> masterha_check_ssh验证ssh信任登录是否成功,masterha_check_repl验证mysql复制是否成功<br>验证ssh信任：masterha_check_ssh —conf=/etc/mha/app1/app1.cnf<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">[root@localhost ~]# masterha_check_ssh --conf=/etc/mha/app1/app1.cnf</div><div class="line">Tue May 13 07:53:15 2014 - [warning] Global configuration file /etc/masterha_default.cnf not found. Skipping.</div><div class="line">Tue May 13 07:53:15 2014 - [info] Reading application default configuration from /etc/mha/app1/app1.cnf..</div><div class="line">Tue May 13 07:53:15 2014 - [info] Reading server configuration from /etc/mha/app1/app1.cnf..</div><div class="line">Tue May 13 07:53:15 2014 - [info] Starting SSH connection tests..</div><div class="line">Tue May 13 07:53:16 2014 - [debug]</div><div class="line">Tue May 13 07:53:15 2014 - [debug] Connecting via SSH from root@node1(192.168.10.216:22) to root@node2(192.168.10.217:22)..</div><div class="line">Tue May 13 07:53:15 2014 - [debug] ok.</div><div class="line">Tue May 13 07:53:15 2014 - [debug] Connecting via SSH from root@node1(192.168.10.216:22) to root@node3(192.168.10.218:22)..</div><div class="line">Tue May 13 07:53:16 2014 - [debug] ok.</div><div class="line">Tue May 13 07:53:16 2014 - [debug]</div><div class="line">Tue May 13 07:53:16 2014 - [debug] Connecting via SSH from root@node2(192.168.10.217:22) to root@node1(192.168.10.216:22)..</div><div class="line">Tue May 13 07:53:16 2014 - [debug] ok.</div><div class="line">Tue May 13 07:53:16 2014 - [debug] Connecting via SSH from root@node2(192.168.10.217:22) to root@node3(192.168.10.218:22)..</div><div class="line">Tue May 13 07:53:16 2014 - [debug] ok.</div><div class="line">Tue May 13 07:53:17 2014 - [debug]</div><div class="line">Tue May 13 07:53:16 2014 - [debug] Connecting via SSH from root@node3(192.168.10.218:22) to root@node1(192.168.10.216:22)..</div><div class="line">Tue May 13 07:53:16 2014 - [debug] ok.</div><div class="line">Tue May 13 07:53:16 2014 - [debug] Connecting via SSH from root@node3(192.168.10.218:22) to root@node2(192.168.10.217:22)..</div><div class="line">Tue May 13 07:53:17 2014 - [debug] ok.</div><div class="line">Tue May 13 07:53:17 2014 - [info] All SSH connection tests passed successfully.</div></pre></td></tr></table></figure></p>
+<p>验证主从复制：masterha_check_repl —conf=/etc/mha/app1/app1.cnf<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div></pre></td><td class="code"><pre><div class="line">[root@localhost mha]# masterha_check_repl --conf=/etc/mha/app1/app1.cnf</div><div class="line">Tue May 13 08:10:54 2014 - [info] Reading default configuration from /etc/masterha_default.cnf..</div><div class="line">Tue May 13 08:10:54 2014 - [info] Reading application default configuration from /etc/mha/app1/app1.cnf..</div><div class="line">Tue May 13 08:10:54 2014 - [info] Reading server configuration from /etc/mha/app1/app1.cnf..</div><div class="line">Tue May 13 08:10:54 2014 - [info] MHA::MasterMonitor version 0.56.</div><div class="line">Tue May 13 08:10:54 2014 - [info] GTID failover mode = 0</div><div class="line">Tue May 13 08:10:54 2014 - [info] Dead Servers:</div><div class="line">Tue May 13 08:10:54 2014 - [info] Alive Servers:</div><div class="line">Tue May 13 08:10:54 2014 - [info] node1(192.168.10.216:3306)</div><div class="line">Tue May 13 08:10:54 2014 - [info] node2(192.168.10.217:3306)</div><div class="line">Tue May 13 08:10:54 2014 - [info] node3(192.168.10.218:3306)</div><div class="line">Tue May 13 08:10:54 2014 - [info] Alive Slaves:</div><div class="line">Tue May 13 08:10:54 2014 - [info] node2(192.168.10.217:3306) Version=5.6.16-64.2-rel64.2-log (oldest major version between slaves) log-bin:enabled</div><div class="line">Tue May 13 08:10:54 2014 - [info] Replicating from 192.168.10.216(192.168.10.216:3306)</div><div class="line">Tue May 13 08:10:54 2014 - [info] Primary candidate for the new Master (candidate_master is set)</div><div class="line">Tue May 13 08:10:54 2014 - [info] node3(192.168.10.218:3306) Version=5.6.16-64.2-rel64.2-log (oldest major version between slaves) log-bin:enabled</div><div class="line">Tue May 13 08:10:54 2014 - [info] Replicating from 192.168.10.216(192.168.10.216:3306)</div><div class="line">Tue May 13 08:10:54 2014 - [info] Not candidate for the new Master (no_master is set)</div><div class="line">Tue May 13 08:10:54 2014 - [info] Current Alive Master: node1(192.168.10.216:3306)</div><div class="line">Tue May 13 08:10:54 2014 - [info] Checking slave configurations..</div><div class="line">Tue May 13 08:10:54 2014 - [info] read_only=1 is not set on slave node2(192.168.10.217:3306).</div><div class="line">Tue May 13 08:10:54 2014 - [warning] relay_log_purge=0 is not set on slave node2(192.168.10.217:3306).</div><div class="line">Tue May 13 08:10:54 2014 - [info] read_only=1 is not set on slave node3(192.168.10.218:3306).</div><div class="line">Tue May 13 08:10:54 2014 - [warning] relay_log_purge=0 is not set on slave node3(192.168.10.218:3306).</div><div class="line">Tue May 13 08:10:54 2014 - [info] Checking replication filtering settings..</div><div class="line">Tue May 13 08:10:54 2014 - [info] binlog_do_db= , binlog_ignore_db=</div><div class="line">Tue May 13 08:10:54 2014 - [info] Replication filtering check ok.</div><div class="line">Tue May 13 08:10:54 2014 - [info] GTID (with auto-pos) is not supported</div><div class="line">Tue May 13 08:10:54 2014 - [info] Starting SSH connection tests..</div><div class="line">Tue May 13 08:10:55 2014 - [info] All SSH connection tests passed successfully.</div><div class="line">Tue May 13 08:10:55 2014 - [info] Checking MHA Node version..</div><div class="line">Tue May 13 08:10:55 2014 - [info] Version check ok.</div><div class="line">Tue May 13 08:10:55 2014 - [info] Checking SSH publickey authentication settings on the current master..</div><div class="line">Tue May 13 08:10:56 2014 - [info] HealthCheck: SSH to node1 is reachable.</div><div class="line">Tue May 13 08:10:56 2014 - [info] Master MHA Node version is 0.56.</div><div class="line">Tue May 13 08:10:56 2014 - [info] Checking recovery script configurations on node1(192.168.10.216:3306)..</div><div class="line">Tue May 13 08:10:56 2014 - [info] Executing command: save_binary_logs --command=test --start_pos=4 --binlog_dir=/usr/local/mysql/logs --output_file=/var/tmp/save_binary_logs_test --manager_version=0.56 --start_file=mysql-bin.000009</div><div class="line">Tue May 13 08:10:56 2014 - [info] Connecting to root@192.168.10.216(node1:22)..</div><div class="line">  Creating /var/tmp if not exists.. ok.</div><div class="line">  Checking output directory is accessible or not..</div><div class="line">   ok.</div><div class="line">  Binlog found at /usr/local/mysql/logs, up to mysql-bin.000009</div><div class="line">Tue May 13 08:10:56 2014 - [info] Binlog setting check done.</div><div class="line">Tue May 13 08:10:56 2014 - [info] Checking SSH publickey authentication and checking recovery script configurations on all alive slave servers..</div><div class="line">Tue May 13 08:10:56 2014 - [info] Executing command : apply_diff_relay_logs --command=test --slave_user=&apos;root&apos; --slave_host=node2 --slave_ip=192.168.10.217 --slave_port=3306 --workdir=/var/tmp --target_version=5.6.16-64.2-rel64.2-log --manager_version=0.56 --relay_log_info=/usr/local/mysql/data/relay-log.info --relay_dir=/usr/local/mysql/data/ --slave_pass=xxx</div><div class="line">Tue May 13 08:10:56 2014 - [info] Connecting to root@192.168.10.217(node2:22)..</div><div class="line">  Checking slave recovery environment settings..</div><div class="line">    Opening /usr/local/mysql/data/relay-log.info ... ok.</div><div class="line">    Relay log found at /usr/local/mysql/logs, up to relay-bin.000006</div><div class="line">    Temporary relay log file is /usr/local/mysql/logs/relay-bin.000006</div><div class="line">    Testing mysql connection and privileges..Warning: Using a password on the command line interface can be insecure.</div><div class="line"> done.</div><div class="line">    Testing mysqlbinlog output.. done.</div><div class="line">    Cleaning up test file(s).. done.</div><div class="line">Tue May 13 08:10:57 2014 - [info] Executing command : apply_diff_relay_logs --command=test --slave_user=&apos;root&apos; --slave_host=node3 --slave_ip=192.168.10.218 --slave_port=3306 --workdir=/var/tmp --target_version=5.6.16-64.2-rel64.2-log --manager_version=0.56 --relay_log_info=/usr/local/mysql/data/relay-log.info --relay_dir=/usr/local/mysql/data/ --slave_pass=xxx</div><div class="line">Tue May 13 08:10:57 2014 - [info] Connecting to root@192.168.10.218(node3:22)..</div><div class="line">  Checking slave recovery environment settings..</div><div class="line">    Opening /usr/local/mysql/data/relay-log.info ... ok.</div><div class="line">    Relay log found at /usr/local/mysql/logs, up to relay-bin.000006</div><div class="line">    Temporary relay log file is /usr/local/mysql/logs/relay-bin.000006</div><div class="line">    Testing mysql connection and privileges..Warning: Using a password on the command line interface can be insecure.</div><div class="line"> done.</div><div class="line">    Testing mysqlbinlog output.. done.</div><div class="line">    Cleaning up test file(s).. done.</div><div class="line">Tue May 13 08:10:57 2014 - [info] Slaves settings check done.</div><div class="line">Tue May 13 08:10:57 2014 - [info]</div><div class="line">node1(192.168.10.216:3306) (current master)</div><div class="line"> +--node2(192.168.10.217:3306)</div><div class="line"> +--node3(192.168.10.218:3306)</div><div class="line">Tue May 13 08:10:57 2014 - [info] Checking replication health on node2..</div><div class="line">Tue May 13 08:10:57 2014 - [info] ok.</div><div class="line">Tue May 13 08:10:57 2014 - [info] Checking replication health on node3..</div><div class="line">Tue May 13 08:10:57 2014 - [info] ok.</div><div class="line">Tue May 13 08:10:57 2014 - [warning] master_ip_failover_script is not defined.</div><div class="line">Tue May 13 08:10:57 2014 - [warning] shutdown_script is not defined.</div><div class="line">Tue May 13 08:10:57 2014 - [info] Got exit code 0 (Not master dead).</div><div class="line">MySQL Replication Health is OK.</div></pre></td></tr></table></figure></p>
+<p><strong>G.</strong> 启动MHA manager，并监控日志文件<br>在node1上killall mysqld的同时在node3上启动manager服务<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">[root@localhost mha]# masterha_manager --conf=/etc/mha/app1/app1.cnf</div><div class="line">Tue May 13 08:19:01 2014 - [info] Reading default configuration from /etc/masterha_default.cnf..</div><div class="line">Tue May 13 08:19:01 2014 - [info] Reading application default configuration from /etc/mha/app1/app1.cnf..</div><div class="line">Tue May 13 08:19:01 2014 - [info] Reading server configuration from /etc/mha/app1/app1.cnf..</div><div class="line">  Creating /var/tmp if not exists.. ok.</div><div class="line">  Checking output directory is accessible or not..</div><div class="line">   ok.</div><div class="line">  Binlog found at /usr/local/mysql/logs, up to mysql-bin.000009</div><div class="line">Tue May 13 08:19:18 2014 - [info] Reading default configuration from /etc/masterha_default.cnf..</div><div class="line">Tue May 13 08:19:18 2014 - [info] Reading application default configuration from /etc/mha/app1/app1.cnf..</div><div class="line">Tue May 13 08:19:18 2014 - [info] Reading server configuration from /etc/mha/app1/app1.cnf..</div></pre></td></tr></table></figure></p>
+<p>之后观察node3上/var/log/mha/app1/manager.log日志会发现node1 dead状态，主自动切换到node2上，而node3上的主从配置指向了node2，并且发生一次切换后会生成/var/log/mha/app1/app1.failover.complete文件；</p>
+<p><strong>手动恢复node1操作：</strong><br>rm -rf /var/log/mha/app1/app1.failover.complete<br>启动node1上的mysql，重新配置node2 node3 主从指向node1（change master to）</p>
+<p><strong>MHA Manager后台执行：</strong><br>nohup masterha_manager —conf=/etc/mha/app1/app1.cnf &lt; /dev/null &gt; /var/log/mha/app1/app1.log 2&gt;&amp;1</p>
+<p>守护进程方式参考： <a href="https://code.google.com/p/mysql-master-ha/wiki/Runnning_Background" target="_blank" rel="external">https://code.google.com/p/mysql-master-ha/wiki/Runnning_Background</a><br><a href="ftp://ftp.pbone.net/mirror/ftp5.gwdg.de/pub/opensuse/repositories/home:/weberho:/qmailtoaster/openSUSE_Tumbleweed/x86_64/daemontools-0.76-5.3.x86_64.rpm" target="_blank" rel="external">ftp://ftp.pbone.net/mirror/ftp5.gwdg.de/pub/opensuse/repositories/home:/weberho:/qmailtoaster/openSUSE_Tumbleweed/x86_64/daemontools-0.76-5.3.x86_64.rpm</a></p>
+<h4 id="配置VIP的方式"><a href="#配置VIP的方式" class="headerlink" title="配置VIP的方式"></a>配置VIP的方式</h4><p><strong>A.</strong>通过全局配置文件实现<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">vim /etc/mha/masterha_default.cnf</div><div class="line">[server default]</div><div class="line">user=root</div><div class="line">password=geekwolf</div><div class="line">ssh_user=root</div><div class="line">repl_user=rep</div><div class="line">repl_password=geekwolf</div><div class="line">ping_interval=1</div><div class="line">secondary_check_script = masterha_secondary_check -s node1 -s node2 -s node3 --user=root --master_host=node1 --master_ip=192.168.10.216 --master_port=3306</div><div class="line">master_ip_failover_script=&quot;/etc/mha/scripts/master_ip_failover&quot;</div><div class="line">master_ip_online_change_script=&quot;/etc/mha/scripts/master_ip_online_change&quot;</div><div class="line">#shutdown_script= /script/masterha/power_manager</div><div class="line">#report_script=&quot;&quot;</div></pre></td></tr></table></figure></p>
+<p>修改后的master_ip_failover、master_ip_online_change脚本<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div></pre></td><td class="code"><pre><div class="line">#!/usr/bin/env perl</div><div class="line">use strict;</div><div class="line">use warnings FATAL =&gt; &apos;all&apos;;</div><div class="line">use Getopt::Long;</div><div class="line">my (</div><div class="line">    $command, $ssh_user, $orig_master_host, $orig_master_ip,</div><div class="line">    $orig_master_port, $new_master_host, $new_master_ip, $new_master_port</div><div class="line">);</div><div class="line">my $vip = &apos;192.168.10.218&apos;; # Virtual IP</div><div class="line">my $gateway = &apos;192.168.10.1&apos;;#Gateway IP</div><div class="line">my $interface = &apos;eth0&apos;</div><div class="line">my $key = &quot;1&quot;;</div><div class="line">my $ssh_start_vip = &quot;/sbin/ifconfig $interface:$key $vip;/sbin/arping -I $interface -c 3 -s $vip $gateway &gt;/dev/null 2&gt;&amp;1&quot;;</div><div class="line">my $ssh_stop_vip = &quot;/sbin/ifconfig $interface:$key down&quot;;</div><div class="line">GetOptions(</div><div class="line">    &apos;command=s&apos; =&gt; \$command,</div><div class="line">    &apos;ssh_user=s&apos; =&gt; \$ssh_user,</div><div class="line">    &apos;orig_master_host=s&apos; =&gt; \$orig_master_host,</div><div class="line">    &apos;orig_master_ip=s&apos; =&gt; \$orig_master_ip,</div><div class="line">    &apos;orig_master_port=i&apos; =&gt; \$orig_master_port,</div><div class="line">    &apos;new_master_host=s&apos; =&gt; \$new_master_host,</div><div class="line">    &apos;new_master_ip=s&apos; =&gt; \$new_master_ip,</div><div class="line">    &apos;new_master_port=i&apos; =&gt; \$new_master_port,</div><div class="line">);</div><div class="line">exit &amp;main();</div><div class="line">sub main &#123;</div><div class="line">    print &quot;\n\nIN SCRIPT TEST====$ssh_stop_vip==$ssh_start_vip===\n\n&quot;;</div><div class="line">    if ( $command eq &quot;stop&quot; || $command eq &quot;stopssh&quot; ) &#123;</div><div class="line">        # $orig_master_host, $orig_master_ip, $orig_master_port are passed.</div><div class="line">        # If you manage master ip address at global catalog database,</div><div class="line">        # invalidate orig_master_ip here.</div><div class="line">        my $exit_code = 1;</div><div class="line">        eval &#123;</div><div class="line">            print &quot;Disabling the VIP on old master: $orig_master_host \n&quot;;</div><div class="line">            &amp;stop_vip();</div><div class="line">            $exit_code = 0;</div><div class="line">        &#125;;</div><div class="line">        if ($@) &#123;</div><div class="line">            warn &quot;Got Error: $@\n&quot;;</div><div class="line">            exit $exit_code;</div><div class="line">        &#125;</div><div class="line">        exit $exit_code;</div><div class="line">    &#125;</div><div class="line">    elsif ( $command eq &quot;start&quot; ) &#123;</div><div class="line">        # all arguments are passed.</div><div class="line">        # If you manage master ip address at global catalog database,</div><div class="line">        # activate new_master_ip here.</div><div class="line">        # You can also grant write access (create user, set read_only=0, etc) here.</div><div class="line">        my $exit_code = 10;</div><div class="line">        eval &#123;</div><div class="line">            print &quot;Enabling the VIP - $vip on the new master - $new_master_host \n&quot;;</div><div class="line">            &amp;start_vip();</div><div class="line">            $exit_code = 0;</div><div class="line">        &#125;;</div><div class="line">        if ($@) &#123;</div><div class="line">            warn $@;</div><div class="line">            exit $exit_code;</div><div class="line">        &#125;</div><div class="line">        exit $exit_code;</div><div class="line">    &#125;</div><div class="line">    elsif ( $command eq &quot;status&quot; ) &#123;</div><div class="line">        print &quot;Checking the Status of the script.. OK \n&quot;;</div><div class="line">        `ssh $ssh_user\@cluster1 \&quot; $ssh_start_vip \&quot;`;</div><div class="line">        exit 0;</div><div class="line">    &#125;</div><div class="line">    else &#123;</div><div class="line">        &amp;usage();</div><div class="line">        exit 1;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"># A simple system call that enable the VIP on the new master</div><div class="line">sub start_vip() &#123;</div><div class="line">    `ssh $ssh_user\@$new_master_host \&quot; $ssh_start_vip \&quot;`;</div><div class="line">&#125;</div><div class="line"># A simple system call that disable the VIP on the old_master</div><div class="line">sub stop_vip() &#123;</div><div class="line">    `ssh $ssh_user\@$orig_master_host \&quot; $ssh_stop_vip \&quot;`;</div><div class="line">&#125;</div><div class="line">sub usage &#123;</div><div class="line">    print</div><div class="line">    &quot;Usage: master_ip_failover --command=start|stop|stopssh|status --orig_master_host=host --orig_master_ip=ip --orig_master_port=port --new_master_host=host --new_master_ip=ip --new_master_port=port\n&quot;;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><strong>B.</strong>通过第三方HA（keepalived、heartbeat）实现VIP，以keepalived为例</p>
+<p>以node1 node2互为主备进行配置keepalived<br>在node1 node2上分别下载安装keepalived<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">wget [http://www.keepalived.org/software/keepalived-1.2.13.tar.gz](http://www.keepalived.org/software/keepalived-1.2.13.tar.gz)</div><div class="line">yum -y install popt-*</div><div class="line">./configure —prefix=/usr/local/keepalived —enable-snmp</div><div class="line">make &amp;&amp; make install</div><div class="line">cp /usr/local/keepalived/etc/rc.d/init.d/keepalived /etc/rc.d/init.d/</div><div class="line">cp /usr/local/keepalived/etc/sysconfig/keepalived /etc/sysconfig/</div><div class="line">chmod +x /etc/rc.d/init.d/keepalived</div><div class="line">chkconfig keepalived on</div><div class="line">mkdir /etc/keepalived</div><div class="line">ln -s /usr/local/keepalived/sbin/keepalived /usr/sbin</div></pre></td></tr></table></figure></p>
+<p>修改node1(192.168.10.216)配置文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div></pre></td><td class="code"><pre><div class="line">vim /etc/keepalived/keepalived.conf</div><div class="line"></div><div class="line">! Configuration File for keepalived</div><div class="line">global_defs &#123;</div><div class="line"> router_id MHA </div><div class="line"> notification_email &#123;</div><div class="line"> root@localhost   #接收邮件，可以有多个，一行一个</div><div class="line">&#125;</div><div class="line"> #当主、备份设备发生改变时，通过邮件通知</div><div class="line"> notification_email_from  m@localhost</div><div class="line"> #发送邮箱服务器</div><div class="line"> smtp_server 127.0.0.1</div><div class="line"> #发送邮箱超时时间</div><div class="line"> smtp_connect_timeout 30</div><div class="line"> &#125;</div><div class="line"></div><div class="line">varrp_script check_mysql &#123;</div><div class="line">     script &quot;/etc/keepalived/check_mysql.sh&quot;</div><div class="line">&#125;</div><div class="line">vrrp_sync_group VG1 &#123;</div><div class="line">    group &#123;</div><div class="line">          VI_1</div><div class="line">    &#125;</div><div class="line">notify_master &quot;/etc/keepalived/master.sh&quot;</div><div class="line">&#125;</div><div class="line"></div><div class="line">vrrp_instance VI_1 &#123;</div><div class="line">     state master     </div><div class="line">     interface eth0   </div><div class="line">     virtual_router_id 110</div><div class="line">     priority 100            </div><div class="line">     advert_int 1</div><div class="line">     nopreempt #不抢占资源，意思就是它活了之后也不会再把主抢回来</div><div class="line"></div><div class="line">     authentication &#123;</div><div class="line">     # 认证方式，可以是PASS或AH两种认证方式</div><div class="line">     auth_type PASS</div><div class="line">     # 认证密码</div><div class="line">     auth_pass geekwolf</div><div class="line">     &#125;</div><div class="line">track_script &#123;</div><div class="line">     check_mysql</div><div class="line">&#125;</div><div class="line">virtual_ipaddress &#123;</div><div class="line">     192.168.10.219</div><div class="line">     &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>修改node2(192.168.10.217)配置文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div></pre></td><td class="code"><pre><div class="line">vim /etc/keepalived/keepalived.conf</div><div class="line"></div><div class="line">! Configuration File for keepalived</div><div class="line">global_defs &#123;</div><div class="line"> router_id MHA </div><div class="line"> notification_email &#123;</div><div class="line"> root@localhost   #接收邮件，可以有多个，一行一个</div><div class="line">&#125;</div><div class="line"> #当主、备份设备发生改变时，通过邮件通知</div><div class="line"> notification_email_from  m@localhost</div><div class="line"> #发送邮箱服务器</div><div class="line"> smtp_server 127.0.0.1</div><div class="line"> #发送邮箱超时时间</div><div class="line"> smtp_connect_timeout 30</div><div class="line"> &#125;</div><div class="line"></div><div class="line">varrp_script check_mysql &#123;</div><div class="line">     script &quot;/etc/keepalived/check_mysql.sh&quot;</div><div class="line">&#125;</div><div class="line">vrrp_sync_group VG1 &#123;</div><div class="line">    group &#123;</div><div class="line">          VI_1</div><div class="line">    &#125;</div><div class="line">notify_master &quot;/etc/keepalived/master.sh&quot;</div><div class="line">&#125;</div><div class="line">vrrp_instance VI_1 &#123;</div><div class="line">     state backup    </div><div class="line">     interface eth0    </div><div class="line">     virtual_router_id 110</div><div class="line">     priority 99            </div><div class="line">     advert_int 1</div><div class="line"></div><div class="line">     authentication &#123;</div><div class="line">     # 认证方式，可以是PASS或AH两种认证方式</div><div class="line">     auth_type PASS</div><div class="line">     # 认证密码</div><div class="line">     auth_pass geekwolf</div><div class="line">     &#125;</div><div class="line">track_script &#123;</div><div class="line">     check_mysql</div><div class="line">&#125;</div><div class="line">virtual_ipaddress &#123;</div><div class="line">     192.168.10.219</div><div class="line">     &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>check_mysql.sh<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line">#!/bin/bash</div><div class="line">MYSQL=/usr/local/mysql/bin/mysql</div><div class="line">MYSQL_HOST=127.0.0.1</div><div class="line">MYSQL_USER=root</div><div class="line">MYSQL_PASSWORD=geekwolf</div><div class="line">CHECK_TIME=3</div><div class="line">#mysql  is working MYSQL_OK is 1 , mysql down MYSQL_OK is 0</div><div class="line">MYSQL_OK=1</div><div class="line">function check_mysql_helth ()&#123;</div><div class="line">$MYSQL -h $MYSQL_HOST -u $MYSQL_USER -e &quot;show status;&quot; &gt;/dev/null 2&gt;&amp;1</div><div class="line">if [ $? = 0 ] ;then</div><div class="line">     MYSQL_OK=1</div><div class="line">else</div><div class="line">     MYSQL_OK=0</div><div class="line">fi</div><div class="line">     return $MYSQL_OK</div><div class="line">&#125;</div><div class="line">while [ $CHECK_TIME -ne 0 ]</div><div class="line">do</div><div class="line">     let &quot;CHECK_TIME -= 1&quot;</div><div class="line">     check_mysql_helth</div><div class="line">if [ $MYSQL_OK = 1 ] ; then</div><div class="line">     CHECK_TIME=0</div><div class="line">     exit 0</div><div class="line">fi</div><div class="line">if [ $MYSQL_OK -eq 0 ] &amp;&amp;  [ $CHECK_TIME -eq 0 ]</div><div class="line">then</div><div class="line">     pkill keepalived</div><div class="line">exit 1</div><div class="line">fi</div><div class="line">sleep 1</div><div class="line">done</div></pre></td></tr></table></figure></p>
+<p>master.sh<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">#!/bin/bash</div><div class="line">VIP=192.168.10.219</div><div class="line">GATEWAY=1.1</div><div class="line">/sbin/arping -I eth0 -c 5 -s $VIP $GATEWAY &amp;&gt;/dev/null</div><div class="line">chmod +x /etc/keepalived/check_mysql.sh</div><div class="line">chmod +x /etc/keepalived/master.sh</div></pre></td></tr></table></figure></p>
+<h4 id="MHA常用命令"><a href="#MHA常用命令" class="headerlink" title="MHA常用命令"></a>MHA常用命令</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">查看manager状态</div><div class="line">masterha_check_status —conf=/etc/mha/app1/app1.cnf</div><div class="line"></div><div class="line">查看免密钥是否正常</div><div class="line">masterha_check_ssh —conf=/etc/mha/app1/app1.cnf</div><div class="line"></div><div class="line">查看主从复制是否正常</div><div class="line">masterha_check_repl —conf=/etc/mha/app1/app1.cnf</div><div class="line"></div><div class="line">添加新节点server4到配置文件</div><div class="line">masterha_conf_host —command=add —conf=/etc/mha/app1/app1.cnf —hostname=geekwolf —block=server4 —params=“no_master=1;ignore_fail=1” 删除server4节点</div><div class="line">masterha_conf_host —command=delete —conf=/etc/mha/app1/app1.cnf —block=server4</div></pre></td></tr></table></figure>
+<p><strong>注：</strong><br>block:为节点区名，默认值 为[server_$hostname],如果设置成block=100，则为[server100] params:参数，分号隔开(参考<a href="https://code.google.com/p/mysql-master-ha/wiki/Parameters" target="_blank" rel="external">https://code.google.com/p/mysql-master-ha/wiki/Parameters</a>)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">关闭manager服务</div><div class="line">masterha_stop —conf=/etc/mha/app1/app1.cnf</div><div class="line"></div><div class="line">主手动切换(前提不要启动masterha_manager服务)</div><div class="line">在主node1存活情况下进行切换</div><div class="line">交互模式：</div><div class="line">masterha_master_switch —master_state=alive —conf=/etc/mha/app1/app1.cnf —new_master_host=node2</div><div class="line">非交互模式：</div><div class="line">masterha_master_switch —master_state=alive —conf=/etc/mha/app1/app1.cnf —new_master_host=node2 —interactive=0</div><div class="line">在主node1宕掉情况下进行切换</div><div class="line">masterha_master_switch —master_state=dead —conf=/etc/mha/app1/app1.cnf —dead_master_host=node1 —dead_master_ip=192.168.10.216 —dead_master_port=3306 —new_master_host=192.168.10.217 详细请参考:[https://code.google.com/p/mysql-master-ha/wiki/TableOfContents?tm=6](https://code.google.com/p/mysql-master-ha/wiki/TableOfContents?tm=6) *</div></pre></td></tr></table></figure></p>
+<h4 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h4><p><strong>A.</strong> 以上两种vip切换方式，建议采用第一种方法<br><strong>B.</strong> 发生主备切换后，manager服务会自动停掉，且在/var/log/mha/app1下面生成<br>app1.failover.complete，若再次发生切换需要删除app1.failover.complete文件<br><strong>C.</strong> 测试过程发现一主两从的架构(两从都设置可以担任主角色candidate_master=1)，当旧主故障迁移到备主后，删除app1.failover.complete，再次启动manager，停掉新主后，发现无法正常切换(解决方式：删除/etc/mha/app1/app1.cnf里面的旧主node1的信息后，重新切换正常)<br><strong>D.</strong> arp缓存导致切换VIP后，无法使用问题<br><strong>E.</strong> 使用Semi-Sync能够最大程度保证数据安全<br><strong>F.</strong> Purge_relay_logs脚本删除中继日志不会阻塞SQL线程，在每台从节点上设置计划任务定期清除中继日志<br><code>0 5 * * * root /usr/bin/purge_relay_logs —user=root —password=geekwolf —disable_relay_log_purge &gt;&gt; /var/log/mha/purge_relay_logs.log 2&gt;&amp;1</code></p>
+<h4 id="部署过程遇到的问题"><a href="#部署过程遇到的问题" class="headerlink" title="部署过程遇到的问题"></a>部署过程遇到的问题</h4><p><strong>问题1：</strong> [root@node1 mha4mysql-node-0.56]# perl Makefile.PL<br>Can’t locate ExtUtils/MakeMaker.pm in @INC (@INC contains: inc /usr/local/lib64/perl5 /usr/local/share/perl5 /usr/lib64/perl5/vendor_perl /usr/share/perl5/vendor_perl /usr/lib64/perl5 /usr/share/perl5 .) at inc/Module/Install/Makefile.pm line 4.<br>BEGIN failed—compilation aborted at inc/Module/Install/Makefile.pm line 4. Compilation failed in require at inc/Module/Install.pm line 283.<br>Can’t locate ExtUtils/MakeMaker.pm in @INC (@INC contains: inc /usr/local/lib64/perl5 /usr/local/share/perl5 /usr/lib64/perl5/vendor_perl /usr/share/perl5/<br>vendor_perl /usr/lib64/perl5 /usr/share/perl5 .) at inc/Module/Install/Can.pm line 6.<br>BEGIN failed—compilation aborted at inc/Module/Install/Can.pm line 6.<br>Compilation failed in require at inc/Module/Install.pm line 283.<br>Can’t locate ExtUtils/MM_Unix.pm in @INC (@INC contains: inc /usr/local/lib64/<br>perl5 /usr/local/share/perl5 /usr/lib64/perl5/vendor_perl /usr/share/perl5/vendor_perl /usr/lib64/perl5 /usr/share/perl5 .) at inc/Module/Install/<br>Metadata.pm line 349.<br><strong>解决办法：</strong><br>yum -y install perl-CPAN perl-devel perl-DBD-MySQL</p>
+<p><strong>问题2：</strong><br>Can’t locate Time/HiRes.pm in @INC (@INC contains: /usr/local/lib64/perl5 /usr/local/share/perl5 /usr/lib64/perl5/vendor_perl /usr/share/perl5/vendor_perl /usr/lib64/perl5 /usr/share/perl5 .) at /usr/local/share/perl5/MHA/SSHCheck.pm line 28.<br>BEGIN failed—compilation aborted at /usr/local/share/perl5/MHA/SSHCheck.pm line 28.<br>Compilation failed in require at /usr/local/bin/masterha_check_ssh line 25. BEGIN failed—compilation aborted at /usr/local/bin/masterha_check_ssh line 25.<br><strong>解决办法</strong>：<br>yum -y install perl-Time-HiRes</p>
+<p><strong>问题3：</strong></p>
+<p><a href="http://ow1schdt5.bkt.clouddn.com/2014/08/mhaq.jpg" target="_blank" rel="external"><img src="http://ow1schdt5.bkt.clouddn.com/2014/08/mhaq.jpg" alt="mhaq"></a></p>
+<p><strong>解决办法:</strong><br>每个节点都做好mysql命令的软链<br>ln -s /usr/local/mysql/bin/* /usr/local/bin/</p>
+<h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><blockquote>
+<p><a href="https://code.google.com/p/mysql-master-ha" target="_blank" rel="external">https://code.google.com/p/mysql-master-ha</a><br><a href="http://blog.chinaunix.net/uid-28437434-id-3476641.html" target="_blank" rel="external">http://blog.chinaunix.net/uid-28437434-id-3476641.html</a></p>
+</blockquote>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创分享，您的支持将鼓励我继续创作</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.png" alt="Geekwolf WeChat Pay"/>
+        <p>微信打赏</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.png" alt="Geekwolf Alipay"/>
+        <p>支付宝打赏</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    Geekwolf
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://www.simlinux.com/2014/08/20/mysql-mha-handbook.html" title="MHA高可用部署及测试">http://www.simlinux.com/2014/08/20/mysql-mha-handbook.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/mha/" rel="tag"># mha</a>
+          
+            <a href="/tags/MySQL高可用/" rel="tag"># MySQL高可用</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2014/08/20/mysql-engine-info.html" rel="next" title="存储引擎介绍及适用场景">
+                <i class="fa fa-chevron-left"></i> 存储引擎介绍及适用场景
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2014/08/20/mysql-rep.html" rel="prev" title="MySQL复制原理与配置">
+                MySQL复制原理与配置 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zMDc3Mi83MzI0"></div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg"
+               alt="Geekwolf" />
+          <p class="site-author-name" itemprop="name">Geekwolf</p>
+           
+              <p class="site-description motion-element" itemprop="description">DevOps | Docker | Python | k8s</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">82</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">59</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/geekwolf" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                    
+                      GitHub
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/geekwolf" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                    
+                      Weibo
+                    
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-block">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://blog.simlinux.com" title="旧版博客" target="_blank">旧版博客</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://nolinux.blog.51cto.com" title="nolinux" target="_blank">nolinux</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://xiaorui.cc" title="峰云就她了" target="_blank">峰云就她了</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://note.gitcloud.cc/blog/bluetom520" title="懒懒的天空" target="_blank">懒懒的天空</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.roddypy.com" title="普拉多VX" target="_blank">普拉多VX</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://blog.opskumu.com" title="枯木磊" target="_blank">枯木磊</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#MHA特性"><span class="nav-number">1.</span> <span class="nav-text">MHA特性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#MHA工作机制"><span class="nav-number">2.</span> <span class="nav-text">MHA工作机制</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#MHA适用的主从架构"><span class="nav-number">3.</span> <span class="nav-text">MHA适用的主从架构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#MHA高可用环境的构建"><span class="nav-number">4.</span> <span class="nav-text">MHA高可用环境的构建</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#实验环境"><span class="nav-number">5.</span> <span class="nav-text">实验环境</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#实验大概步骤"><span class="nav-number">6.</span> <span class="nav-text">实验大概步骤</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#脚本相关说明"><span class="nav-number">7.</span> <span class="nav-text">脚本相关说明</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#MHA部署过程"><span class="nav-number">8.</span> <span class="nav-text">MHA部署过程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#配置VIP的方式"><span class="nav-number">9.</span> <span class="nav-text">配置VIP的方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#MHA常用命令"><span class="nav-number">10.</span> <span class="nav-text">MHA常用命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#注意事项"><span class="nav-number">11.</span> <span class="nav-text">注意事项</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#部署过程遇到的问题"><span class="nav-number">12.</span> <span class="nav-text">部署过程遇到的问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#参考"><span class="nav-number">13.</span> <span class="nav-text">参考</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2012 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Geekwolf</span>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('-1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("qms5kJ0y2CItrIVFivKxxPsR-gzGzoHsz", "Cn3w20futtphxpaDSP5tHjzy");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,2878 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Geekwolf,DevOps,Docker,k8s,MySQL,PaaS" />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Geekwolf's Blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="DevOps | Docker | Python | k8s">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Geekwolf&#39;s Blog">
+<meta property="og:url" content="http://www.simlinux.com/page/6/index.html">
+<meta property="og:site_name" content="Geekwolf&#39;s Blog">
+<meta property="og:description" content="DevOps | Docker | Python | k8s">
+<meta property="og:locale" content="zh-Hans">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Geekwolf&#39;s Blog">
+<meta name="twitter:description" content="DevOps | Docker | Python | k8s">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.simlinux.com/page/6/"/>
+
+
+
+
+
+  <title>Geekwolf's Blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="//s13.cnzz.com/z_stat.php?id=1264375041&web_id=1264375041" language="JavaScript"></script>
+  </div>
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left 
+   page-home 
+ ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Geekwolf's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Quick notes</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tips">
+          <a href="/tips/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-gittip"></i> <br />
+            
+            tips
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />
+            
+            站点地图
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+  <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2013/09/09/svn-force-add-comments.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Geekwolf">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Geekwolf's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2013/09/09/svn-force-add-comments.html" itemprop="url">svn强制要求添加并允许修改注释信息</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2013-09-09T10:59:55+08:00">
+                2013-09-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux运维/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux运维</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2013/09/09/svn-force-add-comments.html" class="leancloud_visitors" data-flag-title="svn强制要求添加并允许修改注释信息">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="SVN强制添加注释信息"><a href="#SVN强制添加注释信息" class="headerlink" title="SVN强制添加注释信息"></a>SVN强制添加注释信息</h4><p>hooks目录 编辑pre-commit 文件内容，找到下面3行，用#注释掉<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$SVNLOOK log -t &quot;$TXN&quot; &quot;$REPOS&quot; | </div><div class="line"> grep &quot;[a-zA-Z0-9]&quot; &gt; /dev/null || exit 1</div><div class="line"> commit-access-control.pl &quot;$REPOS&quot; &quot;$TXN&quot; commit-access-control.cfg || exit 1</div></pre></td></tr></table></figure></p>
+<p>然后再修改处下面增加一下内容<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">LOGMSG=`$SVNLOOK log -t &quot;$TXN&quot; &quot;$REPOS&quot; | grep &quot;[a-zA-Z0-9]&quot; | wc -c`</div><div class="line">if [ &quot;$LOGMSG&quot; -lt 5 ];#........5.........</div><div class="line">then</div><div class="line"> echo -e &quot;nLog message cann&apos;t be empty! you must input more than 5 chars as comment!.&quot; 1&gt;&amp;2</div><div class="line">exit 1</div><div class="line">fi</div></pre></td></tr></table></figure></p>
+<p>保存退出。 设置pre-commit文件权限可执行 使用如下命令chomd +x pre-commit</p>
+<h4 id="允许用户修改注释信息"><a href="#允许用户修改注释信息" class="headerlink" title="允许用户修改注释信息"></a>允许用户修改注释信息</h4><p>用户修改注释信息的动作，对应的是pre-revpos-change。将hooks目录下的pre-revpos-change.tmpl改名为pre-revpos-change<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">#!/bin/sh</div><div class="line">REPOS=&quot;$1&quot;</div><div class="line">REV=&quot;$2&quot;</div><div class="line">USER=&quot;$3&quot;</div><div class="line">PROPNAME=&quot;$4&quot;</div><div class="line">ACTION=&quot;$5&quot;</div><div class="line"></div><div class="line">if [ &quot;$ACTION&quot; = &quot;M&quot; -a &quot;$PROPNAME&quot; = &quot;svn:log&quot; ];</div><div class="line">then</div><div class="line">    exit 0;</div><div class="line">fi</div><div class="line"></div><div class="line">echo &quot;Changing revision properties other than svn:log is prohibited&quot; &gt;&amp;2</div><div class="line">exit 1</div></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2013/09/05/smokeping-install.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Geekwolf">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Geekwolf's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2013/09/05/smokeping-install.html" itemprop="url">smokeping网络质量监控部署</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2013-09-05T10:08:58+08:00">
+                2013-09-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/系统监控/" itemprop="url" rel="index">
+                    <span itemprop="name">系统监控</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2013/09/05/smokeping-install.html" class="leancloud_visitors" data-flag-title="smokeping网络质量监控部署">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  4
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="前提条件"><a href="#前提条件" class="headerlink" title="前提条件"></a>前提条件</h4><p>smokeping依赖于LNMP或者LAMP及rrdtool</p>
+<h4 id="安装rrdtool支持"><a href="#安装rrdtool支持" class="headerlink" title="安装rrdtool支持"></a>安装rrdtool支持</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">yum -y install libxml2-devel libpng-devel glib pango pango-devel  freetypefreetype-devel fontconfig cairo cairo-devel libart_lgpl libart_lgpl-devel perl perl-Net-Telnet perl-Net-DNSperl-LDAP perl-libwww-perl perl-RadiusPerl perl-IO-Socket-SSL perl-Socket6perl-CGI-SpeedyCGI rrdtool-per</div><div class="line"></div><div class="line">wget http://oss.oetiker.ch/rrdtool/pub/rrdtool-1.4.7.tar.gz</div><div class="line">cd rrdtool-1.4.7</div><div class="line">./configure --prefix=/usr/local/rrdtool</div><div class="line">make &amp;&amp; make install</div></pre></td></tr></table></figure>
+<p><strong>问题</strong>：<a href="http://ow1schdt5.bkt.clouddn.com/old/2013/09/c2.png" target="_blank" rel="external"><img src="http://ow1schdt5.bkt.clouddn.com/old/2013/09/c2.png" alt="c"></a> <a href="http://ow1schdt5.bkt.clouddn.com/old/2013/09/c1.png" target="_blank" rel="external">1</a><br><strong>解决</strong>：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum -y install perl-ExtUtils-CBuilder perl-ExtUtils-MakeMaker</div></pre></td></tr></table></figure></p>
+<h4 id="安装-smokeping-依赖的软件"><a href="#安装-smokeping-依赖的软件" class="headerlink" title="安装 smokeping 依赖的软件"></a>安装 smokeping 依赖的软件</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">wget http://down1.chinaunix.net/distfiles/cgilib-0.5.tar.gz</div><div class="line">tar xzvf cgilib-0.5.tar.gz</div><div class="line">cd cgilib-0.5</div><div class="line">make</div><div class="line">cp libcgi.a  /usr/local/lib</div><div class="line">cp cgi.h /usr/include/</div><div class="line"></div><div class="line">http://fping.org/dist/fping-3.4.tar.gz</div><div class="line">./configure –prefix=/usr/local/fping</div><div class="line">make &amp;&amp; make install</div><div class="line">whereis fping</div><div class="line">fping: /usr/local/fping</div><div class="line">ln -s /usr/local/fping/sbin/fping  /usr/sbin/fping</div><div class="line">这个链接是对应/usr/local/smokeping/etc/config里面的probe fping</div><div class="line"></div><div class="line">wget http://ncu.dl.sourceforge.net/project/echoping/echoping/6.0.2/echoping-6.0.2.tar.gz</div><div class="line">tar xzvf echoping-6.0.2.tar.gz</div><div class="line">cd echoping-6.0.2</div><div class="line">./configure</div><div class="line">make &amp;&amp; make install</div></pre></td></tr></table></figure>
+<p><strong>问题</strong>： <a href="http://ow1schdt5.bkt.clouddn.com/old/2013/09/cc3.png" target="_blank" rel="external"><img src="http://ow1schdt5.bkt.clouddn.com/old/2013/09/cc3.png" alt="cc"></a><br><strong>解决</strong>：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">下载popt-1.14.tar.gz</div><div class="line">wget http://downloads.sourceforge.net/project/kanapi/sources/RELEASES/popt-1.14.tar.gz?r=http%3A%2F%2Fen.sourceforge.jp%2Fprojects%2Fsfnet_kanapi%2Fdownloads%2Fsources%2FRELEASES%2Fpopt-1.14.tar.gz%2F&amp;ts=1368433312&amp;use_mirror=jaist</div><div class="line"></div><div class="line">./configure </div><div class="line">make &amp;&amp; make install</div><div class="line"></div><div class="line">wget http://ftp.gnu.org/gnu/gettext/gettext-0.18.tar.gz</div><div class="line">tar zxvf gettext-0.18.tar.gz</div><div class="line">cd gettext-0.18</div><div class="line">./configure </div><div class="line">make &amp;&amp; make install</div><div class="line">cd ..</div></pre></td></tr></table></figure></p>
+<h4 id="安装配置Smokeping"><a href="#安装配置Smokeping" class="headerlink" title="安装配置Smokeping"></a>安装配置Smokeping</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div></pre></td><td class="code"><pre><div class="line">wget http://oss.oetiker.ch/smokeping/pub/smokeping-2.6.8.tar.gz</div><div class="line">tar zxvf smokeping-2.6.8.tar.gz</div><div class="line">cd smokeping-2.6.8</div><div class="line">./configure –prefix=/usr/local/smokeping</div><div class="line">./setup/build-perl-modules.sh /usr/local/smokeping/thirdparty</div><div class="line">./configure –prefix=/usr/local/smokeping </div><div class="line"></div><div class="line">gmake install </div><div class="line">安装完毕，下面修改配置文件。</div><div class="line">进入 bin 目录，修改 smokeping 文件</div><div class="line">#vim smokeping</div><div class="line">第八行：  use lib qw(); # PERL5LIB</div><div class="line">修改为：     use lib qw(/usr/local/rrdtool/lib/perl);</div><div class="line">进入 htdocs 目录</div><div class="line"># mv smokeping.fcgi.dist smokeping.fcgi</div><div class="line">进入 etc 目录</div><div class="line">cp config.dist config</div><div class="line">修改 config 文件</div><div class="line"></div><div class="line">创建存放数据文件的目录</div><div class="line">mkdir  c/usr/local/smokeping/data  /usr/local/smokeping/var </div><div class="line">/usr/local/smokeping/cache</div><div class="line">修改 smokeping 的目录为 nginx 运行用户的属主、组</div><div class="line">chown -R daemon.daemon smokeping/</div><div class="line">chmod 600 /usr/local/smokeping/etc/smokeping_secrets.dist</div><div class="line">chmod  –R  777  /usr/local/smokeping/cache  /usr/local/smokeping/data </div><div class="line">/usr/local/smokeping/var</div><div class="line">创建 smokeping 的 log 文件</div><div class="line">touch /var/log/smokeping.log</div><div class="line">chown daemon.daemon /var/log/smokeping.log</div><div class="line">启动 smokeping</div><div class="line">perl /usr/local/smokeping/bin/smokeping --logfile=/var/log/smokeping.log</div><div class="line">建立 smokeping 启动脚本，方便启动</div><div class="line">vim /etc/init.d/smokeping</div><div class="line">添加为以下内容：</div><div class="line">#!/bin/bash</div><div class="line">#</div><div class="line"># chkconfig: 2345 80 05</div><div class="line"># Description: Smokeping init.d script</div><div class="line"># Hacked by : YunVN - http://www.yunvn.com</div><div class="line"># Get function from functions library</div><div class="line">. /etc/init.d/functions</div><div class="line"># Start the service Smokeping</div><div class="line">start() &#123;</div><div class="line">echo -n &quot;Starting Smokeping: &quot;</div><div class="line">/usr/local/smokeping/bin/smokeping &gt;/dev/null 2&gt;&amp;1</div><div class="line">### Create the lock file ### </div><div class="line">touch /var/lock/subsys/smokeping</div><div class="line">success $&quot;Smokeping startup&quot;</div><div class="line">echo</div><div class="line">&#125;</div><div class="line"># Restart the service Smokeping</div><div class="line">stop() &#123;</div><div class="line">echo -n &quot;Stopping Smokeping: &quot;</div><div class="line">kill -9 `ps ax | grep &quot;/usr/local/smokeping/bin/smokeping&quot; | grep -v grep | awk </div><div class="line">&apos;&#123; print $1 &#125;&apos;` &gt;/dev/null 2&gt;&amp;1</div><div class="line">### Now, delete the lock file ###</div><div class="line">rm -f /var/lock/subsys/smokeping</div><div class="line">success $&quot;Smokeping shutdown&quot;</div><div class="line">echo</div><div class="line">&#125;</div><div class="line">### main logic ###</div><div class="line">case &quot;$1&quot; in</div><div class="line">start)</div><div class="line">start</div><div class="line">;;</div><div class="line">stop)</div><div class="line">stop</div><div class="line">;;</div><div class="line">status)</div><div class="line">status Smokeping</div><div class="line">;;</div><div class="line">restart|reload|condrestart)</div><div class="line">stop</div><div class="line">start</div><div class="line">;;</div><div class="line">*)</div><div class="line">echo $&quot;Usage: $0 &#123;start|stop|restart|reload|status&#125;&quot;</div><div class="line">exit 1</div><div class="line">esac</div><div class="line">exit 0</div></pre></td></tr></table></figure>
+<p>给脚本有可执行权限</p>
+<h1 id="chmod-755-etc-rc-d-init-d-smokeping"><a href="#chmod-755-etc-rc-d-init-d-smokeping" class="headerlink" title="chmod 755 /etc/rc.d/init.d/smokeping"></a>chmod 755 /etc/rc.d/init.d/smokeping</h1><p>设置开机启动 smokeping </p>
+<p><strong>问题：</strong><br>启动时出现问题： <a href="http://ow1schdt5.bkt.clouddn.com/old/2013/09/ccc2.png" target="_blank" rel="external"><img src="http://ow1schdt5.bkt.clouddn.com/old/2013/09/ccc2.png" alt="ccc"></a> 解决：yum -y install rrdtool-perl</p>
+<p><strong>解决：</strong><br><a href="https://github.com/geekwolf/sa-scripts/tree/master/config" target="_blank" rel="external">https://github.com/geekwolf/sa-scripts/tree/master/config</a></p>
+<p>注释：ping的节点可以适当做些调整</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2013/08/03/lvm-base.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Geekwolf">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Geekwolf's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2013/08/03/lvm-base.html" itemprop="url">LVM简单配置总结</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2013-08-03T08:40:08+08:00">
+                2013-08-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux运维/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux运维</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2013/08/03/lvm-base.html" class="leancloud_visitors" data-flag-title="LVM简单配置总结">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>lvm  操作步骤：<br>1、找块空的硬盘 ，分区sdd1和sdd2。用t 改变system  id ，为8e，（lvm），w保持退出。<br>2、pvscan<br>3、pvcreate  /dev/sdd1   生成pv<br>4、vgcreate  vg1   /dev/sdd1  把pv（dev/sdd1）创建为一个vg1的卷组<br>5、lvcreate   －L  10M  -n  lv1  vg1   把vg1里面的10M的空间划分出来创建lv1。<br>6、格式化lv1   mkfs.ext3  /dev/vg1/lv1<br>7、挂载lv1    mount  /dev/vg1/lv1   /mnt/lv1<br>8、可以正常使用lv1<br>改变lv的大小<br>方法一：在未使用lv的时候，可以通过lvextend  扩展，需要先卸载，再扩展，再格式化，最后重新挂载。<br>lvextend  -L  +20M  /dev/vg1/lv1  增加20M<br>lvreduce  -L  -10M  /dev/vg1/lv1   减少10M<br>方法二：在已使用lv的时候，可以通过resize2fs  无损扩展，无需重新挂载，无需格式化。<br>lvresize  -L  200M  /dev/vg1/lv1<br>先设定大小为200M<br>lvresize  －L   ＋10M  /dev/vg1/lv1<br>带＋  意思是在原有基础上面增加10M<br>resize2fs  /dev/vg1/lv1<br>这条命令是执行重定义尺寸操作</p>
+<p>将逻辑卷data扩容20M,注意有+和没+的区别，有+是将逻辑卷增加了20M,没+是将逻辑卷增加到20M，区别很大</p>
+<p>改变vg大小<br>通过增加pv到vg中，来增加vg的总容量<br>步骤：<br>1、pvcreate  /dev/sdd2<br>2、vgextend  vg1   /dev/sdd2</p>
+<p>上面是我个人总结实验的基本步骤，现在给一张拓扑图 ，便于理解操作！<br><img src="http://img1.51cto.com/attachment/200908/200908301251618386095.jpg" alt=""></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2013/04/02/cacti-performance.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Geekwolf">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Geekwolf's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2013/04/02/cacti-performance.html" itemprop="url">Cacti的优化</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2013-04-02T09:42:30+08:00">
+                2013-04-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/系统监控/" itemprop="url" rel="index">
+                    <span itemprop="name">系统监控</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2013/04/02/cacti-performance.html" class="leancloud_visitors" data-flag-title="Cacti的优化">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  3
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="优化schema-Index"><a href="#优化schema-Index" class="headerlink" title="优化schema/Index"></a>优化schema/Index</h4><p>cacti默认的cacti.sql建立的数据库模型，竟然一个Index都没有建。每次执行poller.php的时候，主要的时间，都花费在数据库*查询上。使用下面的sql语句，建立一系列索引，弥补默认的cacti.sql中缺乏index的缺点。可以有效的提高poller.php执行的效率，缩短更新RRD文件所需的时间</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">CREATE INDEX `data_template_data_id` ON `data_input_data` (`data_template_data_id`);</div><div class="line">CREATE INDEX `host_id_snmp_query_id_snmp_index` ON data_local (`host_id`,`snmp_query_id`,`snmp_index`);</div><div class="line">CREATE INDEX `local_data_id_data_source_name` ON data_template_rrd (`local_data_id`,`data_source_name`);</div><div class="line">CREATE INDEX `graph_template_id_local_graph_id` ON graph_templates_item (`graph_template_id`,`local_graph_id`);</div><div class="line">CREATE INDEX `local_graph_template_item_id` ON graph_templates_item (`local_graph_template_item_id`);</div><div class="line">CREATE INDEX `host_id_snmp_query_id_snmp_index` ON host_snmp_cache (`host_id`,`snmp_query_id`,`snmp_index`);</div><div class="line">CREATE INDEX `local_data_id_rrd_path` ON poller_item (`local_data_id`,`rrd_path`);</div><div class="line">CREATE INDEX `host_id_rrd_next_step` ON poller_item (`host_id`,`rrd_next_step`);</div><div class="line">CREATE INDEX host_id_snmp_query_id ON host_snmp_cache (host_id,snmp_query_id);</div><div class="line">CREATE INDEX host_id_snmp_port ON poller_item (host_id,snmp_port);</div><div class="line">CREATE INDEX data_source_path ON data_template_data (data_source_path);</div><div class="line">show index from table； 查看索引</div></pre></td></tr></table></figure>
+<h4 id="重构RRA文件"><a href="#重构RRA文件" class="headerlink" title="重构RRA文件"></a>重构RRA文件</h4><p>首先在crontab里禁用poller.php，然后执行cacti_install_dir/cli目录下的 structure_rra_paths.php，</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">php  structure_rra_paths.php --proceed</div></pre></td></tr></table></figure>
+<p>它会将所有的RRD文件按照device重新分配目录，并修改<strong>数据库</strong>中的RRD路径，成功执行后，再恢复poller.php的crontab就可以了。<br>按照上面3个步骤，710台服务器，24000个RRD文件，完成一次poller.php的时间，缩短到50 seconds。实现了最初的目的。</p>
+<h4 id="TODO"><a href="#TODO" class="headerlink" title="TODO:"></a>TODO:</h4><p>在执行poller.php的时候, 监控服务器的load达到了3，通过vmstat查看，显示负载主要在I/O。在目前的情况，如果再出现瓶颈，可以考虑安装Boost插件来进一步提供性能。</p>
+<p>cacti主要通过snmp来采集数据，可以引入collected等客户端，提供数据采集的可靠性。</p>
+<p>使用spine替代默认的cmd.php来采集数据 见上一章</p>
+<h5 id="使用Spine"><a href="#使用Spine" class="headerlink" title="使用Spine"></a>使用Spine</h5><p>关于spine插件的安装，这里就不讲了<br>访问：<a href="http://cacti_host_ipaddress/cacti" target="_blank" rel="external">http://cacti_host_ipaddress/cacti</a><br>Settings -&gt; Paths -&gt; “Spine Poller File Path” -&gt; spine程序的位置<br>Settings -&gt; Poller -&gt; “Poller Type” -&gt; spine</p>
+<h5 id="进程调整"><a href="#进程调整" class="headerlink" title="进程调整"></a>进程调整</h5><p>对于进程和线程的调整有利于缩短采集时间，可以进行大量的采集。在CU论坛上看有人说cacti能够同时采集1k服务，这样的性能没有测试过，但是有人测试过同时采集200台服务器的，占用的内容只有几百兆，cpu的利用率也很低，说明一台的普通的机器排除网络链路延时采集的性能是相当强悍的</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Settings -&gt; Poller -&gt; &quot;Maximum Concurrent Poller Processes&quot;（最大并发轮询器进程），修改该值</div><div class="line">Settings -&gt; Poller -&gt; &quot;Maximum Threads per Process&quot;（每进程最大线程数），修改该值</div><div class="line">Settings -&gt; Poller -&gt; &quot;Number of PHP Script Servers&quot;（PHP脚本服务程序数），修改该值</div><div class="line">通过修改这三个参数，可以提高一部分的性能</div></pre></td></tr></table></figure>
+<h5 id="优化PHP内存"><a href="#优化PHP内存" class="headerlink" title="优化PHP内存"></a>优化PHP内存</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">vi /etc/php.ini</div><div class="line">memory_limit = 256M （预设是128MB，根据内存的使用情况，可以改大一点）</div></pre></td></tr></table></figure>
+<h5 id="定期优化Cacti库"><a href="#定期优化Cacti库" class="headerlink" title="定期优化Cacti库"></a>定期优化Cacti库</h5><p>cacti 的 poller_output 会不明原因的长大，大到数据越写越慢，直到无法更新。每隔一段时间手动 “Truncate poller_output table” 后，就会继续正常运作；所以我们可以利用crontab定期清除数据</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">vi /etc/cron.d/truncate_poller</div><div class="line">0 0 * * 0  root  /usr/local/mysql/bin/mysql --user=cacti --password=2010 cacti -e ‘truncate table poller_output;’</div><div class="line">#chkconfig --level 3 crond on &amp;amp;&amp;amp; service crond start</div></pre></td></tr></table></figure>
+<h5 id="修改mysql的最大连接数"><a href="#修改mysql的最大连接数" class="headerlink" title="修改mysql的最大连接数"></a>修改mysql的最大连接数</h5><p>一般默认安装的时候没有调整最大连接数的话，当需要并发量的时候可以出图就会断断续续的<br>mysql&gt; set GLOBAL max_connections=2000；<br>或者直接修改my.cnf配置文件，增加：max_connections = 2000；</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2013/03/31/linux-monitor-iftop.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Geekwolf">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Geekwolf's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2013/03/31/linux-monitor-iftop.html" itemprop="url">Linux流量监控工具iftop</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2013-03-31T12:57:32+08:00">
+                2013-03-31
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux运维/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux运维</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2013/03/31/linux-monitor-iftop.html" class="leancloud_visitors" data-flag-title="Linux流量监控工具iftop">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  5
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>在类Unix系统中可以使用top查看系统资源、进程、内存占用等信息。查看网络状态可以使用netstat、nmap等工具。若要查看实时的网络流量，监控TCP/IP连接等，则可以使用<a href="http://www.vpser.net/manage/iftop.html" target="_blank" rel="external">iftop</a>。</p>
+</blockquote>
+<h4 id="一、iftop是什么？"><a href="#一、iftop是什么？" class="headerlink" title="一、iftop是什么？"></a>一、iftop是什么？</h4><p><a href="http://www.vpser.net/manage/iftop.html" target="_blank" rel="external">iftop</a>是类似于top的实时流量监控工具。</p>
+<p>官方网站：<a href="http://www.ex-parrot.com/~pdw/iftop/" target="_blank" rel="external">http://www.ex-parrot.com/~pdw/iftop/</a></p>
+<h4 id="二、iftop有什么用？"><a href="#二、iftop有什么用？" class="headerlink" title="二、iftop有什么用？"></a>二、iftop有什么用？</h4><p><a href="http://www.vpser.net/manage/iftop.html" target="_blank" rel="external">iftop</a>可以用来监控网卡的实时流量（可以指定网段）、反向解析IP、显示端口信息等，详细的将会在后面的使用参数中说明。<img src="http://www.vpser.net/wp-includes/js/tinymce/plugins/wordpress/img/trans.gif" alt="" title="更多..."></p>
+<h4 id="三、安装iftop"><a href="#三、安装iftop" class="headerlink" title="三、安装iftop"></a>三、安装iftop</h4><p><strong>安装方法1、</strong>编译安装</p>
+<p>如果采用编译安装可以到<a href="http://www.ex-parrot.com/~pdw/iftop/" target="_blank" rel="external">iftop官网</a>下载最新的源码包。</p>
+<p>安装前需要已经安装好基本的编译所需的环境，比如make、gcc、autoconf等。安装iftop还需要安装libpcap和libcurses。</p>
+<p><strong>CentOS上安装所需依赖包：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum install flex byacc  libpcap ncurses ncurses-devel</div></pre></td></tr></table></figure></p>
+<p><strong>Debian上安装所需依赖包：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">apt-get install flex byacc  libpcap0.8 libncurses5</div></pre></td></tr></table></figure></p>
+<p>下载iftop</p>
+<p>wget <a href="http://www.ex-parrot.com/pdw/iftop/download/iftop-0.17.tar.gz" target="_blank" rel="external">http://www.ex-parrot.com/pdw/iftop/download/iftop-0.17.tar.gz</a><br>tar zxvf iftop-0.17.tar.gz<br>cd iftop-0.17<br>./configure<br>make &amp;&amp; make install</p>
+<p><strong>安装方法2：(懒人办法，最简单)</strong></p>
+<p>直接省略上面的步骤</p>
+<p>CentOS系统运行：yum install iftop<br>Debian系统 运行：apt-get install iftop</p>
+<h4 id="四、运行iftop"><a href="#四、运行iftop" class="headerlink" title="四、运行iftop"></a>四、运行iftop</h4><p>直接运行： iftop<br>效果如下图：</p>
+<p><a href="http://ow1schdt5.bkt.clouddn.com/old/2013/03/iftop-interface.jpg" target="_blank" rel="external"><img src="http://ow1schdt5.bkt.clouddn.com/old/2013/03/iftop-interface.jpg" alt="iftop-interface"></a></p>
+<h4 id="五、相关参数及说明"><a href="#五、相关参数及说明" class="headerlink" title="五、相关参数及说明"></a>五、相关参数及说明</h4><p>1、iftop界面相关说明<br>界面上面显示的是类似刻度尺的刻度范围，为显示流量图形的长条作标尺用的。</p>
+<p>中间的&lt;= =&gt;;这两个左右箭头，表示的是流量的方向。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">TX：发送流量</div><div class="line">RX：接收流量</div><div class="line">TOTAL：总流量</div><div class="line">Cumm：运行iftop到目前时间的总流量</div><div class="line">peak：流量峰值</div><div class="line">rates：分别表示过去 2s 10s 40s 的平均流量</div></pre></td></tr></table></figure></p>
+<p>2、iftop相关参数</p>
+<p>常用的参数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">-i设定监测的网卡，如：# iftop -i eth1</div><div class="line">-B 以bytes为单位显示流量(默认是bits)，如：# iftop -B</div><div class="line">-n使host信息默认直接都显示IP，如：# iftop -n</div><div class="line">-N使端口信息默认直接都显示端口号，如: # iftop -N</div><div class="line">-F显示特定网段的进出流量，如# iftop -F 10.10.1.0/24或# iftop -F 10.10.1.0/255.255.255.0</div><div class="line">-h（display this message），帮助，显示参数信息</div><div class="line">-p使用这个参数后，中间的列表显示的本地主机信息，出现了本机以外的IP信息;</div><div class="line">-b使流量图形条默认就显示;</div><div class="line">-f这个暂时还不太会用，过滤计算包用的;</div><div class="line">-P使host信息及端口信息默认就都显示;</div><div class="line">-m设置界面最上边的刻度的最大值，刻度分五个大段显示，例：# iftop -m 100M</div></pre></td></tr></table></figure></p>
+<p>进入iftop画面后的一些操作命令(注意大小写)<br>```<br>按h切换是否显示帮助;<br>按n切换显示本机的IP或主机名;<br>按s切换是否显示本机的host信息;<br>按d切换是否显示远端目标主机的host信息;<br>按t切换显示格式为2行/1行/只显示发送流量/只显示接收流量;<br>按N切换显示端口号或端口服务名称;<br>按S切换是否显示本机的端口信息;<br>按D切换是否显示远端目标主机的端口信息;<br>按p切换是否显示端口信息;<br>按P切换暂停/继续显示;<br>按b切换是否显示平均流量图形条;<br>按B切换计算2秒或10秒或40秒内的平均流量;<br>按T切换是否显示每个连接的总流量;<br>按l打开屏幕过滤功能，输入要过滤的字符，比如ip,按回车后，屏幕就只显示这个IP相关的流量信息;<br>按L切换显示画面上边的刻度;刻度不同，流量图形条会有变化;<br>按j或按k可以向上或向下滚动屏幕显示的连接记录;<br>按1或2或3可以根据右侧显示的三列流量数据进行排序;<br>按&lt;根据左边的本机名或IP排序;<br>按&gt;根据远端目标主机的主机名或IP排序;<br>按o切换是否固定只显示当前的连接;<br>按f可以编辑过滤代码，这是翻译过来的说法，我还没用过这个！<br>按!可以使用shell命令，这个没用过！没搞明白啥命令在这好用呢！<br>按q退出监控。</p>
+<h4 id="六、常见问题"><a href="#六、常见问题" class="headerlink" title="六、常见问题"></a>六、常见问题</h4><p>1、make: yacc: Command not found<br>make: <em>*</em> [grammar.c] Error 127</p>
+<p>解决方法：apt-get install byacc   /   yum install byacc</p>
+<p>2、configure: error: Curses! Foiled again!<br>(Can’t find a curses library supporting mvchgat.)<br>Consider installing ncurses.</p>
+<p>解决方法：apt-get install libncurses5-dev  /    yum  install ncurses-devel</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2013/03/01/pssh-try-install-usage.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Geekwolf">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Geekwolf's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2013/03/01/pssh-try-install-usage.html" itemprop="url">PSSH 批量管理服务器</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2013-03-01T08:50:59+08:00">
+                2013-03-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux运维/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux运维</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2013/03/01/pssh-try-install-usage.html" class="leancloud_visitors" data-flag-title="PSSH 批量管理服务器">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  2
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>想找一个轻量的批量管理机器的工具，网上搜了一下发现有介绍pssh这个工具，用python写的，python版本大于2.4即可，于是下载试了一下。</p>
+<p>1 下载wget </p>
+<p><a href="http://parallel-ssh.googlecode.com/files/pssh-2.3.1.tar.gz" target="_blank" rel="external">http://parallel-ssh.googlecode.com/files/pssh-2.3.1.tar.gz</a></p>
+<p>2 安装</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">tar zxvf pssh-2.3.1.tar.gz    </div><div class="line">cd pssh-2.3.1/    </div><div class="line">python setup.py install    </div><div class="line">chmod 755 /usr/local/bin/pnuke </div><div class="line">chmod 755 /usr/local/bin/pscp  </div><div class="line">chmod 755 /usr/local/bin/pslurp</div><div class="line">chmod 755 /usr/local/bin/pssh  </div><div class="line">chmod 755 /usr/local/bin/pssh-askpass    </div><div class="line">chmod 755 /usr/local/bin/prsync</div></pre></td></tr></table></figure>
+<p>3 介绍pssh参数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">-h 执行命令的远程主机列表或者 -H user@ip:port 文件内容格式[user@]host[:port]</div><div class="line">-l 远程机器的用户名</div><div class="line">-p 一次最大允许多少连接</div><div class="line">-o 输出内容重定向到一个文件</div><div class="line">-e 执行错误重定向到一个文件</div><div class="line">-t 设置命令执行的超时时间</div><div class="line">-A 提示输入密码并且把密码传递给ssh</div><div class="line">-O 设置ssh参数的具体配置，参照ssh_config配置文件</div><div class="line">-x 传递多个SSH 命令，多个命令用空格分开，用引号括起来</div><div class="line">-X 同-x 但是一次只能传递一个命令</div><div class="line">-i 显示标准输出和标准错误在每台host执行完毕后</div><div class="line">-I 读取每个输入命令，并传递给ssh进程 允许命令脚本传送到标准输入</div></pre></td></tr></table></figure>
+<p>4 介绍软件包内其他命令</p>
+<p>pscp 传输文件到多个hosts，他的特性和scp差不多<br>pslurp 从多台远程机器拷贝文件<br>pnuke kill远程机器的进程</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2013/01/22/nginx-chinese-domain.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Geekwolf">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Geekwolf's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2013/01/22/nginx-chinese-domain.html" itemprop="url">nginx配置中文域名</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2013-01-22T09:23:06+08:00">
+                2013-01-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux运维/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux运维</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2013/01/22/nginx-chinese-domain.html" class="leancloud_visitors" data-flag-title="nginx配置中文域名">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>当在浏览器中敲入www.明月博客.com时，浏览器会转为www.xn–9kRq6Qw2Iu2A.com<br>其实中文域名就是一个经过编码的英文域名（中文域名–&gt;punycode编码–&gt;英文域名）<br>在线转换地址<a href="http://www.webmasterhome.cn/tool/punycode.asp" target="_blank" rel="external">http://www.webmasterhome.cn/tool/punycode.asp</a><br>配置：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">listen 80;   </div><div class="line">server_name www.xn--9kRq6Qw2Iu2A.com;   </div><div class="line">index index.html;</div></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2012/12/16/rpm-package.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Geekwolf">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Geekwolf's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2012/12/16/rpm-package.html" itemprop="url">简单介绍RPM包制作方法</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2012-12-16T14:25:35+08:00">
+                2012-12-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux运维/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux运维</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2012/12/16/rpm-package.html" class="leancloud_visitors" data-flag-title="简单介绍RPM包制作方法">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  3
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>“<br>RPM是RedHat Package Manager（RedHat软件包管理工具）的缩写,是一种用于互联网下载包的打包及安装工具，它包含在某些Linux分发版中。它生成具有.RPM扩展名的文件。使用rpm安装软件和管理软件非常的方便。而这节我们不是介绍如何使用rpm安装或管理软件，而是如何把源码制作成rpm包。<br>“<br>下面我们以制作nginx的rpm开始介绍其制作方法。以下操作在centos-5 32系统进行。<br>制作nginx的rpm例子</p>
+<h4 id="建立目录结构"><a href="#建立目录结构" class="headerlink" title="建立目录结构"></a>建立目录结构</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">/usr/src/redhat/SOURCES — 存放源代码，补丁，图标等文件。</div><div class="line">/usr/src/redhat/SPECS — 存放用于管理rpm制作进程的spec文件。</div><div class="line">/usr/src/redhat/BUILD — 解压后的文件存放在这里。</div><div class="line">/usr/src/redhat/RPMS — 存放由rpmbuild制作好的二进制包。</div><div class="line">/usr/src/redhat/SRPMS —存放由rpmbuild制作好的源码包。</div><div class="line"></div><div class="line">mkdir -p /usr/src/redhat</div><div class="line">cd /usr/src/redhat</div><div class="line">mkdir SOURCES SPECS BUILD RPMS SRPMS</div></pre></td></tr></table></figure>
+<h4 id="下载源码包"><a href="#下载源码包" class="headerlink" title="下载源码包"></a>下载源码包</h4><p>下载源码包到SOURCES目录，不需要解压。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cd /usr/src/redhat/SOURCES</div><div class="line">wget http://nginx.org/download/nginx-1.2.1.tar.gz</div></pre></td></tr></table></figure></p>
+<h4 id="创建Spec文件"><a href="#创建Spec文件" class="headerlink" title="创建Spec文件"></a>创建Spec文件</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line">cd /usr/src/redhat/SPECS</div><div class="line">vi nginx.spec</div><div class="line">内容如下：</div><div class="line"></div><div class="line">#</div><div class="line"># Example spec file for nginx</div><div class="line">#</div><div class="line">Summary: high performance web server</div><div class="line">Name: nginx</div><div class="line">Version: 1.2.1</div><div class="line">Release: 1.el5.ngx</div><div class="line">License: 2-clause BSD-like license</div><div class="line">Group: Applications/Server</div><div class="line">Source: http://nginx.org/download/nginx-1.2.1.tar.gz</div><div class="line">URL: http://nginx.org/</div><div class="line">Distribution: Linux</div><div class="line">Packager: geekwolf &lt;admin@simlinuxc.om&gt;;</div><div class="line"></div><div class="line">%description</div><div class="line">nginx [engine x] is a HTTP and reverse proxy server, as well as</div><div class="line">a mail proxy server</div><div class="line">%prep</div><div class="line">rm -rf $RPM_BUILD_DIR/nginx-1.2.1</div><div class="line">zcat $RPM_SOURCE_DIR/nginx-1.2.1.tar.gz | tar -xvf -</div><div class="line">%build</div><div class="line">cd nginx-1.2.1</div><div class="line">./configure --prefix=/usr/local/nginx</div><div class="line">make</div><div class="line">%install</div><div class="line">cd nginx-1.2.1</div><div class="line">make install</div><div class="line">%preun</div><div class="line">if [ -z &quot;`ps aux | grep nginx | grep -v grep`&quot; ];then</div><div class="line">killall nginx &gt;/dev/null</div><div class="line">exit 0</div><div class="line">fi</div><div class="line">%files</div><div class="line">/usr/local/nginx</div></pre></td></tr></table></figure>
+<h4 id="开始RPM制作"><a href="#开始RPM制作" class="headerlink" title="开始RPM制作"></a>开始RPM制作</h4><p>在制作RPM包之前需要安装必要的工具，如rpmbuild,gcc等。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">yum install gcc rpm-build pcre-devel</div><div class="line">cd /usr/src/redhat/SPECS/</div><div class="line">rpmbuild -bb nginx.spec</div><div class="line">一切顺利的话，会生成nginx的rpm包，/usr/src/redhat/RPMS/i386/nginx-1.2.1-1.el5.ngx.i386.rpm。</div></pre></td></tr></table></figure></p>
+<h4 id="测试rpm包"><a href="#测试rpm包" class="headerlink" title="测试rpm包"></a>测试rpm包</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">rpm -ivh /usr/src/redhat/RPMS/i386/nginx-1.2.1-1.el5.ngx.i386.rpm</div><div class="line">spec文件解释</div><div class="line">从以上的简单例子可以看出，制作rpm包最重要的还是spec文件，下面解释一下例子所用到的指令。</div><div class="line">#:以#开头是注释，rpm会忽略它。</div><div class="line">Summary：简单描述软件。</div><div class="line">Name ：定义rpm的名称。</div><div class="line">Version: 定义软件版本</div><div class="line">Release: 发行版本</div><div class="line">License: 定义许可证</div><div class="line">Group: 软件分类</div><div class="line">Source: 源码下载地址</div><div class="line">URL: 源码相关网站</div><div class="line">Distribution: 发行版系列</div><div class="line">Packager: 打包人的信息</div><div class="line"></div><div class="line">%description:软件详细描述，可多行</div><div class="line">%prep ：软件编译之前的处理，如解压。</div><div class="line">%build ：开始编译软件，如make</div><div class="line">%install :开始安装软件，如make install</div><div class="line">%files :指定哪些文件需要被打包，如/usr/local/nginx</div><div class="line">%preun :定义卸载之前的动作，如杀掉进程。</div><div class="line">这里只介绍了几个常用的tag，更详细的请参考：http://www.rpm.org/max-rpm/ch-rpm-inside.html</div></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2012/12/16/linux-often-use.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Geekwolf">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Geekwolf's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2012/12/16/linux-often-use.html" itemprop="url">系统管理及debug常用命令</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2012-12-16T06:33:12+08:00">
+                2012-12-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux运维/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux运维</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2012/12/16/linux-often-use.html" class="leancloud_visitors" data-flag-title="系统管理及debug常用命令">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  3
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>系统连接状态篇：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">1. 查看TCP连接状态 netstat -nat |awk &apos;&#123;print $6&#125;&apos;|sort|uniq -c|sort -rn</div><div class="line">netstat -n | awk &apos;/^tcp/ &#123;++S[$NF]&#125;;END &#123;for(a in S) print a, S[a]&#125;&apos; 或 netstat -n | awk &apos;/^tcp/ &#123;++state[$NF]&#125;; END &#123;for(key in state) print key,&quot;t&quot;,state[key]&#125;&apos; netstat -n | awk &apos;/^tcp/ &#123;++arr[$NF]&#125;;END &#123;for(k in arr) print k,&quot;t&quot;,arr[k]&#125;&apos;</div><div class="line">netstat -n |awk &apos;/^tcp/ &#123;print $NF&#125;&apos;|sort|uniq -c|sort -rn</div><div class="line">netstat -ant | awk &apos;&#123;print $NF&#125;&apos; | grep -v &apos;[a-z]&apos; | sort | uniq -c</div><div class="line">2. 查找请求数请20个IP（常用于查找攻来源）： netstat -anlp|grep 80|grep tcp|awk &apos;&#123;print $5&#125;&apos;|awk -F: &apos;&#123;print $1&#125;&apos;|sort|uniq -c|sort -nr|head -n20</div><div class="line">netstat -ant |awk &apos;/:80/&#123;split($5,ip,&quot;:&quot;);++A[ip[1]]&#125;END&#123;for(i in A) print A[i],i&#125;&apos; |sort -rn|head -n20</div><div class="line">3. 用tcpdump嗅探80端口的访问看看谁最高 tcpdump -i eth0 -tnn dst port 80 -c 1000 | awk -F&quot;.&quot; &apos;&#123;print $1&quot;.&quot;$2&quot;.&quot;$3&quot;.&quot;$4&#125;&apos; | sort | uniq -c | sort -nr |head -20</div><div class="line">4. 查找较多time_wait连接 netstat -n|grep TIME_WAIT|awk &apos;&#123;print $5&#125;&apos;|sort|uniq -c|sort -rn|head -n20</div><div class="line">5. 找查较多的SYN连接 netstat -an | grep SYN | awk &apos;&#123;print $5&#125;&apos; | awk -F: &apos;&#123;print $1&#125;&apos; | sort | uniq -c | sort -nr | more</div><div class="line">6. 根据端口列进程 netstat -ntlp | grep 80 | awk &apos;&#123;print $7&#125;&apos; | cut -d/ -f1</div></pre></td></tr></table></figure></p>
+<p>网站日志分析篇1（Apache）：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">1. 获得访问前10位的ip地址 cat access.log|awk &apos;&#123;print $1&#125;&apos;|sort|uniq -c|sort -nr|head -10 cat access.log|awk &apos;&#123;counts[$(11)]+=1&#125;; END &#123;for(url in counts) print counts[url], url&#125;&apos;</div><div class="line">2. 访问次数最多的文件或页面,取前20 cat access.log|awk &apos;&#123;print $11&#125;&apos;|sort|uniq -c|sort -nr|head -20</div><div class="line">3. 列出传输最大的几个exe文件（分析下载站的时候常用） cat access.log |awk &apos;($7~/.exe/)&#123;print $10 &quot; &quot; $1 &quot; &quot; $4 &quot; &quot; $7&#125;&apos;|sort -nr|head -20</div><div class="line">4. 列出输出大于200000byte(约200kb)的exe文件以及对应文件发生次数 cat access.log |awk &apos;($10 &gt; 200000 &amp;&amp; $7~/.exe/)&#123;print $7&#125;&apos;|sort -n|uniq -c|sort -nr|head -100</div><div class="line">5. 如果日志最后一列记录的是页面文件传输时间，则有列出到客户端最耗时的页面 cat access.log |awk  &apos;($7~/.php/)&#123;print $NF &quot; &quot; $1 &quot; &quot; $4 &quot; &quot; $7&#125;&apos;|sort -nr|head -100</div><div class="line">6. 列出最最耗时的页面(超过60秒的)的以及对应页面发生次数 cat access.log |awk &apos;($NF &gt; 60 &amp;&amp; $7~/.php/)&#123;print $7&#125;&apos;|sort -n|uniq -c|sort -nr|head -100</div><div class="line">7. 列出传输时间超过 30 秒的文件 cat access.log |awk &apos;($NF &gt; 30)&#123;print $7&#125;&apos;|sort -n|uniq -c|sort -nr|head -20</div><div class="line">8. 统计网站流量（G) cat access.log |awk &apos;&#123;sum+=$10&#125; END &#123;print sum/1024/1024/1024&#125;&apos;</div><div class="line">9. 统计404的连接 awk &apos;($9 ~/404/)&apos; access.log | awk &apos;&#123;print $9,$7&#125;&apos; | sort</div><div class="line">10. 统计http status. cat access.log |awk &apos;&#123;counts[$(9)]+=1&#125;; END &#123;for(code in counts) print code, counts[code]&#125;&apos; cat access.log |awk &apos;&#123;print $9&#125;&apos;|sort|uniq -c|sort -rn</div><div class="line">10.蜘蛛分析 查看是哪些蜘蛛在抓取内容。 /usr/sbin/tcpdump -i eth0 -l -s 0 -w - dst port 80 | strings | grep -i user-agent | grep -i -E &apos;bot|crawler|slurp|spider&apos;</div></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2012/12/11/apache-mod_bandwidth.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Geekwolf">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Geekwolf's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2012/12/11/apache-mod_bandwidth.html" itemprop="url">Apache模块之mod_bandwidth带宽限制</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2012-12-11T04:04:44+08:00">
+                2012-12-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux运维/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux运维</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2012/12/11/apache-mod_bandwidth.html" class="leancloud_visitors" data-flag-title="Apache模块之mod_bandwidth带宽限制">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  3
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="下载模块-mod-bandwidth"><a href="#下载模块-mod-bandwidth" class="headerlink" title="下载模块 mod_bandwidth"></a>下载模块 mod_bandwidth</h4><p><a href="ftp://ftp.cohprog.com/pub/apache/module/" target="_blank" rel="external">ftp://ftp.cohprog.com/pub/apache/module/</a></p>
+<h4 id="编译和安装"><a href="#编译和安装" class="headerlink" title="编译和安装"></a>编译和安装</h4><h5 id="编译"><a href="#编译" class="headerlink" title="编译"></a>编译</h5><p>由于 apache 是用编译好的包安装的，因此只有采用 apxs 方式编译<br>/usr/local/sbin/apxs -c mod_bandwidth.c -o /usr/local/libexec/apache/mod_bandwidth.so</p>
+<h5 id="创建-mod-bandwidth-运行需要的目录"><a href="#创建-mod-bandwidth-运行需要的目录" class="headerlink" title="创建 mod_bandwidth 运行需要的目录"></a>创建 mod_bandwidth 运行需要的目录</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">mkdir /tmp/apachebw</div><div class="line">mkdir /tmp/apachebw/link</div><div class="line">mkdir /tmp/apachebw/master</div><div class="line">chmod -R 777 /tmp/apachebw</div></pre></td></tr></table></figure>
+<h5 id="修改配置"><a href="#修改配置" class="headerlink" title="修改配置"></a>修改配置</h5><p>/usr/local/etc/apache/httpd.conf：<br>增加下列内容</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">LoadModule bandwidth_module   libexec/apache/mod_bandwidth.so</div><div class="line">AddModule mod_bandwidth.c</div></pre></td></tr></table></figure>
+<p>注意：这两行必须分别加在相应区域的最前面，使得这个模块以最低的优先级运行。</p>
+<p>增加下列内容</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">BandWidthDataDir &quot;/tmp/apachebw/&quot;</div><div class="line">BandWidthModule on</div></pre></td></tr></table></figure>
+<p>修改设置</p>
+<p>不限制局域网内用户的下载速度<br>BandWidth 192.168.0 0<br>限制其他用户的下载速度为每秒 8192 字节<br>BandWidth all 8192<br>….</p>
+<h5 id="重新启动-apache"><a href="#重新启动-apache" class="headerlink" title="重新启动 apache"></a>重新启动 apache</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">apachectl configtest</div><div class="line">apachectl restart</div></pre></td></tr></table></figure>
+<h4 id="选项说明"><a href="#选项说明" class="headerlink" title="选项说明"></a>选项说明</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div></pre></td><td class="code"><pre><div class="line">BandWidthDataDir</div><div class="line">格式： BandWidthDataDir</div><div class="line">默认： &quot;/tmp/apachebw&quot;</div><div class="line">上下文： server config</div><div class="line">设置 mod_bandwidth 保存运行时数据的目录。需要在该目录下创建 ./master</div><div class="line">和 ./link 两个子目录，并设置为权限为 777。</div><div class="line">注意：有些系统会定时清理 /tmp 目录，所以在这些系统上最好把</div><div class="line">BandWidthDataDir 设置到其他地方。</div><div class="line">..............................</div><div class="line">BandWidthModule</div><div class="line">格式： BandWidthModule</div><div class="line">默认： Off</div><div class="line">上下文： per server config</div><div class="line">允许或者禁止模块。</div><div class="line">..............................</div><div class="line">BandWidthPulse</div><div class="line">格式： BandWidthPulse</div><div class="line">默认： 1000</div><div class="line">上下文： per server config</div><div class="line">改变计算带宽的时间间隔，默认为1000毫秒（1秒）。使用更低的间隔可以获得</div><div class="line">更精确的带宽控制，但消耗更多的CPU时间，反之亦然。</div><div class="line">注意：这个选项的详细说明请参考 mod_bandwidth 的文档。</div><div class="line">..............................</div><div class="line">BandWidth</div><div class="line">格式： BandWidth</div><div class="line">默认： 无</div><div class="line">上下文： per directory, .htaccess</div><div class="line">限制这个目录下文件下载的速率。</div><div class="line">domain 指定来自哪个域的连接受到这个设置的影响。</div><div class="line">ip 指定来自哪个ip地址（或者ip段）的连接受到影响。</div><div class="line">all 所有连接都受到影响。</div><div class="line">示例：</div><div class="line"># 来自 dualface.com 的连接不限制下载速度</div><div class="line">BandWidth dualface.com 0</div><div class="line"># 来自 192.168.0.0/16（或者192.168.0） 网段的连接不限制下载速度</div><div class="line">BandWidth 192.168.0.0/16 0</div><div class="line"># 其他连接限制下载速度为每秒1024字节</div><div class="line">BandWidth all 1024</div><div class="line"># 越前面的设置优先权越高</div><div class="line">..............................</div><div class="line">LargeFileLimit</div><div class="line">格式： LargeFileLimit</div><div class="line">默认： 无</div><div class="line">上下文： per directory, .htaccess</div><div class="line">对于超过指定大小的文件，下载时使用的速率。如果速率设置0即不限制速度，</div><div class="line">但下载速度仍然要受到BandWidth设置的影响。如果设置成-1，则完全不受影响。</div><div class="line">通过设置不同的文件大小和速率，可以设置不同大小范围内文件的下载速度。</div><div class="line">示例：</div><div class="line"># 文件尺寸大于等于200千字节的文件，下载速率为每秒3072字节</div><div class="line">LargeFileLimit 200 3072</div><div class="line">LargeFileLimit 1024 2048</div><div class="line">..............................</div><div class="line">MaxConnection</div><div class="line">格式： MaxConnection</div><div class="line">默认： 0 （不限制）</div><div class="line">上下文： per directory, .htaccess</div><div class="line">当超过指定连接数时，拒绝新的连接。</div><div class="line">..............................</div><div class="line">MinBandWidth</div><div class="line">格式： MinBandWidth</div><div class="line">默认： all 256</div><div class="line">上下文： per directory, .htaccess</div><div class="line">设置最小带宽，默认为每秒256字节。根据BandWidth和LargeFileLimit设置的速</div><div class="line">率。mod_bandwidth会计算允许的连接数。例如BandWidth为4096字节，而</div><div class="line">MinBandWidth为1024字节，则最大并发连接数为4。</div><div class="line">注意：这个选项的详细说明请参考 mod_bandwidth 的文档。</div></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+  </section>
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/5/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/7/"><i class="fa fa-angle-right"></i></a>
+  </nav>
+
+
+
+          </div>
+          
+
+
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg"
+               alt="Geekwolf" />
+          <p class="site-author-name" itemprop="name">Geekwolf</p>
+           
+              <p class="site-description motion-element" itemprop="description">DevOps | Docker | Python | k8s</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">82</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">59</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/geekwolf" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                    
+                      GitHub
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/geekwolf" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                    
+                      Weibo
+                    
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-block">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://blog.simlinux.com" title="旧版博客" target="_blank">旧版博客</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://nolinux.blog.51cto.com" title="nolinux" target="_blank">nolinux</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://xiaorui.cc" title="峰云就她了" target="_blank">峰云就她了</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://note.gitcloud.cc/blog/bluetom520" title="懒懒的天空" target="_blank">懒懒的天空</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.roddypy.com" title="普拉多VX" target="_blank">普拉多VX</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://blog.opskumu.com" title="枯木磊" target="_blank">枯木磊</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2012 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Geekwolf</span>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  
+    <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('-1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("qms5kJ0y2CItrIVFivKxxPsR-gzGzoHsz", "Cn3w20futtphxpaDSP5tHjzy");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
