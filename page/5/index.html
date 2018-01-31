@@ -348,6 +348,618 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2014/08/20/centos-puppet-install-test.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Geekwolf">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Geekwolf's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2014/08/20/centos-puppet-install-test.html" itemprop="url">Centos6.5下安装Puppet及测试</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-08-20T11:10:46+08:00">
+                2014-08-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/自动化运维/" itemprop="url" rel="index">
+                    <span itemprop="name">自动化运维</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2014/08/20/centos-puppet-install-test.html" class="leancloud_visitors" data-flag-title="Centos6.5下安装Puppet及测试">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  5
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="安装前注意事项"><a href="#安装前注意事项" class="headerlink" title="安装前注意事项"></a>安装前注意事项</h4><ol>
+<li>Puppet master尽量使用高配置server</li>
+<li>任何官方未支持的系统也可以正常运行puppet，前提是要装合适的版本的ruby环境<br>请参考:<a href="http://docs.puppetlabs.com/puppet/latest/reference/system_requirements.html#basic-requirements" target="_blank" rel="external">http://docs.puppetlabs.com/puppet/latest/reference/system_requirements.html#basic-requirements</a></li>
+<li>master防火墙放行8140端口给agent</li>
+<li>每个节点都必须有一个唯一的主机名，正解析和反解析都被正确配置，如果没有DNS服务，必须在每个节点上配置/etc/hosts<br><strong>注</strong>：默认情况下puppet的master的主机名是puppet</li>
+<li>由于Puppet master同时扮演着CA(认证授权机构)的角色,需要时间同步,启动ntpd服务；</li>
+<li>两种工作模式：Master/Agent、Standatone</li>
+</ol>
+<h4 id="环境说明"><a href="#环境说明" class="headerlink" title="环境说明"></a>环境说明</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">192.168.10.216   Puppet Agent   c1.geekwolf.github.io</div><div class="line">192.168.10.217   Puppet Agent   c2.geekwolf.github.io</div><div class="line">192.168.10.218   Puppet Master  m.geekwolf.github.io</div></pre></td></tr></table></figure>
+<h4 id="安装步骤"><a href="#安装步骤" class="headerlink" title="安装步骤"></a>安装步骤</h4><h5 id="安装puppet"><a href="#安装puppet" class="headerlink" title="安装puppet"></a>安装puppet</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">rpm -ivh [http://yum.puppetlabs.com/puppetlabs-release-el-6.noarch.rpm](http://yum.puppetlabs.com/puppetlabs-release-el-6.noarch.rpm)</div><div class="line">说明:若要测试RC版及相关软件编辑/etc/yum.repos.d/puppetlabs.repo：</div><div class="line"></div><div class="line">[puppetlabs-devel]</div><div class="line">name=Puppet Labs Devel El 6 - $basearch</div><div class="line">baseurl=http://yum.puppetlabs.com/el/6/devel/$basearch</div><div class="line">gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-puppetlabs</div><div class="line">enabled=1</div><div class="line">gpgcheck=1</div><div class="line"></div><div class="line">yum -y install  ntp</div><div class="line">service ntpd start</div><div class="line">chkconfig ntpd on</div></pre></td></tr></table></figure>
+<h5 id="配置puppet"><a href="#配置puppet" class="headerlink" title="配置puppet"></a>配置puppet</h5><p>配置好hostname，并将解析写进hosts同步到所有节点<br><strong>在master:192.168.10.218安装puppet-server</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">yum -y install puppet-server（依赖puppet、facter一起安装）</div><div class="line">生成启动脚本:</div><div class="line">/etc/init.d/puppetmaster </div><div class="line">Master配置文件目录：</div><div class="line">/etc/puppet</div><div class="line"></div><div class="line">chkconfig puppetmaster on</div><div class="line">service puppetmaster start</div><div class="line"></div><div class="line">升级puppet master：</div><div class="line">puppet resource package puppet ensure=latest</div><div class="line">service puppetmaster restart</div></pre></td></tr></table></figure></p>
+<p><strong>在c1 c2 上安装puppet</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">yum -y install puppet</div><div class="line">chkconfig puppet on</div><div class="line">service puppet start</div><div class="line">Agent配置文件目录:</div><div class="line">/etc/sysconfig/puppet.conf</div></pre></td></tr></table></figure></p>
+<p><strong>配置puppet agent c1 c2指定Puppet Master地址</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">vim  /etc/puppet/puppet.conf</div><div class="line">[main]</div><div class="line"># The Puppet log directory.</div><div class="line"># The default value is &apos;$vardir/log&apos;.</div><div class="line">logdir = /var/log/puppet</div><div class="line"># Where Puppet PID files are kept.</div><div class="line"># The default value is &apos;$vardir/run&apos;.</div><div class="line">rundir = /var/run/puppet</div><div class="line"># Where SSL certificates are kept.</div><div class="line"># The default value is &apos;$confdir/ssl&apos;.</div><div class="line">ssldir = $vardir/ssl</div><div class="line">[agent]</div><div class="line"># The file in which puppetd stores a list of the classes</div><div class="line"># associated with the retrieved configuratiion. Can be loaded in</div><div class="line"># the separate ``puppet`` executable using the ``--loadclasses``</div><div class="line"># option.</div><div class="line"># The default value is &apos;$confdir/classes.txt&apos;.</div><div class="line">classfile = $vardir/classes.txt</div><div class="line"># Where puppetd caches the local configuration. An</div><div class="line"># extension indicating the cache format is added automatically.</div><div class="line"># The default value is &apos;$confdir/localconfig&apos;.</div><div class="line">localconfig = $vardir/localconfig</div><div class="line">server = m.geekwolf.github.io</div></pre></td></tr></table></figure>
+<h5 id="证书管理"><a href="#证书管理" class="headerlink" title="证书管理"></a>证书管理</h5><p><strong>A.手动签发证书</strong><br>c1、c2申请证书，由于已经配置了server=m.geekwolf.github.io，故申请时不必在指定server<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">[root@c1 ~]# puppet agent -t</div><div class="line">Info: Creating a new SSL key for c1.geekwolf.github.io</div><div class="line">Info: Caching certificate for ca</div><div class="line">Info: Caching certificate_request for c1.geekwolf.github.io</div><div class="line">Info: Caching certificate for ca</div><div class="line">Exiting; no certificate found and waitforcert is disabled</div></pre></td></tr></table></figure></p>
+<p>在Master上管理证书：<br><strong>签发证书：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">puppet cert list --all                   查看请求签发的证书（+表示已签发，-未签发）</div><div class="line">puppet cert --sign c1.geekwolf.github.io 签发主机c1.geekwolf.github.io的证书</div><div class="line">puppet cert --sign --all                 签发所有请求的主机的证书</div></pre></td></tr></table></figure></p>
+<p><strong>注销证书：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">puppet cert revoke  c1.geekwolf.github.io 注销主机c1.geekwolf.github.io的证书</div><div class="line">puppet cert revoke --all                  注销所有主机的证书（若想在重新签名，需先重启puppetmaster,然后节点在请求申请证书，再签名即可）</div></pre></td></tr></table></figure></p>
+<p><strong>清除证书：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">在master上清除某节点证书,重启puppetmaster后生效</div><div class="line">puppet cert --clean c1.geekwolf.github.io </div><div class="line"></div><div class="line">在agent上删除相关目录,可以重新再申请签名   </div><div class="line">rm -rf /var/lib/puppet/ssl 或者rm -rf /var/lib/puppet/certs/c1.geekwolf.github.io.pem</div></pre></td></tr></table></figure></p>
+<p><strong>B.自动签发证书</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">在Puppet Master创建/etc/puppet/autosign.conf文件</div><div class="line">*.geekwolf.github.io (geekwolf.github.io域的申请会自动签发)</div><div class="line">service puppetmaster restart</div><div class="line">所有节点上执行</div><div class="line">rm -rf /var/lib/puppet/ssl</div><div class="line"></div><div class="line">然后所有的节点申请签名</div><div class="line">puppet agent -t —server m.geekwolf.github.io</div><div class="line"></div><div class="line">在Puppet Master查看签名</div><div class="line">[root@m puppet]# puppet cert list --all</div><div class="line">+ &quot;c1.geekwolf.github.io&quot; (SHA256) 2A:28:96:6C:B0:36:E8:CC:71:80:F4:C6:B5:D8:61:94:A8:59:46:9D:52:A3:58:2A:D9:78:45:A3:57:93:1C:38</div><div class="line">+ &quot;c2.geekwolf.github.io&quot; (SHA256) 09:59:71:9A:CA:AE:92:82:1D:D4:0C:A6:D4:5F:51:C3:D6:E4:EE:80:20:19:CB:B1:71:EE:B3:24:F7:E3:80:71</div><div class="line">+ &quot;m.geekwolf.github.io&quot; (SHA256) 10:F3:28:EA:36:25:38:C5:1C:8A:38:FD:94:EF:F9:77:6B:97:E9:FA:60:18:D5:53:DD:5D:DA:15:88:4F:96:A1 (alt names: &quot;DNS:m.geekwolf.github.io&quot;, &quot;DNS:puppet&quot;, &quot;DNS:puppet.geekwolf.github.io&quot;)</div></pre></td></tr></table></figure></p>
+<h4 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">默认agent（c1，c2）每30分钟连接到puppet master,为测试方便先修改连接时间</div><div class="line">echo &quot;runinterval = 10&quot; &amp;gt;&amp;gt;/etc/puppet/puppet.conf</div><div class="line">service puppet restart</div><div class="line"></div><div class="line">Puppet Master：</div><div class="line">vim /etc/puppet/manifests/site.pp</div><div class="line">file &#123;&quot;/tmp/test.txt&quot; :</div><div class="line">content=&amp;gt;&quot;test from geekwolf!~\n&quot;; &#125; </div><div class="line"></div><div class="line">检查c1 c2是否有/tmp/test.txt文件</div></pre></td></tr></table></figure>
+<h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><blockquote>
+<p><a href="http://docs.puppetlabs.com/puppet/3.6/reference/config_ssl_external_ca.html#option-3-two-intermediate-cas-issued-by-one-root-ca" target="_blank" rel="external">多CA配置</a></p>
+</blockquote>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2014/08/20/mysql-gtid-rep.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Geekwolf">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Geekwolf's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2014/08/20/mysql-gtid-rep.html" itemprop="url">MySQL5.6基于GTID复制配置</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-08-20T11:06:43+08:00">
+                2014-08-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/MySQL数据库/" itemprop="url" rel="index">
+                    <span itemprop="name">MySQL数据库</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2014/08/20/mysql-gtid-rep.html" class="leancloud_visitors" data-flag-title="MySQL5.6基于GTID复制配置">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  7
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="一、什么是GTID？"><a href="#一、什么是GTID？" class="headerlink" title="一、什么是GTID？"></a>一、什么是GTID？</h4><blockquote>
+<p> GTID(Global Transaction Identifiers)是全局事务标识<br>当使用GTIDS时，在主上提交的每一个事务都会被识别和跟踪，并且运用到所有从MySQL，而且配置主从或者主从切换时不再需要指定 master_log_files和master_log_pos；由于GTID-base复制是完全基于事务的，所以能很简单的决定主从复制的一致性；官方建议Binlog采用Row格式</p>
+</blockquote>
+<h4 id="二、GTID的表示方式"><a href="#二、GTID的表示方式" class="headerlink" title="二、GTID的表示方式"></a>二、GTID的表示方式</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">source_id：transaction_id</div><div class="line">source_id：表示执行事务的主库的UUID(server_uuid:Mysql5.6的data目录下启动时会生成auto.cnf文件记录了uuid，重启后uuid不变，删除文件后会重新生成新的uuid)；</div><div class="line">transaction_id：是一个从1开始自增的计数，表示在这个主库上执行的第n个事务；</div><div class="line">由于每台Mysql的uuid是全球唯一的，transaction_id自身唯一，就保证了GTID全局唯一性</div><div class="line"></div><div class="line">mysql&gt; show variables like &apos;server_uuid&apos;; </div><div class="line">+---------------+--------------------------------------+</div><div class="line">| Variable_name | Value |</div><div class="line">+---------------+--------------------------------------+</div><div class="line">| server_uuid | 4468c0e8-ef6f-11e3-9c2c-0200c0a80ad8 |</div><div class="line">+---------------+--------------------------------------+</div><div class="line">1 row in set (0.00 sec)</div></pre></td></tr></table></figure>
+<h4 id="三、基于GTID的复制配置"><a href="#三、基于GTID的复制配置" class="headerlink" title="三、基于GTID的复制配置"></a>三、基于GTID的复制配置</h4><p><strong>master：</strong>192.168.10.216<br><strong>slave ：</strong>192.168.10.217<br><strong>步骤：</strong><br>修改主从my.cnf增加GTID支持—&gt;主只读—&gt;拷贝数据到从数据目录—&gt;重启主从—&gt;在从上进行配置</p>
+<ol>
+<li>修改主从my.cnf增加GTID支持</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">主Mysql配置：</div><div class="line">server-id=216   </div><div class="line">binlog-format=ROW</div><div class="line">gtid-mode=on</div><div class="line">enforce-gtid-consistency=true </div><div class="line">log-bin=mysql-bin</div><div class="line">log-slave-updates=true   slave更新是否记入日志</div><div class="line"></div><div class="line">从Mysql配置：</div><div class="line">server-id=217   同一个复制拓扑中的所有服务器的id号必须惟一</div><div class="line">binlog-format=ROW</div><div class="line">gtid-mode=on  启用gtid类型，否则就是普通的复制架构</div><div class="line">enforce-gtid-consistency=true 强制GTID的一致性</div><div class="line">log-bin=mysql-bin</div><div class="line">log-slave-updates=true   slave更新是否记入日志</div><div class="line">只从库配置：</div><div class="line">slave-paralles-workers 设定从服务器的SQL线程数；0表示关闭多线程复制功能；</div></pre></td></tr></table></figure>
+<ol>
+<li>主只读</li>
+</ol>
+<p><code>mysql&gt; SET @@global.read_only = ON;</code><br>拷贝主数据到从目录</p>
+<ol>
+<li>重启主从Mysql</li>
+<li><p>在从上配置基于GTID的复制</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">mysql&gt; CHANGE MASTER TO </div><div class="line">     &gt; MASTER_HOST = ‘192.168.10.216’,</div><div class="line">     &gt; MASTER_PORT = 3306,</div><div class="line">     &gt; MASTER_USER = &apos;rep&apos;,</div><div class="line">     &gt; MASTER_PASSWORD = &apos;geekwolf&apos;,</div><div class="line">     &gt; MASTER_AUTO_POSITION = 1;</div></pre></td></tr></table></figure>
+</li>
+<li><p>启动从库</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div></pre></td><td class="code"><pre><div class="line">mysql&gt; start slave; </div><div class="line">Query OK, 0 rows affected, 1 warning (0.00 sec)</div><div class="line"></div><div class="line">mysql&gt; show slave status \G</div><div class="line">*************************** 1. row ***************************</div><div class="line">   Slave_IO_State: Waiting for master to send event</div><div class="line">  Master_Host: 192.168.10.216</div><div class="line">  Master_User: rep</div><div class="line">  Master_Port: 3306</div><div class="line">Connect_Retry: 60</div><div class="line">  Master_Log_File: mysql-bin.000002</div><div class="line">  Read_Master_Log_Pos: 41921904</div><div class="line">   Relay_Log_File: relay-bin.000002</div><div class="line">Relay_Log_Pos: 64520</div><div class="line">Relay_Master_Log_File: mysql-bin.000002</div><div class="line"> Slave_IO_Running: Yes</div><div class="line">Slave_SQL_Running: Yes</div><div class="line">  Replicate_Do_DB:</div><div class="line">  Replicate_Ignore_DB:</div><div class="line">   Replicate_Do_Table:</div><div class="line">   Replicate_Ignore_Table:</div><div class="line">  Replicate_Wild_Do_Table:</div><div class="line">  Replicate_Wild_Ignore_Table: mysql.%</div><div class="line">   Last_Errno: 0</div><div class="line">   Last_Error:</div><div class="line"> Skip_Counter: 0</div><div class="line">  Exec_Master_Log_Pos: 41921904</div><div class="line">  Relay_Log_Space: 64718</div><div class="line">  Until_Condition: None</div><div class="line">   Until_Log_File:</div><div class="line">Until_Log_Pos: 0</div><div class="line">   Master_SSL_Allowed: No</div><div class="line">   Master_SSL_CA_File:</div><div class="line">   Master_SSL_CA_Path:</div><div class="line">  Master_SSL_Cert:</div><div class="line">Master_SSL_Cipher:</div><div class="line">   Master_SSL_Key:</div><div class="line">Seconds_Behind_Master: 0</div><div class="line">Master_SSL_Verify_Server_Cert: No</div><div class="line">Last_IO_Errno: 0</div><div class="line">Last_IO_Error:</div><div class="line">   Last_SQL_Errno: 0</div><div class="line">   Last_SQL_Error:</div><div class="line">  Replicate_Ignore_Server_Ids:</div><div class="line"> Master_Server_Id: 216</div><div class="line">  Master_UUID: 21ad8db5-f038-11e3-a14a-0200c0a80ad8</div><div class="line"> Master_Info_File: /usr/local/mysql/data/master.info</div><div class="line">SQL_Delay: 0</div><div class="line">  SQL_Remaining_Delay: NULL</div><div class="line">  Slave_SQL_Running_State: Reading event from the relay log</div><div class="line">   Master_Retry_Count: 86400</div><div class="line">  Master_Bind:</div><div class="line">  Last_IO_Error_Timestamp:</div><div class="line"> Last_SQL_Error_Timestamp:</div><div class="line">   Master_SSL_Crl:</div><div class="line">   Master_SSL_Crlpath:</div><div class="line">   Retrieved_Gtid_Set: 21ad8db5-f038-11e3-a14a-0200c0a80ad8:76793-77026</div><div class="line">Executed_Gtid_Set: 21ad8db5-f038-11e3-a14a-0200c0a80ad8:1-77025</div><div class="line">Auto_Position: 1</div><div class="line">1 row in set (0.00 sec)</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p><strong>注：</strong><br>两个Yes代表复制正常<br>Slave_IO_Running: Yes<br>Slave_SQL_Running: Yes</p>
+<p>基于GTID复制的新特性：<br>Retrieved_Gtid_Set: 21ad8db5-f038-11e3-a14a-0200c0a80ad8:76793-77026<br>Executed_Gtid_Set: 21ad8db5-f038-11e3-a14a-0200c0a80ad8:1-77025</p>
+<p>Retrieved_Gtid_Set项：记录了relay日志从Master获取了binlog日志的位置<br>Executed_Gtid_Set项：记录本机执行的binlog日志位置（如果是从机，包括Master的binlog日志位置和slave本身的binlog日志位置）</p>
+<h4 id="四、基于GTID复制增加新的slav"><a href="#四、基于GTID复制增加新的slav" class="headerlink" title="四、基于GTID复制增加新的slav"></a>四、基于GTID复制增加新的slav</h4><p>备份主MySQL数据，记录主gtid_executed—&gt;将备份数据恢复到从数据目录—&gt;设置从gtid_purged的值为主的gtid_executed值—&gt;启动复制即可</p>
+<ol>
+<li>使用mysqldump备份主数据<br>mysqldump —all-databases —single-transaction —triggers —routines —host=127.0.0.1 —port=3306 —user=root —password=geekwolf &gt; backup.sql<br>亦可以使用xtrabackup也支持GTID：<br>请参考:<a href="http://www.mysqlperformanceblog.com/2013/05/09/how-to-create-a-new-or-repair-a-broken-gtid-based-slave-with-percona-xtrabackup/" target="_blank" rel="external">http://www.mysqlperformanceblog.com/2013/05/09/how-to-create-a-new-or-repair-a-broken-gtid-based-slave-with-percona-xtrabackup/</a></li>
+<li>传到从MySQL，恢复数据<br>由于新版本msqldump会记录并设置GTID_PURGED的值等于主的GTID_EXECUTED，所以只需要将sql导入到从库即可</li>
+<li>启动主从复制</li>
+</ol>
+<p>从库执行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">mysql &gt; CHANGE MASTER TO MASTER_HOST=&apos;127.0.0.1&apos;, MASTER_USER=&apos;root&apos;, MASTER_PASSWORD=geekwolf&apos;, MASTER_PORT=3306, MASTER_AUTO_POSITION = 1;</div><div class="line">mysql &gt; START SLAVE;</div></pre></td></tr></table></figure></p>
+<h4 id="五、基于GTID复制出错的解决办法"><a href="#五、基于GTID复制出错的解决办法" class="headerlink" title="五、基于GTID复制出错的解决办法"></a>五、基于GTID复制出错的解决办法</h4><p><strong>问题:</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Slave_IO_Running: No</div><div class="line">Slave_SQL_Running: Yes</div><div class="line">Last_IO_Error: Got fatal error 1236 from master when reading data from binary log: &apos;The slave is connecting using CHANGE MASTER TO MASTER_AUTO_POSITION = 1, but the master has purged binary logs containing GTIDs that the slave requires.&apos;</div></pre></td></tr></table></figure></p>
+<p><strong>解决思路:</strong></p>
+<p>从复制跳过已经丢失的binlog，继续复制或者重新做主从（可以参考上面的操作）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line">主MySQL：</div><div class="line">mysql&gt; show global variables like &apos;%gtid_executed%&apos;;</div><div class="line">+---------------+-----------------------------------------------+</div><div class="line">| Variable_name | Value |</div><div class="line">+---------------+-----------------------------------------------+</div><div class="line">| gtid_executed | 21ad8db5-f038-11e3-a14a-0200c0a80ad8:1-223937 |</div><div class="line">+---------------+-----------------------------------------------+</div><div class="line">1 row in set (0.00 sec)</div><div class="line"></div><div class="line">从MySQL：</div><div class="line">mysql&gt; set global GTID_PURGED=&quot;21ad8db5-f038-11e3-a14a-0200c0a80ad8:1-223937&quot;;</div><div class="line">ERROR 1840 (HY000): @@GLOBAL.GTID_PURGED can only be set when @@GLOBAL.GTID_EXECUTED is empty.</div><div class="line"></div><div class="line">mysql&gt; reset master;</div><div class="line">Query OK, 0 rows affected (0.19 sec)</div><div class="line">mysql&gt; show global variables like &apos;GTID_EXECUTED&apos;;</div><div class="line">+---------------+-----------------------------------------------+</div><div class="line">| Variable_name | Value |</div><div class="line">+---------------+-----------------------------------------------+</div><div class="line">| gtid_executed |  |</div><div class="line">+---------------+-----------------------------------------------+</div><div class="line">1 row in set (0.00 sec)</div><div class="line"></div><div class="line">mysql&gt; stop slave;</div><div class="line">Query OK, 0 rows affected, 1 warning (0.00 sec)</div><div class="line"></div><div class="line">mysql&gt; set global GTID_PURGED=&quot;21ad8db5-f038-11e3-a14a-0200c0a80ad8:1-223937&quot;;</div><div class="line">Query OK, 0 rows affected (0.13 sec)</div><div class="line"></div><div class="line">mysql&gt; start slave;</div><div class="line">Query OK, 0 rows affected (0.04 sec)</div><div class="line"></div><div class="line">mysql&gt; show slave status\G</div><div class="line">[...]</div><div class="line">Slave_IO_Running: Yes</div><div class="line">Slave_SQL_Running: Yes</div><div class="line">[...]</div></pre></td></tr></table></figure>
+<p><strong>注意事项：
+</strong>使用基于GTID复制时，不需要再关心master_log_file和master_log_os，替代的是只需要知道master上的GTID，并且配置在从上即可；<br>记录GTID的有两个全局变量：gtid_executed和gtid_purged<br><strong>与GTID复制相关的参数：</strong><br><a href="http://ow1schdt5.bkt.clouddn.com/2014/08/gtid1.png" target="_blank" rel="external"><img src="http://ow1schdt5.bkt.clouddn.com/2014/08/gtid1.png" alt="gtid"></a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">GTID_EXECUTED ：表示已经在该实例上执行过的事务；执行RESET MASTER可以置空该参数；也可以设置GTID_NEXT执行一个空事务来影响GTID_EXECUTED</div><div class="line">GTID_NEXT ：是SESSION级别参数，表示下一个事务被执行使用的GTID（show variables like ‘gtid_%’;）</div><div class="line">GTID_PURGED ：表示被删除的binlog事务GTID，它是GTID_EXCUTED的子集，MySQL5.6.9，该参数无法被设置</div><div class="line">GTID_OWENED ：表示正在执行的事务的GTID以及对应的线程ID</div><div class="line"></div><div class="line">如果设置MASTER_AUTO_POSITION = 1表示主从复制连接使用基于GTID的方式复制</div><div class="line">CHANGE MASTER TO MASTER_HOST=&apos;192.168.10.216&apos;,MASTER_USER=&apos;rep&apos;,MASTER_PASSWORD=&apos;geekwolf&apos;,MASTER_AUTO_POSITION=1;</div></pre></td></tr></table></figure></p>
+<p>如果在GTID复制模式下想要使用基于文件的复制协议需要MASTER_AUTO_POSITION=0（至少指定其中MASTER_LOG_FILE、MASTER_LOG_POSITION一个）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">CHANGE MASTER TO MASTER_HOST=&apos;192.168.10.216&apos;,MASTER_USER=&apos;rep&apos;,MASTER_PASSWORD=&apos;geekwolf&apos;,MASTER_LOG_FILE=&apos;mysql-bin.000002&apos;,MASTER_LOG_POS=120,MASTER_AUTO_POSITION=0;</div></pre></td></tr></table></figure>
+<h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><blockquote>
+<p><a href="http://dev.mysql.com/doc/refman/5.6/en/replication-gtids-restrictions.html" target="_blank" rel="external">MYSQL 5.6 GTID-based Replication</a><br><a href="http://www.woqutech.com/?p=1108" target="_blank" rel="external">MYSQL 5.6 GTID模式下手工删除日志导致备库数据丢失</a><br><a href="http://www.mysqlperformanceblog.com/2013/05/09/how-to-create-a-new-or-repair-a-broken-gtid-based-slave-with-percona-xtrabackup/" target="_blank" rel="external">How to create a new (or repair a broken) GTID based slave with Percona XtraBackup</a></p>
+</blockquote>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2014/08/20/first-puppet.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Geekwolf">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Geekwolf's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2014/08/20/first-puppet.html" itemprop="url">初认识Puppet</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-08-20T10:59:23+08:00">
+                2014-08-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/自动化运维/" itemprop="url" rel="index">
+                    <span itemprop="name">自动化运维</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2014/08/20/first-puppet.html" class="leancloud_visitors" data-flag-title="初认识Puppet">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  4
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="自动化运维都有哪些开源软件"><a href="#自动化运维都有哪些开源软件" class="headerlink" title="自动化运维都有哪些开源软件"></a>自动化运维都有哪些开源软件</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">初始化：Kickstart、Cobbler、 Rpmbuild/Xen、Kvm、Lxc、Docker/Openstack、Cloudstack、Opennebula、Eucalyplus</div><div class="line">配置类工具：Chef、Puppet、Func、Cfengine</div><div class="line">命令和控制类工具: Fabric、Salstack、Ansible、Capistrano、Pssh、Dsh、Expect</div><div class="line">监控类工具：Cacti、Nagios、Zabbix、Ganglia</div></pre></td></tr></table></figure>
+<h4 id="什么是Puppet"><a href="#什么是Puppet" class="headerlink" title="什么是Puppet"></a>什么是Puppet</h4><p>puppet是一种Linux、Unix平台的集中配置管理系统，使用ruby语言，可管理配置文件、用户、cron任务、软件包、系统服务等。puppet把这些系统实体称之为资源，puppet的设计目标是简化对这些资源的管理以及妥善处理资源间的依赖关系</p>
+<h4 id="Puppet都有哪些特性"><a href="#Puppet都有哪些特性" class="headerlink" title="Puppet都有哪些特性"></a>Puppet都有哪些特性</h4><ul>
+<li>可自动化重复任务、快速部署关键性应用及本地或者云端完成主动管理变更和快速扩展架构规模等</li>
+<li>遵循GPL协议，基于ruby开发，2.7.0以后使用Apache 2.0 License</li>
+<li>对于sa来讲是抽象的，只依赖于ruby与facter</li>
+<li>基于C/S架构，配置master和agent</li>
+<li>默认agent每30分钟连接到puppet master</li>
+<li>能管理多达40多种资源，如：file、user 、group、host、packeage、service、cron、exec、yumrepo等，适合整个软件生命周期的管理</li>
+</ul>
+<h4 id="puppet的整个生命周期"><a href="#puppet的整个生命周期" class="headerlink" title="puppet的整个生命周期"></a>puppet的整个生命周期</h4><p>供应（provisioning:包安装）—&gt;配置（configuration）—&gt;联动(orchestration)—&gt;报告(reporting)</p>
+<h4 id="Puppet适用于哪些场合"><a href="#Puppet适用于哪些场合" class="headerlink" title="Puppet适用于哪些场合"></a>Puppet适用于哪些场合</h4><ul>
+<li>初始化配置、修复、升级、审计</li>
+<li>统一安装、配置管理软件</li>
+<li>统一配置系统优化参数</li>
+<li>定期检测服务是否运行</li>
+<li>快速替换集群时设备的角色</li>
+</ul>
+<h4 id="Puppet社区版和企业版本功能上有什么差别"><a href="#Puppet社区版和企业版本功能上有什么差别" class="headerlink" title="Puppet社区版和企业版本功能上有什么差别"></a>Puppet社区版和企业版本功能上有什么差别</h4><p><a href="http://ow1schdt5.bkt.clouddn.com/2014/08/cb.png" target="_blank" rel="external"><img src="http://ow1schdt5.bkt.clouddn.com/2014/08/cb.png" alt="cb"></a></p>
+<p>请参考：<a href="http://puppetlabs.com/puppet/enterprise-vs-open-source" target="_blank" rel="external">http://puppetlabs.com/puppet/enterprise-vs-open-source</a></p>
+<h4 id="Puppet支持哪些系统"><a href="#Puppet支持哪些系统" class="headerlink" title="Puppet支持哪些系统"></a>Puppet支持哪些系统</h4><p><a href="http://ow1schdt5.bkt.clouddn.com/2014/08/zcos.png" target="_blank" rel="external"><img src="http://ow1schdt5.bkt.clouddn.com/2014/08/zcos.png" alt="zcos"></a></p>
+<h4 id="Puppet架构是怎样的"><a href="#Puppet架构是怎样的" class="headerlink" title="Puppet架构是怎样的"></a>Puppet架构是怎样的</h4><p><a href="http://ow1schdt5.bkt.clouddn.com/2014/08/ppjg.png" target="_blank" rel="external"><img src="http://ow1schdt5.bkt.clouddn.com/2014/08/ppjg.png" alt="ppjg"></a></p>
+<h4 id="Puppet如何工作的"><a href="#Puppet如何工作的" class="headerlink" title="Puppet如何工作的"></a>Puppet如何工作的</h4><p><a href="http://ow1schdt5.bkt.clouddn.com/2014/08/yl.png" target="_blank" rel="external"><img src="http://ow1schdt5.bkt.clouddn.com/2014/08/yl.png" alt="yl"></a></p>
+<p>  所有配置信息为实现其通用性，在master端通常被定义为modules—class—resource（管理和被管理的对象）<br>资源组成类，类封装成模块<br>puppet只定义目标状态，不用关心实现过程；<br>module(class(resource))—&gt;node ‘FQDN’ {class1,class2}—&gt;agent(facter)报告facter给master —&gt;master根据facter信息生成相应的catalog结果—&gt;agent 应用catalog</p>
+<h5 id="流程简述"><a href="#流程简述" class="headerlink" title="流程简述"></a>流程简述</h5><ol>
+<li>客户端puppetd向master发起认证请求。</li>
+<li>Puppet Master告诉client是合法的。</li>
+<li>客户端puppetd开始调用facter，facter可以探测出主机的一些变量，例如主机名，内存大小，IP地址等。pupppetd 把这些信息通过ssl连接发送到服务器端。</li>
+<li>服务器端的puppet Master 检测客户端的主机名，然后找到manifest里面对应的node配置， 并对该部分内容进行解析，解析分为几个阶段，语法检查，如果语法错误就报错。如果语法没错，就继续解析，解析的结果会生成一个中间的“伪代码”(catalog)，然后把伪代码发给客户端。</li>
+<li>客户端接收到“伪代码”，并且执行。</li>
+<li>客户端在执行时判断有没有file文件，如果有就向Fileserver发起请求。</li>
+<li>客户端继续判断有没有配置Report。如果配置，就把执行结果发送给服务器。</li>
+<li>服务器端把客户端的执行结果写入日志。并可以发送给报告系统(DashBoard)</li>
+</ol>
+<h4 id="Puppet组织结构是怎样的"><a href="#Puppet组织结构是怎样的" class="headerlink" title="Puppet组织结构是怎样的"></a>Puppet组织结构是怎样的</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">Puppet的目录结构描述如下： </div><div class="line">|— puppet.conf # 主配置配置文件</div><div class="line">|— fileserver.conf #文件服务器配置文件</div><div class="line">|— auth.conf #认证配置文件 (只允许域内认证)</div><div class="line">|— autosign.conf #自动验证配置文件</div><div class="line">|— tagmail.conf # 邮件配置文件（将错误信息发送）</div><div class="line">|— manifests # 文件存储目录(puppet会先读取该目录的.pp文件site.pp)</div><div class="line">|— nodes</div><div class="line">| | | puppetclient.pp #puppet解析主配置文件所有的模块和节点都在此文件里include</div><div class="line">| |— site.pp # 定义puppet相关的变量和默认配置</div><div class="line">| |— modules.pp # 加载class类模块文件（include nginx）</div><div class="line">|— modules # 定义模块</div><div class="line">| —nginx # 以nginx为例</div><div class="line">| |— file</div><div class="line">| |— manifests</div><div class="line">| | |— init.pp #类的定义，类名必须与模块名相同</div><div class="line">| |—– templates # 模块配置目录，可以被模块的manifests引用</div><div class="line">| | |— nginx.erb #erb模板</div></pre></td></tr></table></figure>
+<h4 id="学习Puppet去哪里"><a href="#学习Puppet去哪里" class="headerlink" title="学习Puppet去哪里"></a>学习Puppet去哪里</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">Puppet相关文档：[http://docs.puppetlabs.com/](http://docs.puppetlabs.com/)</div><div class="line">常用模块下载地址： [https://forge.puppetlabs.com/](https://forge.puppetlabs.com/)</div><div class="line">PuppetDashboard下载地址：[https://downloads.puppetlabs.com/dashboard/](https://downloads.puppetlabs.com/dashboard/)</div><div class="line">PuppetDashboard帮助文档：[http://docs.puppetlabs.com/dashboard/](http://docs.puppetlabs.com/dashboard/)</div><div class="line">Puppet中文wiki：[http://puppet.wikidot.com/](http://puppet.wikidot.com/)</div><div class="line">Puppet中文论坛：[http://www.puppetfans.com/](http://www.puppetfans.com/)</div><div class="line">Puppet运维自动化文档：[http://pan.baidu.com/s/1c0hBMgg](http://pan.baidu.com/s/1c0hBMgg)</div><div class="line">Puppet简单安装可以参考：[http://www.chenshake.com/puppet-study-notes/#i-3](http://www.chenshake.com/puppet-study-notes/#i-3)</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2014/08/20/mysql-rep.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1746,548 +2358,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2013/12/26/linux-minicom-switch.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Geekwolf">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Geekwolf's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2013/12/26/linux-minicom-switch.html" itemprop="url">linux下使用minicom配置交换机</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2013-12-26T14:14:50+08:00">
-                2013-12-26
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux运维/" itemprop="url" rel="index">
-                    <span itemprop="name">Linux运维</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2013/12/26/linux-minicom-switch.html" class="leancloud_visitors" data-flag-title="linux下使用minicom配置交换机">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长</span>
-                
-                <span title="阅读时长">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><strong>前提</strong>：正确将com线连接好<br>1.安装minicom<br>安装epel源，yum -y install minicom</p>
-<p>2.配置minicom<br>[root@localhost ~]#  minicom -s<br><a href="http://ow1schdt5.bkt.clouddn.com/old/2013/12/c.png" target="_blank" rel="external"><img src="http://ow1schdt5.bkt.clouddn.com/old/2013/12/c.png" alt="c"></a></p>
-<p><a href="http://ow1schdt5.bkt.clouddn.com/old/2013/12/D.png" target="_blank" rel="external"><img src="http://ow1schdt5.bkt.clouddn.com/old/2013/12/D.png" alt="D"></a></p>
-<p>配置好后回车，这里选择Save setup as dfl  然后Exit 即将连接com</p>
-<p><a href="http://ow1schdt5.bkt.clouddn.com/old/2013/12/e.png" target="_blank" rel="external"><img src="http://ow1schdt5.bkt.clouddn.com/old/2013/12/e.png" alt="e"></a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2013/12/17/centos-install-openvpn.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Geekwolf">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Geekwolf's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2013/12/17/centos-install-openvpn.html" itemprop="url">CentOS6.4下部署OpenVpn服务及使用方法</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2013-12-17T14:05:03+08:00">
-                2013-12-17
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/系统安全/" itemprop="url" rel="index">
-                    <span itemprop="name">系统安全</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2013/12/17/centos-install-openvpn.html" class="leancloud_visitors" data-flag-title="CentOS6.4下部署OpenVpn服务及使用方法">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长</span>
-                
-                <span title="阅读时长">
-                  4
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h4 id="环境说明"><a href="#环境说明" class="headerlink" title="环境说明"></a>环境说明</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">vpn服务器：eth0:120.3.243.54（外网IP）  eth1：192.168.5.253（私网IP）</div><div class="line">客户端地址：201.1.36.111 </div><div class="line">软件版本：服务端OpenVPN 2.3.2</div></pre></td></tr></table></figure>
-<p>实现：访问公司内网及授权vpn地址访问的网段，其他地址均走客户端本地上网</p>
-<h4 id="安装步骤"><a href="#安装步骤" class="headerlink" title="安装步骤"></a>安装步骤</h4><h5 id="设置YUM源"><a href="#设置YUM源" class="headerlink" title="设置YUM源"></a>设置YUM源</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">rpm -Uvh http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm</div><div class="line">rpm –import /etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-6</div><div class="line">wget http://swupdate.openvpn.org/community/releases/openvpn-2.3.2.tar.gz</div><div class="line">./configure &amp;&amp; make &amp;&amp; make install</div></pre></td></tr></table></figure>
-<h5 id="生成证书"><a href="#生成证书" class="headerlink" title="生成证书"></a>生成证书</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">证书生成工具</div><div class="line">yum -y install easy-rsa</div><div class="line">配置OpenVpn：</div><div class="line">mkdir /etc/openvpn/etc -p</div><div class="line">cp -R /usr/share/easy-rsa/ /etc/openvpn/</div><div class="line">源码目录：</div><div class="line">cp sample/sample-config-files/server.conf /etc/openvpn/server.conf</div><div class="line"></div><div class="line">生成证书</div><div class="line">cd /etc/openvpn/easy-rsa/2.0</div><div class="line">. vars</div><div class="line">./clean-all</div><div class="line">./build-ca</div><div class="line"> </div><div class="line">创建vpn server的key</div><div class="line">./build-key-server server</div><div class="line">创建用户秘钥</div><div class="line">./build-key geekwolf</div><div class="line">创建Diffie Hellman，用于增强安全性</div><div class="line">./build-dh</div><div class="line">默认情况所创建的文件会生成在/etc/openvpn/easy-rsa/2.0/keys目录下</div></pre></td></tr></table></figure>
-<h5 id="配置OpenVpn"><a href="#配置OpenVpn" class="headerlink" title="配置OpenVpn"></a>配置OpenVpn</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div></pre></td><td class="code"><pre><div class="line">配置server.conf文件</div><div class="line">方法1:采用秘钥认证</div><div class="line">local 120.3.243.54 </div><div class="line">port 9001</div><div class="line">proto tcp</div><div class="line">dev tun</div><div class="line">ca /etc/openvpn/easy-rsa/2.0/keys/ca.crt</div><div class="line">cert /etc/openvpn/easy-rsa/2.0/keys/server.crt</div><div class="line">key /etc/openvpn/easy-rsa/2.0/keys/server.key # This file should be kept secret</div><div class="line">dh /etc/openvpn/easy-rsa/2.0/keys/dh1024.pem</div><div class="line">server 10.8.0.0 255.255.255.0</div><div class="line">ifconfig-pool-persist ipp.txt</div><div class="line">push “route 192.168.0.0 255.255.0.0”</div><div class="line">push “route 104.172.0.0 255.255.0.0″</div><div class="line">keepalive 10 120</div><div class="line">comp-lzo</div><div class="line">persist-key</div><div class="line">persist-tun</div><div class="line">status openvpn-status.log</div><div class="line">verb 3</div><div class="line"> </div><div class="line">方法2：采用用户密码认证</div><div class="line">A.额外在上面配置文件后面添加[基于PAM身份认证]</div><div class="line">plugin /usr/lib/openvpn/openvpn-auth-pam.so login</div><div class="line">client-cert-not-required</div><div class="line">username-as-common-name</div><div class="line">服务端本地创建用户</div><div class="line">useradd -s /sbin/nologin geekwolf</div><div class="line">passwd geekwolf </div><div class="line">B.额外在上面配置文件后面添加[基于脚本的身份认证]</div><div class="line">auth-user-pass-verify /usr/local/openvpn/etc/checkpsw.sh via-env</div><div class="line">client-cert-not-required</div><div class="line">username-as-common-name</div><div class="line">wget http://openvpn.se/files/other/checkpsw.sh -O /usr/local/openvpn/etc/checkpsw.sh</div><div class="line">chmod +x checkpsw.sh</div><div class="line">修改脚本PASSFILE和LOG_FILE参数文件位置</div><div class="line">PASSFILE=/etc/openvpn/etc/psw-file</div><div class="line">LOG_FILE=/etc/openvpn/etc/openvpn-password.log</div><div class="line"> </div><div class="line">用户名和密码文件格式：</div><div class="line">/etc/openvpn/etc/psw-file(用户和密码之间用空格或者tab隔开)</div><div class="line">geekwolf geekwolf</div></pre></td></tr></table></figure>
-<h5 id="防火墙配置"><a href="#防火墙配置" class="headerlink" title="防火墙配置"></a>防火墙配置</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">可参考源码下的配置：</div><div class="line">sample/sample-config-files/firewall.sh</div><div class="line">本测试的规则为：</div><div class="line">-A INPUT -i tun+ -j ACCEPT</div><div class="line">-A FORWARD -i tun+ -o eth1 -j ACCEPT</div><div class="line">-A FORWARD -i eth1 -o tun+ -j ACCEPT</div><div class="line">-A OUTPUT -o tun+ -j ACCEPT </div><div class="line">-A POSTROUTING -s 10.8.0.0/24 -o eth1 -j MASQUERADE</div><div class="line">-A POSTROUTING -d 104.172.0.0/255.255.255.0     -o eth0 -j MASQUERADE</div><div class="line"></div><div class="line">通过以上配置实现了：</div><div class="line">访问公司内网192.168.0.0 走vpn的eth1出口，访问104.172.0.0等走vpn的eth0出口，访问其他地址均走客户端本地</div></pre></td></tr></table></figure>
-<h5 id="客户端配置"><a href="#客户端配置" class="headerlink" title="客户端配置"></a>客户端配置</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div></pre></td><td class="code"><pre><div class="line">Windows 7 客户端配置</div><div class="line">下载 http://swupdate.openvpn.org/community/releases/openvpn-install-2.3.2-I001-x86_64.exe（或者OpenVPN Client官网下载）</div><div class="line">安装后桌面会生成，属性设置</div><div class="line"> </div><div class="line">A.若采用秘钥方式认证</div><div class="line">客户端做一下事情：</div><div class="line"> 拷贝服务端ca.crt  用户秘钥geekwolf.crt geekwolf.key 到OpenVpn客户端安装根目录下下的config目录内</div><div class="line"> 增加客户端配置文件client.ovpn：</div><div class="line">client</div><div class="line">dev tun</div><div class="line">proto tcp</div><div class="line">remote 120.3.243.54 9001</div><div class="line">resolv-retry infinite</div><div class="line">nobind</div><div class="line">persist-key</div><div class="line">persist-tun</div><div class="line">ca ca.crt</div><div class="line">cert geekwolf.crt</div><div class="line">key geekwolf.key</div><div class="line">comp-lzo</div><div class="line">verb 3</div><div class="line">最后以管理员身份运行OpenVPN GUI程序，即可连接使用vpn</div><div class="line"> </div><div class="line">A.若采用用户密码认证（pam认证）</div><div class="line">注释掉用户cert和keys，配置文件增加密码询问auth-user-pass</div><div class="line">既：</div><div class="line">client</div><div class="line">dev tun</div><div class="line">proto tcp</div><div class="line">remote 120.3.243.54 9001</div><div class="line">resolv-retry infinite</div><div class="line">nobind</div><div class="line">persist-key</div><div class="line">persist-tun</div><div class="line">ca ca.crt</div><div class="line">；cert geekwolf.crt</div><div class="line">；key geekwolf.key</div><div class="line">comp-lzo</div><div class="line">verb 3 </div><div class="line">auth-user-pass</div><div class="line">（免输入账号密码方法：auth-user-pass passwd.txt）</div><div class="line">passwd.txt 格式</div><div class="line">账号</div><div class="line">密码</div></pre></td></tr></table></figure>
-<h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><blockquote>
-<p>深入OpenVPN的配置 <a href="http://www.linuxfly.org/post/86/" target="_blank" rel="external">http://www.linuxfly.org/post/86/</a></p>
-</blockquote>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2013/12/14/centos-install-opennebula.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Geekwolf">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Geekwolf's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2013/12/14/centos-install-opennebula.html" itemprop="url">Centos 6.4 下 部署OpenNebula4.4</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2013-12-14T11:27:34+08:00">
-                2013-12-14
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux运维/" itemprop="url" rel="index">
-                    <span itemprop="name">Linux运维</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2013/12/14/centos-install-opennebula.html" class="leancloud_visitors" data-flag-title="Centos 6.4 下 部署OpenNebula4.4">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长</span>
-                
-                <span title="阅读时长">
-                  3
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h4 id="安装部署"><a href="#安装部署" class="headerlink" title="安装部署"></a>安装部署</h4><h5 id="环境说明"><a href="#环境说明" class="headerlink" title="环境说明"></a>环境说明</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Front:192.168.10.101 Centos6.4 x 64 NF5120</div><div class="line">Node1:192.168.10.102 Centos6.4 x 64 NF5120</div></pre></td></tr></table></figure>
-<h5 id="部署OpenNebula4-4"><a href="#部署OpenNebula4-4" class="headerlink" title="部署OpenNebula4.4"></a>部署OpenNebula4.4</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">下载相应版本 http://www.opennebula.org/software:software#from_official_repository_of_linux_distributions</div><div class="line">CentOS-6-opennebula-4.4.0-1</div><div class="line">安装Epel源</div><div class="line">rpm -ivh http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm</div><div class="line">cd opennebula-4.4.0-1</div><div class="line">yum -y localinstall *.rpm</div><div class="line">Front控制器在此也作为节点使用，在计算节点上安装 kvm 和 opennebula-node-kvm：</div><div class="line"></div><div class="line">yum localinstall opennebula-node-kvm-4.0.0-1.x86_64.rpm</div><div class="line">yum install qemu-kvm qemu-kvm-tools libvirt</div><div class="line">/etc/init.d/libvirtd start</div><div class="line"></div><div class="line">以上OpenNebula的控制节点和计算节点所需软件包均以安装完，下面进行简单的配置( 事先关闭iptables和selinux，后续讲如何加固)</div></pre></td></tr></table></figure>
-<p>a. 更改Opennebula的front，即OpenNebula-sunstone服务的监听地址</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sed -i &apos;s#127.0.0.1#192.168.10.101#g&apos; /etc/one/sunstone-server.conf</div></pre></td></tr></table></figure>
-<p>b. 默认会生成用户名和随机密码</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">cat /var/lib/one/.one/one_auth</div><div class="line">oneadmin:6696d237e58221ae1eb39fdf3a01335f</div><div class="line">访问http://192.168.10.101:9869 输入账号密码</div></pre></td></tr></table></figure>
-<p>c. 更改opennebula数据存储方式为mysql</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">vim /etc/one/oned.conf</div><div class="line">修改仓库路径：</div><div class="line">DATASTORE_BASE_PATH = /data/datastoress(注意目录权限为oneadmin)</div><div class="line">注释DB = [ backend = &quot;sqlite&quot; ]</div><div class="line">打开注释：</div><div class="line">DB = [ backend = &quot;mysql&quot;,</div><div class="line">server = &quot;localhost&quot;,</div><div class="line">port = 0,</div><div class="line">user = &quot;oneadmin&quot;,</div><div class="line">passwd = &quot;oneadmin&quot;,</div><div class="line">db_name = &quot;opennebula&quot; ]</div><div class="line">（相关授权略）</div></pre></td></tr></table></figure>
-<p>d. 添加环境变量</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">export ONE_XMLRPC=http://localhost:2633/RPC2</div><div class="line">export ONE_AUTH=$HOME/.one/one_auth</div><div class="line">export PATH=$ONE_LOCATION/bin:$PATH</div></pre></td></tr></table></figure>
-<p>e. 为初次部署方便暂使用网络桥接模式<br>母机桥接配置：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">ifcfg-eth0:</div><div class="line"></div><div class="line">DEVICE=eth0</div><div class="line">TYPE=Ethernet</div><div class="line">UUID=200f14a6-c347-4d4a-9564-257ccf4ebe8a</div><div class="line">ONBOOT=yes</div><div class="line">NM_CONTROLLED=yes</div><div class="line">BOOTPROTO=none</div><div class="line">HWADDR=00:E0:81:DE:6C:CA</div><div class="line">BRIDGE=&quot;br0&quot;</div><div class="line"></div><div class="line">ifcfg-br0:</div><div class="line">DEVICE=&quot;br0&quot;</div><div class="line">TYPE=&quot;Bridge&quot;</div><div class="line">BOOTPROTO=&quot;static&quot;</div><div class="line">ONBOOT=&quot;yes&quot;</div><div class="line">IPADDR=192.168.10.102</div><div class="line">NETMASK=255.255.240.0</div><div class="line">DNS1=114.114.114.114</div><div class="line">brctl show 可查询现有桥接的网络</div><div class="line">bridge name bridge id STP enabled interfaces</div><div class="line">br0 8000.00e081de6cca no eth0</div><div class="line">重启网卡</div></pre></td></tr></table></figure>
-<p>f. 确定计算节点权限（Front安装时会自动配置）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">/etc/libvirt/qemu.conf</div><div class="line">user = &quot;oneadmin&quot;</div><div class="line">group = &quot;oneadmin&quot;</div><div class="line">dynamic_ownership = 0</div><div class="line"></div><div class="line">/etc/libvirt/libvirtd.conf</div><div class="line">listen_tcp = 1</div><div class="line">listen_tls = 0</div><div class="line">mdns_adv = 0</div><div class="line">unix_sock_group = &quot;oneadmin&quot;</div><div class="line">unix_sock_ro_perms = &quot;0777&quot;</div><div class="line">unix_sock_rw_perms = &quot;0777&quot;</div><div class="line">auth_unix_ro = &quot;none&quot;</div><div class="line">auth_unix_rw = &quot;none&quot;</div><div class="line"></div><div class="line">/etc/sysconfig/libvirtd(修改监听地址)</div><div class="line">LIBVIRTD_ARGS=&quot;--listen&quot;</div><div class="line"></div><div class="line">/etc/sudoers</div><div class="line">添加oneadmin ALL=(root)NOPASSWD:ALL</div><div class="line">注释#Defaults requiretty</div><div class="line"></div><div class="line">ln -s /usr/libexec/qemu-kvm /usr/bin/kvm</div><div class="line">将Front的oneadmin的公钥拷贝到计算节点oneadmin下实现无密码认证</div></pre></td></tr></table></figure>
-<p>g .以上OpenNebula的部署已经完成，下面启动服务器进行简单操作</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">service OpenNebula start</div><div class="line">service OpenNebula-sunstone start</div></pre></td></tr></table></figure>
-<p><a href="http://ow1schdt5.bkt.clouddn.com/old/2013/12/s2.jpg" target="_blank" rel="external"><img src="http://ow1schdt5.bkt.clouddn.com/old/2013/12/s2-1024x573.jpg" alt="s"></a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2338,7 +2408,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">82</span>
+                <span class="site-state-item-count">85</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -2360,7 +2430,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">59</span>
+                <span class="site-state-item-count">65</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -2467,7 +2537,7 @@
         <div class="copyright" >
   
   &copy;  2012 - 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

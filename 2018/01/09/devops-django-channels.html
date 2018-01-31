@@ -1,0 +1,1430 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="WebSocket,消息推送,Zabbix 实时告警到页面," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Geekwolf's Blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="什么是WebSocketwebsocket是HTML5开始提供的一种新协议,用于浏览器和服务器之间实现全双工通讯的技术。本质上是基于tcp协议,先通过HTTP/HTTPS协议发起一条特殊的http请求进行握手后,创建一个用于双向数据交换的tcp连接,此后服务端与客户端通过此连接进行实时通信。在websocket之前实现全双工通讯一般使用轮训、SSE(Server-Sent Event,服务端推送事">
+<meta name="keywords" content="WebSocket,消息推送,Zabbix 实时告警到页面">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Django Channels实现Zabbix实时告警到页面">
+<meta property="og:url" content="http://www.simlinux.com/2018/01/09/devops-django-channels.html">
+<meta property="og:site_name" content="Geekwolf&#39;s Blog">
+<meta property="og:description" content="什么是WebSocketwebsocket是HTML5开始提供的一种新协议,用于浏览器和服务器之间实现全双工通讯的技术。本质上是基于tcp协议,先通过HTTP/HTTPS协议发起一条特殊的http请求进行握手后,创建一个用于双向数据交换的tcp连接,此后服务端与客户端通过此连接进行实时通信。在websocket之前实现全双工通讯一般使用轮训、SSE(Server-Sent Event,服务端推送事">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://i.imgur.com/9oXAC24.png">
+<meta property="og:image" content="http://www.ruanyifeng.com/blogimg/asset/2017/bg2017051503.jpg">
+<meta property="og:image" content="http://7xp2eu.com1.z0.glb.clouddn.com/wsgiframework.png">
+<meta property="og:image" content="http://7xp2eu.com1.z0.glb.clouddn.com/wsgiframeworkmiddleware.png">
+<meta property="og:image" content="http://ow1schdt5.bkt.clouddn.com/django-wsgi.png">
+<meta property="og:image" content="http://ow1schdt5.bkt.clouddn.com/asgi.jpg">
+<meta property="og:image" content="http://ow1schdt5.bkt.clouddn.com/zabbix-alert.png">
+<meta property="og:image" content="http://ow1schdt5.bkt.clouddn.com/ws-warn.png">
+<meta property="og:updated_time" content="2018-01-31T03:18:20.458Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Django Channels实现Zabbix实时告警到页面">
+<meta name="twitter:description" content="什么是WebSocketwebsocket是HTML5开始提供的一种新协议,用于浏览器和服务器之间实现全双工通讯的技术。本质上是基于tcp协议,先通过HTTP/HTTPS协议发起一条特殊的http请求进行握手后,创建一个用于双向数据交换的tcp连接,此后服务端与客户端通过此连接进行实时通信。在websocket之前实现全双工通讯一般使用轮训、SSE(Server-Sent Event,服务端推送事">
+<meta name="twitter:image" content="http://i.imgur.com/9oXAC24.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.simlinux.com/2018/01/09/devops-django-channels.html"/>
+
+
+
+
+
+  <title>Django Channels实现Zabbix实时告警到页面 | Geekwolf's Blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="//s13.cnzz.com/z_stat.php?id=1264375041&web_id=1264375041" language="JavaScript"></script>
+  </div>
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Geekwolf's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Quick notes</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tips">
+          <a href="/tips/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-gittip"></i> <br />
+            
+            tips
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />
+            
+            站点地图
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2018/01/09/devops-django-channels.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Geekwolf">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Geekwolf's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Django Channels实现Zabbix实时告警到页面</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-09T10:10:10+08:00">
+                2018-01-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/01/09/devops-django-channels.html" class="leancloud_visitors" data-flag-title="Django Channels实现Zabbix实时告警到页面">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  10
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <h4 id="什么是WebSocket"><a href="#什么是WebSocket" class="headerlink" title="什么是WebSocket"></a>什么是WebSocket</h4><p>websocket是HTML5开始提供的一种新协议,用于浏览器和服务器之间实现全双工通讯的技术。本质上是基于tcp协议,先通过HTTP/HTTPS协议发起一条特殊的http请求进行握手后,创建一个用于双向数据交换的tcp连接,此后服务端与客户端通过此连接进行实时通信。在websocket之前实现全双工通讯一般使用轮训、SSE(Server-Sent Event,服务端推送事件)、Comet技术</p>
+<h4 id="HTTP与WebSocket的区别"><a href="#HTTP与WebSocket的区别" class="headerlink" title="HTTP与WebSocket的区别"></a>HTTP与WebSocket的区别</h4><p><img src="http://i.imgur.com/9oXAC24.png" alt="image"></p>
+<ul>
+<li>由上面的示意图可知,在传统的http1.0,request和response是一对一的，每次都要发送header信息</li>
+<li>http1.1 默认开启了keeplive也只是复用同一个tcp连接，但是服务器和客户端还要大量交换HTTP header，信息交换效率很低。</li>
+<li>WebSocket是一种双向通信协议。在建立连接后，WebSocket服务器端和客户端都能主动向对方发送或接收数据，就像Socket一样。从而更好的节省服务器资源和带宽并达到实时通讯的目的</li>
+<li>WebSocket需要像TCP一样，先建立连接，连接成功后才能相互通信</li>
+</ul>
+<h4 id="客户端通过WebSocket与服务端建立通信过程"><a href="#客户端通过WebSocket与服务端建立通信过程" class="headerlink" title="客户端通过WebSocket与服务端建立通信过程"></a>客户端通过WebSocket与服务端建立通信过程</h4><ol>
+<li><p>在客户端，new WebSocket实例化一个新的WebSocket客户端对象，请求类似 ws://yourdomain:port/path 的服务端WebSocket URL，客户端WebSocket对象会自动解析并识别为WebSocket请求，并连接服务端端口，执行双方握手过程，客户端发送数据格式类似：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">GET /ws/alert/ HTTP/1.1</div><div class="line">Host: 127.0.0.1:8000</div><div class="line">Upgrade: websocket</div><div class="line">Connection: Upgrade</div><div class="line">Sec-WebSocket-Key: xqBt3ImNzJbYqRINxEFlkg==</div><div class="line">Origin: http://127.0.0.1:8000</div><div class="line">Sec-WebSocket-Version: 13</div></pre></td></tr></table></figure>
+</li>
+<li><p>可以看到，客户端发起的WebSocket连接报文类似传统HTTP报文，Upgrade：websocket参数值表明这是WebSocket类型请求，Sec-WebSocket-Key是WebSocket客户端发送的一个 base64编码的密文，要求服务端必须返回一个对应加密的Sec-WebSocket-Accept应答，否则客户端会抛出Error during WebSocket handshake错误，并关闭连接。服务端收到报文后返回的数据格式类似：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">HTTP/1.1 101 Switching Protocols</div><div class="line">Upgrade: websocket</div><div class="line">Connection: Upgrade</div><div class="line">Sec-WebSocket-Accept: K7DJLdLooIwIG/MOpvWFB3y3FE8=</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>Sec-WebSocket-Accept的值是服务端采用与客户端一致的密钥计算出来后返回客户端的，HTTP/1.1 101 Switching Protocols表示服务端接受WebSocket协议的客户端连接，经过这样的请求-响应处理后，两端的WebSocket连接握手成功, 后续就可以进行TCP通讯了</p>
+<p><img src="http://www.ruanyifeng.com/blogimg/asset/2017/bg2017051503.jpg" alt="image"></p>
+<p><code>注释:</code> WebSocket标识符是ws(如果加密,则是wss),如上图所示</p>
+<h4 id="WebSocket服务"><a href="#WebSocket服务" class="headerlink" title="WebSocket服务"></a>WebSocket服务</h4><ul>
+<li>Node(按热度排序): <a href="https://socket.io/" target="_blank" rel="external">Socket.IO</a>、<a href="https://github.com/uNetworking/uWebSockets" target="_blank" rel="external">uWebSockets</a>、<a href="https://github.com/theturtle32/WebSocket-Node" target="_blank" rel="external">WebSocket-Node</a></li>
+<li>Go: <a href="https://github.com/joewalnes/websocketd" target="_blank" rel="external">websocketd</a>、<a href="https://github.com/gorilla/websocket" target="_blank" rel="external">websocket</a></li>
+<li>Django: <a href="https://github.com/django/channels/" target="_blank" rel="external">Channel</a></li>
+</ul>
+<h4 id="Django-Channel"><a href="#Django-Channel" class="headerlink" title="Django Channel"></a>Django Channel</h4><h5 id="WSGI-ASGI"><a href="#WSGI-ASGI" class="headerlink" title="WSGI/ASGI"></a>WSGI/ASGI</h5><p><strong>WSGI</strong><br>大家都知道WSGI,即Web Server Gateway Interface,是服务器和客户端交互的接口规范，符合这种借口的application可以在所有符合该接口的server上运行，解耦了server和application;web组件被分成三类：client、server、middleware</p>
+<p><img src="http://7xp2eu.com1.z0.glb.clouddn.com/wsgiframework.png" alt="image"><br><img src="http://7xp2eu.com1.z0.glb.clouddn.com/wsgiframeworkmiddleware.png" alt="image"></p>
+<p>如上图所示</p>
+<ul>
+<li>Server/Gateway：处理HTTP协议，接受用户HTTP请求，调用application处理逻辑，将response返回给client;比如Apache、Nginx</li>
+<li>Application：专注业务逻辑的python 应用或者框架，如Django；根据WSGI协议规范，Applicaiton需要定义<a href="http://wsgi.tutorial.codepoint.net/application-interface" target="_blank" rel="external">http://wsgi.tutorial.codepoint.net/application-interface</a></li>
+<li>Middleware：位于Server/Gateway 和 Application/Framework 之间，对 Server/Gateway 来说，它相当于 Application/Framework ；对 Application/Framework  来说，它相当于 Server/Gateway。每个 middleware 实现不同的功能，我们通常根据需求选择相应的 middleware 并组合起来，实现所需的功能。比如，可在 middleware 中实现以下功能：<ol>
+<li>根据 url 把用户请求调度到不同的 application 中</li>
+<li>负载均衡，转发用户请求</li>
+<li>限制请求速率，设置白名单<br>WSGI的middleware体现 unix 的哲学之一：do one thing and do it well</li>
+</ol>
+</li>
+</ul>
+<p><strong>ASGI</strong><br>由于WSGI协议支持HTTP,ASGI(Asynchronous Server Gateway Interface)在此基础上应运而生，对WSGI协议进行兼容和扩展，能够处理多种通用协议如HTTP、HTTP2、WebSocket，允许这些协议能通过网络或本地socket进行传输，以及让不同的协议被分配到不同的进程中<br><img src="http://ow1schdt5.bkt.clouddn.com/django-wsgi.png" alt="image"><br><img src="http://ow1schdt5.bkt.clouddn.com/asgi.jpg" alt="image"></p>
+<p>ASGI由三个不同的组件组成:协议服务、频道层(Channnel Layer)、应用层；其中Channel Layer是最重要的部分，同时对协议服务和应用提供接口；</p>
+<ul>
+<li>频道和消息： ASGI规定所有通信都要通过在频道里发送消息进行，消息是一个dict,为了保证可序列化，只允许以下类型数据<br>  string/Unicode/int(非long)/list/dict(Key是Unicode)/boolean/None<br>  频道是一个先进先出队列，队列中的消息最多发送给一个消费者；频道中的消息超过设定时间会被清理，消息大小最大限定为1MB，超过需要分块</li>
+<li>群组: 频道中消息只能被传送一次，不能广播；如果向任一组用户发送消息，就要用到群组</li>
+</ul>
+<h5 id="Channels"><a href="#Channels" class="headerlink" title="Channels"></a>Channels</h5><p>大概了解ASGI规范之后，看下django基于ASGI协议实现HTTP/HTTP2/WebSocket的模块Channels,安装好channels后，django将有原来的request-response模式，转换成worker工作模式；并没有运行单独的wsgi进程，而是分成了三层:</p>
+<ul>
+<li>interface Server: 负责Django和Client通信，同时适配WSGI和WebSocket Server</li>
+<li>Channel Layer: 可插拔的Python代码和数据存储，如Redis、或者内存，用于消息的传输</li>
+<li>Workers: 监听频道，消息抵达时运行消费者代码</li>
+</ul>
+<p>下面用例子来看下如何使用Channels: 实现Zabbix报警实时传送到客户端<br>描述:<br><img src="http://ow1schdt5.bkt.clouddn.com/zabbix-alert.png" alt="image"></p>
+<ul>
+<li>Trigger触发时，根据Action设置通过脚本报警，并将报警信息发布到Redis的ALARM频道</li>
+<li>Django Commands alert  订阅Redis的ALARM频道</li>
+<li>调用channels的send方法，通过websocket实时推送到Client</li>
+</ul>
+<p>目录结构:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line">monitor</div><div class="line">├── monitor</div><div class="line">│   ├── celery.py</div><div class="line">│   ├── consumers.py</div><div class="line">│   ├── __init__.py</div><div class="line">│   ├── routing.py</div><div class="line">│   ├── settings.py</div><div class="line">│   ├── urls.py</div><div class="line">│   └── wsgi.py</div><div class="line">├── commands</div><div class="line">│   ├── admin.py</div><div class="line">│   ├── apps.py</div><div class="line">│   ├── __init__.py</div><div class="line">│   ├── management</div><div class="line">│   │   ├── commands</div><div class="line">│   │   │   ├── alert.py</div><div class="line">│   │   │   ├── __init__.py</div><div class="line">│   │   │   └── __pycache__</div><div class="line">│   │   ├── __init__.py</div><div class="line">│   │   └── __pycache__</div><div class="line">│   ├── migrations</div><div class="line">│   │   ├── __init__.py</div><div class="line">│   │   └── __pycache__</div><div class="line">│   ├── models.py</div><div class="line">│   ├── __pycache__</div><div class="line">│   ├── tests.py</div><div class="line">│   └── views.py</div><div class="line">├── static</div><div class="line">├── templates</div><div class="line">│   ├── base</div><div class="line">|        |—— base.html</div><div class="line">├── README.md</div><div class="line">├── requirements.txt</div></pre></td></tr></table></figure></p>
+<h6 id="安装配置Channels"><a href="#安装配置Channels" class="headerlink" title="安装配置Channels"></a>安装配置Channels</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div></pre></td><td class="code"><pre><div class="line">pip install channels asgi_redis</div><div class="line">settings.py添加app和设置CHANNEL_LAYERS</div><div class="line"></div><div class="line">#commands是后面定义Django命令的app</div><div class="line">INSTALLED_APPS = [</div><div class="line">    &apos;django.contrib.admin&apos;,</div><div class="line">    &apos;django.contrib.auth&apos;,</div><div class="line">    &apos;django.contrib.contenttypes&apos;,</div><div class="line">    &apos;django.contrib.sessions&apos;,</div><div class="line">    &apos;django.contrib.messages&apos;,</div><div class="line">    &apos;django.contrib.staticfiles&apos;,</div><div class="line">    &apos;channels&apos;,</div><div class="line">    &apos;commands&apos;</div><div class="line">]</div><div class="line"></div><div class="line">#Redis信息</div><div class="line">REDIS_OPTIONS = &#123;</div><div class="line">    &apos;HOST&apos;: &apos;127.0.0.1&apos;,</div><div class="line">    &apos;PORT&apos;: 6379,</div><div class="line">    &apos;PASSWD&apos;: &apos;geekwolf&apos;,</div><div class="line">    &apos;DB&apos;: 0</div><div class="line">&#125;</div><div class="line"></div><div class="line">#可以使用内存存储Channels消息</div><div class="line">#CHANNEL_LAYERS = &#123;</div><div class="line">#    &quot;default&quot;: &#123;</div><div class="line">#        &quot;BACKEND&quot;: &quot;asgiref.inmemory.ChannelLayer&quot;,</div><div class="line">#        &quot;ROUTING&quot;: &quot;channels_example.routing.channel_routing&quot;,</div><div class="line">#    &#125;,</div><div class="line">#&#125;</div><div class="line"></div><div class="line">#使用Redis作为消息存储，需安装asgi_redis</div><div class="line">CHANNEL_LAYERS = &#123;</div><div class="line">    &apos;default&apos;: &#123;</div><div class="line">        &apos;BACKEND&apos;: &apos;asgi_redis.RedisChannelLayer&apos;,</div><div class="line">        &apos;CONFIG&apos;: &#123;</div><div class="line">            &apos;hosts&apos;: [&apos;redis://:&#123;0&#125;@&#123;1&#125;:&#123;2&#125;/&#123;3&#125;&apos;.format(REDIS_OPTIONS[&apos;PASSWD&apos;], REDIS_OPTIONS[&apos;HOST&apos;], REDIS_OPTIONS[&apos;PORT&apos;], 1)]</div><div class="line">        &#125;,</div><div class="line">        &apos;ROUTING&apos;: &apos;plonvol.routing.channel_routing&apos;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">#Redis频道和Channels群组名</div><div class="line">GROUP_NAME = &apos;alarm&apos;</div></pre></td></tr></table></figure>
+<h6 id="添加路由-routing-py"><a href="#添加路由-routing-py" class="headerlink" title="添加路由(routing.py)"></a>添加路由(routing.py)</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"># -*- coding: utf-8 -*-</div><div class="line">from channels.routing import route</div><div class="line">from .consumers import ws_connect, ws_disconnect, ws_receive</div><div class="line"></div><div class="line"></div><div class="line">channel_routing = [</div><div class="line">    route(&apos;websocket.connect&apos;, ws_connect),</div><div class="line">    route(&apos;websocket.disconnect&apos;, ws_disconnect),</div><div class="line">]</div></pre></td></tr></table></figure>
+<h6 id="添加consumers文件-类似view-consumers-py"><a href="#添加consumers文件-类似view-consumers-py" class="headerlink" title="添加consumers文件(类似view)(consumers.py)"></a>添加consumers文件(类似view)(consumers.py)</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"># -*- coding: utf-8 -*-</div><div class="line">from channels import Group</div><div class="line">from channels.handler import AsgiHandler</div><div class="line">from django.conf import settings</div><div class="line"></div><div class="line">def ws_connect(message):</div><div class="line">    message.reply_channel.send(&#123;&apos;accept&apos;: True&#125;)</div><div class="line">    Group(settings.GROUP_NAME).add(message.reply_channel)</div><div class="line"></div><div class="line"></div><div class="line">def ws_disconnect(message):</div><div class="line">    Group(settings.GROUP_NAME).discard(message.reply_channel)</div></pre></td></tr></table></figure>
+<h6 id="订阅Redis报警消息脚本-commands-management-commands-alert-py"><a href="#订阅Redis报警消息脚本-commands-management-commands-alert-py" class="headerlink" title="订阅Redis报警消息脚本(commands/management/commands/alert.py)"></a>订阅Redis报警消息脚本(commands/management/commands/alert.py)</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"># -*- coding: utf-8 -*-</div><div class="line">import json</div><div class="line">import logging</div><div class="line">from channels import Group</div><div class="line">from django.core.management import BaseCommand</div><div class="line">from django.conf import settings</div><div class="line">import redis</div><div class="line"></div><div class="line">logger = logging.getLogger(__name__)</div><div class="line"></div><div class="line">class Command(BaseCommand):</div><div class="line">    &quot;&quot;&quot;</div><div class="line">    Command to start zabbix alert worker from command line.</div><div class="line">    &quot;&quot;&quot;</div><div class="line">    help = &apos;Subscribe the zabbix alerts channel&apos;</div><div class="line"></div><div class="line">    def handle(self, *args, **options):</div><div class="line">        rc = redis.Redis(host=settings.REDIS_OPTIONS[&apos;HOST&apos;],</div><div class="line">                         password=settings.REDIS_OPTIONS[&apos;PASSWD&apos;],</div><div class="line">                         port=settings.REDIS_OPTIONS[&apos;PORT&apos;],</div><div class="line">                         db=settings.REDIS_OPTIONS[&apos;DB&apos;])</div><div class="line">        rc.delete(settings.GROUP_NAME)</div><div class="line">        pubsub = rc.pubsub()</div><div class="line">        pubsub.subscribe(settings.GROUP_NAME)</div><div class="line">        for item in pubsub.listen():</div><div class="line">            if item[&apos;type&apos;] == &apos;message&apos;:</div><div class="line">                Group(settings.GROUP_NAME).send(&#123;&apos;text&apos;: bytes.decode(item[&apos;data&apos;])&#125;)</div><div class="line">                logger.debug(&apos;send a message %s &apos; % item)</div></pre></td></tr></table></figure>
+<h6 id="前端页面base-html"><a href="#前端页面base-html" class="headerlink" title="前端页面base.html"></a>前端页面base.html</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">&lt;!-- 报警声音 --&gt;</div><div class="line">&lt;audio id=&quot;notify&quot;&gt;&lt;source src=&quot;/static/notify.ogg&quot; type=&quot;audio/ogg&quot;&gt;&gt;&lt;/audio&gt;</div><div class="line"></div><div class="line">&lt;script type=&quot;application/javascript&quot;&gt;</div><div class="line">    var ws_scheme = window.location.protocol == &quot;https:&quot; ? &quot;wss&quot; : &quot;ws&quot;;</div><div class="line">    var ws = new WebSocket(ws_scheme + &apos;://&apos; + window.location.host + window.location.pathname);</div><div class="line">    console.log(ws);</div><div class="line">    ws.onmessage = function (message) &#123;</div><div class="line">        var data = JSON.parse(message.data);</div><div class="line">        if(data[&apos;当前状态&apos;] == &apos;Problem&apos;)</div><div class="line">        &#123;</div><div class="line">           var subject = &apos;&lt;br&gt;故障！,服务器:&apos; + data[&apos;告警主机&apos;] + &apos;发生:&apos; + data[&apos;告警信息&apos;] + &apos;故障!&lt;br&gt;&apos;;</div><div class="line">        &#125;</div><div class="line">        else&#123;</div><div class="line">           var subject = &apos;&lt;br&gt;恢复！,服务器:&apos; + data[&apos;告警主机&apos;] + &apos;发生:&apos; + data[&apos;告警信息&apos;] + &apos;已经恢复!&lt;br&gt;&apos;;</div><div class="line"></div><div class="line">        &#125;</div><div class="line">        content = new Array();</div><div class="line">        $.each(data,function(k,v)&#123;</div><div class="line">            content.push(&quot;&lt;b&gt;&quot; + k + &apos;:&lt;/b&gt;   &apos; + v)</div><div class="line">        &#125;)</div><div class="line">        var data = subject + content.join(&quot;&lt;br&gt;&quot;)</div><div class="line">        $(&apos;#notify&apos;)[0].play();</div><div class="line">        notify(&apos;warning&apos;,&apos;glyphicon glyphicon-danger-sign&apos;,data);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure>
+<h6 id="测试消息，用于发布消息到Redis"><a href="#测试消息，用于发布消息到Redis" class="headerlink" title="测试消息，用于发布消息到Redis"></a>测试消息，用于发布消息到Redis</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">import redis</div><div class="line">import json</div><div class="line"></div><div class="line">rc = redis.Redis(host=&apos;127.0.0.1&apos;, password=&apos;geekwolf&apos;, port=6379, db=0)</div><div class="line">msg = &#123;&quot;告警主机&quot;: &quot;web-server-node1&quot;, &quot;告警地址&quot;: &quot;192.168.1133.11&quot;, &quot;告警时间&quot;: &quot;2017-11-11 05:05:22&quot;, &quot;告警等级&quot;: &quot;严重&quot;,</div><div class="line">       &quot;告警信息&quot;: &quot;Web端口80监控&quot;, &quot;问题详情&quot;: &quot;80端口连接失败&quot;, &quot;当前状态&quot;: &quot;Problem&quot;, &quot;事件ID&quot;: &quot;12345&quot;&#125;</div><div class="line"></div><div class="line">rc.publish(&apos;alarm&apos;, json.dumps(msg))</div></pre></td></tr></table></figure>
+<h6 id="运行服务，测试"><a href="#运行服务，测试" class="headerlink" title="运行服务，测试"></a>运行服务，测试</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">启动项目(http/websocket):</div><div class="line">python manage.py runserver 0.0.0.0:8000</div><div class="line">启动监听报警消息进程:</div><div class="line">python manage.py alert</div></pre></td></tr></table></figure>
+<p>访问<a href="http://192.168.1.1:8000,运行test.py脚本" target="_blank" rel="external">http://192.168.1.1:8000,运行test.py脚本</a><br><img src="http://ow1schdt5.bkt.clouddn.com/ws-warn.png" alt="image"></p>
+<h4 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h4><blockquote>
+<ul>
+<li>利用Socket.IO实现消息实时推送 <a href="http://www.wukai.me/2017/08/27/push-message-with-socketio/" target="_blank" rel="external">http://www.wukai.me/2017/08/27/push-message-with-socketio/</a></li>
+<li>WebSocket相关资料 <a href="http://www.52im.net/thread-331-1-1.html" target="_blank" rel="external">http://www.52im.net/thread-331-1-1.html</a></li>
+<li>WSGI规范 <a href="http://wsgi.tutorial.codepoint.net/application-interface" target="_blank" rel="external">http://wsgi.tutorial.codepoint.net/application-interface</a></li>
+<li>Channels文档:<a href="http://channels.readthedocs.io" target="_blank" rel="external">http://channels.readthedocs.io</a></li>
+<li>Chat Example： <a href="https://gearheart.io/blog/creating-a-chat-with-django-channels/" target="_blank" rel="external">https://gearheart.io/blog/creating-a-chat-with-django-channels/</a></li>
+<li>Websocket 5分钟从入门到精通 <a href="https://segmentfault.com/a/1190000012709475" target="_blank" rel="external">https://segmentfault.com/a/1190000012709475</a></li>
+</ul>
+</blockquote>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创分享，您的支持将鼓励我继续创作</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.png" alt="Geekwolf WeChat Pay"/>
+        <p>微信打赏</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.png" alt="Geekwolf Alipay"/>
+        <p>支付宝打赏</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    Geekwolf
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://www.simlinux.com/2018/01/09/devops-django-channels.html" title="Django Channels实现Zabbix实时告警到页面">http://www.simlinux.com/2018/01/09/devops-django-channels.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/WebSocket/" rel="tag"># WebSocket</a>
+          
+            <a href="/tags/消息推送/" rel="tag"># 消息推送</a>
+          
+            <a href="/tags/Zabbix-实时告警到页面/" rel="tag"># Zabbix 实时告警到页面</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/09/12/devops-fms.html" rel="next" title="运维故障管理系统FMS">
+                <i class="fa fa-chevron-left"></i> 运维故障管理系统FMS
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/01/09/zabbix-es.html" rel="prev" title="Zabbix3.4.5新特性：历史数据支持Elasticsearch">
+                Zabbix3.4.5新特性：历史数据支持Elasticsearch <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zMDc3Mi83MzI0"></div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg"
+               alt="Geekwolf" />
+          <p class="site-author-name" itemprop="name">Geekwolf</p>
+           
+              <p class="site-description motion-element" itemprop="description">DevOps | Docker | Python | k8s</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">85</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">65</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/geekwolf" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                    
+                      GitHub
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/geekwolf" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                    
+                      Weibo
+                    
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-block">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://blog.simlinux.com" title="旧版博客" target="_blank">旧版博客</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://nolinux.blog.51cto.com" title="nolinux" target="_blank">nolinux</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://xiaorui.cc" title="峰云就她了" target="_blank">峰云就她了</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://note.gitcloud.cc/blog/bluetom520" title="懒懒的天空" target="_blank">懒懒的天空</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.roddypy.com" title="普拉多VX" target="_blank">普拉多VX</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://blog.opskumu.com" title="枯木磊" target="_blank">枯木磊</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#什么是WebSocket"><span class="nav-number">1.</span> <span class="nav-text">什么是WebSocket</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#HTTP与WebSocket的区别"><span class="nav-number">2.</span> <span class="nav-text">HTTP与WebSocket的区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#客户端通过WebSocket与服务端建立通信过程"><span class="nav-number">3.</span> <span class="nav-text">客户端通过WebSocket与服务端建立通信过程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#WebSocket服务"><span class="nav-number">4.</span> <span class="nav-text">WebSocket服务</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Django-Channel"><span class="nav-number">5.</span> <span class="nav-text">Django Channel</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#WSGI-ASGI"><span class="nav-number">5.1.</span> <span class="nav-text">WSGI/ASGI</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Channels"><span class="nav-number">5.2.</span> <span class="nav-text">Channels</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#安装配置Channels"><span class="nav-number">5.2.1.</span> <span class="nav-text">安装配置Channels</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#添加路由-routing-py"><span class="nav-number">5.2.2.</span> <span class="nav-text">添加路由(routing.py)</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#添加consumers文件-类似view-consumers-py"><span class="nav-number">5.2.3.</span> <span class="nav-text">添加consumers文件(类似view)(consumers.py)</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#订阅Redis报警消息脚本-commands-management-commands-alert-py"><span class="nav-number">5.2.4.</span> <span class="nav-text">订阅Redis报警消息脚本(commands/management/commands/alert.py)</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#前端页面base-html"><span class="nav-number">5.2.5.</span> <span class="nav-text">前端页面base.html</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#测试消息，用于发布消息到Redis"><span class="nav-number">5.2.6.</span> <span class="nav-text">测试消息，用于发布消息到Redis</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#运行服务，测试"><span class="nav-number">5.2.7.</span> <span class="nav-text">运行服务，测试</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#参考资料"><span class="nav-number">6.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2012 - 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Geekwolf</span>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('-1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("qms5kJ0y2CItrIVFivKxxPsR-gzGzoHsz", "Cn3w20futtphxpaDSP5tHjzy");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
