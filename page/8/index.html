@@ -348,6 +348,192 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2012/08/11/weblogic-11g-reset-password.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Geekwolf">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Geekwolf's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2012/08/11/weblogic-11g-reset-password.html" itemprop="url">WebLogic 11g重置用户密码过程</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2012-08-11T08:09:25+08:00">
+                2012-08-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux运维/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux运维</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2012/08/11/weblogic-11g-reset-password.html" class="leancloud_visitors" data-flag-title="WebLogic 11g重置用户密码过程">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>刚接手了weblogic环境，对它并不熟悉，又加上之前被辞的人品极为差劲的所谓项目经理没有任何文档，苦不堪言！只好自己寻求解决之道！</p>
+<p>首先为了保证数据的安全，要先备份原来的配置文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$DOMAIN_HOME=/wls/Oracle/Middleware/user_projects/domains/base_domain/</div></pre></td></tr></table></figure></p>
+<ol>
+<li>为了保证操作安全，备份$DOMAIN_HOME/security/DefaultAuthenticatorInit.ldift </li>
+<li><p>进入$DOMAIN_HOME/security目录，执行下列命令： </p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">/wls/Oracle/Middleware/user_projects/domains/base_domain/security</div><div class="line">java -classpath /wls/Oracle/Middleware/wlserver_10.3/server/lib/weblogic.jar weblogic.security.utils.AdminAccount weblogic weblogic .</div></pre></td></tr></table></figure>
+<p> <code>特别注意命令结尾是空格和一个点号</code><br> 此命令将生成新的DefaultAuthenticatorInit.ldift文件覆盖原来的</p>
+</li>
+<li><p>进入管理服务器的AdminServer目录，如：$DOMAIN_HOME/servers/AdminServer。将其中的data目录重命名，如：data_old。或者备份到别的地方</p>
+</li>
+<li>修改管理服务器的boot.properties文件;<br>如：$DOMAIN_HOME/servers/AdminServer/security /boot.properties，修改其中的用户名与密码（用明文，第一次启动服务器时明文将被加密），要和上面命令<br>中的用户名密码一致。<br>例：修改后：<br>username=weblogic<br>password=weblogic</li>
+<li>新启动服务器后，就可以使用用户weblogic登录管理控制台了<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">第一次启动后，$DOMAIN_HOME/servers/AdminServer/security/boot.properties中的用户名密码被加密为： </div><div class="line"></div><div class="line">password=&#123;AES&#125;eCAESwlBym9A6ZI6HMOSf1ACl85BwDDouZ2+FaamP1s=    </div><div class="line">username=&#123;AES&#125;YVuNv07/Yi3EjhDUoUjWl/S1jUDamfLpm9/iXAb3gto=</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>WebLogic管理控制台访问地址：</p>
+<p><a href="http://192.168.1.10:7001/console/login/LoginForm.jsp" title="http://192.168.1.108:7001/console/login/LoginForm.jsp" target="_blank" rel="external">http://192.168.1.10:7001/console/login/LoginForm.jsp</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2012/08/07/cmake-mysql-error.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1932,178 +2118,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2012/06/28/libltdl-error.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Geekwolf">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Geekwolf's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2012/06/28/libltdl-error.html" itemprop="url">/usr/local/lib/libltdl.a(ltdl.o): could not read symbols: Bad value</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2012-06-28T09:12:08+08:00">
-                2012-06-28
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux运维/" itemprop="url" rel="index">
-                    <span itemprop="name">Linux运维</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2012/06/28/libltdl-error.html" class="leancloud_visitors" data-flag-title="/usr/local/lib/libltdl.a(ltdl.o): could not read symbols: Bad value">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长</span>
-                
-                <span title="阅读时长">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h4 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h4><p>在编译libmcrypt软件包时出现问题<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">/libltdl.a(ltdl.o): relocation R_X86_64_32S against `a local symbol&apos; can not be used when making a shared object; recompile with -fPIC</div><div class="line">/usr/local/lib/libltdl.a(ltdl.o): could not read symbols: Bad value</div><div class="line">collect2: ld returned 1 exit status</div><div class="line">make: *** [libphp4.la] Error 1</div></pre></td></tr></table></figure></p>
-<h4 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">yum install libtool-ltdl-devel</div><div class="line">//PHP_LDFLAGS=-L/usr/lib64 ./build php n</div></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2154,7 +2168,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">85</span>
+                <span class="site-state-item-count">86</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -2165,7 +2179,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-count">11</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -2176,7 +2190,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">65</span>
+                <span class="site-state-item-count">66</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

@@ -348,6 +348,215 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2015/01/15/mysqldumper.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Geekwolf">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Geekwolf's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2015/01/15/mysqldumper.html" itemprop="url">MySQL多线程逻辑备份工具之mydumper</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-01-15T09:58:18+08:00">
+                2015-01-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/MySQL数据库/" itemprop="url" rel="index">
+                    <span itemprop="name">MySQL数据库</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2015/01/15/mysqldumper.html" class="leancloud_visitors" data-flag-title="MySQL多线程逻辑备份工具之mydumper">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  6
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="下载安装"><a href="#下载安装" class="headerlink" title="下载安装"></a><strong>下载安装</strong></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">yum -y install cmake glib2 pcre pcre-devel mysql-devel</div><div class="line">wget [https://launchpad.net/mydumper/0.6/0.6.2/+download/mydumper-0.6.2.tar.gz](https://launchpad.net/mydumper/0.6/0.6.2/+download/mydumper-0.6.2.tar.gz)</div><div class="line">tar xf  mydumper-0.6.2.tar.gz</div><div class="line">cd mydumper-0.6.2</div><div class="line">cmake .</div><div class="line">make &amp;&amp; make install</div></pre></td></tr></table></figure>
+<p>注释：如果只要帮助可以这样编译make doc_html<br>安装之后生成两个二进制命令/usr/local/bin/mydumper（备份）和/usr/local/bin/myloader（恢复）</p>
+<h4 id="mydumper特性"><a href="#mydumper特性" class="headerlink" title="mydumper特性"></a><strong>mydumper特性</strong></h4><ul>
+<li>多线程备份，生成多个备份文件</li>
+<li>针对MyISAM表加读锁，会阻塞DML语句</li>
+<li>保证备份数据一致性</li>
+<li>支持文件压缩和导出binlog</li>
+<li>支持多线程恢复</li>
+<li>支持守护进程模式，定时快照和连续二进制日志</li>
+<li>支持正则匹配</li>
+<li>恢复支持是否启用binlog及指定事物的大小(多少insert)</li>
+<li>无法备份视图和触发器</li>
+<li>备份整库时可用备份存储过程和函数，单库备份等情况无法对其进行备份</li>
+</ul>
+<h4 id="mydumper备份机制"><a href="#mydumper备份机制" class="headerlink" title="mydumper备份机制"></a><strong>mydumper备份机制</strong></h4><p><img src="http://ow1schdt5.bkt.clouddn.com/2015/01/mydumper.png" alt=""></p>
+<h5 id="主要步骤概括"><a href="#主要步骤概括" class="headerlink" title="主要步骤概括"></a><strong>主要步骤概括</strong></h5><ol>
+<li>主线程 FLUSH TABLES WITH READ LOCK, 施加全局只读锁，以阻止DML语句写入，保证数据的一致性</li>
+<li>读取当前时间点的二进制日志文件名和日志写入的位置并记录在metadata文件中，以供即使点恢复使用</li>
+<li>N个（线程数可以指定，默认是4）dump线程 START TRANSACTION WITH CONSISTENT SNAPSHOT; 开启读一致的事物</li>
+<li>dump non-InnoDB tables, 首先导出非事物引擎的表</li>
+<li>主线程 UNLOCK TABLES 非事物引擎备份完后，释放全局只读锁</li>
+<li>dump InnoDB tables, 基于事物导出InnoDB表</li>
+<li>事物结束</li>
+</ol>
+<h5 id="备份所生成的文件"><a href="#备份所生成的文件" class="headerlink" title="备份所生成的文件"></a><strong>备份所生成的文件</strong></h5><ol>
+<li>所有的备份文件在一个目录中，目录可以自己指定</li>
+<li><p>目录中包含一个metadata文件<br>记录了备份数据库在备份时间点的二进制日志文件名，日志的写入位置，<br>如果是在从库进行备份，还会记录备份时同步至从库的二进制日志文件及写入位置</p>
+</li>
+<li><p>每个表有两个备份文件：</p>
+</li>
+</ol>
+<p>database.table-schema.sql 表结构文件<br>database.table.sql 表数据文件<br>如果对表文件分片，将生成多个备份数据文件，可以指定行数或指定大小分片</p>
+<h4 id="mydumper参数详解"><a href="#mydumper参数详解" class="headerlink" title="mydumper参数详解"></a><strong>mydumper参数详解</strong></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line">-B, --database              要备份的数据库，不指定则备份所有库</div><div class="line">-T, --tables-list           需要备份的表，名字用逗号隔开</div><div class="line">-o, --outputdir             备份文件输出的目录</div><div class="line">-s, --statement-size        生成的insert语句的字节数，默认1000000</div><div class="line">-r, --rows                  将表按行分块时，指定的块行数，指定这个选项会关闭 --chunk-filesize</div><div class="line">-F, --chunk-filesize        将表按大小分块时，指定的块大小，单位是 MB</div><div class="line">-c, --compress              压缩输出文件</div><div class="line">-e, --build-empty-files     如果表数据是空，还是产生一个空文件（默认无数据则只有表结构文件）</div><div class="line">-x, --regex                 是同正则表达式匹配 &apos;db.table&apos;</div><div class="line">-i, --ignore-engines        忽略的存储引擎，用逗号分割</div><div class="line">-m, --no-schemas            不备份表结构</div><div class="line">-k, --no-locks              不使用临时共享只读锁，使用这个选项会造成数据不一致</div><div class="line">--less-locking              减少对InnoDB表的锁施加时间（这种模式的机制下文详解）</div><div class="line">-l, --long-query-guard      设定阻塞备份的长查询超时时间，单位是秒，默认是60秒（超时后默认mydumper将会退出）</div><div class="line">--kill-long-queries         杀掉长查询 (不退出)</div><div class="line">-b, --binlogs               导出binlog</div><div class="line">-D, --daemon                启用守护进程模式，守护进程模式以某个间隔不间断对数据库进行备份</div><div class="line">-I, --snapshot-interval     dump快照间隔时间，默认60s，需要在daemon模式下</div><div class="line">-L, --logfile               使用的日志文件名(mydumper所产生的日志), 默认使用标准输出</div><div class="line">--tz-utc                    跨时区是使用的选项，不解释了</div><div class="line">--skip-tz-utc               同上</div><div class="line">--use-savepoints            使用savepoints来减少采集metadata所造成的锁时间，需要 SUPER 权限</div><div class="line">--success-on-1146           Not increment error count and Warning instead of Critical in case of table doesn&apos;t exist</div><div class="line">-h, --host                  连接的主机名</div><div class="line">-u, --user                  备份所使用的用户</div><div class="line">-p, --password              密码</div><div class="line">-P, --port                  端口</div><div class="line">-S, --socket                使用socket通信时的socket文件</div><div class="line">-t, --threads               开启的备份线程数，默认是4</div><div class="line">-C, --compress-protocol     压缩与mysql通信的数据</div><div class="line">-V, --version               显示版本号</div><div class="line">-v, --verbose               输出信息模式, 0 = silent, 1 = errors, 2 = warnings, 3 = info, 默认为 2&lt;/pre&gt;</div></pre></td></tr></table></figure>
+<h4 id="myloader参数详解"><a href="#myloader参数详解" class="headerlink" title="myloader参数详解"></a><strong>myloader参数详解</strong></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">-d, --directory                   备份文件的目录</div><div class="line">-q, --queries-per-transaction     每次事物执行的查询数量，默认是1000</div><div class="line">-o, --overwrite-tables            如果要恢复的表存在，则先drop掉该表，使用该参数，需要备份时候要备份表结构</div><div class="line">-B, --database                    需要还原的数据库</div><div class="line">-e, --enable-binlog               启用还原数据的二进制日志</div><div class="line">-h, --host                        主机</div><div class="line">-u, --user                        还原的用户</div><div class="line">-p, --password                    密码</div><div class="line">-P, --port                        端口</div><div class="line">-S, --socket                      socket文件</div><div class="line">-t, --threads                     还原所使用的线程数，默认是4</div><div class="line">-C, --compress-protocol           压缩协议</div><div class="line">-V, --version                     显示版本</div><div class="line">-v, --verbose                     输出模式, 0 = silent, 1 = errors, 2 = warnings, 3 = info, 默认为2&lt;/pre&gt;</div></pre></td></tr></table></figure>
+<h4 id="使用案例"><a href="#使用案例" class="headerlink" title="使用案例"></a>使用案例</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">1.导出test库下面的table1和table2表结构和数据</div><div class="line">/usr/local/bin/mydumper  -h 10.1.1.1 -u root -p root -B test1 -T table1,table2  -t 8 -r 100000 -c --less-locking  -v 3 -D -L /var/log/mydumper.log   -o /geekwolf/test_table1_table2/</div><div class="line">若只导出数据增加-m参数</div><div class="line">2.将导出的数据导入到10.1.1.2服务器的test2库中</div><div class="line">/usr/local/bin/myloader   -h 10.1.1.2 -u root -p root  -B test2 -e -t 8  -d /geekwolf/test_table1_table2/ --overwrite-tables -v 3&lt;/pre&gt;</div><div class="line">**注释**:后台记录导出导入的时间</div><div class="line">输入screen命令</div><div class="line">然后(time myloader   -h 10.1.1.2 -u user  -p &apos;ap&apos; -B mnew_gz -e -t 8  -d /geekwolf/m_members/ --overwrite-tables -v 3) 2&gt;/geekwolf/im.log</div><div class="line">最后Ctrl+A+D</div></pre></td></tr></table></figure>
+<p>最后其他备份工具如:mysqldump/mysqlhotcopy/MySQLDumper 、mk-parallel-dump/mk-parallel-restore 、Xtrabackup/LVM Snapshot 暂时想到这么多，以后再想到再补充吧，也欢迎各位大拿fork工具库提交 <a href="https://github.com/geekwolf/sa-scripts/blob/master/devops.md%20" target="_blank" rel="external">https://github.com/geekwolf/sa-scripts/blob/master/devops.md </a></p>
+<h4 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h4><blockquote>
+<p><a href="http://my.oschina.net/anthonyyau/blog/299794" target="_blank" rel="external">http://my.oschina.net/anthonyyau/blog/299794</a><br><a href="http://www.tuicool.com/articles/BvUBVv" target="_blank" rel="external">http://www.tuicool.com/articles/BvUBVv</a><br><a href="http://centminmod.com/mydumper.html" target="_blank" rel="external">http://centminmod.com/mydumper.html</a><br><a href="http://www.cnblogs.com/linuxnote/p/3817698.html" target="_blank" rel="external">http://www.cnblogs.com/linuxnote/p/3817698.html</a><br><a href="https://launchpad.net/mydumper" target="_blank" rel="external">https://launchpad.net/mydumper</a></p>
+</blockquote>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2014/12/05/ansible-handbook.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2027,187 +2236,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2014/08/20/io-scheduler.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Geekwolf">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Geekwolf's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2014/08/20/io-scheduler.html" itemprop="url">IO调度算法适用场景</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-08-20T11:13:28+08:00">
-                2014-08-20
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux运维/" itemprop="url" rel="index">
-                    <span itemprop="name">Linux运维</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2014/08/20/io-scheduler.html" class="leancloud_visitors" data-flag-title="IO调度算法适用场景">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长</span>
-                
-                <span title="阅读时长">
-                  4
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <pre><code>通常磁盘的读写影响是由磁头到柱面移动造成了延迟，解决这种延迟内核主要采用两种策略：缓存和IO调度算法来进行弥补
-</code></pre><p><strong>Caching：</strong>IO请求被缓存在大页和buffer<br>caches里面，读请求会预先从缓存读取，写请求会先写进缓存，然后在保存到磁盘</p>
-<p><strong>四种IO调度算法：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cat /sys/block/sda/queue/scheduler</div><div class="line">noop anticipatory deadline [cfq] (当前是cfq)</div></pre></td></tr></table></figure></p>
-<p><a href="http://ow1schdt5.bkt.clouddn.com/2014/08/io1.png" target="_blank" rel="external"><img src="http://ow1schdt5.bkt.clouddn.com/2014/08/io1.png" alt="io"></a></p>
-<p><strong>noop：</strong>noop调度算法不会对I/O请求排序操作，除了合并外也不会做任何其他优化，直接以类似FIFO的顺序提交I/O请求；对于SSD、虚拟机或者存储设备可能会更加高效<br><strong>anticipatory(as)：</strong>基于预测的IO算法，类似DeadLine，也维护了三个请求对列；区别在于当它处理完一个I/O请求后并不会直接返回处理下一个请求，而是等待6ms(默认),如果这时候有新来的针对当前扇区相邻扇区的请求，那么会直接处理它，当等待时间结束后，调度器才返回处理下一个对列请求<br>试想一下，如果系统有频繁的针对邻近扇区的I/O请求，那么这种预测算法必然大幅提高整体的吞吐量，毕竟节约了那么多寻道时间<br><strong>deadline：</strong>DEADLINE 在CFQ的基础上，解决了IO请求饿死的极端情况。除了CFQ本身具有的IO排序队列之外，DEADLINE额外分别为读IO和写IO提供了FIFO队 列。读FIFO队列的最大等待时间为500ms，写FIFO队列的最大等待时间为5s。FIFO队列内的IO请求优先级要比CFQ队列中的高，，而读 FIFO队列的优先级又比写FIFO队列的优先级高。优先级可以表示如下：<br>FIFO(Read) &gt; FIFO(Write) &gt; CFQ<br>deadline 算法保证对于既定的 IO 请求以最小的延迟时间，从这一点理解，对于 DSS 应用应该会是很适合的<br><strong>cfq(2.6.18+内核默认CFQ)：</strong>该算法的特点是按照IO请求的地址进行排序，而不是按照先来后到的顺序来进行响应。在传统的SAS盘上，磁盘寻道花去了绝大多数的IO响应时间。CFQ的出发点是对IO地址进行排序，以尽量少的磁盘旋转次数来满足尽可能多的IO请求。在 CFQ算法下，SAS盘的吞吐量大大提高了。但是相比于NOOP的缺点是，先来的IO请求并不一定能被满足，可能会出现饿死的情况；</p>
-<p><strong>调度算法适用场合：</strong><br>在传统的SAS盘上，CFQ、DEADLINE、ANTICIPATORY都是不错的选择；对于专属的数据库服务器和文件服务器，DEADLINE的吞吐量和响应时间都表现良好，适用于大量IO操作的环境</p>
-<p>在SSD、Fusion IO上，最简单的NOOP反而可能是最好的算法，因为其他三个算法的优化是基于缩短寻道时间的，而固态硬盘没有所谓的寻道时间且IO响应时间非常短。<br>ANTICIPATORY通常更适用于大量持续读的环境，并不适用于DB Server<br>CFQ 适用于有大量来自不同进程的并发读写的环境如桌面环境等</p>
-<p><strong>手动临时更改调度算法：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">echo deadline &gt; /sys/block/sda/queue/scheduler</div></pre></td></tr></table></figure></p>
-<p><strong>永久更改：</strong><br><strong>A.使用tuned来修改调度算法</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">比如：vim /etc/tuned-profiles/throughtput-performance/ktune.sysconfig</div><div class="line">ELEVATOR=&quot;deadline&quot;</div><div class="line">ELEVATOR_TUNE_DEVS=&quot;/sys/block/&#123;sd,cciss,dm-,vd&#125;*/queue/scheduler&quot;</div><div class="line">tuned-admin profile throughtput-performance</div><div class="line">chkconfig tuned on</div><div class="line">chkconfig ktune on</div><div class="line">更改调度算法之后/sys/block/sda/quue/iosched/会生成对应的参数文件</div></pre></td></tr></table></figure></p>
-<p><strong>B.通过修改grub.conf来修改调度算法</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">kernel /vmlinuz-2.6.32-358.11.1.el6.x86_64 ro root=UUID=97693d73-443f-438a-90a3-208855faff19 rd_NO_LUKS  KEYBOARDTYPE=pc KEYTABLE=us rd_NO_MD crashkernel=auto LANG=zh_CN.UTF-8 rd_NO_LVM rd_NO_DM elevator=deadline rhgb quiet</div></pre></td></tr></table></figure></p>
-<p><strong>查看调度算法参数的含义：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">yum -y install kernel-doc</div><div class="line">比如:/usr/share/doc/kernel-doc-2.6.32/Documentation/block/deadline-iosched.txt</div></pre></td></tr></table></figure></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2258,7 +2286,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">85</span>
+                <span class="site-state-item-count">86</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -2269,7 +2297,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-count">11</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -2280,7 +2308,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">65</span>
+                <span class="site-state-item-count">66</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

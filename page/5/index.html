@@ -348,6 +348,187 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2014/08/20/io-scheduler.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Geekwolf">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Geekwolf's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2014/08/20/io-scheduler.html" itemprop="url">IO调度算法适用场景</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-08-20T11:13:28+08:00">
+                2014-08-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux运维/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux运维</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2014/08/20/io-scheduler.html" class="leancloud_visitors" data-flag-title="IO调度算法适用场景">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  4
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <pre><code>通常磁盘的读写影响是由磁头到柱面移动造成了延迟，解决这种延迟内核主要采用两种策略：缓存和IO调度算法来进行弥补
+</code></pre><p><strong>Caching：</strong>IO请求被缓存在大页和buffer<br>caches里面，读请求会预先从缓存读取，写请求会先写进缓存，然后在保存到磁盘</p>
+<p><strong>四种IO调度算法：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cat /sys/block/sda/queue/scheduler</div><div class="line">noop anticipatory deadline [cfq] (当前是cfq)</div></pre></td></tr></table></figure></p>
+<p><a href="http://ow1schdt5.bkt.clouddn.com/2014/08/io1.png" target="_blank" rel="external"><img src="http://ow1schdt5.bkt.clouddn.com/2014/08/io1.png" alt="io"></a></p>
+<p><strong>noop：</strong>noop调度算法不会对I/O请求排序操作，除了合并外也不会做任何其他优化，直接以类似FIFO的顺序提交I/O请求；对于SSD、虚拟机或者存储设备可能会更加高效<br><strong>anticipatory(as)：</strong>基于预测的IO算法，类似DeadLine，也维护了三个请求对列；区别在于当它处理完一个I/O请求后并不会直接返回处理下一个请求，而是等待6ms(默认),如果这时候有新来的针对当前扇区相邻扇区的请求，那么会直接处理它，当等待时间结束后，调度器才返回处理下一个对列请求<br>试想一下，如果系统有频繁的针对邻近扇区的I/O请求，那么这种预测算法必然大幅提高整体的吞吐量，毕竟节约了那么多寻道时间<br><strong>deadline：</strong>DEADLINE 在CFQ的基础上，解决了IO请求饿死的极端情况。除了CFQ本身具有的IO排序队列之外，DEADLINE额外分别为读IO和写IO提供了FIFO队 列。读FIFO队列的最大等待时间为500ms，写FIFO队列的最大等待时间为5s。FIFO队列内的IO请求优先级要比CFQ队列中的高，，而读 FIFO队列的优先级又比写FIFO队列的优先级高。优先级可以表示如下：<br>FIFO(Read) &gt; FIFO(Write) &gt; CFQ<br>deadline 算法保证对于既定的 IO 请求以最小的延迟时间，从这一点理解，对于 DSS 应用应该会是很适合的<br><strong>cfq(2.6.18+内核默认CFQ)：</strong>该算法的特点是按照IO请求的地址进行排序，而不是按照先来后到的顺序来进行响应。在传统的SAS盘上，磁盘寻道花去了绝大多数的IO响应时间。CFQ的出发点是对IO地址进行排序，以尽量少的磁盘旋转次数来满足尽可能多的IO请求。在 CFQ算法下，SAS盘的吞吐量大大提高了。但是相比于NOOP的缺点是，先来的IO请求并不一定能被满足，可能会出现饿死的情况；</p>
+<p><strong>调度算法适用场合：</strong><br>在传统的SAS盘上，CFQ、DEADLINE、ANTICIPATORY都是不错的选择；对于专属的数据库服务器和文件服务器，DEADLINE的吞吐量和响应时间都表现良好，适用于大量IO操作的环境</p>
+<p>在SSD、Fusion IO上，最简单的NOOP反而可能是最好的算法，因为其他三个算法的优化是基于缩短寻道时间的，而固态硬盘没有所谓的寻道时间且IO响应时间非常短。<br>ANTICIPATORY通常更适用于大量持续读的环境，并不适用于DB Server<br>CFQ 适用于有大量来自不同进程的并发读写的环境如桌面环境等</p>
+<p><strong>手动临时更改调度算法：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">echo deadline &gt; /sys/block/sda/queue/scheduler</div></pre></td></tr></table></figure></p>
+<p><strong>永久更改：</strong><br><strong>A.使用tuned来修改调度算法</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">比如：vim /etc/tuned-profiles/throughtput-performance/ktune.sysconfig</div><div class="line">ELEVATOR=&quot;deadline&quot;</div><div class="line">ELEVATOR_TUNE_DEVS=&quot;/sys/block/&#123;sd,cciss,dm-,vd&#125;*/queue/scheduler&quot;</div><div class="line">tuned-admin profile throughtput-performance</div><div class="line">chkconfig tuned on</div><div class="line">chkconfig ktune on</div><div class="line">更改调度算法之后/sys/block/sda/quue/iosched/会生成对应的参数文件</div></pre></td></tr></table></figure></p>
+<p><strong>B.通过修改grub.conf来修改调度算法</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">kernel /vmlinuz-2.6.32-358.11.1.el6.x86_64 ro root=UUID=97693d73-443f-438a-90a3-208855faff19 rd_NO_LUKS  KEYBOARDTYPE=pc KEYTABLE=us rd_NO_MD crashkernel=auto LANG=zh_CN.UTF-8 rd_NO_LVM rd_NO_DM elevator=deadline rhgb quiet</div></pre></td></tr></table></figure></p>
+<p><strong>查看调度算法参数的含义：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">yum -y install kernel-doc</div><div class="line">比如:/usr/share/doc/kernel-doc-2.6.32/Documentation/block/deadline-iosched.txt</div></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2014/08/20/centos-puppet-install-test.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2187,177 +2368,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2014/03/04/snmp-output-log-level.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Geekwolf">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Geekwolf's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2014/03/04/snmp-output-log-level.html" itemprop="url">设置snmp输出到message的日志级别</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-03-04T09:37:10+08:00">
-                2014-03-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux运维/" itemprop="url" rel="index">
-                    <span itemprop="name">Linux运维</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2014/03/04/snmp-output-log-level.html" class="leancloud_visitors" data-flag-title="设置snmp输出到message的日志级别">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长</span>
-                
-                <span title="阅读时长">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><strong>修改snmp服务的启动脚本</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">vim /etc/rc.d/init.d/snmpd</div><div class="line">将</div><div class="line">OPTIONS=&quot;-LS0-6d -Lf /dev/null -p /var/run/snmpd.pid &quot;</div><div class="line">改成</div><div class="line">OPTIONS=&quot;-Ls3d -Lf /dev/null -p /var/run/snmpd.pid&quot;</div><div class="line">services snmpd restart</div><div class="line"></div><div class="line">**snmpd日志等级的定义:**</div><div class="line">0 或 ! —- LOG_EMERG</div><div class="line">1 或 a —- LOG_ALERT</div><div class="line">2 或 c —- LOG_CRIT</div><div class="line">3 或 e —- LOG_ERR</div><div class="line">4 或 w —- LOG_WARNING</div><div class="line">5 或 n —- LOG_NOTICE</div><div class="line">6 或 i —- LOG_INFO</div><div class="line">7 或 d —- LOG_DEBUG</div></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2408,7 +2418,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">85</span>
+                <span class="site-state-item-count">86</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -2419,7 +2429,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-count">11</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -2430,7 +2440,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">65</span>
+                <span class="site-state-item-count">66</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
