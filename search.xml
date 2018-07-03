@@ -24,8 +24,9 @@
 <ul>
 <li>S开头表示影响玩家的故障</li>
 <li>T是指不影响玩家的故障</li>
-<li>1、2、3严重程由大到小<br><img src="http://ow1schdt5.bkt.clouddn.com/fms/fms-table.png" alt="image"><h4 id="故障管理流程"><a href="#故障管理流程" class="headerlink" title="故障管理流程"></a>故障管理流程</h4><img src="http://ow1schdt5.bkt.clouddn.com/fms/warn.png" alt="image"></li>
+<li>1、2、3严重程由大到小<br><img src="http://ow1schdt5.bkt.clouddn.com/fms/fms-table.png" alt="image"></li>
 </ul>
+<h4 id="故障管理流程"><a href="#故障管理流程" class="headerlink" title="故障管理流程"></a>故障管理流程</h4><p><img src="http://ow1schdt5.bkt.clouddn.com/fms/warn.png" alt="image"></p>
 <ol>
 <li>通过玩家反馈、监控告警以及计划内变更(如停服版本更新等),确认故障后，通知项目质量保障群</li>
 <li>运维初步了解判断故障现象、范围及原因，通知开发、DBA等是否介入</li>
