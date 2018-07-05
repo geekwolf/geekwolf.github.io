@@ -44,7 +44,7 @@
   </url>
   
   <url>
-    <loc>http://www.simlinux.com/2012/12/16/linux-often-use.html</loc>
+    <loc>http://www.simlinux.com/2013/08/03/lvm-base.html</loc>
     
     <lastmod>2017-12-17T01:55:01.000Z</lastmod>
     
@@ -58,13 +58,6 @@
   </url>
   
   <url>
-    <loc>http://www.simlinux.com/2013/04/02/cacti-performance.html</loc>
-    
-    <lastmod>2017-12-17T01:55:01.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://www.simlinux.com/2013/12/14/centos-install-opennebula.html</loc>
     
     <lastmod>2017-12-17T01:55:01.000Z</lastmod>
@@ -72,7 +65,7 @@
   </url>
   
   <url>
-    <loc>http://www.simlinux.com/2014/08/20/centos-puppet-install-test.html</loc>
+    <loc>http://www.simlinux.com/2013/04/02/cacti-performance.html</loc>
     
     <lastmod>2017-12-17T01:55:01.000Z</lastmod>
     
@@ -93,20 +86,6 @@
   </url>
   
   <url>
-    <loc>http://www.simlinux.com/2012/06/25/centos56-kernel-crash.html</loc>
-    
-    <lastmod>2017-12-17T01:55:01.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.simlinux.com/2012/08/07/cmake-mysql-error.html</loc>
-    
-    <lastmod>2017-12-17T01:55:01.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://www.simlinux.com/2014/08/20/centos7-network-config.html</loc>
     
     <lastmod>2017-12-17T01:55:01.000Z</lastmod>
@@ -114,21 +93,14 @@
   </url>
   
   <url>
-    <loc>http://www.simlinux.com/2017/03/24/cpu-model-freq.html</loc>
+    <loc>http://www.simlinux.com/2014/08/20/centos-puppet-install-test.html</loc>
     
     <lastmod>2017-12-17T01:55:01.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://www.simlinux.com/2012/08/19/aix-learning-notes.html</loc>
-    
-    <lastmod>2017-12-17T01:55:01.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.simlinux.com/2017/09/12/devops-fms.html</loc>
+    <loc>http://www.simlinux.com/2012/06/25/centos56-kernel-crash.html</loc>
     
     <lastmod>2017-12-17T01:55:01.000Z</lastmod>
     
@@ -142,7 +114,35 @@
   </url>
   
   <url>
+    <loc>http://www.simlinux.com/2017/03/24/cpu-model-freq.html</loc>
+    
+    <lastmod>2017-12-17T01:55:01.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.simlinux.com/2016/04/21/android-pack-deploy.html</loc>
+    
+    <lastmod>2017-12-17T01:55:01.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://www.simlinux.com/2017/09/06/django-perms.html</loc>
+    
+    <lastmod>2017-12-17T01:55:01.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.simlinux.com/2017/09/12/devops-fms.html</loc>
+    
+    <lastmod>2017-12-17T01:55:01.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.simlinux.com/2012/08/07/cmake-mysql-error.html</loc>
     
     <lastmod>2017-12-17T01:55:01.000Z</lastmod>
     
@@ -170,13 +170,6 @@
   </url>
   
   <url>
-    <loc>http://www.simlinux.com/2015/02/09/fastdfs-best-practice.html</loc>
-    
-    <lastmod>2017-12-17T01:55:01.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://www.simlinux.com/2015/01/29/fastdfs-xmind.html</loc>
     
     <lastmod>2017-12-17T01:55:01.000Z</lastmod>
@@ -184,14 +177,14 @@
   </url>
   
   <url>
-    <loc>http://www.simlinux.com/2016/04/21/android-pack-deploy.html</loc>
+    <loc>http://www.simlinux.com/2015/02/09/fastdfs-best-practice.html</loc>
     
     <lastmod>2017-12-17T01:55:01.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://www.simlinux.com/2016/04/28/grafana-influxdb-collectd.html</loc>
+    <loc>http://www.simlinux.com/2012/08/19/aix-learning-notes.html</loc>
     
     <lastmod>2017-12-17T01:55:01.000Z</lastmod>
     
@@ -205,13 +198,6 @@
   </url>
   
   <url>
-    <loc>http://www.simlinux.com/2014/08/20/icina-linux.html</loc>
-    
-    <lastmod>2017-12-17T01:55:01.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://www.simlinux.com/2017/03/01/haproxy-proxy-ip.html</loc>
     
     <lastmod>2017-12-17T01:55:01.000Z</lastmod>
@@ -219,14 +205,21 @@
   </url>
   
   <url>
-    <loc>http://www.simlinux.com/2014/08/19/infobright.html</loc>
+    <loc>http://www.simlinux.com/2016/04/28/grafana-influxdb-collectd.html</loc>
     
     <lastmod>2017-12-17T01:55:01.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://www.simlinux.com/2015/06/19/jks-dynamic-parameters.html</loc>
+    <loc>http://www.simlinux.com/2014/08/20/icina-linux.html</loc>
+    
+    <lastmod>2017-12-17T01:55:01.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.simlinux.com/2014/08/19/infobright.html</loc>
     
     <lastmod>2017-12-17T01:55:01.000Z</lastmod>
     
@@ -247,7 +240,14 @@
   </url>
   
   <url>
-    <loc>http://www.simlinux.com/2014/12/05/ansible-handbook.html</loc>
+    <loc>http://www.simlinux.com/2012/12/11/apache-mod_bandwidth.html</loc>
+    
+    <lastmod>2017-12-17T01:55:01.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.simlinux.com/2015/06/19/jks-dynamic-parameters.html</loc>
     
     <lastmod>2017-12-17T01:55:01.000Z</lastmod>
     
@@ -268,7 +268,7 @@
   </url>
   
   <url>
-    <loc>http://www.simlinux.com/2013/12/26/linux-minicom-switch.html</loc>
+    <loc>http://www.simlinux.com/2014/08/22/linux-httpry.html</loc>
     
     <lastmod>2017-12-17T01:55:01.000Z</lastmod>
     
@@ -282,7 +282,7 @@
   </url>
   
   <url>
-    <loc>http://www.simlinux.com/2014/08/22/linux-httpry.html</loc>
+    <loc>http://www.simlinux.com/2013/12/26/linux-minicom-switch.html</loc>
     
     <lastmod>2017-12-17T01:55:01.000Z</lastmod>
     
@@ -310,7 +310,7 @@
   </url>
   
   <url>
-    <loc>http://www.simlinux.com/2013/08/03/lvm-base.html</loc>
+    <loc>http://www.simlinux.com/2012/12/16/linux-often-use.html</loc>
     
     <lastmod>2017-12-17T01:55:01.000Z</lastmod>
     
@@ -338,6 +338,13 @@
   </url>
   
   <url>
+    <loc>http://www.simlinux.com/2014/08/19/mysql-event-scheduler.html</loc>
+    
+    <lastmod>2017-12-17T01:55:01.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://www.simlinux.com/2014/11/06/mysql-flashcache.html</loc>
     
     <lastmod>2017-12-17T01:55:01.000Z</lastmod>
@@ -352,14 +359,7 @@
   </url>
   
   <url>
-    <loc>http://www.simlinux.com/2014/08/19/mysql-event-scheduler.html</loc>
-    
-    <lastmod>2017-12-17T01:55:01.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.simlinux.com/2014/08/19/mysql-partitions.html</loc>
+    <loc>http://www.simlinux.com/2012/07/29/mysql-mysqlsla.html</loc>
     
     <lastmod>2017-12-17T01:55:01.000Z</lastmod>
     
@@ -373,7 +373,7 @@
   </url>
   
   <url>
-    <loc>http://www.simlinux.com/2012/07/29/mysql-mysqlsla.html</loc>
+    <loc>http://www.simlinux.com/2014/08/19/mysql-partitions.html</loc>
     
     <lastmod>2017-12-17T01:55:01.000Z</lastmod>
     
@@ -394,6 +394,13 @@
   </url>
   
   <url>
+    <loc>http://www.simlinux.com/2012/07/13/mysql-select-all-proc.html</loc>
+    
+    <lastmod>2017-12-17T01:55:01.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://www.simlinux.com/2012/07/09/mysql-slave-duplicate-primary.html</loc>
     
     <lastmod>2017-12-17T01:55:01.000Z</lastmod>
@@ -408,35 +415,7 @@
   </url>
   
   <url>
-    <loc>http://www.simlinux.com/2012/07/13/mysql-select-all-proc.html</loc>
-    
-    <lastmod>2017-12-17T01:55:01.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.simlinux.com/2017/02/28/net-softirq.html</loc>
-    
-    <lastmod>2017-12-17T01:55:01.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://www.simlinux.com/2013/01/22/nginx-chinese-domain.html</loc>
-    
-    <lastmod>2017-12-17T01:55:01.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.simlinux.com/2012/03/12/pdo-mysql-autoconf-error.html</loc>
-    
-    <lastmod>2017-12-17T01:55:01.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.simlinux.com/2012/06/15/oracle-sql.html</loc>
     
     <lastmod>2017-12-17T01:55:01.000Z</lastmod>
     
@@ -450,7 +429,14 @@
   </url>
   
   <url>
-    <loc>http://www.simlinux.com/2015/08/18/phantomjs-capture.html</loc>
+    <loc>http://www.simlinux.com/2017/02/28/net-softirq.html</loc>
+    
+    <lastmod>2017-12-17T01:55:01.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.simlinux.com/2012/06/15/oracle-sql.html</loc>
     
     <lastmod>2017-12-17T01:55:01.000Z</lastmod>
     
@@ -458,6 +444,27 @@
   
   <url>
     <loc>http://www.simlinux.com/2014/09/13/percona-xtrabackup-info.html</loc>
+    
+    <lastmod>2017-12-17T01:55:01.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.simlinux.com/2015/08/18/phantomjs-capture.html</loc>
+    
+    <lastmod>2017-12-17T01:55:01.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.simlinux.com/2013/03/01/pssh-try-install-usage.html</loc>
+    
+    <lastmod>2017-12-17T01:55:01.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.simlinux.com/2012/03/12/pdo-mysql-autoconf-error.html</loc>
     
     <lastmod>2017-12-17T01:55:01.000Z</lastmod>
     
@@ -472,13 +479,6 @@
   
   <url>
     <loc>http://www.simlinux.com/2015/12/14/php-openbasedir.html</loc>
-    
-    <lastmod>2017-12-17T01:55:01.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.simlinux.com/2013/03/01/pssh-try-install-usage.html</loc>
     
     <lastmod>2017-12-17T01:55:01.000Z</lastmod>
     
@@ -506,13 +506,6 @@
   </url>
   
   <url>
-    <loc>http://www.simlinux.com/2013/09/05/smokeping-install.html</loc>
-    
-    <lastmod>2017-12-17T01:55:01.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://www.simlinux.com/2012/08/24/snmp-port-cant.html</loc>
     
     <lastmod>2017-12-17T01:55:01.000Z</lastmod>
@@ -527,14 +520,14 @@
   </url>
   
   <url>
-    <loc>http://www.simlinux.com/2012/08/04/subersion172-luuid-not-found.html</loc>
+    <loc>http://www.simlinux.com/2013/09/05/smokeping-install.html</loc>
     
     <lastmod>2017-12-17T01:55:01.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://www.simlinux.com/2012/07/13/vi-manual.html</loc>
+    <loc>http://www.simlinux.com/2012/08/04/subersion172-luuid-not-found.html</loc>
     
     <lastmod>2017-12-17T01:55:01.000Z</lastmod>
     
@@ -548,21 +541,7 @@
   </url>
   
   <url>
-    <loc>http://www.simlinux.com/2012/12/11/apache-mod_bandwidth.html</loc>
-    
-    <lastmod>2017-12-17T01:55:01.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.simlinux.com/2016/12/10/zabbix-cpucores-lld.html</loc>
-    
-    <lastmod>2017-12-17T01:55:01.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.simlinux.com/2017/04/13/arc-ha-summary.html</loc>
+    <loc>http://www.simlinux.com/2014/12/05/ansible-handbook.html</loc>
     
     <lastmod>2017-12-17T01:55:01.000Z</lastmod>
     
@@ -576,7 +555,21 @@
   </url>
   
   <url>
-    <loc>http://www.simlinux.com/2017/04/19/zabbix-proccess-lld.html</loc>
+    <loc>http://www.simlinux.com/2016/12/10/zabbix-cpucores-lld.html</loc>
+    
+    <lastmod>2017-12-17T01:55:01.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.simlinux.com/2012/07/13/vi-manual.html</loc>
+    
+    <lastmod>2017-12-17T01:55:01.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.simlinux.com/2017/04/13/arc-ha-summary.html</loc>
     
     <lastmod>2017-12-17T01:55:01.000Z</lastmod>
     
@@ -590,7 +583,7 @@
   </url>
   
   <url>
-    <loc>http://www.simlinux.com/2016/10/26/zabbix-trap-sender.html</loc>
+    <loc>http://www.simlinux.com/2017/04/19/zabbix-proccess-lld.html</loc>
     
     <lastmod>2017-12-17T01:55:01.000Z</lastmod>
     
@@ -604,6 +597,13 @@
   </url>
   
   <url>
+    <loc>http://www.simlinux.com/2016/10/26/zabbix-trap-sender.html</loc>
+    
+    <lastmod>2017-12-17T01:55:01.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://www.simlinux.com/about/index.html</loc>
     
     <lastmod>2017-12-17T01:55:01.000Z</lastmod>
@@ -611,14 +611,14 @@
   </url>
   
   <url>
-    <loc>http://www.simlinux.com/categories/index.html</loc>
+    <loc>http://www.simlinux.com/tags/index.html</loc>
     
     <lastmod>2017-12-17T01:55:01.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://www.simlinux.com/tags/index.html</loc>
+    <loc>http://www.simlinux.com/categories/index.html</loc>
     
     <lastmod>2017-12-17T01:55:01.000Z</lastmod>
     

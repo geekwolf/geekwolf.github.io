@@ -1280,11 +1280,11 @@
         
         <tags>
             
+            <tag> jenkins </tag>
+            
             <tag> choice </tag>
             
             <tag> groovy </tag>
-            
-            <tag> jenkins </tag>
             
         </tags>
         
@@ -1313,9 +1313,9 @@
         
         <tags>
             
-            <tag> jenkins </tag>
-            
             <tag> gitlab </tag>
+            
+            <tag> jenkins </tag>
             
         </tags>
         
