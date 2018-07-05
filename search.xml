@@ -1280,11 +1280,11 @@
         
         <tags>
             
-            <tag> jenkins </tag>
-            
             <tag> choice </tag>
             
             <tag> groovy </tag>
+            
+            <tag> jenkins </tag>
             
         </tags>
         
@@ -1313,9 +1313,9 @@
         
         <tags>
             
-            <tag> gitlab </tag>
-            
             <tag> jenkins </tag>
+            
+            <tag> gitlab </tag>
             
         </tags>
         
@@ -2351,9 +2351,9 @@
         
         <tags>
             
-            <tag> snmpd </tag>
-            
             <tag> log </tag>
+            
+            <tag> snmpd </tag>
             
         </tags>
         
@@ -2928,9 +2928,9 @@
         
         <tags>
             
-            <tag> selinux </tag>
-            
             <tag> snmpd </tag>
+            
+            <tag> selinux </tag>
             
         </tags>
         
