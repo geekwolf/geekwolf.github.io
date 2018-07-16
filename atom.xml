@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.simlinux.com/"/>
-  <updated>2018-07-03T10:59:10.537Z</updated>
+  <updated>2018-07-16T02:44:46.938Z</updated>
   <id>http://www.simlinux.com/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>兄台了解下：图文告警邮件?</title>
+    <link href="http://www.simlinux.com/2018/07/16/zbx-email-report.html"/>
+    <id>http://www.simlinux.com/2018/07/16/zbx-email-report.html</id>
+    <published>2018-07-16T02:02:47.000Z</published>
+    <updated>2018-07-16T02:44:46.938Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h4><p>告警时将告警信息及当前一段时间趋势图发送邮件或word文档</p><h4 id="要领"><a href="#要领" class="headerlink" title="要领"></a>要领</h4><ol><li>增加Email报警介质</li><li>配置Zabbix Actions，并规范报警信息格式</li><li>获取告警信息</li><li>得到itemid，获取一段时间趋势图</li><li>配置发送邮箱</li><li>发送邮件：图文</li><li>在config.ini中定义生成报表的主机及graphid</li><li>执行脚本，生成word报表<h4 id="程序逻辑图"><a href="#程序逻辑图" class="headerlink" title="程序逻辑图"></a>程序逻辑图</h4><img src="http://ow1schdt5.bkt.clouddn.com/zbx/zbx-email.png" alt="image"><br>代码参考：<br><a href="https://github.com/geekwolf/sa-scripts/tree/master/ops-scripts/zabbix/zabbix_report_email" target="_blank" rel="external">zabbix_report_email</a></li></ol><h4 id="邮件图文报警"><a href="#邮件图文报警" class="headerlink" title="邮件图文报警"></a>邮件图文报警</h4><ol><li>配置Email报警介质</li></ol><p><code>注意:如果脚本不能正常运行，请检查权限</code><br><img src="http://ow1schdt5.bkt.clouddn.com/zbx/email.png" alt="image"></p><ol><li><p>配置Actions<br><code>注意:Default subject格式：{ITEM.ID}|Ploblem|{TRIGGER.NAME}</code><br><img src="http://ow1schdt5.bkt.clouddn.com/zbx/action.png" alt="image"></p></li><li><p>修改触发器，进行报警测试</p></li></ol><h4 id="报表"><a href="#报表" class="headerlink" title="报表"></a>报表</h4><ol><li>添加要报表的主机及graphid<br>修改config.ini中的info</li><li><p>生成报表</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">python report.py report</div></pre></td></tr></table></figure></li><li><p>说明</p></li></ol><p>报表功能比较简单，可以根据自身情况，修改代码，进行定制</p><h4 id="脚本打包二进制"><a href="#脚本打包二进制" class="headerlink" title="脚本打包二进制"></a>脚本打包二进制</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">pip install pyinstaller</div><div class="line">pyinstaller -F report.py</div><div class="line">在当前目录会生成dist/report 二进制文件</div><div class="line">cp default.docx dist/default.docx</div><div class="line">cp config.ini dist/config.ini</div></pre></td></tr></table></figure><p>最后，拷贝dist下的文件就可以使用了，不需在安装依赖</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h4 id=&quot;目标&quot;&gt;&lt;a href=&quot;#目标&quot; class=&quot;headerlink&quot; title=&quot;目标&quot;&gt;&lt;/a&gt;目标&lt;/h4&gt;&lt;p&gt;告警时将告警信息及当前一段时间趋势图发送邮件或word文档&lt;/p&gt;
+&lt;h4 id=&quot;要领&quot;&gt;&lt;a href=&quot;#要领&quot; class=&quot;hea
+      
+    
+    </summary>
+    
+      <category term="Linux运维" scheme="http://www.simlinux.com/categories/Linux%E8%BF%90%E7%BB%B4/"/>
+    
+    
+      <category term="zabbix,监控" scheme="http://www.simlinux.com/tags/zabbix-%E7%9B%91%E6%8E%A7/"/>
+    
+  </entry>
   
   <entry>
     <title>运维故障管理的思考</title>
@@ -485,37 +511,6 @@
       
         &lt;blockquote&gt;
 &lt;p&gt;选择使用zabbix_sender的由来基于业务中需要从MySQL数据库中提取游戏在线人数(5个服务)，如果通过zabbix_get方式获取需要执行5次脚本获取，而通过zabbix_sender执行一次脚本可将5个服务的数据批量发送到zabbix 
-      
-    
-    </summary>
-    
-      <category term="系统监控" scheme="http://www.simlinux.com/categories/%E7%B3%BB%E7%BB%9F%E7%9B%91%E6%8E%A7/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>利用Zabbix做流量聚合汇总</title>
-    <link href="http://www.simlinux.com/2016/08/02/zabbix-traffic-sum.html"/>
-    <id>http://www.simlinux.com/2016/08/02/zabbix-traffic-sum.html</id>
-    <published>2016-08-02T08:20:46.000Z</published>
-    <updated>2017-12-17T01:55:01.000Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><ul><li>创建主机群组 : 数据大盘</li><li>创建主机 : Geekwolf</li><li>创建监控项：网卡流入流出，grpsum实现聚合</li><li>创建图形：关联监控项</li></ul></blockquote><h4 id="创建主机群组"><a href="#创建主机群组" class="headerlink" title="创建主机群组"></a>创建主机群组</h4><p><img src="http://ow1schdt5.bkt.clouddn.com/2016/08/dashboard.png" alt="此处输入图片的描述"></p><h4 id="创建主机Geekwolf"><a href="#创建主机Geekwolf" class="headerlink" title="创建主机Geekwolf"></a>创建主机Geekwolf</h4><p><img src="http://ow1schdt5.bkt.clouddn.com/2016/08/host1.png" alt="此处输入图片的描述"></p><h4 id="创建监控项：网卡流入流出，grpsum实现聚合"><a href="#创建监控项：网卡流入流出，grpsum实现聚合" class="headerlink" title="创建监控项：网卡流入流出，grpsum实现聚合"></a>创建监控项：网卡流入流出，grpsum实现聚合</h4><p>点击创建主机界面上方的项目</p><p><img src="http://ow1schdt5.bkt.clouddn.com/2016/08/host2.png" alt="此处输入图片的描述"><br> <img src="http://ow1schdt5.bkt.clouddn.com/2016/08/host3.png" alt="此处输入图片的描述"></p><h4 id="创建图形：关联监控项"><a href="#创建图形：关联监控项" class="headerlink" title="创建图形：关联监控项"></a>创建图形：关联监控项</h4><p><img src="http://ow1schdt5.bkt.clouddn.com/2016/08/host4.png" alt="此处输入图片的描述"></p><h4 id="最终效果"><a href="#最终效果" class="headerlink" title="最终效果"></a>最终效果</h4><p><img src="http://ow1schdt5.bkt.clouddn.com/2016/08/traffic.png" alt="此处输入图片的描述"></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;blockquote&gt;
-&lt;ul&gt;
-&lt;li&gt;创建主机群组 : 数据大盘&lt;/li&gt;
-&lt;li&gt;创建主机 : Geekwolf&lt;/li&gt;
-&lt;li&gt;创建监控项：网卡流入流出，grpsum实现聚合&lt;/li&gt;
-&lt;li&gt;创建图形：关联监控项&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/blockquote&gt;
-&lt;
       
     
     </summary>

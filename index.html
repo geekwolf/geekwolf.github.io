@@ -348,6 +348,208 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2018/07/16/zbx-email-report.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Geekwolf">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Geekwolf's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/07/16/zbx-email-report.html" itemprop="url">兄台了解下：图文告警邮件?</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-16T10:02:47+08:00">
+                2018-07-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux运维/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux运维</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/07/16/zbx-email-report.html" class="leancloud_visitors" data-flag-title="兄台了解下：图文告警邮件?">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h4><p>告警时将告警信息及当前一段时间趋势图发送邮件或word文档</p>
+<h4 id="要领"><a href="#要领" class="headerlink" title="要领"></a>要领</h4><ol>
+<li>增加Email报警介质</li>
+<li>配置Zabbix Actions，并规范报警信息格式</li>
+<li>获取告警信息</li>
+<li>得到itemid，获取一段时间趋势图</li>
+<li>配置发送邮箱</li>
+<li>发送邮件：图文</li>
+<li>在config.ini中定义生成报表的主机及graphid</li>
+<li>执行脚本，生成word报表<h4 id="程序逻辑图"><a href="#程序逻辑图" class="headerlink" title="程序逻辑图"></a>程序逻辑图</h4><img src="http://ow1schdt5.bkt.clouddn.com/zbx/zbx-email.png" alt="image"><br>代码参考：<br><a href="https://github.com/geekwolf/sa-scripts/tree/master/ops-scripts/zabbix/zabbix_report_email" target="_blank" rel="external">zabbix_report_email</a></li>
+</ol>
+<h4 id="邮件图文报警"><a href="#邮件图文报警" class="headerlink" title="邮件图文报警"></a>邮件图文报警</h4><ol>
+<li>配置Email报警介质</li>
+</ol>
+<p><code>注意:如果脚本不能正常运行，请检查权限</code><br><img src="http://ow1schdt5.bkt.clouddn.com/zbx/email.png" alt="image"></p>
+<ol>
+<li><p>配置Actions<br><code>注意:Default subject格式：{ITEM.ID}|Ploblem|{TRIGGER.NAME}</code><br><img src="http://ow1schdt5.bkt.clouddn.com/zbx/action.png" alt="image"></p>
+</li>
+<li><p>修改触发器，进行报警测试</p>
+</li>
+</ol>
+<h4 id="报表"><a href="#报表" class="headerlink" title="报表"></a>报表</h4><ol>
+<li>添加要报表的主机及graphid<br>修改config.ini中的info</li>
+<li><p>生成报表</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">python report.py report</div></pre></td></tr></table></figure>
+</li>
+<li><p>说明</p>
+</li>
+</ol>
+<p>报表功能比较简单，可以根据自身情况，修改代码，进行定制</p>
+<h4 id="脚本打包二进制"><a href="#脚本打包二进制" class="headerlink" title="脚本打包二进制"></a>脚本打包二进制</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">pip install pyinstaller</div><div class="line">pyinstaller -F report.py</div><div class="line">在当前目录会生成dist/report 二进制文件</div><div class="line">cp default.docx dist/default.docx</div><div class="line">cp config.ini dist/config.ini</div></pre></td></tr></table></figure>
+<p>最后，拷贝dist下的文件就可以使用了，不需在安装依赖</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2018/07/03/thinking-on-fms.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2105,187 +2307,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2017/08/04/docker-harbor-http.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Geekwolf">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Geekwolf's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/08/04/docker-harbor-http.html" itemprop="url">企业级Docker私有仓库之Harbor部署(http)</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-04T12:20:14+08:00">
-                2017-08-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/docker/" itemprop="url" rel="index">
-                    <span itemprop="name">docker</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2017/08/04/docker-harbor-http.html" class="leancloud_visitors" data-flag-title="企业级Docker私有仓库之Harbor部署(http)">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长</span>
-                
-                <span title="阅读时长">
-                  2
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h4 id="部署环境"><a href="#部署环境" class="headerlink" title="部署环境"></a>部署环境</h4><ul>
-<li>Centos7.3 x64</li>
-<li>docker-ce-17.06.0</li>
-<li>docker-compose-1.15.0</li>
-<li>Python-2.7.5(系统默认)</li>
-</ul>
-<h4 id="Docker及Docker-compose安装"><a href="#Docker及Docker-compose安装" class="headerlink" title="Docker及Docker-compose安装"></a>Docker及Docker-compose安装</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"> yum install -y yum-utils device-mapper-persistent-data lvm2</div><div class="line"> yum-config-manager \</div><div class="line">    --add-repo \</div><div class="line">    https://download.docker.com/linux/centos/docker-ce.repo</div><div class="line"> yum-config-manager --enable docker-ce-edge</div><div class="line"> yum makecache fast</div><div class="line"> systemctl start docker </div><div class="line"> systemctl enable docker</div><div class="line"></div><div class="line">curl -L https://github.com/docker/compose/releases/download/1.15.0/docker-compose-`uname -s`-`uname -m` &gt; /usr/local/bin/docker-compose</div><div class="line">chmod +x /usr/local/bin/docker-compose</div></pre></td></tr></table></figure>
-<h4 id="Habor部署配置"><a href="#Habor部署配置" class="headerlink" title="Habor部署配置"></a>Habor部署配置</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">wget https://github.com/vmware/harbor/releases/download/v1.1.2/harbor-offline-installer-v1.1.2.tgz</div><div class="line">tar xf harbor-offline-installer-v1.1.2.tgz</div><div class="line">cd harbor/</div><div class="line"></div><div class="line">vim harbor.cfg</div><div class="line">hostname = hub.wow</div><div class="line">其他默认(http协议)</div><div class="line"></div><div class="line">./install.sh</div><div class="line">安装成功后，可以通过http://hub.wow/访问</div></pre></td></tr></table></figure>
-<p><img src="http://ow1schdt5.bkt.clouddn.com/2017/08/harborui.jpg" alt=""></p>
-<h4 id="Docker客户端使用"><a href="#Docker客户端使用" class="headerlink" title="Docker客户端使用"></a>Docker客户端使用</h4><p>由于Harbor默认使用的http协议,故需要在Docker client上的Dockerd服务增加–insecure-registry hub.wow<br>Centos7修改方式为:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">vim /lib/systemd/system/docker.service</div><div class="line">ExecStart=/usr/bin/dockerd  --insecure-registry hub.wow</div><div class="line"></div><div class="line">systemctl daemon-reload</div><div class="line">systemctl reload docker</div></pre></td></tr></table></figure></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">[root@localhost harbor]# docker login -u admin -p Harbor12345 hub.wow</div><div class="line">官方仓库下载busybox镜像</div><div class="line">[root@localhost harbor]# docker pull busybox </div><div class="line">[root@localhost harbor]# docker images</div><div class="line">REPOSITORY                  TAG                 IMAGE ID            CREATED             SIZE</div><div class="line">busybox                     latest              efe10ee6727f        2 weeks ago         1.13MB</div><div class="line">本地基于busybox:latest创建标记hub.wow/busybox:latest</div><div class="line">[root@localhost harbor]# docker tag busybox:latest hub.wow/project_name/busybox:latest</div><div class="line">推送本地镜像busybox:latest 到hub.wow私有仓库</div><div class="line">[root@localhost harbor]# docker push hub.wow/project_name/busybox:latest</div></pre></td></tr></table></figure>
-<h4 id="Harbor服务管理"><a href="#Harbor服务管理" class="headerlink" title="Harbor服务管理"></a>Harbor服务管理</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cd harbor/</div><div class="line">docker-compose -f ./docker-compose.yml  [ up|down|ps|stop|start ]</div></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2336,7 +2357,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">86</span>
+                <span class="site-state-item-count">87</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -2358,7 +2379,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">66</span>
+                <span class="site-state-item-count">67</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

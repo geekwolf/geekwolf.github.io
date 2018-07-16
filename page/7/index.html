@@ -348,6 +348,185 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2013/03/01/pssh-try-install-usage.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Geekwolf">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Geekwolf's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2013/03/01/pssh-try-install-usage.html" itemprop="url">PSSH 批量管理服务器</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2013-03-01T08:50:59+08:00">
+                2013-03-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux运维/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux运维</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2013/03/01/pssh-try-install-usage.html" class="leancloud_visitors" data-flag-title="PSSH 批量管理服务器">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  2
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>想找一个轻量的批量管理机器的工具，网上搜了一下发现有介绍pssh这个工具，用python写的，python版本大于2.4即可，于是下载试了一下。</p>
+<p>1 下载wget </p>
+<p><a href="http://parallel-ssh.googlecode.com/files/pssh-2.3.1.tar.gz" target="_blank" rel="external">http://parallel-ssh.googlecode.com/files/pssh-2.3.1.tar.gz</a></p>
+<p>2 安装</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">tar zxvf pssh-2.3.1.tar.gz    </div><div class="line">cd pssh-2.3.1/    </div><div class="line">python setup.py install    </div><div class="line">chmod 755 /usr/local/bin/pnuke </div><div class="line">chmod 755 /usr/local/bin/pscp  </div><div class="line">chmod 755 /usr/local/bin/pslurp</div><div class="line">chmod 755 /usr/local/bin/pssh  </div><div class="line">chmod 755 /usr/local/bin/pssh-askpass    </div><div class="line">chmod 755 /usr/local/bin/prsync</div></pre></td></tr></table></figure>
+<p>3 介绍pssh参数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">-h 执行命令的远程主机列表或者 -H user@ip:port 文件内容格式[user@]host[:port]</div><div class="line">-l 远程机器的用户名</div><div class="line">-p 一次最大允许多少连接</div><div class="line">-o 输出内容重定向到一个文件</div><div class="line">-e 执行错误重定向到一个文件</div><div class="line">-t 设置命令执行的超时时间</div><div class="line">-A 提示输入密码并且把密码传递给ssh</div><div class="line">-O 设置ssh参数的具体配置，参照ssh_config配置文件</div><div class="line">-x 传递多个SSH 命令，多个命令用空格分开，用引号括起来</div><div class="line">-X 同-x 但是一次只能传递一个命令</div><div class="line">-i 显示标准输出和标准错误在每台host执行完毕后</div><div class="line">-I 读取每个输入命令，并传递给ssh进程 允许命令脚本传送到标准输入</div></pre></td></tr></table></figure>
+<p>4 介绍软件包内其他命令</p>
+<p>pscp 传输文件到多个hosts，他的特性和scp差不多<br>pslurp 从多台远程机器拷贝文件<br>pnuke kill远程机器的进程</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2013/01/22/nginx-chinese-domain.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2034,208 +2213,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2012/08/19/aix-learning-notes.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Geekwolf">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Geekwolf's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2012/08/19/aix-learning-notes.html" itemprop="url">AIX 学习笔记之 存储管理 LV PV VG PP</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2012-08-19T04:15:06+08:00">
-                2012-08-19
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux运维/" itemprop="url" rel="index">
-                    <span itemprop="name">Linux运维</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2012/08/19/aix-learning-notes.html" class="leancloud_visitors" data-flag-title="AIX 学习笔记之 存储管理 LV PV VG PP">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长</span>
-                
-                <span title="阅读时长">
-                  7
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h4 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h4><p>PV 物理卷：普通的直接访问的存储设备，有固定的和可移动的之分，代表性的就是硬盘。<br>vg 卷组：AIX中最大的存储单位，一个卷组由一组物理硬盘组成，也就是由一个或多个物理卷组成。<br>pp 物理分区：是把物理卷划分成连续的大小相等的存储单位，一个卷组中的物理分区大小都相等。<br>lp 逻辑分区：适映射物理分区的逻辑单位，一个逻辑分区可以对应一个也可以对应多个物理分区。<br>lv 逻辑卷：是指卷组中由多个逻辑分区组成的集合，逻辑卷中的逻辑分区是连续的，但是对应的物理分   区是不连续的，可以在一个磁盘上，也可以在不同的磁盘上。<br>fs 文件系统：是指在AIX系统中面向用户的存储空间。一个逻辑卷只能创建一个文件系统，也就是说一个    文件系统对应一个逻辑卷，如果删除逻辑卷也将删除文件系统。</p>
-<h4 id="存储结构："><a href="#存储结构：" class="headerlink" title="存储结构："></a>存储结构：</h4><p>逻辑卷lv 不能被直接访问，是生设备（裸设备），逻辑卷上建文件系统，文件系统可以被用户访问，市熟设备。文件系统里建目录，目录下建文件。<br>物理卷，卷组，物理分区，逻辑卷，逻辑分区，逻辑卷是面向操作系统的概念<br>文件系统，目录，文件是面向用户的概念。</p>
-<h4 id="LVM的配置数据"><a href="#LVM的配置数据" class="headerlink" title="LVM的配置数据"></a>LVM的配置数据</h4><p>卷组描述区(VGDA):描述卷组中的所有物理卷和逻辑卷的对应关系<br>卷组状态区(VGSA)：记录卷组中物理卷和物理分区的状态信息，在卷组激活时，确定哪些物理分区可用<br>逻辑卷控制块(LVCB)：位于每个逻辑卷开头，包含逻辑卷的信息，占用数百个字节</p>
-<p>LVM管理命令就是对VGDA内容的更新，当一块硬盘变成PV时，这个硬盘开始保留一部分空间存放VGDA信息，当把它加入卷组中时，开始将卷组信息写入VGDA区域，当把它从卷组删除时，也同时清除VGDA数据，这个数据还存在于AIX系统的ODM库中，当导入一个卷组时，把VGDA信息写入ODM，导出时删除。</p>
-<h4 id="磁盘Quorum"><a href="#磁盘Quorum" class="headerlink" title="磁盘Quorum"></a>磁盘Quorum</h4><p>卷组的每一个物理卷至少包含着一份VGDA和VGSA。当一个卷组只有一块硬盘时，这块硬盘存有两份VGDA和VGSA,当这个卷组由两块硬盘时，其中一块存有两份，另一块存有一份，当卷组由三块以上硬盘时，每块硬盘存有一份。 如果磁盘Quorum存在，则必须保证卷组有51%以上的VGDA/VGSA可以正常访问。淡然也可以关闭磁盘Quorum。</p>
-<h4 id="逻辑存储管理的限制"><a href="#逻辑存储管理的限制" class="headerlink" title="逻辑存储管理的限制"></a>逻辑存储管理的限制</h4><p>VG数：每个系统最多255个VG<br>PV数：对于普通卷组，每个VG最多32个PV,对于大VG，每个卷组最多128个PV<br>PP数：每个PV最多有1016个PP<br>LV数：对于普通VG，每个卷组最多255个LV,对于大VG，每个VG最多512个LV<br>LP数：每个LV最多有32512个LP<br>PP和LP的大小：1M到1024M 必须是2的幂次方<br>LP映射PP的数量：一个LP可以映射1-3个PP</p>
-<h4 id="物理区域的分布"><a href="#物理区域的分布" class="headerlink" title="物理区域的分布"></a>物理区域的分布</h4><p>外边缘(Outer-Edge)：存放很少访问的数据<br>外中间(Outer-Middle)：创建逻辑卷时默认的位置<br>中间(Center):磁盘搜索时间最短，速度最快。<br>内中间(Inner-Middle)：比中间稍慢一些<br>内边缘(Inner-Edge)存放很少访问的数据</p>
-<h4 id="向系统添加一块硬盘"><a href="#向系统添加一块硬盘" class="headerlink" title="向系统添加一块硬盘"></a>向系统添加一块硬盘</h4><p>方法一：<br>添加硬盘后起动机器，自动运行cfgmgr,直接查看结果，如果没有识别再手工配置。</p>
-<p>#cfgmgr -v</p>
-<p>#lspv</p>
-<p>#chdev -l hdisk2 -a pv=yes</p>
-<p>方法二：<br>系统不能重起时，县查看原有硬盘，然后安装新硬盘，检查新设备，配置新设备</p>
-<p>#lspv</p>
-<p>#cfgmgr -v</p>
-<p>#lspv</p>
-<p>#chdev -l hdisk2 -a pv=yes</p>
-<p>#mkdev -c disk -s scsi -t 670mb -p scsi3 -w 6,0 -a pv=yes</p>
-<p>#smit makdsk</p>
-<h4 id="修改物理卷属性"><a href="#修改物理卷属性" class="headerlink" title="修改物理卷属性"></a>修改物理卷属性</h4><p>#chpv -a n hdisk1    禁止hdisk1在分配新的PP</p>
-<p>#chpv -a y hdisk1    允许</p>
-<p>#chpv -v r hdisk1    关闭hdisk1的可用性，无法通过逻辑形式读写和访问该物理卷</p>
-<p>#chpv -v a hdisk1    允许</p>
-<p>#chpv -c hdisk1      清除hdisk1上的引导记录</p>
-<p>#smit chpv</p>
-<h4 id="显示物理卷信息"><a href="#显示物理卷信息" class="headerlink" title="显示物理卷信息"></a>显示物理卷信息</h4><p>#lsdev -Cc disk 显示系统一定义和已配置的物理卷</p>
-<p>#lspv            以不带任何参数的形式显示系统中所有物理卷信息 </p>
-<p>#lspv hdisk0     显示一个物理卷hdisk0的属性</p>
-<p>#lspv -l hdisk0 显示物理卷hdisk0上分布的逻辑卷。</p>
-<p>#lspv -p hdisk0 显示物理卷上每个逻辑卷物理分区的分布情况，同时显示逻辑卷类型和文件mount点。</p>
-<p>#lspv -M hdisk0 显示物理分区和逻辑分区的对应情况。</p>
-<h4 id="迁移物理卷上的内容："><a href="#迁移物理卷上的内容：" class="headerlink" title="迁移物理卷上的内容："></a>迁移物理卷上的内容：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">a.确定系统中有哪些磁盘可用</div><div class="line">#lsdev -Cc dev</div><div class="line">#lspv</div><div class="line">#extendvg rootvg hdisk5</div><div class="line"></div><div class="line">b.检查卷组中包含哪些磁盘，确认源磁盘和目标磁盘在同一个卷组中，</div><div class="line">#lsvg -p rootvg</div><div class="line"></div><div class="line">c.确定目的盘上有足够的空间存放源盘的内容</div><div class="line">#lspv hdisk0 |grep &quot;USED PPs&quot;</div><div class="line">#lspv hdisk5 |grep &quot;USED PPs&quot;</div><div class="line"></div><div class="line">d.如果是rootvg 上的磁盘，检查引导逻辑卷是否在源磁盘上</div><div class="line">#lspv -l hdisk0 |grep hd5</div><div class="line">#megratepv -l hd5 hdisk0 hdisk5</div><div class="line"></div><div class="line">e.重设系统引导记录</div><div class="line">#bosboot -a -d /dev/hdisk5</div><div class="line">#bosboot -m normal hdisk5</div><div class="line">#mkboot -c -d /dev/hdisk0</div><div class="line"></div><div class="line">f.迁移</div><div class="line">#smit migratevg</div><div class="line">#migratevg hdisk0 hdisk5</div><div class="line">#migratevg -l lv01 hdisk0 hdisk5</div><div class="line"></div><div class="line">g.删除原盘数据</div><div class="line">#reducevg rootvg hdisk0</div><div class="line">#rmdev -dl hdisk0</div></pre></td></tr></table></figure>
-<h4 id="卷组管理"><a href="#卷组管理" class="headerlink" title="卷组管理"></a>卷组管理</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line">#mkvg -y datavg -d 6 -s 8 hdisk7 hdisk8</div><div class="line">#smit mkvg      创建卷组是保证/etc/vg下有2M空间</div><div class="line">#lsvg           查看系统所有VG</div><div class="line">#lsvg -o        查看激活状态的VG</div><div class="line">#lsvg rootvg    查看rootvg属性</div><div class="line">#lsvg -l rootvg 查看rootvg里的LV</div><div class="line">#lsvg -p rootvg 查看rootvg中包含的物理卷</div><div class="line"></div><div class="line">#chvg -ay datavg 使卷组启动时自动激活</div><div class="line">#chvg -an datavg 使卷组启动时不能自动激活</div><div class="line">#chvg -u datavg 给卷组解锁</div><div class="line"></div><div class="line">#extendvg datavg hdisk5</div><div class="line">#reducevg datavg hdisk5</div><div class="line">#varyonvg datavg</div><div class="line">#varyoffvg datavg</div><div class="line">#exportvg datavg</div><div class="line">#importvg -y datavg hdisk5</div><div class="line">#syncvg -p hdisk03 hdisk05   同步物理卷</div><div class="line">#syncvg -v vg05 vg06         同步卷组vg05和vg06上的拷贝</div><div class="line">#redefinevg -d hdisk0 rootvg   在ODM库中重定义卷组信息，</div><div class="line"></div><div class="line">#swapoff paging_spce_name 使页面空间处于非活动状态</div><div class="line"></div><div class="line">#mirrorvg -c 3 datavg   做3份拷贝的卷组镜像</div><div class="line">#mirrorvg -S -c 3 datavg    后台同步</div><div class="line"></div><div class="line">镜像环境中替换磁盘</div><div class="line">#unmirrorvg datavg hdiak7   删除hdisk7上的镜像</div><div class="line">#reduncevg datavg hdisk7    在卷组中删除hdisk7</div><div class="line">#rmdev -dl hdisk7           在系统中删除hdisk7</div><div class="line"></div><div class="line">#extendvg datavg hdisk7     将新盘加入datavg</div><div class="line">#mirrorvg datavg            给卷组datavg做镜像</div><div class="line">#unmirrorvg                 取消卷组镜像</div></pre></td></tr></table></figure>
-<h4 id="逻辑卷管理"><a href="#逻辑卷管理" class="headerlink" title="逻辑卷管理"></a>逻辑卷管理</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">#getlvcb -TA hd2   查看逻辑卷控制块信息</div><div class="line">#lsvg -l rootvg 查看rootvg上的逻辑卷信息</div><div class="line">#lslv mylv        查看一个lv的详细属性</div><div class="line">#lslv -l lv_01   显示一个逻辑卷所跨越的物理卷，以及PP在物理卷上的分布情况</div><div class="line">#lslv -p hdisk1 显示物理卷上的逻辑卷分配图</div></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2286,7 +2263,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">86</span>
+                <span class="site-state-item-count">87</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -2308,7 +2285,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">66</span>
+                <span class="site-state-item-count">67</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
