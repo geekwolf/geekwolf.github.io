@@ -348,6 +348,205 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2017/08/05/docker-harbor-https.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Geekwolf">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Geekwolf's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/08/05/docker-harbor-https.html" itemprop="url">企业级Docker私有仓库部署(https)</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-05T09:52:42+08:00">
+                2017-08-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/docker/" itemprop="url" rel="index">
+                    <span itemprop="name">docker</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2017/08/05/docker-harbor-https.html" class="leancloud_visitors" data-flag-title="企业级Docker私有仓库部署(https)">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="部署环境"><a href="#部署环境" class="headerlink" title="部署环境"></a>部署环境</h4><ul>
+<li>Centos7.3 x64</li>
+<li>docker-ce-17.06.0</li>
+<li>docker-compose-1.15.0</li>
+<li>Python-2.7.5(系统默认)</li>
+</ul>
+<h4 id="部署目标"><a href="#部署目标" class="headerlink" title="部署目标"></a>部署目标</h4><ul>
+<li>使用HTTPS协议</li>
+<li>支持Clair(在Harbor1.2版本会支持)</li>
+</ul>
+<h5 id="支持HTTPS"><a href="#支持HTTPS" class="headerlink" title="支持HTTPS"></a>支持HTTPS</h5><p>生产环境最好由权威CA机构签发证书(免费的推荐StartSSL,可参考<a href="https://www.wosign.com/Support/Nginx.html),这里为了测试方便使用自签发的证书" target="_blank" rel="external">https://www.wosign.com/Support/Nginx.html),这里为了测试方便使用自签发的证书</a></p>
+<ul>
+<li><p>创建CA证书</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">openssl req  -newkey rsa:4096 -nodes -sha256 -keyout ca.key -x509 -days 365 -out ca.crt</div></pre></td></tr></table></figure>
+</li>
+<li><p>生成CSR公钥</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">openssl req  -newkey rsa:4096 -nodes -sha256 -keyout hub.wow.key  -out hub.wow.csr</div></pre></td></tr></table></figure>
+</li>
+<li><p>颁发证书</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">openssl x509 -req -days 365 -in hub.wow.csr -CA ca.crt -CAkey ca.key -CAcreateserial -out hub.wow.crt</div></pre></td></tr></table></figure>
+</li>
+<li><p>部署证书</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">cp hub.wow.crt hub.wow.key   /data/harbor/keys/</div><div class="line">vim /data/harbor/harbor.cfg</div><div class="line">  hostname = hub.wow</div><div class="line">  ui_url_protocol = https</div><div class="line">  ssl_cert = /data/harbor/keys/hub.wow.crt</div><div class="line">  ssl_cert_key = /data/harbor/keys/hub.wow.key</div><div class="line"></div><div class="line">    cd /data/harbor</div><div class="line">    ./prepare  重新生成配置文件</div><div class="line">    docker-compose down</div><div class="line">    docker-compose up</div></pre></td></tr></table></figure>
+</li>
+<li><p>通过HTTPS访问私有仓库</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">WebUI: https://how.wow</div><div class="line">Docker Client:</div><div class="line"></div><div class="line">[root@hub ~]# docker login -u admin -p Harbor12345 hub.wow</div><div class="line">Login Succeeded</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h4><p>docker login时提示x509: certificate signed by unknown authority<br><strong>解决方法</strong>: 自签名的证书不被系统信任,需要cp ca.crt /etc/docker/certs.d/hub.wow/,  无需重启docker</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2017/08/04/docker-harbor-http.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2220,187 +2419,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2016/10/26/zabbix-trap-sender.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Geekwolf">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Geekwolf's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2016/10/26/zabbix-trap-sender.html" itemprop="url">通过zabbix_sender实现批量传递key值(备忘)</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-10-26T17:58:52+08:00">
-                2016-10-26
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/系统监控/" itemprop="url" rel="index">
-                    <span itemprop="name">系统监控</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2016/10/26/zabbix-trap-sender.html" class="leancloud_visitors" data-flag-title="通过zabbix_sender实现批量传递key值(备忘)">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长</span>
-                
-                <span title="阅读时长">
-                  2
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote>
-<p>选择使用zabbix_sender的由来基于业务中需要从MySQL数据库中提取游戏在线人数(5个服务)，如果通过zabbix_get方式获取需要执行5次脚本获取，而通过zabbix_sender执行一次脚本可将5个服务的数据批量发送到zabbix trapper更为方便，减少了不必要的脚本执行</p>
-</blockquote>
-<p><strong>配置步骤如下:</strong></p>
-<p><strong>1.配置zabbix_agentd.conf 自定义UserParameter</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">UserParameter=send.online.count.data[*],/home/opt/scripts/online_count.sh $1</div><div class="line">/etc/init.d/zabbix_agent stop</div><div class="line">/etc/init.d/zabbix_agent start</div></pre></td></tr></table></figure></p>
-<p>注释: 此步骤的目的是在zabbix server上创建key为send.online.count.data的item用于设置脚本的执行间隔，也可以在zabbix agent服务上设置crontab实现</p>
-<p><strong>2.数据获取脚本</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">#!/bin/bash</div><div class="line">host_ip=$1</div><div class="line">zabbix_server_ip=&quot;10.1.1.1&quot;</div><div class="line">mysql  -C -N  -h localhost -u geekwolf -pgeekwolf &quot;--execute=select total,dota,war3vs,war3rpg,first_login from online_table;&quot;&gt;/tmp/.data</div><div class="line">Total=`cat /tmp/.data |awk &apos;&#123;print $1&#125;&apos;`</div><div class="line">Dota=`cat /tmp/.data |awk &apos;&#123;print $2&#125;&apos;`</div><div class="line">War3vs=`cat /tmp/.data |awk &apos;&#123;print $3&#125;&apos;`</div><div class="line">War3rpg=`cat /tmp/.data |awk &apos;&#123;print $4&#125;&apos;`</div><div class="line">First_Login=`cat /tmp/.data |awk &apos;&#123;print $5&#125;&apos;`</div><div class="line"></div><div class="line">echo &quot;$host_ip online_count[Total] $Total&quot; &gt;/tmp/count.log</div><div class="line">echo &quot;$host_ip online_count[Dota] $Dota&quot; &gt;&gt;/tmp/count.log</div><div class="line">echo &quot;$host_ip online_count[War3vs] $War3vs&quot; &gt;&gt;/tmp/count.log</div><div class="line">echo &quot;$host_ip online_count[War3rpg] $War3rpg&quot; &gt;&gt;/tmp/count.log</div><div class="line">echo &quot;$host_ip online_count[First_login] $First_Login&quot; &gt;&gt;/tmp/count.log</div><div class="line">zabbix_sender -z $zabbix_server_ip -i /tmp/count.log &gt;/dev/null</div></pre></td></tr></table></figure></p>
-<p><strong>3.创建模板和项目</strong><br>A. 创建模板Online_Count_Template<br>B. 创建项目send.count.data<br><img src="http://ow1schdt5.bkt.clouddn.com/2016/10/t1.png" alt=""></p>
-<p>C. 创建Total监控项,其他略<br><img src="http://ow1schdt5.bkt.clouddn.com/2016/10/t2.png" alt=""></p>
-<p><strong>4. 创建图形</strong><br><img src="http://ow1schdt5.bkt.clouddn.com/2016/10/t3.png" alt=""></p>
-<p><strong>5. 将模板关联到主机即可(可通过最新数据查看是否有数据上报 )</strong></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2451,7 +2469,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">87</span>
+                <span class="site-state-item-count">88</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -2462,7 +2480,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-count">12</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -2473,7 +2491,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">67</span>
+                <span class="site-state-item-count">68</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

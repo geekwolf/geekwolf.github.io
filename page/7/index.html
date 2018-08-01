@@ -348,6 +348,203 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2013/03/31/linux-monitor-iftop.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Geekwolf">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Geekwolf's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2013/03/31/linux-monitor-iftop.html" itemprop="url">Linux流量监控工具iftop</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2013-03-31T12:57:32+08:00">
+                2013-03-31
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux运维/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux运维</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2013/03/31/linux-monitor-iftop.html" class="leancloud_visitors" data-flag-title="Linux流量监控工具iftop">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  5
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>在类Unix系统中可以使用top查看系统资源、进程、内存占用等信息。查看网络状态可以使用netstat、nmap等工具。若要查看实时的网络流量，监控TCP/IP连接等，则可以使用<a href="http://www.vpser.net/manage/iftop.html" target="_blank" rel="external">iftop</a>。</p>
+</blockquote>
+<h4 id="一、iftop是什么？"><a href="#一、iftop是什么？" class="headerlink" title="一、iftop是什么？"></a>一、iftop是什么？</h4><p><a href="http://www.vpser.net/manage/iftop.html" target="_blank" rel="external">iftop</a>是类似于top的实时流量监控工具。</p>
+<p>官方网站：<a href="http://www.ex-parrot.com/~pdw/iftop/" target="_blank" rel="external">http://www.ex-parrot.com/~pdw/iftop/</a></p>
+<h4 id="二、iftop有什么用？"><a href="#二、iftop有什么用？" class="headerlink" title="二、iftop有什么用？"></a>二、iftop有什么用？</h4><p><a href="http://www.vpser.net/manage/iftop.html" target="_blank" rel="external">iftop</a>可以用来监控网卡的实时流量（可以指定网段）、反向解析IP、显示端口信息等，详细的将会在后面的使用参数中说明。<img src="http://www.vpser.net/wp-includes/js/tinymce/plugins/wordpress/img/trans.gif" alt="" title="更多..."></p>
+<h4 id="三、安装iftop"><a href="#三、安装iftop" class="headerlink" title="三、安装iftop"></a>三、安装iftop</h4><p><strong>安装方法1、</strong>编译安装</p>
+<p>如果采用编译安装可以到<a href="http://www.ex-parrot.com/~pdw/iftop/" target="_blank" rel="external">iftop官网</a>下载最新的源码包。</p>
+<p>安装前需要已经安装好基本的编译所需的环境，比如make、gcc、autoconf等。安装iftop还需要安装libpcap和libcurses。</p>
+<p><strong>CentOS上安装所需依赖包：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum install flex byacc  libpcap ncurses ncurses-devel</div></pre></td></tr></table></figure></p>
+<p><strong>Debian上安装所需依赖包：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">apt-get install flex byacc  libpcap0.8 libncurses5</div></pre></td></tr></table></figure></p>
+<p>下载iftop</p>
+<p>wget <a href="http://www.ex-parrot.com/pdw/iftop/download/iftop-0.17.tar.gz" target="_blank" rel="external">http://www.ex-parrot.com/pdw/iftop/download/iftop-0.17.tar.gz</a><br>tar zxvf iftop-0.17.tar.gz<br>cd iftop-0.17<br>./configure<br>make &amp;&amp; make install</p>
+<p><strong>安装方法2：(懒人办法，最简单)</strong></p>
+<p>直接省略上面的步骤</p>
+<p>CentOS系统运行：yum install iftop<br>Debian系统 运行：apt-get install iftop</p>
+<h4 id="四、运行iftop"><a href="#四、运行iftop" class="headerlink" title="四、运行iftop"></a>四、运行iftop</h4><p>直接运行： iftop<br>效果如下图：</p>
+<p><a href="http://ow1schdt5.bkt.clouddn.com/old/2013/03/iftop-interface.jpg" target="_blank" rel="external"><img src="http://ow1schdt5.bkt.clouddn.com/old/2013/03/iftop-interface.jpg" alt="iftop-interface"></a></p>
+<h4 id="五、相关参数及说明"><a href="#五、相关参数及说明" class="headerlink" title="五、相关参数及说明"></a>五、相关参数及说明</h4><p>1、iftop界面相关说明<br>界面上面显示的是类似刻度尺的刻度范围，为显示流量图形的长条作标尺用的。</p>
+<p>中间的&lt;= =&gt;;这两个左右箭头，表示的是流量的方向。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">TX：发送流量</div><div class="line">RX：接收流量</div><div class="line">TOTAL：总流量</div><div class="line">Cumm：运行iftop到目前时间的总流量</div><div class="line">peak：流量峰值</div><div class="line">rates：分别表示过去 2s 10s 40s 的平均流量</div></pre></td></tr></table></figure></p>
+<p>2、iftop相关参数</p>
+<p>常用的参数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">-i设定监测的网卡，如：# iftop -i eth1</div><div class="line">-B 以bytes为单位显示流量(默认是bits)，如：# iftop -B</div><div class="line">-n使host信息默认直接都显示IP，如：# iftop -n</div><div class="line">-N使端口信息默认直接都显示端口号，如: # iftop -N</div><div class="line">-F显示特定网段的进出流量，如# iftop -F 10.10.1.0/24或# iftop -F 10.10.1.0/255.255.255.0</div><div class="line">-h（display this message），帮助，显示参数信息</div><div class="line">-p使用这个参数后，中间的列表显示的本地主机信息，出现了本机以外的IP信息;</div><div class="line">-b使流量图形条默认就显示;</div><div class="line">-f这个暂时还不太会用，过滤计算包用的;</div><div class="line">-P使host信息及端口信息默认就都显示;</div><div class="line">-m设置界面最上边的刻度的最大值，刻度分五个大段显示，例：# iftop -m 100M</div></pre></td></tr></table></figure></p>
+<p>进入iftop画面后的一些操作命令(注意大小写)<br>```<br>按h切换是否显示帮助;<br>按n切换显示本机的IP或主机名;<br>按s切换是否显示本机的host信息;<br>按d切换是否显示远端目标主机的host信息;<br>按t切换显示格式为2行/1行/只显示发送流量/只显示接收流量;<br>按N切换显示端口号或端口服务名称;<br>按S切换是否显示本机的端口信息;<br>按D切换是否显示远端目标主机的端口信息;<br>按p切换是否显示端口信息;<br>按P切换暂停/继续显示;<br>按b切换是否显示平均流量图形条;<br>按B切换计算2秒或10秒或40秒内的平均流量;<br>按T切换是否显示每个连接的总流量;<br>按l打开屏幕过滤功能，输入要过滤的字符，比如ip,按回车后，屏幕就只显示这个IP相关的流量信息;<br>按L切换显示画面上边的刻度;刻度不同，流量图形条会有变化;<br>按j或按k可以向上或向下滚动屏幕显示的连接记录;<br>按1或2或3可以根据右侧显示的三列流量数据进行排序;<br>按&lt;根据左边的本机名或IP排序;<br>按&gt;根据远端目标主机的主机名或IP排序;<br>按o切换是否固定只显示当前的连接;<br>按f可以编辑过滤代码，这是翻译过来的说法，我还没用过这个！<br>按!可以使用shell命令，这个没用过！没搞明白啥命令在这好用呢！<br>按q退出监控。</p>
+<h4 id="六、常见问题"><a href="#六、常见问题" class="headerlink" title="六、常见问题"></a>六、常见问题</h4><p>1、make: yacc: Command not found<br>make: <em>*</em> [grammar.c] Error 127</p>
+<p>解决方法：apt-get install byacc   /   yum install byacc</p>
+<p>2、configure: error: Curses! Foiled again!<br>(Can’t find a curses library supporting mvchgat.)<br>Consider installing ncurses.</p>
+<p>解决方法：apt-get install libncurses5-dev  /    yum  install ncurses-devel</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2013/03/01/pssh-try-install-usage.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2041,178 +2238,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2012/08/24/snmp-port-cant.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Geekwolf">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Geekwolf's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2012/08/24/snmp-port-cant.html" itemprop="url">snmpd服务无法更改默认端口</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2012-08-24T01:58:30+08:00">
-                2012-08-24
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux运维/" itemprop="url" rel="index">
-                    <span itemprop="name">Linux运维</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2012/08/24/snmp-port-cant.html" class="leancloud_visitors" data-flag-title="snmpd服务无法更改默认端口">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长</span>
-                
-                <span title="阅读时长">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h4 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">修改/etc/rc.d/init.d/snmpd的启动脚本</div><div class="line">OPTIONS=&quot;-Lsd -Lf /dev/null -p /var/run/snmpd.pid -a&quot;</div><div class="line">修改为</div><div class="line">OPTIONS=&quot;udp:9999 -Lsd -Lf /dev/null -p /var/run/snmpd.pid -a&quot;</div><div class="line">service snmpd start 时无法启动该服务，终端没有报错提示</div></pre></td></tr></table></figure>
-<h4 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">tail -10 /var/log/messages </div><div class="line"></div><div class="line">Aug 24 09:36:24 localhost snmpd[12063]: Error opening specified endpoint &quot;udp:9999&quot;    </div><div class="line">Aug 24 09:36:24 localhost snmpd[12063]: Server Exiting with code 1     </div><div class="line">Aug 24 09:36:24 localhost setroubleshoot: SELinux is preventing the snmpd (snmpd_t) from binding to port 9999\. For complete SELinux messages. run sealert -l ec7e5602-a40f-4831-97d0-ca9e84618549</div><div class="line"></div><div class="line">so,暂且不考虑selinux，命令关掉selinux</div><div class="line"></div><div class="line">setenforce 0</div><div class="line">sestatus </div><div class="line"></div><div class="line">SELinux status: enabled   </div><div class="line">SELinuxfs mount: /selinux    </div><div class="line">Current mode: permissive    </div><div class="line">Mode from config file: disabled    </div><div class="line">Policy version: 21    </div><div class="line">Policy from config file: targeted</div></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2263,7 +2288,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">87</span>
+                <span class="site-state-item-count">88</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -2274,7 +2299,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-count">12</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -2285,7 +2310,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">67</span>
+                <span class="site-state-item-count">68</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

@@ -348,6 +348,231 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2014/08/19/mysql-partitions.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Geekwolf">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Geekwolf's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2014/08/19/mysql-partitions.html" itemprop="url">Mysql分区管理</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-08-19T20:23:43+08:00">
+                2014-08-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/MySQL数据库/" itemprop="url" rel="index">
+                    <span itemprop="name">MySQL数据库</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2014/08/19/mysql-partitions.html" class="leancloud_visitors" data-flag-title="Mysql分区管理">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  15
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="初探"><a href="#初探" class="headerlink" title="初探"></a>初探</h4><p>很长时间没写博客了，这两天一直在学习Mysql分区，总结下:<br>Mysql支持水平分区，并不支持垂直分区;<br><strong>水平分区</strong>：指将同一表中不同行的记录分配到不同的物理文件中；<br><strong>垂直分区</strong>：指将同一表中不同列的记录分配到不同的物理文件中；<br>其中CSV、FEDORATED、MERGE等引擎不支持分区，MYISAM、InnoDB、NDB等引擎支持分区</p>
+<h4 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h4><p>将一个表或索引分解为多个更小、更可管理的部分，从逻辑上讲，只有一个表或者索引，但是物理上这个表或者索引可能由数十个物理分区组成；没个分区都是独立的对象，可以独自处理，也可以作为一个更大对象的一部分进行处理（如果分区表很大，亦可以将分区分配到不同的磁盘上去）；在执行查询的时候，优化器会根据分区定义过滤哪些没有我们需要数据的分区，这样查询就无须全表扫描所有分区，只查找包含需要数据的分区即可</p>
+<h4 id="适用场景"><a href="#适用场景" class="headerlink" title="适用场景"></a>适用场景</h4><p>1、表非常大以至于无法全部都放到内存，或者只在表的最后部分有热点数据，其他均为历史数据 2、分区表数据更容易维护（可独立对分区进行优化、检查、修复及批量删除大数据可以采用drop分区的形式等） 3、分区表的数据可以分布在不同的物理设备上，从而高效地利用多个硬件设备 4、分区表可以避免某些特殊的瓶颈（ps: InnoDB的单个索引的互斥访问、ext3文件系统的inode锁竞争等） 5、可以备份和恢复独立的分区，非常适用于大数据集的场景</p>
+<h4 id="分区表限制"><a href="#分区表限制" class="headerlink" title="分区表限制"></a>分区表限制</h4><ol>
+<li>单表最多支持1024个分区</li>
+<li>MySQL5.1只能对数据表的整型列进行分区，或者数据列可以通过分区函数转化成整型列;MySQL5.5的RANGE LIST类型可以直接使用列进行分区</li>
+<li>如果分区字段中有主键或唯一索引的列，那么所有的主键列和唯一索引列都必须包含进来</li>
+<li>分区表无法使用外键约束</li>
+<li>分区必须使用相同的Engine</li>
+<li>对于MyISAM分区表，不能在使用LOAD INDEX INTO CACHE操作</li>
+<li>对于MyISAM分区表，使用时会打开更多的文件描述符（单个分区是一个独立的文件）</li>
+</ol>
+<h4 id="分区策略"><a href="#分区策略" class="headerlink" title="分区策略"></a>分区策略</h4><ol>
+<li>全量扫描数据，不需要任何索引：通过where条件大概定位哪个分区，必须将查询所需要扫描的分区个数限制在很小的数量</li>
+<li>建立分区索引，分离热点：如将明显的热点数据分离到一个分区，使其尽量缓存到内存中，这样就能充分使用索引和缓存<br><strong>注意</strong>：以上策略均以查询得到过滤，丢掉额外的分区，分区本身不产生额外的代价为准则】</li>
+</ol>
+<h5 id="分区表使用过程的坑坑"><a href="#分区表使用过程的坑坑" class="headerlink" title="分区表使用过程的坑坑"></a>分区表使用过程的坑坑</h5><ol>
+<li><p>NULL值会使分区过滤无效:<br>分表的表达式的值可以是NULL，第一个分区为特殊分区存放NULL或者非法值<br>如： PARTITION BY RANGE YEAR(order_date)进行分区，那么order_date为NULL或者非法值，记录存放在第一个分区:<br>WHERE order_date BETWEEN ‘2014-01-01’ AND ‘2014-01-31’查询时会检查两个分区：<br>第一个分区及1月份分区，避免第一分区数据过大时造成查询代价过高，可以使用：建立第一分区专门存放order_date为NULL和非法值记录 PARTITION p_nulls VALUES LESS THAN(0)<br>MySQL5.5以后可以才用一下语法解决问题： PARTITION BY RANGE COLUMNS(order_date)</p>
+</li>
+<li><p>分区列和索引列不匹配<br>此种情况下查询无法进行分区过滤，分区失效除非查询中包含了可以过滤分区的条件</p>
+</li>
+<li><p>RANGE类型分区随着分区数量增加会对MYSQL额外增加查询分区定义列表（符合条件行在哪个分区）的压力，尽量限制适当的分区数量;key和hash类型分区不存在此问题</p>
+</li>
+<li><p>重组分区或者类似alter语句可能会造成很大的开销<br>新建或者删除分区操作很快，重组分区或者类似ALTER语句操作会先创建一个临时的分区，将数据复制其中，然后在删除原分区</p>
+</li>
+</ol>
+<h4 id="分区表类型"><a href="#分区表类型" class="headerlink" title="分区表类型"></a>分区表类型</h4><ol>
+<li><p>RANGE分区：行数据基于属于一个给定连续区间的列值被放入分区<br>MySQL5.5开始支持RANGE COLUMNS的分区（引入Columns分区解决了MySQL 5.5版本之前RANGE分区和LIST分区只支持整数分区，从而导致需要额外的函数计算得到整数或者通过额外的转换表来转换为整数再分区的问题。Columns分区可以细分为RANGE Columns分区和LIST Columns分区，RANGE Columns分区和LIST Columns分区都支持整数、日期时间、字符串三大数据类型）</p>
+</li>
+<li><p>LIST分区：类似于按RANGE分区，区别在于LIST分区是基于列值匹配一个离散值集合中的某个值来进行选择。<br>MySQL5.5开始支持RANGE COLUMNS的分区</p>
+</li>
+<li><p>HASH分区：根据用户自定义的表达式的返回值来进行分区，返回值不能为负数 4. KEY分区：根据MySQLS数据库提供的哈希函数来进行分区 【注：无论创建何种类型的分区，如果表中存在主键或唯一索引时，分区列必须是唯一索引的一个组成部分】</p>
+</li>
+</ol>
+<h4 id="分区表相关操作"><a href="#分区表相关操作" class="headerlink" title="分区表相关操作"></a>分区表相关操作</h4><h4 id="分区相关查询"><a href="#分区相关查询" class="headerlink" title="分区相关查询"></a>分区相关查询</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div></pre></td><td class="code"><pre><div class="line">查看当前数据库是否支持分区</div><div class="line">mysql&gt; show variables like &apos;%partition%&apos;;</div><div class="line">+---------------------------------------+-------+</div><div class="line">| Variable_name | Value |</div><div class="line">+---------------------------------------+-------+</div><div class="line">| have_partitioning | YES |</div><div class="line">| innodb_adaptive_hash_index_partitions | 1 |</div><div class="line">+---------------------------------------+-------+</div><div class="line">2 rows in set</div><div class="line"></div><div class="line">查看创建分区表的CREATE语句</div><div class="line"></div><div class="line">mysql&gt;show create table operation_log;</div><div class="line"></div><div class="line">查看表是否为分区表(Create_options)</div><div class="line">mysql&gt;show table status(当前库所有表状态)</div><div class="line">mysql&gt;show table status from lockrank like &apos;%operation_log%&apos;;(lockrank库operation_log表状态)</div><div class="line">*************************** 1\. row ***************************</div><div class="line">Table: operation_log</div><div class="line">Create Table: CREATE TABLE `operation_log` (</div><div class="line">  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,</div><div class="line">  `cid` mediumint(7) unsigned NOT NULL,</div><div class="line">  `accountid` mediumint(8) NOT NULL DEFAULT &apos;0&apos; ,</div><div class="line">  `flag` tinyint(1) unsigned NOT NULL DEFAULT &apos;0&apos;,</div><div class="line">  `addtime` int(11) unsigned NOT NULL,</div><div class="line">  `device` tinyint(1) unsigned NOT NULL DEFAULT &apos;1&apos; ,</div><div class="line">  PRIMARY KEY (`id`,`addtime`),</div><div class="line">  KEY `idx_accountid_addtime` (`accountid`,`addtime`),</div><div class="line">  KEY `idx_accountid_flag` (`accountid`,`flag`),</div><div class="line">) ENGINE=InnoDB AUTO_INCREMENT=50951039 DEFAULT CHARSET=utf8 COMMENT=&apos;操作记录&apos;</div><div class="line">/*!50100 PARTITION BY RANGE (addtime)</div><div class="line">(PARTITION `2013-05` VALUES LESS THAN (1370016000) ENGINE = InnoDB,</div><div class="line"> PARTITION `2013-06` VALUES LESS THAN (1372608000) ENGINE = InnoDB,</div><div class="line"> PARTITION `2013-07` VALUES LESS THAN (1375286400) ENGINE = InnoDB,</div><div class="line"> PARTITION `2013-08` VALUES LESS THAN (1377964800) ENGINE = InnoDB,</div><div class="line"> PARTITION `2013-09` VALUES LESS THAN (1380556800) ENGINE = InnoDB,</div><div class="line"> PARTITION `2013-10` VALUES LESS THAN (1383235200) ENGINE = InnoDB,</div><div class="line"> PARTITION `2013-11` VALUES LESS THAN (1385827200) ENGINE = InnoDB,</div><div class="line"> PARTITION `2013-12` VALUES LESS THAN (1388505600) ENGINE = InnoDB,</div><div class="line"> PARTITION `2014-01` VALUES LESS THAN (1391184000) ENGINE = InnoDB,</div><div class="line"> PARTITION `2014-02` VALUES LESS THAN (1393603200) ENGINE = InnoDB,</div><div class="line"> PARTITION `2014-03` VALUES LESS THAN (1396281600) ENGINE = InnoDB,</div><div class="line"> PARTITION `2014-04` VALUES LESS THAN (1398873600) ENGINE = InnoDB,</div><div class="line"> PARTITION `2014-05` VALUES LESS THAN (1401552000) ENGINE = InnoDB,</div><div class="line"> PARTITION `2014-06` VALUES LESS THAN (1404144000) ENGINE = InnoDB,</div><div class="line"> PARTITION `2014-07` VALUES LESS THAN (1406822400) ENGINE = InnoDB,</div><div class="line"> PARTITION `2014-08` VALUES LESS THAN (1409500800) ENGINE = InnoDB,</div><div class="line"> PARTITION `2014-09` VALUES LESS THAN MAXVALUE ENGINE = InnoDB) */</div><div class="line">1 row in set (0.00 sec)</div><div class="line"></div><div class="line">查看select如何使用分区</div><div class="line">mysql&gt; explain partitions select id,accountid,cid,flag from operation_log where addtime=&quot;1369362524&quot; \G ;</div><div class="line"> *************************** 1\. row ***************************</div><div class="line">   id: 1</div><div class="line">  select_type: SIMPLE</div><div class="line">table: operation_log</div><div class="line">   partitions: 2013-05</div><div class="line"> type: ALL</div><div class="line">possible_keys: NULL</div><div class="line">  key: NULL</div><div class="line">  key_len: NULL</div><div class="line">  ref: NULL</div><div class="line"> rows: 4384356</div><div class="line">Extra: Using where</div><div class="line">1 row in set (0.00 sec)</div><div class="line">``</div><div class="line">分区表元数据统计表：INFORMATION_SCHEMA.PARTITIONS</div><div class="line">查看分区表operation_log的分区信息</div><div class="line">mysql&gt; SELECT partition_name part, partition_expression expr, partition_description descr, table_rows FROM INFORMATION_SCHEMA.partitions WHERE TABLE_SCHEMA = schema() AND TABLE_NAME=&apos;operation_log&apos;;</div><div class="line">+---------+---------+------------+------------+</div><div class="line">| part| expr| descr | table_rows |</div><div class="line">+---------+---------+------------+------------+</div><div class="line">| 2013-05 | addtime | 1370016000 | 5999642 |</div><div class="line">| 2013-06 | addtime | 1372608000 | 4579263 |</div><div class="line">| 2013-07 | addtime | 1375286400 | 3223772 |</div><div class="line">| 2013-08 | addtime | 1377964800 | 1995058 |</div><div class="line">| 2013-09 | addtime | 1380556800 | 2497406 |</div><div class="line">| 2013-10 | addtime | 1383235200 | 4106974 |</div><div class="line">| 2013-11 | addtime | 1385827200 | 6209559 |</div><div class="line">| 2013-12 | addtime | 1388505600 | 6415349 |</div><div class="line">| 2014-01 | addtime | 1391184000 | 3953594 |</div><div class="line">| 2014-02 | addtime | 1393603200 | 0 |</div><div class="line">| 2014-03 | addtime | 1396281600 | 0 |</div><div class="line">| 2014-04 | addtime | 1398873600 | 0 |</div><div class="line">| 2014-05 | addtime | 1401552000 | 0 |</div><div class="line">| 2014-06 | addtime | 1404144000 | 0 |</div><div class="line">| 2014-07 | addtime | 1406822400 | 0 |</div><div class="line">| 2014-08 | addtime | 1409500800 | 0 |</div><div class="line">| 2014-09 | addtime | MAXVALUE | 0 |</div><div class="line">+---------+---------+------------+------------+</div><div class="line">17 rows in set (1.48 sec)</div></pre></td></tr></table></figure>
+<h5 id="创建分区操作"><a href="#创建分区操作" class="headerlink" title="创建分区操作"></a>创建分区操作</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div></pre></td><td class="code"><pre><div class="line">RANGE分区：</div><div class="line">mysql&gt; CREATE TABLE `operation_log` (</div><div class="line"> -&gt;  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,</div><div class="line"> -&gt; `cid` mediumint(7) unsigned NOT NULL,</div><div class="line"> -&gt; `accountid` mediumint(8) NOT NULL DEFAULT &apos;0&apos; ,</div><div class="line"> -&gt;  `flag` tinyint(1) unsigned NOT NULL DEFAULT &apos;0&apos;,</div><div class="line"> -&gt;  `addtime` int(11) unsigned NOT NULL,</div><div class="line"> -&gt; `device` tinyint(1) unsigned NOT NULL DEFAULT &apos;1&apos; ,</div><div class="line"> -&gt;  PRIMARY KEY (`id`,`addtime`),</div><div class="line"> -&gt; KEY `idx_accountid_addtime` (`accountid`,`addtime`),</div><div class="line"> -&gt;  KEY `idx_accountid_flag` (`accountid`,`flag`),</div><div class="line"> -&gt;) ENGINE=InnoDB AUTO_INCREMENT=50951039 DEFAULT CHARSET=utf8 COMMENT=&apos;操作记录&apos;</div><div class="line"> -&gt;/*!50100 PARTITION BY RANGE (addtime)</div><div class="line"> -&gt;(PARTITION `2013-05` VALUES LESS THAN (1370016000) ENGINE = InnoDB,</div><div class="line"> -&gt; PARTITION `2013-06` VALUES LESS THAN (1372608000) ENGINE = InnoDB,</div><div class="line"> -&gt; PARTITION `2013-07` VALUES LESS THAN (1375286400) ENGINE = InnoDB,</div><div class="line"> -&gt; PARTITION `2013-08` VALUES LESS THAN (1377964800) ENGINE = InnoDB,</div><div class="line"> -&gt; PARTITION `2013-09` VALUES LESS THAN MAXVALUE ENGINE = InnoDB) */；</div><div class="line">1 row in set (0.00 sec)</div><div class="line">（ LESS THAN MAXVALUE考虑到可能的最大值）</div><div class="line"></div><div class="line">list分区</div><div class="line">//这种方式失败</div><div class="line">mysql&gt; CREATE TABLE IF NOT EXISTS `list_part` (</div><div class="line"> -&gt;   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT &apos;用户ID&apos;,</div><div class="line"> -&gt;   `province_id` int(2) NOT NULL DEFAULT 0 COMMENT &apos;省&apos;,</div><div class="line"> -&gt;   `name` varchar(50) NOT NULL DEFAULT &apos;&apos; COMMENT &apos;名称&apos;,</div><div class="line"> -&gt;   `sex` int(1) NOT NULL DEFAULT &apos;0&apos; COMMENT &apos;0为男，1为女&apos;,</div><div class="line"> -&gt;   PRIMARY KEY (`id`)</div><div class="line"> -&gt; ) ENGINE=INNODB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1</div><div class="line"> -&gt; PARTITION BY LIST (province_id) (</div><div class="line"> -&gt; PARTITION p0 VALUES IN (1,2,3,4,5,6,7,8),</div><div class="line"> -&gt; PARTITION p1 VALUES IN (9,10,11,12,16,21),</div><div class="line"> -&gt; PARTITION p2 VALUES IN (13,14,15,19),</div><div class="line"> -&gt; PARTITION p3 VALUES IN (17,18,20,22,23,24)</div><div class="line"> -&gt; );</div><div class="line">ERROR 1503 (HY000): A PRIMARY KEY must include all columns in the table&apos;s partitioning function</div><div class="line"></div><div class="line">//这种方式成功</div><div class="line">mysql&gt; CREATE TABLE IF NOT EXISTS `list_part` (</div><div class="line"> -&gt;   `id` int(11) NOT NULL  COMMENT &apos;用户ID&apos;,</div><div class="line"> -&gt;   `province_id` int(2) NOT NULL DEFAULT 0 COMMENT &apos;省&apos;,</div><div class="line"> -&gt;   `name` varchar(50) NOT NULL DEFAULT &apos;&apos; COMMENT &apos;名称&apos;,</div><div class="line"> -&gt;   `sex` int(1) NOT NULL DEFAULT &apos;0&apos; COMMENT &apos;0为男，1为女&apos;</div><div class="line"> -&gt; ) ENGINE=INNODB  DEFAULT CHARSET=utf8</div><div class="line"> -&gt; PARTITION BY LIST (province_id) (</div><div class="line"> -&gt; PARTITION p0 VALUES IN (1,2,3,4,5,6,7,8),</div><div class="line"> -&gt; PARTITION p1 VALUES IN (9,10,11,12,16,21),</div><div class="line"> -&gt; PARTITION p2 VALUES IN (13,14,15,19),</div><div class="line"> -&gt; PARTITION p3 VALUES IN (17,18,20,22,23,24)</div><div class="line"> -&gt; );</div><div class="line">Query OK, 0 rows affected (0.33 sec)</div><div class="line">上面的这个创建list分区时，如果有主銉的话，分区时主键必须在其中，不然就会报错。如果我不用主键，分区就创建成功了，一般情况下，一个张表肯定会有一个主键，这算是一个分区的局限性</div><div class="line"></div><div class="line">hash分区</div><div class="line">mysql&gt; CREATE TABLE IF NOT EXISTS `hash_part` (</div><div class="line"> -&gt;   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT &apos;评论ID&apos;,</div><div class="line"> -&gt;   `comment` varchar(1000) NOT NULL DEFAULT &apos;&apos; COMMENT &apos;评论&apos;,</div><div class="line"> -&gt;   `ip` varchar(25) NOT NULL DEFAULT &apos;&apos; COMMENT &apos;来源IP&apos;,</div><div class="line"> -&gt;   PRIMARY KEY (`id`)</div><div class="line"> -&gt; ) ENGINE=INNODB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1</div><div class="line"> -&gt; PARTITION BY HASH(id)</div><div class="line"> -&gt; PARTITIONS 3;</div><div class="line">Query OK, 0 rows affected (0.06 sec)</div><div class="line"></div><div class="line">key分区 </div><div class="line">mysql&gt; CREATE TABLE IF NOT EXISTS `key_part` (</div><div class="line"> -&gt;   `news_id` int(11) NOT NULL  COMMENT &apos;新闻ID&apos;,</div><div class="line"> -&gt;   `content` varchar(1000) NOT NULL DEFAULT &apos;&apos; COMMENT &apos;新闻内容&apos;,</div><div class="line"> -&gt;   `u_id` varchar(25) NOT NULL DEFAULT &apos;&apos; COMMENT &apos;来源IP&apos;,</div><div class="line"> -&gt;   `create_time` DATE NOT NULL DEFAULT &apos;0000-00-00 00:00:00&apos; COMMENT &apos;时间&apos;</div><div class="line"> -&gt; ) ENGINE=INNODB  DEFAULT CHARSET=utf8</div><div class="line"> -&gt; PARTITION BY LINEAR HASH(YEAR(create_time))</div><div class="line"> -&gt; PARTITIONS 3;</div><div class="line">Query OK, 0 rows affected (0.07 sec)</div></pre></td></tr></table></figure>
+<h5 id="增加子分区操作"><a href="#增加子分区操作" class="headerlink" title="增加子分区操作"></a><strong>增加子分区操作</strong></h5><pre><code>子分区是分区表中每个分区的再次分割，子分区既可以使用HASH希分区，也可以使用KEY分区。这 也被称为复合分区（composite partitioning）
+</code></pre><p>1. 如果一个分区中创建了子分区，其他分区也要有子分区<br>2. 如果创建了了分区，每个分区中的子分区数必有相同<br>3. 同一分区内的子分区，名字不相同，不同分区内的子分区名子可以相同（5.1.50不适用）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"> mysql&gt; CREATE TABLE IF NOT EXISTS `sub_part` (</div><div class="line"> -&gt;   `news_id` int(11) NOT NULL  COMMENT &apos;新闻ID&apos;,</div><div class="line"> -&gt;   `content` varchar(1000) NOT NULL DEFAULT &apos;&apos; COMMENT &apos;新闻内容&apos;,</div><div class="line"> -&gt;   `u_id` int(11) NOT NULL DEFAULT 0s COMMENT &apos;来源IP&apos;,</div><div class="line"> -&gt;   `create_time` DATE NOT NULL DEFAULT &apos;0000-00-00 00:00:00&apos; COMMENT &apos;时间&apos;</div><div class="line"> -&gt; ) ENGINE=INNODB  DEFAULT CHARSET=utf8</div><div class="line"> -&gt; PARTITION BY RANGE(YEAR(create_time))</div><div class="line"> -&gt; SUBPARTITION BY HASH(TO_DAYS(create_time))(</div><div class="line"> -&gt; PARTITION p0 VALUES LESS THAN (1990)(SUBPARTITION s0,SUBPARTITION s1,SUBPARTITION s2),</div><div class="line"> -&gt; PARTITION p1 VALUES LESS THAN (2000)(SUBPARTITION s3,SUBPARTITION s4,SUBPARTITION good),</div><div class="line"> -&gt; PARTITION p2 VALUES LESS THAN MAXVALUE(SUBPARTITION tank0,SUBPARTITION tank1,SUBPARTITION tank3)</div><div class="line"> -&gt; );</div><div class="line">Query OK, 0 rows affected (0.07 sec)</div></pre></td></tr></table></figure>
+<h5 id="分区管理"><a href="#分区管理" class="headerlink" title="分区管理"></a><strong>分区管理</strong></h5><p>增加分区操作（针对设置MAXVALUE）<br>range添加分区<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">mysql&gt;alter table operation_log add  partition(partition `2013-10` values less than (1383235200));  ---&gt;适用于没有设置MAXVALUE的分区添加</div><div class="line">   ERROR 1481 (HY000):MAXVALUE can only be used in last partition definition</div><div class="line">mysql&gt;alter table operation_log REORGANIZE partition `2013-09` into (partition `2013-09` values less than (1380556800),partition `2013-10` values less than (1383235200),partition `2013-11` values less than maxvalue);</div></pre></td></tr></table></figure></p>
+<p>list添加分区<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">mysql&gt; alter table list_part add partition(partition p4 values in (25,26,28));</div><div class="line">Query OK, 0 rows affected (0.01 sec)</div><div class="line">Records: 0  Duplicates: 0  Warnings: 0</div></pre></td></tr></table></figure></p>
+<p>hash重新分区<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">mysql&gt; alter table list_part add partition(partition p4 values in (25,26,28));</div><div class="line">Query OK, 0 rows affected (0.01 sec)</div><div class="line">Records: 0  Duplicates: 0  Warnings: 0</div></pre></td></tr></table></figure></p>
+<p>key重新分区<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">mysql&gt; alter table key_part add partition partitions 4;</div><div class="line">Query OK, 1 row affected (0.06 sec)//有数据也会被重新分配</div><div class="line">Records: 1  Duplicates: 0  Warnings: 0</div></pre></td></tr></table></figure></p>
+<p>子分区添加新分区，虽然我没有指定子分区，但是系统会给子分区命名的<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">mysql&gt; alter table sub1_part add partition(partition p3 values less than MAXVALUE);</div><div class="line">Query OK, 0 rows affected (0.02 sec)</div><div class="line">Records: 0  Duplicates: 0  Warnings: 0</div></pre></td></tr></table></figure></p>
+<h5 id="删除分区操作"><a href="#删除分区操作" class="headerlink" title="删除分区操作"></a><strong>删除分区操作</strong></h5><p><code>alter table user drop partition</code>2013-05<code>;</code></p>
+<h4 id="分区表其他操作"><a href="#分区表其他操作" class="headerlink" title="分区表其他操作"></a>分区表其他操作</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">重建分区(官方：与先drop所有记录然后reinsert是一样的效果；用于整理表碎片)</div><div class="line">alter table operation_log rebuild partition `2014-01`;</div><div class="line">重建多个分区</div><div class="line">alter table operation_log rebuild partition `2014-01`,`2014-02`;</div><div class="line">过程如下：</div><div class="line"></div><div class="line">pro</div><div class="line">优化分区（如果删除了一个分区的大量记录或者对一个分区的varchar blob text数据类型的字段做了许多更新，此时可以对分区进行优化以回收未使用的空间和整理分区数据文件）</div><div class="line">alter table operation_log  optimize  partition `2014-01`;</div><div class="line"></div><div class="line">优化的操作相当于check partition,analyze partition 和repair patition</div><div class="line"></div><div class="line">分析分区</div><div class="line">alter table operation_log  analyze partition  `2014-01`;</div><div class="line"></div><div class="line">修复分区</div><div class="line">alter table operation_log repair partition   `2014-01`;</div><div class="line"></div><div class="line">检查分区</div><div class="line">alter table operation_log check  partition   `2014-01`;</div></pre></td></tr></table></figure>
+<p><strong>注释：</strong></p>
+<ol>
+<li>mysqlcheck、myisamchk并不支持分区表，analyze,check,optimize,rebuild,repair,truncate不支持子分区操作</li>
+<li>在MySQL5.6中，可以使用清空一个分区数据：alter table operation_log truncate partition <code>2014-01</code>;</li>
+<li>清空该分区表所有分区数据：alter table operation_log truncate partition all;</li>
+</ol>
+<h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><blockquote>
+<p><a href="http://blog.51yip.com/mysql/1013.html" target="_blank" rel="external">http://blog.51yip.com/mysql/1013.html</a><br><a href="https://dev.mysql.com/doc/refman/5.6/en/partitioning-maintenance.html" target="_blank" rel="external">https://dev.mysql.com/doc/refman/5.6/en/partitioning-maintenance.html</a><br><a href="http://dev.mysql.com/doc/refman/5.6/en/index.html" target="_blank" rel="external">http://dev.mysql.com/doc/refman/5.6/en/index.html</a></p>
+</blockquote>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2014/08/19/infobright.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1945,203 +2170,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2013/03/31/linux-monitor-iftop.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Geekwolf">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Geekwolf's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2013/03/31/linux-monitor-iftop.html" itemprop="url">Linux流量监控工具iftop</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2013-03-31T12:57:32+08:00">
-                2013-03-31
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux运维/" itemprop="url" rel="index">
-                    <span itemprop="name">Linux运维</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2013/03/31/linux-monitor-iftop.html" class="leancloud_visitors" data-flag-title="Linux流量监控工具iftop">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长</span>
-                
-                <span title="阅读时长">
-                  5
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote>
-<p>在类Unix系统中可以使用top查看系统资源、进程、内存占用等信息。查看网络状态可以使用netstat、nmap等工具。若要查看实时的网络流量，监控TCP/IP连接等，则可以使用<a href="http://www.vpser.net/manage/iftop.html" target="_blank" rel="external">iftop</a>。</p>
-</blockquote>
-<h4 id="一、iftop是什么？"><a href="#一、iftop是什么？" class="headerlink" title="一、iftop是什么？"></a>一、iftop是什么？</h4><p><a href="http://www.vpser.net/manage/iftop.html" target="_blank" rel="external">iftop</a>是类似于top的实时流量监控工具。</p>
-<p>官方网站：<a href="http://www.ex-parrot.com/~pdw/iftop/" target="_blank" rel="external">http://www.ex-parrot.com/~pdw/iftop/</a></p>
-<h4 id="二、iftop有什么用？"><a href="#二、iftop有什么用？" class="headerlink" title="二、iftop有什么用？"></a>二、iftop有什么用？</h4><p><a href="http://www.vpser.net/manage/iftop.html" target="_blank" rel="external">iftop</a>可以用来监控网卡的实时流量（可以指定网段）、反向解析IP、显示端口信息等，详细的将会在后面的使用参数中说明。<img src="http://www.vpser.net/wp-includes/js/tinymce/plugins/wordpress/img/trans.gif" alt="" title="更多..."></p>
-<h4 id="三、安装iftop"><a href="#三、安装iftop" class="headerlink" title="三、安装iftop"></a>三、安装iftop</h4><p><strong>安装方法1、</strong>编译安装</p>
-<p>如果采用编译安装可以到<a href="http://www.ex-parrot.com/~pdw/iftop/" target="_blank" rel="external">iftop官网</a>下载最新的源码包。</p>
-<p>安装前需要已经安装好基本的编译所需的环境，比如make、gcc、autoconf等。安装iftop还需要安装libpcap和libcurses。</p>
-<p><strong>CentOS上安装所需依赖包：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum install flex byacc  libpcap ncurses ncurses-devel</div></pre></td></tr></table></figure></p>
-<p><strong>Debian上安装所需依赖包：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">apt-get install flex byacc  libpcap0.8 libncurses5</div></pre></td></tr></table></figure></p>
-<p>下载iftop</p>
-<p>wget <a href="http://www.ex-parrot.com/pdw/iftop/download/iftop-0.17.tar.gz" target="_blank" rel="external">http://www.ex-parrot.com/pdw/iftop/download/iftop-0.17.tar.gz</a><br>tar zxvf iftop-0.17.tar.gz<br>cd iftop-0.17<br>./configure<br>make &amp;&amp; make install</p>
-<p><strong>安装方法2：(懒人办法，最简单)</strong></p>
-<p>直接省略上面的步骤</p>
-<p>CentOS系统运行：yum install iftop<br>Debian系统 运行：apt-get install iftop</p>
-<h4 id="四、运行iftop"><a href="#四、运行iftop" class="headerlink" title="四、运行iftop"></a>四、运行iftop</h4><p>直接运行： iftop<br>效果如下图：</p>
-<p><a href="http://ow1schdt5.bkt.clouddn.com/old/2013/03/iftop-interface.jpg" target="_blank" rel="external"><img src="http://ow1schdt5.bkt.clouddn.com/old/2013/03/iftop-interface.jpg" alt="iftop-interface"></a></p>
-<h4 id="五、相关参数及说明"><a href="#五、相关参数及说明" class="headerlink" title="五、相关参数及说明"></a>五、相关参数及说明</h4><p>1、iftop界面相关说明<br>界面上面显示的是类似刻度尺的刻度范围，为显示流量图形的长条作标尺用的。</p>
-<p>中间的&lt;= =&gt;;这两个左右箭头，表示的是流量的方向。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">TX：发送流量</div><div class="line">RX：接收流量</div><div class="line">TOTAL：总流量</div><div class="line">Cumm：运行iftop到目前时间的总流量</div><div class="line">peak：流量峰值</div><div class="line">rates：分别表示过去 2s 10s 40s 的平均流量</div></pre></td></tr></table></figure></p>
-<p>2、iftop相关参数</p>
-<p>常用的参数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">-i设定监测的网卡，如：# iftop -i eth1</div><div class="line">-B 以bytes为单位显示流量(默认是bits)，如：# iftop -B</div><div class="line">-n使host信息默认直接都显示IP，如：# iftop -n</div><div class="line">-N使端口信息默认直接都显示端口号，如: # iftop -N</div><div class="line">-F显示特定网段的进出流量，如# iftop -F 10.10.1.0/24或# iftop -F 10.10.1.0/255.255.255.0</div><div class="line">-h（display this message），帮助，显示参数信息</div><div class="line">-p使用这个参数后，中间的列表显示的本地主机信息，出现了本机以外的IP信息;</div><div class="line">-b使流量图形条默认就显示;</div><div class="line">-f这个暂时还不太会用，过滤计算包用的;</div><div class="line">-P使host信息及端口信息默认就都显示;</div><div class="line">-m设置界面最上边的刻度的最大值，刻度分五个大段显示，例：# iftop -m 100M</div></pre></td></tr></table></figure></p>
-<p>进入iftop画面后的一些操作命令(注意大小写)<br>```<br>按h切换是否显示帮助;<br>按n切换显示本机的IP或主机名;<br>按s切换是否显示本机的host信息;<br>按d切换是否显示远端目标主机的host信息;<br>按t切换显示格式为2行/1行/只显示发送流量/只显示接收流量;<br>按N切换显示端口号或端口服务名称;<br>按S切换是否显示本机的端口信息;<br>按D切换是否显示远端目标主机的端口信息;<br>按p切换是否显示端口信息;<br>按P切换暂停/继续显示;<br>按b切换是否显示平均流量图形条;<br>按B切换计算2秒或10秒或40秒内的平均流量;<br>按T切换是否显示每个连接的总流量;<br>按l打开屏幕过滤功能，输入要过滤的字符，比如ip,按回车后，屏幕就只显示这个IP相关的流量信息;<br>按L切换显示画面上边的刻度;刻度不同，流量图形条会有变化;<br>按j或按k可以向上或向下滚动屏幕显示的连接记录;<br>按1或2或3可以根据右侧显示的三列流量数据进行排序;<br>按&lt;根据左边的本机名或IP排序;<br>按&gt;根据远端目标主机的主机名或IP排序;<br>按o切换是否固定只显示当前的连接;<br>按f可以编辑过滤代码，这是翻译过来的说法，我还没用过这个！<br>按!可以使用shell命令，这个没用过！没搞明白啥命令在这好用呢！<br>按q退出监控。</p>
-<h4 id="六、常见问题"><a href="#六、常见问题" class="headerlink" title="六、常见问题"></a>六、常见问题</h4><p>1、make: yacc: Command not found<br>make: <em>*</em> [grammar.c] Error 127</p>
-<p>解决方法：apt-get install byacc   /   yum install byacc</p>
-<p>2、configure: error: Curses! Foiled again!<br>(Can’t find a curses library supporting mvchgat.)<br>Consider installing ncurses.</p>
-<p>解决方法：apt-get install libncurses5-dev  /    yum  install ncurses-devel</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2192,7 +2220,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">87</span>
+                <span class="site-state-item-count">88</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -2203,7 +2231,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-count">12</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -2214,7 +2242,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">67</span>
+                <span class="site-state-item-count">68</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

@@ -348,6 +348,180 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2012/07/09/mysql-slave-duplicate-primary.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Geekwolf">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Geekwolf's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2012/07/09/mysql-slave-duplicate-primary.html" itemprop="url">mysql slave不能同步Error 'Duplicate entry '1438019' for key 'PRIMARY'' on query</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2012-07-09T06:54:07+08:00">
+                2012-07-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/MySQL数据库/" itemprop="url" rel="index">
+                    <span itemprop="name">MySQL数据库</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2012/07/09/mysql-slave-duplicate-primary.html" class="leancloud_visitors" data-flag-title="mysql slave不能同步Error 'Duplicate entry '1438019' for key 'PRIMARY'' on query">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  2
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div></pre></td><td class="code"><pre><div class="line">mysql&gt; show slave statusG;</div><div class="line">*************************** 1. row ***************************</div><div class="line">               Slave_IO_State: Waiting for master to send event</div><div class="line">                  Master_Host: 192.168.10.100</div><div class="line">                  Master_User: slave_user</div><div class="line">                  Master_Port: 3306</div><div class="line">                  Connect_Retry: 60</div><div class="line">                  Master_Log_File: mysql-bin.000773</div><div class="line">                  Read_Master_Log_Pos: 63325</div><div class="line">                  Relay_Log_File: server122-relay-bin.000002</div><div class="line">                  Relay_Log_Pos: 165661</div><div class="line">                  Relay_Master_Log_File: mysql-bin.000771</div><div class="line">                  Slave_IO_Running: Yes</div><div class="line">                  Slave_SQL_Running: No</div><div class="line">                  Replicate_Do_DB:</div><div class="line">                  Replicate_Ignore_DB:</div><div class="line">                  Replicate_Do_Table:</div><div class="line">                  Replicate_Ignore_Table:</div><div class="line">                  Replicate_Wild_Do_Table:</div><div class="line">                  Replicate_Wild_Ignore_Table:</div><div class="line">                   Last_Errno: 1062</div><div class="line">                   Last_Error: Error &apos;Duplicate entry &apos;1438019&apos; for key &apos;PRIMARY&apos;&apos; on query. Default database: &apos;otrs&apos;. Query: &apos;INSERT INTO ticket (tn, title, create_time_unix, queue_id, ticket_lock_id,  user_id, group_id, ticket_priority_id, ticket_state_id, ticket_answered,  escalation_start_time, timeout, valid_id, create_time, create_by, change_time, change_by)  VALUES (&apos;2012061310001851&apos;, &apos;Your order  ORD201205A000016 was bounced back&apos;, 1339585744, 44, 1, 43,  1, 3, 4,  0, 1339585744, 0, 1,  current_timestamp, 43, current_timestamp, 43)&apos;</div><div class="line">                 Skip_Counter: 0</div><div class="line">                 Exec_Master_Log_Pos: 41969067</div><div class="line">                 Relay_Log_Space: 625695</div><div class="line">                 Until_Condition: None</div><div class="line">                 Until_Log_File:</div><div class="line">                 Until_Log_Pos: 0</div><div class="line">                 Master_SSL_Allowed: No</div><div class="line">                 Master_SSL_CA_File:</div><div class="line">                 Master_SSL_CA_Path:</div><div class="line">                 Master_SSL_Cert:</div><div class="line">                 Master_SSL_Cipher:</div><div class="line">                 Master_SSL_Key:</div><div class="line">                 Seconds_Behind_Master: NULL</div><div class="line">                 Master_SSL_Verify_Server_Cert: No</div><div class="line">                Last_IO_Errno: 0</div><div class="line">                Last_IO_Error:</div><div class="line">                Last_SQL_Errno: 1062</div><div class="line">                Last_SQL_Error: Error &apos;Duplicate entry &apos;1438019&apos; for key &apos;PRIMARY&apos;&apos; on query. Default database: &apos;otrs&apos;. Query: &apos;INSERT INTO ticket (tn, title, create_time_unix, queue_id, ticket_lock_id,  user_id, group_id, ticket_priority_id, ticket_state_id, ticket_answered,  escalation_start_time, timeout, valid_id, create_time, create_by, change_time, change_by)  VALUES (&apos;2012061310001851&apos;, &apos;Your order  ORD201205A000016 was bounced back&apos;, 1339585744, 44, 1, 43,  1, 3, 4,  0, 1339585744, 0, 1,  current_timestamp, 43, current_timestamp, 43)&apos;</div><div class="line">1 row in set (0.00 sec)</div></pre></td></tr></table></figure>
+<h4 id="分析原因"><a href="#分析原因" class="headerlink" title="分析原因"></a>分析原因</h4><p>重复插入相同的记录，造成的主键冲突问题</p>
+<h4 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h4><p>如果较少的错误可以手动解决<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">slave stop;</div><div class="line">set global sql_slave_skip_counter=n; \ n=正整数，，看你的错误有几条，就跳过几条  </div><div class="line">slave start;</div></pre></td></tr></table></figure></p>
+<p>较多的情况下增加slave_skip_errors = 1062 参数<br>my.cnf 中增加slave_skip_errors = 1062 参数，忽略1062错误，若忽略多个错误，中间用逗号隔开，忽略所有用all</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2012/07/06/mysql-binlog-format.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1651,7 +1825,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">87</span>
+                <span class="site-state-item-count">88</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1662,7 +1836,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-count">12</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -1673,7 +1847,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">67</span>
+                <span class="site-state-item-count">68</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
