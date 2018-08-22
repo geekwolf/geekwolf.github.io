@@ -348,6 +348,195 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2014/08/19/mysql-event-scheduler.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Geekwolf">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Geekwolf's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2014/08/19/mysql-event-scheduler.html" itemprop="url">Mysql事件调度器(Event Scheduler)</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-08-19T20:59:37+08:00">
+                2014-08-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/MySQL数据库/" itemprop="url" rel="index">
+                    <span itemprop="name">MySQL数据库</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2014/08/19/mysql-event-scheduler.html" class="leancloud_visitors" data-flag-title="Mysql事件调度器(Event Scheduler)">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  6
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <pre><code>Mysql中的事件调度器Event Scheduler类似于linux下的crontab计划任务的功能,它是由一个特殊的时间调度线程执行的
+</code></pre><h4 id="一、查看当前是否开启了event-scheduler三种方法"><a href="#一、查看当前是否开启了event-scheduler三种方法" class="headerlink" title="一、查看当前是否开启了event scheduler三种方法"></a>一、查看当前是否开启了event scheduler三种方法</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">1) SHOW VARIABLES LIKE ‘event_scheduler’;</div><div class="line">2) SELECT @@event_scheduler;</div><div class="line">3) SHOW PROCESSLIST;(是否有State为：Waiting for next activation的进程，User为event_scheduler)</div></pre></td></tr></table></figure>
+<h4 id="二、启动关闭event-scheduler方法"><a href="#二、启动关闭event-scheduler方法" class="headerlink" title="二、启动关闭event scheduler方法"></a>二、启动关闭event scheduler方法</h4><p>时间调度器是否开启由全局变量event_scheduler决定，它有三个可以设定的值： – OFF : 事件调度器是关闭的，调度线程并没有运行，并且在SHOW PROCESSLIST中不显示，默认值是OFF – ON ：事件调度器是开启的，调度线程并没有运行，并且执行所有的调度事件，通过SHOW PROCESSLIST可以查看Waiting for next activation的进程 – DISABLED : 设定这个值表示Event Scheduler是被禁止的，无法在Mysql运行状态下改变其值</p>
+<p><strong>注：</strong>在Mysql启动时如果在my.cnf设置了event_scheduler=ON（OFF or 1 or 0）时，就不能在运行时修改撑DISABLED，如果设置event_scheduler=DISABLED时，就不能在运行时修改其值为ON （ OFF or 1 or 0）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">mysql&gt; SELECT @@event_scheduler;</div><div class="line">+-------------------+</div><div class="line">| @@event_scheduler |</div><div class="line">+-------------------+</div><div class="line">| DISABLED |</div><div class="line">+-------------------+</div><div class="line">1 row in set (0.00 sec)</div><div class="line">mysql&gt; SET @@global.event_scheduler = 1; </div><div class="line">ERROR 1290 (HY000): The MySQL server is running with the --event-scheduler=DISABLED or --skip-grant-tables option so it cannot execute this statement</div><div class="line"></div><div class="line">在mysql运行时开启Event（4种方法均可）：</div><div class="line">SET GLOBAL event_scheduler = ON;</div><div class="line">SET @@global.event_scheduler = ON;</div><div class="line">SET GLOBAL event_scheduler = 1;</div><div class="line">SET @@global.event_scheduler = 1;</div><div class="line"></div><div class="line">在mysql运行时关闭Event（4种方法均可）：</div><div class="line">SET GLOBAL event_scheduler = OFF;</div><div class="line">SET @@global.event_scheduler = OFF;</div><div class="line">SET GLOBAL event_scheduler = 0;</div><div class="line">SET @@global.event_scheduler = 0;</div></pre></td></tr></table></figure></p>
+<h4 id="三、创建Event"><a href="#三、创建Event" class="headerlink" title="三、创建Event"></a>三、创建Event</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">语法：</div><div class="line">CREATE</div><div class="line">    [DEFINER = &#123; user | CURRENT_USER &#125;]</div><div class="line">    EVENT</div><div class="line">    [IF NOT EXISTS]</div><div class="line">    event_name</div><div class="line">    ON SCHEDULE schedule</div><div class="line">    [ON COMPLETION [NOT] PRESERVE]</div><div class="line">    [ENABLE | DISABLE | DISABLE ON SLAVE]</div><div class="line">    [COMMENT &apos;comment&apos;]</div><div class="line">    DO event_body;</div><div class="line"></div><div class="line">schedule:</div><div class="line">    AT timestamp [+ INTERVAL interval] ...</div><div class="line">  | EVERY interval</div><div class="line">    [STARTS timestamp [+ INTERVAL interval] ...]</div><div class="line">    [ENDS timestamp [+ INTERVAL interval] ...]</div><div class="line">interval:</div><div class="line">    quantity &#123;YEAR | QUARTER | MONTH | DAY | HOUR | MINUTE |</div><div class="line">             WEEK | SECOND | YEAR_MONTH | DAY_HOUR | DAY_MINUTE |</div><div class="line">             DAY_SECOND | HOUR_MINUTE | HOUR_SECOND | MINUTE_SECOND&#125;</div></pre></td></tr></table></figure>
+<p><strong>说明：</strong></p>
+<p>  DEFINER默认是CREATE EVENT的用户,可以理解为DEFINER=CURRENT_USER,指该event的用户，服务器在执行该事件时，使用该用户来检查权限；如果设置语法:‘user_name’@‘host_name’，如果当前CREATE EVENT用户没有supser权限，则无法将该event指派给其他用户；如果有super权限，则可以指定任意存在的用户，若不存在，时间执行时报错<br>IF NOT EXISTS ： 如果在同一个schema创建一个已经存在的event_name时不会做任何操作，也不会出错，但会出现warings：该event已经存在；如果不增加此关键词已经存在的话提示ERROR： 1537 (HY000): Event ‘countsum’ already exists<br>ON SCHEDULE ：用于设置什么时间执行，执行的频率及执行多久的问题<br>AT timestamp ：表示在给定的datetime或者timestamp的时间执行一次</p>
+<ul>
+<li>INTERVAL interval：表示从AT timestamp多久之后执行<br>EVERY interval ：有规律的重复执行<br>[ENABLE | DISABLE]可是设置该事件创建后状态是否开启或关闭，默认为ENABLE<br>[COMMENT ‘comment’]可以给该事件加上注释。<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">event创建时间的3周2天后：</div><div class="line">AT  CURRENT_TIMESTAMP + INTERVAL 3 WEEK + INTERVAL 2 DAY</div><div class="line"></div><div class="line">2分钟10秒： </div><div class="line">+ INTERVAL &apos;2:10&apos; MINUTE_SECOND</div><div class="line"></div><div class="line">每6周：</div><div class="line">EVERY 6 WEEK</div><div class="line"></div><div class="line">从现在开始30分钟后每12小时执行一次到从现在到4周后结束执行：</div><div class="line">EVERY 12 HOUR STARTS CURRENT_TIMESTAMP + INTERVAL 30 MINUTE ENDS CURRENT_TIMESTAMP + INTERVAL 4 WEEK</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><strong>实例：</strong><br>前提：创建EVENT的用户需要只少对应schema的EVENT权限<br>最基本的create event只需要三个部分：<br>1. create event关键字以及一个event名称<br>2. on schedule子句<br>3. do子句<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div></pre></td><td class="code"><pre><div class="line">1 在创建事件myevent1小时后执行，执行一条更新</div><div class="line"></div><div class="line">CREATE EVENT myevent</div><div class="line">    ON SCHEDULE AT CURRENT_TIMESTAMP + INTERVAL 1 HOUR</div><div class="line">DO</div><div class="line">  UPDATE myschema.mytable SET mycol = mycol + 1;</div><div class="line"></div><div class="line">2.2014年3月20日12点整清空test表：</div><div class="line"></div><div class="line">CREATE EVENT e_test</div><div class="line">    ON SCHEDULE AT TIMESTAMP &apos;2014-03-20 12:00:00&apos;</div><div class="line">    DO TRUNCATE TABLE test.aaa;</div><div class="line"></div><div class="line">3.5天后开启每天定时清空test表：</div><div class="line"></div><div class="line">CREATE EVENT e_test</div><div class="line">    ON SCHEDULE EVERY 1 DAY</div><div class="line">    STARTS CURRENT_TIMESTAMP + INTERVAL 5 DAY</div><div class="line">    DO TRUNCATE TABLE test.aaa;</div><div class="line"></div><div class="line">4.每天定时清空test表，5天后停止执行</div><div class="line"></div><div class="line">CREATE EVENT e_test</div><div class="line">    ON SCHEDULE EVERY 1 DAY</div><div class="line">    ENDS CURRENT_TIMESTAMP + INTERVAL 5 DAY</div><div class="line">    DO TRUNCATE TABLE test.aaa;</div><div class="line"></div><div class="line">5.5天后开启每天定时清空test表，一个月后停止执行：</div><div class="line"></div><div class="line">CREATE EVENT e_test</div><div class="line">    ON SCHEDULE EVERY 1 DAY</div><div class="line">    STARTS CURRENT_TIMESTAMP + INTERVAL 5 DAY</div><div class="line">    ENDS CURRENT_TIMESTAMP + INTERVAL 1 MONTH</div><div class="line">    DO TRUNCATE TABLE test.aaa;</div><div class="line"></div><div class="line">6.每天定时清空test表(只执行一次，任务完成后就终止该事件)：</div><div class="line"></div><div class="line">CREATE EVENT e_test</div><div class="line">    ON SCHEDULE EVERY 1 DAY</div><div class="line">    ON COMPLETION NOT PRESERVE</div><div class="line">    DO TRUNCATE TABLE test.aaa;</div><div class="line"></div><div class="line">[ON COMPLETION [NOT] PRESERVE]可以设置这个事件是执行一次还是持久执行，默认为NOT PRESERVE。</div></pre></td></tr></table></figure></p>
+<h4 id="四、修改Event"><a href="#四、修改Event" class="headerlink" title="四、修改Event"></a>四、修改Event</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">ALTER</div><div class="line">   [DEFINER = &#123; user | CURRENT_USER &#125;]</div><div class="line">   EVENT event_name</div><div class="line">   [ON SCHEDULE schedule]</div><div class="line">   [ON COMPLETION [NOT] PRESERVE]</div><div class="line">   [RENAME TO new_event_name]</div><div class="line">   [ENABLE | DISABLE | DISABLE ON SLAVE]</div><div class="line">   [COMMENT &apos;comment&apos;]</div><div class="line">   [DO event_body]</div></pre></td></tr></table></figure>
+<p><strong>说明：</strong><br>对于任何一个拥有定义在database里面事件的event权限的用户都可以修改event，并且成功需改后，那个用户就会成为此event的definer<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">实例：</div><div class="line">CREATE EVENT myevent</div><div class="line">    ON SCHEDULE</div><div class="line">      EVERY 6 HOUR</div><div class="line">    COMMENT &apos;A sample comment.&apos;</div><div class="line">    DO</div><div class="line">      UPDATE myschema.mytable SET mycol = mycol + 1;</div><div class="line"></div><div class="line">将上面的event从开始之后每6个小时执行一次改为从开始4个小时后每12小时执行一次</div><div class="line"></div><div class="line">只修改schedule</div><div class="line">ALTER EVENT myevent</div><div class="line">    ON SCHEDULE</div><div class="line">      EVERY 12 HOUR</div><div class="line">    STARTS CURRENT_TIMESTAMP + INTERVAL 4 HOUR;</div><div class="line">同时修改schedule和body</div><div class="line">ALTER EVENT myevent</div><div class="line">    ON SCHEDULE</div><div class="line">      AT CURRENT_TIMESTAMP + INTERVAL 1 DAY</div><div class="line">    DO</div><div class="line">      TRUNCATE TABLE myschema.mytable;</div></pre></td></tr></table></figure></p>
+<p>关闭、启动、别名、移动、删除event：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">临时关闭某个event</div><div class="line">ALTER EVENT myevent DISABLE;</div><div class="line"></div><div class="line">开启某个event</div><div class="line">ALTER EVENT myevent ENABLE;</div><div class="line"></div><div class="line">别名某个event</div><div class="line">ALTER EVENT olddb.myevent</div><div class="line">RENAME TO newdb.myevent;</div><div class="line"></div><div class="line">将myevent从olddb库移动到newdb库</div><div class="line">ALTER EVENT olddb.myevent</div><div class="line">RENAME TO newdb.myevent;</div><div class="line"></div><div class="line">删除event</div><div class="line">DROP EVENT [IF EXISTS] event_name</div></pre></td></tr></table></figure></p>
+<h4 id="五、查询Event信息"><a href="#五、查询Event信息" class="headerlink" title="五、查询Event信息"></a>五、查询Event信息</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">Event信息相关表：</div><div class="line">information_schema.events</div><div class="line">mysql.event</div><div class="line"></div><div class="line">查看事件的创建信息</div><div class="line">show create event countsum \G</div><div class="line"></div><div class="line">查看sem库的events信息</div><div class="line">USE sem；</div><div class="line">SHOW EVENTS \G</div><div class="line"></div><div class="line">SHOW EVENTS FROM sem;</div></pre></td></tr></table></figure>
+<h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><blockquote>
+<p><a href="https://dev.mysql.com/doc/refman/5.5/en/events.html" target="_blank" rel="external">https://dev.mysql.com/doc/refman/5.5/en/events.html</a></p>
+</blockquote>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2014/08/19/mysql-partitions.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1985,191 +2174,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2013/04/02/cacti-performance.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Geekwolf">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Geekwolf's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2013/04/02/cacti-performance.html" itemprop="url">Cacti的优化</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2013-04-02T09:42:30+08:00">
-                2013-04-02
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/系统监控/" itemprop="url" rel="index">
-                    <span itemprop="name">系统监控</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2013/04/02/cacti-performance.html" class="leancloud_visitors" data-flag-title="Cacti的优化">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长</span>
-                
-                <span title="阅读时长">
-                  3
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h4 id="优化schema-Index"><a href="#优化schema-Index" class="headerlink" title="优化schema/Index"></a>优化schema/Index</h4><p>cacti默认的cacti.sql建立的数据库模型，竟然一个Index都没有建。每次执行poller.php的时候，主要的时间，都花费在数据库*查询上。使用下面的sql语句，建立一系列索引，弥补默认的cacti.sql中缺乏index的缺点。可以有效的提高poller.php执行的效率，缩短更新RRD文件所需的时间</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">CREATE INDEX `data_template_data_id` ON `data_input_data` (`data_template_data_id`);</div><div class="line">CREATE INDEX `host_id_snmp_query_id_snmp_index` ON data_local (`host_id`,`snmp_query_id`,`snmp_index`);</div><div class="line">CREATE INDEX `local_data_id_data_source_name` ON data_template_rrd (`local_data_id`,`data_source_name`);</div><div class="line">CREATE INDEX `graph_template_id_local_graph_id` ON graph_templates_item (`graph_template_id`,`local_graph_id`);</div><div class="line">CREATE INDEX `local_graph_template_item_id` ON graph_templates_item (`local_graph_template_item_id`);</div><div class="line">CREATE INDEX `host_id_snmp_query_id_snmp_index` ON host_snmp_cache (`host_id`,`snmp_query_id`,`snmp_index`);</div><div class="line">CREATE INDEX `local_data_id_rrd_path` ON poller_item (`local_data_id`,`rrd_path`);</div><div class="line">CREATE INDEX `host_id_rrd_next_step` ON poller_item (`host_id`,`rrd_next_step`);</div><div class="line">CREATE INDEX host_id_snmp_query_id ON host_snmp_cache (host_id,snmp_query_id);</div><div class="line">CREATE INDEX host_id_snmp_port ON poller_item (host_id,snmp_port);</div><div class="line">CREATE INDEX data_source_path ON data_template_data (data_source_path);</div><div class="line">show index from table； 查看索引</div></pre></td></tr></table></figure>
-<h4 id="重构RRA文件"><a href="#重构RRA文件" class="headerlink" title="重构RRA文件"></a>重构RRA文件</h4><p>首先在crontab里禁用poller.php，然后执行cacti_install_dir/cli目录下的 structure_rra_paths.php，</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">php  structure_rra_paths.php --proceed</div></pre></td></tr></table></figure>
-<p>它会将所有的RRD文件按照device重新分配目录，并修改<strong>数据库</strong>中的RRD路径，成功执行后，再恢复poller.php的crontab就可以了。<br>按照上面3个步骤，710台服务器，24000个RRD文件，完成一次poller.php的时间，缩短到50 seconds。实现了最初的目的。</p>
-<h4 id="TODO"><a href="#TODO" class="headerlink" title="TODO:"></a>TODO:</h4><p>在执行poller.php的时候, 监控服务器的load达到了3，通过vmstat查看，显示负载主要在I/O。在目前的情况，如果再出现瓶颈，可以考虑安装Boost插件来进一步提供性能。</p>
-<p>cacti主要通过snmp来采集数据，可以引入collected等客户端，提供数据采集的可靠性。</p>
-<p>使用spine替代默认的cmd.php来采集数据 见上一章</p>
-<h5 id="使用Spine"><a href="#使用Spine" class="headerlink" title="使用Spine"></a>使用Spine</h5><p>关于spine插件的安装，这里就不讲了<br>访问：<a href="http://cacti_host_ipaddress/cacti" target="_blank" rel="external">http://cacti_host_ipaddress/cacti</a><br>Settings -&gt; Paths -&gt; “Spine Poller File Path” -&gt; spine程序的位置<br>Settings -&gt; Poller -&gt; “Poller Type” -&gt; spine</p>
-<h5 id="进程调整"><a href="#进程调整" class="headerlink" title="进程调整"></a>进程调整</h5><p>对于进程和线程的调整有利于缩短采集时间，可以进行大量的采集。在CU论坛上看有人说cacti能够同时采集1k服务，这样的性能没有测试过，但是有人测试过同时采集200台服务器的，占用的内容只有几百兆，cpu的利用率也很低，说明一台的普通的机器排除网络链路延时采集的性能是相当强悍的</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Settings -&gt; Poller -&gt; &quot;Maximum Concurrent Poller Processes&quot;（最大并发轮询器进程），修改该值</div><div class="line">Settings -&gt; Poller -&gt; &quot;Maximum Threads per Process&quot;（每进程最大线程数），修改该值</div><div class="line">Settings -&gt; Poller -&gt; &quot;Number of PHP Script Servers&quot;（PHP脚本服务程序数），修改该值</div><div class="line">通过修改这三个参数，可以提高一部分的性能</div></pre></td></tr></table></figure>
-<h5 id="优化PHP内存"><a href="#优化PHP内存" class="headerlink" title="优化PHP内存"></a>优化PHP内存</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">vi /etc/php.ini</div><div class="line">memory_limit = 256M （预设是128MB，根据内存的使用情况，可以改大一点）</div></pre></td></tr></table></figure>
-<h5 id="定期优化Cacti库"><a href="#定期优化Cacti库" class="headerlink" title="定期优化Cacti库"></a>定期优化Cacti库</h5><p>cacti 的 poller_output 会不明原因的长大，大到数据越写越慢，直到无法更新。每隔一段时间手动 “Truncate poller_output table” 后，就会继续正常运作；所以我们可以利用crontab定期清除数据</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">vi /etc/cron.d/truncate_poller</div><div class="line">0 0 * * 0  root  /usr/local/mysql/bin/mysql --user=cacti --password=2010 cacti -e ‘truncate table poller_output;’</div><div class="line">#chkconfig --level 3 crond on &amp;amp;&amp;amp; service crond start</div></pre></td></tr></table></figure>
-<h5 id="修改mysql的最大连接数"><a href="#修改mysql的最大连接数" class="headerlink" title="修改mysql的最大连接数"></a>修改mysql的最大连接数</h5><p>一般默认安装的时候没有调整最大连接数的话，当需要并发量的时候可以出图就会断断续续的<br>mysql&gt; set GLOBAL max_connections=2000；<br>或者直接修改my.cnf配置文件，增加：max_connections = 2000；</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2220,7 +2224,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">88</span>
+                <span class="site-state-item-count">89</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>

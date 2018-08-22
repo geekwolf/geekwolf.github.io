@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.simlinux.com/"/>
-  <updated>2018-08-01T05:18:08.849Z</updated>
+  <updated>2018-08-22T09:48:33.496Z</updated>
   <id>http://www.simlinux.com/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>SRE最佳实践之On Call?</title>
+    <link href="http://www.simlinux.com/2018/08/22/sre-oncall.html"/>
+    <id>http://www.simlinux.com/2018/08/22/sre-oncall.html</id>
+    <published>2018-08-22T04:40:47.000Z</published>
+    <updated>2018-08-22T09:48:33.496Z</updated>
+    
+    <content type="html"><![CDATA[<ul><li>“On-call”言下之意就是”随叫随到，待命”。on-call意味着在一定时间内随叫随到，并做好生产环境出现紧急情况的应对准备。SRE工程师经常被要求要轮值on-call，在on-call期间，SRE会根据需要对紧急情况进行诊断、环境、修复或升级事件;此外,SRE还要定期负责非紧急性生产任务</li><li>在Google，On-call是SRE的特点之一。SRE团队可以缓解事故、修复生产问题并自动执行运维任务。由于我们的大多数SRE团队尚未完全自动化所有运维任务，因此升级扔需要人工联系On-call工程师进行处理。根据所支持系统的重要程度或系统所处的开发状态，并非所有SRE团队都可能需要被on-call；根据我们的经验，大多数SRE团队都会进行轮值。</li><li>On-call是一个大而复杂的话题,承载着许多限制因素和有限的试错率。在《Site Reliability Engineering》一书11章节已讨论过该话题，这里列举下对盖该章节的一些反馈:</li></ul><ol><li>“我们不是Google，我们小的多，并且我们没有那么多人进行轮值和没有不同时区的网站，《Site Reliability Engineering》描述的跟我们无关”</li><li>“我们有开发和DevOps人员混合进行轮值，如何组织他们有最佳实践吗？划分职责？”</li><li>“我们的On-call工程师在典型的24小时轮班中，被呼叫了一百多次。很多页面都被忽略掉了，而真正的问题却被埋没，我们应该从何入手？”</li><li>“我们的On-call轮转很快，如何解决团队内部的知识差距？”</li><li>“我们想把DevOps团队重组为SRE。SRE On-call、DevOps On-call、开发人员On-call三者之间有什么区别？DevOps团队也非常关心这个问题”</li></ol><p>Google为这些情况提供了一些实用建议，下面以Google的两个例子进行说明:</p><h4 id="Google-组建新团队"><a href="#Google-组建新团队" class="headerlink" title="Google: 组建新团队"></a>Google: 组建新团队</h4><h5 id="最初的场景"><a href="#最初的场景" class="headerlink" title="最初的场景"></a>最初的场景</h5><p>几年前，在Google总部山景城的SRE sara开始组建新的SRE团队，并在三个月内开始轮值On-call。从这个角度看,Google的大多数SRE团队并不希望新员工在3-9月前准备On-call。新的山景城SRE团队将支持三个Google App服务，这些服务以前是由华盛顿柯克兰(距离到山景城2个小时航班)的SRE团队负责。柯克兰还有一个在伦敦的姊妹团队，将继续和新的山景城的SRE团队以及分布式产品开发团队一起负责支持这些服务。<br>山景城的SRE团队很快组建，成员结构:</p><ul><li>Sara SRE团队负责人</li><li>Mike 其他SRE团队的有经验的SRE</li><li>一个从产品开发团队转岗为SRE</li><li>4位新雇员工</li></ul><p>即使一个成熟的SRE团队，在为新业务服务时也总是具有挑战性的，尤其对于山景城SRE这样年轻的SRE团队来说。尽管如此，新团队能够在不牺牲服务质量和项目进度的情况下提供服务。他们很快对服务进行改进，包括降低40%的机器成本，并且完全自动化灰度发布及其他安全检查。新SRE团队持续提供可靠的服务，目标是达到99.98%的可用性或每季度大约26分钟停机时间</p><p>新的SRE团队是如何实现这么多目标的？答案是通过启动项目、指导和培训</p><h5 id="培训路线图"><a href="#培训路线图" class="headerlink" title="培训路线图"></a>培训路线图</h5><p>虽然新的SRE团队对他们的负责的服务了解不多，但Sara和Mike熟悉Google的生产环境及SRE。当新雇的四位SRE适应公司之后，Sara和Mike整理出了了24个重点领域的清单，在他们正式轮值On-call之前，进行训练，如下：</p><ul><li>管理生产任务</li><li>理解调试信息</li><li>将流量从集群中抽离</li><li>回退失败的软件推送</li><li>禁止或限速不必要的流量</li><li>提高附加的服务能力</li><li>使用监控系统(用于报警和大盘)</li><li>描述服务业务的体系结构、各种组件和依赖关系</li></ul><p>新的SRE通过研究现存的文档和编码实验(指导、动手编程教程)了解到一些信息，并且通过项目上的工作来理解相关的话题。当团队成员了解到与新SRE的启动项目相关的特定话题时，这个人就会进行一个简短临时的会议，与团队的其他成员分享这些信息。Sara和Mike介绍了剩余的话题。该团队还通过举办常见调试、缓解任务的课程，以帮助每个人建立肌肉记忆并让他们对自己的能力充满信心。</p><p>另外，除了检查清单外，新的SRE团队还进行一些列的”deep dives”活动来挖掘他们的服务。该团队浏览监控控制台、确定运行的任务并且尝试调试页面。Sara和Mike解释说工程师不需要多年的专业知识，都会对每一项服务变的相当熟悉。他们指导团队从最初的原则中探索服务并且孤立SRE工程师熟悉他们服务、他们对自己认知极限敞开大门，并教会了别人在什么时候寻求帮助。</p><p>在整个过程中，新的SRE团队并不孤单。Sara和Mike去拜访其他的SRE团队和产品开发人员并向他们学习。新的SRE团队通过举办视频会议与柯克兰和伦敦的团队会面，发送电子邮件并且通过IRC聊天。此外，该团队还参加每周一次的生产会议，审阅每天的On-call、事后检查以及服务文档。柯克兰的SRE来进行分享和答疑。伦敦的SRE组织了一场完整的灾难场景，并在谷歌的灾难恢复周期内进行。</p><p>团队还通过模拟故障进行on-call，练习调试生产问题。在会议期间，鼓励所有的SRES提出关于如何解决模拟的生产故障的建议。在每个人都得到强化之后，团队仍然保持这些会议，团队每个成员轮流担任会议主导者，将这些记录作为未来的参考。</p><p>在进行On-call之前，团队回顾了关于职责的指南:</p><ul><li>在每个轮值班次开始时，On-call工程师将从上一个班次获取交接内容</li><li>On-call工程师首先要将用户的影响最小化，然后在确保问题得到彻底解决</li><li>轮值结束后，On-call工程师向下一个工程师发送一封交接邮件</li></ul><p>指南还规定了什么时候将事件升级到其他人，以及如何撰写大型事故报告。最后，团队阅读并更新On-call手册。手册包含有如何响应自动报警的高级说明。它们解释了报警的严重性和影响，包括调试建议以及可能采取的措施，以减轻影响并彻底解决该问题。在SRE中，每当创建一个告警时，通常会创建相应的说明手册，这些指南减少了MTTR（平均修复时间），以及人为错误的风险。</p><h5 id="维护手册"><a href="#维护手册" class="headerlink" title="维护手册"></a>维护手册</h5><p>手册内容要根据生产环境的变更进行相应的更新。编写好文档，就像任何形式的交流一样，是一件比较困难的事情，那么如何维护好文档呢？<br>在Google 一些SRE主张保持文档的一般性，因此更新会比较慢。例如：针对所有的”RPC错误高”的报警，可能只有一条文档说明，供经过培训的On-call工程师结合当前告警服务的架构图来阅读。另外一些SRE提倡循序渐进编写文档，以减少人为不确定性和降低MTTTR。如果团队成员对文档内容有不同看法，手册可能会有多个方向。</p><p>这是一个有争议的话题，如果不同意这种做法，至少要和团队一起决定手册具备的最小、结构化的细节，并且关注结构化的细节以外积累的大量信息。将项目中新的、来之不易的生产知识转化为自动化或监控控制台。当特定的告警触发时，On-call工程师每次手动运行文档中确定的命令列表来解决问题，我们建议实现自动化。</p><p>两个月之后，Sara、Mike和其他的SRE转移到了即将离任的柯克兰SRE团队。在第三个月的时候，他们成了主On-call，原来柯克兰的SRE成了备On-call。这样的话，如果有需要，Sara他们团队就很快能能够接手柯克兰SRE团队的工作。接下来，新招的四名SRE将变的更加有经验，和柯克兰当地的SRE一起轮值On-call。</p><p>好的文档积累和前面讨论的各种策略都能帮助团队打牢根基，迅速成长。尽管On-call可能会带来压力，但是团队会有足够的信心，在不抱有怀疑自己的情况下采取行动。当团队成员意识到他们反应是基于团队集体的智慧，就会很有安全感，即使他们升级了，那些On-call工程师仍然被认为是称职的工程师。</p><h5 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h5><p>当山景城的SRE团队快速成长时，他们了解到在伦敦有经验的姊妹SRE团队将会加入到一个新项目。在苏黎世组建的新团队将去支持伦敦SRE团队先前负责的服务。对于第二次过度中，山景城SRE团队使用的基本方法被证明是成功的。山景城SRE团队先前在培训上的投入用来帮助苏黎世SRE团队快速发展。<br>当一组SRE成为团队时，山景城SREs所使用的方法就是有意义的。当只有一个人加入团队时，他们需要一种更轻量级的方法。SREs创建了服务器架构图，并将基本的培训清单规范为一系列的练习，这些练习可以在半独立的情况下完成，并且很少需要导师参与。这些练习包括存储层、扩容以及检查HTTP请求的路由方式等</p><h4 id="Evernote-在云端站稳脚跟"><a href="#Evernote-在云端站稳脚跟" class="headerlink" title="Evernote: 在云端站稳脚跟"></a>Evernote: 在云端站稳脚跟</h4><h5 id="迁移基础设施到云端"><a href="#迁移基础设施到云端" class="headerlink" title="迁移基础设施到云端"></a>迁移基础设施到云端</h5><p>我们并没有因此重新设计On-call流程。在2016年12月以前，Evernote的所有应用程序都运行在本地传统数据中心。我们的网络和服务器都是根据特定的体系结构和数据流进行设计的，这些约束导致我们缺乏水平扩展架构的灵活性。谷歌云平台(GCP)针对我们的问题提供了解决方案。然而，我们仍然要克服最主要的障碍：将生产环境和支持的基础设置迁移到GCP。经过70天的努力，取得了非凡的成绩(例如：迁移了数千台服务器和3.5PB的数据)。接着，我们该如何监控、告警以及最重要的是在新环境中出现问题该如何解决？</p><h5 id="调整我们的On-call制度和流程"><a href="#调整我们的On-call制度和流程" class="headerlink" title="调整我们的On-call制度和流程"></a>调整我们的On-call制度和流程</h5><p>向云端迁移释放了我们基础设施快速增长的潜力，但我们的On-call制度和流程还未适应这种快速增长。在我们以前物理数据中心中，每个组件都有冗余，组件失败是一件常事，但不会对用户产生直接影响，基础设施是稳定的，因为我们可控。我们的告警策略是基于这样构建的：一些丢包会导致JDBC连接异常，这意味着虚拟机可能即将发生故障或者我们的一个交换机上有故障。甚至在我们进入云第一天之前就意识到这种类型的告警在未来可能是无效的，我们需要采取更加全面的监控方法。<br>根据第一性原则重新构建分页事件，并编写这些规则作为我们的SLOs(服务质量目标)，帮助团队清晰的认识什么才是重要的告警。我们关注的是更高级别的指标，比如API响应，而不是像InnoDB行级锁等待细节，意味着我们更多时间集中在停机期间是否对用户体验造成影响上。对我们团队来说，将有更少的时间花费在短暂的琐事上，这就变的更加有效、更多的休息，最终提升工作满意度。</p><h5 id="重构监控和度量"><a href="#重构监控和度量" class="headerlink" title="重构监控和度量"></a>重构监控和度量</h5><p>我们的主On-call轮值是由一个小而精力旺盛的工程师团队，他们负责生产基础设施和一些其他业务系统(如：构建基础设施的pipeline等)。每周都有一个24*7的日程表，都有准备好的交接程序，并在每天早上站会上回顾日常事件。我们团队规模小，责任大，因此我们尽一切努力降低流程负担，并专注于尽快结束告警、分流、修复和分析。我们事先这一目标的方法之一就是通过维护简单有效的报警SLA(服务等级协议)来保持信噪比。我们通过度量或监控生成的事件分为三个类别:</p><h6 id="P1：立即处理"><a href="#P1：立即处理" class="headerlink" title="P1：立即处理"></a>P1：立即处理</h6><ul><li>应立即采取措施</li><li>打开On-call页面</li><li>区分事件分类</li><li>是SLO告警</li></ul><h6 id="P2：下一个工作日处理"><a href="#P2：下一个工作日处理" class="headerlink" title="P2：下一个工作日处理"></a>P2：下一个工作日处理</h6><ul><li>一般来说，不是面向用户或影响有限</li><li>给团队发送邮件并通知该事件</li></ul><h6 id="P3：信息事件"><a href="#P3：信息事件" class="headerlink" title="P3：信息事件"></a>P3：信息事件</h6><ul><li>信息被搜集展示在仪表盘或通过邮件发送</li><li>包括容量规划相关信息</li></ul><p>P1和P2事件都附有事故工单，工单用于诸如事件分类、状态跟踪、以及SLO影响、发生次数和事后文档连接。当事件是P1时，On-call工程师根据对用户的影响程度分为三个等级(1-3)。对于严重性1(Sev 1)事件，我们维护了一组有限的标准，使升级决策尽可能简单。一旦事件升级，我们召集一个事故小组，开始对事故进行管理。事件解决后，我们进行自动检测，并将结果在内部进行分享。针对Sev2或Sev3级别的事件，On-call工程师来管理事件的生命周期，包括简单的事后分析和回顾。这就授权并鼓励在完成事件检查智慧，立即采取后续行动，并确定工具或流程中的漏洞。通过这种方式，每次On-call的轮值都能达到持续改进和灵活使用的良性循环，与快速变化的环境保持同步。我们的目标就是让每个On-call的工程师都比上一个做的更好。</p><h5 id="跟踪性能"><a href="#跟踪性能" class="headerlink" title="跟踪性能"></a>跟踪性能</h5><p>随着SLOs的引入，我们希望随着时间的推移跟踪性能的变化，并与公司相关团队分享这些数据。我们实施了一个月的服务审查会议，对任何感兴趣的人开放，来审查和讨论前一个月服务的运行情况。我们还利用这样的会议来审查On-call的压力，将其作为团队健康状况的晴雨表，并在超出预算时讨论补救措施。这样的会议有双重目的，即在公司内部传播SLOs的重要性，并使技术组织对我们维护的服务和团队负责。</p><h5 id="保证CRE-Customer-Reliability-Engineering"><a href="#保证CRE-Customer-Reliability-Engineering" class="headerlink" title="保证CRE(Customer Reliability Engineering)"></a>保证CRE(Customer Reliability Engineering)</h5><p>我们在SLO方面的目标是与Google客户可靠工程团队合作的基础，在我们与CRE讨论SLOs是否是真实可测量的；两个团队都决定CRE与我们自己的工程师一起为SLO进行On-call。有时候可能很难找出隐藏在云抽象层背后的根因，所以google工程师把黑盒事件进行分类是有帮助的，更重要的是，这项工作进一步降低了MTTR，这对用户来讲至关重要。</p><h5 id="维持一个自我实现的循环"><a href="#维持一个自我实现的循环" class="headerlink" title="维持一个自我实现的循环"></a>维持一个自我实现的循环</h5><p>我们现在有更多的时间来考虑我们如何推动业务发展，而不是将所有时间都花在分类/根因分析/事后调整周期上。具体而言，这可以转化为诸如改进我们的微服务平台和为产品开发团队建立敏捷标准；后者包括我们在重组On-call时遵循的许多原则，这对于团队第一次On-call特别有用。因此，我们将改善所有人On-call循环延续下去，持续改进。</p><p>欢迎关注“运维ABC”(AI、BigData、Cloud),运维技术社区,专注运维自动化、DevOps、AIOPS、ChatOPS、容器等落地与实践</p><p><div align="center"><img src="http://ow1schdt5.bkt.clouddn.com/qrcode.jpg" alt="image"></div></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;ul&gt;
+&lt;li&gt;“On-call”言下之意就是”随叫随到，待命”。on-call意味着在一定时间内随叫随到，并做好生产环境出现紧急情况的应对准备。SRE工程师经常被要求要轮值on-call，在on-call期间，SRE会根据需要对紧急情况进行诊断、环境、修复或升级事件;此外,S
+      
+    
+    </summary>
+    
+      <category term="自动化运维" scheme="http://www.simlinux.com/categories/%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4/"/>
+    
+      <category term="CI/CD" scheme="http://www.simlinux.com/categories/%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4/CI-CD/"/>
+    
+    
+      <category term="DevOps,SRE" scheme="http://www.simlinux.com/tags/DevOps-SRE/"/>
+    
+  </entry>
   
   <entry>
     <title>一篇文章彻底读懂DevOps与SRE来龙去脉(译)?</title>
@@ -487,35 +515,6 @@
       
         &lt;blockquote&gt;
 &lt;p&gt; &lt;strong&gt;目的:&lt;/strong&gt; 快速清理历史数据，并减少数据存储容量&lt;br&gt; &lt;strong&gt;方法&lt;/strong&gt;: 历史表使用分区表(删除分区表速度快),使用Tokudb引擎(适合大量insert少量update和select等日志
-      
-    
-    </summary>
-    
-      <category term="系统监控" scheme="http://www.simlinux.com/categories/%E7%B3%BB%E7%BB%9F%E7%9B%91%E6%8E%A7/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>zabbix LLD之多核CPU监控(备忘)</title>
-    <link href="http://www.simlinux.com/2016/12/10/zabbix-cpucores-lld.html"/>
-    <id>http://www.simlinux.com/2016/12/10/zabbix-cpucores-lld.html</id>
-    <published>2016-12-10T08:57:48.000Z</published>
-    <updated>2017-12-17T01:55:01.000Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><ul><li>使用Zabbix自带的system.cpu.discovery实现CPU多核监控</li><li>Zabbix Agent 2.4+以上版本才开始支持</li></ul></blockquote><h4 id="创建发现规则"><a href="#创建发现规则" class="headerlink" title="创建发现规则"></a>创建发现规则</h4><p><img src="http://ow1schdt5.bkt.clouddn.com/2016/12/cpu_multi.jpg" alt=""></p><h4 id="创建监控项"><a href="#创建监控项" class="headerlink" title="创建监控项"></a>创建监控项</h4><p><img src="http://ow1schdt5.bkt.clouddn.com/2016/12/cpu_item.png" alt=""></p><h4 id="根据监控项创建图形"><a href="#根据监控项创建图形" class="headerlink" title="根据监控项创建图形"></a>根据监控项创建图形</h4><h4 id="创建触发器"><a href="#创建触发器" class="headerlink" title="创建触发器"></a>创建触发器</h4><p><img src="http://ow1schdt5.bkt.clouddn.com/2016/12/cpu_trigger.png" alt=""></p><h4 id="展示效果"><a href="#展示效果" class="headerlink" title="展示效果"></a>展示效果</h4><p><img src="http://ow1schdt5.bkt.clouddn.com/2016/12/cpu-core-pic.jpg" alt=""></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;blockquote&gt;
-&lt;ul&gt;
-&lt;li&gt;使用Zabbix自带的system.cpu.discovery实现CPU多核监控&lt;/li&gt;
-&lt;li&gt;Zabbix Agent 2.4+以上版本才开始支持&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/blockquote&gt;
-&lt;h4 id=&quot;创建发现规则&quot;&gt;
       
     
     </summary>

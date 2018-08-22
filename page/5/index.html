@@ -348,6 +348,186 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2014/08/20/centos7-network-config.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Geekwolf">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Geekwolf's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2014/08/20/centos7-network-config.html" itemprop="url">CentOS7网络配置和服务管理</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-08-20T11:36:53+08:00">
+                2014-08-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux运维/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux运维</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2014/08/20/centos7-network-config.html" class="leancloud_visitors" data-flag-title="CentOS7网络配置和服务管理">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  2
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="配置网络"><a href="#配置网络" class="headerlink" title="配置网络"></a>配置网络</h4><p>在使用Vmware Workstation10.2测试过程中，发现可能部分物理机100M网卡不能正常识别，换到了1000M网卡上测试能正常识别虚拟网卡<br>Centos7系统的网卡设备命名有所变化，可参考<a href="http://www.pubyun.com/blog/deveops/centos-7%E4%B8%8B%E7%BD%91%E7%BB%9C%E8%AE%BE%E5%A4%87%E5%91%BD%E5%90%8D/" target="_blank" rel="external">CentOS 7下网络设备命名</a>，个人感觉既然学习新系统，完全没必要换成传统的识别名方式，要勇于接受新知识~</p>
+<ol>
+<li><p>通过编辑文件修改网络配置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line">vim   /etc/sysconfig/network-scripts/ifcfg-eno16777736</div><div class="line">HWADDR=00:0c:29:14:34:51</div><div class="line">TYPE=Ethernet</div><div class="line">BOOTPROTO=static</div><div class="line">DEFROUTE=yes</div><div class="line">PEERDNS=yes</div><div class="line">PEERROUTES=yes</div><div class="line">USERCTL=no</div><div class="line">NM_CONTROLLED=no</div><div class="line">IPV4_FAILURE_FATAL=no</div><div class="line">IPV6INIT=yes</div><div class="line">IPV6_AUTOCONF=yes</div><div class="line">IPV6_DEFROUTE=yes</div><div class="line">IPV6_PEERDNS=yes</div><div class="line">IPV6_PEERROUTES=yes</div><div class="line">IPV6_FAILURE_FATAL=no</div><div class="line">NAME=eno16777736</div><div class="line">ONBOOT=yes</div><div class="line">IPADDR=192.168.117.128</div><div class="line">NETMASK=255.255.255.0</div><div class="line">GATEWAY=192.168.117.2</div><div class="line">DNS1=192.168.117.2</div><div class="line">关键配置：</div><div class="line"></div><div class="line">TYPE=Ethernet</div><div class="line">BOOTPROTO=static</div><div class="line">NAME=eno16777736</div><div class="line">ONBOOT=yes</div><div class="line">IPADDR=192.168.117.128</div><div class="line">NETMASK=255.255.255.0</div><div class="line">GATEWAY=192.168.117.2</div><div class="line">DNS1=192.168.117.2</div><div class="line"></div><div class="line">cat /etc/resolv.conf</div><div class="line">nameserver 192.168.117.2</div></pre></td></tr></table></figure>
+</li>
+<li><p>通过文本工具nmtui修改网络配置(RHEL7/CentOS7默认安装,前提需要开启NetworkManager.service才可以使用)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">yum -y install NetworkManager-tui</div><div class="line">    nmtui-edit eno16777736  修改网卡配置</div><div class="line">    nmtui-connect eno16777736</div><div class="line">重启网络</div><div class="line">systemctl  restart network</div><div class="line">systemctl  status network</div><div class="line">修改主机名：</div><div class="line">vim /etc/hostname</div><div class="line">centos7.simlinux.com</div><div class="line">退出重新登录即可生效</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h4 id="关闭不必要的服务"><a href="#关闭不必要的服务" class="headerlink" title="关闭不必要的服务"></a>关闭不必要的服务</h4><p>最小化安装的Centos7系统并没有nano、vim、wget、curl、ifconfig、lsof命令，这里首先安装一下：<br><code>yum -y install nano vim wget curl net-tools lsof</code><br>可以通过netstat和lsof查看系统都运行了哪些服务，将不必要的进行关闭<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">systemctl stop postfix</div><div class="line">systemctl stop avahi-daemon</div><div class="line">systemctl disable postfix</div><div class="line">systemctl disable avahi-daemon</div><div class="line">systemctl list-unit-files    查看正在运行服务的状态报告</div><div class="line">systemctl start httpd.service    启动服务</div><div class="line">systemctl stop  httpd.service    关闭服务</div><div class="line">systemctl restart  httpd.service 重启服务</div><div class="line">systemctl reload   httpd.service 重新加载服务</div><div class="line">systemctl disable  httpd.service 开机不启动</div><div class="line">systemctl enable   httpd.service 开机启动</div><div class="line">systemctl status   httpd.service 查看服务运行状态</div><div class="line">systemctl show     httpd.service 显示服务或任务的属性</div><div class="line">systemctl list-dependencies  httpd.service  检查服务依赖关系</div><div class="line">systemctl is-enabled  httpd.service  检查服务是否开机启动及级别</div><div class="line">systemctl -H 192.168.117.128 start httpd.service   启动192.168.117.128机器上的httpd服务</div></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2014/08/20/16-online-tools.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2162,195 +2342,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2014/08/19/mysql-event-scheduler.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Geekwolf">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Geekwolf's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2014/08/19/mysql-event-scheduler.html" itemprop="url">Mysql事件调度器(Event Scheduler)</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-08-19T20:59:37+08:00">
-                2014-08-19
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/MySQL数据库/" itemprop="url" rel="index">
-                    <span itemprop="name">MySQL数据库</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2014/08/19/mysql-event-scheduler.html" class="leancloud_visitors" data-flag-title="Mysql事件调度器(Event Scheduler)">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长</span>
-                
-                <span title="阅读时长">
-                  6
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <pre><code>Mysql中的事件调度器Event Scheduler类似于linux下的crontab计划任务的功能,它是由一个特殊的时间调度线程执行的
-</code></pre><h4 id="一、查看当前是否开启了event-scheduler三种方法"><a href="#一、查看当前是否开启了event-scheduler三种方法" class="headerlink" title="一、查看当前是否开启了event scheduler三种方法"></a>一、查看当前是否开启了event scheduler三种方法</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">1) SHOW VARIABLES LIKE ‘event_scheduler’;</div><div class="line">2) SELECT @@event_scheduler;</div><div class="line">3) SHOW PROCESSLIST;(是否有State为：Waiting for next activation的进程，User为event_scheduler)</div></pre></td></tr></table></figure>
-<h4 id="二、启动关闭event-scheduler方法"><a href="#二、启动关闭event-scheduler方法" class="headerlink" title="二、启动关闭event scheduler方法"></a>二、启动关闭event scheduler方法</h4><p>时间调度器是否开启由全局变量event_scheduler决定，它有三个可以设定的值： – OFF : 事件调度器是关闭的，调度线程并没有运行，并且在SHOW PROCESSLIST中不显示，默认值是OFF – ON ：事件调度器是开启的，调度线程并没有运行，并且执行所有的调度事件，通过SHOW PROCESSLIST可以查看Waiting for next activation的进程 – DISABLED : 设定这个值表示Event Scheduler是被禁止的，无法在Mysql运行状态下改变其值</p>
-<p><strong>注：</strong>在Mysql启动时如果在my.cnf设置了event_scheduler=ON（OFF or 1 or 0）时，就不能在运行时修改撑DISABLED，如果设置event_scheduler=DISABLED时，就不能在运行时修改其值为ON （ OFF or 1 or 0）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">mysql&gt; SELECT @@event_scheduler;</div><div class="line">+-------------------+</div><div class="line">| @@event_scheduler |</div><div class="line">+-------------------+</div><div class="line">| DISABLED |</div><div class="line">+-------------------+</div><div class="line">1 row in set (0.00 sec)</div><div class="line">mysql&gt; SET @@global.event_scheduler = 1; </div><div class="line">ERROR 1290 (HY000): The MySQL server is running with the --event-scheduler=DISABLED or --skip-grant-tables option so it cannot execute this statement</div><div class="line"></div><div class="line">在mysql运行时开启Event（4种方法均可）：</div><div class="line">SET GLOBAL event_scheduler = ON;</div><div class="line">SET @@global.event_scheduler = ON;</div><div class="line">SET GLOBAL event_scheduler = 1;</div><div class="line">SET @@global.event_scheduler = 1;</div><div class="line"></div><div class="line">在mysql运行时关闭Event（4种方法均可）：</div><div class="line">SET GLOBAL event_scheduler = OFF;</div><div class="line">SET @@global.event_scheduler = OFF;</div><div class="line">SET GLOBAL event_scheduler = 0;</div><div class="line">SET @@global.event_scheduler = 0;</div></pre></td></tr></table></figure></p>
-<h4 id="三、创建Event"><a href="#三、创建Event" class="headerlink" title="三、创建Event"></a>三、创建Event</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">语法：</div><div class="line">CREATE</div><div class="line">    [DEFINER = &#123; user | CURRENT_USER &#125;]</div><div class="line">    EVENT</div><div class="line">    [IF NOT EXISTS]</div><div class="line">    event_name</div><div class="line">    ON SCHEDULE schedule</div><div class="line">    [ON COMPLETION [NOT] PRESERVE]</div><div class="line">    [ENABLE | DISABLE | DISABLE ON SLAVE]</div><div class="line">    [COMMENT &apos;comment&apos;]</div><div class="line">    DO event_body;</div><div class="line"></div><div class="line">schedule:</div><div class="line">    AT timestamp [+ INTERVAL interval] ...</div><div class="line">  | EVERY interval</div><div class="line">    [STARTS timestamp [+ INTERVAL interval] ...]</div><div class="line">    [ENDS timestamp [+ INTERVAL interval] ...]</div><div class="line">interval:</div><div class="line">    quantity &#123;YEAR | QUARTER | MONTH | DAY | HOUR | MINUTE |</div><div class="line">             WEEK | SECOND | YEAR_MONTH | DAY_HOUR | DAY_MINUTE |</div><div class="line">             DAY_SECOND | HOUR_MINUTE | HOUR_SECOND | MINUTE_SECOND&#125;</div></pre></td></tr></table></figure>
-<p><strong>说明：</strong></p>
-<p>  DEFINER默认是CREATE EVENT的用户,可以理解为DEFINER=CURRENT_USER,指该event的用户，服务器在执行该事件时，使用该用户来检查权限；如果设置语法:‘user_name’@‘host_name’，如果当前CREATE EVENT用户没有supser权限，则无法将该event指派给其他用户；如果有super权限，则可以指定任意存在的用户，若不存在，时间执行时报错<br>IF NOT EXISTS ： 如果在同一个schema创建一个已经存在的event_name时不会做任何操作，也不会出错，但会出现warings：该event已经存在；如果不增加此关键词已经存在的话提示ERROR： 1537 (HY000): Event ‘countsum’ already exists<br>ON SCHEDULE ：用于设置什么时间执行，执行的频率及执行多久的问题<br>AT timestamp ：表示在给定的datetime或者timestamp的时间执行一次</p>
-<ul>
-<li>INTERVAL interval：表示从AT timestamp多久之后执行<br>EVERY interval ：有规律的重复执行<br>[ENABLE | DISABLE]可是设置该事件创建后状态是否开启或关闭，默认为ENABLE<br>[COMMENT ‘comment’]可以给该事件加上注释。<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">event创建时间的3周2天后：</div><div class="line">AT  CURRENT_TIMESTAMP + INTERVAL 3 WEEK + INTERVAL 2 DAY</div><div class="line"></div><div class="line">2分钟10秒： </div><div class="line">+ INTERVAL &apos;2:10&apos; MINUTE_SECOND</div><div class="line"></div><div class="line">每6周：</div><div class="line">EVERY 6 WEEK</div><div class="line"></div><div class="line">从现在开始30分钟后每12小时执行一次到从现在到4周后结束执行：</div><div class="line">EVERY 12 HOUR STARTS CURRENT_TIMESTAMP + INTERVAL 30 MINUTE ENDS CURRENT_TIMESTAMP + INTERVAL 4 WEEK</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p><strong>实例：</strong><br>前提：创建EVENT的用户需要只少对应schema的EVENT权限<br>最基本的create event只需要三个部分：<br>1. create event关键字以及一个event名称<br>2. on schedule子句<br>3. do子句<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div></pre></td><td class="code"><pre><div class="line">1 在创建事件myevent1小时后执行，执行一条更新</div><div class="line"></div><div class="line">CREATE EVENT myevent</div><div class="line">    ON SCHEDULE AT CURRENT_TIMESTAMP + INTERVAL 1 HOUR</div><div class="line">DO</div><div class="line">  UPDATE myschema.mytable SET mycol = mycol + 1;</div><div class="line"></div><div class="line">2.2014年3月20日12点整清空test表：</div><div class="line"></div><div class="line">CREATE EVENT e_test</div><div class="line">    ON SCHEDULE AT TIMESTAMP &apos;2014-03-20 12:00:00&apos;</div><div class="line">    DO TRUNCATE TABLE test.aaa;</div><div class="line"></div><div class="line">3.5天后开启每天定时清空test表：</div><div class="line"></div><div class="line">CREATE EVENT e_test</div><div class="line">    ON SCHEDULE EVERY 1 DAY</div><div class="line">    STARTS CURRENT_TIMESTAMP + INTERVAL 5 DAY</div><div class="line">    DO TRUNCATE TABLE test.aaa;</div><div class="line"></div><div class="line">4.每天定时清空test表，5天后停止执行</div><div class="line"></div><div class="line">CREATE EVENT e_test</div><div class="line">    ON SCHEDULE EVERY 1 DAY</div><div class="line">    ENDS CURRENT_TIMESTAMP + INTERVAL 5 DAY</div><div class="line">    DO TRUNCATE TABLE test.aaa;</div><div class="line"></div><div class="line">5.5天后开启每天定时清空test表，一个月后停止执行：</div><div class="line"></div><div class="line">CREATE EVENT e_test</div><div class="line">    ON SCHEDULE EVERY 1 DAY</div><div class="line">    STARTS CURRENT_TIMESTAMP + INTERVAL 5 DAY</div><div class="line">    ENDS CURRENT_TIMESTAMP + INTERVAL 1 MONTH</div><div class="line">    DO TRUNCATE TABLE test.aaa;</div><div class="line"></div><div class="line">6.每天定时清空test表(只执行一次，任务完成后就终止该事件)：</div><div class="line"></div><div class="line">CREATE EVENT e_test</div><div class="line">    ON SCHEDULE EVERY 1 DAY</div><div class="line">    ON COMPLETION NOT PRESERVE</div><div class="line">    DO TRUNCATE TABLE test.aaa;</div><div class="line"></div><div class="line">[ON COMPLETION [NOT] PRESERVE]可以设置这个事件是执行一次还是持久执行，默认为NOT PRESERVE。</div></pre></td></tr></table></figure></p>
-<h4 id="四、修改Event"><a href="#四、修改Event" class="headerlink" title="四、修改Event"></a>四、修改Event</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">ALTER</div><div class="line">   [DEFINER = &#123; user | CURRENT_USER &#125;]</div><div class="line">   EVENT event_name</div><div class="line">   [ON SCHEDULE schedule]</div><div class="line">   [ON COMPLETION [NOT] PRESERVE]</div><div class="line">   [RENAME TO new_event_name]</div><div class="line">   [ENABLE | DISABLE | DISABLE ON SLAVE]</div><div class="line">   [COMMENT &apos;comment&apos;]</div><div class="line">   [DO event_body]</div></pre></td></tr></table></figure>
-<p><strong>说明：</strong><br>对于任何一个拥有定义在database里面事件的event权限的用户都可以修改event，并且成功需改后，那个用户就会成为此event的definer<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">实例：</div><div class="line">CREATE EVENT myevent</div><div class="line">    ON SCHEDULE</div><div class="line">      EVERY 6 HOUR</div><div class="line">    COMMENT &apos;A sample comment.&apos;</div><div class="line">    DO</div><div class="line">      UPDATE myschema.mytable SET mycol = mycol + 1;</div><div class="line"></div><div class="line">将上面的event从开始之后每6个小时执行一次改为从开始4个小时后每12小时执行一次</div><div class="line"></div><div class="line">只修改schedule</div><div class="line">ALTER EVENT myevent</div><div class="line">    ON SCHEDULE</div><div class="line">      EVERY 12 HOUR</div><div class="line">    STARTS CURRENT_TIMESTAMP + INTERVAL 4 HOUR;</div><div class="line">同时修改schedule和body</div><div class="line">ALTER EVENT myevent</div><div class="line">    ON SCHEDULE</div><div class="line">      AT CURRENT_TIMESTAMP + INTERVAL 1 DAY</div><div class="line">    DO</div><div class="line">      TRUNCATE TABLE myschema.mytable;</div></pre></td></tr></table></figure></p>
-<p>关闭、启动、别名、移动、删除event：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">临时关闭某个event</div><div class="line">ALTER EVENT myevent DISABLE;</div><div class="line"></div><div class="line">开启某个event</div><div class="line">ALTER EVENT myevent ENABLE;</div><div class="line"></div><div class="line">别名某个event</div><div class="line">ALTER EVENT olddb.myevent</div><div class="line">RENAME TO newdb.myevent;</div><div class="line"></div><div class="line">将myevent从olddb库移动到newdb库</div><div class="line">ALTER EVENT olddb.myevent</div><div class="line">RENAME TO newdb.myevent;</div><div class="line"></div><div class="line">删除event</div><div class="line">DROP EVENT [IF EXISTS] event_name</div></pre></td></tr></table></figure></p>
-<h4 id="五、查询Event信息"><a href="#五、查询Event信息" class="headerlink" title="五、查询Event信息"></a>五、查询Event信息</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">Event信息相关表：</div><div class="line">information_schema.events</div><div class="line">mysql.event</div><div class="line"></div><div class="line">查看事件的创建信息</div><div class="line">show create event countsum \G</div><div class="line"></div><div class="line">查看sem库的events信息</div><div class="line">USE sem；</div><div class="line">SHOW EVENTS \G</div><div class="line"></div><div class="line">SHOW EVENTS FROM sem;</div></pre></td></tr></table></figure>
-<h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><blockquote>
-<p><a href="https://dev.mysql.com/doc/refman/5.5/en/events.html" target="_blank" rel="external">https://dev.mysql.com/doc/refman/5.5/en/events.html</a></p>
-</blockquote>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2401,7 +2392,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">88</span>
+                <span class="site-state-item-count">89</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>

