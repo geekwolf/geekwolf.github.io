@@ -108,14 +108,14 @@
 <meta property="og:site_name" content="Geekwolf&#39;s Blog">
 <meta property="og:description" content="在web服务器上经常会出现nf_conntrack: table full的问题，解决方法有三个： 1.优化nf_conntrack模块相关内核参数（可作为临时解决办法，治标不治本）12345678#加大 ip_conntrack_max 值net.ipv4.ip_conntrack_max = 393216net.ipv4.netfilter.ip_conntrack_max = 393216#">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://ow1schdt5.bkt.clouddn.com/2015/04/iptables.jpg">
-<meta property="og:image" content="http://ow1schdt5.bkt.clouddn.com/2015/04/iptables.jpg">
-<meta property="og:image" content="http://ow1schdt5.bkt.clouddn.com/2015/04/iptables.jpg">
+<meta property="og:image" content="http://www.simlinux.com/src_images/2015/04/iptables.jpg">
+<meta property="og:image" content="http://www.simlinux.com/src_images/2015/04/iptables.jpg">
+<meta property="og:image" content="http://www.simlinux.com/src_images/2015/04/iptables.jpg">
 <meta property="og:updated_time" content="2017-12-17T01:55:01.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="解决nf_conntrack: table full问题方法">
 <meta name="twitter:description" content="在web服务器上经常会出现nf_conntrack: table full的问题，解决方法有三个： 1.优化nf_conntrack模块相关内核参数（可作为临时解决办法，治标不治本）12345678#加大 ip_conntrack_max 值net.ipv4.ip_conntrack_max = 393216net.ipv4.netfilter.ip_conntrack_max = 393216#">
-<meta name="twitter:image" content="http://ow1schdt5.bkt.clouddn.com/2015/04/iptables.jpg">
+<meta name="twitter:image" content="http://www.simlinux.com/src_images/2015/04/iptables.jpg">
 
 
 
@@ -357,7 +357,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Geekwolf">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg">
+      <meta itemprop="image" content="http://www.simlinux.com/src_images/logo/wolf.jpeg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -475,7 +475,7 @@
 <p><strong>2.移除nf_conntrack模块</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">[root@git ~]# lsmod | egrep &apos;ip_tables|conntrack&apos;</div><div class="line">nf_conntrack_ipv4       9506  2 </div><div class="line">nf_defrag_ipv4          1483  1 nf_conntrack_ipv4</div><div class="line">nf_conntrack           79758  3 xt_NOTRACK,nf_conntrack_ipv4,xt_state</div><div class="line">ip_tables              17831  2 iptable_raw,iptable_filter</div></pre></td></tr></table></figure></p>
 <p>A.先将/etc/sysconfig/iptables 中包含state的语句移除，service  iptables restart<br>B.移除模块<br>modprobe -r xt_NOTRACK nf_conntrack_netbios_ns nf_conntrack_ipv4 xt_state<br>modprobe -r nf_conntrack</p>
 <p><strong>3.使用raw表对特定端口访问不进行跟踪（推荐）</strong><br>4个表的优先级由高到低的顺序为:raw–&gt;mangle–&gt;nat–&gt;filter</p>
-<p><a href="http://ow1schdt5.bkt.clouddn.com/2015/04/iptables.jpg" target="_blank" rel="external"><img src="http://ow1schdt5.bkt.clouddn.com/2015/04/iptables.jpg" alt=""><img src="http://ow1schdt5.bkt.clouddn.com/2015/04/iptables.jpg" alt="iptables"></a><a href="http://ow1schdt5.bkt.clouddn.com/2015/04/iptables.jpg" target="_blank" rel="external"><img src="http://ow1schdt5.bkt.clouddn.com/2015/04/iptables.jpg" alt="iptables"></a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">iptables -A INPUT -m state --state RELATED,ESTABLISHED, UNTRACKED -j ACCEPT</div><div class="line">iptables -t raw -A PREROUTING -p tcp -m multiport --dports 80,443 -j NOTRACK</div><div class="line">iptables -t raw -A PREROUTING -p tcp -m multiport --sports 80,443 -j NOTRACK</div><div class="line">iptables -t raw -A OUTPUT -p tcp -m multiport --dports 80,443 -j NOTRACK</div><div class="line">iptables -t raw -A OUTPUT -p tcp -m multiport --sports 80,443 -j NOTRACK</div></pre></td></tr></table></figure></p>
+<p><a href="http://www.simlinux.com/src_images/2015/04/iptables.jpg" target="_blank" rel="external"><img src="http://www.simlinux.com/src_images/2015/04/iptables.jpg" alt=""><img src="http://www.simlinux.com/src_images/2015/04/iptables.jpg" alt="iptables"></a><a href="http://www.simlinux.com/src_images/2015/04/iptables.jpg" target="_blank" rel="external"><img src="http://www.simlinux.com/src_images/2015/04/iptables.jpg" alt="iptables"></a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">iptables -A INPUT -m state --state RELATED,ESTABLISHED, UNTRACKED -j ACCEPT</div><div class="line">iptables -t raw -A PREROUTING -p tcp -m multiport --dports 80,443 -j NOTRACK</div><div class="line">iptables -t raw -A PREROUTING -p tcp -m multiport --sports 80,443 -j NOTRACK</div><div class="line">iptables -t raw -A OUTPUT -p tcp -m multiport --dports 80,443 -j NOTRACK</div><div class="line">iptables -t raw -A OUTPUT -p tcp -m multiport --sports 80,443 -j NOTRACK</div></pre></td></tr></table></figure></p>
 <p>通过观察cat /proc/net/nf_conntrack条目来测试是否更改生效</p>
 <p><strong>参考文档：</strong></p>
 <blockquote>
@@ -628,7 +628,7 @@
       <section class="site-overview sidebar-panel sidebar-panel-active">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
-               src="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg"
+               src="http://www.simlinux.com/src_images/logo/wolf.jpeg"
                alt="Geekwolf" />
           <p class="site-author-name" itemprop="name">Geekwolf</p>
            

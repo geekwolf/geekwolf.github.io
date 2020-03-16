@@ -112,10 +112,10 @@
 <meta property="og:image" content="http://www.ruanyifeng.com/blogimg/asset/2017/bg2017051503.jpg">
 <meta property="og:image" content="http://7xp2eu.com1.z0.glb.clouddn.com/wsgiframework.png">
 <meta property="og:image" content="http://7xp2eu.com1.z0.glb.clouddn.com/wsgiframeworkmiddleware.png">
-<meta property="og:image" content="http://ow1schdt5.bkt.clouddn.com/django-wsgi.png">
-<meta property="og:image" content="http://ow1schdt5.bkt.clouddn.com/asgi.jpg">
-<meta property="og:image" content="http://ow1schdt5.bkt.clouddn.com/zabbix-alert.png">
-<meta property="og:image" content="http://ow1schdt5.bkt.clouddn.com/ws-warn.png">
+<meta property="og:image" content="http://www.simlinux.com/src_images/django-wsgi.png">
+<meta property="og:image" content="http://www.simlinux.com/src_images/asgi.jpg">
+<meta property="og:image" content="http://www.simlinux.com/src_images/zabbix-alert.png">
+<meta property="og:image" content="http://www.simlinux.com/src_images/ws-warn.png">
 <meta property="og:updated_time" content="2018-01-31T03:18:20.458Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Django Channels实现Zabbix实时告警到页面">
@@ -362,7 +362,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Geekwolf">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg">
+      <meta itemprop="image" content="http://www.simlinux.com/src_images/logo/wolf.jpeg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -490,7 +490,7 @@
 </ol>
 </li>
 </ul>
-<p><strong>ASGI</strong><br>由于WSGI协议支持HTTP,ASGI(Asynchronous Server Gateway Interface)在此基础上应运而生，对WSGI协议进行兼容和扩展，能够处理多种通用协议如HTTP、HTTP2、WebSocket，允许这些协议能通过网络或本地socket进行传输，以及让不同的协议被分配到不同的进程中<br><img src="http://ow1schdt5.bkt.clouddn.com/django-wsgi.png" alt="image"><br><img src="http://ow1schdt5.bkt.clouddn.com/asgi.jpg" alt="image"></p>
+<p><strong>ASGI</strong><br>由于WSGI协议支持HTTP,ASGI(Asynchronous Server Gateway Interface)在此基础上应运而生，对WSGI协议进行兼容和扩展，能够处理多种通用协议如HTTP、HTTP2、WebSocket，允许这些协议能通过网络或本地socket进行传输，以及让不同的协议被分配到不同的进程中<br><img src="http://www.simlinux.com/src_images/django-wsgi.png" alt="image"><br><img src="http://www.simlinux.com/src_images/asgi.jpg" alt="image"></p>
 <p>ASGI由三个不同的组件组成:协议服务、频道层(Channnel Layer)、应用层；其中Channel Layer是最重要的部分，同时对协议服务和应用提供接口；</p>
 <ul>
 <li>频道和消息： ASGI规定所有通信都要通过在频道里发送消息进行，消息是一个dict,为了保证可序列化，只允许以下类型数据<br>  string/Unicode/int(非long)/list/dict(Key是Unicode)/boolean/None<br>  频道是一个先进先出队列，队列中的消息最多发送给一个消费者；频道中的消息超过设定时间会被清理，消息大小最大限定为1MB，超过需要分块</li>
@@ -502,7 +502,7 @@
 <li>Channel Layer: 可插拔的Python代码和数据存储，如Redis、或者内存，用于消息的传输</li>
 <li>Workers: 监听频道，消息抵达时运行消费者代码</li>
 </ul>
-<p>下面用例子来看下如何使用Channels: 实现Zabbix报警实时传送到客户端<br>描述:<br><img src="http://ow1schdt5.bkt.clouddn.com/zabbix-alert.png" alt="image"></p>
+<p>下面用例子来看下如何使用Channels: 实现Zabbix报警实时传送到客户端<br>描述:<br><img src="http://www.simlinux.com/src_images/zabbix-alert.png" alt="image"></p>
 <ul>
 <li>Trigger触发时，根据Action设置通过脚本报警，并将报警信息发布到Redis的ALARM频道</li>
 <li>Django Commands alert  订阅Redis的ALARM频道</li>
@@ -516,7 +516,7 @@
 <h6 id="前端页面base-html"><a href="#前端页面base-html" class="headerlink" title="前端页面base.html"></a>前端页面base.html</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">&lt;!-- 报警声音 --&gt;</div><div class="line">&lt;audio id=&quot;notify&quot;&gt;&lt;source src=&quot;/static/notify.ogg&quot; type=&quot;audio/ogg&quot;&gt;&gt;&lt;/audio&gt;</div><div class="line"></div><div class="line">&lt;script type=&quot;application/javascript&quot;&gt;</div><div class="line">    var ws_scheme = window.location.protocol == &quot;https:&quot; ? &quot;wss&quot; : &quot;ws&quot;;</div><div class="line">    var ws = new WebSocket(ws_scheme + &apos;://&apos; + window.location.host + window.location.pathname);</div><div class="line">    console.log(ws);</div><div class="line">    ws.onmessage = function (message) &#123;</div><div class="line">        var data = JSON.parse(message.data);</div><div class="line">        if(data[&apos;当前状态&apos;] == &apos;Problem&apos;)</div><div class="line">        &#123;</div><div class="line">           var subject = &apos;&lt;br&gt;故障！,服务器:&apos; + data[&apos;告警主机&apos;] + &apos;发生:&apos; + data[&apos;告警信息&apos;] + &apos;故障!&lt;br&gt;&apos;;</div><div class="line">        &#125;</div><div class="line">        else&#123;</div><div class="line">           var subject = &apos;&lt;br&gt;恢复！,服务器:&apos; + data[&apos;告警主机&apos;] + &apos;发生:&apos; + data[&apos;告警信息&apos;] + &apos;已经恢复!&lt;br&gt;&apos;;</div><div class="line"></div><div class="line">        &#125;</div><div class="line">        content = new Array();</div><div class="line">        $.each(data,function(k,v)&#123;</div><div class="line">            content.push(&quot;&lt;b&gt;&quot; + k + &apos;:&lt;/b&gt;   &apos; + v)</div><div class="line">        &#125;)</div><div class="line">        var data = subject + content.join(&quot;&lt;br&gt;&quot;)</div><div class="line">        $(&apos;#notify&apos;)[0].play();</div><div class="line">        notify(&apos;warning&apos;,&apos;glyphicon glyphicon-danger-sign&apos;,data);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure>
 <h6 id="测试消息，用于发布消息到Redis"><a href="#测试消息，用于发布消息到Redis" class="headerlink" title="测试消息，用于发布消息到Redis"></a>测试消息，用于发布消息到Redis</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">import redis</div><div class="line">import json</div><div class="line"></div><div class="line">rc = redis.Redis(host=&apos;127.0.0.1&apos;, password=&apos;geekwolf&apos;, port=6379, db=0)</div><div class="line">msg = &#123;&quot;告警主机&quot;: &quot;web-server-node1&quot;, &quot;告警地址&quot;: &quot;192.168.1133.11&quot;, &quot;告警时间&quot;: &quot;2017-11-11 05:05:22&quot;, &quot;告警等级&quot;: &quot;严重&quot;,</div><div class="line">       &quot;告警信息&quot;: &quot;Web端口80监控&quot;, &quot;问题详情&quot;: &quot;80端口连接失败&quot;, &quot;当前状态&quot;: &quot;Problem&quot;, &quot;事件ID&quot;: &quot;12345&quot;&#125;</div><div class="line"></div><div class="line">rc.publish(&apos;alarm&apos;, json.dumps(msg))</div></pre></td></tr></table></figure>
 <h6 id="运行服务，测试"><a href="#运行服务，测试" class="headerlink" title="运行服务，测试"></a>运行服务，测试</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">启动项目(http/websocket):</div><div class="line">python manage.py runserver 0.0.0.0:8000</div><div class="line">启动监听报警消息进程:</div><div class="line">python manage.py alert</div></pre></td></tr></table></figure>
-<p>访问<a href="http://192.168.1.1:8000,运行test.py脚本" target="_blank" rel="external">http://192.168.1.1:8000,运行test.py脚本</a><br><img src="http://ow1schdt5.bkt.clouddn.com/ws-warn.png" alt="image"></p>
+<p>访问<a href="http://192.168.1.1:8000,运行test.py脚本" target="_blank" rel="external">http://192.168.1.1:8000,运行test.py脚本</a><br><img src="http://www.simlinux.com/src_images/ws-warn.png" alt="image"></p>
 <h4 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h4><blockquote>
 <ul>
 <li>利用Socket.IO实现消息实时推送 <a href="http://www.wukai.me/2017/08/27/push-message-with-socketio/" target="_blank" rel="external">http://www.wukai.me/2017/08/27/push-message-with-socketio/</a></li>
@@ -687,7 +687,7 @@
       <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
-               src="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg"
+               src="http://www.simlinux.com/src_images/logo/wolf.jpeg"
                alt="Geekwolf" />
           <p class="site-author-name" itemprop="name">Geekwolf</p>
            

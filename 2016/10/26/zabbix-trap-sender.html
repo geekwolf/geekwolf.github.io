@@ -107,14 +107,14 @@
 <meta property="og:site_name" content="Geekwolf&#39;s Blog">
 <meta property="og:description" content="选择使用zabbix_sender的由来基于业务中需要从MySQL数据库中提取游戏在线人数(5个服务)，如果通过zabbix_get方式获取需要执行5次脚本获取，而通过zabbix_sender执行一次脚本可将5个服务的数据批量发送到zabbix trapper更为方便，减少了不必要的脚本执行  配置步骤如下: 1.配置zabbix_agentd.conf 自定义UserParameter123">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://ow1schdt5.bkt.clouddn.com/2016/10/t1.png">
-<meta property="og:image" content="http://ow1schdt5.bkt.clouddn.com/2016/10/t2.png">
-<meta property="og:image" content="http://ow1schdt5.bkt.clouddn.com/2016/10/t3.png">
+<meta property="og:image" content="http://www.simlinux.com/src_images/2016/10/t1.png">
+<meta property="og:image" content="http://www.simlinux.com/src_images/2016/10/t2.png">
+<meta property="og:image" content="http://www.simlinux.com/src_images/2016/10/t3.png">
 <meta property="og:updated_time" content="2017-12-17T01:55:01.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="通过zabbix_sender实现批量传递key值(备忘)">
 <meta name="twitter:description" content="选择使用zabbix_sender的由来基于业务中需要从MySQL数据库中提取游戏在线人数(5个服务)，如果通过zabbix_get方式获取需要执行5次脚本获取，而通过zabbix_sender执行一次脚本可将5个服务的数据批量发送到zabbix trapper更为方便，减少了不必要的脚本执行  配置步骤如下: 1.配置zabbix_agentd.conf 自定义UserParameter123">
-<meta name="twitter:image" content="http://ow1schdt5.bkt.clouddn.com/2016/10/t1.png">
+<meta name="twitter:image" content="http://www.simlinux.com/src_images/2016/10/t1.png">
 
 
 
@@ -356,7 +356,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Geekwolf">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg">
+      <meta itemprop="image" content="http://www.simlinux.com/src_images/logo/wolf.jpeg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -476,9 +476,9 @@
 <p><strong>1.配置zabbix_agentd.conf 自定义UserParameter</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">UserParameter=send.online.count.data[*],/home/opt/scripts/online_count.sh $1</div><div class="line">/etc/init.d/zabbix_agent stop</div><div class="line">/etc/init.d/zabbix_agent start</div></pre></td></tr></table></figure></p>
 <p>注释: 此步骤的目的是在zabbix server上创建key为send.online.count.data的item用于设置脚本的执行间隔，也可以在zabbix agent服务上设置crontab实现</p>
 <p><strong>2.数据获取脚本</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">#!/bin/bash</div><div class="line">host_ip=$1</div><div class="line">zabbix_server_ip=&quot;10.1.1.1&quot;</div><div class="line">mysql  -C -N  -h localhost -u geekwolf -pgeekwolf &quot;--execute=select total,dota,war3vs,war3rpg,first_login from online_table;&quot;&gt;/tmp/.data</div><div class="line">Total=`cat /tmp/.data |awk &apos;&#123;print $1&#125;&apos;`</div><div class="line">Dota=`cat /tmp/.data |awk &apos;&#123;print $2&#125;&apos;`</div><div class="line">War3vs=`cat /tmp/.data |awk &apos;&#123;print $3&#125;&apos;`</div><div class="line">War3rpg=`cat /tmp/.data |awk &apos;&#123;print $4&#125;&apos;`</div><div class="line">First_Login=`cat /tmp/.data |awk &apos;&#123;print $5&#125;&apos;`</div><div class="line"></div><div class="line">echo &quot;$host_ip online_count[Total] $Total&quot; &gt;/tmp/count.log</div><div class="line">echo &quot;$host_ip online_count[Dota] $Dota&quot; &gt;&gt;/tmp/count.log</div><div class="line">echo &quot;$host_ip online_count[War3vs] $War3vs&quot; &gt;&gt;/tmp/count.log</div><div class="line">echo &quot;$host_ip online_count[War3rpg] $War3rpg&quot; &gt;&gt;/tmp/count.log</div><div class="line">echo &quot;$host_ip online_count[First_login] $First_Login&quot; &gt;&gt;/tmp/count.log</div><div class="line">zabbix_sender -z $zabbix_server_ip -i /tmp/count.log &gt;/dev/null</div></pre></td></tr></table></figure></p>
-<p><strong>3.创建模板和项目</strong><br>A. 创建模板Online_Count_Template<br>B. 创建项目send.count.data<br><img src="http://ow1schdt5.bkt.clouddn.com/2016/10/t1.png" alt=""></p>
-<p>C. 创建Total监控项,其他略<br><img src="http://ow1schdt5.bkt.clouddn.com/2016/10/t2.png" alt=""></p>
-<p><strong>4. 创建图形</strong><br><img src="http://ow1schdt5.bkt.clouddn.com/2016/10/t3.png" alt=""></p>
+<p><strong>3.创建模板和项目</strong><br>A. 创建模板Online_Count_Template<br>B. 创建项目send.count.data<br><img src="http://www.simlinux.com/src_images/2016/10/t1.png" alt=""></p>
+<p>C. 创建Total监控项,其他略<br><img src="http://www.simlinux.com/src_images/2016/10/t2.png" alt=""></p>
+<p><strong>4. 创建图形</strong><br><img src="http://www.simlinux.com/src_images/2016/10/t3.png" alt=""></p>
 <p><strong>5. 将模板关联到主机即可(可通过最新数据查看是否有数据上报 )</strong></p>
 
       
@@ -621,7 +621,7 @@
       <section class="site-overview sidebar-panel sidebar-panel-active">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
-               src="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg"
+               src="http://www.simlinux.com/src_images/logo/wolf.jpeg"
                alt="Geekwolf" />
           <p class="site-author-name" itemprop="name">Geekwolf</p>
            

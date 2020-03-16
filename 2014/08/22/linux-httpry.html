@@ -108,14 +108,14 @@
 <meta property="og:site_name" content="Geekwolf&#39;s Blog">
 <meta property="og:description" content="通常我们在调试Web应用、RESTFUL服务或者排错PAC (proxy auto config) 以及检查是否有恶意访问等会去通过错误日志日志或者嗅探数据包的方式去排错；常见的嗅探数据包软件有tcpdump、wireshark;但是针对HTTP需要对数据包进行过滤，显示格式也更不容易读，Httpry工具就能更方便易读的嗅探HTTP流量 安装httpry基于Debian(Ubuntu or Lin">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://ow1schdt5.bkt.clouddn.com/2014/08/ryeth0-1024x469.png">
-<meta property="og:image" content="http://ow1schdt5.bkt.clouddn.com/2014/08/get-1024x333.png">
-<meta property="og:image" content="http://ow1schdt5.bkt.clouddn.com/2014/08/summary.jpg">
+<meta property="og:image" content="http://www.simlinux.com/src_images/2014/08/ryeth0-1024x469.png">
+<meta property="og:image" content="http://www.simlinux.com/src_images/2014/08/get-1024x333.png">
+<meta property="og:image" content="http://www.simlinux.com/src_images/2014/08/summary.jpg">
 <meta property="og:updated_time" content="2017-12-17T01:55:01.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="如何在Linux下使用命令行嗅探HTTP流量">
 <meta name="twitter:description" content="通常我们在调试Web应用、RESTFUL服务或者排错PAC (proxy auto config) 以及检查是否有恶意访问等会去通过错误日志日志或者嗅探数据包的方式去排错；常见的嗅探数据包软件有tcpdump、wireshark;但是针对HTTP需要对数据包进行过滤，显示格式也更不容易读，Httpry工具就能更方便易读的嗅探HTTP流量 安装httpry基于Debian(Ubuntu or Lin">
-<meta name="twitter:image" content="http://ow1schdt5.bkt.clouddn.com/2014/08/ryeth0-1024x469.png">
+<meta name="twitter:image" content="http://www.simlinux.com/src_images/2014/08/ryeth0-1024x469.png">
 
 
 
@@ -357,7 +357,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Geekwolf">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg">
+      <meta itemprop="image" content="http://www.simlinux.com/src_images/logo/wolf.jpeg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -474,11 +474,11 @@
 <h4 id="安装httpry"><a href="#安装httpry" class="headerlink" title="安装httpry"></a>安装httpry</h4><p>基于Debian(Ubuntu or Linux Mint)，基础库并没有httpry包，我们用源码来安装<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$ sudo apt-get install gcc make git libpcap0.8-dev</div><div class="line">$ git clone https://github.com/jbittel/httpry.git</div><div class="line">$ cd httpry</div><div class="line">$ make</div><div class="line">$ sudo make install</div></pre></td></tr></table></figure></p>
 <p>基于Fedora，CentOS or RHEL可以使用EPEL来yum安装<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo yum install httpry</div></pre></td></tr></table></figure></p>
 <p>也可以通过源码安装<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$ sudo yum install gcc make git libpcap-devel</div><div class="line">$ git clone https://github.com/jbittel/httpry.git</div><div class="line">$ cd httpry</div><div class="line">$ make</div><div class="line">$ sudo make install</div></pre></td></tr></table></figure></p>
-<h4 id="httpry的基本使用"><a href="#httpry的基本使用" class="headerlink" title="httpry的基本使用"></a>httpry的基本使用</h4><p>httpry通过监听网卡接口来实时嗅探HTTP的请求和响应<br>$ sudo httpry -i <network-interface><br><a href="http://ow1schdt5.bkt.clouddn.com/2014/08/ryeth0.png" target="_blank" rel="external"><img src="http://ow1schdt5.bkt.clouddn.com/2014/08/ryeth0-1024x469.png" alt="ryeth0"></a><br>将HTTP 数据包保存为二进制文件<br>$ sudo httpry -i eth0 -b output.dump</network-interface></p>
+<h4 id="httpry的基本使用"><a href="#httpry的基本使用" class="headerlink" title="httpry的基本使用"></a>httpry的基本使用</h4><p>httpry通过监听网卡接口来实时嗅探HTTP的请求和响应<br>$ sudo httpry -i <network-interface><br><a href="http://www.simlinux.com/src_images/2014/08/ryeth0.png" target="_blank" rel="external"><img src="http://www.simlinux.com/src_images/2014/08/ryeth0-1024x469.png" alt="ryeth0"></a><br>将HTTP 数据包保存为二进制文件<br>$ sudo httpry -i eth0 -b output.dump</network-interface></p>
 <p>重放HTTP数据包</p>
 <p><pre class="lang:php decode:true ">$ sudo httpry -r output.dump<br>将HTTP 数据包保存为文本文件<br>$ sudo httpry -i eth0 -o output.txt</pre></p>
 <h4 id="httpry的高级应用"><a href="#httpry的高级应用" class="headerlink" title="httpry的高级应用"></a>httpry的高级应用</h4><p>监控特定的HTTP请求方式(GET,POST,PUT,HEAD,CONNECT等),使用-m参数</p>
-<p><a href="http://ow1schdt5.bkt.clouddn.com/2014/08/get.png" target="_blank" rel="external"><img src="http://ow1schdt5.bkt.clouddn.com/2014/08/get-1024x333.png" alt="get"></a><br>如果你httpry下载的源代码,你会发现有一组Perl脚本的源代码,帮助分析httpry的输出<br>这些脚本httpry /scripts/plugins目录中找到。如果你想编写一个自定义解析器httpry的输出,这些脚本是很好的例子.他们的一些功能:</p>
+<p><a href="http://www.simlinux.com/src_images/2014/08/get.png" target="_blank" rel="external"><img src="http://www.simlinux.com/src_images/2014/08/get-1024x333.png" alt="get"></a><br>如果你httpry下载的源代码,你会发现有一组Perl脚本的源代码,帮助分析httpry的输出<br>这些脚本httpry /scripts/plugins目录中找到。如果你想编写一个自定义解析器httpry的输出,这些脚本是很好的例子.他们的一些功能:</p>
 <ul>
 <li>hostnames: 显示主机名列表.</li>
 <li>find_proxies: 测web代理</li>
@@ -490,7 +490,7 @@
 </li>
 </ul>
 <p>执行之后httpry/scripts目录下生成txt/xml文件，例如log_summary.txt</p>
-<p><a href="http://ow1schdt5.bkt.clouddn.com/2014/08/summary.jpg" target="_blank" rel="external"><img src="http://ow1schdt5.bkt.clouddn.com/2014/08/summary.jpg" alt="summary"></a></p>
+<p><a href="http://www.simlinux.com/src_images/2014/08/summary.jpg" target="_blank" rel="external"><img src="http://www.simlinux.com/src_images/2014/08/summary.jpg" alt="summary"></a></p>
 <h4 id="相关工具"><a href="#相关工具" class="headerlink" title="相关工具"></a>相关工具</h4><p><code>ngxtop</code></p>
 <h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><blockquote>
 <p><a href="http://xmodulo.com/2014/06/monitor-nginx-web-server-command-line-real-time.html" target="_blank" rel="external">http://xmodulo.com/2014/06/monitor-nginx-web-server-command-line-real-time.html</a><br><a href="http://www.ttlsa.com/nginx/nginx-modules-ngxtop-ttlsa/" target="_blank" rel="external">http://dumpsterventures.com/jason/httpry/</a><br><a href="http://www.ttlsa.com/nginx/nginx-modules-ngxtop-ttlsa/" target="_blank" rel="external">http://www.ttlsa.com/nginx/nginx-modules-ngxtop-ttlsa/</a></p>
@@ -653,7 +653,7 @@
       <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
-               src="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg"
+               src="http://www.simlinux.com/src_images/logo/wolf.jpeg"
                alt="Geekwolf" />
           <p class="site-author-name" itemprop="name">Geekwolf</p>
            

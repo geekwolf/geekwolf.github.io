@@ -107,12 +107,12 @@
 <meta property="og:site_name" content="Geekwolf&#39;s Blog">
 <meta property="og:description" content="安装CFSSL1234curl -s -L -o /bin/cfssl https://pkg.cfssl.org/R1.2/cfssl_linux-amd64curl -s -L -o /bin/cfssljson https://pkg.cfssl.org/R1.2/cfssljson_linux-amd64curl -s -L -o /bin/cfssl-certinfo https://p">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://ow1schdt5.bkt.clouddn.com/2017/09/cert.jpg">
+<meta property="og:image" content="http://www.simlinux.com/src_images/2017/09/cert.jpg">
 <meta property="og:updated_time" content="2017-12-17T03:24:31.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="k8s部署之使用CFSSL创建证书">
 <meta name="twitter:description" content="安装CFSSL1234curl -s -L -o /bin/cfssl https://pkg.cfssl.org/R1.2/cfssl_linux-amd64curl -s -L -o /bin/cfssljson https://pkg.cfssl.org/R1.2/cfssljson_linux-amd64curl -s -L -o /bin/cfssl-certinfo https://p">
-<meta name="twitter:image" content="http://ow1schdt5.bkt.clouddn.com/2017/09/cert.jpg">
+<meta name="twitter:image" content="http://www.simlinux.com/src_images/2017/09/cert.jpg">
 
 
 
@@ -354,7 +354,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Geekwolf">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg">
+      <meta itemprop="image" content="http://www.simlinux.com/src_images/logo/wolf.jpeg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -479,7 +479,7 @@
 <h5 id="签发Client-Certificate"><a href="#签发Client-Certificate" class="headerlink" title="签发Client Certificate"></a>签发Client Certificate</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">cfssl print-defaults csr &amp;gt; client.json</div><div class="line">vim client.json</div><div class="line">&#123;</div><div class="line">    &quot;CN&quot;: &quot;Client&quot;,</div><div class="line">    &quot;hosts&quot;: [],</div><div class="line">    &quot;key&quot;: &#123;</div><div class="line">        &quot;algo&quot;: &quot;ecdsa&quot;,</div><div class="line">        &quot;size&quot;: 256</div><div class="line">    &#125;,</div><div class="line">    &quot;names&quot;: [</div><div class="line">        &#123;</div><div class="line">            &quot;C&quot;: &quot;CN&quot;,</div><div class="line">            &quot;L&quot;: &quot;SH&quot;,</div><div class="line">            &quot;ST&quot;: &quot;SH&quot;</div><div class="line">        &#125;</div><div class="line">    ]</div><div class="line">&#125;</div><div class="line">生成客户端证书和私钥</div><div class="line">cfssl gencert -ca=ca.pem -ca-key=ca-key.pem -config=ca-config.json -profile=client client.json | cfssljson -bare client</div></pre></td></tr></table></figure>
 <h5 id="签发peer-certificate"><a href="#签发peer-certificate" class="headerlink" title="签发peer certificate"></a>签发peer certificate</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">cfssl print-defaults csr &amp;gt; member1.json</div><div class="line">vim member1.json</div><div class="line">&#123;</div><div class="line">    &quot;CN&quot;: &quot;member1&quot;,</div><div class="line">    &quot;hosts&quot;: [</div><div class="line">        &quot;192.168.1.1&quot;</div><div class="line">    ],</div><div class="line">    &quot;key&quot;: &#123;</div><div class="line">        &quot;algo&quot;: &quot;ecdsa&quot;,</div><div class="line">        &quot;size&quot;: 256</div><div class="line">    &#125;,</div><div class="line">    &quot;names&quot;: [</div><div class="line">        &#123;</div><div class="line">            &quot;C&quot;: &quot;CN&quot;,</div><div class="line">            &quot;L&quot;: &quot;SH&quot;,</div><div class="line">            &quot;ST&quot;: &quot;SH&quot;</div><div class="line">        &#125;</div><div class="line">    ]</div><div class="line">&#125;</div><div class="line">为节点member1生成证书和私钥:</div><div class="line">cfssl gencert -ca=ca.pem -ca-key=ca-key.pem -config=ca-config.json -profile=peer member1.json | cfssljson -bare member1</div><div class="line">针对etcd服务,每个etcd节点上按照上述方法生成相应的证书和私钥</div></pre></td></tr></table></figure>
 <h5 id="最后校验证书"><a href="#最后校验证书" class="headerlink" title="最后校验证书"></a>最后校验证书</h5><p>校验生成的证书是否和配置相符<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">openssl x509 -in ca.pem -text -noout</div><div class="line">openssl x509 -in server.pem -text -noout</div><div class="line">openssl x509 -in client.pem -text -noout</div></pre></td></tr></table></figure></p>
-<h4 id="k8s集群所需证书"><a href="#k8s集群所需证书" class="headerlink" title="k8s集群所需证书"></a>k8s集群所需证书</h4><p><img src="http://ow1schdt5.bkt.clouddn.com/2017/09/cert.jpg" alt=""></p>
+<h4 id="k8s集群所需证书"><a href="#k8s集群所需证书" class="headerlink" title="k8s集群所需证书"></a>k8s集群所需证书</h4><p><img src="http://www.simlinux.com/src_images/2017/09/cert.jpg" alt=""></p>
 <h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><blockquote>
 <p><a href="https://coreos.com/os/docs/latest/generate-self-signed-certificates.html" target="_blank" rel="external">https://coreos.com/os/docs/latest/generate-self-signed-certificates.html</a></p>
 </blockquote>
@@ -633,7 +633,7 @@
       <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
-               src="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg"
+               src="http://www.simlinux.com/src_images/logo/wolf.jpeg"
                alt="Geekwolf" />
           <p class="site-author-name" itemprop="name">Geekwolf</p>
            

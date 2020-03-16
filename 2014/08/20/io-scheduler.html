@@ -108,12 +108,12 @@
 <meta property="og:site_name" content="Geekwolf&#39;s Blog">
 <meta property="og:description" content="通常磁盘的读写影响是由磁头到柱面移动造成了延迟，解决这种延迟内核主要采用两种策略：缓存和IO调度算法来进行弥补 Caching：IO请求被缓存在大页和buffercaches里面，读请求会预先从缓存读取，写请求会先写进缓存，然后在保存到磁盘 四种IO调度算法：12cat /sys/block/sda/queue/schedulernoop anticipatory deadline [cfq] (">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://ow1schdt5.bkt.clouddn.com/2014/08/io1.png">
+<meta property="og:image" content="http://www.simlinux.com/src_images/2014/08/io1.png">
 <meta property="og:updated_time" content="2017-12-17T01:55:01.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="IO调度算法适用场景">
 <meta name="twitter:description" content="通常磁盘的读写影响是由磁头到柱面移动造成了延迟，解决这种延迟内核主要采用两种策略：缓存和IO调度算法来进行弥补 Caching：IO请求被缓存在大页和buffercaches里面，读请求会预先从缓存读取，写请求会先写进缓存，然后在保存到磁盘 四种IO调度算法：12cat /sys/block/sda/queue/schedulernoop anticipatory deadline [cfq] (">
-<meta name="twitter:image" content="http://ow1schdt5.bkt.clouddn.com/2014/08/io1.png">
+<meta name="twitter:image" content="http://www.simlinux.com/src_images/2014/08/io1.png">
 
 
 
@@ -355,7 +355,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Geekwolf">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg">
+      <meta itemprop="image" content="http://www.simlinux.com/src_images/logo/wolf.jpeg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -471,7 +471,7 @@
         <pre><code>通常磁盘的读写影响是由磁头到柱面移动造成了延迟，解决这种延迟内核主要采用两种策略：缓存和IO调度算法来进行弥补
 </code></pre><p><strong>Caching：</strong>IO请求被缓存在大页和buffer<br>caches里面，读请求会预先从缓存读取，写请求会先写进缓存，然后在保存到磁盘</p>
 <p><strong>四种IO调度算法：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cat /sys/block/sda/queue/scheduler</div><div class="line">noop anticipatory deadline [cfq] (当前是cfq)</div></pre></td></tr></table></figure></p>
-<p><a href="http://ow1schdt5.bkt.clouddn.com/2014/08/io1.png" target="_blank" rel="external"><img src="http://ow1schdt5.bkt.clouddn.com/2014/08/io1.png" alt="io"></a></p>
+<p><a href="http://www.simlinux.com/src_images/2014/08/io1.png" target="_blank" rel="external"><img src="http://www.simlinux.com/src_images/2014/08/io1.png" alt="io"></a></p>
 <p><strong>noop：</strong>noop调度算法不会对I/O请求排序操作，除了合并外也不会做任何其他优化，直接以类似FIFO的顺序提交I/O请求；对于SSD、虚拟机或者存储设备可能会更加高效<br><strong>anticipatory(as)：</strong>基于预测的IO算法，类似DeadLine，也维护了三个请求对列；区别在于当它处理完一个I/O请求后并不会直接返回处理下一个请求，而是等待6ms(默认),如果这时候有新来的针对当前扇区相邻扇区的请求，那么会直接处理它，当等待时间结束后，调度器才返回处理下一个对列请求<br>试想一下，如果系统有频繁的针对邻近扇区的I/O请求，那么这种预测算法必然大幅提高整体的吞吐量，毕竟节约了那么多寻道时间<br><strong>deadline：</strong>DEADLINE 在CFQ的基础上，解决了IO请求饿死的极端情况。除了CFQ本身具有的IO排序队列之外，DEADLINE额外分别为读IO和写IO提供了FIFO队 列。读FIFO队列的最大等待时间为500ms，写FIFO队列的最大等待时间为5s。FIFO队列内的IO请求优先级要比CFQ队列中的高，，而读 FIFO队列的优先级又比写FIFO队列的优先级高。优先级可以表示如下：<br>FIFO(Read) &gt; FIFO(Write) &gt; CFQ<br>deadline 算法保证对于既定的 IO 请求以最小的延迟时间，从这一点理解，对于 DSS 应用应该会是很适合的<br><strong>cfq(2.6.18+内核默认CFQ)：</strong>该算法的特点是按照IO请求的地址进行排序，而不是按照先来后到的顺序来进行响应。在传统的SAS盘上，磁盘寻道花去了绝大多数的IO响应时间。CFQ的出发点是对IO地址进行排序，以尽量少的磁盘旋转次数来满足尽可能多的IO请求。在 CFQ算法下，SAS盘的吞吐量大大提高了。但是相比于NOOP的缺点是，先来的IO请求并不一定能被满足，可能会出现饿死的情况；</p>
 <p><strong>调度算法适用场合：</strong><br>在传统的SAS盘上，CFQ、DEADLINE、ANTICIPATORY都是不错的选择；对于专属的数据库服务器和文件服务器，DEADLINE的吞吐量和响应时间都表现良好，适用于大量IO操作的环境</p>
 <p>在SSD、Fusion IO上，最简单的NOOP反而可能是最好的算法，因为其他三个算法的优化是基于缩短寻道时间的，而固态硬盘没有所谓的寻道时间且IO响应时间非常短。<br>ANTICIPATORY通常更适用于大量持续读的环境，并不适用于DB Server<br>CFQ 适用于有大量来自不同进程的并发读写的环境如桌面环境等</p>
@@ -626,7 +626,7 @@
       <section class="site-overview sidebar-panel sidebar-panel-active">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
-               src="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg"
+               src="http://www.simlinux.com/src_images/logo/wolf.jpeg"
                alt="Geekwolf" />
           <p class="site-author-name" itemprop="name">Geekwolf</p>
            

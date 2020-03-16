@@ -353,7 +353,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Geekwolf">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg">
+      <meta itemprop="image" content="http://www.simlinux.com/src_images/logo/wolf.jpeg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -475,7 +475,7 @@
 <p><strong>2.移除nf_conntrack模块</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">[root@git ~]# lsmod | egrep &apos;ip_tables|conntrack&apos;</div><div class="line">nf_conntrack_ipv4       9506  2 </div><div class="line">nf_defrag_ipv4          1483  1 nf_conntrack_ipv4</div><div class="line">nf_conntrack           79758  3 xt_NOTRACK,nf_conntrack_ipv4,xt_state</div><div class="line">ip_tables              17831  2 iptable_raw,iptable_filter</div></pre></td></tr></table></figure></p>
 <p>A.先将/etc/sysconfig/iptables 中包含state的语句移除，service  iptables restart<br>B.移除模块<br>modprobe -r xt_NOTRACK nf_conntrack_netbios_ns nf_conntrack_ipv4 xt_state<br>modprobe -r nf_conntrack</p>
 <p><strong>3.使用raw表对特定端口访问不进行跟踪（推荐）</strong><br>4个表的优先级由高到低的顺序为:raw–&gt;mangle–&gt;nat–&gt;filter</p>
-<p><a href="http://ow1schdt5.bkt.clouddn.com/2015/04/iptables.jpg" target="_blank" rel="external"><img src="http://ow1schdt5.bkt.clouddn.com/2015/04/iptables.jpg" alt=""><img src="http://ow1schdt5.bkt.clouddn.com/2015/04/iptables.jpg" alt="iptables"></a><a href="http://ow1schdt5.bkt.clouddn.com/2015/04/iptables.jpg" target="_blank" rel="external"><img src="http://ow1schdt5.bkt.clouddn.com/2015/04/iptables.jpg" alt="iptables"></a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">iptables -A INPUT -m state --state RELATED,ESTABLISHED, UNTRACKED -j ACCEPT</div><div class="line">iptables -t raw -A PREROUTING -p tcp -m multiport --dports 80,443 -j NOTRACK</div><div class="line">iptables -t raw -A PREROUTING -p tcp -m multiport --sports 80,443 -j NOTRACK</div><div class="line">iptables -t raw -A OUTPUT -p tcp -m multiport --dports 80,443 -j NOTRACK</div><div class="line">iptables -t raw -A OUTPUT -p tcp -m multiport --sports 80,443 -j NOTRACK</div></pre></td></tr></table></figure></p>
+<p><a href="http://www.simlinux.com/src_images/2015/04/iptables.jpg" target="_blank" rel="external"><img src="http://www.simlinux.com/src_images/2015/04/iptables.jpg" alt=""><img src="http://www.simlinux.com/src_images/2015/04/iptables.jpg" alt="iptables"></a><a href="http://www.simlinux.com/src_images/2015/04/iptables.jpg" target="_blank" rel="external"><img src="http://www.simlinux.com/src_images/2015/04/iptables.jpg" alt="iptables"></a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">iptables -A INPUT -m state --state RELATED,ESTABLISHED, UNTRACKED -j ACCEPT</div><div class="line">iptables -t raw -A PREROUTING -p tcp -m multiport --dports 80,443 -j NOTRACK</div><div class="line">iptables -t raw -A PREROUTING -p tcp -m multiport --sports 80,443 -j NOTRACK</div><div class="line">iptables -t raw -A OUTPUT -p tcp -m multiport --dports 80,443 -j NOTRACK</div><div class="line">iptables -t raw -A OUTPUT -p tcp -m multiport --sports 80,443 -j NOTRACK</div></pre></td></tr></table></figure></p>
 <p>通过观察cat /proc/net/nf_conntrack条目来测试是否更改生效</p>
 <p><strong>参考文档：</strong></p>
 <blockquote>
@@ -534,7 +534,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Geekwolf">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg">
+      <meta itemprop="image" content="http://www.simlinux.com/src_images/logo/wolf.jpeg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -705,7 +705,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Geekwolf">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg">
+      <meta itemprop="image" content="http://www.simlinux.com/src_images/logo/wolf.jpeg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -822,7 +822,7 @@
       
         
           
-            <p><a href="http://ow1schdt5.bkt.clouddn.com/2015/01/FastDFS%E8%A7%92%E8%89%B2%E9%85%8D%E7%BD%AE%E5%8F%82%E6%95%B0%E5%AF%BC%E5%9B%BE.jpg" target="_blank" rel="external"><img src="http://ow1schdt5.bkt.clouddn.com/2015/01/FastDFS%E8%A7%92%E8%89%B2%E9%85%8D%E7%BD%AE%E5%8F%82%E6%95%B0%E5%AF%BC%E5%9B%BE.jpg" alt=""></a></p>
+            <p><a href="http://www.simlinux.com/src_images/2015/01/FastDFS%E8%A7%92%E8%89%B2%E9%85%8D%E7%BD%AE%E5%8F%82%E6%95%B0%E5%AF%BC%E5%9B%BE.jpg" target="_blank" rel="external"><img src="http://www.simlinux.com/src_images/2015/01/FastDFS%E8%A7%92%E8%89%B2%E9%85%8D%E7%BD%AE%E5%8F%82%E6%95%B0%E5%AF%BC%E5%9B%BE.jpg" alt=""></a></p>
 
           
         
@@ -876,7 +876,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Geekwolf">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg">
+      <meta itemprop="image" content="http://www.simlinux.com/src_images/logo/wolf.jpeg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1007,7 +1007,7 @@
 <li>无法备份视图和触发器</li>
 <li>备份整库时可用备份存储过程和函数，单库备份等情况无法对其进行备份</li>
 </ul>
-<h4 id="mydumper备份机制"><a href="#mydumper备份机制" class="headerlink" title="mydumper备份机制"></a><strong>mydumper备份机制</strong></h4><p><img src="http://ow1schdt5.bkt.clouddn.com/2015/01/mydumper.png" alt=""></p>
+<h4 id="mydumper备份机制"><a href="#mydumper备份机制" class="headerlink" title="mydumper备份机制"></a><strong>mydumper备份机制</strong></h4><p><img src="http://www.simlinux.com/src_images/2015/01/mydumper.png" alt=""></p>
 <h5 id="主要步骤概括"><a href="#主要步骤概括" class="headerlink" title="主要步骤概括"></a><strong>主要步骤概括</strong></h5><ol>
 <li>主线程 FLUSH TABLES WITH READ LOCK, 施加全局只读锁，以阻止DML语句写入，保证数据的一致性</li>
 <li>读取当前时间点的二进制日志文件名和日志写入的位置并记录在metadata文件中，以供即使点恢复使用</li>
@@ -1085,7 +1085,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Geekwolf">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg">
+      <meta itemprop="image" content="http://www.simlinux.com/src_images/logo/wolf.jpeg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1257,7 +1257,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Geekwolf">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg">
+      <meta itemprop="image" content="http://www.simlinux.com/src_images/logo/wolf.jpeg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1461,7 +1461,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Geekwolf">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg">
+      <meta itemprop="image" content="http://www.simlinux.com/src_images/logo/wolf.jpeg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1651,7 +1651,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Geekwolf">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg">
+      <meta itemprop="image" content="http://www.simlinux.com/src_images/logo/wolf.jpeg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1769,7 +1769,7 @@
         
           
             <p>大部分情况下，使用用Percona XtraBackup进行整库的备份和恢复比较容易，此处略去；<br>对于单表的恢复略有不同，而且对数据库版本和Percona XtraBackup的版本都有限制<br><strong>局限性：</strong><br>1.源库MySQL版本无要求，但启用了innodb_file_per_table=1<br>2.目的库开启innodb_file_per_table=1，Percona XtraDB或者MySQL5.6<br>官方要求开启下面的两个参数，但发现5.6没有这样的变量，没去修改：innodb_expand_import=1（大于5.5.10-20.1版本）或innodb_import_table_from_xtrabackup=1（小于5.5.10-20.1版本）选项</p>
-<p><a href="http://ow1schdt5.bkt.clouddn.com/2014/09/qy.png" target="_blank" rel="external"><img src="http://ow1schdt5.bkt.clouddn.com/2014/09/qy.png" alt="qy"></a></p>
+<p><a href="http://www.simlinux.com/src_images/2014/09/qy.png" target="_blank" rel="external"><img src="http://www.simlinux.com/src_images/2014/09/qy.png" alt="qy"></a></p>
 <h4 id="环境说明"><a href="#环境说明" class="headerlink" title="环境说明"></a>环境说明</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">源库 ：Percona-Server-5.5.28-rel29.3-388</div><div class="line">目的库：Percona-Server-5.6.16-rel64.2-569</div><div class="line">备份工具 : percona-xtrabackup-2.2.4-5004</div></pre></td></tr></table></figure>
 <h4 id="备份恢复步骤"><a href="#备份恢复步骤" class="headerlink" title="备份恢复步骤"></a>备份恢复步骤</h4><h5 id="备份表"><a href="#备份表" class="headerlink" title="备份表"></a>备份表</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">innobackupex --user=root --password=simlinux.com   --defaults-file=/etc/my.cnf --include=&apos;se.searchaccount&apos; --slave-info --safe-slave-backup --stream=tar /data/backup &gt; /data/backup/searchaccount.tar.gz</div></pre></td></tr></table></figure>
 <h5 id="导出表"><a href="#导出表" class="headerlink" title="导出表"></a>导出表</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">[root@simlinux ~]#tar -ixf searchaccount.tar.gz -C /data/databak/</div><div class="line">[root@simlinux ~]#innobackupex --apply-log --export /data/databak</div><div class="line"></div><div class="line">[root@simlinux ~]#ll /data/databak/se</div><div class="line">-rw-r--r-- 1   root  root     3382    9月  13 13:57 searchaccount.cfg</div><div class="line">-rw-r--r-- 1   root  root    16384   9月  13 13:57 searchaccount.exp</div><div class="line">-rw-rw---- 1  root  root   23968    9月  13 13:40 searchaccount.frm</div><div class="line">-rw-rw---- 1  root  root  2097152 9月   13 13:40 searchaccount.ibd</div></pre></td></tr></table></figure>
@@ -1831,7 +1831,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Geekwolf">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg">
+      <meta itemprop="image" content="http://www.simlinux.com/src_images/logo/wolf.jpeg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1952,11 +1952,11 @@
 <h4 id="安装httpry"><a href="#安装httpry" class="headerlink" title="安装httpry"></a>安装httpry</h4><p>基于Debian(Ubuntu or Linux Mint)，基础库并没有httpry包，我们用源码来安装<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$ sudo apt-get install gcc make git libpcap0.8-dev</div><div class="line">$ git clone https://github.com/jbittel/httpry.git</div><div class="line">$ cd httpry</div><div class="line">$ make</div><div class="line">$ sudo make install</div></pre></td></tr></table></figure></p>
 <p>基于Fedora，CentOS or RHEL可以使用EPEL来yum安装<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo yum install httpry</div></pre></td></tr></table></figure></p>
 <p>也可以通过源码安装<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$ sudo yum install gcc make git libpcap-devel</div><div class="line">$ git clone https://github.com/jbittel/httpry.git</div><div class="line">$ cd httpry</div><div class="line">$ make</div><div class="line">$ sudo make install</div></pre></td></tr></table></figure></p>
-<h4 id="httpry的基本使用"><a href="#httpry的基本使用" class="headerlink" title="httpry的基本使用"></a>httpry的基本使用</h4><p>httpry通过监听网卡接口来实时嗅探HTTP的请求和响应<br>$ sudo httpry -i <network-interface><br><a href="http://ow1schdt5.bkt.clouddn.com/2014/08/ryeth0.png" target="_blank" rel="external"><img src="http://ow1schdt5.bkt.clouddn.com/2014/08/ryeth0-1024x469.png" alt="ryeth0"></a><br>将HTTP 数据包保存为二进制文件<br>$ sudo httpry -i eth0 -b output.dump</network-interface></p>
+<h4 id="httpry的基本使用"><a href="#httpry的基本使用" class="headerlink" title="httpry的基本使用"></a>httpry的基本使用</h4><p>httpry通过监听网卡接口来实时嗅探HTTP的请求和响应<br>$ sudo httpry -i <network-interface><br><a href="http://www.simlinux.com/src_images/2014/08/ryeth0.png" target="_blank" rel="external"><img src="http://www.simlinux.com/src_images/2014/08/ryeth0-1024x469.png" alt="ryeth0"></a><br>将HTTP 数据包保存为二进制文件<br>$ sudo httpry -i eth0 -b output.dump</network-interface></p>
 <p>重放HTTP数据包</p>
 <p><pre class="lang:php decode:true ">$ sudo httpry -r output.dump<br>将HTTP 数据包保存为文本文件<br>$ sudo httpry -i eth0 -o output.txt</pre></p>
 <h4 id="httpry的高级应用"><a href="#httpry的高级应用" class="headerlink" title="httpry的高级应用"></a>httpry的高级应用</h4><p>监控特定的HTTP请求方式(GET,POST,PUT,HEAD,CONNECT等),使用-m参数</p>
-<p><a href="http://ow1schdt5.bkt.clouddn.com/2014/08/get.png" target="_blank" rel="external"><img src="http://ow1schdt5.bkt.clouddn.com/2014/08/get-1024x333.png" alt="get"></a><br>如果你httpry下载的源代码,你会发现有一组Perl脚本的源代码,帮助分析httpry的输出<br>这些脚本httpry /scripts/plugins目录中找到。如果你想编写一个自定义解析器httpry的输出,这些脚本是很好的例子.他们的一些功能:</p>
+<p><a href="http://www.simlinux.com/src_images/2014/08/get.png" target="_blank" rel="external"><img src="http://www.simlinux.com/src_images/2014/08/get-1024x333.png" alt="get"></a><br>如果你httpry下载的源代码,你会发现有一组Perl脚本的源代码,帮助分析httpry的输出<br>这些脚本httpry /scripts/plugins目录中找到。如果你想编写一个自定义解析器httpry的输出,这些脚本是很好的例子.他们的一些功能:</p>
 <ul>
 <li>hostnames: 显示主机名列表.</li>
 <li>find_proxies: 测web代理</li>
@@ -1968,7 +1968,7 @@
 </li>
 </ul>
 <p>执行之后httpry/scripts目录下生成txt/xml文件，例如log_summary.txt</p>
-<p><a href="http://ow1schdt5.bkt.clouddn.com/2014/08/summary.jpg" target="_blank" rel="external"><img src="http://ow1schdt5.bkt.clouddn.com/2014/08/summary.jpg" alt="summary"></a></p>
+<p><a href="http://www.simlinux.com/src_images/2014/08/summary.jpg" target="_blank" rel="external"><img src="http://www.simlinux.com/src_images/2014/08/summary.jpg" alt="summary"></a></p>
 <h4 id="相关工具"><a href="#相关工具" class="headerlink" title="相关工具"></a>相关工具</h4><p><code>ngxtop</code></p>
 <h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><blockquote>
 <p><a href="http://xmodulo.com/2014/06/monitor-nginx-web-server-command-line-real-time.html" target="_blank" rel="external">http://xmodulo.com/2014/06/monitor-nginx-web-server-command-line-real-time.html</a><br><a href="http://www.ttlsa.com/nginx/nginx-modules-ngxtop-ttlsa/" target="_blank" rel="external">http://dumpsterventures.com/jason/httpry/</a><br><a href="http://www.ttlsa.com/nginx/nginx-modules-ngxtop-ttlsa/" target="_blank" rel="external">http://www.ttlsa.com/nginx/nginx-modules-ngxtop-ttlsa/</a></p>
@@ -2026,7 +2026,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Geekwolf">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg">
+      <meta itemprop="image" content="http://www.simlinux.com/src_images/logo/wolf.jpeg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -2149,7 +2149,7 @@
 <h4 id="安装icinga监控工具"><a href="#安装icinga监控工具" class="headerlink" title="安装icinga监控工具"></a>安装icinga监控工具</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">wget http://packages.icinga.org/epel/ICINGA-release.repo -O /etc/yum.repod/icinga.repo</div><div class="line">rpm --import http://packages.icinga.org/icinga.key</div><div class="line">yum  -y install icinga icinga-doc icinga-gui</div><div class="line">htpasswd -cm /etc/icinga/passwd  geekwolf</div><div class="line">systemctl start icinga</div><div class="line">systemctl start httpd</div></pre></td></tr></table></figure>
 <h4 id="安装Nagios插件"><a href="#安装Nagios插件" class="headerlink" title="安装Nagios插件"></a>安装Nagios插件</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">rpm -Uvh http://ftp.ines.lug.ro/fedora/epel/beta/7/x86_64/epel-release-7-0.2.noarch.rpm</div><div class="line">yum -y install nagios-plugins nagios-plugins-all</div><div class="line">配置文件路径/etc/icinga，配置方式和nagios一样</div><div class="line"></div><div class="line">vim  /etc/icinga/cgi.cfg</div><div class="line">authorized_for_system_information=geekwolf</div><div class="line">authorized_for_configuration_information=geekwolf</div><div class="line">authorized_for_full_command_resolution=geekwolf</div><div class="line">authorized_for_system_commands=geekwolf</div><div class="line">authorized_for_all_services=geekwolf</div><div class="line">authorized_for_all_hosts=geekwolf</div><div class="line">authorized_for_all_service_commands=geekwolf</div><div class="line">authorized_for_all_host_commands=geekwolf</div></pre></td></tr></table></figure>
 <p>访问Web:<a href="http://192.168.117.129/icinga" target="_blank" rel="external">http://192.168.117.129/icinga</a></p>
-<p><a href="http://ow1schdt5.bkt.clouddn.com/2014/08/icingam.png" target="_blank" rel="external"><img src="http://ow1schdt5.bkt.clouddn.com/2014/08/icingam.png" alt="icingam"></a></p>
+<p><a href="http://www.simlinux.com/src_images/2014/08/icingam.png" target="_blank" rel="external"><img src="http://www.simlinux.com/src_images/2014/08/icingam.png" alt="icingam"></a></p>
 <h4 id="相关资源"><a href="#相关资源" class="headerlink" title="相关资源"></a>相关资源</h4><blockquote>
 <p>Icinga官方文档 :<a href="http://docs.icinga.org/" target="_blank" rel="external">http://docs.icinga.org</a><br>Icinga EPEL :<a href="http://packages.icinga.org/epel" target="_blank" rel="external">http://packages.icinga.org/epel</a><br>Icinga安装包及vagrant box下载 ：<a href="https://www.icinga.org/download" target="_blank" rel="external">https://www.icinga.org/download</a><br>Centos7网络配置和服务管理参考: <a href="http://simlinux.com/blog/2014/08/12/centos7wang-luo-pei-zhi-he-fu-wu-guan-li/" target="_blank" rel="external">http://simlinux.com/blog/2014/08/12/centos7wang-luo-pei-zhi-he-fu-wu-guan-li/</a></p>
 </blockquote>
@@ -2226,7 +2226,7 @@
       <section class="site-overview sidebar-panel sidebar-panel-active">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
-               src="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg"
+               src="http://www.simlinux.com/src_images/logo/wolf.jpeg"
                alt="Geekwolf" />
           <p class="site-author-name" itemprop="name">Geekwolf</p>
            

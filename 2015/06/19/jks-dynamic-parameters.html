@@ -108,16 +108,16 @@
 <meta property="og:site_name" content="Geekwolf&#39;s Blog">
 <meta property="og:description" content="由于上一篇是通过触发git操作来实现自动化构建和发布，回滚和发布不太可控，可以采用动态参数获取发布分支的方式方便发布和回滚 目标 选择合适版本发布到合适的服务器环境（目前分支策略是，提测时创建发布分支release-date  +%Y%m%d-%H%M%S）  安装插件Dynamic Parameter Plug-in](https://wiki.jenkins-ci.org/display/JE">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://ow1schdt5.bkt.clouddn.com/2015/06/11.png">
-<meta property="og:image" content="http://ow1schdt5.bkt.clouddn.com/2015/06/11.png">
-<meta property="og:image" content="http://ow1schdt5.bkt.clouddn.com/2015/06/21.png">
-<meta property="og:image" content="http://ow1schdt5.bkt.clouddn.com/2015/06/31.png">
-<meta property="og:image" content="http://ow1schdt5.bkt.clouddn.com/2015/06/sdf.png">
+<meta property="og:image" content="http://www.simlinux.com/src_images/2015/06/11.png">
+<meta property="og:image" content="http://www.simlinux.com/src_images/2015/06/11.png">
+<meta property="og:image" content="http://www.simlinux.com/src_images/2015/06/21.png">
+<meta property="og:image" content="http://www.simlinux.com/src_images/2015/06/31.png">
+<meta property="og:image" content="http://www.simlinux.com/src_images/2015/06/sdf.png">
 <meta property="og:updated_time" content="2017-12-17T01:55:01.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="基于jenkins动态化参数化构建">
 <meta name="twitter:description" content="由于上一篇是通过触发git操作来实现自动化构建和发布，回滚和发布不太可控，可以采用动态参数获取发布分支的方式方便发布和回滚 目标 选择合适版本发布到合适的服务器环境（目前分支策略是，提测时创建发布分支release-date  +%Y%m%d-%H%M%S）  安装插件Dynamic Parameter Plug-in](https://wiki.jenkins-ci.org/display/JE">
-<meta name="twitter:image" content="http://ow1schdt5.bkt.clouddn.com/2015/06/11.png">
+<meta name="twitter:image" content="http://www.simlinux.com/src_images/2015/06/11.png">
 
 
 
@@ -359,7 +359,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Geekwolf">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg">
+      <meta itemprop="image" content="http://www.simlinux.com/src_images/logo/wolf.jpeg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -477,12 +477,12 @@
 <p>选择合适版本发布到合适的服务器环境（目前分支策略是，提测时创建发布分支release-<code>date  +%Y%m%d-%H%M%S</code>）</p>
 </blockquote>
 <h4 id="安装插件"><a href="#安装插件" class="headerlink" title="安装插件"></a>安装插件</h4><p>Dynamic Parameter Plug-in](<a href="https://wiki.jenkins-ci.org/display/JENKINS/Dynamic+Parameter+Plug-in" target="_blank" rel="external">https://wiki.jenkins-ci.org/display/JENKINS/Dynamic+Parameter+Plug-in</a>)</p>
-<h4 id="设置-参数化构建过程"><a href="#设置-参数化构建过程" class="headerlink" title="设置 参数化构建过程"></a>设置 参数化构建过程</h4><p><a href="http://ow1schdt5.bkt.clouddn.com/2015/06/11.png" target="_blank" rel="external"><img src="http://ow1schdt5.bkt.clouddn.com/2015/06/11.png" alt="1"></a><img src="http://ow1schdt5.bkt.clouddn.com/2015/06/11.png" alt=""></p>
+<h4 id="设置-参数化构建过程"><a href="#设置-参数化构建过程" class="headerlink" title="设置 参数化构建过程"></a>设置 参数化构建过程</h4><p><a href="http://www.simlinux.com/src_images/2015/06/11.png" target="_blank" rel="external"><img src="http://www.simlinux.com/src_images/2015/06/11.png" alt="1"></a><img src="http://www.simlinux.com/src_images/2015/06/11.png" alt=""></p>
 <h4 id="使用groovy脚本动态获取发布分支"><a href="#使用groovy脚本动态获取发布分支" class="headerlink" title="使用groovy脚本动态获取发布分支"></a>使用groovy脚本动态获取发布分支</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">def ver_keys = [ &apos;bash&apos;, &apos;-c&apos;, &apos;cd /gitrepos/project1; git pull&gt;/dev/null; git branch -a|grep remotes|grep release|cut -d &quot;/&quot; -f3|sort -r |head -10 &apos; ]</div><div class="line">ver_keys.execute().text.tokenize(&apos;\n&apos;)</div></pre></td></tr></table></figure>
 <p>其他方式参考：<a href="http://birdinroom.blog.51cto.com/7740375/1404930" target="_blank" rel="external">http://birdinroom.blog.51cto.com/7740375/1404930</a></p>
-<h4 id="构建脚本"><a href="#构建脚本" class="headerlink" title="构建脚本"></a>构建脚本</h4><p><img src="http://ow1schdt5.bkt.clouddn.com/2015/06/21.png" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">echo $release_version</div><div class="line">echo $deploy_server</div><div class="line">case $deploy_server in</div><div class="line">  test)</div><div class="line">       echo &quot;This server is $deploy_server -----test enviroment&quot;</div><div class="line">       cd /gitrepos/project1/</div><div class="line">       git checkout $release_version</div><div class="line">       git pull origin $release_version</div><div class="line">       rsync -avH --delete --progress  --exclude=robots.txt --exclude=.gitignore  --exclude=.git --exclude=.DS_Store --exclude=&quot;*.tar&quot;    /gitrepos/project1/  /gitrepos/project1/               </div><div class="line">         ;;</div><div class="line">  prod)</div><div class="line">       echo &quot;This server is $deploy_server  ------production enviroment&quot;</div><div class="line">       cd  /gitrepos/project1/</div><div class="line">       git checkout $release_version</div><div class="line">       git pull origin $release_version</div><div class="line">       rsync -avH --delete --progress  --exclude=robots.txt --exclude=.gitignore  --exclude=.git --exclude=.DS_Store --exclude=&quot;*.tar&quot;  &apos;-e ssh -p 22000&apos; /gitrepos/project1/  www@node1.simlinux.com:/gitrepos/project1/ </div><div class="line">          ;;</div><div class="line">  *)</div><div class="line">          exit</div><div class="line">          ;;</div><div class="line">esac</div></pre></td></tr></table></figure></p>
-<h4 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h4><p><img src="http://ow1schdt5.bkt.clouddn.com/2015/06/31.png" alt=""></p>
-<p><img src="http://ow1schdt5.bkt.clouddn.com/2015/06/sdf.png" alt=""></p>
+<h4 id="构建脚本"><a href="#构建脚本" class="headerlink" title="构建脚本"></a>构建脚本</h4><p><img src="http://www.simlinux.com/src_images/2015/06/21.png" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">echo $release_version</div><div class="line">echo $deploy_server</div><div class="line">case $deploy_server in</div><div class="line">  test)</div><div class="line">       echo &quot;This server is $deploy_server -----test enviroment&quot;</div><div class="line">       cd /gitrepos/project1/</div><div class="line">       git checkout $release_version</div><div class="line">       git pull origin $release_version</div><div class="line">       rsync -avH --delete --progress  --exclude=robots.txt --exclude=.gitignore  --exclude=.git --exclude=.DS_Store --exclude=&quot;*.tar&quot;    /gitrepos/project1/  /gitrepos/project1/               </div><div class="line">         ;;</div><div class="line">  prod)</div><div class="line">       echo &quot;This server is $deploy_server  ------production enviroment&quot;</div><div class="line">       cd  /gitrepos/project1/</div><div class="line">       git checkout $release_version</div><div class="line">       git pull origin $release_version</div><div class="line">       rsync -avH --delete --progress  --exclude=robots.txt --exclude=.gitignore  --exclude=.git --exclude=.DS_Store --exclude=&quot;*.tar&quot;  &apos;-e ssh -p 22000&apos; /gitrepos/project1/  www@node1.simlinux.com:/gitrepos/project1/ </div><div class="line">          ;;</div><div class="line">  *)</div><div class="line">          exit</div><div class="line">          ;;</div><div class="line">esac</div></pre></td></tr></table></figure></p>
+<h4 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h4><p><img src="http://www.simlinux.com/src_images/2015/06/31.png" alt=""></p>
+<p><img src="http://www.simlinux.com/src_images/2015/06/sdf.png" alt=""></p>
 
       
     </div>
@@ -643,7 +643,7 @@
       <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
-               src="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg"
+               src="http://www.simlinux.com/src_images/logo/wolf.jpeg"
                alt="Geekwolf" />
           <p class="site-author-name" itemprop="name">Geekwolf</p>
            

@@ -107,16 +107,16 @@
 <meta property="og:site_name" content="Geekwolf&#39;s Blog">
 <meta property="og:description" content="特性功能Zabbix自3.4.5rc1版本开始支持Elasticsearch作为历史数据存储，17年12月28日发布了3.4.5 部署Elasticsearch安装Elasticsearch和Kibana:123456789echo &amp;quot;deb http://http.debian.net/debian jessie-backports main&amp;quot; &amp;gt;&amp;gt;/etc/ap">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://ow1schdt5.bkt.clouddn.com/zabbix-es-type.png">
-<meta property="og:image" content="http://ow1schdt5.bkt.clouddn.com/zabbix_es1.png">
-<meta property="og:image" content="http://ow1schdt5.bkt.clouddn.com/zabbix_es2.png">
-<meta property="og:image" content="http://ow1schdt5.bkt.clouddn.com/zabbix_es3.png">
-<meta property="og:image" content="http://ow1schdt5.bkt.clouddn.com/zabbix_es4.png">
+<meta property="og:image" content="http://www.simlinux.com/src_images/zabbix-es-type.png">
+<meta property="og:image" content="http://www.simlinux.com/src_images/zabbix_es1.png">
+<meta property="og:image" content="http://www.simlinux.com/src_images/zabbix_es2.png">
+<meta property="og:image" content="http://www.simlinux.com/src_images/zabbix_es3.png">
+<meta property="og:image" content="http://www.simlinux.com/src_images/zabbix_es4.png">
 <meta property="og:updated_time" content="2018-01-31T03:18:20.460Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Zabbix3.4.5新特性：历史数据支持Elasticsearch">
 <meta name="twitter:description" content="特性功能Zabbix自3.4.5rc1版本开始支持Elasticsearch作为历史数据存储，17年12月28日发布了3.4.5 部署Elasticsearch安装Elasticsearch和Kibana:123456789echo &amp;quot;deb http://http.debian.net/debian jessie-backports main&amp;quot; &amp;gt;&amp;gt;/etc/ap">
-<meta name="twitter:image" content="http://ow1schdt5.bkt.clouddn.com/zabbix-es-type.png">
+<meta name="twitter:image" content="http://www.simlinux.com/src_images/zabbix-es-type.png">
 
 
 
@@ -358,7 +358,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Geekwolf">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg">
+      <meta itemprop="image" content="http://www.simlinux.com/src_images/logo/wolf.jpeg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -481,14 +481,14 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">/etc/init.d/zabbix_server stop</div><div class="line">tar xf zabbix-3.4.5.tar.gz</div><div class="line">cd zabbix-3.4.5</div><div class="line">./configure --enable-server --enable-agent --with-mysql --enable-ipv6 --with-net-snmp --with-libcurl --with-libxml2</div><div class="line">make -j8</div><div class="line">make install</div></pre></td></tr></table></figure>
 <h4 id="Zabbix-server配置支持Elasticsearch"><a href="#Zabbix-server配置支持Elasticsearch" class="headerlink" title="Zabbix_server配置支持Elasticsearch"></a>Zabbix_server配置支持Elasticsearch</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">vim /usr/local/etc/zabbix_server.conf</div><div class="line">HistoryStorageURL=http://192.168.100.100:9200</div><div class="line">HistoryStorageTypes=uint,dbl,str,log,text</div></pre></td></tr></table></figure>
 <p><strong>说明:</strong></p>
-<p>Elasticsearch支持的监控项类型:uint,dbl,str,log,text<br>监控项数据类型|数据库表|对应Elasticsearch类型:<br><img src="http://ow1schdt5.bkt.clouddn.com/zabbix-es-type.png" alt="image"></p>
+<p>Elasticsearch支持的监控项类型:uint,dbl,str,log,text<br>监控项数据类型|数据库表|对应Elasticsearch类型:<br><img src="http://www.simlinux.com/src_images/zabbix-es-type.png" alt="image"></p>
 <h4 id="Zabbix-Web配置历史数据读Elasticsearch"><a href="#Zabbix-Web配置历史数据读Elasticsearch" class="headerlink" title="Zabbix Web配置历史数据读Elasticsearch"></a>Zabbix Web配置历史数据读Elasticsearch</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">修改配置文件vim conf/zabbix.conf.php</div><div class="line">1. 如果不同类型使用不同的ES集群，可以按如下进行配置</div><div class="line">$HISTORY[&apos;url&apos;]   = [</div><div class="line">    &apos;uint&apos; =&gt; &apos;http://localhost1:9200&apos;,</div><div class="line">    &apos;text&apos; =&gt; &apos;http://localhost2:9200&apos;</div><div class="line">];</div><div class="line">$HISTORY[&apos;types&apos;] = [&apos;uint&apos;, &apos;text&apos;];</div><div class="line"></div><div class="line">2. 所有类型使用相同ES集群</div><div class="line">$HISTORY[&apos;url&apos;]   = &apos;http://192.168.100.100:9200&apos;;</div><div class="line">$HISTORY[&apos;types&apos;] = [&apos;str&apos;, &apos;text&apos;, &apos;log&apos;, &apos;uint&apos;, &apos;dbl&apos;];</div></pre></td></tr></table></figure>
 <p><strong>注:</strong> 3.4.0升级到3.4.5后，请勿使用旧的zabbix.conf.php，根据新的zabbix.conf.php.example重新配置</p>
 <h4 id="重启Zabbix-Server"><a href="#重启Zabbix-Server" class="headerlink" title="重启Zabbix Server"></a>重启Zabbix Server</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">/etc/init.d/zabbix_server start</div><div class="line">此时可以通过观察日志，查看是否连接ES成功</div></pre></td></tr></table></figure>
 <h4 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h4><ol>
-<li><p>Zabbix配置ES成功后,通过Kibana可以看到：<br><img src="http://ow1schdt5.bkt.clouddn.com/zabbix_es1.png" alt="image"></p>
+<li><p>Zabbix配置ES成功后,通过Kibana可以看到：<br><img src="http://www.simlinux.com/src_images/zabbix_es1.png" alt="image"></p>
 </li>
-<li><p>创建索引<br><img src="http://ow1schdt5.bkt.clouddn.com/zabbix_es2.png" alt="image"><br><img src="http://ow1schdt5.bkt.clouddn.com/zabbix_es3.png" alt="image"><br><img src="http://ow1schdt5.bkt.clouddn.com/zabbix_es4.png" alt="image"></p>
+<li><p>创建索引<br><img src="http://www.simlinux.com/src_images/zabbix_es2.png" alt="image"><br><img src="http://www.simlinux.com/src_images/zabbix_es3.png" alt="image"><br><img src="http://www.simlinux.com/src_images/zabbix_es4.png" alt="image"></p>
 </li>
 <li><p>通过Zabbix Web访问是否正常显示数据</p>
 </li>
@@ -643,7 +643,7 @@
       <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
-               src="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg"
+               src="http://www.simlinux.com/src_images/logo/wolf.jpeg"
                alt="Geekwolf" />
           <p class="site-author-name" itemprop="name">Geekwolf</p>
            

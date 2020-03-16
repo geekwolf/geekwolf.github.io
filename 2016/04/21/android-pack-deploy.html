@@ -107,15 +107,15 @@
 <meta property="og:site_name" content="Geekwolf&#39;s Blog">
 <meta property="og:description" content="前言　　多渠道主要目的是为了统计各个应用市场用户数据分析(比如活跃数，崩溃率等)，收集用户信息，这时需要唯一标识来区分这些渠道，本文主要针对多渠道(几百个渠道甚至更多的情况)如何快速打包? 目的  Jenkins集成Gradle实现打包自动化 通过Jenkins参数化构建实现自定义环境和渠道打包，签名 测试包自动上传fir并通过钉钉发送通知 正式包按版本归档到OSS，发布时拷贝包到发布目录 自动刷">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://ow1schdt5.bkt.clouddn.com/2016/04/android-test.png">
-<meta property="og:image" content="http://ow1schdt5.bkt.clouddn.com/2016/04/android-test-choice.png">
-<meta property="og:image" content="http://ow1schdt5.bkt.clouddn.com/2016/04/android-archive.png">
-<meta property="og:image" content="http://ow1schdt5.bkt.clouddn.com/2016/04/android-archive-channel.png">
+<meta property="og:image" content="http://www.simlinux.com/src_images/2016/04/android-test.png">
+<meta property="og:image" content="http://www.simlinux.com/src_images/2016/04/android-test-choice.png">
+<meta property="og:image" content="http://www.simlinux.com/src_images/2016/04/android-archive.png">
+<meta property="og:image" content="http://www.simlinux.com/src_images/2016/04/android-archive-channel.png">
 <meta property="og:updated_time" content="2017-12-17T01:55:01.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android多渠道打包这样做才酸爽！？">
 <meta name="twitter:description" content="前言　　多渠道主要目的是为了统计各个应用市场用户数据分析(比如活跃数，崩溃率等)，收集用户信息，这时需要唯一标识来区分这些渠道，本文主要针对多渠道(几百个渠道甚至更多的情况)如何快速打包? 目的  Jenkins集成Gradle实现打包自动化 通过Jenkins参数化构建实现自定义环境和渠道打包，签名 测试包自动上传fir并通过钉钉发送通知 正式包按版本归档到OSS，发布时拷贝包到发布目录 自动刷">
-<meta name="twitter:image" content="http://ow1schdt5.bkt.clouddn.com/2016/04/android-test.png">
+<meta name="twitter:image" content="http://www.simlinux.com/src_images/2016/04/android-test.png">
 
 
 
@@ -357,7 +357,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Geekwolf">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg">
+      <meta itemprop="image" content="http://www.simlinux.com/src_images/logo/wolf.jpeg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -527,10 +527,10 @@
 <li>通过DingTalk发送通知信息到QA讨论组哪些渠道已经发布</li>
 </ul>
 <h4 id="配置步骤"><a href="#配置步骤" class="headerlink" title="配置步骤"></a>配置步骤</h4><h5 id="配置Jenkins"><a href="#配置Jenkins" class="headerlink" title="配置Jenkins"></a>配置Jenkins</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">插件: Dynamic Choice Parameter</div><div class="line">创建打包测试项目:Android-Test</div></pre></td></tr></table></figure>
-<p><img src="http://ow1schdt5.bkt.clouddn.com/2016/04/android-test.png" alt=""><br><img src="http://ow1schdt5.bkt.clouddn.com/2016/04/android-test-choice.png" alt=""></p>
+<p><img src="http://www.simlinux.com/src_images/2016/04/android-test.png" alt=""><br><img src="http://www.simlinux.com/src_images/2016/04/android-test-choice.png" alt=""></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">通过Groovy脚本获取分支</div><div class="line">def ver_keys = [ &apos;bash&apos;, &apos;-c&apos;, &apos;cd /usr/share/tomcat/.jenkins/workspace/Android-Test;git branch -a|grep remotes|cut -d &quot;/&quot; -f3|grep -v HEAD|sort&apos; ]</div><div class="line">    ver_keys.execute().text.tokenize(&apos;\n&apos;)</div><div class="line"></div><div class="line">构建脚本</div><div class="line">#!/bin/bash</div><div class="line">PATH=/usr/lib64/qt-3.3/bin:/usr/local/bin:/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/sbin:/usr/local/jdk1.7.0_80/bin:/usr/local/android-sdk-linux/tools:/usr/local/android-sdk-linux/platform-tools:/usr/local/gradle-2.2.1/bin:/usr/share/tomcat/bin</div><div class="line"></div><div class="line">cd $&#123;WORKSPACE&#125;</div><div class="line">git checkout $&#123;BranchToDeploy&#125;</div><div class="line">git pull -f</div><div class="line"></div><div class="line">if [ &quot;$&#123;EnvToDeploy&#125;&quot;  = &quot;All Env&quot; ];then</div><div class="line"></div><div class="line">        $&#123;WORKSPACE&#125;/gradlew clean</div><div class="line">        $&#123;WORKSPACE&#125;/gradlew assemble</div><div class="line"></div><div class="line">else</div><div class="line">        $&#123;WORKSPACE&#125;/gradlew clean</div><div class="line">        $&#123;WORKSPACE&#125;/gradlew assemble$&#123;EnvToDeploy&#125;</div><div class="line"></div><div class="line">fi</div><div class="line">#测试包上传fir，发钉钉通知</div><div class="line">/usr/local/bin/python /usr/share/tomcat/AndroidDeploy/androidtest.py</div></pre></td></tr></table></figure>
 <p><strong>创建多渠道包归档项目:Android-Archive</strong></p>
-<p><img src="http://ow1schdt5.bkt.clouddn.com/2016/04/android-archive.png" alt=""><br><img src="http://ow1schdt5.bkt.clouddn.com/2016/04/android-archive-channel.png" alt=""></p>
+<p><img src="http://www.simlinux.com/src_images/2016/04/android-archive.png" alt=""><br><img src="http://www.simlinux.com/src_images/2016/04/android-archive-channel.png" alt=""></p>
 <pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">获取channel列表</div><div class="line">def ver_keys = [ &apos;bash&apos;, &apos;-c&apos;, &apos;echo &quot;All Channels&quot;; cat /usr/share/tomcat/.jenkins/workspace/MAKA-Android-Testing/channels&apos; ]</div><div class="line">ver_keys.execute().text.tokenize(&apos;\n&apos;)</div><div class="line">构建脚本，更改渠道文件，上传OSS，发送钉钉通知</div><div class="line">python /usr/share/tomcat/AndroidDeploy/androidarchive.py</div></pre></td></tr></table></figure>
 </code></pre><p><strong>创建发布多渠道包项目:Android-Deploy</strong></p>
 <pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">构建脚本，通过OSS API拷贝要发布的归档渠道包到发布目录，发送钉钉通知</div><div class="line">python /usr/share/tomcat/AndroidDeploy/androiddeploy.py</div></pre></td></tr></table></figure>
@@ -696,7 +696,7 @@
       <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
-               src="http://ow1schdt5.bkt.clouddn.com/logo/wolf.jpeg"
+               src="http://www.simlinux.com/src_images/logo/wolf.jpeg"
                alt="Geekwolf" />
           <p class="site-author-name" itemprop="name">Geekwolf</p>
            
